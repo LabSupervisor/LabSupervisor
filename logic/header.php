@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>header</title>
     <link rel="stylesheet" href="../public/css/main.css">
+	<link rel="stylesheet" href="../public/css/navbar.css">
+	<link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
 	<link rel="icon" href="../public/img/logo.ico" />
 
 </head>
@@ -15,19 +17,20 @@
 
 <h1>LabSupervisor</h1>
 
+
 <?php session_start(); ?>
 
 
-<nav class='menu'>
+<nav class='navbar'>
 
-    <a class="titre" href='accueil.php'> Accueil </a>
+    <a class="titre" href='accueil.php'> <i class="ri-home-line"></i> Accueil</a>
 
-    <?php $role = "teacher" ; ?>
+    <?php $role = "student" ; ?>
 
 	<!-- pas connecté -->
     <?php if ($role =="") { ?>
 
-    <button onclick="Connexion()"> Connexion </button>
+	<a class="titre" onclick='Connexion()' > Connection </a>
 
     <?php
     }
@@ -39,12 +42,12 @@
 		if ($role == "teacher") {
 		?>
 
-			<a class="titre" href='.php'> Classe </a>
-			<a class="titre" href='.php'> Créer Session </a>
+			<a class="titre" href='.php'><i class="ri-folder-line"> </i> Classes </a>
+			<a class="titre" href='.php'><i class="ri-computer-line"> </i> Créer Session </a>
 
-			<a class="titre" href='.php'> Profil </a>
+			<a class="titre" href='.php'><i class="ri-user-line"> </i> Profil </a>
 
-			<button onclick='Deconnexion()' > Deconnection </button>
+			<a class="titre" onclick='Deconnexion()' > Deconnection </a>
 
 
 
@@ -56,11 +59,12 @@
 		else if($role == "student"){
 		?>
 
-			<a class="titre" href='.php'> Classe </a>
-			<a class="titre" href='.php'> Voir Session </a>
-			<a class="titre" href='.php'> Profil </a>
 
-			<button onclick='Deconnexion()' > Deconnection </button>
+			<a class="titre" href='.php'><i class="ri-folder-line"> </i> Classe </a>
+			<a class="titre" href='.php'><i class="ri-computer-line"></i> Voir Session </a>
+			<a class="titre" href='.php'><i class="ri-user-line"></i> Profil </a>
+			<a class="titre" onclick='Deconnexion()' > Deconnection </a>
+
 
 		<?php
 		}
@@ -68,9 +72,11 @@
 		//admin
 		else if ($role == "admin"){
 		?>
-
-		<a class="titre" href='.php'> Profil </a>
-		<button onclick='Deconnexion()' > Deconnection </button>
+		<a class="titre" href='.php'><i class="ri-folder-line"> </i> Classes   </a>
+		<a class="titre" href='.php'><i class="ri-computer-line"> </i> Créer Session </a>
+		<a class="titre" href='.php'><i class="ri-computer-line"></i> Voir Session </a>
+		<a class="titre" href='.php'> <i class="ri-user-line"></i> Profil </a>
+		<a class="titre" onclick='Deconnexion()' > Deconnection </a>
 
 
 		<?php
