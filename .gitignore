@@ -1,1 +1,4 @@
 logs/*
+setting.ini
+.idea/*
+.vscode/*
