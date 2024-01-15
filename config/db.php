@@ -3,7 +3,7 @@
 function dbConnect()
 {
     try {
-        $infosConnexion = parse_ini_file(__DIR__.'/parameters.ini');
+        $infosConnexion = parse_ini_file(__DIR__.'\setting.ini');
         // Information de la BDD
         $infoBdd = array(
             'type' => 'mysql',

@@ -1,27 +1,11 @@
 <?php
 
-function dbConnect()
-{
-    try
-    {
-        $infoBdd = include 'C:\Program Files\Ampps\www\LabSupervisor\config\config.php';
+require '../config/db.php';
+$db = dbConnect();
 
-        $hostname = $infoBdd['host'];
-        $mydbname = $infoBdd['dbname'];
-        $myusername = $infoBdd['user'];
-        $mypassword = $infoBdd['pass'];
-        $mydriver = $infoBdd['type'];
-        $myport = $infoBdd['port'];
-        $mycharset = $infoBdd['charset'];
+$query = "SELECT * FROM user";
 
-        // Connexion PDO
-        $db = new PDO("$mydriver:dbname=$mydbname;host=$hostname;port=$myport;options='--client_encoding=$mycharset'", $myusername, $mypassword, [PDO::MYSQL_ATTR_LOCAL_INFILE => true]);
-        $db->exec("SET NAMES 'UTF8'");
+$reqPrep = $db->prepare($query);
+$reqPrep->execute();
 
-        return $db;
-    }
-    catch (Exception $e)
-    {
-        die('Erreur : ' . $e->getMessage());
-    }
-}
+var_dump($reqPrep->fetchAll());
