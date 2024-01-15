@@ -1,11 +1,11 @@
 <?php
 
-// Paramètres de la BDD
-require '../config/settings.php';
-
-// Inclusion de tous les Repositories
-function chargerClasse($classe)
-{
-    //require '../src/App/Repositories/' . $classe . '.php';
-}
-spl_autoload_register('chargerClasse');
+return [
+    'type' => 'mysql',
+    'host' => 'localhost',
+    'port' => 3306,
+    'charset' => 'UTF8',
+    'dbname' => 'labsupervisor',
+    'user' => 'root',
+    'pass' => 'mysql',
+];
