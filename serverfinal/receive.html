@@ -1,0 +1,58 @@
+<!-- <html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Receive</title>
+	</head>
+	<body>
+		<button id="play">APUIICONNARD</button>
+		<video id="remoteVideo" autoplay></video>
+		<script src="receive.js"></script>
+	</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flux vidéo continu</title>
+</head>
+<body>
+  <video id="videoPlayer" controls width="640" height="360"></video>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const videoElement = document.getElementById('videoPlayer');
+      const mediaSource = new MediaSource();
+
+      videoElement.src = URL.createObjectURL(mediaSource);
+
+      mediaSource.addEventListener('sourceopen', function() {
+        const sourceBuffer = mediaSource.addSourceBuffer('video/webm; codecs="vp8"');
+
+        // Remplacez 'YOUR_VIDEO_STREAM_URL' par l'URL de votre flux vidéo en continu
+        const videoStreamUrl = 'YOUR_VIDEO_STREAM_URL';
+
+        fetch(videoStreamUrl)
+          .then(response => response.body)
+          .then(reader => {
+            const pump = () => {
+              const chunk = reader.read();
+              if (chunk.done) {
+                mediaSource.endOfStream();
+              } else {
+                sourceBuffer.appendBuffer(chunk.value);
+                pump();
+              }
+            };
+            pump();
+          })
+          .catch(error => console.error('Erreur lors du chargement du flux vidéo :', error));
+      });
+
+      mediaSource.addEventListener('error', function (error) {
+        console.error('Erreur de MediaSource:', error);
+      });
+    });
+  </script>
+</body>
+</html>
