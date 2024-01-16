@@ -2,12 +2,12 @@
 	"name": "labsup-video",
 	"version": "0.1",
 	"description": "Labsup video transmitter",
-	"main": "index.js",
+	"main": "server.js",
 	"scripts": {
-		"start": "index.js"
+		"start": "server.js"
 	},
 	"dependencies": {
-		"https": "^1.0.0",
-		"ws": "^8.16.0"
+		"express": "4.18.2",
+		"socket.io": "4.7.4"
 	}
 }

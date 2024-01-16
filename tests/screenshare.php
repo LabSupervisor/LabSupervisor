@@ -1,15 +1,16 @@
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8">
-		<title>Screenshare Test</title>
+		<title>Screen Sharing Test</title>
 	</head>
-
 	<body>
-		<video id="videoFrame" autoplay muted width="364" height="196"></video>
+		<h1>Screen Sharing Test</h1>
 
-		<button id="startScreenShare">Démarrer</button>
-		<button id="stopScreenShare">Arréter</button>
+		<button id="share">Share</button>
+		<div id="videogrid"></div>
 
-		<script type="text/javascript" src="/public/js/screenShareEngine.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.2/peerjs.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js"></script>
+		<script src="../public/js/screenShareEngine.js"></script>
 	</body>
 </html>
