@@ -1,0 +1,48 @@
+/* à suppr */
+
+* {
+	margin : 0px ;
+}
+
+.navbar {
+
+	background-color: #8f8c8c;
+	overflow: hidden;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: right ;
+
+}
+
+.navbar .left{
+	float: left;
+
+}
+
+.navbar  a {
+	display: inline-block; /* Ajoutez cette ligne pour que les liens soient sur la même ligne */
+
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+
+.navbar a:hover {
+	background-color: #ddd;
+	color: black;
+}
+
+
+
+
+
+.navbar .left.no-hover-color {
+    color: #f2f2f2; /* Couleur du texte sans hover */
+}
+
+.navbar .left.no-hover-color:hover {
+    background-color: transparent; /* Annulez la couleur de survol */
+    color: #f2f2f2; /* Maintenez la couleur du texte même en survol */
+}

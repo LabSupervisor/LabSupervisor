@@ -1,13 +1,40 @@
-.navbar {
+* {
+	margin : 0px ;
+}
+.titre {
+	position: relative;
+}
 
+/* logo */
+.logo-container {
+    display: flex;
+    align-items: center; /* Aligner le logo au centre verticalement */
+}
+
+.logo-container img {
+    max-height: 50px; /* Ajustez la hauteur maximale selon vos besoins */
+    margin-right: 10px; /* Espace entre le logo et le titre */
+}
+
+
+.navbar {
 	background-color: #8f8c8c;
-	overflow: hidden;
 	font-family: Arial, Helvetica, sans-serif;
+	text-align: right ;
 
 }
 
-.navbar a {
+
+
+.navbar .left{
 	float: left;
+
+}
+
+.navbar  a {
+	display: inline-block ; /* Ajoutez cette ligne pour que les liens soient sur la même ligne */
+	position: relative;
+
 	color: #f2f2f2;
 	text-align: center;
 	padding: 14px 16px;
@@ -15,7 +42,68 @@
 	font-size: 17px;
 }
 
+
 .navbar a:hover {
 	background-color: #ddd;
 	color: black;
+	position:relative;
 }
+
+
+.navbar .left.no-hover-color {
+    color: #f2f2f2; /* Couleur du texte sans hover */
+}
+
+.navbar .left.no-hover-color:hover {
+    background-color: transparent; /* Annulez la couleur de survol */
+    color: #f2f2f2; /* Maintenez la couleur du texte même en survol */
+}
+
+
+.navbar ul {
+    list-style-type: none;
+
+}
+
+.navbar ul li {
+	display: inline-block;
+    text-align: right;
+    position: relative;
+}
+
+.sous {
+display: none;
+/* box-shadow: 0px 1px 2px #ccc; */
+/* background-color: #8f8c8c; */
+position: absolute;
+width: 100%;
+/* z-index: 1000; */
+}
+
+nav ul li:hover .sous {
+display: block;
+/* background-color: #8f8c8c; */
+padding: 0px 0px;
+}
+
+.sous li {
+float: right;
+/* width: 100%; */
+text-align: right;
+}
+
+.sous a {
+padding-top: 0px;
+padding: 14px 16px;
+border-bottom: none;
+background-color: #8f8c8c;
+}
+
+.sous a:hover {
+border-bottom: none;
+background-color: #8f8c8c;
+
+
+}
+
+
