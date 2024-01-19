@@ -12,13 +12,23 @@ CREATE TABLE `chapter` (
   PRIMARY KEY (`id`),
   KEY `chapter_session_FK` (`idsession`),
   KEY `chapter_user_FK` (`idcreator`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 DROP TABLE IF EXISTS `classroom`;
 CREATE TABLE `classroom` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+DROP TABLE IF EXISTS `log`;
+CREATE TABLE `log` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `iduser` int NOT NULL,
+  `message` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `log_user_FK` (`iduser`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 DROP TABLE IF EXISTS `participant`;
@@ -55,6 +65,17 @@ CREATE TABLE `session` (
   KEY `session_user_FK` (`idcreator`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+DROP TABLE IF EXISTS `setting`;
+CREATE TABLE `setting` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `iduser` int(11) NOT NULL,
+  `background` varchar(100) NOT NULL DEFAULT 'default.png',
+  `navbartext` tinyint(1) NOT NULL DEFAULT 1,
+  `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `setting_user_FK` (`iduser`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
 DROP TABLE IF EXISTS `status`;
 CREATE TABLE `status` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -65,17 +86,7 @@ CREATE TABLE `status` (
   `idchapter` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `status_user_FK` (`iduser`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-DROP TABLE IF EXISTS `log`;
-CREATE TABLE `log` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `iduser` int NOT NULL,
-  `message` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `log_user_FK` (`iduser`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
@@ -97,7 +108,7 @@ CREATE TABLE `userclassroom` (
   PRIMARY KEY (`id`),
   KEY `usergroup_user_FK` (`iduser`),
   KEY `usergroup_group_FK` (`idclassroom`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 ALTER TABLE `chapter`
   ADD CONSTRAINT `chapter_session_FK` FOREIGN KEY (`idsession`) REFERENCES `session` (`id`),
@@ -112,6 +123,9 @@ ALTER TABLE `role`
 
 ALTER TABLE `session`
   ADD CONSTRAINT `session_user_FK` FOREIGN KEY (`idcreator`) REFERENCES `user` (`id`);
+
+ALTER TABLE `setting`
+  ADD CONSTRAINT `setting_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`);
 
 ALTER TABLE `status`
   ADD CONSTRAINT `status_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`);
