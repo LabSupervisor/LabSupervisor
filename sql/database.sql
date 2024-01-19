@@ -67,6 +67,16 @@ CREATE TABLE `status` (
   KEY `status_user_FK` (`iduser`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+DROP TABLE IF EXISTS `log`;
+CREATE TABLE `log` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `iduser` int NOT NULL,
+  `message` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `log_user_FK` (`iduser`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -105,6 +115,9 @@ ALTER TABLE `session`
 
 ALTER TABLE `status`
   ADD CONSTRAINT `status_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`);
+
+ALTER TABLE `log`
+  ADD CONSTRAINT `log_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`);
 
 ALTER TABLE `userclassroom`
   ADD CONSTRAINT `status_chapter_FK` FOREIGN KEY (`idchapter`) REFERENCES `chapter` (`id`),
