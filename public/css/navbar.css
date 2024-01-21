@@ -1,35 +1,36 @@
-* {
-	margin : 0px ;
-}
-
-.titre {
+/* Title👀 */
+.title {
 	position: relative;
 }
 
-/* logo */
+/* Main bold class */
+.bold {
+	font-weight: bold;
+}
+
+/* Icon */
 .logo-container {
-    display: flex;
-    align-items: center; /* Aligner le logo au centre verticalement */
+	display: flex;
+	align-items: center;
 }
 
 .logo-container img {
-    max-height: 50px; /* Ajustez la hauteur maximale selon vos besoins */
-    margin-right: 10px; /* Espace entre le logo et le titre */
+	max-height: 50px;
+	margin-right: 10px;
 }
 
+/* Navbar */
 .navbar {
 	background-color: #8f8c8c;
-	font-family: Arial, Helvetica, sans-serif;
-	text-align: right ;
+	text-align: right;
 }
 
 .navbar .left{
 	float: left;
-
 }
 
-.navbar  a {
-	display: inline-block ; /* Ajoutez cette ligne pour que les liens soient sur la même ligne */
+.navbar a {
+	display: inline-block;
 	position: relative;
 
 	color: #f2f2f2;
@@ -46,55 +47,49 @@
 }
 
 .navbar .left.no-hover-color {
-    color: #f2f2f2; /* Couleur du texte sans hover */
+	color: #f2f2f2;
 }
 
 .navbar .left.no-hover-color:hover {
-    background-color: transparent; /* Annulez la couleur de survol */
-    color: #f2f2f2; /* Maintenez la couleur du texte même en survol */
+	background-color: transparent;
+	color: #f2f2f2;
 }
 
-/* drop-down menu */
 .navbar ul {
-    list-style-type: none;
+	list-style-type: none;
 
 }
 
 .navbar ul li {
 	display: inline-block;
-    text-align: right;
-    position: relative;
+	text-align: right;
+	position: relative;
 }
 
-.sous {
-display: none;
-/* box-shadow: 0px 1px 2px #ccc; */
-/* background-color: #8f8c8c; */
-position: absolute;
-width: 100%;
-/* z-index: 1000; */
+.sub {
+	display: none;
+	position: absolute;
+	width: 100%;
 }
 
-nav ul li:hover .sous {
-display: block;
-/* background-color: #8f8c8c; */
-padding: 0px 0px;
+nav ul li:hover .sub {
+	display: block;
+	padding: 0px 0px;
 }
 
-.sous li {
-float: right;
-/* width: 100%; */
-text-align: right;
+.sub li {
+	float: right;
+	text-align: right;
 }
 
-.sous a {
-padding-top: 0px;
-padding: 14px 16px;
-border-bottom: none;
-background-color: #8f8c8c;
+.sub a {
+	padding-top: 0px;
+	padding: 14px 16px;
+	border-bottom: none;
+	background-color: #8f8c8c;
 }
 
-.sous a:hover {
-border-bottom: none;
-background-color: #8f8c8c;
+.sub a:hover {
+	border-bottom: none;
+	background-color: #8f8c8c;
 }
