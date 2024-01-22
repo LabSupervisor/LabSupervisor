@@ -1,0 +1,105 @@
+/* Ajout des styles pour la nouvelle présentation des utilisateurs */
+#preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    max-width: 150vh;
+    margin: 0 auto;
+}
+
+.user-cell {
+    padding: 10px;
+    margin: 20px;
+    text-align: left;
+    width: 20%; 
+    height: 220px;
+    box-sizing: border-box;
+    display: flex; 
+    flex-direction: column;
+	color: white;  
+	font-size: 18px;
+}
+
+.user-cell img {
+    max-width: 100%;
+    max-height: 80%; 
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+/* Cellule pour inviter utiilisateurs */
+.invite-cell {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 20px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 200px;
+    height: 250px;
+    box-sizing: border-box;
+}
+
+.invite-cell img {
+    max-width: 100%;
+    max-height: 80%; 
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+/*Fond d'ecran (style de la page en general)*/
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+    background-image: url('../img/Wallpaper.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.status-ball {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 2px; 
+    opacity: 0.9; /* Opacité pour les boules non actives */
+    border: 1px solid black;
+}
+
+.status-ball:not(.active) {
+    background-color: grey; /* Couleur grise pour les boules non actives */
+}
+
+.status-Finished {
+    background-color: greenyellow; /* Couleur pour l'état "Finalisé" */
+}
+
+.status-In-trouble {
+    background-color: red; /* Couleur pour l'état "En Difficulté" */
+}
+
+.status-Working {
+    background-color: yellow; /* Couleur pour l'état "En Cours" */
+}
+
+.name-and-balls-container {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: space-between; /* Espace entre nom et les boules*/
+    height: 100%;
+}
+
+.name-and-balls-container p {
+    margin: 0;
+    font-size: 18px;
+}
+
+.name-and-balls-container .status-ball {
+    margin-left: 1px;
+}
