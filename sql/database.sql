@@ -80,9 +80,7 @@ DROP TABLE IF EXISTS `status`;
 CREATE TABLE `status` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `iduser` int(11) DEFAULT NULL,
-  `done` tinyint(1) NOT NULL DEFAULT 1,
-  `workinprogress` tinyint(1) NOT NULL DEFAULT 0,
-  `help` tinyint(1) NOT NULL DEFAULT 0,
+  `state` int(11) NOT NULL DEFAULT 0,
   `idchapter` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `status_user_FK` (`iduser`)
