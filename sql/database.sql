@@ -7,8 +7,8 @@ CREATE TABLE `chapter` (
   `title` varchar(100) NOT NULL,
   `description` text DEFAULT NULL,
   `idcreator` int(11) NOT NULL,
-  `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
   `creationdate` datetime NOT NULL DEFAULT current_timestamp(),
+  `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `chapter_session_FK` (`idsession`),
   KEY `chapter_user_FK` (`idcreator`)
@@ -18,6 +18,8 @@ DROP TABLE IF EXISTS `classroom`;
 CREATE TABLE `classroom` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
+  `creationdate` datetime NOT NULL DEFAULT current_timestamp(),
+  `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -59,8 +61,10 @@ CREATE TABLE `session` (
   `title` varchar(50) NOT NULL,
   `description` text DEFAULT NULL,
   `idcreator` int(11) NOT NULL,
-  `creationdate` datetime NOT NULL DEFAULT current_timestamp(),
+  `startdate` datetime NOT NULL,
   `enddate` datetime NOT NULL,
+  `creationdate` datetime NOT NULL DEFAULT current_timestamp(),
+  `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `session_user_FK` (`idcreator`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -82,6 +86,7 @@ CREATE TABLE `status` (
   `iduser` int(11) DEFAULT NULL,
   `state` int(11) NOT NULL DEFAULT 0,
   `idchapter` int(11) DEFAULT NULL,
+  `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `status_user_FK` (`iduser`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -95,6 +100,7 @@ CREATE TABLE `user` (
   `surname` varchar(50) NOT NULL,
   `birthdate` date NOT NULL,
   `creationdate` datetime NOT NULL DEFAULT current_timestamp(),
+  `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -103,6 +109,7 @@ CREATE TABLE `userclassroom` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `iduser` int(11) NOT NULL,
   `idclassroom` int(11) NOT NULL,
+  `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `usergroup_user_FK` (`iduser`),
   KEY `usergroup_group_FK` (`idclassroom`)
