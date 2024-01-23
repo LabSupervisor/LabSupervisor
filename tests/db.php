@@ -1,11 +1,13 @@
 <?php
+	require '../config/db.php';
+	$db = dbConnect();
 
-require '../config/db.php';
-$db = dbConnect();
+	$query = "SELECT * FROM user";
 
-$query = "SELECT * FROM user";
+	$reqPrep = $db->prepare($query);
+	$reqPrep->execute();
 
-$reqPrep = $db->prepare($query);
-$reqPrep->execute();
-
-var_dump($reqPrep->fetchAll());
+	foreach($reqPrep->fetchAll() as $value => $key) {
+		echo $value . "<br>";
+	}
+?>

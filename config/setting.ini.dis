@@ -1,9 +1,11 @@
-; This file is a "template" of what your parameters.ini file should look like
-; Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
 [Database configuration]
+; Database driver, default "pdo_mysql"
 database_driver = pdo_mysql
+; Database credentials
 database_host = localhost
 database_port = 3306
+; Database name
 database_name = labsupervisor
+; Username use for connect to databse
 database_user =
 database_password =

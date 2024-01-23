@@ -11,6 +11,10 @@
 				<link rel="icon" href="../public/img/logo.ico" />
 			</head>
 		EOT;
+		// Import main functions
+		require($_SERVER["DOCUMENT_ROOT"] . "/config/import.php");
+
+		// Import navbar
 		require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_navbar.php");
 	}
 ?>
