@@ -35,13 +35,12 @@
 
 			// Request execute
 			if ($queryPrep->execute()) {
-				//TODO DB log
+				Logs::dbSave("Adding session " . $titleSession);
 			} else {
 				throw new Exception("Create session failed.");
 			}
 		} catch (Exception $e) {
-			$log = new Logs($e);
-			$log->fileSave();
+			Logs::fileSave($e);
 		}
 
 		try {
@@ -66,13 +65,12 @@
 
 			// Request execute
 			if ($queryPrepBis->execute()) {
-				//TODO DB log
+				Logs::dbSave("Adding chapter " . $titleChapter);
 			} else {
 				throw new Exception("Create chapter failed.");
 			}
 		} catch (Exception $e) {
-			$log = new Logs($e);
-			$log->fileSave();
+			Logs::fileSave($e);
 		}
 	}
 ?>

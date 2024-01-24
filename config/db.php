@@ -27,8 +27,7 @@
 
 			return $db;
 		} catch (Exception $e) {
-			$log = new Logs($e);
-			$log->fileSave();
+			Logs::fileSave($e);
 		}
 	}
 ?>

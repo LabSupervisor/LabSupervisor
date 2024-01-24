@@ -3,13 +3,14 @@
 	mainHeader("Log Test");
 
 	try {
-		throw new Exception("Ah!");
+		if (! filter_var("notanemail", FILTER_VALIDATE_EMAIL))
+			throw new Exception("Test OK");
 	} catch (Exception $e) {
-		$log = new Logs($e);
-		$log->fileSave();
-
-		$log->dbSave("1");
-
-		echo "Log!";
+		echo "Logging...";
+		echo "<br>Log in file...";
+		Logs::fileSave($e);
+		echo "<br>Log in DB...";
+		Logs::dbSave("Message");
+		echo "<br>Log!";
 	}
 ?>
