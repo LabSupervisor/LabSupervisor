@@ -43,9 +43,9 @@
 	<fieldset>
 		<legend> Dates </legend>
 		<strong> Date de début : </strong>
-		<input type="date" id="startDate" name="startDate" required>
+		<input type="datetime-local" id="startDate" name="startDate" required>
 		<strong> Date de fin : </strong>
-		<input type="date" id="dateEnd" name="dateEnd" required>
+		<input type="datetime-local" id="endDate" name="endDate" required>
 	</fieldset>
-	<input type="submit" value="saveSession">
+	<input type="submit" name="saveSession" value="Enregistrer">
 </form>

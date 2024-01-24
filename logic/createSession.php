@@ -9,7 +9,7 @@
 		$titleChapter = $_POST['titleChapter'];
 		$chapterDescription = $_POST['chapterDescription'];
 		$startDate = $_POST['startDate'];
-		$dateEnd = $_POST['dateEnd'];
+		$endDate = $_POST['endDate'];
 
 		try {
 			// Get user ID
@@ -18,7 +18,7 @@
 			$queryIdUserPrep->bindParam(':email', $_SESSION["login"], \PDO::PARAM_STR);
 
 			if ($queryIdUserPrep->execute()) {
-				$userId = $queryIdUserPrep->fetchColumn();
+				$userId = $queryIdUserPrep->fetchAll();
 			}
 
 			// Insert session request
@@ -26,15 +26,17 @@
 
 			$queryPrep = $db->prepare($query);
 
-			// Bind parameter
+			// Bind parameters
 			$queryPrep->bindParam(':title', $titleSession, \PDO::PARAM_STR);
 			$queryPrep->bindParam(':description', $descriptionSession, \PDO::PARAM_STR);
 			$queryPrep->bindParam(':idcreator', $userId, \PDO::PARAM_INT);
 			$queryPrep->bindParam(':startdate', $startDate, \PDO::PARAM_STR);
-			$queryPrep->bindParam(':enddate', $dateEnd, \PDO::PARAM_STR);
+			$queryPrep->bindParam(':enddate', $endDate, \PDO::PARAM_STR);
 
 			// Request execute
-			if (!$queryPrep->execute()) {
+			if ($queryPrep->execute()) {
+				//TODO DB log
+			} else {
 				throw new Exception("Create session failed.");
 			}
 		} catch (Exception $e) {
@@ -63,7 +65,9 @@
 			$queryPrepBis->bindParam(':idcreator', $userId, \PDO::PARAM_INT);
 
 			// Request execute
-			if (!$queryPrepBis->execute()) {
+			if ($queryPrepBis->execute()) {
+				//TODO DB log
+			} else {
 				throw new Exception("Create chapter failed.");
 			}
 		} catch (Exception $e) {
