@@ -13,7 +13,7 @@
 			// TODO
 			// Debug
 			$role = "admin";
-			$_SESSION["login"] = "a";
+			$_SESSION["login"] = "admin@labsupervisor.com";
 		?>
 
 				<ul>

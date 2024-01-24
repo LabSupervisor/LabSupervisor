@@ -4,13 +4,6 @@
 ?>
 
 <?php
-	// TODO TEMP
-	// DB connection
-	require($_SERVER["DOCUMENT_ROOT"] . '/config/config.php');
-	require($_SERVER["DOCUMENT_ROOT"] . '/src/App/Repositories/log.php');
-?>
-
-<?php
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php');
 ?>
