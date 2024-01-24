@@ -1,0 +1,11 @@
+[Database configuration]
+; Database driver, default "pdo_mysql"
+database_driver = pdo_mysql
+; Database credentials
+database_host = localhost
+database_port = 3306
+; Database name
+database_name = labsupervisor
+; Username use for connect to databse
+database_user =
+database_password =
