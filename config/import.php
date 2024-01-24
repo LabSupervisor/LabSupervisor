@@ -1,4 +1,7 @@
 <?php
+	// Start session
+	session_start();
+
 	// Import logger
 	require($_SERVER['DOCUMENT_ROOT'] . "/src/App/Repositories/log.php");
 

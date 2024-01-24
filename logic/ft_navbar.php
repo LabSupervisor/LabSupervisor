@@ -1,5 +1,3 @@
-<?php session_start(); ?>
-
 <body>
 	<nav class="navbar">
 		<div class="logo-container left">
@@ -20,7 +18,7 @@
 
 				<ul>
 					<li>
-						<a class="title bold" href="accueil.php"><i class="ri-home-line"></i> Accueil</a>
+						<a class="title bold" href="<?="http://" . $_SERVER["SERVER_NAME"]?>"><i class="ri-home-line"></i> Accueil</a>
 					</li>
 		<?php
 			// Check if user is connected

@@ -1,5 +1,7 @@
 <?php
-	require '../config/db.php';
+	require($_SERVER['DOCUMENT_ROOT'] . '/logic/ft_header.php');
+	mainHeader("DB Test");
+
 	$db = dbConnect();
 
 	$query = "SELECT * FROM user";

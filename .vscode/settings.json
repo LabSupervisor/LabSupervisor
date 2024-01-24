@@ -1,8 +1,0 @@
-{
-    "editor.tabCompletion": "on",
-    "editor.detectIndentation": false,
-    "editor.insertSpaces": false,
-
-    "files.insertFinalNewline": true,
-    "files.trimTrailingWhitespace": true
-}

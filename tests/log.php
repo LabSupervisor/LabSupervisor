@@ -1,6 +1,6 @@
 <?php
-	require($_SERVER['DOCUMENT_ROOT'] . "/config/db.php");
-	require($_SERVER['DOCUMENT_ROOT'] . "/src/App/Repositories/log.php");
+	require($_SERVER['DOCUMENT_ROOT'] . '/logic/ft_header.php');
+	mainHeader("Log Test");
 
 	try {
 		throw new Exception("Ah!");
@@ -9,5 +9,7 @@
 		$log->fileSave();
 
 		$log->dbSave("1");
+
+		echo "Log!";
 	}
 ?>

@@ -1,8 +1,10 @@
 <?php
-	session_start();
+	require($_SERVER['DOCUMENT_ROOT'] . '/logic/ft_header.php');
+	mainHeader("Role Test");
+
 	$_SESSION["login"] = "a";
 
-	require("../config/db.php");
-	require("../logic/ft_permissionChecker.php");
-	permissionChecker(true, false, false);
+	require($_SERVER['DOCUMENT_ROOT'] . "/logic/ft_permissionChecker.php");
+	permissionChecker(true, false, true);
+	echo "Access!";
 ?>

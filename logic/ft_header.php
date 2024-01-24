@@ -4,7 +4,7 @@
 			<html lang="fr">
 			<head>
 				<meta charset="UTF-8">
-				<title>$title</title>
+				<title>$title | LabSupervisor</title>
 				<link rel="stylesheet" href="../public/css/main.css">
 				<link rel="stylesheet" href="../public/css/navbar.css">
 				<link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet">
