@@ -3,10 +3,12 @@ require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 mainHeader("Lab Administration")
 ?>
 
+<?php
+//BDD connection
+require($_SERVER["DOCUMENT_ROOT"] . '/config/config.php');
+?>
 
-
-
-<form class="" action="" method="post">
+<form class="" action="labAdministration.php" method="post">
 	<fieldset>
 		<legend> Information </legend>
 		<strong> Titre : </strong>
@@ -40,16 +42,9 @@ mainHeader("Lab Administration")
 	<input type="submit" value="Enregistrer">
 </form>
 
-
-<?php
-// Connexion à la BDD
-require($_SERVER["DOCUMENT_ROOT"] . '/config/config.php');
-?>
-
 <?php
 
-
-if (isset($_POST['Enregistrer'])) {
+if (!isset($_POST['Enregistrer'])) {
 	$db = dbConnect();
 
 	$titleSession = $_POST['titleSession'];
@@ -63,37 +58,52 @@ if (isset($_POST['Enregistrer'])) {
 	$queryIdUser = "SELECT id FROM user WHERE email = 'admin@labsupervisor.com' ";
 	$queryIdUserPrep = $db->prepare($queryIdUser) ;
 	if ($queryIdUserPrep->execute()) {
-		// Récupérer la colonne 'id' en tant que chaîne de caractères
 		$userId = $queryIdUserPrep->fetchColumn();
-
-		if ($userId !== false) {
-			echo "Session enregistrée avec succès. L'ID de l'utilisateur est : " . $userId;
-		} else {
-			echo "Aucun résultat trouvé.";
-		}
 	}
 
-
-
-	$query = "INSERT INTO session (title, description, idcreator, creationdate, enddate) VALUES (:title, :description, :idcreator, :startdate, :enddate)";
-	// $queryBis = "INSERT INTO chapter (idsession, title, description, idcreator) VALUES (:idsession, :title, :description, :idcreator)";
+	$query = "INSERT INTO session (title, description, idcreator, startdate, enddate) VALUES (:title, :description, :idcreator, :startdate, :enddate)";
 
 	$queryPrep = $db->prepare($query);
-	// $queryPrepBis = $db->prepare($queryBis);
 
-
-	// Remplacement des paramètres avec les valeurs du formulaire
+	// bind parameter
 	$queryPrep->bindParam(':title', $titleSession, \PDO::PARAM_STR);
 	$queryPrep->bindParam(':description', $descriptionSession, \PDO::PARAM_STR);
 	$queryPrep->bindParam(':idcreator', $userId, \PDO::PARAM_INT);
-	$queryPrep->bindParam(':creationdate', $startDate, \PDO::PARAM_STR);
+	$queryPrep->bindParam(':startdate', $startDate, \PDO::PARAM_STR);
 	$queryPrep->bindParam(':enddate', $dateEnd, \PDO::PARAM_STR);
 
-	// Exécution de la requête
 	if ($queryPrep->execute()) {
 		echo "Session enregistrée avec succès.";
 	} else {
 		echo "Erreur lors de l'enregistrement de la session : ";
 	}
+
+	// recup id session
+	$queryIdSession = "SELECT id FROM session WHERE title = '$titleSession'" ;
+	$queryIdSessionPrep = $db->prepare($queryIdSession);
+
+	if ($queryIdSessionPrep->execute()) {
+		$idSession = $queryIdSessionPrep->fetchColumn();
+	}
+
+	// chapter
+	$queryBis = "INSERT INTO chapter (idsession, title, description, idcreator) VALUES (:idsession, :title, :description, :idcreator)";
+
+	$queryPrepBis = $db->prepare($queryBis);
+
+	// bind parameter
+	$queryPrepBis->bindParam(':idsession', $idSession, \PDO::PARAM_STR);
+	$queryPrepBis->bindParam(':title', $titleChapter, \PDO::PARAM_STR);
+	$queryPrepBis->bindParam(':description', $chapterDescription, \PDO::PARAM_STR);
+	$queryPrepBis->bindParam(':idcreator', $userId, \PDO::PARAM_INT);
+
+	// requete execute
+
+	if ($queryPrepBis->execute()) {
+		echo "Session (chapitre) enregistrée avec succès.";
+	} else {
+		echo "Erreur lors de l'enregistrement de la session : ";
+	}
+
 }
 ?>
