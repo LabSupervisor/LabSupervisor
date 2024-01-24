@@ -1,14 +1,21 @@
 <?php
-require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
-mainHeader("Lab Administration")
+	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
+	mainHeader("Lab Administration")
 ?>
 
 <?php
-//BDD connection
-require($_SERVER["DOCUMENT_ROOT"] . '/config/config.php');
+	// TODO TEMP
+	// DB connection
+	require($_SERVER["DOCUMENT_ROOT"] . '/config/config.php');
+	require($_SERVER["DOCUMENT_ROOT"] . '/src/App/Repositories/log.php');
 ?>
 
-<form class="" action="labAdministration.php" method="post">
+<?php
+	// Logic
+	require($_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php');
+?>
+
+<form method="post">
 	<fieldset>
 		<legend> Information </legend>
 		<strong> Titre : </strong>
@@ -19,6 +26,7 @@ require($_SERVER["DOCUMENT_ROOT"] . '/config/config.php');
 	<fieldset>
 		<legend> Participants </legend>
 		<strong> Classes : </strong>
+		<!-- TODO Request get class -->
 		<select name="classes" id="classes">
 			<option value="classe1">Classe 1</option>
 			<option value="classe2">Classe 2</option>
@@ -39,71 +47,5 @@ require($_SERVER["DOCUMENT_ROOT"] . '/config/config.php');
 		<strong> Date de fin : </strong>
 		<input type="date" id="dateEnd" name="dateEnd" required>
 	</fieldset>
-	<input type="submit" value="Enregistrer">
+	<input type="submit" value="saveSession">
 </form>
-
-<?php
-
-if (!isset($_POST['Enregistrer'])) {
-	$db = dbConnect();
-
-	$titleSession = $_POST['titleSession'];
-	$descriptionSession = $_POST['descriptionSession'];
-	$classes = $_POST['classes'];
-	$titleChapter = $_POST['titleChapter'];
-	$chapterDescription = $_POST['chapterDescription'];
-	$startDate = $_POST['startDate'];
-	$dateEnd = $_POST['dateEnd'];
-
-	$queryIdUser = "SELECT id FROM user WHERE email = 'admin@labsupervisor.com' ";
-	$queryIdUserPrep = $db->prepare($queryIdUser) ;
-	if ($queryIdUserPrep->execute()) {
-		$userId = $queryIdUserPrep->fetchColumn();
-	}
-
-	$query = "INSERT INTO session (title, description, idcreator, startdate, enddate) VALUES (:title, :description, :idcreator, :startdate, :enddate)";
-
-	$queryPrep = $db->prepare($query);
-
-	// bind parameter
-	$queryPrep->bindParam(':title', $titleSession, \PDO::PARAM_STR);
-	$queryPrep->bindParam(':description', $descriptionSession, \PDO::PARAM_STR);
-	$queryPrep->bindParam(':idcreator', $userId, \PDO::PARAM_INT);
-	$queryPrep->bindParam(':startdate', $startDate, \PDO::PARAM_STR);
-	$queryPrep->bindParam(':enddate', $dateEnd, \PDO::PARAM_STR);
-
-	if ($queryPrep->execute()) {
-		echo "Session enregistrée avec succès.";
-	} else {
-		echo "Erreur lors de l'enregistrement de la session : ";
-	}
-
-	// recup id session
-	$queryIdSession = "SELECT id FROM session WHERE title = '$titleSession'" ;
-	$queryIdSessionPrep = $db->prepare($queryIdSession);
-
-	if ($queryIdSessionPrep->execute()) {
-		$idSession = $queryIdSessionPrep->fetchColumn();
-	}
-
-	// chapter
-	$queryBis = "INSERT INTO chapter (idsession, title, description, idcreator) VALUES (:idsession, :title, :description, :idcreator)";
-
-	$queryPrepBis = $db->prepare($queryBis);
-
-	// bind parameter
-	$queryPrepBis->bindParam(':idsession', $idSession, \PDO::PARAM_STR);
-	$queryPrepBis->bindParam(':title', $titleChapter, \PDO::PARAM_STR);
-	$queryPrepBis->bindParam(':description', $chapterDescription, \PDO::PARAM_STR);
-	$queryPrepBis->bindParam(':idcreator', $userId, \PDO::PARAM_INT);
-
-	// requete execute
-
-	if ($queryPrepBis->execute()) {
-		echo "Session (chapitre) enregistrée avec succès.";
-	} else {
-		echo "Erreur lors de l'enregistrement de la session : ";
-	}
-
-}
-?>
