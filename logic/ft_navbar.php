@@ -35,7 +35,7 @@
 						<a class="title bold" href="#"><i class="ri-folder-line"></i> Classes</a>
 					</li>
 					<li>
-						<a class="title bold" href="#"><i class="ri-computer-line"></i> Créer une session</a>
+						<a class="title bold" href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/sessioncreation.php"?>"><i class="ri-computer-line"></i> Créer une session</a>
 					</li>
 					<li>
 						<a class="title bold" href="#"><i class="ri-computer-line"></i> Voir mes sessions</a>
@@ -62,7 +62,7 @@
 			}
 			// Profil part if connected
 		?>
-			<li><a class="title bold" href="#"><i class="ri-user-line"></i> Profil </a>
+			<li><a class="title bold" href="#"><i class="ri-user-line"></i> Profil</a>
 				<ul class="sub">
 					<li>
 						<a href="#"> Deconnexion</a>
