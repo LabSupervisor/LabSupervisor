@@ -1,33 +1,34 @@
 <?php
-function dbConnect()
-{
-    try {
-        $infosConnexion = parse_ini_file(__DIR__.'\setting.ini');
-        // Information de la BDD
-        $infoBdd = array(
-            'type' => 'mysql',
-            'host' => $infosConnexion['database_host'],
-            'port' => $infosConnexion['database_port'], // 5432 pour postgreSQL, 3306 pour MySQL
-            'charset' => 'UTF8',
-            'dbname' => $infosConnexion['database_name'],
-            'user' => $infosConnexion['database_user'],
-            'pass' => $infosConnexion['database_password'],
-        );
+	function dbConnect()
+	{
+		try {
+			$infosConnexion = parse_ini_file($_SERVER["DOCUMENT_ROOT"] .'/config/setting.ini');
 
-        $hostname = $infoBdd['host'];
-        $mydbname = $infoBdd['dbname'];
-        $myusername = $infoBdd['user'];
-        $mypassword = $infoBdd['pass'];
-        $mydriver = $infoBdd['type'];
-        $myport = $infoBdd['port'];
-        $mycharset = $infoBdd['charset'];
+			$infoBdd = array(
+				'type' => 'mysql',
+				'host' => $infosConnexion['database_host'],
+				'port' => $infosConnexion['database_port'],
+				'charset' => 'UTF8',
+				'dbname' => $infosConnexion['database_name'],
+				'user' => $infosConnexion['database_user'],
+				'password' => $infosConnexion['database_password'],
+			);
 
-        // Connexion PDO
-        $db = new PDO("$mydriver:dbname=$mydbname;host=$hostname;port=$myport;options='--client_encoding=$mycharset'", $myusername, $mypassword, [PDO::MYSQL_ATTR_LOCAL_INFILE => true]);
-        $db->exec("SET NAMES 'UTF8'");
+			$hostname = $infoBdd['host'];
+			$dbname = $infoBdd['dbname'];
+			$username = $infoBdd['user'];
+			$password = $infoBdd['password'];
+			$driver = $infoBdd['type'];
+			$port = $infoBdd['port'];
+			$charset = $infoBdd['charset'];
 
-        return $db;
-    } catch (Exception $e) {
-        exit('Erreur : '.$e->getMessage());
-    }
-}
+			$db = new PDO("$driver:dbname=$dbname; host=$hostname; port=$port; options='--client_encoding=$charset'", $username, $password, [PDO::MYSQL_ATTR_LOCAL_INFILE => true]);
+			$db->exec("SET NAMES 'UTF8'");
+
+			return $db;
+		} catch (Exception $e) {
+			$log = new Logs($e);
+			$log->fileSave();
+		}
+	}
+?>
