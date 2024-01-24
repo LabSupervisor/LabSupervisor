@@ -2,61 +2,58 @@
 #preview-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
-    min-height: 70vh;
-    max-width: 150vh;
+    max-width: 100%;
     margin: 0 auto;
+    justify-content: center;
 }
 
 .user-icon {
-    font-size: 100px;  /* Ajusta el tamaño del icono según sea necesario */
+    font-size: 100px;
     border-radius: 20px;
+    width: 300px; /* Tamaño fijo en píxeles */
+    height: 180px; /* Tamaño fijo en píxeles */
     background-color: grey;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
-
 .user-cell {
-    padding: 10px;
-    margin: 20px;
     text-align: left;
-    width: 25%; 
-    height: 220px;
     box-sizing: border-box;
-    display: flex; 
+    display: flex;
     flex-direction: column;
-	color: white;  
-	font-size: 18px;
+    color: white;
+    font-size: 18px;
+    width: 300px;
+    margin: 20px;
 }
 
 .user-cell img {
-    max-width: 100%;
-    max-height: 80%; 
+    height: 180px;
+    width: 300px; /* La imagen ocupará el 100% del ancho de la celda */
     border-radius: 20px;
     object-fit: cover;
 }
 
-/* Cellule pour inviter utiilisateurs */
+/* Estilo para la celda de invitación de usuarios */
 .invite-cell {
     border: 1px solid #ccc;
     padding: 10px;
-    margin: 20px;
+    margin: 10px; /* Ajusta el margen externo según tu preferencia */
     text-align: center;
     background-color: rgba(255, 255, 255, 0.8);
-    width: 200px;
-    height: 250px;
+    width: 300px; /* Tamaño fijo en píxeles */
+    height: 250px; /* Tamaño fijo en píxeles */
     box-sizing: border-box;
 }
 
 .invite-cell img {
     max-width: 100%;
-    max-height: 80%; 
-    border-radius: 50%;
+    max-height: 80%;
+    border-radius: 20px;
     object-fit: cover;
 }
 
@@ -101,10 +98,11 @@ body {
 
 .name-and-balls-container {
     display: flex;
-    flex-direction: row; 
+    flex-direction: row;
     align-items: center;
-    justify-content: space-between; /* Espace entre nom et les boules*/
-    height: 100%;
+    justify-content: space-between;
+    height: 50px;
+    width: 100%;
 }
 
 .name-and-balls-container p {
@@ -117,32 +115,42 @@ body {
 }
 
 .tooltip {
-	backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
     position: absolute;
     z-index: 1;
     visibility: hidden;
     padding: 15px;
-    width: 400px;
-	border-radius: 10px;
-	margin-top: 30px;
-    background-color: rgba(48, 48, 48, 0.479)!important;
-	transition:visibility 0.2s linear,opacity 0.2s linear;
-	align-items: center;
-	opacity:0;
+    width: 340px;
+    border-radius: 10px;
+    margin-top: 30px;
+    background-color: rgba(48, 48, 48, 0.479);
+    transition: visibility 0.2s linear, opacity 0.2s linear;
+    align-items: center;
+    opacity: 0;
 }
+
 .tooltip-title {
-	text-decoration: underline;
-	text-align: center;
-	width: 100%;
-	display: block;
-	font-size: 1.25em;
-	pointer-events: none;
-	margin-bottom: 10px;
+    text-decoration: underline;
+    text-align: center;
+    width: 100%;
+    display: block;
+    font-size: 20px;
+    margin-bottom: 10px;
 }
+
 .tooltip-text {
     color: #fff;
     padding: 5px;
-	pointer-events: none;
+    white-space: pre-line; /* Permet la prise en charge des sauts de ligne */
+}
+
+.tooltip-text br {
+    display: none;  
+}
+
+.status-balls-container-right {
+    float: right;
+	
 }
 
 .status-balls-container:hover .tooltip {
