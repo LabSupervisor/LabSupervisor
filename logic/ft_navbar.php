@@ -7,15 +7,7 @@
 				echo "<img src=" . $cheminImage . "></img>";
 			?>
 		</div>
-		<a class="bold title left no-hover-color">LabSupervisor</a>
-
-		<?php
-			// TODO
-			// Debug
-			$role = "admin";
-			$_SESSION["login"] = "admin@labsupervisor.com";
-		?>
-
+			<a class="bold title left no-hover-color">LabSupervisor</a>
 				<ul>
 					<li>
 						<a class="title bold" href="<?="http://" . $_SERVER["SERVER_NAME"]?>"><i class="ri-home-line"></i> Accueil</a>
@@ -24,13 +16,16 @@
 			// Check if user is connected
 			if (!isset($_SESSION["login"])) { ?>
 					<li>
-						<a class="title bold" href="#"><i class="ri-user-line"></i> Connexion</a>
+						<a class="title bold" href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/login.php"?>"><i class="ri-user-line"></i> Connexion</a>
 					</li>
+				</ul>
+			</nav>
 		<?php
 			// If the user is connected
 			} else {
+				$roleList = permissionChecker(true, true, true);
 			// If the user is a teacher
-			if ($role == "teacher") { ?>
+			if (in_array("teacher", $roleList)) { ?>
 					<li>
 						<a class="title bold" href="#"><i class="ri-folder-line"></i> Classes</a>
 					</li>
@@ -42,13 +37,13 @@
 					</li>
 		<?php }
 			// If the user is a student
-			else if($role == "student") { ?>
+			else if(in_array("student", $roleList)) { ?>
 				<li>
 					<a class="title bold" href="#"><i class="ri-computer-line"></i> Voir mes sessions</a>
 				</li>
 		<?php }
 			// If the user is an admin
-			else if ($role == "admin") { ?>
+			else if (in_array("admin", $roleList)) { ?>
 				<li>
 					<a class="title bold" href="#"><i class="ri-folder-line"></i> Classes</a>
 				</li>
@@ -65,10 +60,7 @@
 			<li><a class="title bold" href="#"><i class="ri-user-line"></i> Profil</a>
 				<ul class="sub">
 					<li>
-						<a href="#"> Deconnexion</a>
-					</li>
-					<li>
-						<a href="#"> Déconnexion</a>
+						<a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/logic/disconnect.php"?>"> Deconnexion</a>
 					</li>
 				</ul>
 				</li>

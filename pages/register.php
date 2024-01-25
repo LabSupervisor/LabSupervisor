@@ -17,3 +17,7 @@
 	Birthdate: <input type="date" name="birthdate" required><br>
 	<input type="submit" value="Register">
 </form>
+
+<a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/login.php"?>">
+	<button>Déjà un compte ?</button>
+</a>
