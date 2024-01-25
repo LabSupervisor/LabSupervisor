@@ -1,7 +1,7 @@
 <?php
 	function mainHeader($title) {
 		if ($title != "")
-			$title = $title . " | LabSupervisor";
+			$title = $title . " - LabSupervisor";
 		else
 			$title = "LabSupervisor";
 

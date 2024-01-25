@@ -7,17 +7,12 @@
 			"admin" => $admin
 		);
 
-		$queryId = "SELECT id FROM user WHERE email = :email";
 		$query = "SELECT student, teacher, admin FROM role WHERE iduser = :iduser";
 
-		$queryPrepId = $db->prepare($queryId);
-		$login = $_SESSION["login"];
-		$queryPrepId->bindParam(':email', $login);
-		$queryPrepId->execute();
-		$id = $queryPrepId->fetchAll(\PDO::FETCH_COLUMN);
+		$userId = getUserId($_SESSION["login"]);
 
 		$queryPrep = $db->prepare($query);
-		$queryPrep->bindParam(':iduser', $id[0]);
+		$queryPrep->bindParam(':iduser', $userId);
 		$queryPrep->execute();
 		$role = $queryPrep->fetchAll(\PDO::FETCH_ASSOC);
 

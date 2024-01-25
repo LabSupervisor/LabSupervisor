@@ -2,16 +2,10 @@
 	function getSession() {
 		$db = dbConnect();
 
-		// Get user ID query
-		$queryUserId = "SELECT id FROM user WHERE email = :email";
 		// Get user session query
 		$querySession = "SELECT idsession FROM participant WHERE iduser = :iduser";
 
-		// Get user ID
-		$queryPrepUserId = $db->prepare($queryUserId);
-		$queryPrepUserId->bindParam(':email', $_SESSION["login"], \PDO::PARAM_STR);
-		$queryPrepUserId->execute();
-		$userId = $queryPrepUserId->fetchAll(PDO::FETCH_COLUMN)[0];
+		$userId = getUserId($_SESSION["login"]);
 
 		// Get user session
 		$queryPrepSession = $db->prepare($querySession);

@@ -4,6 +4,11 @@
 ?>
 
 <?php
+	if (isset($_SESSION["login"]))
+		header("Location: /");
+?>
+
+<?php
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . '/logic/login.php');
 ?>

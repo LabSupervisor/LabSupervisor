@@ -12,14 +12,7 @@
 		$endDate = $_POST['endDate'];
 
 		try {
-			// Get user ID
-			$queryIdUser = "SELECT id FROM user WHERE email = :email";
-			$queryIdUserPrep = $db->prepare($queryIdUser) ;
-			$queryIdUserPrep->bindParam(':email', $_SESSION["login"], \PDO::PARAM_STR);
-
-			if ($queryIdUserPrep->execute()) {
-				$userId = $queryIdUserPrep->fetchAll();
-			}
+			$userId = getUserId($_SESSION["login"]);
 
 			// Insert session request
 			$query = "INSERT INTO session (title, description, idcreator, startdate, enddate) VALUES (:title, :description, :idcreator, :startdate, :enddate)";
