@@ -51,7 +51,7 @@
 					<a class="title bold" href="#"><i class="ri-computer-line"></i> Sessions</a>
 				</li>
 				<li>
-					<a class="title bold" href="#"><i class="ri-computer-line"></i> Logs</a>
+					<a class="title bold" href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?trace"?>"><i class="ri-computer-line"></i> Logs</a>
 				</li>
 		<?php
 			}
