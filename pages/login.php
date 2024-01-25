@@ -14,3 +14,7 @@
 	Password: <input type="password" name="password"><br>
 	<input type="submit" value="Login">
 </form>
+
+<a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/register.php"?>">
+	<button>Pas encore de compte ?</button>
+</a>

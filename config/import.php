@@ -8,4 +8,6 @@
 	// Import logger
 	require($_SERVER['DOCUMENT_ROOT'] . "/src/App/Repositories/log.php");
 
+	// Import permission checker
+	require($_SERVER['DOCUMENT_ROOT'] . "/logic/ft_permissionChecker.php");
 ?>
