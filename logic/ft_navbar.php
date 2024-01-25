@@ -33,13 +33,13 @@
 						<a class="title bold" href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/sessioncreation.php"?>"><i class="ri-computer-line"></i> Créer une session</a>
 					</li>
 					<li>
-						<a class="title bold" href="#"><i class="ri-computer-line"></i> Voir mes sessions</a>
+						<a class="title bold" href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/session.php"?>"><i class="ri-computer-line"></i> Voir mes sessions</a>
 					</li>
 		<?php }
 			// If the user is a student
 			else if(in_array("student", $roleList)) { ?>
 				<li>
-					<a class="title bold" href="#"><i class="ri-computer-line"></i> Voir mes sessions</a>
+					<a class="title bold" href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/session.php"?>"><i class="ri-computer-line"></i> Voir mes sessions</a>
 				</li>
 		<?php }
 			// If the user is an admin
