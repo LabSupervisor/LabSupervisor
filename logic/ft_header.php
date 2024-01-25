@@ -1,10 +1,15 @@
 <?php
 	function mainHeader($title) {
+		if ($title != "")
+			$title = $title . " | LabSupervisor";
+		else
+			$title = "LabSupervisor";
+
 		echo <<<EOT
 			<html lang="fr">
 			<head>
 				<meta charset="UTF-8">
-				<title>$title | LabSupervisor</title>
+				<title>$title</title>
 				<link rel="stylesheet" href="../public/css/main.css">
 				<link rel="stylesheet" href="../public/css/navbar.css">
 				<link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet">
