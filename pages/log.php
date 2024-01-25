@@ -5,7 +5,6 @@
 
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_getDBLog.php");
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_getName.php");
 ?>
 
 <?php

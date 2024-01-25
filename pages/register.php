@@ -4,6 +4,11 @@
 ?>
 
 <?php
+	if (isset($_SESSION["login"]))
+		header("Location: /");
+?>
+
+<?php
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . '/logic/register.php');
 ?>
@@ -15,7 +20,7 @@
 	Name: <input type="text" name="name" required><br>
 	Surname: <input type="text" name="surname" required><br>
 	Birthdate: <input type="date" name="birthdate" required><br>
-	<input type="submit" value="Register">
+	<input type="submit" name="register" value="Register">
 </form>
 
 <a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/login.php"?>">

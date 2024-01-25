@@ -57,8 +57,17 @@
 			}
 			// Profil part if connected
 		?>
-			<li><a class="title bold" href="#"><i class="ri-user-line"></i> Profil</a>
+			<?php
+				$username = getName(getUserId($_SESSION["login"]));
+			?>
+			<li><a class="title bold" href="#"><i class="ri-user-line"></i> <?=$username?></a>
 				<ul class="sub">
+					<li>
+						<a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/account.php"?>"> Compte</a>
+					</li>
+					<li>
+						<a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/setting.php"?>"> Options</a>
+					</li>
 					<li>
 						<a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/logic/disconnect.php"?>"> Deconnexion</a>
 					</li>

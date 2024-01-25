@@ -3,16 +3,11 @@
 		public static function dbSave($message) {
 			$db = dbConnect();
 
-			// Get user ID query
-			$queryUserId = "SELECT id FROM user WHERE email = :email";
 			// Insert log query
 			$query = "INSERT INTO log (iduser, message) VALUES (:iduser, :message)";
 
 			// Get user ID
-			$queryPrepUserId = $db->prepare($queryUserId);
-			$queryPrepUserId->bindParam(':email', $_SESSION["login"], \PDO::PARAM_STR);
-			$queryPrepUserId->execute();
-			$userId = $queryPrepUserId->fetchAll(PDO::FETCH_COLUMN)[0];
+			$userId = getUserId($_SESSION["login"]);
 
 			// Insert log
 			$queryPrep = $db->prepare($query);
