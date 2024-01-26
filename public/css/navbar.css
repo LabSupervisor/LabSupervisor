@@ -1,3 +1,13 @@
+/* Variables */
+:root {
+	--text-color: #FFFFFF;
+
+	--navbar-background-color: #0B0A1D;
+	--text-hover-color: #161BBD;
+	--border-color: #0007C7;
+	--background-hover-color: #05005C;
+}
+
 /* Title👀 */
 .title {
 	position: relative;
@@ -12,6 +22,7 @@
 .logo-container {
 	display: flex;
 	align-items: center;
+	margin-left: 20px;
 }
 
 .logo-container img {
@@ -19,10 +30,28 @@
 	margin-right: 10px;
 }
 
+/* Profil */
+.case {
+	background-color: var(--background-hover-color);
+	border-radius: 25px;
+	border-color: var(--border-color);
+	border-width: 1px;
+	border-style: solid;
+	max-height: 13px;
+	margin-left: 20px;
+	margin-right: 25px;
+}
+
 /* Navbar */
 .navbar {
-	background-color: #8f8c8c;
+	background-color: var(--navbar-background-color);
 	text-align: right;
+	border-bottom: var(--border-color);
+	border-width: 1px;
+	border-bottom-style: solid;
+	position: fixed;
+	width: 100%;
+	display: block;
 }
 
 .navbar .left{
@@ -33,31 +62,26 @@
 	display: inline-block;
 	position: relative;
 
-	color: #f2f2f2;
+	color: var(--text-color);
 	text-align: center;
 	padding: 14px 16px;
 	text-decoration: none;
 	font-size: 17px;
+	transition: 200ms;
 }
 
 .navbar a:hover {
-	background-color: #ddd;
-	color: black;
-	position:relative;
-}
-
-.navbar .left.no-hover-color {
-	color: #f2f2f2;
+	color: var(--text-hover-color);
+	transition: 200ms;
 }
 
 .navbar .left.no-hover-color:hover {
-	background-color: transparent;
-	color: #f2f2f2;
+	color: var(--text-color);
+	transition: 200ms;
 }
 
 .navbar ul {
 	list-style-type: none;
-
 }
 
 .navbar ul li {
@@ -70,6 +94,15 @@
 	display: none;
 	position: absolute;
 	width: 100%;
+	background-color: var(--navbar-background-color);
+	transition: 20px;
+	align-content: center;
+	border-radius: 25px;
+	border-color: var(--border-color);
+	border-width: 1px;
+	border-style: solid;
+	max-width: 85%;
+	margin-left: 10px;
 }
 
 nav ul li:hover .sub {
@@ -78,18 +111,16 @@ nav ul li:hover .sub {
 }
 
 .sub li {
-	float: right;
-	text-align: right;
+	float: left;
 }
 
 .sub a {
 	padding-top: 0px;
 	padding: 14px 16px;
 	border-bottom: none;
-	background-color: #8f8c8c;
 }
 
 .sub a:hover {
-	border-bottom: none;
-	background-color: #8f8c8c;
+	color: var(--text-hover-color);
+	transition: 200ms;
 }

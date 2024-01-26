@@ -33,13 +33,13 @@
 						<a class="title bold" href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/sessioncreation.php"?>"><i class="ri-computer-line"></i> Créer une session</a>
 					</li>
 					<li>
-						<a class="title bold" href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/session.php"?>"><i class="ri-computer-line"></i> Voir mes sessions</a>
+						<a class="title bold" href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/session.php"?>"><i class="ri-slideshow-3-line"></i> Voir mes sessions</a>
 					</li>
 		<?php }
 			// If the user is a student
 			else if(in_array("student", $roleList)) { ?>
 				<li>
-					<a class="title bold" href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/session.php"?>"><i class="ri-computer-line"></i> Voir mes sessions</a>
+					<a class="title bold" href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/session.php"?>"><i class="ri-slideshow-3-line"></i> Voir mes sessions</a>
 				</li>
 		<?php }
 			// If the user is an admin
@@ -48,7 +48,7 @@
 					<a class="title bold" href="#"><i class="ri-folder-line"></i> Classes</a>
 				</li>
 				<li>
-					<a class="title bold" href="#"><i class="ri-computer-line"></i> Sessions</a>
+					<a class="title bold" href="#"><i class="ri-slideshow-3-line"></i> Sessions</a>
 				</li>
 				<li>
 					<a class="title bold" href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?trace"?>"><i class="ri-computer-line"></i> Logs</a>
@@ -60,16 +60,16 @@
 			<?php
 				$username = getName(getUserId($_SESSION["login"]));
 			?>
-			<li><a class="title bold" href="#"><i class="ri-user-line"></i> <?=$username?></a>
+			<li><a class="title bold case" href="#"><i class="ri-user-line"></i> <?=$username?></a>
 				<ul class="sub">
 					<li>
-						<a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/account.php"?>"> Compte</a>
+						<a class="title bold" href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/account.php"?>"><i class="ri-account-circle-line"></i> Compte</a>
 					</li>
 					<li>
-						<a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/setting.php"?>"> Options</a>
+						<a class="title bold" href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/setting.php"?>"><i class="ri-settings-4-line"></i> Options</a>
 					</li>
 					<li>
-						<a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/logic/disconnect.php"?>"> Deconnexion</a>
+						<a class="title bold" href="<?="http://" . $_SERVER["SERVER_NAME"] . "/logic/disconnect.php"?>"><i class="ri-logout-box-line"></i> Deconnexion</a>
 					</li>
 				</ul>
 				</li>
@@ -78,3 +78,11 @@
 		<?php
 		}
 		?>
+
+	<style>
+		body {
+			background-image: url("<?="http://" . $_SERVER["SERVER_NAME"] . "/public/img/background/" . getBackground($_SESSION["login"])?>");
+		}
+	</style>
+
+	<div class="main">

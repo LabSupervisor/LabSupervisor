@@ -16,4 +16,7 @@
 
 	// Import user name
 	require($_SERVER['DOCUMENT_ROOT'] . "/logic/ft_getName.php");
+
+	// Import background
+	require($_SERVER['DOCUMENT_ROOT'] . "/logic/ft_getBackground.php");
 ?>
