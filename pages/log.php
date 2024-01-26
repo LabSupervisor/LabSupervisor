@@ -57,6 +57,9 @@
 		<tbody>
 			<?php
 				foreach($logs as $line) {
+					$date = "";
+					$error = "";
+					$message = "";
 					$datePattern = "/\[(.*?)\]/";
 					$errorPattern = "/\](.*?)\:/";
 					$messagePattern = "/: (.*)$/";
