@@ -14,7 +14,7 @@
 	align-items: center;
 }
 
-.logo-container img {
+.logo-container {
 	max-height: 50px;
 	margin-right: 10px;
 }
