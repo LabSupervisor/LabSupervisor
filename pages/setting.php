@@ -18,7 +18,6 @@
 	$background = scandir($_SERVER['DOCUMENT_ROOT'] . "/public/img/background/");
 	$temp = array(".", "..");
 	$background = array_diff($background, $temp);
-	var_dump($background);
 ?>
 
 <form method="POST">
