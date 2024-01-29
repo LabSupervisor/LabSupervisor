@@ -6,8 +6,7 @@
 		$titleSession = $_POST['titleSession'];
 		$descriptionSession = $_POST['descriptionSession'];
 		$idClasses = $_POST['classes'];
-		$titleChapter = $_POST['titleChapter'];
-		$chapterDescription = $_POST['chapterDescription'];
+
 		$startDate = $_POST['startDate'];
 		$endDate = $_POST['endDate'];
 
@@ -46,22 +45,33 @@
 			}
 
 			// Chapter
-			$queryBis = "INSERT INTO chapter (idsession, title, description, idcreator) VALUES (:idsession, :title, :description, :idcreator)";
+			$nbChapter = $_POST["nbChapter"];
+			for($i = 1; $i<= $nbChapter; $i++){
+				$titleChapter = $_POST['titleChapter'.$i];
+				$chapterDescription = $_POST['chapterDescription'.$i];
 
-			$queryPrepBis = $db->prepare($queryBis);
+				if ($titleChapter ==""){
+					continue;
+				}
 
-			// Bind parameter
-			$queryPrepBis->bindParam(':idsession', $idSession, \PDO::PARAM_STR);
-			$queryPrepBis->bindParam(':title', $titleChapter, \PDO::PARAM_STR);
-			$queryPrepBis->bindParam(':description', $chapterDescription, \PDO::PARAM_STR);
-			$queryPrepBis->bindParam(':idcreator', $userId, \PDO::PARAM_INT);
+				$queryBis = "INSERT INTO chapter (idsession, title, description, idcreator) VALUES (:idsession, :title, :description, :idcreator)";
 
-			// Request execute
-			if ($queryPrepBis->execute()) {
-				Logs::dbSave("Adding chapter " . $titleChapter);
-			} else {
-				throw new Exception("Create chapter failed.");
+				$queryPrepBis = $db->prepare($queryBis);
+
+				// Bind parameter
+				$queryPrepBis->bindParam(':idsession', $idSession, \PDO::PARAM_STR);
+				$queryPrepBis->bindParam(':title', $titleChapter, \PDO::PARAM_STR);
+				$queryPrepBis->bindParam(':description', $chapterDescription, \PDO::PARAM_STR);
+				$queryPrepBis->bindParam(':idcreator', $userId, \PDO::PARAM_INT);
+
+				// Request execute
+				if ($queryPrepBis->execute()) {
+					Logs::dbSave("Adding chapter " . $titleChapter);
+				} else {
+					throw new Exception("Create chapter failed.");
+				}
 			}
+
 		} catch (Exception $e) {
 			Logs::fileSave($e);
 		}
