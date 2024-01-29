@@ -5,7 +5,7 @@
 		// Get data
 		$titleSession = $_POST['titleSession'];
 		$descriptionSession = $_POST['descriptionSession'];
-		$classes = $_POST['classes'];
+		$idClasses = $_POST['classes'];
 		$titleChapter = $_POST['titleChapter'];
 		$chapterDescription = $_POST['chapterDescription'];
 		$startDate = $_POST['startDate'];
@@ -64,6 +64,29 @@
 			}
 		} catch (Exception $e) {
 			Logs::fileSave($e);
+		}
+
+	//add classroom student to session
+
+		//get student classroom
+		$queryGetStudent = "SELECT iduser FROM userclassroom WHERE idclassroom='$idClasses'" ;
+		$queryGetStudentPrep = $db->prepare($queryGetStudent);
+		if ($queryGetStudentPrep->execute()) {
+			$Class = $queryGetStudentPrep->fetchAll();
+			// var_dump($Class) ;
+		}
+
+		// var_dump($Class);
+
+		for ($i = 0; $i<count($Class); $i++){
+			$idStudent = $Class[$i]['iduser'];
+			//participant
+			$queryParticipant = "INSERT INTO participant(iduser, idsession) VALUES (:iduser, :idsession) ";
+			$queryParticipantPrep = $db->prepare($queryParticipant);
+			//bind parameter
+			$queryParticipantPrep->bindParam(':iduser', $idStudent, \PDO::PARAM_STR);
+			$queryParticipantPrep->bindParam(':idsession', $idSession, \PDO::PARAM_STR);
+			$queryParticipantPrep->execute();
 		}
 	}
 ?>
