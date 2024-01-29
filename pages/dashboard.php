@@ -73,9 +73,9 @@ function displayUsers($users) {
         echo $userCell;
     }
 
-    // Ajout d'une cellule pour inviter de nouveaux utilisateurs
-    $inviteCell = '<div class="user-cell">';
-	$inviteCell .= '<img src="../public/img/Invit.png" alt="Inviter de nouveaux utilisateurs">';
+    // Ajout d'une cellule pour inviter de nouveaux utilisateurs avec un identifiant unique
+    $inviteCell = '<div class="invite-cell" id="invite-cell">';
+    $inviteCell .= '<div class="user-icon"><i class="ri-user-add-line"></i></div>';
     $inviteCell .= '<div class="name-and-balls-container">';
     $inviteCell .= '<p>Inviter nouveaux utilisateurs</p>';
     $inviteCell .= '</div>'; // Fermeture de name-and-balls-container

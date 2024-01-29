@@ -2,6 +2,7 @@
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader("Log");
 ?>
+<link rel="stylesheet" href="../public/css/log.css">
 
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_getDBLog.php");
@@ -10,6 +11,7 @@
 <?php
 	if (isset($_GET["trace"])) {
 ?>
+<div class="table-container">
 	<table>
 		<thead>
 			<td>ID</td>
@@ -23,15 +25,26 @@
 
 				foreach($logs as $line) {
 					echo "<tr>";
-					echo "<td>". $line["id"] ."</td>";
-					echo "<td>". getName($line["iduser"]) ."</td>";
-					echo "<td>". $line["message"] ."</td>";
-					echo "<td>". $line["date"] ."</td>";
+					echo '<th class="col1">'. $line["id"] .'</th>';
+					echo '<td class="col2">'. getName($line["iduser"]) .'</td>';
+					echo '<td class="col3">'. $line["message"] .'</td>';
+					echo '<td class="col4">'. $line["date"] .'</td>';
 					echo "</tr>";
 				}
 			?>
 		</tbody>
+		
 	</table>
+	<div class="button-container">
+		<a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?trace"?>">
+			<button>Trace</button>
+		</a>
+		<a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?error"?>">
+			<button>Erreur</button>
+		</a>
+	</div>
+	</div>
+	
 
 <?php
 	} else if (isset($_GET["error"])) {
@@ -78,8 +91,10 @@
 					echo "</tr>";
 				}
 			?>
+			
 		</tbody>
 	</table>
+
 
 <?php
 			} else {
@@ -95,9 +110,4 @@
 		}
 ?>
 
-<a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?trace"?>">
-	<button>Trace</button>
-</a>
-<a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?error"?>">
-	<button>Erreur</button>
-</a>
+

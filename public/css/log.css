@@ -1,0 +1,85 @@
+/* CSS in log.css */
+.table-container {
+    display: flex;
+	flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 20px;
+	
+}
+
+table {
+    width: 1100px;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+	color: white;
+	
+}
+
+thead {
+    background-color: #00000075;
+}
+
+th, td {
+    border: 8px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    font-family: Lato;
+   
+}
+
+tbody tr:nth-child(even) {
+    background-color: #00000075;
+}
+tbody tr:nth-child(odd) {
+    background-color: #33333370;
+}
+
+/*Colonnes separées pour faciliter la modification de l'apparence*/
+th.col1, td.col1 {
+    min-width: 10px; 
+}
+
+th.col2, td.col2 {
+    min-width: 20px; 
+}
+
+th.col3, td.col3 {
+    min-width: 30px; 
+}
+
+th.col4, td.col4 {
+    min-width: 100px; 
+}
+
+/* Ajoutez ces règles à votre fichier CSS */
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; /* Ajoutez la marge que vous souhaitez */
+}
+
+.button-container a {
+    text-decoration: none;
+}
+
+.button-container button {
+    padding: 10px;
+    background-color: #0d3bc3c6;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+	margin:10px;
+	margin-top:15px;
+	font-family: Lato;
+	font-size: 16px;
+	
+}
+
+.button-container button:hover {
+    background-color: #0d3bc3c6;
+}
