@@ -28,15 +28,18 @@
 		if ($queryClassPrep->execute()) {
 			$tabClass = $queryClassPrep->fetchAll();
 		}
+
+		// var_dump($tabClass)
 		?>
 
 		<select name="classes" id="classes">
 			<?php
 				for ($i = 0; $i< count($tabClass); $i++){
 				?>
-					<option value="classe"> <?php echo $tabClass[$i]["name"] ?></option>
+			        <option value="<?php echo $tabClass[$i]["id"]; ?>"><?php echo $tabClass[$i]["name"]; ?></option>
 				<?php
 				}
+
 			?>
 		</select>
 
