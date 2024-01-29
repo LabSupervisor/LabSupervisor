@@ -1,13 +1,3 @@
-/* Variables */
-:root {
-	--text-color: #FFFFFF;
-
-	--navbar-background-color: #0B0A1D;
-	--text-hover-color: #161BBD;
-	--border-color: #0007C7;
-	--background-hover-color: #05005C;
-}
-
 /* Title👀 */
 .title {
 	position: relative;

@@ -3,7 +3,7 @@
 	mainHeader("Dashboard");
 ?>
 
-<link rel="stylesheet" href="<?="https://" . $_SERVER["SERVER_NAME"] . "/public/css/dashboard.css"?>">
+<link rel="stylesheet" href="<?="http://" . $_SERVER["SERVER_NAME"] . "/public/css/dashboard.css"?>">
 
 <div id="preview-container">
 
