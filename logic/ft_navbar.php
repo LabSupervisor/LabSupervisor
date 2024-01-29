@@ -83,11 +83,16 @@
 		body {
 			<?php
 			// Check if user is connected
-			if (isset($_SESSION["login"])) { ?>
-			background-image: url("<?="http://" . $_SERVER["SERVER_NAME"] . "/public/img/background/" . getBackground($_SESSION["login"])?>");
+			if (isset($_SESSION["login"])) {
+				if (getTheme($_SESSION["login"]) == "0")
+					$theme = "light";
+				else
+					$theme = "dark";
+				?>
+				background-image: url("<?="http://" . $_SERVER["SERVER_NAME"] . "/public/img/background/" . $theme . "/" . getBackground($_SESSION["login"])?>");
 			<?php
 			} else { ?>
-			background-image: url("<?="http://" . $_SERVER["SERVER_NAME"] . "/public/img/background/default.png"?>");
+				background-image: url("<?="http://" . $_SERVER["SERVER_NAME"] . "/public/img/background/light/default.png"?>");
 			<?php
 			} ?>
 		}

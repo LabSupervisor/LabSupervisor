@@ -63,10 +63,6 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Lato', sans-serif;
-    background-image: url('../img/Wallpaper.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     min-height: 100vh;
 }
 
@@ -75,7 +71,7 @@ body {
     height: 10px;
     border-radius: 50%;
     display: inline-block;
-    margin-right: 2px; 
+    margin-right: 2px;
     opacity: 0.9; /* Opacité pour les boules non actives */
     border: 1px solid black;
 }
@@ -145,12 +141,12 @@ body {
 }
 
 .tooltip-text br {
-    display: none;  
+    display: none;
 }
 
 .status-balls-container-right {
     float: right;
-	
+
 }
 
 .status-balls-container:hover .tooltip {
