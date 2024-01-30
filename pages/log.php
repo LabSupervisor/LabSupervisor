@@ -3,7 +3,7 @@
     mainHeader("Log");
 ?>
 <link rel="stylesheet" href="../public/css/log.css">
-<link rel="stylesheet" href="../public/css/log.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
 
 <?php
     require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_getDBLog.php");
@@ -43,13 +43,13 @@
             </table>
 
             <div class="button-container">
-                <a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?trace"?>">
-                    <button>Trace</button>
-                </a>
-                <a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?error"?>">
-                    <button>Erreur</button>
-                </a>
-            </div>
+				<a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?trace"?>">
+					<button><i class="ri-draft-line"></i> Trace</button>
+				</a>
+				<a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?error"?>">
+					<button><i class="ri-error-warning-line"></i> Erreur</button>
+				</a>
+			</div>
         </div>
 
 <?php

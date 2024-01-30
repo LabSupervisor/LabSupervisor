@@ -1,4 +1,4 @@
-/* CSS in log.css */
+/*Css du tableau*/
 .table-container {
     display: flex;
 	flex-direction: column;
@@ -51,7 +51,6 @@ th.col3, td.col3 {
 	max-width: 30px;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	
 }
 
 th.col4, td.col4 {
@@ -59,13 +58,13 @@ th.col4, td.col4 {
 }
 
 
-/* Ajoutez ces règles à votre fichier CSS */
+/* CSS pour les Boutons Trace et Erreur */
 .button-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px; /* Ajoutez la marge que vous souhaitez */
-	width: 10px;
+    margin-bottom: 20px; 
+    width: 10px;
 }
 
 .button-container a {
@@ -73,24 +72,30 @@ th.col4, td.col4 {
 }
 
 .button-container button {
+    display: flex;
+    align-items: center; 
     padding: 10px;
-    background-color: #0d3bc3c6;
+    background-color: #05005C;
     color: white;
     border: none;
     border-radius: 15px;
     cursor: pointer;
-	margin:10px;
-	margin-top:15px;
-	font-family: Lato;
-	font-size: 16px;
-	width: 70px;
-	
+    margin: 10px;
+    margin-top: 15px;
+    font-family: Lato;
+    font-size: 16px;
+    width: 100px; 
+}
+
+.button-container button i {
+    margin-right: 5px; 
+    font-size: 20px;   
 }
 
 .button-container button:hover {
-    background-color: #0d3bc3c6;
+    background-color: #05005C;
 }
-
+/*CSS du body*/
 body {
     margin: 0;
     padding: 0;
@@ -102,6 +107,7 @@ body {
     min-height: 100vh;
 }
 
+/*Colonne 3 "Messages" avec le tooltip*/
 .col3 {
     white-space: nowrap;
     overflow: hidden;
@@ -131,4 +137,35 @@ body {
 
 .col3-container:hover .col3-tooltip {
     display: block;
+}
+
+/* CSS pour le formulaire */
+form {
+    background-color: rgba(48, 48, 48, 0.479);
+    text-align: center;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+form input[type="date"] {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 25px;
+}
+
+form input[type="submit"] {
+    padding: 8px 12px;
+    background-color: #0d3bc3c6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+form input[type="submit"]:hover {
+    background-color: #0d3bc3c6;
 }
