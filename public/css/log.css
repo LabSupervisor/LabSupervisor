@@ -1,0 +1,134 @@
+/* CSS in log.css */
+.table-container {
+    display: flex;
+	flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 20px;
+	
+}
+
+table {
+    width: 1100px;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+	color: white;
+	
+}
+
+thead {
+    background-color: #6f6f6f69;
+}
+
+th, td {
+    border: 10px;
+    padding: 11px;
+    text-align: center;
+    font-family: Lato;
+   
+}
+
+tbody tr:nth-child(even) {
+    background-color: #00000075;
+}
+tbody tr:nth-child(odd) {
+    background-color: #33333370;
+}
+
+/*Colonnes separées pour faciliter la modification de l'apparence*/
+th.col1, td.col1 {
+    min-width: 10px; 
+}
+
+th.col2, td.col2 {
+    min-width: 20px; 
+}
+
+th.col3, td.col3 {
+    min-width: 20px;
+	max-width: 30px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	
+}
+
+th.col4, td.col4 {
+    min-width: 100px; 
+}
+
+
+/* Ajoutez ces règles à votre fichier CSS */
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; /* Ajoutez la marge que vous souhaitez */
+	width: 10px;
+}
+
+.button-container a {
+    text-decoration: none;
+}
+
+.button-container button {
+    padding: 10px;
+    background-color: #0d3bc3c6;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+	margin:10px;
+	margin-top:15px;
+	font-family: Lato;
+	font-size: 16px;
+	width: 70px;
+	
+}
+
+.button-container button:hover {
+    background-color: #0d3bc3c6;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+    background-image: url('../img/background/default.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.col3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100px;
+}
+
+.col3-container {
+    position: relative;
+	
+}
+
+.col3-tooltip {
+    display: none;
+    border: 1px solid #cccccc00;
+    max-width: 300px;
+    z-index: 1;
+    width: 340px;
+    padding: 15px;
+    position: absolute;
+    background-color: rgb(48 48 48 / 69%);
+    backdrop-filter: blur(6px);
+    border-radius: 10px;
+    margin-top: 25px;
+    word-wrap: break-word;
+}
+
+.col3-container:hover .col3-tooltip {
+    display: block;
+}

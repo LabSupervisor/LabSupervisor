@@ -1,37 +1,55 @@
 <?php
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
-	mainHeader("Log");
+    require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
+    mainHeader("Log");
+?>
+<link rel="stylesheet" href="../public/css/log.css">
+
+<?php
+    require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_getDBLog.php");
 ?>
 
 <?php
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_getDBLog.php");
+    if (isset($_GET["trace"])) {
 ?>
+    <body>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>Utilisateur</td>
+                        <td>Message</td>
+                        <td>Date</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        $logs = getDBLog();
 
-<?php
-	if (isset($_GET["trace"])) {
-?>
-	<table>
-		<thead>
-			<td>ID</td>
-			<td>Utilisateur</td>
-			<td>Message</td>
-			<td>Date</td>
-		</thead>
-		<tbody>
-			<?php
-				$logs = getDBLog();
+                        foreach($logs as $line) {
+                            echo "<tr>";
+                            echo '<th class="col1">'. $line["id"] .'</th>';
+                            echo '<td class="col2">'. getName($line["iduser"]) .'</td>';
+                            echo '<td class="col3-container">';
+                            echo '<div class="col3-tooltip">'. htmlspecialchars($line["message"]) .'</div>';
+                            echo '<div class="col3">'. $line["message"] .'</div>';
+                            echo '</td>';
+                            echo '<td class="col4">'. $line["date"] .'</td>';
+                            echo "</tr>";
+                        }
+                    ?>
+                </tbody>
+            </table>
 
-				foreach($logs as $line) {
-					echo "<tr>";
-					echo "<td>". $line["id"] ."</td>";
-					echo "<td>". getName($line["iduser"]) ."</td>";
-					echo "<td>". $line["message"] ."</td>";
-					echo "<td>". $line["date"] ."</td>";
-					echo "</tr>";
-				}
-			?>
-		</tbody>
-	</table>
+            <div class="button-container">
+                <a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?trace"?>">
+                    <button>Trace</button>
+                </a>
+                <a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?error"?>">
+                    <button>Erreur</button>
+                </a>
+            </div>
+        </div>
 
 <?php
 	} else if (isset($_GET["error"])) {
@@ -78,8 +96,10 @@
 					echo "</tr>";
 				}
 			?>
+			
 		</tbody>
 	</table>
+
 
 <?php
 			} else {
@@ -94,10 +114,4 @@
 <?php
 		}
 ?>
-
-<a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?trace"?>">
-	<button>Trace</button>
-</a>
-<a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?error"?>">
-	<button>Erreur</button>
-</a>
+</body>
