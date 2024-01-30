@@ -23,6 +23,6 @@
 	<input type="submit" name="register" value="Register">
 </form>
 
-<a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/login.php"?>">
+<a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/login.php"?>">
 	<button>Déjà un compte ?</button>
 </a>

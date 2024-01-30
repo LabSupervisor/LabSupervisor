@@ -95,9 +95,9 @@
 		}
 ?>
 
-<a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?trace"?>">
+<a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/log.php?trace"?>">
 	<button>Trace</button>
 </a>
-<a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?error"?>">
+<a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/log.php?error"?>">
 	<button>Erreur</button>
 </a>
