@@ -66,42 +66,45 @@
 
 			$logs = explode("\n", $logs);
 ?>
+<div class="table-container2">
+    <table>
+        <thead>
+            <tr>
+                <th>Erreur</th>
+                <th>Message</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($logs as $line) {
+                $date = "";
+                $error = "";
+                $message = "";
+                $datePattern = "/\[(.*?)\]/";
+                $errorPattern = "/\](.*?)\:/";
+                $messagePattern = "/: (.*)$/";
 
-	<table>
-		<thead>
-			<td>Erreur</td>
-			<td>Message</td>
-			<td>Date</td>
-		</thead>
-		<tbody>
-			<?php
-				foreach($logs as $line) {
-					$date = "";
-					$error = "";
-					$message = "";
-					$datePattern = "/\[(.*?)\]/";
-					$errorPattern = "/\](.*?)\:/";
-					$messagePattern = "/: (.*)$/";
+                if (preg_match($datePattern, $line, $matches))
+                    $date = $matches[1];
+                if (preg_match($errorPattern, $line, $matches))
+                    $error = $matches[1];
+                if (preg_match($messagePattern, $line, $matches))
+                    $message = $matches[1];
 
-					if (preg_match($datePattern, $line, $matches))
-						$date = $matches[1];
-					if (preg_match($errorPattern, $line, $matches))
-						$error = $matches[1];
-					if (preg_match($messagePattern, $line, $matches))
-						$message = $matches[1];
-
-					echo "<tr>";
-					echo "<td>". $error ."</td>";
-					echo "<td>". $message ."</td>";
-					echo "<td>". $date ."</td>";
-					echo "</tr>";
-				}
-			?>
-			
-			
-		</tbody>
-	</table>
-
+                echo "<tr>";
+                echo "<td class='col1'>" . $error . "</td>";
+                echo "<td class='col3-container'>";
+                echo '<div class="col3-tooltip">' . htmlspecialchars($message) . '</div>';
+                echo '<div class="col3">' . $message . '</div>';
+                echo "</td>";
+                echo "<td class='col2'>" . $date . "</td>";
+                echo "</tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
 
 
 <?php
