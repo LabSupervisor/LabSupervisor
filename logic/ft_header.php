@@ -8,12 +8,14 @@
 		else
 			$title = "LabSupervisor";
 
-		$userTheme = getTheme($_SESSION["login"]);
-
-		if ($userTheme == 0)
-			$theme = "colorlight";
+		if (isset($_SESSION["login"]))
+			if (getTheme($_SESSION["login"]) == 0)
+				$theme = "colorlight";
+			else
+				$theme = "colordark";
 		else
-			$theme = "colordark";
+			$theme = "colorlight";
+
 
 		echo <<<EOT
 			<html lang="fr">
