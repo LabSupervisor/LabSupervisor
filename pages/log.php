@@ -3,6 +3,7 @@
     mainHeader("Log");
 ?>
 <link rel="stylesheet" href="../public/css/log.css">
+<link rel="stylesheet" href="../public/css/log.css">
 
 <?php
     require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_getDBLog.php");
@@ -97,8 +98,10 @@
 				}
 			?>
 			
+			
 		</tbody>
 	</table>
+
 
 
 <?php
