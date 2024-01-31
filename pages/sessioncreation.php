@@ -19,12 +19,30 @@
 	<fieldset>
 		<legend> Participants </legend>
 		<strong> Classes : </strong>
-		<!-- TODO Request get class -->
+
+		<?php
+		$db = dbConnect();
+
+		$queryClass = "SELECT id, name FROM classroom";
+		$queryClassPrep = $db->prepare($queryClass);
+		if ($queryClassPrep->execute()) {
+			$tabClass = $queryClassPrep->fetchAll();
+		}
+
+		// var_dump($tabClass)
+		?>
+
 		<select name="classes" id="classes">
-			<option value="classe1">Classe 1</option>
-			<option value="classe2">Classe 2</option>
-			<option value="classe3">Classe 3</option>
+			<?php
+				for ($i = 0; $i< count($tabClass); $i++){
+				?>
+			        <option value="<?php echo $tabClass[$i]["id"]; ?>"><?php echo $tabClass[$i]["name"]; ?></option>
+				<?php
+				}
+
+			?>
 		</select>
+
 	</fieldset>
 	<fieldset>
 		<legend> Chapitres </legend>

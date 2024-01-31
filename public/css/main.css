@@ -1,4 +1,16 @@
 * {
 	margin : 0px;
 	font-family: Arial, Helvetica, sans-serif;
+	color: var(--text-color);
+}
+
+.main {
+	padding-top: 70px;
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+body {
+	background-attachment: fixed;
+	background-size: cover;
 }

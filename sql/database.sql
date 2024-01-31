@@ -38,6 +38,7 @@ CREATE TABLE `participant` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `iduser` int(11) NOT NULL,
   `idsession` int(11) NOT NULL,
+  `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `FK_session_participant` (`idsession`),
   KEY `participant_user_FK` (`iduser`)
@@ -73,8 +74,8 @@ DROP TABLE IF EXISTS `setting`;
 CREATE TABLE `setting` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `iduser` int(11) NOT NULL,
+  `theme` int(11) NOT NULL DEFAULT 0,
   `background` varchar(100) NOT NULL DEFAULT 'default.png',
-  `navbartext` tinyint(1) NOT NULL DEFAULT 1,
   `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `setting_user_FK` (`iduser`)

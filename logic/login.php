@@ -1,7 +1,7 @@
 <?php
-	$db = dbConnect();
-
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+		$db = dbConnect();
+
 		$username = $_POST['username'];
 		$password = ($_POST['password']);
 

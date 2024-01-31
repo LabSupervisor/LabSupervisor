@@ -76,10 +76,6 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Lato', sans-serif;
-    background-image: url('../img/background/default.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     min-height: 100vh;
 }
 /*Css pour les Boules d'etat de les cellules usuaires*/
@@ -157,12 +153,12 @@ body {
 }
 
 .tooltip-text br {
-    display: none;  
+    display: none;
 }
 
 .status-balls-container-right {
     float: right;
-	
+
 }
 
 .status-balls-container:hover .tooltip {
