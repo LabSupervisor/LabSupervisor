@@ -1,0 +1,237 @@
+/* Css du tableau */
+.table-container {
+    display: flex;
+	flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 20px;
+}
+.table-container2 {
+    display: flex;
+	flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 20px;
+}
+
+table {
+    width: 1100px;
+    border-collapse: collapse;
+    border-radius: 25px;
+    overflow: hidden;
+	color: white;	
+}
+
+thead {
+    background-color: #6f6f6f69;
+}
+
+th, td {
+    border: 10px;
+    padding: 11px;
+    text-align: center;
+    font-family: Lato;
+   
+}
+
+tbody tr:nth-child(even) {
+    background-color: #00000075;
+}
+tbody tr:nth-child(odd) {
+    background-color: #33333370;
+}
+
+/* Colonnes separées pour faciliter la modification de l'apparence */
+th.col1, td.col1 {
+    min-width: 10px; 
+}
+
+th.col2, td.col2 {
+    min-width: 20px; 
+}
+
+th.col3, td.col3 {
+    min-width: 20px;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+th.col4, td.col4 {
+    min-width: 100px; 
+}
+
+/* CSS du body, principalement le fond d'ecran */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+    background-image: url('../img/background/default.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+/* Colonne 3 "Messages" avec le tooltip */
+.col3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100px;
+}
+
+.col3-container {
+    position: relative;
+}
+
+.col3-tooltip {
+    display: none;
+	position: absolute;
+	text-align: center;
+    border: 10px solid #cccccc00;
+    max-width: 300px;
+    z-index: 1;
+    width: 340px;
+    padding: 15px;
+    background-color: rgb(48 48 48 / 69%);
+    backdrop-filter: blur(6px);
+    border-radius: 25px;
+    margin-top: 25px;
+    word-wrap: break-word;
+	padding: 5px;
+}
+
+.col3-container:hover .col3-tooltip {
+    display: block;
+}
+
+/* Boutons "Trace" et "Erreur" et ceux de la date aussi*/
+.button-container {
+    display: flex;
+    align-items: center;
+    background-color: rgba(48, 48, 48, 0.479);
+    padding: 15px;
+    justify-content: space-between;
+    margin-top: 10px;
+    border-radius: 25px;
+}
+
+.button-container a {
+    text-decoration: none;
+}
+
+.button-container button {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #05005C;
+    color: white;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: Lato;
+    font-size: 16px;
+    width: 100px;
+    border-width: 3px;
+    border-color: #0d3bc3c6;
+    margin-right: 20px;
+}
+
+.button-container button i {
+    margin-right: 5px; 
+    font-size: 20px;   
+}
+
+.button-container button:hover {
+    background-color: #05005C;
+}
+
+
+.left-buttons {
+    display: flex;
+}
+
+.right-buttons {
+	display: flex;
+	margin-left: 500px;
+}
+
+/* CSS pour le formulaire */
+form {
+    text-align: center;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+/* Insertion de la date */
+form input[type="date"] {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 25px;
+    background-color: #05005C;
+    color: white;
+    margin-right: 20px;
+    border-width: 3px;
+    font-family: lato;
+    border-color: #0d3bc3c6;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); 
+    cursor: pointer; 	
+}
+
+/* Bouton "Envoyer" */
+form input[type="submit"] {
+    padding: 10px;
+    background-color: #05005C;
+    color: white; 
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: lato;
+    font-size: 16px;
+    border-color: #0d3bc3c6;
+    border-width: 3px;
+}
+
+.PageErreur {
+    background-color: rgb(48 48 48 / 69%);
+    width: 300px;
+    display: flex;
+    margin: auto;
+    padding: 20px;
+    border-radius: 25px;
+}
+
+/*Deuxieme Tooltip*/
+.tooltip {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+	visibility: hidden;
+	width: 200px;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px;
+	position: absolute;
+	z-index: 1;
+	bottom: 125%;
+	left: 50%;
+	margin-left: -100px;
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+	opacity: 1;
+}
+
