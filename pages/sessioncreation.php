@@ -1,6 +1,6 @@
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
-	mainHeader("Lab Administration")
+	mainHeader("Création de session")
 ?>
 
 <?php
@@ -8,13 +8,52 @@
 	require($_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php');
 ?>
 
+<script>
+	var nbChapter = 1;
+
+	// Update chapter count
+	function addChapter()
+	{
+		nbChapter++ ;
+		let div= document.createElement('div');
+
+		let title = document.createElement('strong');
+		title.innerHTML="Titre : " ;
+		div.appendChild(title);
+
+		let inputTitle = document.createElement('input') ;
+		inputTitle.setAttribute("type", "texte")
+		inputTitle.setAttribute("id", "titleChapter"+nbChapter)
+		inputTitle.setAttribute("name", "titleChapter"+nbChapter);
+		div.appendChild(inputTitle)
+
+		let description = document.createElement('strong')
+		description.innerHTML=' Description : '
+		div.appendChild(description)
+
+		let inputDescription = document.createElement('input') ;
+		inputDescription.setAttribute("type", "texte")
+		inputDescription.setAttribute("id", "chapterDescription"+nbChapter)
+		inputDescription.setAttribute("name", "chapterDescription"+nbChapter);
+		div.appendChild(inputDescription)
+
+
+		let btnChapter = document.getElementById('btn-chapter');
+		let fieldChapters = document.getElementById('fieldChapters');
+		fieldChapters.insertBefore(div, btnChapter);
+
+		document.getElementById('nbChapter').value= nbChapter;
+	}
+</script>
+
 <form method="post">
+	<input type="hidden" value="1" name="nbChapter" id="nbChapter">
 	<fieldset>
 		<legend> Information </legend>
 		<strong> Titre : </strong>
 		<input type="text" id="titleSession" name="titleSession" required>
 		<strong> Description : </strong>
-		<input type="text" id="descriptionSession" name="descriptionSession" required>
+		<input type="text" id="descriptionSession" name="descriptionSession">
 	</fieldset>
 	<fieldset>
 		<legend> Participants </legend>
@@ -28,8 +67,6 @@
 		if ($queryClassPrep->execute()) {
 			$tabClass = $queryClassPrep->fetchAll();
 		}
-
-		// var_dump($tabClass)
 		?>
 
 		<select name="classes" id="classes">
@@ -39,24 +76,28 @@
 			        <option value="<?php echo $tabClass[$i]["id"]; ?>"><?php echo $tabClass[$i]["name"]; ?></option>
 				<?php
 				}
-
 			?>
 		</select>
 
 	</fieldset>
-	<fieldset>
+	<fieldset id="fieldChapters">
 		<legend> Chapitres </legend>
-		<strong> Titre : </strong>
-		<input type="text" id="titleChapter" name="titleChapter" required>
-		<strong> Description : </strong>
-		<input type="text" id="chapterDescription" name="chapterDescription" required>
+
+		<div>
+			<strong> Titre : </strong>
+			<input type="text" id="titleChapter1" name="titleChapter1" >
+			<strong> Description : </strong>
+			<input type="text" id="chapterDescription1" name="chapterDescription1">
+		</div>
+		<button id="btn-chapter" onclick="addChapter()">+ Chapitre</button>
 	</fieldset>
+
 	<fieldset>
 		<legend> Dates </legend>
 		<strong> Date de début : </strong>
 		<input type="datetime-local" id="startDate" name="startDate" required>
 		<strong> Date de fin : </strong>
-		<input type="datetime-local" id="endDate" name="endDate" required>
+		<input type="datetime-local" id="endDate" name="endDate" >
 	</fieldset>
 	<input type="submit" name="saveSession" value="Enregistrer">
 </form>

@@ -6,8 +6,7 @@
 		$titleSession = $_POST['titleSession'];
 		$descriptionSession = $_POST['descriptionSession'];
 		$idClasses = $_POST['classes'];
-		$titleChapter = $_POST['titleChapter'];
-		$chapterDescription = $_POST['chapterDescription'];
+
 		$startDate = $_POST['startDate'];
 		$endDate = $_POST['endDate'];
 
@@ -46,44 +45,52 @@
 			}
 
 			// Chapter
-			$queryBis = "INSERT INTO chapter (idsession, title, description, idcreator) VALUES (:idsession, :title, :description, :idcreator)";
+			$nbChapter = $_POST["nbChapter"];
+			for($i = 1; $i<= $nbChapter; $i++){
+				$titleChapter = $_POST['titleChapter'.$i];
+				$chapterDescription = $_POST['chapterDescription'.$i];
 
-			$queryPrepBis = $db->prepare($queryBis);
+				if ($titleChapter ==""){
+					continue;
+				}
 
-			// Bind parameter
-			$queryPrepBis->bindParam(':idsession', $idSession, \PDO::PARAM_STR);
-			$queryPrepBis->bindParam(':title', $titleChapter, \PDO::PARAM_STR);
-			$queryPrepBis->bindParam(':description', $chapterDescription, \PDO::PARAM_STR);
-			$queryPrepBis->bindParam(':idcreator', $userId, \PDO::PARAM_INT);
+				$queryBis = "INSERT INTO chapter (idsession, title, description, idcreator) VALUES (:idsession, :title, :description, :idcreator)";
 
-			// Request execute
-			if ($queryPrepBis->execute()) {
-				Logs::dbSave("Adding chapter " . $titleChapter);
-			} else {
-				throw new Exception("Create chapter failed.");
+				$queryPrepBis = $db->prepare($queryBis);
+
+				// Bind parameter
+				$queryPrepBis->bindParam(':idsession', $idSession, \PDO::PARAM_STR);
+				$queryPrepBis->bindParam(':title', $titleChapter, \PDO::PARAM_STR);
+				$queryPrepBis->bindParam(':description', $chapterDescription, \PDO::PARAM_STR);
+				$queryPrepBis->bindParam(':idcreator', $userId, \PDO::PARAM_INT);
+
+				// Request execute
+				if ($queryPrepBis->execute()) {
+					Logs::dbSave("Adding chapter " . $titleChapter);
+				} else {
+					throw new Exception("Create chapter failed.");
+				}
 			}
+
 		} catch (Exception $e) {
 			Logs::fileSave($e);
 		}
 
-	//add classroom student to session
+	// Add classroom student to session
 
-		//get student classroom
+		// Get student classroom
 		$queryGetStudent = "SELECT iduser FROM userclassroom WHERE idclassroom='$idClasses'" ;
 		$queryGetStudentPrep = $db->prepare($queryGetStudent);
 		if ($queryGetStudentPrep->execute()) {
 			$Class = $queryGetStudentPrep->fetchAll();
-			// var_dump($Class) ;
 		}
-
-		// var_dump($Class);
 
 		for ($i = 0; $i<count($Class); $i++){
 			$idStudent = $Class[$i]['iduser'];
-			//participant
+			// Participant
 			$queryParticipant = "INSERT INTO participant(iduser, idsession) VALUES (:iduser, :idsession) ";
 			$queryParticipantPrep = $db->prepare($queryParticipant);
-			//bind parameter
+			// Bind parameter
 			$queryParticipantPrep->bindParam(':iduser', $idStudent, \PDO::PARAM_STR);
 			$queryParticipantPrep->bindParam(':idsession', $idSession, \PDO::PARAM_STR);
 			$queryParticipantPrep->execute();
