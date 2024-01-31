@@ -1,6 +1,6 @@
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
-	mainHeader("Lab Administration")
+	mainHeader("Création de session")
 ?>
 
 <?php
@@ -9,9 +9,9 @@
 ?>
 
 <script>
-	var nbChapter = 3;
+	var nbChapter = 1;
 
-	//met à jour le nombre de chapitres
+	// Update chapter count
 	function addChapter()
 	{
 		nbChapter++ ;
@@ -47,13 +47,13 @@
 </script>
 
 <form method="post">
-	<input type="hidden" value="3" name="nbChapter" id="nbChapter">
+	<input type="hidden" value="1" name="nbChapter" id="nbChapter">
 	<fieldset>
 		<legend> Information </legend>
 		<strong> Titre : </strong>
 		<input type="text" id="titleSession" name="titleSession" required>
 		<strong> Description : </strong>
-		<input type="text" id="descriptionSession" name="descriptionSession" >
+		<input type="text" id="descriptionSession" name="descriptionSession">
 	</fieldset>
 	<fieldset>
 		<legend> Participants </legend>
@@ -87,19 +87,7 @@
 			<strong> Titre : </strong>
 			<input type="text" id="titleChapter1" name="titleChapter1" >
 			<strong> Description : </strong>
-			<input type="text" id="chapterDescription1" name="chapterDescription1" >
-		</div>
-		<div>
-			<strong> Titre : </strong>
-			<input type="text" id="titleChapter2" name="titleChapter2" >
-			<strong> Description : </strong>
-			<input type="text" id="chapterDescription2" name="chapterDescription2" >
-		</div>
-		<div>
-			<strong> Titre : </strong>
-			<input type="text" id="titleChapter3" name="titleChapter3" >
-			<strong> Description : </strong>
-			<input type="text" id="chapterDescription3" name="chapterDescription3">
+			<input type="text" id="chapterDescription1" name="chapterDescription1">
 		</div>
 		<button id="btn-chapter" onclick="addChapter()">+ Chapitre</button>
 	</fieldset>
