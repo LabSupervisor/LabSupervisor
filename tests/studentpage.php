@@ -3,30 +3,11 @@
 session_start();
 require '../config/db.php';
 $db = dbConnect();
-
-$message = '';
+//taking info from db with the session
 $iduser = 2;
 $sql = "SELECT id, title FROM chapter  WHERE idsession = 1";
 $result = $db->query($sql);
 $chapters = $result->fetchAll(PDO::FETCH_ASSOC);
-/*if ($_SERVER["REQUEST_METHOD"] == "POST") { // ID CHAPTER A CHANGER !!!
-    if (isset($_POST['help'])) {
-        //Update db with state 1 -> HELP
-        $sql = "UPDATE status SET state = 1  WHERE idchapter = 1   AND iduser = $iduser";
-        $db->query($sql);
-        $message = "Vous avez demandé a l'aide ";
-    } elseif (isset($_POST['progress'])) {
-        //Update db with state 2 -> PROGRESS
-        $sql = "UPDATE status SET state = 2 WHERE idchapter = 1 AND iduser = $iduser";
-        $db->query($sql);
-        $message = "Votre travail est en cours ";
-    } elseif (isset($_POST['finish'])) {
-        //Update db with state 3 -> FINISH
-        $sql = "UPDATE status SET state = 3 WHERE idchapter = 1 AND iduser = $iduser";
-        $db->query($sql);
-        $message = "Votre travail est terminé ";
-    }
-}*/
 ?>
 
 <!DOCTYPE html>
@@ -46,6 +27,22 @@ $chapters = $result->fetchAll(PDO::FETCH_ASSOC);
         form.submit();
     }
 </script>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	$idUser = $_POST['user'];
+	$idChapter = $_POST['chapters'];
+	$Statut = $_POST['statut'];
+	var_dump($idUser);
+	var_dump($idChapter);
+	var_dump($Statut);
+	$sqlUp = "UPDATE status SET state = :Statut WHERE idchapter = :idChapter AND iduser = :idUser";
+	$stmt = $db->prepare($sqlUp);
+	$stmt->bindParam(':Statut', $Statut);
+	$stmt->bindParam(':idChapter', $idChapter);
+	$stmt->bindParam(':idUser', $idUser);
+	$stmt->execute();
+}
+?>
 <body>
 <h2>Modifié votre Status </h2>
 <form action="" method="post" id="formupdate">
@@ -53,19 +50,6 @@ $chapters = $result->fetchAll(PDO::FETCH_ASSOC);
     <input type="hidden" name="chapters" value="0" id="chapters">
     <input type="hidden" name="statut" value="0" id="statut">
 </form>
-<?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $idUser = $_POST['user'];
-        $idChapter = $_POST['chapters'];
-        $statut = $_POST['statut'];
-        $sql1 = "UPDATE status SET state = :statut WHERE idchapter = :idChapter AND iduser = :idUser";
-        $stmt = $db->prepare($sql1);
-        $stmt->bindParam(':status', $statut);
-        $stmt->bindParam(':idChapter', $idChapter);
-        $stmt->bindParam(':idUser', $idUser);
-        $stmt->execute();
-    }
-        ?>
     <table>
         <thead>
         <tr>
