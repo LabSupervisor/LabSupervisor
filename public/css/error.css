@@ -1,0 +1,48 @@
+.errormain {
+	position: relative;
+	user-select: none;
+	margin-right: 0px;
+	display: flex;
+	justify-content: center;
+	height: 90%;
+}
+
+.errorcontent {
+	text-align: center;
+	font-family: sans-serif;
+	box-sizing: border-box;
+	position: fixed;
+	height: 324px;
+	width: 80%;
+	padding: 5%;
+	margin-top: 100px;
+}
+
+.title {
+	font-weight: bold;
+	font-size: 70px;
+}
+
+.subtitle {
+	font-size: 30px;
+}
+
+.errorcontent button {
+	background-color: var(--background-hover-color);
+	border-radius: 25px;
+	border-color: var(--border-color);
+	border-width: 1px;
+	border-style: solid;
+	height: 40px;
+	font-size: 16px;
+	margin-top: 40px;
+	padding-left: 20px;
+	padding-right: 20px;
+	transition: 200ms;
+}
+
+.errorcontent button:hover {
+	background-color: var(--border-color);
+	transition: 200ms;
+	cursor: pointer;
+}

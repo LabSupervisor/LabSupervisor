@@ -43,6 +43,7 @@
 	position: fixed;
 	width: 100%;
 	display: block;
+	z-index: 10;
 }
 
 .navbar .left{
