@@ -3,8 +3,19 @@
 	mainHeader("Page non trouvé");
 ?>
 
-<h1>404 not found</h1>
+<link rel="stylesheet" href="../public/css/error.css">
 
-<a href="<?="http://" . $_SERVER["SERVER_NAME"]?>">
-	<button>Retourner à l'accueil</button>
-</a>
+<script src="../public/js/particles/particles.js"></script>
+<script src="../public/js/particles/app.js"></script>
+
+<div class="errormain" id="particles-js">
+	<div class="errorcontent">
+		<a class="title">404</a>
+		<br>
+		<a class="subtitle">La page demandé n'existe pas.</a>
+		<br>
+		<a href="<?="http://" . $_SERVER["SERVER_NAME"]?>">
+			<button>Retourner à l'accueil</button>
+		</a>
+	</div>
+</div>
