@@ -4,6 +4,11 @@
 	color: var(--text-color);
 }
 
+::-webkit-scrollbar {
+    width: 0px;
+    background: none;
+}
+
 .main {
 	padding-top: 70px;
 	padding-left: 25px;
