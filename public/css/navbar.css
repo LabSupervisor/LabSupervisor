@@ -30,6 +30,7 @@
 	max-height: 13px;
 	margin-left: 20px;
 	margin-right: 25px;
+	transition: 200ms;
 }
 
 /* Navbar */
@@ -68,6 +69,11 @@
 	transition: 200ms;
 }
 
+.navbar .profil:hover {
+	background-color: var(--border-color);
+	color: var(--text-color);
+}
+
 .navbar .left.no-hover-color:hover {
 	color: var(--text-color);
 	transition: 200ms;
@@ -91,9 +97,6 @@
 	transition: 20px;
 	align-content: center;
 	border-radius: 25px;
-	border-color: var(--border-color);
-	border-width: 1px;
-	border-style: solid;
 	max-width: 85%;
 	margin-left: 10px;
 }

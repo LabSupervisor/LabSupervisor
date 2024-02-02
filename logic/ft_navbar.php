@@ -60,7 +60,7 @@
 			<?php
 				$username = getName(getUserId($_SESSION["login"]));
 			?>
-			<li><a class="title case" href="#"><i class="ri-user-line"></i> <?=$username?></a>
+			<li><a class="title case profil" href="#"><i class="ri-user-line"></i> <?=$username?></a>
 				<ul class="sub">
 					<li>
 						<a class="title" href="<?="http://" . $_SERVER["SERVER_NAME"] . "/account.php"?>"><i class="ri-account-circle-line"></i> Compte</a>
