@@ -12,7 +12,7 @@
 	<div class="errorcontent">
 		<a class="title">404</a>
 		<br>
-		<a class="subtitle">La page demandé n'existe pas.</a>
+		<a class="subtitle">La page demandée n'existe pas.</a>
 		<br>
 		<a href="<?="http://" . $_SERVER["SERVER_NAME"]?>">
 			<button>Retourner à l'accueil</button>
