@@ -16,7 +16,6 @@
 		else
 			$theme = "colorlight";
 
-
 		echo <<<EOT
 			<html lang="fr">
 			<head>
