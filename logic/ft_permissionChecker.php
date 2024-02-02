@@ -17,7 +17,7 @@
 		$role = $queryPrep->fetchAll(\PDO::FETCH_ASSOC);
 
 		if (!(($access["student"] && $role[0]["student"]) || ($access["teacher"] && $role[0]["teacher"]) || ($access["admin"] && $role[0]["admin"]))) {
-			header("Location: http://" . $_SERVER["SERVER_NAME"]);
+			header("Location: https://" . $_SERVER["SERVER_NAME"]);
 		} else {
 			$roleList = array();
 			if ($role[0]["student"])

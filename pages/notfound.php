@@ -14,7 +14,7 @@
 		<br>
 		<a class="subtitle">La page demandée n'existe pas.</a>
 		<br>
-		<a href="<?="http://" . $_SERVER["SERVER_NAME"]?>">
+		<a href="<?="https://" . $_SERVER["SERVER_NAME"]?>">
 			<button>Retourner à l'accueil</button>
 		</a>
 	</div>
