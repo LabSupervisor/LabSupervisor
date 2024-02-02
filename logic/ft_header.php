@@ -3,11 +3,13 @@
 		// Import main functions
 		require($_SERVER["DOCUMENT_ROOT"] . "/config/import.php");
 
+		// Page title
 		if ($title != "")
 			$title = $title . " - LabSupervisor";
 		else
 			$title = "LabSupervisor";
 
+		// Select user color theme
 		if (isset($_SESSION["login"]))
 			if (getTheme($_SESSION["login"]) == 0)
 				$theme = "colorlight";
@@ -16,16 +18,23 @@
 		else
 			$theme = "colorlight";
 
+		// Setup stylesheet path
+		$theme = "https://" . $_SERVER["SERVER_NAME"] . "/public/css/$theme.css";
+		$main = "https://" . $_SERVER["SERVER_NAME"] . "/public/css/main.css";
+		$navbar = "https://" . $_SERVER["SERVER_NAME"] . "/public/css/navbar.css";
+		$remixicon = "https://" . $_SERVER["SERVER_NAME"] . "/public/css/import/remixicon.css";
+
+		// Create header
 		echo <<<EOT
+			<!DOCTYPE html>
 			<html lang="fr">
 			<head>
 				<meta charset="UTF-8">
 				<title>$title</title>
-				<link rel="stylesheet" href="../public/css/$theme.css">
-				<link rel="stylesheet" href="../public/css/main.css">
-				<link rel="stylesheet" href="../public/css/navbar.css">
-				<link rel="stylesheet" href="../public/css/import/remixicon.css">
-				<link rel="icon" href="../public/img/logo.ico" />
+				<link rel="stylesheet" href="$theme">
+				<link rel="stylesheet" href="$main">
+				<link rel="stylesheet" href="$navbar">
+				<link rel="stylesheet" href="$remixicon">
 			</head>
 		EOT;
 
