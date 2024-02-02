@@ -35,15 +35,16 @@
 /* Navbar */
 .navbar {
 	user-select: none;
-	background-color: var(--navbar-background-color);
 	text-align: right;
-	border-bottom: var(--border-color);
-	border-width: 1px;
-	border-bottom-style: solid;
+    backdrop-filter: blur(6px);
 	position: fixed;
 	width: 100%;
 	display: block;
 	z-index: 10;
+}
+
+.navbar i {
+	margin-right: 10px;
 }
 
 .navbar .left{
