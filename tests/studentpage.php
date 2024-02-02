@@ -32,9 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$idUser = $_POST['user'];
 	$idChapter = $_POST['chapters'];
 	$Statut = $_POST['statut'];
-	var_dump($idUser);
-	var_dump($idChapter);
-	var_dump($Statut);
 	$sqlUp = "UPDATE status SET state = :Statut WHERE idchapter = :idChapter AND iduser = :idUser";
 	$stmt = $db->prepare($sqlUp);
 	$stmt->bindParam(':Statut', $Statut);
@@ -44,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 <body>
-<h2>Modifié votre Status </h2>
+<h2>Modifié votre Statut </h2>
 <form action="" method="post" id="formupdate">
     <input type="hidden" name="user" value="<?php echo $iduser ?>">
     <input type="hidden" name="chapters" value="0" id="chapters">
@@ -67,8 +64,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <button onclick="SetStatus(<?php echo $chapter['id']?>,2)">En cours</button>
                     <button onclick="SetStatus(<?php echo $chapter['id']?>,3)">Finis</button>
                 </td>
+                <td>
+                    <?php
+                        $sqlstate = "SELECT state FROM status WHERE idchapter = :idChapter AND iduser = :idUser";
+                        $stmtState = $db->prepare($sqlstate);
+                        $stmtState->bindParam(':idChapter', $chapter['id']);
+                        $stmtState->bindParam(':idUser', $iduser);
+                        $stmtState->execute();
+                        $state = $stmtState->fetch(PDO::FETCH_COLUMN);
+                        echo $state;
+                    ?>
+                </td>
             </tr>
         <?php endforeach; ?>
+
         </tbody>
     </table>
 
