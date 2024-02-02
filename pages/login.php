@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../public/css/login.css">
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader("Connexion");
@@ -13,13 +14,16 @@
 	require($_SERVER["DOCUMENT_ROOT"] . '/logic/login.php');
 ?>
 
-<h2>User Login</h2>
-<form action="login.php" method="post">
-	Username: <input type="text" name="username"><br>
-	Password: <input type="password" name="password"><br>
-	<input type="submit" value="Login">
-</form>
-
-<a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/register.php"?>">
-	<button>Pas encore de compte ?</button>
-</a>
+<div class="LoginDiv">
+    <form action="login.php" method="post">
+        <h2>Enregistrement</h2>    
+        <input type="text" id="username" name="username" class="Username" placeholder="Adresse email"><br>
+        <input type="password" id="password" name="password" class="Password" placeholder="Mot de passe"><br>
+        <div class="LoginDivButons">
+            <input type="submit" value="Se connecter" class="login-button">
+            <a href="http://labsupervisor.fr/pages/register.php" class="register-link">
+                Pas encore de compte ?
+            </a>
+        </div>
+    </form>
+</div>

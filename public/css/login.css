@@ -1,0 +1,64 @@
+/*Fond d'ecran (style de la page en general)*/
+.LoginDiv {
+    margin: auto;
+    font-family: Lato;
+    text-align: center;
+    width: 23%;
+    background-color: #6f6f6f69;
+    border-radius: 25px;
+    padding: 27px;
+    margin-top: 15%;
+    color: white;
+}
+h2{
+	color: white;
+    font-family: Lato;
+    font-size: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.Username,
+.Password {
+    width: 100%;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    background: none;
+    border-color: white;
+    border-width: 3px;
+    font-size: 18px;
+    margin-top: 11px;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.563);
+    font-style: italic; 
+}
+
+.LoginDivButons {
+    text-align: center;
+}
+
+.login-button {
+    width: 70%;
+    margin: 10px auto;
+    border-radius: 25px;
+    padding: 8px;
+    color: white;
+    background-color: grey;
+    border: 0;
+    font-size: 16px;
+    font-family: lato;
+}
+
+.register-link {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    font-family: Lato;
+}
