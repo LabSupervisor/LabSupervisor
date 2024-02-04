@@ -3,17 +3,18 @@
     margin: auto;
     font-family: Lato;
     text-align: center;
-    width: 23%;
+    width: 325px;
     background-color: #6f6f6f69;
     border-radius: 25px;
     padding: 27px;
-    margin-top: 15%;
+    margin-top: 200px;
     color: white;
 }
+
 h2{
 	color: white;
-    font-family: Lato;
     font-size: 30px;
+	margin-bottom: 20px;
 }
 
 form {
@@ -21,17 +22,23 @@ form {
     flex-direction: column;
 }
 
-.Username,
-.Password {
-    width: 100%;
+.Username, .Password {
+    width: 325px;
     border-top: 0;
     border-left: 0;
     border-right: 0;
     background: none;
     border-color: white;
     border-width: 3px;
-    font-size: 18px;
-    margin-top: 11px;
+    font-size: 20px;
+    margin-top: 12px;
+    color: white;
+}
+input:focus {
+    outline: none !important;
+}
+input:focus-visible {
+    outline: auto;
 }
 
 input::placeholder {
@@ -44,15 +51,15 @@ input::placeholder {
 }
 
 .login-button {
-    width: 70%;
+    width: 200px;
     margin: 10px auto;
     border-radius: 25px;
-    padding: 8px;
+    padding: 6px;
     color: white;
     background-color: grey;
     border: 0;
-    font-size: 16px;
-    font-family: lato;
+    font-size: 18px;
+	margin-top: 30px;
 }
 
 .register-link {
@@ -60,5 +67,35 @@ input::placeholder {
     text-decoration: none;
     display: flex;
     justify-content: center;
-    font-family: Lato;
+    font-size: 18px;
+}
+
+/* Contenedor para el campo de contraseña y el botón de mostrar */
+.PasswordContainer {
+    position: relative;
+}
+
+/* Estilo del botón de mostrar contraseña */
+.ShowPasswordButton {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 12px;
+    color: #333; /* Color del botón */
+}
+
+.ri-eye-line:before {
+    content: "\ecb5";
+    color: white;
+    font-size: 26px;
+}
+
+.ri-eye-off-line:before {
+    content: "\ecb7";
+    color: white;
+    font-size: 26px;
 }
