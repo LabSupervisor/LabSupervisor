@@ -33,7 +33,7 @@
     </form>
 </div>
 
-<script>
+<script> // Password Hide/Show script (same in login)
 function togglePasswordVisibility() {
     var passwordInput = document.getElementById('password');
     var eyeIcon = document.getElementById('eyeIcon');
