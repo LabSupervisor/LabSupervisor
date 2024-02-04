@@ -16,6 +16,8 @@ h2{
 	color: white;
     font-size: 30px;
 	margin-bottom: 20px;
+    border-bottom: 3px solid white;
+	padding-bottom: 10px;
 }
 
 form {
@@ -30,7 +32,7 @@ form {
     border-right: 0;
     background: none;
     border-color: white;
-    border-width: 3px;
+    border-width: 2px;
     font-size: 20px;
     margin-top: 12px;
     color: white;
