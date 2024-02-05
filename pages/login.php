@@ -16,10 +16,10 @@
 
 <div class="LoginDiv">
     <form action="login.php" method="post">
-        <h2>Enregistrement</h2>
-        <input type="text" id="username" name="username" class="Username" placeholder="Adresse email"><br>
+        <h2>Connexion</h2>
+        <input type="text" id="username" name="username" class="Username" placeholder="Adresse email" required autofocus><br>
         <div class="PasswordContainer">
-            <input type="password" id="password" name="password" placeholder="Mot de passe" class="Password" required=""><br>
+            <input type="password" id="password" name="password" placeholder="Mot de passe" class="Password" required><br>
             <button type="button" id="showPasswordButton" class="ShowPasswordButton" onclick="togglePasswordVisibility()">
                 <i id="eyeIcon" class="ri-eye-off-line"></i>
             </button>
