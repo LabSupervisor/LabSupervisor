@@ -1,0 +1,123 @@
+/* Main container */
+form.sessions {
+    margin: auto;
+    font-family: Lato;
+    text-align: center;
+    width: fit-content;
+    padding: 27px;
+    color: white;
+}
+
+fieldset {
+    background-color: #6f6f6fba;
+    border-radius: 15px;
+    backdrop-filter: blur(6px);
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    text-align: left;
+    border: 0;
+    padding-top: 40px;
+    margin-bottom: 20px;
+}
+
+form.sessions fieldset legend {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 10px;
+}
+
+legend{
+	text-align: center;
+	text-decoration: underline;
+	font-size: 25px;
+	font-family: Lato;
+}
+
+#classes {
+    border: 0;
+    border-radius: 12px;
+    background-color: #ffffff42;
+    height: 35px;
+    font-size: 15px;
+    font-family: Lato;
+}
+
+strong {
+    font-size: 16px;
+    font-family: Lato;
+    font-weight: 400;
+	margin-bottom: 2px;
+}
+
+.strong2{
+	margin-top: 10px;
+}
+
+.firstbox {
+	background-color: #ffffff42;
+    height: 35px;
+    border-radius: 10px;
+    border: 0;
+	outline: none;
+	font-size: 16px;
+}
+
+.secondbox {
+	background-color: #ffffff42;
+	height: 70px;
+    border-radius: 13px;
+    border: 0;
+	outline: none;
+	font-size: 16px;
+}
+
+.buttonC{
+	text-align: right;
+}
+
+.button {
+    width: 220px;
+	margin-top: 15px;
+    border-radius: 25px;
+    padding: 6px;
+    color: white;
+    background-color: #6f6f6fe5;
+    border: 0;
+    font-size: 18px;
+    cursor: pointer !important;
+    transition: .25s cubic-bezier(.73,.17,.29,.78);
+    backdrop-filter: blur(6px);
+}
+
+.button2 {
+    width: 220px;
+    border-radius: 25px;
+    padding: 6px;
+    color: white;
+    background-color: #6f6f6fe5;
+    border: 0;
+    font-size: 18px;
+    cursor: pointer !important;
+    transition: .25s cubic-bezier(.73,.17,.29,.78);
+    backdrop-filter: blur(6px);
+}
+
+#date{
+	background-color: #ffffff42;
+    height: 35px;
+    border-radius: 10px;
+    border: 0;
+	font-size: 16px;
+	outline: none;
+}
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+	font-size: 20px;
+	margin-right:10px;
+	outline: none;
+}
+

@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../public/css/sessioncreation.css">
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader("Création de session")
@@ -52,14 +53,14 @@
 	}
 </script>
 
-<form method="post">
+<form class="sessions" method="post">
 	<input type="hidden" value="1" name="nbChapter" id="nbChapter">
 	<fieldset>
 		<legend> Information </legend>
-		<strong> Titre : </strong>
-		<input type="text" id="titleSession" name="titleSession" required>
-		<strong> Description : </strong>
-		<input type="text" id="descriptionSession" name="descriptionSession">
+		<strong class="strong1"> Titre : </strong>
+		<input type="text" id="titleSession" class="firstbox" name="titleSession" required>
+		<strong class="strong2"> Description : </strong>
+		<input type="text" id="descriptionSession" class="secondbox" name="descriptionSession">
 	</fieldset>
 	<fieldset>
 		<legend> Participants </legend>
@@ -86,22 +87,20 @@
 		</select>
 
 	</fieldset>
-	<fieldset id="fieldChapters">
-		<legend> Chapitres </legend>
-
-		<div>
-			<strong> Titre : </strong>
-			<input type="text" id="titleChapter1" name="titleChapter1" >
-			<strong> Description : </strong>
-			<input type="text" id="chapterDescription1" name="chapterDescription1">
-		</div>
-		<button id="btn-chapter" onclick="addChapter()">+ Chapitre</button>
-	</fieldset>
-
+	<fieldset>
+        <legend> Chapitres </legend>
+			<strong class="strong1"> Titre : </strong>
+			<input type="text" id="titleChapter1" class="firstbox" name="titleChapter1" >
+			<strong class="strong2"> Description : </strong>
+			<input type="text" id="chapterDescription1" class="secondbox" name="chapterDescription1">
+		    <div class="buttonC">
+			<button id="btn-chapter" class="button" onclick="addChapter()">+ Chapitre</button>
+			</div>
+		</fieldset>
 	<fieldset>
 		<legend> Date </legend>
 		<strong> Date : </strong>
-		<input type="datetime-local" id="date" name="date" required>
+		<input type="datetime-local" id="date" name="date"  required>
 	</fieldset>
-	<input type="submit" name="saveSession" value="Enregistrer">
+	<input type="submit" name="saveSession" class="button2" value="Enregistrer">
 </form>
