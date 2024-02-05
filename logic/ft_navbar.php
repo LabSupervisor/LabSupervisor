@@ -89,10 +89,10 @@
 				else
 					$theme = "dark";
 				?>
-				background-image: url("<?="https://" . $_SERVER["SERVER_NAME"] . "/public/img/background/" . $theme . "/" . getBackground($_SESSION["login"])?>");
+				background-image: url("/public/img/background/<?=$theme?>/<?=getBackground($_SESSION["login"])?>");
 			<?php
 			} else { ?>
-				background-image: url("<?="https://" . $_SERVER["SERVER_NAME"] . "/public/img/background/light/default.png"?>");
+				background-image: url("/public/img/background/light/default.png");
 			<?php
 			} ?>
 		}
