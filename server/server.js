@@ -19,7 +19,7 @@ io.on("connection", socket => {
 	log("Client connected!");
 
 	socket.on("share", data => {
-		socket.broadcast.emit("neww", data);
+		socket.broadcast.emit("new", data);
 	});
 
 	socket.on("disconnect", () => {
