@@ -7,14 +7,13 @@
 		$descriptionSession = $_POST['descriptionSession'];
 		$idClasses = $_POST['classes'];
 
-		$startDate = $_POST['startDate'];
-		$endDate = $_POST['endDate'];
+		$date = $_POST['date'];
 
 		try {
 			$userId = getUserId($_SESSION["login"]);
 
 			// Insert session request
-			$query = "INSERT INTO session (title, description, idcreator, startdate, enddate) VALUES (:title, :description, :idcreator, :startdate, :enddate)";
+			$query = "INSERT INTO session (title, description, idcreator, date) VALUES (:title, :description, :idcreator, :date)";
 
 			$queryPrep = $db->prepare($query);
 
@@ -22,8 +21,7 @@
 			$queryPrep->bindParam(':title', $titleSession, \PDO::PARAM_STR);
 			$queryPrep->bindParam(':description', $descriptionSession, \PDO::PARAM_STR);
 			$queryPrep->bindParam(':idcreator', $userId, \PDO::PARAM_INT);
-			$queryPrep->bindParam(':startdate', $startDate, \PDO::PARAM_STR);
-			$queryPrep->bindParam(':enddate', $endDate, \PDO::PARAM_STR);
+			$queryPrep->bindParam(':date', $date, \PDO::PARAM_STR);
 
 			// Request execute
 			if ($queryPrep->execute()) {
@@ -76,24 +74,33 @@
 			Logs::fileSave($e);
 		}
 
-	// Add classroom student to session
+		// Add classroom student to session
 
 		// Get student classroom
 		$queryGetStudent = "SELECT iduser FROM userclassroom WHERE idclassroom='$idClasses'" ;
 		$queryGetStudentPrep = $db->prepare($queryGetStudent);
-		if ($queryGetStudentPrep->execute()) {
-			$Class = $queryGetStudentPrep->fetchAll();
+		$queryGetStudentPrep->execute();
+		$class = $queryGetStudentPrep->fetchAll();
+
+		try {
+			for ($i = 0; $i<count($class); $i++){
+				$idStudent = $class[$i]['iduser'];
+				// Participant
+				$queryParticipant = "INSERT INTO participant (iduser, idsession) VALUES (:iduser, :idsession) ";
+				$queryParticipantPrep = $db->prepare($queryParticipant);
+				// Bind parameter
+				$queryParticipantPrep->bindParam(':iduser', $idStudent, \PDO::PARAM_STR);
+				$queryParticipantPrep->bindParam(':idsession', $idSession, \PDO::PARAM_STR);
+				if ($queryParticipantPrep->execute()) {
+					Logs::dbSave("Adding participant " . getName($idStudent) . " to " . $idSession);
+				} else {
+					throw new Exception("Add participant failed.");
+				}
+			}
+		} catch (Exception $e) {
+			Logs::fileSave($e);
 		}
 
-		for ($i = 0; $i<count($Class); $i++){
-			$idStudent = $Class[$i]['iduser'];
-			// Participant
-			$queryParticipant = "INSERT INTO participant(iduser, idsession) VALUES (:iduser, :idsession) ";
-			$queryParticipantPrep = $db->prepare($queryParticipant);
-			// Bind parameter
-			$queryParticipantPrep->bindParam(':iduser', $idStudent, \PDO::PARAM_STR);
-			$queryParticipantPrep->bindParam(':idsession', $idSession, \PDO::PARAM_STR);
-			$queryParticipantPrep->execute();
-		}
+		header("Location: http://" . $_SERVER["SERVER_NAME"] . "/session.php");
 	}
 ?>

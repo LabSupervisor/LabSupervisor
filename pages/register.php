@@ -25,6 +25,12 @@
                 <i id="eyeIcon" class="ri-eye-off-line"></i>
             </button>
         </div>
+        <div class="PasswordContainer">
+            <input type="password" id="password" name="confpass" placeholder="Confirmer le mot de passe" class="Password" required=""><br>
+            <button type="button" id="showPasswordButton" class="ShowPasswordButton" onclick="togglePasswordVisibility()">
+                <i id="eyeIcon" class="ri-eye-off-line"></i>
+            </button>
+        </div>
         <input type="text" name="name" placeholder="Prenom" class="Name" required=""><br>   
         <input type="text" name="surname" placeholder="Nom" class="Surname" required=""><br>
         <input type="date" name="birthdate" class="Birthdate" required=""><br>

@@ -13,7 +13,7 @@ shareButton.addEventListener('click', async () => {
 	const localStream = await navigator.mediaDevices.getDisplayMedia({ video: true, audio: false });
 	addVideoStream(localStream);
 	const peer = new Peer();
-	socket.on('neww', data => {
+	socket.on('new', data => {
 		const call = peer.call(data, localStream);
 		call.on('stream', stream => {
 			addVideoStream(stream);

@@ -1,29 +1,17 @@
 .errormain {
-	position: relative;
-	user-select: none;
-	margin-right: 0px;
-	display: flex;
-	justify-content: center;
-	height: 90%;
+	display: block;
+    width: 80%;
+    margin: auto;
+	margin-top: 25vh;
+    text-align: center;
 }
 
-.errorcontent {
-	text-align: center;
-	font-family: sans-serif;
-	box-sizing: border-box;
-	position: fixed;
-	height: 324px;
-	width: 80%;
-	padding: 5%;
-	margin-top: 100px;
-}
-
-.title {
+.errortitle {
 	font-weight: bold;
 	font-size: 70px;
 }
 
-.subtitle {
+.errorsubtitle {
 	font-size: 30px;
 }
 

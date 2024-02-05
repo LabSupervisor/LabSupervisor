@@ -30,20 +30,22 @@
 	max-height: 13px;
 	margin-left: 20px;
 	margin-right: 25px;
+	transition: 200ms;
 }
 
 /* Navbar */
 .navbar {
 	user-select: none;
-	background-color: var(--navbar-background-color);
 	text-align: right;
-	border-bottom: var(--border-color);
-	border-width: 1px;
-	border-bottom-style: solid;
+    backdrop-filter: blur(6px);
 	position: fixed;
 	width: 100%;
 	display: block;
 	z-index: 10;
+}
+
+.navbar i {
+	margin-right: 10px;
 }
 
 .navbar .left{
@@ -65,6 +67,11 @@
 .navbar a:hover {
 	color: var(--text-hover-color);
 	transition: 200ms;
+}
+
+.navbar .profil:hover {
+	background-color: var(--border-color);
+	color: var(--text-color);
 }
 
 .navbar .left.no-hover-color:hover {
@@ -90,9 +97,6 @@
 	transition: 20px;
 	align-content: center;
 	border-radius: 25px;
-	border-color: var(--border-color);
-	border-width: 1px;
-	border-style: solid;
 	max-width: 85%;
 	margin-left: 10px;
 }

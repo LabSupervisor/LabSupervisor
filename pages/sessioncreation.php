@@ -8,6 +8,12 @@
 	require($_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php');
 ?>
 
+<?php
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
+?>
+
 <script>
 	var nbChapter = 1;
 
@@ -93,11 +99,9 @@
 	</fieldset>
 
 	<fieldset>
-		<legend> Dates </legend>
-		<strong> Date de début : </strong>
-		<input type="datetime-local" id="startDate" name="startDate" required>
-		<strong> Date de fin : </strong>
-		<input type="datetime-local" id="endDate" name="endDate" >
+		<legend> Date </legend>
+		<strong> Date : </strong>
+		<input type="datetime-local" id="date" name="date" required>
 	</fieldset>
 	<input type="submit" name="saveSession" value="Enregistrer">
 </form>

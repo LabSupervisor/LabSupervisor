@@ -22,8 +22,7 @@
 			<td>Sujet</td>
 			<td>Précisions</td>
 			<td>Professeur</td>
-			<td>Date de début</td>
-			<td>Date de fin</td>
+			<td>Date</td>
 		</thead>
 		<tbody>
 			<?php
@@ -33,8 +32,7 @@
 						echo "<td>". $line["title"] ."</td>";
 						echo "<td>". $line["description"] ."</td>";
 						echo "<td>". getName($line["idcreator"]) ."</td>";
-						echo "<td>". $line["startdate"] ."</td>";
-						echo "<td>". $line["enddate"] ."</td>";
+						echo "<td>". $line["date"] ."</td>";
 					}
 					echo "</tr>";
 				}

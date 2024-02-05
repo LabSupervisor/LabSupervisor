@@ -10,9 +10,9 @@
 
 <div class="errormain" id="particles-js">
 	<div class="errorcontent">
-		<a class="title">403</a>
+		<a class="errortitle">403</a>
 		<br>
-		<a class="subtitle">Accès refusé.</a>
+		<a class="errorsubtitle">Accès refusé.</a>
 		<br>
 		<a href="<?="http://" . $_SERVER["SERVER_NAME"]?>">
 			<button>Retourner à l'accueil</button>

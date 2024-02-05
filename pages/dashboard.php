@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
+	<link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
     <link rel="stylesheet" href="../public/css/dashboard.css">
 	
 </head>
@@ -37,18 +37,17 @@ displayUsers($users);
 function displayUsers($users) {
     foreach ($users as $index => $user) {
         $userCell = '<div class="user-cell">';
-        
+
         // Display of the "camera offline" icon
         $userCell .= '<div class="user-icon"><i class="ri-camera-off-line"></i></div>';
         $userCell .= '<div class="name-and-balls-container">';
 
         // Adding of the name and the status balls
         $userCell .= '<p>' . $user['Nom_Utilisateur'] . ' ' . $user['Prenom_Utilisateur'] . '</p>';
-        
+
         $userCell .= '<div class="status-balls-container">';
         $userCell .= createStatusBalls($user['etat'], $user['taches'], $user['Nom_Utilisateur'], $user['Prenom_Utilisateur']);
-        $userCell .= '</div>'; // Closing "status-balls-container"
-        
+        $userCell .= '</div>'; // Closing "status-balls-container"        
         $userCell .= '</div>'; // Closing "name-and-balls-container"
 
         // Use of the tooltip
@@ -62,11 +61,10 @@ function displayUsers($users) {
             $tooltip .= createStatusBalls($user['etat'], [$tache], $user['Nom_Utilisateur'], $user['Prenom_Utilisateur']);
             $tooltip .= '</div>';
         }
-        
+
         $tooltip .= '</div>';
         $tooltip .= '</div>';
         $userCell .= $tooltip;
-        
         $userCell .= '</div>'; // Closing "user-cell"
 
         echo $userCell;
@@ -90,20 +88,20 @@ function createStatusBalls($etat, $taches, $nomUtilisateur, $prenomUtilisateur) 
     $tooltip = '<div class="tooltip">';
     $tooltip .= '<span class="tooltip-title">Tâches de ' . $nomUtilisateur . ' ' . $prenomUtilisateur . '</span>';
     $tooltip .= '<div class="tooltip-text">';
-    
+
     // Add each task with status balls
     foreach ($taches as $tache) {
         // Task and status balls container
         $tooltip .= '<div class="task-container">';
         $tooltip .= $tache;
-        
+
         // Status balls container with a CSS class
         $tooltip .= '<div class="status-balls-container-right">';
         $tooltip .= '<div class="status-ball status-Finished active"></div>';
         $tooltip .= '<div class="status-ball status-Working"></div>';
         $tooltip .= '<div class="status-ball status-In-trouble"></div>';
         $tooltip .= '</div>';
-        
+
         $tooltip .= '</div>';
     }
 
