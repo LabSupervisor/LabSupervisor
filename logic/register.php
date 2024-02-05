@@ -18,8 +18,8 @@
 		// Validate input
 		if (empty($email) || empty($password) || empty($name) || empty($surname) || empty($birthdate)) {
 			echo "All fields are required.";
-		} 
-		if ($password != $confpassword) {
+		}
+		if ($_POST['password'] != $confpass) {
             //checking if the password is the same in on the two form
             echo "Password and Confirm Password do not match!";
 		}elseif ($checkemailResult) {

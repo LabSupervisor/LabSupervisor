@@ -18,22 +18,22 @@
 <div class="RegisterDiv">
 	<form action="register.php" method="post">
 		<h2>Inscription</h2>
-		<input type="email" name="email" placeholder="Email" class="Email" required=""><br>
+		<input type="email" name="email" placeholder="Email" class="Email" required autofocus><br>
 		<div class="PasswordContainer">
-			<input type="password" id="password" name="password" placeholder="Mot de passe" class="Password" required=""><br>
+			<input type="password" id="password" name="password" placeholder="Mot de passe" class="Password" required><br>
 			<button type="button" id="showPasswordButton" class="ShowPasswordButton" onclick="togglePasswordVisibility()">
 				<i id="eyeIcon" class="ri-eye-off-line"></i>
 			</button>
 		</div>
 		<div class="PasswordContainer">
-			<input type="password" id="passwordConf" name="confpass" placeholder="Confirmer le mot de passe" class="Password" required=""><br>
+			<input type="password" id="passwordConf" name="confpass" placeholder="Confirmer le mot de passe" class="Password" required><br>
 			<button type="button" id="showPasswordButton" class="ShowPasswordButton" onclick="togglePasswordVisibility()">
 				<i id="eyeIconConf" class="ri-eye-off-line"></i>
 			</button>
 		</div>
-		<input type="text" name="name" placeholder="Prenom" class="Name" required=""><br>
-		<input type="text" name="surname" placeholder="Nom" class="Surname" required=""><br>
-		<input type="date" name="birthdate" class="Birthdate" required=""><br>
+		<input type="text" name="name" placeholder="Prenom" class="Name" required><br>
+		<input type="text" name="surname" placeholder="Nom" class="Surname" required><br>
+		<input type="date" name="birthdate" class="Birthdate" required><br>
 		<input type="submit" name="register" value="Creer une compte" class="register-button">
 		<a href="http://labsupervisor.fr/pages/login.php" class="login-link">
 			Déjà un compte ?
