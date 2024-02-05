@@ -18,7 +18,7 @@
         $newName = $_POST['new_name'];
         $newSurname = $_POST['new_surname'];
         $newPassword = $_POST['new_password'];
-        $newEmail = $_POST['new_email'];
+        $confPassword = $_POST['conf_password'];
         // Sending to the db a new user if the form is not empty
         if (!empty($newName)) {
             $sqlUpdateName = "UPDATE user SET name = :name WHERE id = :iduser";
@@ -33,8 +33,13 @@
             $stmtUpdateSurname = $db->prepare($sqlUpdateSurname);
             $stmtUpdateSurname->bindParam(':surname', $newSurname);
             $stmtUpdateSurname->bindParam(':iduser', $iduser);
-            $stmtUpdateSurname->execute();
+            $stmtUpdateSurname->execute();  
         }
+        if ($newPassword != $confPassword) {
+            //checking if the password is the same in on the two form
+            echo "Les mots de passes ne correspondent pas !";
+        }
+        else{
         // Sending to the db the new password using bcrypt algo if the form is not empty
         if (!empty($newPassword)) {
             $hashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
@@ -44,14 +49,7 @@
             $stmtUpdatePassword->bindParam(':iduser', $iduser);
             $stmtUpdatePassword->execute();
         }
-        // Sending to the db the new email if the form is not empty
-        if (!empty($newEmail)) {
-            $sqlUpdateEmail = "UPDATE user SET email = :email WHERE id = :iduser";
-            $stmtUpdateEmail = $db->prepare($sqlUpdateEmail);
-            $stmtUpdateEmail->bindParam(':email', $newEmail);
-            $stmtUpdateEmail->bindParam(':iduser', $iduser);
-            $stmtUpdateEmail->execute();
-        }
+    }
     }
 
     // take all the new info again from the database
@@ -71,16 +69,12 @@
 <form action="" method="post">
     <label for="new_name">Nouveau nom:</label>
     <input type="text" name="new_name" value="<?php echo $user['name']; ?>"><br>
-
     <label for="new_surname">Nouveau prénom:</label>
     <input type="text" name="new_surname" value="<?php echo $user['surname']; ?>"><br>
-
     <label for="new_password">Nouveau mot de passe:</label>
     <input type="password" name="new_password"><br>
-
-    <label for="new_email">Nouvelle adresse e-mail:</label>
-    <input type="email" name="new_email" value="<?php echo $user['email']; ?>"><br>
-
+    <label for="new_password">Veuillez confirmer:</label>
+    <input type="password" name="conf_password"><br>
     <input type="submit" value="Enregistrer les modifications">
 </form>
 </body>

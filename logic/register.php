@@ -10,6 +10,7 @@
 		$name = $_POST['name'];
 		$surname = $_POST['surname'];
 		$birthdate = $_POST['birthdate'];
+		$confpass = $_POST['confpass'];
 
 		// Check if the username is already taken
 		$checkemailResult = getUserId($email);
@@ -17,7 +18,11 @@
 		// Validate input
 		if (empty($email) || empty($password) || empty($name) || empty($surname) || empty($birthdate)) {
 			echo "All fields are required.";
-		} elseif ($checkemailResult) {
+		} 
+		if ($password != $confpassword) {
+            //checking if the password is the same in on the two form
+            echo "Password and Confirm Password do not match!";
+		}elseif ($checkemailResult) {
 			echo "Email already taken. Please choose another.";
 		} else {
 			// Registration logic
