@@ -9,7 +9,7 @@
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateStatus.php");
 ?>
 
-<script src="<?="https://" . $_SERVER["SERVER_NAME"] . "/public/js/ft_updateStatus.js"?>"></script>
+<script src="<?="http://" . $_SERVER["SERVER_NAME"] . "/public/js/ft_updateStatus.js"?>"></script>
 
 	<h2>Modifier votre Statut </h2>
 

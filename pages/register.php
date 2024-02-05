@@ -24,6 +24,6 @@
 	<input type="submit" name="register" value="Enregistrer">
 </form>
 
-<a href="<?="https://" . $_SERVER["SERVER_NAME"] . "/login.php"?>">
+<a href="<?="http://" . $_SERVER["SERVER_NAME"] . "/login.php"?>">
 	<button>Déjà un compte ?</button>
 </a>

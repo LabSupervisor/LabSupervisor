@@ -14,7 +14,7 @@
 		<br>
 		<a class="errorsubtitle">Accès refusé.</a>
 		<br>
-		<a href="<?="https://" . $_SERVER["SERVER_NAME"]?>">
+		<a href="<?="http://" . $_SERVER["SERVER_NAME"]?>">
 			<button>Retourner à l'accueil</button>
 		</a>
 	</div>

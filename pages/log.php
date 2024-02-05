@@ -42,10 +42,10 @@
 		</table>
 
 		<div class="button-container">
-			<a href="<?= "https://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?trace" ?>">
+			<a href="<?= "http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?trace" ?>">
 				<button><i class="ri-draft-line"></i> Trace</button>
 			</a>
-			<a href="<?= "https://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?error" ?>">
+			<a href="<?= "http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?error" ?>">
 				<button><i class="ri-error-warning-line"></i> Erreur</button>
 			</a>
 		</div>
@@ -103,10 +103,10 @@
 		</table>
 
 		<div class="button-container">
-			<a href="<?= "https://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?trace" ?>">
+			<a href="<?= "http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?trace" ?>">
 				<button><i class="ri-draft-line"></i> Trace</button>
 			</a>
-			<a href="<?= "https://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?error" ?>">
+			<a href="<?= "http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?error" ?>">
 				<button><i class="ri-error-warning-line"></i> Erreur</button>
 			</a>
 			<div class="right-buttons">
@@ -124,10 +124,10 @@
 		echo "Fichier introuvable"; ?>
 
 		<div class="button-container">
-		<a href="<?= "https://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?trace" ?>">
+		<a href="<?= "http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?trace" ?>">
 			 <button><i class="ri-draft-line"></i> Trace</button>
 		 </a>
-		 <a href="<?= "https://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?error" ?>">
+		 <a href="<?= "http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?error" ?>">
 			 <button><i class="ri-error-warning-line"></i> Erreur</button>
 		 </a>
 		 <div class="right-buttons">

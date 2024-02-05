@@ -5,6 +5,6 @@
 
 <script src="../public/js/ft_popupCenter.js"></script>
 
-<a onclick="popupCenter({url: 'https://labsupervisor.fr/tests/screenshare.php', title: 'xtf', w: 900, h: 500})">
+<a onclick="popupCenter({url: 'http://labsupervisor.fr/tests/screenshare.php', title: 'xtf', w: 900, h: 500})">
 	<button>Ouvrir la fenêtre</button>
 </a>
