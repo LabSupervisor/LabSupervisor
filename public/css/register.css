@@ -29,6 +29,7 @@ label {
     display: flex;
 }
 
+/* All of the information in the formulary */
 .Email, .Password, .Name, .Surname, .Birthdate {
 	width: 325px;
     border-top: 0;
@@ -57,7 +58,7 @@ input::placeholder {
     color: rgba(255, 255, 255, 0.563);
     font-style: italic; 
 }
-
+/* Buttons "Creer une compte" and "Deja une compte?" */
 .register-button {
     width: 220px;
     margin: 10px auto;
@@ -67,16 +68,24 @@ input::placeholder {
     background-color: grey;
     border: 0;
     font-size: 18px;
+	cursor: pointer !important;
+	transition: .25s cubic-bezier(.73,.17,.29,.78);
 }
+
+.register-button:hover {
+    background-color: rgb(56, 56, 56);
+	cursor: pointer !important;
+}
+
 .login-link {
     color: white;
-    text-decoration: none;
+	text-decoration: none;
     display: flex;
     justify-content: center;
     font-size: 18px;
 }
 
-/* Password and icon */
+/* Password container and eye icon */
 .PasswordContainer {
     position: relative;
 	margin-bottom: 12px;

@@ -25,6 +25,7 @@ form {
     flex-direction: column;
 }
 
+/* All of the information in the formulary */
 .Username, .Password {
     width: 325px;
     border-top: 0;
@@ -37,43 +38,8 @@ form {
     margin-top: 12px;
     color: white;
 }
-input:focus {
-    outline: none !important;
-}
-input:focus-visible {
-    outline: auto;
-}
 
-input::placeholder {
-    color: rgba(255, 255, 255, 0.563);
-    font-style: italic; 
-}
-
-.LoginDivButons {
-    text-align: center;
-}
-
-.login-button {
-    width: 200px;
-    margin: 10px auto;
-    border-radius: 25px;
-    padding: 6px;
-    color: white;
-    background-color: grey;
-    border: 0;
-    font-size: 18px;
-	margin-top: 30px;
-}
-
-.register-link {
-    color: white;
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-    font-size: 18px;
-}
-
-/* Password and icon container */
+/* Password container and eye icon */
 .PasswordContainer {
     position: relative;
 }
@@ -100,4 +66,47 @@ input::placeholder {
     content: "\ecb7";
     color: white;
     font-size: 26px;
+}
+
+input:focus {
+    outline: none !important;
+}
+input:focus-visible {
+    outline: auto;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.563);
+    font-style: italic; 
+}
+/* Buttons "Se connecter" and "Pas de compte encore?"*/
+.LoginDivButons {
+    text-align: center;
+}
+
+.login-button {
+    width: 200px;
+    margin: 10px auto;
+    border-radius: 25px;
+    padding: 6px;
+    color: white;
+    background-color: grey;
+    border: 0;
+    font-size: 18px;
+	margin-top: 30px;
+	cursor: pointer !important;
+	transition: .25s cubic-bezier(.73,.17,.29,.78);
+}
+
+.login-button:hover {
+    background-color: rgb(56, 56, 56);
+	cursor: pointer !important;
+}
+
+.register-link {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
 }
