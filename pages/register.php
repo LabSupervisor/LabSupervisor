@@ -34,7 +34,7 @@
 		<input type="text" name="name" placeholder="Prenom" class="Name" required><br>
 		<input type="text" name="surname" placeholder="Nom" class="Surname" required><br>
 		<input type="date" name="birthdate" class="Birthdate" required><br>
-		<input type="submit" name="register" value="Creer une compte" class="register-button">
+		<input type="submit" name="register" value="Creer un compte" class="button">
 		<a href="http://labsupervisor.fr/pages/login.php" class="login-link">
 			Déjà un compte ?
 		</a>

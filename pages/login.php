@@ -16,7 +16,7 @@
 
 <div class="LoginDiv">
     <form action="login.php" method="post">
-        <h2>Enregistrement</h2>    
+        <h2>Enregistrement</h2>
         <input type="text" id="username" name="username" class="Username" placeholder="Adresse email"><br>
         <div class="PasswordContainer">
             <input type="password" id="password" name="password" placeholder="Mot de passe" class="Password" required=""><br>
@@ -25,7 +25,7 @@
             </button>
         </div>
         <div class="LoginDivButons">
-            <input type="submit" value="Se connecter" class="login-button">
+            <input type="submit" value="Se connecter" class="button">
             <a href="http://labsupervisor.fr/pages/register.php" class="register-link">
                 Pas encore de compte ?
             </a>
@@ -43,7 +43,7 @@ function togglePasswordVisibility() {
         eyeIcon.className = 'ri-eye-line';
     } else {
         passwordInput.type = 'password';
-        eyeIcon.className = 'ri-eye-off-line'; 
+        eyeIcon.className = 'ri-eye-off-line';
     }
 }
 </script>

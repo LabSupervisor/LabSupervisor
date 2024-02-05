@@ -77,13 +77,13 @@ input:focus-visible {
 
 input::placeholder {
     color: rgba(255, 255, 255, 0.563);
-    font-style: italic; 
+    font-style: italic;
 }
 /* Buttons "Se connecter" and "Pas de compte encore?"*/
 .LoginDivButons {
     text-align: center;
 }
-
+/* 
 .login-button {
     width: 200px;
     margin: 10px auto;
@@ -101,7 +101,7 @@ input::placeholder {
 .login-button:hover {
     background-color: rgb(56, 56, 56);
 	cursor: pointer !important;
-}
+} */
 
 .register-link {
     color: white;
