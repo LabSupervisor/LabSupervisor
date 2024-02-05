@@ -4,6 +4,10 @@
 ?>
 
 <?php
+	permissionChecker(true, true, false, false);
+?>
+
+<?php
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_getChapter.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_getStatus.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateStatus.php");

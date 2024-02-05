@@ -6,8 +6,7 @@
 ?>
 
 <?php
-	if (isset($_SESSION["login"]))
-		header("Location: /");
+	permissionChecker(false, false, false, false);
 ?>
 
 <?php

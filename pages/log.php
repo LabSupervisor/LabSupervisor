@@ -3,6 +3,10 @@
 	mainHeader("Log");
 ?>
 
+<?php
+	permissionChecker(true, false, false, true);
+?>
+
 <link rel="stylesheet" href="../public/css/log.css">
 
 <?php

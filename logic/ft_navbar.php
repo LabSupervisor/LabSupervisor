@@ -23,7 +23,7 @@
 		<?php
 			// If the user is connected
 			} else {
-				$roleList = permissionChecker(true, true, true);
+				$roleList = permissionChecker(true, true, true, true);
 			// If the user is a teacher
 			if (in_array("teacher", $roleList)) { ?>
 					<li>

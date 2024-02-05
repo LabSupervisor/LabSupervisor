@@ -4,6 +4,10 @@
 ?>
 
 <?php
+	permissionChecker(true, false, true, false);
+?>
+
+<?php
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php');
 ?>
