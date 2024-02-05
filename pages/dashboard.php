@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
     <link rel="stylesheet" href="../public/css/dashboard.css">
+	
 </head>
 <body>
 
@@ -29,9 +30,7 @@ $users = [
     ['Nom_Utilisateur' => 'Jean', 'Prenom_Utilisateur' => 'Pol', 'etat' => 'En Cours', 'taches' => ['Tache 17', 'Tache 18']],
 ];
 
-
-
-// Afficher les utilisateurs
+// Display users in the div <preview-container>
 displayUsers($users);
 
 
@@ -39,25 +38,24 @@ function displayUsers($users) {
     foreach ($users as $index => $user) {
         $userCell = '<div class="user-cell">';
 
-        // Affichage du icone "camera offline"
+        // Display of the "camera offline" icon
         $userCell .= '<div class="user-icon"><i class="ri-camera-off-line"></i></div>';
         $userCell .= '<div class="name-and-balls-container">';
 
-        // Ajout du nom et des boules d'état
+        // Adding of the name and the status balls
         $userCell .= '<p>' . $user['Nom_Utilisateur'] . ' ' . $user['Prenom_Utilisateur'] . '</p>';
 
         $userCell .= '<div class="status-balls-container">';
         $userCell .= createStatusBalls($user['etat'], $user['taches'], $user['Nom_Utilisateur'], $user['Prenom_Utilisateur']);
-        $userCell .= '</div>'; // Fermeture de status-balls-container
+        $userCell .= '</div>'; // Closing "status-balls-container"        
+        $userCell .= '</div>'; // Closing "name-and-balls-container"
 
-        $userCell .= '</div>'; // Fermeture de name-and-balls-container
-
-        // Utilisation du tooltip
+        // Use of the tooltip
         $tooltip = '<div class="tooltip">';
         $tooltip .= '<span class="tooltip-title">Tâches de ' . $user['Nom_Utilisateur'] . ' ' . $user['Prenom_Utilisateur'] . '</span>';
         $tooltip .= '<div class="tooltip-text">';
 
-        // Affichage pour toutes les cellules grace au foreach
+        // Display for all cells thanks to foreach
         foreach ($user['taches'] as $tache) {
             $tooltip .= '<div>' . $tache;
             $tooltip .= createStatusBalls($user['etat'], [$tache], $user['Nom_Utilisateur'], $user['Prenom_Utilisateur']);
@@ -67,41 +65,37 @@ function displayUsers($users) {
         $tooltip .= '</div>';
         $tooltip .= '</div>';
         $userCell .= $tooltip;
-
-        $userCell .= '</div>'; // Fermeture de user-cell
+        $userCell .= '</div>'; // Closing "user-cell"
 
         echo $userCell;
     }
 
-    // Ajout d'une cellule pour inviter de nouveaux utilisateurs avec un identifiant unique
+    // Adding a cell to invite new users with a unique ID
     $inviteCell = '<div class="invite-cell" id="invite-cell">';
-    $inviteCell .= '<div class="user-icon"><i class="ri-user-add-line"></i></div>';
+    $inviteCell .= '<div class="user-icon2"><i class="ri-user-add-line"></i></div>';
     $inviteCell .= '<div class="name-and-balls-container">';
     $inviteCell .= '<p>Inviter nouveaux utilisateurs</p>';
-    $inviteCell .= '</div>'; // Fermeture de name-and-balls-container
-    $inviteCell .= '</div>'; // Fermeture de user-cell
+    $inviteCell .= '</div>'; 
+    $inviteCell .= '</div>'; 
 
     echo $inviteCell;
 }
 
-
-
-
 function createStatusBalls($etat, $taches, $nomUtilisateur, $prenomUtilisateur) {
     $statusBallsContainer = '<div class="status-balls-container">';
 
-    // Début du tooltip
+    // Start of tooltip
     $tooltip = '<div class="tooltip">';
     $tooltip .= '<span class="tooltip-title">Tâches de ' . $nomUtilisateur . ' ' . $prenomUtilisateur . '</span>';
     $tooltip .= '<div class="tooltip-text">';
 
-    // Ajouter chaque tâche avec les status balls
+    // Add each task with status balls
     foreach ($taches as $tache) {
-        // Conteneur de la tâche et des status balls
+        // Task and status balls container
         $tooltip .= '<div class="task-container">';
         $tooltip .= $tache;
 
-        // Conteneur des status balls avec une classe CSS
+        // Status balls container with a CSS class
         $tooltip .= '<div class="status-balls-container-right">';
         $tooltip .= '<div class="status-ball status-Finished active"></div>';
         $tooltip .= '<div class="status-ball status-Working"></div>';
@@ -112,11 +106,11 @@ function createStatusBalls($etat, $taches, $nomUtilisateur, $prenomUtilisateur) 
     }
 
     $tooltip .= '</div>';
-    // Fin du tooltip
+    // End of the tooltip
     $tooltip .= '</div>';
     $statusBallsContainer .= $tooltip;
 
-    // Ajout des status balls en dehors du tooltip
+    // Adding status balls outside the tooltip
     $finishedBall = createStatusBall('status-Finished', $etat === 'Finalisé');
     $workingBall = createStatusBall('status-Working', $etat === 'En Cours');
     $troubleBall = createStatusBall('status-In-trouble', $etat === 'En Difficulté');
@@ -126,8 +120,8 @@ function createStatusBalls($etat, $taches, $nomUtilisateur, $prenomUtilisateur) 
     return $statusBallsContainer;
 }
 
-// La classe principale "$statusClass" est determinée par le type d'etat, et une classe supplementaire "$activeClass" est ajoutée si la balle est active
-// Ceci serve a decider si la boule s'allume ou non en gros
+// The main class "$statusClass" is determined by the state type, and an additional class "$activeClass" is added if the ball is active
+// This serves to decide whether the ball lights up or not in bulk
 function createStatusBall($statusClass, $isActive) {
     $activeClass = $isActive ? ' active' : '';
     $statusBall = '<div class="status-ball ' . $statusClass . $activeClass . '"></div>';
@@ -137,5 +131,61 @@ function createStatusBall($statusClass, $isActive) {
 
 </div>
 
+<script>
+    // Change cell color between 5 definite colors
+    document.addEventListener('DOMContentLoaded', function() {
+        // Definite colours
+        const couloursCells = ["#f57e7e", "#f384ae", "#b778ff", "#ecff78", "#fbbc62"];
+
+        // Obtaining all elements with the class ". user-icon"
+        const userIcons = document.querySelectorAll(".user-icon");
+
+        // Iteration between the different colors available and aleatory cell selection
+        userIcons.forEach(function(userIcon) {
+            const randomColour = obtenerColorAleatorio();
+
+            // Apply color
+            userIcon.style.backgroundColor = randomColour;
+        });
+
+        // Function to avoid color repetition between cells
+        function obtenerColorAleatorio() {
+            // Get aleatory color from those that are available
+            const randomColour = couloursCells[Math.floor(Math.random() * couloursCells.length)];
+            return randomColour;
+        }
+    });
+    
+	// Code to display the tooltip in the opposite direction if it exceeds the page
+	document.addEventListener('DOMContentLoaded', function () {
+        // Function to modify the tooltips
+        function adjustTooltips() {
+            // Get all the elements with the 'tooltip' clase
+            const tooltips = document.querySelectorAll(".tooltip");
+
+            // Iterate on each tooltip and modify it if necessary
+            tooltips.forEach(function (tooltip) {
+                // Obtaining the position of the tooltip
+                const tooltipRect = tooltip.getBoundingClientRect();
+                const windowWidth = window.innerWidth;
+
+                // Check if the tooltip exceeds the edge of the page
+                if (tooltipRect.right > windowWidth) {
+                    // Change the position of the tooltip (to reverse it)
+                    const offset = 30;
+                    tooltip.style.left = 'auto';
+                    tooltip.style.right = offset + 'px';
+                }
+            });
+        }
+
+        // Call the function when a change to the page size occur
+        adjustTooltips();
+        window.addEventListener('resize', adjustTooltips);
+    });
+</script>
+</script>
+
+
 </body>
-</html>asdfghjklñ´
+</html>
