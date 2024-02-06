@@ -37,13 +37,37 @@ legend{
 	font-family: Lato;
 }
 
-#classes {
-    border: 0;
-    border-radius: 12px;
-    background-color: #ffffff42;
-    height: 35px;
-    font-size: 15px;
-    font-family: Lato;
+.custom-select {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+}
+
+.custom-select select {
+    width: 500;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: #ffffff46;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+}
+
+.custom-select span.ri {
+    position: absolute;
+    top: 50%;
+    left: 470px;
+    transform: translateY(-50%);
+}
+
+form.sessions #classes option {
+    background-color: #505051;
+    color: #ffffff;
+}
+
+form.sessions #classes option:checked {
+    background-color: #6f6f6f;
+    color: #ffffff;
 }
 
 strong {

@@ -76,15 +76,18 @@
 		}
 		?>
 
-		<select name="classes" id="classes">
-			<?php
-				for ($i = 0; $i< count($tabClass); $i++){
-				?>
-			        <option value="<?php echo $tabClass[$i]["id"]; ?>"><?php echo $tabClass[$i]["name"]; ?></option>
+		<div class="custom-select">
+			<span class="ri ri-arrow-down-wide-line"></span>
+			<select name="classes" id="classes">
 				<?php
+				for ($i = 0; $i < count($tabClass); $i++) {
+					?>
+					<option value="<?php echo $tabClass[$i]["id"]; ?>"><?php echo $tabClass[$i]["name"]; ?></option>
+					<?php
 				}
-			?>
-		</select>
+				?>
+			</select>
+		</div>
 
 	</fieldset>
 	<fieldset>
