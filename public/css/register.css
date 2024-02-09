@@ -1,7 +1,6 @@
 /* Main container */
 .RegisterDiv {
     margin: auto;
-    font-family: Lato;
     text-align: center;
     width: 325px;
     background-color: #6f6f6f69;
@@ -56,33 +55,7 @@ input:focus-visible {
 
 input::placeholder {
     color: rgba(255, 255, 255, 0.563);
-    font-style: italic; 
-}
-/* Buttons "Creer une compte" and "Deja une compte?" */
-.register-button {
-    width: 220px;
-    margin: 10px auto;
-    border-radius: 25px;
-    padding: 6px;
-    color: white;
-    background-color: grey;
-    border: 0;
-    font-size: 18px;
-	cursor: pointer !important;
-	transition: .25s cubic-bezier(.73,.17,.29,.78);
-}
-
-.register-button:hover {
-    background-color: rgb(56, 56, 56);
-	cursor: pointer !important;
-}
-
-.login-link {
-    color: white;
-	text-decoration: none;
-    display: flex;
-    justify-content: center;
-    font-size: 18px;
+    font-style: italic;
 }
 
 /* Password container and eye icon */
@@ -113,4 +86,19 @@ input::placeholder {
     content: "\ecb7";
     color: white;
     font-size: 26px;
+}
+
+/* Buttons "Creer une compte" and "Deja une compte?" */
+.login-link {
+    color: white;
+	text-decoration: none;
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+	transition: 200ms;
+}
+
+.login-link:hover {
+    color: rgba(255, 255, 255, 0.563);
+	transition: 200ms;
 }
