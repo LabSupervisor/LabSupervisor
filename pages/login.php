@@ -14,7 +14,7 @@
 ?>
 
 <div class="LoginDiv">
-    <form action="login.php" method="post">
+    <form action="login" method="post">
         <h2>Connexion</h2>
         <input type="text" id="username" name="username" class="Username" placeholder="Adresse email" required autofocus><br>
         <div class="PasswordContainer">
@@ -25,7 +25,7 @@
         </div>
         <div class="LoginDivButons">
             <input type="submit" value="Se connecter" class="button">
-            <a href="http://labsupervisor.fr/pages/register.php" class="register-link">
+            <a href="http://labsupervisor.fr/register" class="register-link">
                 Pas encore de compte ?
             </a>
         </div>

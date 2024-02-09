@@ -19,10 +19,10 @@
 			$theme = "colorlight";
 
 		// Setup stylesheet path
-		$theme = "http://" . $_SERVER["SERVER_NAME"] . "/public/css/$theme.css";
-		$main = "http://" . $_SERVER["SERVER_NAME"] . "/public/css/main.css";
-		$navbar = "http://" . $_SERVER["SERVER_NAME"] . "/public/css/navbar.css";
-		$remixicon = "http://" . $_SERVER["SERVER_NAME"] . "/public/css/import/remixicon.css";
+		$theme = "/public/css/$theme.css";
+		$main = "/public/css/main.css";
+		$navbar = "/public/css/navbar.css";
+		$remixicon = "/public/css/import/remixicon.css";
 
 		// Create header
 		echo <<<EOT

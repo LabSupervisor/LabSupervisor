@@ -101,6 +101,6 @@
 			Logs::fileSave($e);
 		}
 
-		header("Location: http://" . $_SERVER["SERVER_NAME"] . "/session.php");
+		header("Location: /session");
 	}
 ?>
