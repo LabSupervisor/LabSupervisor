@@ -1,3 +1,3 @@
 <?php
-	header("Location: /denied.php");
+	header("Location: /denied");
 ?>

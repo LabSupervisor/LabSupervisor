@@ -19,7 +19,7 @@
 				$role = $queryPrep->fetchAll(\PDO::FETCH_ASSOC);
 
 				if (!(($access["student"] && $role[0]["student"]) || ($access["teacher"] && $role[0]["teacher"]) || ($access["admin"] && $role[0]["admin"]))) {
-					header("Location: http://" . $_SERVER["SERVER_NAME"] . "/denied.php");
+					header("Location: /denied");
 				} else {
 					$roleList = array();
 					if ($role[0]["student"])
@@ -31,11 +31,11 @@
 					return $roleList;
 				}
 			} else {
-				header("Location: http://" . $_SERVER["SERVER_NAME"] . "/denied.php");
+				header("Location: /denied");
 			}
 		} else {
 			if (isset($_SESSION["login"])) {
-				header("Location: http://" . $_SERVER["SERVER_NAME"] . "/denied.php");
+				header("Location: /denied");
 			}
 		}
 	}
