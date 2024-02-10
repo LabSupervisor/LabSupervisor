@@ -4,12 +4,15 @@
 ?>
 
 <?php
-	permissionChecker(true, true, true, true);
+	$role = permissionChecker(true, true, true, true);
 ?>
 
 <link rel="stylesheet" href="../public/css/session.css">
 
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_getSession.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_getSessionInfo.php");
 ?>
@@ -22,6 +25,7 @@
 		array_push($sessionList, getSessionInfo($key["idsession"]));
 	}
 ?>
+
 <div class="table-container">
 	<table>
 		<thead>
@@ -45,7 +49,19 @@
 						echo '</td>';
 						echo '<td class="col3">'. getName($line["idcreator"]) ."</td>";
 						echo '<td class="col4">'. $line["date"] ."</td>";
-						echo "<td></td>";
+						echo "<td>";
+
+						if ($line["active"]) {
+							if ($line["date"] > date('Y-m-d H:i:s')) {
+								echo "Prochainement";
+							} else {
+								echo "<form method='POST'><input type='submit' name='session' value='" . $line["id"] . "' class='button'>Rejoindre</input></form>";
+							}
+						} else {
+							echo "Terminé";
+						}
+
+						echo "</td>";
 					}
 					echo "</tr>";
 				}
@@ -53,3 +69,16 @@
 		</tbody>
 	</table>
 </div>
+
+<?php
+	if (isset($_POST["session"])) {
+		if (isset($role["teacher"])) {
+			$type = "teacher";
+		} else {
+			$type = "student";
+		}
+
+		$_SESSION["session"] = $_POST["session"];
+		// header("Location: /panel");
+	}
+?>

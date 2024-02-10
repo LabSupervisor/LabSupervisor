@@ -33,7 +33,7 @@
 		<tbody>
 
 			<?php //TODO get current session
-			foreach (getChapter(1) as $chapter) { ?>
+			foreach (getChapter($_SESSION["session"]) as $chapter) { ?>
 				<tr>
 					<td>
 						<?php echo $chapter['title']; ?>
