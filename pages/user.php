@@ -10,7 +10,7 @@
 
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_roleFormat.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_getUsers.php");
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateUser.php");
+	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateAdminUser.php");
 ?>
 
 <script>
