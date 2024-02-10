@@ -11,7 +11,14 @@ $classes = $resultClasses->fetchAll(PDO::FETCH_ASSOC);
 // Process form submission to add students
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $classId = $_POST['class_id'];
-    $studentName = $_POST['student_name'];
+    $studentId = $_POST['student_id'];
+
+    // Add the student to the class in the database
+    $sqlAddStudent = "INSERT INTO userclassroom (idclassroom, iduser) VALUES (:classId, :studentId)";
+    $stmtAddStudent = $db->prepare($sqlAddStudent);
+    $stmtAddStudent->bindParam(':classId', $classId);
+    $stmtAddStudent->bindParam(':studentId', $studentId);
+    $stmtAddStudent->execute();
 }
 ?>
 <!DOCTYPE html>
@@ -31,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <tr>
                     <th>Nom</th>
                     <th>Prénom</th>
-					<th>email</th>
+                    <th>Email</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,39 +52,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmtStudents->execute();
                 $students = $stmtStudents->fetchAll(PDO::FETCH_ASSOC);
                 foreach ($students as $student) :
-					?>
+                    $studInfos = getUserById($student['iduser']);
+                ?>
 
                     <tr>
-                        <td><?php
-						$studInfos = getUserById($student['iduser']);
-						$name = $studInfos['name'];
-						$surname = $studInfos['surname'];
-						$email = $studInfos['email'];
-						echo "$name ";
-						?></td>
-						<td><?php
-						echo "$surname ";
-						?></td>
-						<td><?php
-						echo "$email ";
-						?></td>
-
+                        <td><?php echo $studInfos['name']; ?></td>
+                        <td><?php echo $studInfos['surname']; ?></td>
+                        <td><?php echo $studInfos['email']; ?></td>
                     </tr>
-
-					<tr>
-
 
                 <?php endforeach; ?>
             </tbody>
         </table>
-<?php
-$sql = "SELECT name, surname FROM user";
-$result = $db->query($sql);
-$users = $result->fetchAll(PDO::FETCH_ASSOC);
-?>
 
         <form action="" method="post">
+            <input type="hidden" name="class_id" value="<?php echo $classroom['id']; ?>">
+            <label for="student_id">Sélectionner un élève :</label>
+            <select name="student_id" id="student_id">
+                <?php
+                // Fetch students not already in this class
+				// Usefull line that i could used in register logic
+                $sqlStudents = "SELECT * FROM user WHERE id NOT IN (SELECT iduser FROM userclassroom WHERE idclassroom = :classId)";
+                $stmtStudents = $db->prepare($sqlStudents);
+                $stmtStudents->bindParam(':classId', $classroom['id']);
+                $stmtStudents->execute();
+                $students = $stmtStudents->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($students as $student) {
+                    echo "<option value='" . $student['id'] . "'>" . $student['name'] . " " . $student['surname'] . "</option>";
+                }
+                ?>
+            </select>
+            <input type="submit" value="Ajouter">
+        </form>
+
     <?php endforeach; ?>
 </body>
 </html>
-
