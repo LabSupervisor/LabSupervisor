@@ -4,17 +4,15 @@
 ?>
 
 <?php
-	$role = permissionChecker(true, true, true, true);
+	permissionChecker(true, true, true, true);
 ?>
 
 <link rel="stylesheet" href="../public/css/session.css">
 
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_getSession.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_getSessionInfo.php");
+	require($_SERVER["DOCUMENT_ROOT"] . "/logic/joinSession.php");
 ?>
 
 <?php
@@ -53,9 +51,9 @@ error_reporting(E_ALL);
 
 						if ($line["active"]) {
 							if ($line["date"] > date('Y-m-d H:i:s')) {
-								echo "Prochainement";
+								echo "<i class='ri-timer-line'></i> Prochainement";
 							} else {
-								echo "<form method='POST'><input type='submit' name='session' value='" . $line["id"] . "' class='button'>Rejoindre</input></form>";
+								echo "<form method='POST'><input type='submit' name='connect[" . $line["id"] . "]' value='Rejoindre' class='button'></input></form>";
 							}
 						} else {
 							echo "Terminé";
@@ -69,16 +67,3 @@ error_reporting(E_ALL);
 		</tbody>
 	</table>
 </div>
-
-<?php
-	if (isset($_POST["session"])) {
-		if (isset($role["teacher"])) {
-			$type = "teacher";
-		} else {
-			$type = "student";
-		}
-
-		$_SESSION["session"] = $_POST["session"];
-		// header("Location: /panel");
-	}
-?>

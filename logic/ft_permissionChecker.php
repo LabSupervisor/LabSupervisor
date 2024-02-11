@@ -9,14 +9,7 @@
 					"admin" => $admin
 				);
 
-				$query = "SELECT student, teacher, admin FROM role WHERE iduser = :iduser";
-
-				$userId = getUserId($_SESSION["login"]);
-
-				$queryPrep = $db->prepare($query);
-				$queryPrep->bindParam(':iduser', $userId);
-				$queryPrep->execute();
-				$role = $queryPrep->fetchAll(\PDO::FETCH_ASSOC);
+				$role = getUserRole($_SESSION["login"]);
 
 				if (!(($access["student"] && $role[0]["student"]) || ($access["teacher"] && $role[0]["teacher"]) || ($access["admin"] && $role[0]["admin"]))) {
 					header("Location: /denied");
