@@ -85,6 +85,7 @@ DROP TABLE IF EXISTS `status`;
 CREATE TABLE `status` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `iduser` int(11) DEFAULT NULL,
+  `idsession` int(11) DEFAULT NULL,
   `state` int(11) NOT NULL DEFAULT 0,
   `idchapter` int(11) DEFAULT NULL,
   `updatedate` datetime NOT NULL DEFAULT current_timestamp(),

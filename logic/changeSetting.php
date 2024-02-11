@@ -14,19 +14,35 @@
 		// Background query
 		$queryBackground = "UPDATE setting SET background = :background, updatedate = :date WHERE iduser = :iduser";
 
-		// Theme
-		$queryPrepTheme = $db->prepare($queryTheme);
-		$queryPrepTheme->bindParam(':iduser', $userId);
-		$queryPrepTheme->bindParam(':theme', $theme);
-		$queryPrepTheme->bindParam(':date', $date);
-		$queryPrepTheme->execute();
+		try {
+			// Theme
+			$queryPrepTheme = $db->prepare($queryTheme);
+			$queryPrepTheme->bindParam(':iduser', $userId);
+			$queryPrepTheme->bindParam(':theme', $theme);
+			$queryPrepTheme->bindParam(':date', $date);
 
-		// Background
-		$queryPrepBackground = $db->prepare($queryBackground);
-		$queryPrepBackground->bindParam(':iduser', $userId);
-		$queryPrepBackground->bindParam(':background', $_POST["background"]);
-		$queryPrepBackground->bindParam(':date', $date);
-		$queryPrepBackground->execute();
+			if ($queryPrepTheme->execute())
+				Logs::dbSave("Theme change to " . $theme);
+			else
+				throw new Exception("Theme " . $theme . " change error");
+		} catch (Exception $e) {
+			Logs::fileSave($e);
+		}
+
+		try {
+			// Background
+			$queryPrepBackground = $db->prepare($queryBackground);
+			$queryPrepBackground->bindParam(':iduser', $userId);
+			$queryPrepBackground->bindParam(':background', $_POST["background"]);
+			$queryPrepBackground->bindParam(':date', $date);
+
+			if ($queryPrepBackground->execute())
+				Logs::dbSave("Background change to " . $_POST["background"]);
+			else
+				throw new Exception("Background " . $_POST["background"] . " change error");
+		} catch (Exception $e) {
+			Logs::fileSave($e);
+		}
 
 		header("Refresh:0");
 	}

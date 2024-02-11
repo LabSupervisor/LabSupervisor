@@ -1,19 +1,25 @@
 <?php
 	class Logs extends Exception{
 		public static function dbSave($message) {
-			$db = dbConnect();
+			try {
+				$db = dbConnect();
 
-			// Insert log query
-			$query = "INSERT INTO log (iduser, message) VALUES (:iduser, :message)";
+				// Insert log query
+				$query = "INSERT INTO log (iduser, message) VALUES (:iduser, :message)";
 
-			// Get user ID
-			$userId = getUserId($_SESSION["login"]);
+				// Get user ID
+				$userId = getUserId($_SESSION["login"]);
 
-			// Insert log
-			$queryPrep = $db->prepare($query);
-			$queryPrep->bindParam(':iduser', $userId, \PDO::PARAM_STR);
-			$queryPrep->bindParam(':message', $message, \PDO::PARAM_STR);
-			$queryPrep->execute();
+				// Insert log
+				$queryPrep = $db->prepare($query);
+				$queryPrep->bindParam(':iduser', $userId, \PDO::PARAM_STR);
+				$queryPrep->bindParam(':message', $message, \PDO::PARAM_STR);
+
+				if (!$queryPrep->execute())
+					throw new Exception("DB Log save error ");
+			} catch (Exception $e) {
+				Logs::fileSave($e);
+			}
 		}
 
 		public static function fileSave(Exception $e) {
