@@ -88,6 +88,7 @@ strong {
     border: 0;
 	outline: none;
 	font-size: 16px;
+	padding: 8px;
 }
 
 .secondbox {
@@ -97,6 +98,8 @@ strong {
     border: 0;
 	outline: none;
 	font-size: 16px;
+	resize: vertical;
+	padding: 8px;
 }
 
 .buttonC{
@@ -137,6 +140,7 @@ strong {
     border: 0;
 	font-size: 16px;
 	outline: none;
+	padding: 8px;
 }
 input[type="datetime-local"]::-webkit-calendar-picker-indicator {
     filter: invert(1);

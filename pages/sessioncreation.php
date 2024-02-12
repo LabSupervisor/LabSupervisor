@@ -60,7 +60,7 @@
 		<strong class="strong1"> Titre : </strong>
 		<input type="text" id="titleSession" class="firstbox" name="titleSession" required>
 		<strong class="strong2"> Description : </strong>
-		<input type="text" id="descriptionSession" class="secondbox" name="descriptionSession">
+		<textarea id="descriptionSession" class="secondbox" name="descriptionSession"></textarea>
 	</fieldset>
 	<fieldset>
 		<legend> Participants </legend>
@@ -91,14 +91,14 @@
 
 	</fieldset>
 	<fieldset>
-        <legend> Chapitres </legend>
-			<strong class="strong1"> Titre : </strong>
-			<input type="text" id="titleChapter1" class="firstbox" name="titleChapter1" >
-			<strong class="strong2"> Description : </strong>
-			<input type="text" id="chapterDescription1" class="secondbox" name="chapterDescription1">
-		    <div class="buttonC">
-			<button id="btn-chapter" class="button" onclick="addChapter()">+ Chapitre</button>
-			</div>
+   		<legend>Chapitres</legend>
+  			<strong class="strong1">Titre :</strong>
+  			<input type="text" id="titleChapter1" class="firstbox" name="titleChapter1">
+   			<strong class="strong2">Description :</strong>
+   			<textarea id="chapterDescription1" class="secondbox" name="chapterDescription1"></textarea>
+   			<div class="buttonC">
+       		<button id="btn-chapter" class="button" onclick="addChapter()">+ Chapitre</button>
+    		</div>
 		</fieldset>
 	<fieldset>
 		<legend> Date </legend>
