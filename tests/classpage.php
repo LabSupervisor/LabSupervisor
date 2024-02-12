@@ -10,15 +10,34 @@ $classes = $resultClasses->fetchAll(PDO::FETCH_ASSOC);
 
 // Process form submission to add students
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $classId = $_POST['class_id'];
-    $studentId = $_POST['student_id'];
+    if (isset($_POST['add_student'])) {
+        $classId = $_POST['class_id'];
+        $studentId = $_POST['student_id'];
+        // Add the student to the class in the database if not already added
+        $sqlCheckStudent = "SELECT COUNT(*) AS count FROM userclassroom WHERE idclassroom = :classId AND iduser = :studentId";
+        $stmtCheckStudent = $db->prepare($sqlCheckStudent);
+        $stmtCheckStudent->bindParam(':classId', $classId);
+        $stmtCheckStudent->bindParam(':studentId', $studentId);
+        $stmtCheckStudent->execute();
+        $count = $stmtCheckStudent->fetchColumn();
 
-    // Add the student to the class in the database
-    $sqlAddStudent = "INSERT INTO userclassroom (idclassroom, iduser) VALUES (:classId, :studentId)";
-    $stmtAddStudent = $db->prepare($sqlAddStudent);
-    $stmtAddStudent->bindParam(':classId', $classId);
-    $stmtAddStudent->bindParam(':studentId', $studentId);
-    $stmtAddStudent->execute();
+        if ($count == 0) {
+            $sqlAddStudent = "INSERT INTO userclassroom (idclassroom, iduser) VALUES (:classId, :studentId)";
+            $stmtAddStudent = $db->prepare($sqlAddStudent);
+            $stmtAddStudent->bindParam(':classId', $classId);
+            $stmtAddStudent->bindParam(':studentId', $studentId);
+            $stmtAddStudent->execute();
+        }
+    } elseif (isset($_POST['remove_student'])) {
+        $classId = $_POST['class_id'];
+        $studentId = $_POST['remove_student'];
+        // Remove the student from the class in the database
+        $sqlRemoveStudent = "DELETE FROM userclassroom WHERE idclassroom = :classId AND iduser = :studentId";
+        $stmtRemoveStudent = $db->prepare($sqlRemoveStudent);
+        $stmtRemoveStudent->bindParam(':classId', $classId);
+        $stmtRemoveStudent->bindParam(':studentId', $studentId);
+        $stmtRemoveStudent->execute();
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -43,7 +62,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </thead>
             <tbody>
                 <?php
-
                 // Fetch students for the current class
                 $classId = $classroom['id'];
                 $sqlStudents = "SELECT iduser FROM userclassroom WHERE idclassroom = :idclassroom";
@@ -59,6 +77,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <td><?php echo $studInfos['name']; ?></td>
                         <td><?php echo $studInfos['surname']; ?></td>
                         <td><?php echo $studInfos['email']; ?></td>
+						<td><form action="" method="post">
+                                <input type="hidden" name="class_id" value="<?php echo $classroom['id']; ?>">
+                                <input type="hidden" name="remove_student" value="<?php echo $student['iduser']; ?>">
+                                <input type="submit" value="Retirer">
+                        </form>
+						</td>
                     </tr>
 
                 <?php endforeach; ?>
@@ -82,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
                 ?>
             </select>
-            <input type="submit" value="Ajouter">
+            <input type="submit" name="add_student" value="Ajouter">
         </form>
 
     <?php endforeach; ?>
