@@ -5,8 +5,7 @@
 ?>
 
 <?php
-	if (isset($_SESSION["login"]))
-		header("Location: /");
+	permissionChecker(false, false, false, false);
 ?>
 
 <?php
@@ -15,18 +14,18 @@
 ?>
 
 <div class="LoginDiv">
-    <form action="login.php" method="post">
-        <h2>Enregistrement</h2>    
-        <input type="text" id="username" name="username" class="Username" placeholder="Adresse email"><br>
+    <form action="login" method="post">
+        <h2>Connexion</h2>
+        <input type="text" id="username" name="username" class="Username" placeholder="Adresse email" required autofocus><br>
         <div class="PasswordContainer">
-            <input type="password" id="password" name="password" placeholder="Mot de passe" class="Password" required=""><br>
+            <input type="password" id="password" name="password" placeholder="Mot de passe" class="Password" required><br>
             <button type="button" id="showPasswordButton" class="ShowPasswordButton" onclick="togglePasswordVisibility()">
                 <i id="eyeIcon" class="ri-eye-off-line"></i>
             </button>
         </div>
         <div class="LoginDivButons">
-            <input type="submit" value="Se connecter" class="login-button">
-            <a href="http://labsupervisor.fr/pages/register.php" class="register-link">
+            <input type="submit" value="Se connecter" class="button">
+            <a href="http://labsupervisor.fr/register" class="register-link">
                 Pas encore de compte ?
             </a>
         </div>
@@ -43,7 +42,7 @@ function togglePasswordVisibility() {
         eyeIcon.className = 'ri-eye-line';
     } else {
         passwordInput.type = 'password';
-        eyeIcon.className = 'ri-eye-off-line'; 
+        eyeIcon.className = 'ri-eye-off-line';
     }
 }
 </script>

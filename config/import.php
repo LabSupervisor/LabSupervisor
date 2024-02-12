@@ -1,4 +1,9 @@
 <?php
+	// Show error
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
+
 	// Start session
 	session_start();
 
@@ -7,6 +12,9 @@
 
 	// Import logger
 	require($_SERVER['DOCUMENT_ROOT'] . "/src/App/Repositories/log.php");
+
+	// Import user role
+	require($_SERVER['DOCUMENT_ROOT'] . "/logic/ft_getUserRole.php");
 
 	// Import permission checker
 	require($_SERVER['DOCUMENT_ROOT'] . "/logic/ft_permissionChecker.php");

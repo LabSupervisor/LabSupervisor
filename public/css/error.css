@@ -1,3 +1,7 @@
+.main {
+	user-select: none;
+}
+
 .errormain {
 	display: block;
     width: 80%;
@@ -13,24 +17,4 @@
 
 .errorsubtitle {
 	font-size: 30px;
-}
-
-.errorcontent button {
-	background-color: var(--background-hover-color);
-	border-radius: 25px;
-	border-color: var(--border-color);
-	border-width: 1px;
-	border-style: solid;
-	height: 40px;
-	font-size: 16px;
-	margin-top: 40px;
-	padding-left: 20px;
-	padding-right: 20px;
-	transition: 200ms;
-}
-
-.errorcontent button:hover {
-	background-color: var(--border-color);
-	transition: 200ms;
-	cursor: pointer;
 }

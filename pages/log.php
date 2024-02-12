@@ -3,6 +3,10 @@
 	mainHeader("Log");
 ?>
 
+<?php
+	permissionChecker(true, false, false, true);
+?>
+
 <link rel="stylesheet" href="../public/css/log.css">
 
 <?php
@@ -42,10 +46,10 @@
 		</table>
 
 		<div class="button-container">
-			<a href="<?= "http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?trace" ?>">
+			<a href="/log?trace">
 				<button><i class="ri-draft-line"></i> Trace</button>
 			</a>
-			<a href="<?= "http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?error" ?>">
+			<a href="/log?error">
 				<button><i class="ri-error-warning-line"></i> Erreur</button>
 			</a>
 		</div>
@@ -103,10 +107,10 @@
 		</table>
 
 		<div class="button-container">
-			<a href="<?= "http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?trace" ?>">
+			<a href="/log?trace">
 				<button><i class="ri-draft-line"></i> Trace</button>
 			</a>
-			<a href="<?= "http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?error" ?>">
+			<a href="/log?error">
 				<button><i class="ri-error-warning-line"></i> Erreur</button>
 			</a>
 			<div class="right-buttons">
@@ -124,10 +128,10 @@
 		echo "Fichier introuvable"; ?>
 
 		<div class="button-container">
-		<a href="<?= "http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?trace" ?>">
+		<a href="/log?trace">
 			 <button><i class="ri-draft-line"></i> Trace</button>
 		 </a>
-		 <a href="<?= "http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?error" ?>">
+		 <a href="/log?error">
 			 <button><i class="ri-error-warning-line"></i> Erreur</button>
 		 </a>
 		 <div class="right-buttons">

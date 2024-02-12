@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
-    <link rel="stylesheet" href="../public/css/dashboard.css">
-	
-</head>
-<body>
-
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader("Options");
 ?>
+
+<?php
+	permissionChecker(true, false, true, false);
+?>
+
+<link rel="stylesheet" href="../public/css/dashboard.css">
 
 <div id="preview-container">
 
@@ -47,7 +42,7 @@ function displayUsers($users) {
 
         $userCell .= '<div class="status-balls-container">';
         $userCell .= createStatusBalls($user['etat'], $user['taches'], $user['Nom_Utilisateur'], $user['Prenom_Utilisateur']);
-        $userCell .= '</div>'; // Closing "status-balls-container"        
+
         $userCell .= '</div>'; // Closing "name-and-balls-container"
 
         // Use of the tooltip
@@ -75,8 +70,9 @@ function displayUsers($users) {
     $inviteCell .= '<div class="user-icon2"><i class="ri-user-add-line"></i></div>';
     $inviteCell .= '<div class="name-and-balls-container">';
     $inviteCell .= '<p>Inviter nouveaux utilisateurs</p>';
-    $inviteCell .= '</div>'; 
-    $inviteCell .= '</div>'; 
+
+    $inviteCell .= '</div>';
+    $inviteCell .= '</div>';
 
     echo $inviteCell;
 }
@@ -155,7 +151,7 @@ function createStatusBall($statusClass, $isActive) {
             return randomColour;
         }
     });
-    
+
 	// Code to display the tooltip in the opposite direction if it exceeds the page
 	document.addEventListener('DOMContentLoaded', function () {
         // Function to modify the tooltips

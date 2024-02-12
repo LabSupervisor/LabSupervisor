@@ -1,7 +1,6 @@
 /* Main container */
 .LoginDiv {
     margin: auto;
-    font-family: Lato;
     text-align: center;
     width: 325px;
     background-color: #6f6f6f69;
@@ -12,8 +11,8 @@
 	backdrop-filter: blur(6px);
 }
 
-h2{
-	color: white;
+h2 {
+  color: white;
     font-size: 30px;
 	margin-bottom: 20px;
     border-bottom: 3px solid white;
@@ -77,30 +76,12 @@ input:focus-visible {
 
 input::placeholder {
     color: rgba(255, 255, 255, 0.563);
-    font-style: italic; 
+    font-style: italic;
 }
+
 /* Buttons "Se connecter" and "Pas de compte encore?"*/
 .LoginDivButons {
     text-align: center;
-}
-
-.login-button {
-    width: 200px;
-    margin: 10px auto;
-    border-radius: 25px;
-    padding: 6px;
-    color: white;
-    background-color: grey;
-    border: 0;
-    font-size: 18px;
-	margin-top: 30px;
-	cursor: pointer !important;
-	transition: .25s cubic-bezier(.73,.17,.29,.78);
-}
-
-.login-button:hover {
-    background-color: rgb(56, 56, 56);
-	cursor: pointer !important;
 }
 
 .register-link {
@@ -109,4 +90,10 @@ input::placeholder {
     display: flex;
     justify-content: center;
     font-size: 18px;
+	transition: 200ms;
+}
+
+.register-link:hover {
+    color: rgba(255, 255, 255, 0.563);
+	transition: 200ms;
 }

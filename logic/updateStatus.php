@@ -4,15 +4,25 @@
 		$idChapter = $_POST['chapter'];
 		$status = $_POST['status'];
 		$userId = getUserId($_SESSION["login"]);
+		$session = $_SESSION["session"];
 
 		// Update state query
-		$query = "UPDATE status SET state = :idStatus WHERE idchapter = :idChapter AND iduser = :idUser";
+		$query = "UPDATE status SET state = :idStatus WHERE idchapter = :idChapter AND iduser = :idUser AND idsession = :idSession";
 
-		// Update state
-		$queryPrep = $db->prepare($query);
-		$queryPrep->bindParam(':idStatus', $status);
-		$queryPrep->bindParam(':idChapter', $idChapter);
-		$queryPrep->bindParam(':idUser', $userId);
-		$queryPrep->execute();
+		try {
+			// Update state
+			$queryPrep = $db->prepare($query);
+			$queryPrep->bindParam(':idStatus', $status);
+			$queryPrep->bindParam(':idChapter', $idChapter);
+			$queryPrep->bindParam(':idUser', $userId);
+			$queryPrep->bindParam(':idSession', $session);
+
+			if ($queryPrep->execute())
+				Logs::dbSave("Update status to " . $status . " from session " . $session);
+			else
+				throw new Exception("Status " . $status . " from session " . $session . " update error");
+		} catch (Exception $e) {
+			Logs::fileSave($e);
+		}
 	}
 ?>

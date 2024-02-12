@@ -4,12 +4,16 @@
 ?>
 
 <?php
+	permissionChecker(true, true, false, false);
+?>
+
+<?php
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_getChapter.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_getStatus.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateStatus.php");
 ?>
 
-<script src="<?="http://" . $_SERVER["SERVER_NAME"] . "/public/js/ft_updateStatus.js"?>"></script>
+<script src="/public/js/ft_updateStatus.js"></script>
 
 	<h2>Modifier votre Statut </h2>
 
@@ -29,7 +33,7 @@
 		<tbody>
 
 			<?php //TODO get current session
-			foreach (getChapter(1) as $chapter) { ?>
+			foreach (getChapter($_SESSION["session"]) as $chapter) { ?>
 				<tr>
 					<td>
 						<?php echo $chapter['title']; ?>

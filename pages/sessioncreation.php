@@ -5,14 +5,12 @@
 ?>
 
 <?php
-	// Logic
-	require($_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php');
+	permissionChecker(true, false, true, false);
 ?>
 
 <?php
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
+	// Logic
+	require($_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php');
 ?>
 
 <script>

@@ -4,6 +4,10 @@
 ?>
 
 <?php
+	permissionChecker(true, true, true, true);
+?>
+
+<?php
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateUser.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_getUser.php");
 ?>

@@ -62,6 +62,7 @@ CREATE TABLE `session` (
   `title` varchar(50) NOT NULL,
   `description` text DEFAULT NULL,
   `idcreator` int(11) NOT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT 1,
   `date` datetime NOT NULL,
   `creationdate` datetime NOT NULL DEFAULT current_timestamp(),
   `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
@@ -84,6 +85,7 @@ DROP TABLE IF EXISTS `status`;
 CREATE TABLE `status` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `iduser` int(11) DEFAULT NULL,
+  `idsession` int(11) DEFAULT NULL,
   `state` int(11) NOT NULL DEFAULT 0,
   `idchapter` int(11) DEFAULT NULL,
   `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
@@ -134,7 +136,8 @@ ALTER TABLE `setting`
 
 ALTER TABLE `status`
   ADD CONSTRAINT `status_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `status_chapter_FK` FOREIGN KEY (`idchapter`) REFERENCES `chapter` (`id`);
+  ADD CONSTRAINT `status_chapter_FK` FOREIGN KEY (`idchapter`) REFERENCES `chapter` (`id`),
+  ADD CONSTRAINT `status_session_FK` FOREIGN KEY (`idsession`) REFERENCES `session` (`id`);
 
 ALTER TABLE `log`
   ADD CONSTRAINT `log_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`);

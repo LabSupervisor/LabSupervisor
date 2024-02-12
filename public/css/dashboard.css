@@ -11,8 +11,8 @@
 .user-icon {
     font-size: 100px;
     border-radius: 20px;
-    width: 300px; 
-    height: 180px; 
+    width: 300px;
+    height: 180px;
     background-color: grey;
     text-align: center;
     display: flex;
@@ -22,8 +22,8 @@
 .user-icon2 {
     font-size: 100px;
     border-radius: 20px;
-    width: 300px; 
-    height: 180px; 
+    width: 300px;
+    height: 180px;
     background-color: #8080805c;
     text-align: center;
     display: flex;
@@ -45,14 +45,13 @@
 
 .user-cell img {
     height: 180px;
-    width: 300px; 
+    width: 300px;
     border-radius: 20px;
     object-fit: cover;
 }
 
 #preview-container .invite-cell:last-child .user-icon {
-    background-color: rgba(128, 128, 128, 0.589); 
-	
+    background-color: rgba(128, 128, 128, 0.589);
 }
 /* Invite cell */
 .invite-cell {
@@ -79,7 +78,6 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Lato', sans-serif;
     min-height: 100vh;
 }
 /* CSS for the status balls of usuary cells */
@@ -88,8 +86,8 @@ body {
     height: 10px;
     border-radius: 50%;
     display: inline-block;
-    margin-right: 2px; 
-    opacity: 0.9; 
+    margin-right: 2px;
+    opacity: 0.9;
     border: 1px solid black;
 }
 
@@ -143,7 +141,7 @@ body {
 
 .tooltip-reverse {
 	left: auto;
-	right: 100%; 
+	right: 100%;
 	transform: translateX(0);
 }
 
