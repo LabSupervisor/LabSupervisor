@@ -3,10 +3,6 @@
 	mainHeader("Log");
 ?>
 
-<?php
-	permissionChecker(true, false, false, true);
-?>
-
 <link rel="stylesheet" href="../public/css/log.css">
 
 <?php
@@ -20,10 +16,10 @@
 		<table>
 			<thead>
 				<tr>
-					<td>ID</td>
-					<td>Utilisateur</td>
-					<td>Message</td>
-					<td>Date</td>
+					<th class="col1">ID</th>
+					<th class="col2">Utilisateur</th>
+					<th class="col3">Message</th>
+					<th class="col4">Date</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -32,7 +28,7 @@
 
 				foreach ($logs as $line) {
 					echo "<tr>";
-					echo '<th class="col1">' . $line["id"] . '</th>';
+					echo '<td class="col1">' . $line["id"] . '</td>';
 					echo '<td class="col2">' . getName($line["iduser"]) . '</td>';
 					echo '<td class="col3-container">';
 					echo '<div class="col3-tooltip">' . htmlspecialchars($line["message"]) . '</div>';
@@ -44,15 +40,14 @@
 				?>
 			</tbody>
 		</table>
-
-		<div class="button-container">
-			<a href="/log?trace">
+	</div>
+	<div class="button-container">
+			<a href="<?= "http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?trace" ?>">
 				<button><i class="ri-draft-line"></i> Trace</button>
 			</a>
-			<a href="/log?error">
+			<a href="<?= "http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?error" ?>">
 				<button><i class="ri-error-warning-line"></i> Erreur</button>
 			</a>
-		</div>
 	</div>
 <?php
 } else if (isset($_GET["error"])) {
@@ -67,7 +62,6 @@
 		$logs = file_get_contents($file);
 		$logs = explode("\n", $logs);
 ?>
-	<div class="table-container2">
 		<table>
 			<thead>
 				<tr>
@@ -76,6 +70,7 @@
 					<th>Date</th>
 				</tr>
 			</thead>
+			<tbody-wrapper>
 			<tbody>
 				<?php
 				foreach ($logs as $line) {
@@ -104,13 +99,14 @@
 				}
 				?>
 			</tbody>
+			</tbody-wrapper>
 		</table>
 
 		<div class="button-container">
-			<a href="/log?trace">
+			<a href="<?= "http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?trace" ?>">
 				<button><i class="ri-draft-line"></i> Trace</button>
 			</a>
-			<a href="/log?error">
+			<a href="<?= "http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?error" ?>">
 				<button><i class="ri-error-warning-line"></i> Erreur</button>
 			</a>
 			<div class="right-buttons">
@@ -121,27 +117,26 @@
 				</form>
 			</div>
 		</div>
-	</div>
 
 		<?php
 	} else {
 		echo "Fichier introuvable"; ?>
 
 		<div class="button-container">
-		<a href="/log?trace">
-			 <button><i class="ri-draft-line"></i> Trace</button>
-		 </a>
-		 <a href="/log?error">
-			 <button><i class="ri-error-warning-line"></i> Erreur</button>
-		 </a>
-		 <div class="right-buttons">
-			 <form method="get">
-				 <input type="hidden" name="error">
-				 <input type="date" name="date">
-				 <input type="submit" value="Envoyer">
-			 </form>
-		 </div>
-	 </div>
+		<a href="<?= "http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?trace" ?>">
+			<button><i class="ri-draft-line"></i> Trace</button>
+		</a>
+		<a href="<?= "http://" . $_SERVER["SERVER_NAME"] . "/pages/log.php?error" ?>">
+			<button><i class="ri-error-warning-line"></i> Erreur</button>
+		</a>
+		<div class="right-buttons">
+			<form method="get">
+				<input type="hidden" name="error">
+				<input type="date" name="date">
+				<input type="submit" value="Envoyer">
+			</form>
+		</div>
+	</div>
 <?php
 	}
 }

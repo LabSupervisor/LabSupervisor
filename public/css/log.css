@@ -2,20 +2,13 @@
 .table-container {
     display: flex;
 	flex-direction: column;
-    justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 20px;
-	margin-top: 370px;
-}
-.table-container2 {
-    display: flex;
-	flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 20px;
-	margin-top: 160px;
+	margin-top: 30px;
+    margin-bottom: 50px;
+	max-height: 500px;
+	overflow-y: auto;
 }
 
 table {
@@ -25,10 +18,22 @@ table {
     overflow: hidden;
 	color: var(--text-color);
 }
+tbody{
+    position: relative;
+    bottom: -38px;
+}
 
 thead {
-    background-color: #6f6f6f69;
+    backdrop-filter: blur(100px);
+    background-color: #555555ad;
+    position: absolute;
+    width: 1100px;
+    border-collapse: collapse;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    z-index: 10;
 }
+
 
 th, td {
     border: 10px;
@@ -45,22 +50,22 @@ tbody tr:nth-child(odd) {
 
 /* Sperate collumn to easy apparence modification */
 th.col1, td.col1 {
-    min-width: 10px;
+    width: 10%;
 }
 
 th.col2, td.col2 {
-    min-width: 20px;
+    width: 25%;
 }
 
 th.col3, td.col3 {
-    min-width: 20px;
-    max-width: 150px;
+    width: 30%;
+    width: 150px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 th.col4, td.col4 {
-    min-width: 100px;
+    width: 55%;
 }
 
 /* Messages collumn with tooltip */
@@ -99,12 +104,12 @@ th.col4, td.col4 {
 /* Control button and date selection */
 .button-container {
     display: flex;
-    align-items: center;
+    justify-content: center;
     background-color: rgba(48, 48, 48, 0.479);
     padding: 15px;
-    justify-content: space-between;
-    margin-top: 10px;
     border-radius: 25px;
+    max-width: 250px; /* Establece un ancho máximo */
+    margin: 10px auto; /* Centra horizontalmente y añade margen superior e inferior */
 }
 
 .button-container a {
