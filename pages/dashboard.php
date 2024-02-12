@@ -44,6 +44,7 @@ function displayUsers($users) {
         $userCell .= createStatusBalls($user['etat'], $user['taches'], $user['Nom_Utilisateur'], $user['Prenom_Utilisateur']);
 
         $userCell .= '</div>'; // Closing "name-and-balls-container"
+        $userCell .= '</div>'; // Closing "user-icon"
 
         // Use of the tooltip
         $tooltip = '<div class="tooltip">';
