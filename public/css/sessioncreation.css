@@ -36,6 +36,12 @@ legend{
 	font-size: 25px;
 	font-family: Lato;
 }
+hr {
+    border-width: 3px;
+    border-style: solid;
+    margin-bottom: 15px;
+    border-color: #ffffff26;
+}
 
 .custom-select {
     position: relative;
@@ -93,7 +99,7 @@ strong {
 
 .secondbox {
 	background-color: #ffffff42;
-	height: 70px;
+	min-height: 70px;
     border-radius: 13px;
     border: 0;
 	outline: none;
@@ -102,15 +108,20 @@ strong {
 	padding: 8px;
 }
 
-.buttonC{
-	text-align: right;
+.buttonC {
+    text-align: right;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    border: 0;
+    margin-bottom: 20px;
 }
 
 .button {
-    width: 220px;
-	margin-top: 15px;
+    width: 160px;
     border-radius: 25px;
-    padding: 6px;
+    padding: 8px;
     color: white;
     background-color: #6f6f6fe5;
     border: 0;
@@ -118,12 +129,14 @@ strong {
     cursor: pointer !important;
     transition: .25s cubic-bezier(.73,.17,.29,.78);
     backdrop-filter: blur(6px);
+    position: relative;
+    left: 340px;
 }
 
 .button2 {
-    width: 220px;
+    width: 160px;
     border-radius: 25px;
-    padding: 6px;
+    padding: 8px;
     color: white;
     background-color: #6f6f6fe5;
     border: 0;

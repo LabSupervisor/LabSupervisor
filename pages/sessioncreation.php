@@ -19,38 +19,45 @@
 	var nbChapter = 1;
 
 	// Update chapter count
-	function addChapter()
-	{
-		nbChapter++ ;
-		let div= document.createElement('div');
+	function addChapter() {
+    nbChapter++;
+    let div = document.createElement('div');
+    div.classList.add('buttonC');
 
-		let title = document.createElement('strong');
-		title.innerHTML="Titre : " ;
-		div.appendChild(title);
+    // Division Line
+    let line = document.createElement('hr');
+    div.appendChild(line);
 
-		let inputTitle = document.createElement('input') ;
-		inputTitle.setAttribute("type", "texte")
-		inputTitle.setAttribute("id", "titleChapter"+nbChapter)
-		inputTitle.setAttribute("name", "titleChapter"+nbChapter);
-		div.appendChild(inputTitle)
+    // Title + strong1, firstbox class
+    let title = document.createElement('strong');
+    title.innerHTML = "Titre : ";
+    title.classList.add('strong1');
+    div.appendChild(title);
 
-		let description = document.createElement('strong')
-		description.innerHTML=' Description : '
-		div.appendChild(description)
+    let inputTitle = document.createElement('input');
+    inputTitle.setAttribute("type", "text");
+    inputTitle.setAttribute("name", "titleChapter" + nbChapter);
+    inputTitle.classList.add('firstbox');
+    div.appendChild(inputTitle);
 
-		let inputDescription = document.createElement('input') ;
-		inputDescription.setAttribute("type", "texte")
-		inputDescription.setAttribute("id", "chapterDescription"+nbChapter)
-		inputDescription.setAttribute("name", "chapterDescription"+nbChapter);
-		div.appendChild(inputDescription)
+    // Description + strong2, secondbox class
+    let description = document.createElement('strong');
+    description.innerHTML = ' Description : ';
+    description.classList.add('strong2');
+    div.appendChild(description);
 
+    let inputDescription = document.createElement('textarea');
+    inputDescription.setAttribute("name", "chapterDescription" + nbChapter);
+    inputDescription.classList.add('secondbox');
+    div.appendChild(inputDescription);
 
-		let btnChapter = document.getElementById('btn-chapter');
-		let fieldChapters = document.getElementById('fieldChapters');
-		fieldChapters.insertBefore(div, btnChapter);
+    let btnChapter = document.getElementById('btn-chapter');
+    let parentDiv = btnChapter.parentNode;
+    parentDiv.insertBefore(div, btnChapter);
 
-		document.getElementById('nbChapter').value= nbChapter;
-	}
+    document.getElementById('nbChapter').value = nbChapter;
+}
+
 </script>
 
 <form class="sessions" method="post">
@@ -92,14 +99,14 @@
 	</fieldset>
 	<fieldset>
    		<legend>Chapitres</legend>
-  			<strong class="strong1">Titre :</strong>
+   			<div class="buttonC">
+			<strong class="strong1">Titre :</strong>
   			<input type="text" id="titleChapter1" class="firstbox" name="titleChapter1">
    			<strong class="strong2">Description :</strong>
    			<textarea id="chapterDescription1" class="secondbox" name="chapterDescription1"></textarea>
-   			<div class="buttonC">
-       		<button id="btn-chapter" class="button" onclick="addChapter()">+ Chapitre</button>
     		</div>
-		</fieldset>
+			<button type="button" id="btn-chapter" class="button" onclick="addChapter()">+ Chapitre</button>
+	</fieldset>
 	<fieldset>
 		<legend> Date </legend>
 		<strong> Date : </strong>
