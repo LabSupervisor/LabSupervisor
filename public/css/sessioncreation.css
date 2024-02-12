@@ -1,7 +1,6 @@
 /* Main container */
 form.sessions {
     margin: auto;
-    font-family: Lato;
     text-align: center;
     width: fit-content;
     padding: 27px;
@@ -34,7 +33,6 @@ legend{
 	text-align: center;
 	text-decoration: underline;
 	font-size: 25px;
-	font-family: Lato;
 }
 hr {
     border-width: 3px;
@@ -78,7 +76,6 @@ form.sessions #classes option:checked {
 
 strong {
     font-size: 16px;
-    font-family: Lato;
     font-weight: 400;
 	margin-bottom: 2px;
 }
@@ -118,7 +115,7 @@ strong {
     margin-bottom: 20px;
 }
 
-.button {
+.chapterButton {
     width: 160px;
     border-radius: 25px;
     padding: 8px;
@@ -131,19 +128,6 @@ strong {
     backdrop-filter: blur(6px);
     position: relative;
     left: 340px;
-}
-
-.button2 {
-    width: 160px;
-    border-radius: 25px;
-    padding: 8px;
-    color: white;
-    background-color: #6f6f6fe5;
-    border: 0;
-    font-size: 18px;
-    cursor: pointer !important;
-    transition: .25s cubic-bezier(.73,.17,.29,.78);
-    backdrop-filter: blur(6px);
 }
 
 #date{

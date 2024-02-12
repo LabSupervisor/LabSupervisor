@@ -103,12 +103,12 @@
    			<strong class="strong2">Description :</strong>
    			<textarea id="chapterDescription1" class="secondbox" name="chapterDescription1"></textarea>
     		</div>
-			<button type="button" id="btn-chapter" class="button" onclick="addChapter()">+ Chapitre</button>
+			<button type="button" id="btn-chapter" class="button chapterButton" onclick="addChapter()">+ Chapitre</button>
 	</fieldset>
 	<fieldset>
 		<legend> Date </legend>
 		<strong> Date : </strong>
 		<input type="datetime-local" id="date" name="date"  required>
 	</fieldset>
-	<input type="submit" name="saveSession" class="button2" value="Enregistrer">
+	<input type="submit" name="saveSession" class="button" value="Enregistrer">
 </form>
