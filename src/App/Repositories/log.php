@@ -35,7 +35,10 @@
 			$file = fopen($logFile, "a+");
 
 			// Log in file
-			fwrite($file, "[" . date("Y-m-d H:i:s") . "] " . $stacktrace . ": " . $message . "\n");
+			fwrite($file, "[" . date("Y-m-d H:i:s") . "]\n");
+			foreach(explode("#", $stacktrace) as $value)
+				fwrite($file, "#" . $value);
+			fwrite($file, "\n" . $message . "\n");
 			fclose($file);
 		}
 	}
