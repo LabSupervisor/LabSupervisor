@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../public/css/sessioncreation.css">
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader("Création de session")
@@ -16,48 +17,55 @@
 	var nbChapter = 1;
 
 	// Update chapter count
-	function addChapter()
-	{
-		nbChapter++ ;
-		let div= document.createElement('div');
+	function addChapter() {
+    nbChapter++;
+    let div = document.createElement('div');
+    div.classList.add('buttonC');
 
-		let title = document.createElement('strong');
-		title.innerHTML="Titre : " ;
-		div.appendChild(title);
+    // Division Line
+    let line = document.createElement('hr');
+    div.appendChild(line);
 
-		let inputTitle = document.createElement('input') ;
-		inputTitle.setAttribute("type", "texte")
-		inputTitle.setAttribute("id", "titleChapter"+nbChapter)
-		inputTitle.setAttribute("name", "titleChapter"+nbChapter);
-		div.appendChild(inputTitle)
+    // Title + strong1, firstbox class
+    let title = document.createElement('strong');
+    title.innerHTML = "Titre : ";
+    title.classList.add('strong1');
+    div.appendChild(title);
 
-		let description = document.createElement('strong')
-		description.innerHTML=' Description : '
-		div.appendChild(description)
+    let inputTitle = document.createElement('input');
+    inputTitle.setAttribute("type", "text");
+    inputTitle.setAttribute("name", "titleChapter" + nbChapter);
+    inputTitle.classList.add('firstbox');
+    div.appendChild(inputTitle);
 
-		let inputDescription = document.createElement('input') ;
-		inputDescription.setAttribute("type", "texte")
-		inputDescription.setAttribute("id", "chapterDescription"+nbChapter)
-		inputDescription.setAttribute("name", "chapterDescription"+nbChapter);
-		div.appendChild(inputDescription)
+    // Description + strong2, secondbox class
+    let description = document.createElement('strong');
+    description.innerHTML = ' Description : ';
+    description.classList.add('strong2');
+    div.appendChild(description);
 
+    let inputDescription = document.createElement('textarea');
+    inputDescription.setAttribute("name", "chapterDescription" + nbChapter);
+    inputDescription.classList.add('secondbox');
+    div.appendChild(inputDescription);
 
-		let btnChapter = document.getElementById('btn-chapter');
-		let fieldChapters = document.getElementById('fieldChapters');
-		fieldChapters.insertBefore(div, btnChapter);
+    let btnChapter = document.getElementById('btn-chapter');
+    let parentDiv = btnChapter.parentNode;
+    parentDiv.insertBefore(div, btnChapter);
 
-		document.getElementById('nbChapter').value= nbChapter;
-	}
+    document.getElementById('nbChapter').value = nbChapter;
+}
+
 </script>
 
-<form method="post">
+<form class="sessions" method="post">
 	<input type="hidden" value="1" name="nbChapter" id="nbChapter">
 	<fieldset>
 		<legend> Information </legend>
-		<strong> Titre : </strong>
-		<input type="text" id="titleSession" name="titleSession" required>
-		<strong> Description : </strong>
-		<input type="text" id="descriptionSession" name="descriptionSession">
+		<strong class="strong1"> Titre : </strong>
+		<input type="text" id="titleSession" class="firstbox" name="titleSession" required>
+		<strong class="strong2"> Description : </strong>
+		<textarea id="descriptionSession" class="secondbox" name="descriptionSession"></textarea>
 	</fieldset>
 	<fieldset>
 		<legend> Participants </legend>
@@ -73,33 +81,34 @@
 		}
 		?>
 
-		<select name="classes" id="classes">
-			<?php
-				for ($i = 0; $i< count($tabClass); $i++){
-				?>
-			        <option value="<?php echo $tabClass[$i]["id"]; ?>"><?php echo $tabClass[$i]["name"]; ?></option>
+		<div class="custom-select">
+			<span class="ri ri-arrow-down-wide-line"></span>
+			<select name="classes" id="classes">
 				<?php
+				for ($i = 0; $i < count($tabClass); $i++) {
+					?>
+					<option value="<?php echo $tabClass[$i]["id"]; ?>"><?php echo $tabClass[$i]["name"]; ?></option>
+					<?php
 				}
-			?>
-		</select>
-
-	</fieldset>
-	<fieldset id="fieldChapters">
-		<legend> Chapitres </legend>
-
-		<div>
-			<strong> Titre : </strong>
-			<input type="text" id="titleChapter1" name="titleChapter1" >
-			<strong> Description : </strong>
-			<input type="text" id="chapterDescription1" name="chapterDescription1">
+				?>
+			</select>
 		</div>
-		<button id="btn-chapter" onclick="addChapter()">+ Chapitre</button>
-	</fieldset>
 
+	</fieldset>
+	<fieldset>
+   		<legend>Chapitres</legend>
+   			<div class="buttonC">
+			<strong class="strong1">Titre :</strong>
+  			<input type="text" id="titleChapter1" class="firstbox" name="titleChapter1">
+   			<strong class="strong2">Description :</strong>
+   			<textarea id="chapterDescription1" class="secondbox" name="chapterDescription1"></textarea>
+    		</div>
+			<button type="button" id="btn-chapter" class="button chapterButton" onclick="addChapter()">+ Chapitre</button>
+	</fieldset>
 	<fieldset>
 		<legend> Date </legend>
 		<strong> Date : </strong>
-		<input type="datetime-local" id="date" name="date" required>
+		<input type="datetime-local" id="date" name="date"  required>
 	</fieldset>
-	<input type="submit" name="saveSession" value="Enregistrer">
+	<input type="submit" name="saveSession" class="button" value="Enregistrer">
 </form>

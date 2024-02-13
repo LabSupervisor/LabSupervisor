@@ -65,6 +65,7 @@
 	if (file_exists($file)) {
 		$logs = file_get_contents($file);
 ?>
+
 <div class="table-container2">
 	<table>
 		<thead>
@@ -123,6 +124,7 @@
 
 	<div class="button-container2">
 		<div class="left-buttons2">
+
 		<a href="/log?trace">
 			<button><i class="ri-draft-line"></i> Trace</button>
 		</a>
@@ -138,8 +140,9 @@
 			</form>
 		</div>
 	</div>
+</div>
 
-		<?php
+	<?php
 	} else {
 		echo "Fichier introuvable"; ?>
 

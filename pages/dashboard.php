@@ -42,8 +42,9 @@ function displayUsers($users) {
 
         $userCell .= '<div class="status-balls-container">';
         $userCell .= createStatusBalls($user['etat'], $user['taches'], $user['Nom_Utilisateur'], $user['Prenom_Utilisateur']);
-        $userCell .= '</div>'; // Closing "status-balls-container"
+
         $userCell .= '</div>'; // Closing "name-and-balls-container"
+        $userCell .= '</div>'; // Closing "user-icon"
 
         // Use of the tooltip
         $tooltip = '<div class="tooltip">';
@@ -70,6 +71,7 @@ function displayUsers($users) {
     $inviteCell .= '<div class="user-icon2"><i class="ri-user-add-line"></i></div>';
     $inviteCell .= '<div class="name-and-balls-container">';
     $inviteCell .= '<p>Inviter nouveaux utilisateurs</p>';
+
     $inviteCell .= '</div>';
     $inviteCell .= '</div>';
 
