@@ -1,3 +1,5 @@
+CREATE DATABASE labsupervisor;
+
 use labsupervisor;
 
 DROP TABLE IF EXISTS `chapter`;
