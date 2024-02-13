@@ -2,20 +2,25 @@
 .table-container {
     display: flex;
 	flex-direction: column;
-    justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 20px;
-	margin-top: 370px;
+	margin-top: 30px;
+    margin-bottom: 50px;
+	max-height: 500px;
+	overflow-y: auto;
 }
+
 .table-container2 {
     display: flex;
 	flex-direction: column;
-    justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 20px;
-	margin-top: 160px;
+	margin-top: 30px;
+    margin-bottom: 50px;
+	max-height: 500px;
+	overflow-y: auto;
 }
 
 table {
@@ -25,10 +30,22 @@ table {
     overflow: hidden;
 	color: var(--text-color);
 }
+tbody{
+    position: relative;
+    bottom: -38px;
+}
 
 thead {
-    background-color: #6f6f6f69;
+    backdrop-filter: blur(100px);
+    background-color: #555555ad;
+    position: absolute;
+    width: 1100px;
+    border-collapse: collapse;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    z-index: 10;
 }
+
 
 th, td {
     border: 10px;
@@ -45,22 +62,69 @@ tbody tr:nth-child(odd) {
 
 /* Sperate collumn to easy apparence modification */
 th.col1, td.col1 {
-    min-width: 10px;
+    width: 10%;
 }
 
 th.col2, td.col2 {
-    min-width: 20px;
+    width: 25%;
 }
 
 th.col3, td.col3 {
-    min-width: 20px;
-    max-width: 150px;
+    width: 30%;
+    width: 150px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 th.col4, td.col4 {
-    min-width: 100px;
+    width: 55%;
+}
+
+/* Sperate collumn to easy apparence modification */
+th.col-1, td.col-1 {
+    width: 10%;
+}
+
+th.col-2, td.col-2 {
+    width: 8%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+th.col-3, td.col-3 {
+    width: 26%;
+}
+/* Messages collumn with tooltip */
+.col-2 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100px;
+}
+
+.col-2-container {
+    width: 6%;
+}
+
+.col-2-tooltip {
+    display: none;
+	position: absolute;
+	text-align: center;
+    border: 10px solid #cccccc00;
+    max-width: 300px;
+    z-index: 1;
+    width: 340px;
+    padding: 15px;
+    background-color: rgb(48 48 48 / 69%);
+    backdrop-filter: blur(6px);
+    border-radius: 25px;
+    margin-top: 25px;
+    word-wrap: break-word;
+	padding: 5px;
+}
+
+.col-2-container:hover .col-2-tooltip {
+    display: block;
 }
 
 /* Messages collumn with tooltip */
@@ -74,6 +138,7 @@ th.col4, td.col4 {
 .col3-container {
     position: relative;
 }
+
 
 .col3-tooltip {
     display: none;
@@ -99,12 +164,12 @@ th.col4, td.col4 {
 /* Control button and date selection */
 .button-container {
     display: flex;
-    align-items: center;
+    justify-content: center;
     background-color: rgba(48, 48, 48, 0.479);
     padding: 15px;
-    justify-content: space-between;
-    margin-top: 10px;
     border-radius: 25px;
+    max-width: 250px; /* Establece un ancho máximo */
+    margin: 10px auto; /* Centra horizontalmente y añade margen superior e inferior */
 }
 
 .button-container a {
@@ -235,4 +300,57 @@ form input[type="submit"]:hover {
 .tooltip:hover .tooltiptext {
 	visibility: visible;
 	opacity: 1;
+}
+
+/* Second page buttons */
+.button-container2 {
+    display: flex;
+    align-items: center;
+    background-color: rgba(48, 48, 48, 0.479);
+    padding: 15px;
+    border-radius: 25px;
+    overflow: hidden;
+    width: fit-content;
+    margin: auto;
+}
+
+.button-container2 a {
+    text-decoration: none;
+}
+
+.button-container2 button {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 5px;
+	background-color: var(--background-hover-color);
+	border-radius: 25px;
+	border-color: var(--border-color);
+	border-width: 1px;
+	border-style: solid;
+	height: 40px;
+	font-size: 16px;
+	padding-left: 20px;
+	padding-right: 20px;
+	transition: 200ms;
+}
+
+.button-container2 button i {
+    margin-right: 5px;
+    font-size: 20px;
+}
+
+.button-container2 button:hover {
+	background-color: var(--border-color);
+	transition: 200ms;
+	cursor: pointer;
+}
+
+.left-buttons2 {
+    display: flex;
+    margin-right: 20px;
+}
+
+.right-buttons2 {
+    display: flex;
 }

@@ -20,10 +20,10 @@
 	<table>
 		<thead>
 			<tr>
-				<td>ID</td>
-				<td>Utilisateur</td>
-				<td>Message</td>
-				<td>Date</td>
+				<th class="col1">ID</th>
+				<th class="col2">Utilisateur</th>
+				<th class="col3">Message</th>
+				<th class="col4">Date</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -32,7 +32,7 @@
 
 			foreach ($logs as $line) {
 				echo "<tr>";
-				echo '<th class="col1">' . $line["id"] . '</th>';
+				echo '<td class="col1">' . $line["id"] . '</td>';
 				echo '<td class="col2">' . getName($line["iduser"]) . '</td>';
 				echo '<td class="col3-container">';
 				echo '<div class="col3-tooltip">' . htmlspecialchars($line["message"]) . '</div>';
@@ -44,15 +44,14 @@
 			?>
 		</tbody>
 	</table>
-
-	<div class="button-container">
-		<a href="/log?trace">
-			<button><i class="ri-draft-line"></i> Trace</button>
-		</a>
-		<a href="/log?error">
-			<button><i class="ri-error-warning-line"></i> Erreur</button>
-		</a>
-	</div>
+</div>
+<div class="button-container">
+	<a href="/log?trace">
+		<button><i class="ri-draft-line"></i> Trace</button>
+	</a>
+	<a href="/log?error">
+		<button><i class="ri-error-warning-line"></i> Erreur</button>
+	</a>
 </div>
 <?php
 } else if (isset($_GET["error"])) {
@@ -71,12 +70,13 @@
 	<table>
 		<thead>
 			<tr>
-				<th>Erreur</th>
-				<th>Message</th>
-				<th>Heure</th>
+				<th class="col-1">Erreur</th>
+				<th class="col-2">Message</th>
+				<th class="col-3">Heure</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody-wrapper>
+			<tbody>
 			<?php
 				$listDate = array();
 				$temp = explode("\n", $logs);
@@ -106,28 +106,33 @@
 
 					if (strlen($error) > 1) {
 						echo "<tr>";
-						echo "<td class='col1'>" . $error . "</td>";
-						echo "<td class='col3-container'>";
-						echo "<div class='col3-tooltip'>" . htmlspecialchars(str_replace("##", "#", $message)) . "</div>";
-						echo "<div class='col3'>" . str_replace("##", "#", $message) . "</div>";
+						echo "<td class='col-1'>" . $error . "</td>";
+						echo "<td class='col-2-container'>";
+						echo '<div class="col-2-tooltip">' . htmlspecialchars(str_replace("##", "#", $message)) . '</div>';
+						echo '<div class="col-2">' . str_replace("##", "#", $message) . '</div>';
 						echo "</td>";
-						echo "<td class='col2'>" . $listDate[$i] . "</td>";
+						echo "<td class='col-3'>" . $listDate[$i] . "</td>";
 						echo "</tr>";
 					}
 					$i++;
 				}
 			?>
-		</tbody>
+			</tbody>
+		</tbody-wrapper>
 	</table>
+</div>
 
-	<div class="button-container">
+	<div class="button-container2">
+		<div class="left-buttons2">
+
 		<a href="/log?trace">
 			<button><i class="ri-draft-line"></i> Trace</button>
 		</a>
 		<a href="/log?error">
 			<button><i class="ri-error-warning-line"></i> Erreur</button>
 		</a>
-		<div class="right-buttons">
+		</div>
+		<div class="right-buttons2">
 			<form method="get">
 				<input type="hidden" name="error">
 				<input type="date" name="date">
@@ -141,20 +146,22 @@
 	} else {
 		echo "Fichier introuvable"; ?>
 
-	<div class="button-container">
-	<a href="/log?trace">
+	<div class="button-container2">
+		<div class="left-buttons2">
+		<a href="/log?trace">
 			<button><i class="ri-draft-line"></i> Trace</button>
 		</a>
 		<a href="/log?error">
 			<button><i class="ri-error-warning-line"></i> Erreur</button>
 		</a>
-		<div class="right-buttons">
+		</div>
+		<div class="right-buttons2">
 			<form method="get">
 				<input type="hidden" name="error">
 				<input type="date" name="date">
 				<input type="submit" value="Envoyer">
 			</form>
-		</div>
+	    </div>
 	</div>
 <?php
 	}
