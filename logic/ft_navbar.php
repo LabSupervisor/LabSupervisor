@@ -61,7 +61,7 @@
 			// Profil part if connected
 		?>
 			<?php
-				$username = getName(getUserId($_SESSION["login"]));
+				$username = getName(UserRepository::getId($_SESSION["login"]));
 			?>
 			<li><a class="title case profil" href="#"><i class="ri-user-line"></i> <?=$username?></a>
 				<ul class="sub">
@@ -92,7 +92,7 @@
 				else
 					$theme = "dark";
 				?>
-				background-image: url("/public/img/background/<?=$theme?>/<?=getBackground($_SESSION["login"])?>");
+				background-image: url("/public/img/background/<?=$theme?>/default.png");
 			<?php
 			} else { ?>
 				background-image: url("/public/img/background/light/default.png");

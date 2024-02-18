@@ -1,7 +1,7 @@
 <?php
 	function mainHeader($title) {
 		// Import main functions
-		require($_SERVER["DOCUMENT_ROOT"] . "/config/import.php");
+		require($_SERVER["DOCUMENT_ROOT"] . "/config/config.php");
 
 		// Page title
 		if ($title != "")

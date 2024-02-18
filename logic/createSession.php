@@ -10,7 +10,7 @@
 		$date = $_POST['date'];
 
 		try {
-			$userId = getUserId($_SESSION["login"]);
+			$userId = UserRepository::getId($_SESSION["login"]);
 
 			// Insert session request
 			$query = "INSERT INTO session (title, description, idcreator, date) VALUES (:title, :description, :idcreator, :date)";
@@ -25,12 +25,12 @@
 
 			// Request execute
 			if ($queryPrep->execute()) {
-				Logs::dbSave("Adding session " . $titleSession);
+				LogRepository::dbSave("Adding session " . $titleSession);
 			} else {
 				throw new Exception("Create session failed.");
 			}
 		} catch (Exception $e) {
-			Logs::fileSave($e);
+			LogRepository::fileSave($e);
 		}
 
 		try {
@@ -64,14 +64,14 @@
 
 				// Request execute
 				if ($queryPrepBis->execute()) {
-					Logs::dbSave("Adding chapter " . $titleChapter);
+					LogRepository::dbSave("Adding chapter " . $titleChapter);
 				} else {
 					throw new Exception("Create chapter failed.");
 				}
 			}
 
 		} catch (Exception $e) {
-			Logs::fileSave($e);
+			LogRepository::fileSave($e);
 		}
 
 		// Add classroom student to session
@@ -92,13 +92,13 @@
 				$queryParticipantPrep->bindParam(':iduser', $idStudent, \PDO::PARAM_STR);
 				$queryParticipantPrep->bindParam(':idsession', $idSession, \PDO::PARAM_STR);
 				if ($queryParticipantPrep->execute()) {
-					Logs::dbSave("Adding participant " . getName($idStudent) . " to " . $idSession);
+					LogRepository::dbSave("Adding participant " . getName($idStudent) . " to " . $idSession);
 				} else {
 					throw new Exception("Add participant failed.");
 				}
 			}
 		} catch (Exception $e) {
-			Logs::fileSave($e);
+			LogRepository::fileSave($e);
 		}
 
 		header("Location: /session");

@@ -3,7 +3,7 @@
 	if (isset($_POST["status"])) {
 		$idChapter = $_POST['chapter'];
 		$status = $_POST['status'];
-		$userId = getUserId($_SESSION["login"]);
+		$userId = UserRepository::getId($_SESSION["login"]);
 		$session = $_SESSION["session"];
 
 		// Update state query
@@ -18,11 +18,11 @@
 			$queryPrep->bindParam(':idSession', $session);
 
 			if ($queryPrep->execute())
-				Logs::dbSave("Update status to " . $status . " from session " . $session);
+				LogRepository::dbSave("Update status to " . $status . " from session " . $session);
 			else
 				throw new Exception("Status " . $status . " from session " . $session . " update error");
 		} catch (Exception $e) {
-			Logs::fileSave($e);
+			LogRepository::fileSave($e);
 		}
 	}
 ?>

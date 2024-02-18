@@ -1,6 +1,6 @@
 <?php
 	function getBackground($email) {
-		$userId = getUserId($email);
+		$userId = UserRepository::getId($email);
 
 		$db = dbConnect();
 

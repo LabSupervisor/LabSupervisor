@@ -103,6 +103,7 @@ CREATE TABLE `user` (
   `name` varchar(50) NOT NULL,
   `surname` varchar(50) NOT NULL,
   `birthdate` date NOT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT 1,
   `creationdate` datetime NOT NULL DEFAULT current_timestamp(),
   `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)

@@ -1,6 +1,6 @@
 <?php
 	function getTheme($email) {
-		$userId = getUserId($email);
+		$userId = UserRepository::getId($email);
 
 		$db = dbConnect();
 

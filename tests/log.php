@@ -8,9 +8,9 @@
 	} catch (Exception $e) {
 		echo "Logging...";
 		echo "<br>Log in file...";
-		Logs::fileSave($e);
+		LogRepository::fileSave($e);
 		echo "<br>Log in DB...";
-		Logs::dbSave("Message");
+		LogRepository::dbSave("Message");
 		echo "<br>Log!";
 	}
 ?>

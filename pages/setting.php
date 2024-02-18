@@ -33,20 +33,6 @@
 		</tr>
 		<tr>
 			<td>
-				Fond d'écran
-			</td>
-			<td>
-				<select name="background">
-					<?php
-						foreach ($background as $key => $value) {
-							echo "<option>" . $value . "</option>";
-						}
-					?>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<td>
 				<input type=submit name="changeSetting" value="Enregistrer"></input>
 			</td>
 		</tr>

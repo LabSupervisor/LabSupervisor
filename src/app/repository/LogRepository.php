@@ -1,5 +1,5 @@
 <?php
-	class Logs extends Exception{
+	class LogRepository extends Exception{
 		public static function dbSave($message) {
 			try {
 				$db = dbConnect();
@@ -8,7 +8,7 @@
 				$query = "INSERT INTO log (iduser, message) VALUES (:iduser, :message)";
 
 				// Get user ID
-				$userId = getUserId($_SESSION["login"]);
+				$userId = UserRepository::getId($_SESSION["login"]);
 
 				// Insert log
 				$queryPrep = $db->prepare($query);
@@ -18,7 +18,7 @@
 				if (!$queryPrep->execute())
 					throw new Exception("DB Log save error ");
 			} catch (Exception $e) {
-				Logs::fileSave($e);
+				LogRepository::fileSave($e);
 			}
 		}
 

@@ -22,6 +22,8 @@
 	<input type="text" name="new_name" value="<?php echo $user[0]['name']; ?>"><br>
 	<label for="new_surname">Nouveau prénom:</label>
 	<input type="text" name="new_surname" value="<?php echo $user[0]['surname']; ?>"><br>
+	<label for="birthdate">Nouvelle date de naissance:</label>
+	<input type="date" name="new_birthDate" value="<?php echo $user[0]['birthdate']; ?>" class="Birthdate"><br>
 	<label for="new_password">Nouveau mot de passe:</label>
 	<input type="password" name="new_password"><br>
 	<label for="new_password">Veuillez confirmer:</label>

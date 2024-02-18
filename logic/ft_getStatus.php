@@ -2,7 +2,7 @@
 	function getStatus($chapter) {
 		$db = dbConnect();
 
-		$userId = getUserId($_SESSION["login"]);
+		$userId = UserRepository::getId($_SESSION["login"]);
 
 		// Get status query
 		$sqlstate = "SELECT state FROM status WHERE idchapter = :idChapter AND iduser = :idUser";

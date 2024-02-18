@@ -5,7 +5,7 @@
 		// Get user session query
 		$querySession = "SELECT idsession FROM participant WHERE iduser = :iduser";
 
-		$userId = getUserId($_SESSION["login"]);
+		$userId = UserRepository::getId($_SESSION["login"]);
 
 		// Get user session
 		$queryPrepSession = $db->prepare($querySession);

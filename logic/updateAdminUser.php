@@ -1,23 +1,18 @@
 <?php
-	if (isset($_POST["userId"])) {
-		$db = dbConnect();
+if (isset($_POST["userId"])) {
+	$userRepo = new UserRepository();
 
-		$query = "UPDATE user SET name = :name, surname = :surname WHERE id = :iduser";
+	$email = UserRepository::getEmail($_POST["userId"]);
 
-		try {
-			$queryPrep = $db->prepare($query);
-			$queryPrep->bindParam(':iduser', $_POST["userId"]);
-			$queryPrep->bindParam(':name', $_POST["name"]);
-			$queryPrep->bindParam(':surname', $_POST["surname"]);
+	$userData = array(
+		"email" => $email,
+		"name" => $_POST["name"],
+		"surname" => $_POST["surname"],
+		"birthDate" => $_POST["birthdate"]
+	);
 
-			if ($queryPrep->execute())
-				Logs::dbSave("Update user " . $_POST["userId"] . " (" . $_POST["name"] . " " . $_POST["surname"] . ")");
-			else
-				throw new Exception("User update error");
-		} catch (Exception $e) {
-			Logs::fileSave($e);
-		}
+	$user = new User($userData);
+	$userRepo->update($user);
 
-		header("Refresh:0");
-	}
-?>
+	header("Refresh:0");
+}
