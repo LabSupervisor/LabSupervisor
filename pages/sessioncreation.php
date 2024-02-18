@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="../public/css/sessioncreation.css">
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader("Création de session")
@@ -12,6 +11,8 @@
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php');
 ?>
+
+<link rel="stylesheet" href="../public/css/sessioncreation.css">
 
 <script>
 	var nbChapter = 1;

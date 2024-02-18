@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="../public/css/login.css">
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader("Connexion");
@@ -12,6 +11,8 @@
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . '/logic/login.php');
 ?>
+
+<link rel="stylesheet" href="../public/css/login.css">
 
 <div class="LoginDiv">
     <form action="login" method="post">

@@ -61,7 +61,8 @@
 			// Profil part if connected
 		?>
 			<?php
-				$username = getName(UserRepository::getId($_SESSION["login"]));
+				$userInfo = UserRepository::getInfo($_SESSION["login"]);
+				$username = $userInfo["name"] . " " . $userInfo["surname"];
 			?>
 			<li><a class="title case profil" href="#"><i class="ri-user-line"></i> <?=$username?></a>
 				<ul class="sub">
@@ -87,7 +88,9 @@
 			<?php
 			// Check if user is connected
 			if (isset($_SESSION["login"])) {
-				if (getTheme($_SESSION["login"]) == "0")
+				$userSetting = UserRepository::getSetting($_SESSION["login"]);
+
+				if ($userSetting["theme"] == "0")
 					$theme = "light";
 				else
 					$theme = "dark";

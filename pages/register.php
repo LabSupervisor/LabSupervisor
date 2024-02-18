@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
-<link rel="stylesheet" href="../public/css/register.css">
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader("Création de compte");
@@ -13,6 +11,8 @@
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . '/logic/register.php');
 ?>
+
+<link rel="stylesheet" href="../public/css/register.css">
 
 <div class="RegisterDiv">
 	<form action="register" method="post">

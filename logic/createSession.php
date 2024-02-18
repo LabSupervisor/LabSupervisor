@@ -92,7 +92,7 @@
 				$queryParticipantPrep->bindParam(':iduser', $idStudent, \PDO::PARAM_STR);
 				$queryParticipantPrep->bindParam(':idsession', $idSession, \PDO::PARAM_STR);
 				if ($queryParticipantPrep->execute()) {
-					LogRepository::dbSave("Adding participant " . getName($idStudent) . " to " . $idSession);
+					LogRepository::dbSave("Adding participant " . $idStudent . " to " . $idSession);
 				} else {
 					throw new Exception("Add participant failed.");
 				}

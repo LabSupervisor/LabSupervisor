@@ -40,9 +40,6 @@ require($_SERVER['DOCUMENT_ROOT'] . "/logic/ft_getUserRole.php");
 // Import permission checker
 require($_SERVER['DOCUMENT_ROOT'] . "/logic/ft_permissionChecker.php");
 
-// Import user name
-require($_SERVER['DOCUMENT_ROOT'] . "/logic/ft_getName.php");
-
 // Import background
 require($_SERVER['DOCUMENT_ROOT'] . "/logic/ft_getBackground.php");
 

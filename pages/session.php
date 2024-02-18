@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader("Sessions");
@@ -8,13 +7,14 @@
 	permissionChecker(true, true, true, true);
 ?>
 
-<link rel="stylesheet" href="../public/css/session.css">
 
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_getSession.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_getSessionInfo.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/joinSession.php");
 ?>
+
+<link rel="stylesheet" href="../public/css/session.css">
 
 <?php
 	$session = getSession();
@@ -41,12 +41,15 @@
 				for($i = 0; $i < count($sessionList); $i++) {
 					echo "<tr>";
 					foreach($sessionList[$i] as $line) {
+						$userInfo = UserRepository::getInfo(UserRepository::getEmail($line["idcreator"]));
+						$creatorName = $userInfo["name"] . " " . $userInfo["surname"];
+
 						echo '<td class="col1">'. $line["title"] ."</td>";
 						echo '<td class="col2-container">';
 						echo '<div class="col2-tooltip">' . htmlspecialchars($line["description"]) . '</div>';
 						echo '<div class="col2">'. $line["description"] ."</div>";
 						echo '</td>';
-						echo '<td class="col3">'. getName($line["idcreator"]) ."</td>";
+						echo '<td class="col3">'. $creatorName ."</td>";
 						echo '<td class="col4">'. $line["date"] ."</td>";
 						echo "<td>";
 

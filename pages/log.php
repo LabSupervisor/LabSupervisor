@@ -7,11 +7,11 @@
 	permissionChecker(true, false, false, true);
 ?>
 
-<link rel="stylesheet" href="../public/css/log.css">
-
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_getDBLog.php");
 ?>
+
+<link rel="stylesheet" href="../public/css/log.css">
 
 <?php
 	if (isset($_GET["trace"])) {
@@ -31,9 +31,12 @@
 			$logs = getDBLog();
 
 			foreach ($logs as $line) {
+				$userInfo = UserRepository::getInfo(UserRepository::getEmail($line["iduser"]));
+				$username = $userInfo["name"] . " " . $userInfo["surname"];
+
 				echo "<tr>";
 				echo '<td class="col1">' . $line["id"] . '</td>';
-				echo '<td class="col2">' . getName($line["iduser"]) . '</td>';
+				echo '<td class="col2">' . $username . '</td>';
 				echo '<td class="col3-container">';
 				echo '<div class="col3-tooltip">' . htmlspecialchars($line["message"]) . '</div>';
 				echo '<div class="col3">' . $line["message"] . '</div>';

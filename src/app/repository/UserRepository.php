@@ -73,7 +73,7 @@ class UserRepository {
 		if ($bindParam["password"])
 			$password = password_hash($bindParam["password"], PASSWORD_BCRYPT);
 		else
-			$password = UserRepository::getPassword($bindParam["email"]);
+			$password = UserRepository::getInfo($bindParam["email"])["password"];
 
 		// Update user query
 		$query = "UPDATE user SET password = :password, name = :name, surname = :surname, birthdate = :birthdate, updatedate = current_timestamp() WHERE email = :email";
@@ -112,7 +112,7 @@ class UserRepository {
 		}
 
 		$passwordHash = $queryPrep->fetch(PDO::FETCH_ASSOC);
-		return password_verify($password, $passwordHash["password"]);
+		return password_verify($password, $passwordHash["password"]) ?? NULL;
 	}
 
 	public static function delete($email) {
@@ -174,11 +174,11 @@ class UserRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
 	}
 
-	public static function getPassword($email) {
+	public static function getInfo($email) {
 		$db = dbConnect();
 
 		// Get user ID query
-		$query = "SELECT password FROM user WHERE email = :email";
+		$query = "SELECT * FROM user WHERE email = :email";
 
 		// Get user ID
 		try {
@@ -190,7 +190,28 @@ class UserRepository {
 			LogRepository::fileSave($e);
 		}
 
-		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
+		return $queryPrep->fetchAll(PDO::FETCH_ASSOC)[0] ?? NULL;
+	}
+
+	public static function getSetting($email) {
+		$db = dbConnect();
+
+		$userId = UserRepository::getId($email);
+
+		// Get user ID query
+		$query = "SELECT * FROM setting WHERE iduser = :iduser";
+
+		// Get user ID
+		try {
+			$queryPrep = $db->prepare($query);
+			$queryPrep->bindParam(':iduser', $userId);
+			if (!$queryPrep->execute())
+				throw new Exception("Get user setting " . $email . " error");
+		} catch (Exception $e) {
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_ASSOC)[0] ?? NULL;
 	}
 
 	public static function isActive($email) {
@@ -209,7 +230,7 @@ class UserRepository {
 			LogRepository::fileSave($e);
 		}
 
-		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0];
+		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
 	}
 
 	public static function updateSetting($setting) {
