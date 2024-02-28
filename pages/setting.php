@@ -1,9 +1,7 @@
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader("Options");
-?>
 
-<?php
 	permissionChecker(true, true, true, true);
 ?>
 

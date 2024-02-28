@@ -1,5 +1,4 @@
 <?php
-	session_start();
-	unset($_SESSION["login"]);
-	header("Location: /");
-?>
+session_start();
+unset($_SESSION["login"]);
+header("Location: /");

@@ -96,23 +96,9 @@ class UserRepository {
 	}
 
 	public static function verifyPassword($email, $password) {
-		$db = dbConnect();
+		$passwordHash = UserRepository::getInfo($email)["password"];
 
-		// Verify password query
-		$query = "SELECT password FROM user WHERE email = :email";
-
-		// Verify password
-		try {
-			$queryPrep = $db->prepare($query);
-			$queryPrep->bindparam(":email", $email);
-			if (!$queryPrep->execute())
-				throw new Exception("Verify password " . $email . " error");
-		} catch (Exception $e) {
-			LogRepository::fileSave($e);
-		}
-
-		$passwordHash = $queryPrep->fetch(PDO::FETCH_ASSOC);
-		return password_verify($password, $passwordHash["password"]) ?? NULL;
+		return password_verify($password, $passwordHash) ?? NULL;
 	}
 
 	public static function delete($email) {
@@ -178,14 +164,14 @@ class UserRepository {
 		$db = dbConnect();
 
 		// Get user ID query
-		$query = "SELECT * FROM user WHERE email = :email";
+		$query = "SELECT us.*, rl.student, rl.teacher, rl.admin FROM user us, role rl WHERE us.email = :email and us.id = rl.iduser";
 
 		// Get user ID
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':email', $email);
 			if (!$queryPrep->execute())
-				throw new Exception("Get user password " . $email . " error");
+				throw new Exception("Get user datas " . $email . " error");
 		} catch (Exception $e) {
 			LogRepository::fileSave($e);
 		}
@@ -212,6 +198,24 @@ class UserRepository {
 		}
 
 		return $queryPrep->fetchAll(PDO::FETCH_ASSOC)[0] ?? NULL;
+	}
+
+	public static function getUsers() {
+		$db = dbConnect();
+
+		// Get users query
+		$query = "SELECT us.id, us.surname, us.name, us.email, us.birthdate, rl.student, rl.teacher, rl.admin, cl.name AS 'classroom', us.active FROM user us INNER JOIN role rl ON us.id = rl.iduser LEFT JOIN userclassroom ucl ON us.id = ucl.iduser LEFT JOIN classroom cl ON cl.id = ucl.idclassroom ORDER BY id";
+
+		// Get users
+		try {
+			$queryPrep = $db->prepare($query);
+			if (!$queryPrep->execute())
+				throw new Exception("Get users error");
+		} catch (Exception $e) {
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
 	}
 
 	public static function isActive($email) {

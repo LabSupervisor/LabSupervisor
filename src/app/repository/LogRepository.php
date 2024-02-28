@@ -41,4 +41,22 @@ class LogRepository extends Exception{
 		fwrite($file, "\n" . $message . "\n");
 		fclose($file);
 	}
+
+	public static function getLogs() {
+		$db = dbConnect();
+
+		// Get users query
+		$query = "SELECT * FROM log";
+
+		// Get users
+		try {
+			$queryPrep = $db->prepare($query);
+			if (!$queryPrep->execute())
+				throw new Exception("Get logs error");
+		} catch (Exception $e) {
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
+	}
 }

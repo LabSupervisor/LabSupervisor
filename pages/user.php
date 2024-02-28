@@ -1,11 +1,9 @@
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader("Administration utilisateur");
-?>
 
-<?php
+	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_roleFormat.php");
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_getUsers.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateAdminUser.php");
 ?>
 
@@ -85,8 +83,9 @@
 		</thead>
 		<tbody>
 			<?php
-				foreach (getUsers() as $user) {
-					$userId = $user['id'];
+				foreach (UserRepository::getUsers() as $user) {
+					if (UserRepository::isActive($user["email"])) {
+						$userId = $user['id'];
 			?>
 				<tr>
 					<td id="surname_<?=$userId?>"><?=$user['surname']?></td>
@@ -101,6 +100,7 @@
 					<td><button disabled>Supprimer</button></td>
 				</tr>
 			<?php
+					}
 				}
 			?>
 		</tbody>

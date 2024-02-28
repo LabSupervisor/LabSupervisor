@@ -1,27 +1,21 @@
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader("Sessions");
-?>
 
-<?php
 	permissionChecker(true, true, true, true);
-?>
 
-
-<?php
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_getSession.php");
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_getSessionInfo.php");
+	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/joinSession.php");
 ?>
 
 <link rel="stylesheet" href="../public/css/session.css">
 
 <?php
-	$session = getSession();
+	$session = SessionRepository::getUserSessions($_SESSION["login"]);
 	$sessionList = array();
 
 	foreach($session as $value => $key) {
-		array_push($sessionList, getSessionInfo($key["idsession"]));
+		array_push($sessionList, SessionRepository::getInfo($key["idsession"]));
 	}
 ?>
 

@@ -16,12 +16,6 @@ $userData = array(
 $user = new User($userData);
 $userRepo->createUser($user);
 
-echo "<br>" . $user->__get("email");
-echo "<br>" . $user->__get("name");
-echo "<br>" . $user->__get("surname");
-echo "<br>" . $user->__get("password");
-echo "<br>" . $user->__get("birthDate");
-
 echo "<br>" . $userRepo->getId($_SESSION["login"]);
 echo "<br>" . UserRepository::getId($_SESSION["login"]);
 echo "<br>" . UserRepository::isActive($_SESSION["login"]);

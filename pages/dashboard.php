@@ -1,14 +1,8 @@
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader("Options");
-?>
 
-<?php
 	permissionChecker(true, false, true, false);
-?>
-
-<?php
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_getParticipant.php");
 ?>
 
 <link rel="stylesheet" href="../public/css/dashboard.css">
@@ -16,7 +10,7 @@
 <div id="preview-container">
 
 <?php
-	$users = getParticipant($_SESSION["session"]);
+	$users = SessionRepository::getParticipant($_SESSION["session"]);
 
 	// Display users in the div <preview-container>
 	displayUsers($users);

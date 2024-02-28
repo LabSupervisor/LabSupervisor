@@ -1,12 +1,11 @@
 <?php
-	if (isset($_POST["connect"])) {
-		$role = getUserRole($_SESSION["login"]);
+if (isset($_POST["connect"])) {
+	$role = UserRepository::getInfo($_SESSION["login"]);
 
-		$_SESSION["session"] = array_search("Rejoindre", $_POST['connect']);
+	$_SESSION["session"] = array_search("Rejoindre", $_POST['connect']);
 
-		if ($role[0]["teacher"])
-			header("Location: /dashboard");
-		else
-			header("Location: /panel");
-	}
-?>
+	if ($role["teacher"])
+		header("Location: /dashboard");
+	else
+		header("Location: /panel");
+}

@@ -1,15 +1,11 @@
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader("Session en cours");
-?>
 
-<?php
 	permissionChecker(true, true, false, false);
 ?>
 
 <?php
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_getChapter.php");
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_getStatus.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateStatus.php");
 ?>
 
@@ -32,11 +28,11 @@
 		</thead>
 		<tbody>
 
-			<?php //TODO get current session
-			foreach (getChapter($_SESSION["session"]) as $chapter) { ?>
+			<?php
+				foreach (SessionRepository::getChapter($_SESSION["session"]) as $chapter) { ?>
 				<tr>
 					<td>
-						<?php echo $chapter['title']; ?>
+						<?php echo $chapter["title"]; ?>
 					</td>
 					<td>
 						<input type="hidden" name="liste" value="<?php echo $chapter['id']; ?>">
@@ -46,12 +42,12 @@
 					</td>
 					<td>
 						<?php
-							echo getStatus($chapter['id']);
+							echo SessionRepository::getStatus($chapter['id'], UserRepository::getId($_SESSION["login"]));
 						?>
 					</td>
 				</tr>
 			<?php
-			}
+				}
 			?>
 
 		</tbody>

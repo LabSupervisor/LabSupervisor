@@ -34,14 +34,5 @@ if (isset($_SESSION["login"])) {
 	}
 }
 
-// Import user role
-require($_SERVER['DOCUMENT_ROOT'] . "/logic/ft_getUserRole.php");
-
 // Import permission checker
 require($_SERVER['DOCUMENT_ROOT'] . "/logic/ft_permissionChecker.php");
-
-// Import background
-require($_SERVER['DOCUMENT_ROOT'] . "/logic/ft_getBackground.php");
-
-// Import theme
-require($_SERVER['DOCUMENT_ROOT'] . "/logic/ft_getTheme.php");

@@ -1,10 +1,6 @@
 <?php
-class User {
-	protected $email;
+class Classroom	{
 	protected $name;
-	protected $surname;
-	protected $password;
-	protected $birthDate;
 
 	public function __construct(array $data = NULL) {
 		$this->hydrate($data);
@@ -41,23 +37,8 @@ class User {
 		return $this->$attribut;
 	}
 
-	protected function setEmail($email) {
-		$this->email = $email;
-	}
-
 	protected function setName($name) {
 		$this->name = $name;
 	}
-
-	protected function setSurname($surname) {
-		$this->surname = $surname;
-	}
-
-	protected function setPassword($password) {
-		$this->password = $password;
-	}
-
-	protected function setBirthDate($birthDate) {
-		$this->birthDate = $birthDate;
-	}
 }
+

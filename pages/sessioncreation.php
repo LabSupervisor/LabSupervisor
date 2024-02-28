@@ -1,13 +1,9 @@
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
-	mainHeader("Création de session")
-?>
+	mainHeader("Création de session");
 
-<?php
 	permissionChecker(true, false, true, false);
-?>
 
-<?php
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php');
 ?>

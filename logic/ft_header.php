@@ -11,7 +11,7 @@
 
 		// Select user color theme
 		if (isset($_SESSION["login"]))
-			if (getTheme($_SESSION["login"]) == 0)
+			if (UserRepository::getSetting($_SESSION["login"])["theme"] == 0)
 				$theme = "colorlight";
 			else
 				$theme = "colordark";
@@ -41,4 +41,3 @@
 		// Import navbar
 		require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_navbar.php");
 	}
-?>

@@ -1,14 +1,8 @@
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader("Log");
-?>
 
-<?php
 	permissionChecker(true, false, false, true);
-?>
-
-<?php
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_getDBLog.php");
 ?>
 
 <link rel="stylesheet" href="../public/css/log.css">
@@ -28,7 +22,7 @@
 		</thead>
 		<tbody>
 			<?php
-			$logs = getDBLog();
+			$logs = LogRepository::getLogs();
 
 			foreach ($logs as $line) {
 				$userInfo = UserRepository::getInfo(UserRepository::getEmail($line["iduser"]));

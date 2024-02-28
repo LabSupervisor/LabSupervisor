@@ -1,6 +1,6 @@
 INSERT INTO `user` VALUES (1,'admin@labsupervisor.com','$2a$12$hza1VTPclFDpWRFBvumpROMzc6k0Y.2NGpp7UNHpS0ZtXcFdC7q6C','admin','admin','1970-01-01',1,'2024-01-14 00:31:06','2024-01-14 00:31:06'),(2,'jerome@gmail.com','$2a$12$hooN56uVwwZMaZ5jrIjZau80.FzDqCFxLqk9KvhIpDRiI/UUI8qLG','Jerome','Luimeme','2001-01-03',1,'2024-01-15 22:22:52','2024-01-14 00:31:06'),(3,'mathilde34@hotmail.com','$2a$12$hooN56uVwwZMaZ5jrIjZau80.FzDqCFxLqk9KvhIpDRiI/UUI8qLG','Mathilde','De Labas','1988-03-12',1,'2024-01-15 22:23:55','2024-01-14 00:31:06'),(4,'jean.pro@laposte.net','$2a$12$rfwZj5B7m783UagiV0kFDueuu7Kf14QGLOPf.JQ0Zg5ZRgO64A1oy','Jean','Duthé','1999-12-31',1,'2024-01-15 22:25:21','2024-01-14 00:31:06'),(5,'unprof@gmail.com','$2a$12$5qZc.PSHwAd2blAqcxTrQue2ZsjHTjKe1qKJUvQfvu.GAQNA2IZpO','Prof','Lautrelà','2004-04-03',1,'2024-01-15 22:26:20','2024-01-14 00:31:06');
 
-INSERT INTO `classroom` VALUES (1,'1SNIR','2024-01-14 00:47:46','2024-01-30 00:31:06'),(2,'SIO','2024-01-14 00:47:46','2024-01-30 00:31:06'),(3,'SEGPA','2024-01-14 00:47:46','2024-01-30 00:31:06');
+INSERT INTO `classroom` VALUES (1,'1SNIR',1,'2024-01-14 00:47:46','2024-01-30 00:31:06'),(2,'SIO',1,'2024-01-14 00:47:46','2024-01-30 00:31:06'),(3,'SEGPA',1,'2024-01-14 00:47:46','2024-01-30 00:31:06');
 
 INSERT INTO `userclassroom` VALUES (1,2,1,'2024-01-14 00:31:27'),(2,3,1,'2024-01-14 00:31:27'),(3,4,3,'2024-01-14 00:31:27');
 

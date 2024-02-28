@@ -1,13 +1,9 @@
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader("Création de compte");
-?>
 
-<?php
 	permissionChecker(false, false, false, false);
-?>
 
-<?php
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . '/logic/register.php');
 ?>
