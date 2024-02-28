@@ -222,6 +222,28 @@ class SessionRepository {
 		}
 	}
 
+	public static function setStatus($sessionId, $chapterId, $userId, $state) {
+		$db = dbConnect();
+
+		// Add chapter query
+		$query = "UPDATE status SET state = :idStatus WHERE idchapter = :idChapter AND iduser = :idUser AND idsession = :idSession";
+
+		// Add chapter
+		try {
+			$queryPrep = $db->prepare($query);
+			$queryPrep->bindParam(':idUser', $userId);
+			$queryPrep->bindParam(':idSession', $sessionId);
+			$queryPrep->bindParam(':idChapter', $chapterId);
+			$queryPrep->bindParam(':idStatus', $state);
+			if ($queryPrep->execute())
+				LogRepository::dbSave("Update status to " . $state . " from session " . $sessionId);
+			else
+				throw new Exception("Status " . $state . " from session " . $sessionId . " update error");
+		} catch (Exception $e) {
+			LogRepository::fileSave($e);
+		}
+	}
+
 	public static function isActive($name) {
 		$db = dbConnect();
 

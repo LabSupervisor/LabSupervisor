@@ -151,6 +151,42 @@ class ClassroomRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
 	}
 
+	public static function addUser($userId, $classroomId) {
+		$db = dbConnect();
+
+		// Remove user query
+		$query = "INSERT INTO userclassroom (idclassroom, iduser) VALUES (:classroomId, :studentId)";
+
+		// Remove user
+		try {
+			$queryPrep = $db->prepare($query);
+			$queryPrep->bindParam(':classroomId', $classroomId);
+			$queryPrep->bindParam(':studentId', $userId);
+			if (!$queryPrep->execute())
+				throw new Exception("Add user " . $userId. " to " . $classroomId . " error");
+		} catch (Exception $e) {
+			LogRepository::fileSave($e);
+		}
+	}
+
+	public static function removeUser($userId, $classroomId) {
+		$db = dbConnect();
+
+		// Remove user query
+		$query = "DELETE FROM userclassroom WHERE idclassroom = :classroomId AND iduser = :studentId";
+
+		// Remove user
+		try {
+			$queryPrep = $db->prepare($query);
+			$queryPrep->bindParam(':classroomId', $classroomId);
+			$queryPrep->bindParam(':studentId', $userId);
+			if (!$queryPrep->execute())
+				throw new Exception("Remove user " . $userId. " from " . $classroomId . " error");
+		} catch (Exception $e) {
+			LogRepository::fileSave($e);
+		}
+	}
+
 	public static function isActive($name) {
 		$db = dbConnect();
 
@@ -163,6 +199,26 @@ class ClassroomRepository {
 			$queryPrep->bindParam(':name', $name);
 			if (!$queryPrep->execute())
 				throw new Exception("Get active classroom " . $name . " error");
+		} catch (Exception $e) {
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
+	}
+
+	public static function isUserInClassroom($userId, $classroomId) {
+		$db = dbConnect();
+
+		// Get classroom ID query
+		$query = "SELECT id FROM userclassroom WHERE idclassroom = :classroomId AND iduser = :studentId";
+
+		// Get classroom ID
+		try {
+			$queryPrep = $db->prepare($query);
+			$queryPrep->bindParam(':classroomId', $classroomId);
+			$queryPrep->bindParam(':studentId', $userId);
+			if (!$queryPrep->execute())
+				throw new Exception("Get is user " . $userId . " in classroom " . $classroomId . " error");
 		} catch (Exception $e) {
 			LogRepository::fileSave($e);
 		}
