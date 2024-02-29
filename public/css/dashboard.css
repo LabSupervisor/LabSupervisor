@@ -1,0 +1,175 @@
+/* Main Container */
+#preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+}
+/* User cells */
+.user-icon {
+    font-size: 100px;
+    border-radius: 20px;
+    width: 300px;
+    height: 180px;
+    background-color: grey;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.user-icon2 {
+    font-size: 100px;
+    border-radius: 20px;
+    width: 300px;
+    height: 180px;
+    background-color: #8080805c;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	backdrop-filter: blur(6px);
+}
+
+.user-cell {
+    text-align: left;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: 18px;
+    width: 300px;
+    margin: 20px;
+}
+
+.user-cell img {
+    height: 180px;
+    width: 300px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+#preview-container .invite-cell:last-child .user-icon {
+    background-color: rgba(128, 128, 128, 0.589);
+}
+/* Invite cell */
+.invite-cell {
+    text-align: left;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: 18px;
+    width: 300px;
+    margin: 20px;
+
+}
+
+.invite-cell img {
+    max-width: 100%;
+    max-height: 80%;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+
+/* Style in general */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+/* CSS for the status balls of usuary cells */
+.status-ball {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 2px;
+    opacity: 0.9;
+    border: 1px solid black;
+}
+
+.status-ball:not(.active) {
+    background-color: grey; /* Grey color for non-active balls */
+}
+.status-Finished {
+    background-color: greenyellow; /* Color for "Finalized" state */
+}
+.status-Working {
+    background-color: yellow; /* Color for "In Progress" status */
+}
+.status-In-trouble {
+    background-color: red; /* Color for the state "In Difficulty" */
+}
+
+/* Cell that contains the user name and status balls */
+.name-and-balls-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    width: 100%;
+}
+
+.name-and-balls-container p {
+    margin: 0;
+    font-size: 18px;
+}
+
+.name-and-balls-container .status-ball {
+    margin-left: 1px;
+}
+
+/* Css for the Tooltip that appears when you pass the mouse in the status balls */
+.tooltip {
+    backdrop-filter: blur(6px);
+    position: absolute;
+    z-index: 1;
+    visibility: hidden;
+    padding: 15px;
+    width: 340px;
+    border-radius: 10px;
+    margin-top: 30px;
+    background-color: rgba(48, 48, 48, 0.479);
+    transition: visibility 0.2s linear, opacity 0.2s linear;
+    align-items: center;
+    opacity: 0;
+}
+
+.tooltip-reverse {
+	left: auto;
+	right: 100%;
+	transform: translateX(0);
+}
+
+.tooltip-title {
+    text-decoration: underline;
+    text-align: center;
+    width: 100%;
+    display: block;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.tooltip-text {
+    color: #fff;
+    padding: 5px;
+    white-space: pre-line;
+}
+
+.tooltip-text br {
+    display: none;
+}
+
+.status-balls-container-right {
+    float: right;
+
+}
+
+.status-balls-container:hover .tooltip {
+	visibility: visible;
+	opacity:1;
+}

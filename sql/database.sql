@@ -1,145 +1,151 @@
-use labweb;
+CREATE DATABASE labsupervisor;
 
---
--- Table structure for table `avancement`
---
+use labsupervisor;
 
-DROP TABLE IF EXISTS `avancement`;
-CREATE TABLE `avancement` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `idetape` int NOT NULL,
-  `iduser` int NOT NULL,
-  `etat` varchar(50) NOT NULL,
+DROP TABLE IF EXISTS `chapter`;
+CREATE TABLE `chapter` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idsession` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `description` text DEFAULT NULL,
+  `idcreator` int(11) NOT NULL,
+  `creationdate` datetime NOT NULL DEFAULT current_timestamp(),
+  `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
-  KEY `FK_avancement` (`idetape`),
-  KEY `fk_avancement_utilisateur` (`iduser`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  KEY `chapter_session_FK` (`idsession`),
+  KEY `chapter_user_FK` (`idcreator`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
---
--- Table structure for table `classe`
---
-
-DROP TABLE IF EXISTS `classe`;
-CREATE TABLE `classe` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nom` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+DROP TABLE IF EXISTS `classroom`;
+CREATE TABLE `classroom` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT 1,
+  `creationdate` datetime NOT NULL DEFAULT current_timestamp(),
+  `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
---
--- Table structure for table `etape`
---
-
-DROP TABLE IF EXISTS `etape`;
-CREATE TABLE `etape` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `idsession` int NOT NULL,
-  `libelle` varchar(150) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idsession` (`idsession`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
---
--- Table structure for table `lierclasse`
---
-
-DROP TABLE IF EXISTS `lierclasse`;
-CREATE TABLE `lierclasse` (
+DROP TABLE IF EXISTS `log`;
+CREATE TABLE `log` (
   `id` int NOT NULL AUTO_INCREMENT,
   `iduser` int NOT NULL,
-  `idclasse` int NOT NULL,
+  `message` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  KEY `FK_delaclasse_user` (`iduser`),
-  KEY `FK_classe_idclasse` (`idclasse`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Table structure for table `lierrole`
---
-
-DROP TABLE IF EXISTS `lierrole`;
-CREATE TABLE `lierrole` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `iduser` int NOT NULL,
-  `idrole` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_alerole_user` (`iduser`),
-  KEY `FK_role_idrole` (`idrole`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Table structure for table `participant`
---
+  KEY `log_user_FK` (`iduser`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 DROP TABLE IF EXISTS `participant`;
 CREATE TABLE `participant` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `iduser` int NOT NULL,
-  `idsession` int NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `iduser` int(11) NOT NULL,
+  `idsession` int(11) NOT NULL,
+  `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
-  KEY `FK_user_participant` (`iduser`),
-  KEY `FK_session_participant` (`idsession`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
---
--- Table structure for table `role`
---
+  KEY `FK_session_participant` (`idsession`),
+  KEY `participant_user_FK` (`iduser`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `libelle` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
---
--- Table structure for table `session`
---
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `iduser` int(11) DEFAULT NULL,
+  `student` tinyint(1) NOT NULL DEFAULT 1,
+  `teacher` tinyint(1) NOT NULL DEFAULT 0,
+  `admin` tinyint(1) NOT NULL DEFAULT 0,
+  `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `role_user_FK` (`iduser`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 DROP TABLE IF EXISTS `session`;
 CREATE TABLE `session` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `titre` varchar(50) NOT NULL,
-  `idproprietaire` int NOT NULL,
-  `datecreation` datetime NOT NULL,
-  `datefin` datetime NOT NULL,
-  `etat` int NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
---
--- Table structure for table `utilisateur`
---
-
-DROP TABLE IF EXISTS `utilisateur`;
-CREATE TABLE `utilisateur` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `identifiant` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  `motdepasse` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  `nom` varchar(50) NOT NULL,
-  `prenom` varchar(50) NOT NULL,
-  `email` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  `datecreation` datetime NOT NULL,
-  `datenaissance` date NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) NOT NULL,
+  `description` text DEFAULT NULL,
+  `idcreator` int(11) NOT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT 1,
+  `date` datetime NOT NULL,
+  `creationdate` datetime NOT NULL DEFAULT current_timestamp(),
+  `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
-  UNIQUE KEY `user` (`identifiant`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  KEY `session_user_FK` (`idcreator`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
-ALTER TABLE `avancement`
-  ADD CONSTRAINT `fk_avancement_utilisateur` FOREIGN KEY (`iduser`) REFERENCES `utilisateur` (`id`),
-  ADD CONSTRAINT `FK_etape_avancement` FOREIGN KEY (`idetape`) REFERENCES `etape` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+DROP TABLE IF EXISTS `setting`;
+CREATE TABLE `setting` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `iduser` int(11) NOT NULL,
+  `theme` int(11) NOT NULL DEFAULT 0,
+  `background` varchar(100) NOT NULL DEFAULT 'default.png',
+  `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `setting_user_FK` (`iduser`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
-ALTER TABLE `etape`
-  ADD CONSTRAINT `FK_session_etape` FOREIGN KEY (`idsession`) REFERENCES `session` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+DROP TABLE IF EXISTS `status`;
+CREATE TABLE `status` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `iduser` int(11) DEFAULT NULL,
+  `idsession` int(11) DEFAULT NULL,
+  `state` int(11) NOT NULL DEFAULT 0,
+  `idchapter` int(11) DEFAULT NULL,
+  `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `status_user_FK` (`iduser`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
-ALTER TABLE `lierclasse`
-  ADD CONSTRAINT `FK_classe_idclasse` FOREIGN KEY (`idclasse`) REFERENCES `classe` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_delaclasse_user` FOREIGN KEY (`iduser`) REFERENCES `utilisateur` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `surname` varchar(50) NOT NULL,
+  `birthdate` date NOT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT 1,
+  `creationdate` datetime NOT NULL DEFAULT current_timestamp(),
+  `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
-ALTER TABLE `lierrole`
-  ADD CONSTRAINT `FK_alerole_user` FOREIGN KEY (`iduser`) REFERENCES `utilisateur` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_role_idrole` FOREIGN KEY (`idrole`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+DROP TABLE IF EXISTS `userclassroom`;
+CREATE TABLE `userclassroom` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `iduser` int(11) NOT NULL,
+  `idclassroom` int(11) NOT NULL,
+  `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `usergroup_user_FK` (`iduser`),
+  KEY `usergroup_group_FK` (`idclassroom`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+ALTER TABLE `chapter`
+  ADD CONSTRAINT `chapter_session_FK` FOREIGN KEY (`idsession`) REFERENCES `session` (`id`),
+  ADD CONSTRAINT `chapter_user_FK` FOREIGN KEY (`idcreator`) REFERENCES `user` (`id`);
 
 ALTER TABLE `participant`
-  ADD CONSTRAINT `FK_session_participant` FOREIGN KEY (`idsession`) REFERENCES `session` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_user_participant` FOREIGN KEY (`iduser`) REFERENCES `utilisateur` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `FK_session_participant` FOREIGN KEY (`idsession`) REFERENCES `session` (`id`),
+  ADD CONSTRAINT `participant_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`);
+
+ALTER TABLE `role`
+  ADD CONSTRAINT `role_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`);
+
+ALTER TABLE `session`
+  ADD CONSTRAINT `session_user_FK` FOREIGN KEY (`idcreator`) REFERENCES `user` (`id`);
+
+ALTER TABLE `setting`
+  ADD CONSTRAINT `setting_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`);
+
+ALTER TABLE `status`
+  ADD CONSTRAINT `status_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `status_chapter_FK` FOREIGN KEY (`idchapter`) REFERENCES `chapter` (`id`),
+  ADD CONSTRAINT `status_session_FK` FOREIGN KEY (`idsession`) REFERENCES `session` (`id`);
+
+ALTER TABLE `log`
+  ADD CONSTRAINT `log_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`);
+
+ALTER TABLE `userclassroom`
+  ADD CONSTRAINT `usergroup_group_FK` FOREIGN KEY (`idclassroom`) REFERENCES `classroom` (`id`),
+  ADD CONSTRAINT `usergroup_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`);

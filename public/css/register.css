@@ -1,0 +1,89 @@
+/* Main container */
+.RegisterDiv {
+    margin: auto;
+    text-align: center;
+    width: 325px;
+    background-color: #6f6f6f69;
+    border-radius: 25px;
+    padding: 27px;
+    margin-top: 200px;
+    color: white;
+	backdrop-filter: blur(6px);
+}
+h2 {
+    color: white;
+    font-size: 30px;
+    margin-bottom: 20px;
+    border-bottom: 3px solid white;
+	padding-bottom: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+    display: flex;
+}
+
+/* All of the information in the formulary */
+.Email, .Password, .Name, .Surname, .Birthdate {
+	width: 325px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    background: none;
+    border-color: white;
+    border-width: 2px;
+    font-size: 20px;
+    margin-top: 12px;
+    color: white;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+input:focus {
+    outline: none !important;
+}
+input:focus-visible {
+    outline: auto;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.563);
+    font-style: italic;
+}
+
+/* Password container and eye icon */
+.PasswordContainer {
+    position: relative;
+	margin-bottom: 12px;
+}
+
+.ShowPasswordButton {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 12px;
+    color: #333;
+}
+
+.ri-eye-line:before {
+    content: "\ecb5";
+    color: white;
+    font-size: 26px;
+}
+
+.ri-eye-off-line:before {
+    content: "\ecb7";
+    color: white;
+    font-size: 26px;
+}
