@@ -60,7 +60,7 @@ tbody tr:nth-child(odd) {
     background-color: #33333370;
 }
 
-/* Sperate collumn to easy apparence modification */
+/* Sperate collumn to easy apparence modification Error page */
 th.col1, td.col1 {
     width: 10%;
 }
@@ -80,7 +80,7 @@ th.col4, td.col4 {
     width: 55%;
 }
 
-/* Sperate collumn to easy apparence modification */
+/* Sperate collumn to easy apparence modification Trace page */
 th.col-1, td.col-1 {
     width: 10%;
 }

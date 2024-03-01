@@ -48,7 +48,7 @@ hr {
 }
 
 .custom-select select {
-    width: 500;
+    width: 500px;
     padding: 8px;
     border-radius: 10px;
     background-color: #ffffff46;
@@ -62,6 +62,7 @@ hr {
     top: 50%;
     left: 470px;
     transform: translateY(-50%);
+	pointer-events: none;
 }
 
 form.sessions #classes option {
@@ -103,6 +104,7 @@ strong {
 	font-size: 16px;
 	resize: vertical;
 	padding: 8px;
+	overflow: hidden;
 }
 
 .buttonC {
