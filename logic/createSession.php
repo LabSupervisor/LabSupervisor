@@ -36,6 +36,7 @@ if (isset($_POST['saveSession'])) {
 	foreach ($classUsers as $userId) {
 		SessionRepository::addParticipant($userId["iduser"], $title);
 	}
+	SessionRepository::addParticipant(UserRepository::getId($_SESSION["login"]), $title);
 
 	header("Location: /sessions");
 }
