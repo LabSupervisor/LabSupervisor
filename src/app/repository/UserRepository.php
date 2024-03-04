@@ -261,4 +261,51 @@ class UserRepository {
 			LogRepository::fileSave($e);
 		}
 	}
+
+	public static function link($userId, $moduleId) {
+		$db = dbConnect();
+
+		$query = "";
+		// Link query
+		if (UserRepository::getLink(UserRepository::getEmail($userId))) {
+			$query = "UPDATE link SET idlink = :idlink WHERE iduser = :iduser";
+		} else {
+			$query = "INSERT INTO link (iduser, idlink) VALUES (:iduser, :idlink)";
+		}
+
+		// Link
+		try {
+			$queryPrep = $db->prepare($query);
+			$queryPrep->bindParam(':iduser', $userId);
+			$queryPrep->bindParam(':idlink', $moduleId);
+
+			if ($queryPrep->execute())
+				LogRepository::dbSave("Link " . $moduleId . " create to " . $userId);
+			else
+				throw new Exception("Link " . $moduleId . " to " . $userId . " error");
+		} catch (Exception $e) {
+			LogRepository::fileSave($e);
+		}
+	}
+
+	public static function getLink($email) {
+		$db = dbConnect();
+
+		$userId = UserRepository::getId($email);
+
+		// Get link query
+		$query = "SELECT idlink FROM link WHERE iduser = :iduser";
+
+		// Get link
+		try {
+			$queryPrep = $db->prepare($query);
+			$queryPrep->bindParam(':iduser', $userId);
+			if (!$queryPrep->execute())
+				throw new Exception("Get link " . $email . " error");
+		} catch (Exception $e) {
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_ASSOC)[0]["idlink"] ?? NULL;
+	}
 }
