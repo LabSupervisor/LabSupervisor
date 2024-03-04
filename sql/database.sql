@@ -121,6 +121,16 @@ CREATE TABLE `userclassroom` (
   KEY `usergroup_group_FK` (`idclassroom`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+DROP TABLE IF EXISTS `link`;
+CREATE TABLE `link` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `iduser` int NOT NULL,
+  `idlink` int NOT NULL,
+  `connectdate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `link_user_FK` (`iduser`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
 ALTER TABLE `chapter`
   ADD CONSTRAINT `chapter_session_FK` FOREIGN KEY (`idsession`) REFERENCES `session` (`id`),
   ADD CONSTRAINT `chapter_user_FK` FOREIGN KEY (`idcreator`) REFERENCES `user` (`id`);
@@ -149,3 +159,6 @@ ALTER TABLE `log`
 ALTER TABLE `userclassroom`
   ADD CONSTRAINT `usergroup_group_FK` FOREIGN KEY (`idclassroom`) REFERENCES `classroom` (`id`),
   ADD CONSTRAINT `usergroup_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`);
+
+ALTER TABLE `link`
+  ADD CONSTRAINT `link_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`);
