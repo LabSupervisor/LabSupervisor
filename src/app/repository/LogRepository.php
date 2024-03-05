@@ -7,16 +7,18 @@ class LogRepository extends Exception{
 			// Insert log query
 			$query = "INSERT INTO log (iduser, message) VALUES (:iduser, :message)";
 
-			// Get user ID
-			$userId = UserRepository::getId($_SESSION["login"]);
+			if (isset($_SESSION["login"])) {
+				// Get user ID
+				$userId = UserRepository::getId($_SESSION["login"]);
 
-			// Insert log
-			$queryPrep = $db->prepare($query);
-			$queryPrep->bindParam(':iduser', $userId, \PDO::PARAM_STR);
-			$queryPrep->bindParam(':message', $message, \PDO::PARAM_STR);
+				// Insert log
+				$queryPrep = $db->prepare($query);
+				$queryPrep->bindParam(':iduser', $userId, \PDO::PARAM_STR);
+				$queryPrep->bindParam(':message', $message, \PDO::PARAM_STR);
 
-			if (!$queryPrep->execute())
-				throw new Exception("DB Log save error ");
+				if (!$queryPrep->execute())
+					throw new Exception("DB Log save error ");
+			}
 		} catch (Exception $e) {
 			LogRepository::fileSave($e);
 		}

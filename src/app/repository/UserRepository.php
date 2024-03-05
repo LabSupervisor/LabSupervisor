@@ -306,6 +306,25 @@ class UserRepository {
 			LogRepository::fileSave($e);
 		}
 
-		return $queryPrep->fetchAll(PDO::FETCH_ASSOC)[0]["idlink"] ?? NULL;
+		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
+	}
+
+	public static function getUserByLink($linkId) {
+		$db = dbConnect();
+
+		// Get link query
+		$query = "SELECT iduser FROM link WHERE idlink = :idlink";
+
+		// Get link
+		try {
+			$queryPrep = $db->prepare($query);
+			$queryPrep->bindParam(':idlink', $linkId);
+			if (!$queryPrep->execute())
+				throw new Exception("Get user with link " . $linkId . " error");
+		} catch (Exception $e) {
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
 	}
 }
