@@ -8,11 +8,10 @@ $method = $_SERVER["REQUEST_METHOD"];
 switch($method) {
 	case "POST":
 		$json = file_get_contents("php://input");
-		echo $json;
+		echo '{"Response": {"Message": "Status updated."}}';
 
 		$data = json_decode($json);
 
-		//TODO update status table if link is done between user and lslink module
 		SessionRepository::setStatus($data->idSession, $data->idChapter, UserRepository::getUserByLink($data->id), $data->idState);
 
 		break;
