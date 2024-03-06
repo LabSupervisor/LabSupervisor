@@ -136,6 +136,25 @@ class SessionRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
 	}
 
+	public static function getChapterId($chapter) {
+		$db = dbConnect();
+
+		// Get user status query
+		$query = "SELECT id FROM chapter WHERE title = :title";
+
+		// Get user status
+		try {
+			$queryPrep = $db->prepare($query);
+			$queryPrep->bindParam(':title', $chapter);
+			if (!$queryPrep->execute())
+				throw new Exception("Get chapter id " . $chapter . " error");
+		} catch (Exception $e) {
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
+	}
+
 	public static function getParticipant($sessionId) {
 		$db = dbConnect();
 
@@ -221,6 +240,26 @@ class SessionRepository {
 			LogRepository::fileSave($e);
 		}
 	}
+
+	public static function addStatus($sessionId, $chapterId, $userId) {
+		$db = dbConnect();
+
+		// Préparez la requête d'insertion
+		$Query = "INSERT INTO status (idsession, idchapter, iduser) VALUES (:idsession, :idchapter, :iduser)";
+
+		// Préparez l'instruction SQL
+		$QueryPrep = $db->prepare($Query);
+
+		// Liez les valeurs des paramètres
+		$QueryPrep->bindParam(":idsession", $sessionId);
+		$QueryPrep->bindParam(":idchapter", $chapterId);
+		$QueryPrep->bindParam(":iduser", $userId);
+
+		// Exécutez la requête
+		$QueryPrep->execute();
+
+	}
+
 
 	public static function setStatus($sessionId, $chapterId, $userId, $state) {
 		$db = dbConnect();
