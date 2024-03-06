@@ -5,6 +5,7 @@
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_roleFormat.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateAdminUser.php");
+	require($_SERVER["DOCUMENT_ROOT"] . "/logic/deleteAdminUser.php");
 ?>
 
 <script>
@@ -25,8 +26,6 @@
 			element.setAttribute("disabled", "true");
 		}
 
-		// var name = document.getElementById("name).innerHTML;
-
 		var inputSurname = document.createElement("input");
 		inputSurname.setAttribute("type", "text");
 		inputSurname.setAttribute("id", "surname");
@@ -46,7 +45,6 @@
 		inputBirthdate.setAttribute("require", "true");
 		inputBirthdate.setAttribute("value", birthdate);
 
-		// Transformer le texte en input
 		surnameElement.replaceChildren(inputSurname);
 		nameElement.replaceChildren(inputName);
 		birthdateElement.replaceChildren(inputBirthdate);
@@ -58,13 +56,11 @@
 
 		form.appendChild(inputUserId);
 
-		// document.getElementById("name).innerHTML = "<input type='text' id='name_' value='" + name + "'>";
-
-		// Créer l'élément "confirm avec le bouton "Confirmer"
 		var modifyButton = document.getElementById("modify_" + userId);
 
 		confirmButton = document.createElement("input");
 		confirmButton.setAttribute("type", "submit");
+		confirmButton.setAttribute("name", "modify")
 		modifyButton.parentNode.replaceChild(confirmButton, modifyButton);
 	}
 </script>
@@ -88,6 +84,8 @@
 						$userId = $user['id'];
 			?>
 				<tr>
+
+
 					<td id="surname_<?=$userId?>"><?=$user['surname']?></td>
 					<td id="name_<?=$userId?>"><?=$user['name']?></td>
 					<td><?=$user['email']?></td>
@@ -97,7 +95,13 @@
 
 					<td><button class="modifybutton" type="button" id="modify_<?=$userId?>" onclick="updateUser(<?=$userId?>)">Modifier</button></td>
 
-					<td><button disabled>Supprimer</button></td>
+					<td>
+					<form method="POST" action="#">
+						<input type="hidden" name="userId" value="<?= $userId ?>">
+						<button class="deletebutton" type="submit" name="send" id="delete_<?= $userId ?>">Supprimer</button>
+					</form>
+
+					</td>
 				</tr>
 			<?php
 					}
@@ -106,3 +110,4 @@
 		</tbody>
 	</table>
 </form>
+

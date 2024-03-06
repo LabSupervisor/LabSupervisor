@@ -2,5 +2,5 @@
 	require($_SERVER['DOCUMENT_ROOT'] . '/logic/ft_header.php');
 	mainHeader("");
 
-	echo "Project LabSupervisor";
+	echo "Project LabSupervisor" . $_SESSION["login"];
 ?>

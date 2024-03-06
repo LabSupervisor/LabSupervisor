@@ -1,5 +1,5 @@
 <?php
-if (isset($_POST["userId"])) {
+if (isset($_POST["modify"])) {
 	$userRepo = new UserRepository();
 
 	$email = UserRepository::getEmail($_POST["userId"]);
