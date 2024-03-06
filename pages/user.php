@@ -26,8 +26,6 @@
 			element.setAttribute("disabled", "true");
 		}
 
-		// var name = document.getElementById("name).innerHTML;
-
 		var inputSurname = document.createElement("input");
 		inputSurname.setAttribute("type", "text");
 		inputSurname.setAttribute("id", "surname");
@@ -47,7 +45,6 @@
 		inputBirthdate.setAttribute("require", "true");
 		inputBirthdate.setAttribute("value", birthdate);
 
-		// Transformer le texte en input
 		surnameElement.replaceChildren(inputSurname);
 		nameElement.replaceChildren(inputName);
 		birthdateElement.replaceChildren(inputBirthdate);
@@ -59,9 +56,6 @@
 
 		form.appendChild(inputUserId);
 
-		// document.getElementById("name).innerHTML = "<input type='text' id='name_' value='" + name + "'>";
-
-		// Créer l'élément "confirm avec le bouton "Confirmer"
 		var modifyButton = document.getElementById("modify_" + userId);
 
 		confirmButton = document.createElement("input");
@@ -105,7 +99,7 @@
 					<form method="POST" action="#">
 						<input type="hidden" name="userId" value="<?= $userId ?>">
 						<button class="deletebutton" type="submit" name="send" id="delete_<?= $userId ?>">Supprimer</button>
-                    </form>
+					</form>
 
 					</td>
 				</tr>
