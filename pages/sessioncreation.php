@@ -90,7 +90,6 @@
 				?>
 			</select>
 		</div>
-
 	</fieldset>
 	<fieldset>
    		<legend>Chapitres</legend>
