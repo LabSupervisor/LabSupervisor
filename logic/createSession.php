@@ -16,7 +16,10 @@ if (isset($_POST['saveSession'])) {
 
 	$session = new Session($sessionData);
 	$sessionRepo->createSession($session);
+	$sessionId = SessionRepository::getId($title);
 
+	// Add classroom student to session
+	$classUsers = ClassroomRepository::getUsers(ClassroomRepository::getName($_POST["classes"]));
 	// Chapter
 	$nbChapter = $_POST["nbChapter"];
 	for($i = 1; $i<= $nbChapter; $i++){
@@ -28,10 +31,13 @@ if (isset($_POST['saveSession'])) {
 		}
 
 		SessionRepository::addChapter($_POST['titleChapter'.$i], $_POST['chapterDescription'.$i], $creatorId, $title);
-	}
 
-	// Add classroom student to session
-	$classUsers = ClassroomRepository::getUsers(ClassroomRepository::getName($_POST["classes"]));
+		$chapterId = SessionRepository::getChapterId($titleChapter);
+
+		foreach ($classUsers as $userId) {
+			SessionRepository::addStatus($sessionId, $chapterId, $userId["iduser"]);
+		}
+	}
 
 	foreach ($classUsers as $userId) {
 		SessionRepository::addParticipant($userId["iduser"], $title);

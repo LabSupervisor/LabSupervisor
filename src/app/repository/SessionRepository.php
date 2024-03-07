@@ -136,6 +136,25 @@ class SessionRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
 	}
 
+	public static function getChapterId($chapter) {
+		$db = dbConnect();
+
+		// Get chapter id query
+		$query = "SELECT id FROM chapter WHERE title = :title";
+
+		// Get chapter id
+		try {
+			$queryPrep = $db->prepare($query);
+			$queryPrep->bindParam(':title', $chapter);
+			if (!$queryPrep->execute())
+				throw new Exception("Get chapter id " . $chapter . " error");
+		} catch (Exception $e) {
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
+	}
+
 	public static function getParticipant($sessionId) {
 		$db = dbConnect();
 
@@ -217,6 +236,29 @@ class SessionRepository {
 				LogRepository::dbSave("Add participant " . $participantId);
 			else
 				throw new Exception("Add participant " . $participantId . " error");
+		} catch (Exception $e) {
+			LogRepository::fileSave($e);
+		}
+	}
+
+	public static function addStatus($sessionId, $chapterId, $userId) {
+		$db = dbConnect();
+
+		// Add status query
+		$query = "INSERT INTO status (idsession, idchapter, iduser) VALUES (:idsession, :idchapter, :iduser)";
+
+		// Add status
+		try {
+			$queryPrep = $db->prepare($query);
+			$queryPrep->bindParam(":idsession", $sessionId);
+			$queryPrep->bindParam(":idchapter", $chapterId);
+			$queryPrep->bindParam(":iduser", $userId);
+
+			// Exécutez la requête
+			if ($queryPrep->execute())
+				LogRepository::dbSave("Add status to chapter " . $chapterId . " for " . $userId);
+			else
+				throw new Exception("Add status to chapter " . $chapterId . " for " . $userId . " error");
 		} catch (Exception $e) {
 			LogRepository::fileSave($e);
 		}
