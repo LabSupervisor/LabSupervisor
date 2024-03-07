@@ -1,4 +1,5 @@
 <?php
+
 function roleFormat($student, $teacher, $admin) {
 	$result = "";
 	if ($student == True)

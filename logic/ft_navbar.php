@@ -1,3 +1,8 @@
+<?php
+	// Logic
+	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_nameFormat.php");
+?>
+
 <body>
 	<nav class="navbar">
 		<div class="logo-container left">
@@ -61,8 +66,7 @@
 			// Profil part if connected
 		?>
 			<?php
-				$userInfo = UserRepository::getInfo($_SESSION["login"]);
-				$username = $userInfo["name"] . " " . $userInfo["surname"];
+				$username = nameFormat($_SESSION["login"], true);
 			?>
 			<li><a class="title case profil" href="#"><i class="ri-user-line"></i> <?=$username?></a>
 				<ul class="sub">

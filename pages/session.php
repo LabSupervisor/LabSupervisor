@@ -35,8 +35,7 @@
 				for($i = 0; $i < count($sessionList); $i++) {
 					echo "<tr>";
 					foreach($sessionList[$i] as $line) {
-						$userInfo = UserRepository::getInfo(UserRepository::getEmail($line["idcreator"]));
-						$creatorName = $userInfo["name"] . " " . $userInfo["surname"];
+						$creatorName = nameFormat(UserRepository::getEmail($line["idcreator"]), false);
 
 						echo '<td class="col1">'. $line["title"] ."</td>";
 						echo '<td class="col2-container">';
