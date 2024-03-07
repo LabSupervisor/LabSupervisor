@@ -3,40 +3,40 @@ $page = explode("?", $_SERVER["REQUEST_URI"]);
 
 switch ($page[0]) {
 	case "/":
-		include "pages/index.php";
+		include "page/index.php";
 		break;
 	case "/compte":
-		include "pages/account.php";
+		include "page/account.php";
 		break;
 	case "/dashboard":
-		include "pages/dashboard.php";
+		include "page/dashboard.php";
 		break;
 	case "/log":
-		include "pages/log.php";
+		include "page/log.php";
 		break;
 	case "/register":
-		include "pages/register.php";
+		include "page/register.php";
 		break;
 	case "/login":
-		include "pages/login.php";
+		include "page/login.php";
 		break;
 	case "/sessions":
-		include "pages/session.php";
+		include "page/session.php";
 		break;
 	case "/sessioncreation":
-		include "pages/sessioncreation.php";
+		include "page/sessioncreation.php";
 		break;
 	case "/utilisateurs":
-		include "pages/user.php";
+		include "page/user.php";
 		break;
 	case "/classes":
-		include "pages/classroom.php";
+		include "page/classroom.php";
 		break;
 	case "/panel":
-		include "pages/sessionpanel.php";
+		include "page/sessionpanel.php";
 		break;
 	case "/parametres":
-		include "pages/setting.php";
+		include "page/setting.php";
 		break;
 	case "/deconnexion":
 		include "logic/disconnect.php";
@@ -45,9 +45,9 @@ switch ($page[0]) {
 		include "api/index.php";
 		break;
 	case "/denied":
-		include "pages/denied.php";
+		include "page/denied.php";
 		break;
 	default:
-		include "pages/notfound.php";
+		include "page/notfound.php";
 		break;
 }
