@@ -56,10 +56,10 @@
 					<a class="title" href="/classes"><i class="ri-folder-line"></i> Classes</a>
 				</li>
 				<li>
-					<a class="title" href="#"><i class="ri-slideshow-3-line"></i> Sessions</a>
+					<a class="title" href="/sessions"><i class="ri-slideshow-3-line"></i> Sessions</a>
 				</li>
 				<li>
-					<a class="title" href="/log?trace"><i class="ri-computer-line"></i> Logs</a>
+					<a class="title" href="/logs?trace"><i class="ri-computer-line"></i> Logs</a>
 				</li>
 		<?php
 			}

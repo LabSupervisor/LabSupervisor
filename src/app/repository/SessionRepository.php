@@ -78,6 +78,24 @@ class SessionRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
 	}
 
+	public static function getSessions() {
+		$db = dbConnect();
+
+		// Get sessions query
+		$query = "SELECT * FROM session";
+
+		// Get sessions
+		try {
+			$queryPrep = $db->prepare($query);
+			if (!$queryPrep->execute())
+				throw new Exception("Get sessions error");
+		} catch (Exception $e) {
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
+	}
+
 	public static function getInfo($sessionId) {
 		$db = dbConnect();
 

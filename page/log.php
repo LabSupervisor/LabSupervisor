@@ -43,10 +43,10 @@
 	</table>
 </div>
 <div class="button-container">
-	<a href="/log?trace">
+	<a href="/logs?trace">
 		<button><i class="ri-draft-line"></i> Trace</button>
 	</a>
-	<a href="/log?error">
+	<a href="/logs?error">
 		<button><i class="ri-error-warning-line"></i> Erreur</button>
 	</a>
 </div>
@@ -58,7 +58,7 @@
 		$fileDate = $_GET["date"];
 	}
 
-	$file = $_SERVER["DOCUMENT_ROOT"] . "/logs/" . $fileDate . ".log";
+	$file = $_SERVER["DOCUMENT_ROOT"] . "/log/" . $fileDate . ".log";
 	if (file_exists($file)) {
 		$logs = file_get_contents($file);
 ?>
@@ -122,10 +122,10 @@
 	<div class="button-container2">
 		<div class="left-buttons2">
 
-		<a href="/log?trace">
+		<a href="/logs?trace">
 			<button><i class="ri-draft-line"></i> Trace</button>
 		</a>
-		<a href="/log?error">
+		<a href="/logs?error">
 			<button><i class="ri-error-warning-line"></i> Erreur</button>
 		</a>
 		</div>
@@ -145,10 +145,10 @@
 
 	<div class="button-container2">
 		<div class="left-buttons2">
-		<a href="/log?trace">
+		<a href="/logs?trace">
 			<button><i class="ri-draft-line"></i> Trace</button>
 		</a>
-		<a href="/log?error">
+		<a href="/logs?error">
 			<button><i class="ri-error-warning-line"></i> Erreur</button>
 		</a>
 		</div>

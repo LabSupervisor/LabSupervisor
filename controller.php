@@ -11,7 +11,7 @@ switch ($page[0]) {
 	case "/dashboard":
 		include "page/dashboard.php";
 		break;
-	case "/log":
+	case "/logs":
 		include "page/log.php";
 		break;
 	case "/register":
