@@ -18,7 +18,6 @@ if (isset($_POST['saveSession'])) {
 	$sessionRepo->createSession($session);
 	$sessionId = SessionRepository::getId($title);
 
-
 	// Add classroom student to session
 	$classUsers = ClassroomRepository::getUsers(ClassroomRepository::getName($_POST["classes"]));
 	// Chapter
@@ -44,8 +43,6 @@ if (isset($_POST['saveSession'])) {
 		SessionRepository::addParticipant($userId["iduser"], $title);
 	}
 	SessionRepository::addParticipant(UserRepository::getId($_SESSION["login"]), $title);
-
-
 
 	header("Location: /sessions");
 }

@@ -139,10 +139,10 @@ class SessionRepository {
 	public static function getChapterId($chapter) {
 		$db = dbConnect();
 
-		// Get user status query
+		// Get chapter id query
 		$query = "SELECT id FROM chapter WHERE title = :title";
 
-		// Get user status
+		// Get chapter id
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':title', $chapter);
@@ -244,22 +244,25 @@ class SessionRepository {
 	public static function addStatus($sessionId, $chapterId, $userId) {
 		$db = dbConnect();
 
-		// Préparez la requête d'insertion
-		$Query = "INSERT INTO status (idsession, idchapter, iduser) VALUES (:idsession, :idchapter, :iduser)";
+		// Add status query
+		$query = "INSERT INTO status (idsession, idchapter, iduser) VALUES (:idsession, :idchapter, :iduser)";
 
-		// Préparez l'instruction SQL
-		$QueryPrep = $db->prepare($Query);
+		// Add status
+		try {
+			$queryPrep = $db->prepare($query);
+			$queryPrep->bindParam(":idsession", $sessionId);
+			$queryPrep->bindParam(":idchapter", $chapterId);
+			$queryPrep->bindParam(":iduser", $userId);
 
-		// Liez les valeurs des paramètres
-		$QueryPrep->bindParam(":idsession", $sessionId);
-		$QueryPrep->bindParam(":idchapter", $chapterId);
-		$QueryPrep->bindParam(":iduser", $userId);
-
-		// Exécutez la requête
-		$QueryPrep->execute();
-
+			// Exécutez la requête
+			if ($queryPrep->execute())
+				LogRepository::dbSave("Add status to chapter " . $chapterId . " for " . $userId);
+			else
+				throw new Exception("Add status to chapter " . $chapterId . " for " . $userId . " error");
+		} catch (Exception $e) {
+			LogRepository::fileSave($e);
+		}
 	}
-
 
 	public static function setStatus($sessionId, $chapterId, $userId, $state) {
 		$db = dbConnect();
