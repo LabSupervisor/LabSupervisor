@@ -10,5 +10,5 @@ function lang($key) {
 	$json = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/lang/" . $userLang . ".json");
 	$data = json_decode($json);
 
-	return "A=" . $data->$key;
+	return $data->$key;
 }
