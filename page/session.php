@@ -15,7 +15,7 @@
 <?php
 	$sessionList = array();
 	// Get all sessions for admin
-	if (in_array("admin", $roleList)) {
+	if (in_array(admin, $roleList)) {
 		$session = SessionRepository::getSessions();
 
 		foreach($session as $value => $key) {

@@ -89,22 +89,22 @@
 					if (UserRepository::isActive($user["email"])) {
 						$userId = $user['id'];
 			?>
-				<tr>
-					<td id="surname_<?=$userId?>"><?=$user['surname']?></td>
-					<td id="name_<?=$userId?>"><?=$user['name']?></td>
-					<td><?=$user['email']?></td>
-					<td id="birthdate_<?=$userId?>"><?=$user['birthdate']?></td>
-					<td><?=roleFormat($user["student"], $user["teacher"], $user["admin"])?></td>
-					<td><?=$user["classroom"]?></td>
-					<td><button class="modifybutton" type="button" id="modify_<?=$userId?>" onclick="updateUser(<?=$userId?>)">Modifier</button></td>
-					<td>
-					<form method="POST" action="#">
-						<input type="hidden" name="userId" value="<?= $userId ?>">
-						<button class="deletebutton" type="submit" name="send" id="delete_<?= $userId ?>">Supprimer</button>
-					</form>
+			<tr>
+				<td id="surname_<?=$userId?>"><?=$user['surname']?></td>
+				<td id="name_<?=$userId?>"><?=$user['name']?></td>
+				<td><?=$user['email']?></td>
+				<td id="birthdate_<?=$userId?>"><?=$user['birthdate']?></td>
+				<td><?=roleFormat($user['email'])?></td>
+				<td><?=$user["classroom"]?></td>
+				<td><button class="modifybutton" type="button" id="modify_<?=$userId?>" onclick="updateUser(<?=$userId?>)">Modifier</button></td>
+				<td>
+				<form method="POST" action="#">
+					<input type="hidden" name="userId" value="<?= $userId ?>">
+					<button class="deletebutton" type="submit" name="send" id="delete_<?= $userId ?>">Supprimer</button>
+				</form>
 
-					</td>
-				</tr>
+				</td>
+			</tr>
 			<?php
 					}
 				}

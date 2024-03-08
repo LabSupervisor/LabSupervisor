@@ -193,7 +193,7 @@ class UserRepository {
 		$userId = UserRepository::getId($email);
 
 		// Get user's roles query
-		$query = "SELECT * FROM userrole WHERE iduser = :iduser";
+		$query = "SELECT idrole FROM userrole WHERE iduser = :iduser";
 
 		// Get user's roles
 		try {
@@ -206,7 +206,7 @@ class UserRepository {
 			LogRepository::fileSave($e);
 		}
 
-		return $queryPrep->fetchAll(PDO::FETCH_ASSOC)[0] ?? NULL;
+		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
 	}
 
 	public static function getSetting($email) {
@@ -235,7 +235,8 @@ class UserRepository {
 		$db = dbConnect();
 
 		// Get users query
-		$query = "SELECT us.id, us.surname, us.name, us.email, us.birthdate, rl.student, rl.teacher, rl.admin, cl.name AS 'classroom', us.active FROM user us INNER JOIN role rl ON us.id = rl.iduser LEFT JOIN userclassroom ucl ON us.id = ucl.iduser LEFT JOIN classroom cl ON cl.id = ucl.idclassroom ORDER BY id";
+		$query = "SELECT us.id, us.surname, us.name, us.email, us.birthdate, cl.name AS 'classroom', us.active FROM user us	LEFT JOIN userclassroom ucl ON us.id = ucl.iduser
+		LEFT JOIN classroom cl ON cl.id = ucl.idclassroom WHERE us.active = 1 ORDER BY us.id";
 
 		// Get users
 		try {

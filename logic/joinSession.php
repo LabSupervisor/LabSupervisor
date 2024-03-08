@@ -1,11 +1,11 @@
 <?php
 if (isset($_POST["connect"])) {
-	$role = UserRepository::getInfo($_SESSION["login"]);
+	$role = UserRepository::getRole($_SESSION["login"]);
 
 	$_SESSION["session"] = array_search("Rejoindre", $_POST['connect']);
 
 	// Redirect teacher to /dashboard and student to /panel
-	if ($role["teacher"])
+	if (in_array(teacher, $role))
 		header("Location: /dashboard");
 	else
 		header("Location: /panel");
