@@ -5,8 +5,8 @@ class UserRepository {
 	public function __construct() {}
 
 	public function createUser(User $entity) {
-        if ($entity != NULL) {
-            $bindParam = $entity->__toArray();
+		if ($entity != NULL) {
+			$bindParam = $entity->__toArray();
 			// check if user doesn't exist
 			if (!$this->getId($bindParam["email"])) {
 				$db = dbConnect();
@@ -28,6 +28,7 @@ class UserRepository {
 					if (!$queryPrep->execute())
 						throw new Exception("Create user " . $bindParam["email"] . " error");
 				} catch (Exception $e) {
+					// Log error
 					LogRepository::fileSave($e);
 				}
 
@@ -43,6 +44,7 @@ class UserRepository {
 					if (!$queryPrepRole->execute())
 						throw new Exception("Create user role " . $bindParam["email"] . " error");
 				} catch (Exception $e) {
+					// Log error
 					LogRepository::fileSave($e);
 				}
 
@@ -56,6 +58,7 @@ class UserRepository {
 					if (!$queryPrepSetting->execute())
 						throw new Exception("Create user setting " . $bindParam["email"] . " error");
 				} catch (Exception $e) {
+					// Log error
 					LogRepository::fileSave($e);
 				}
 			} else {
@@ -91,6 +94,7 @@ class UserRepository {
 			else
 				throw new Exception("Update user " . $bindParam["email"] . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 	}
@@ -118,6 +122,7 @@ class UserRepository {
 			else
 				throw new Exception("Delete user " . $userId . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 	}
@@ -135,6 +140,7 @@ class UserRepository {
 			if (!$queryPrep->execute())
 				throw new Exception("Get user id " . $email . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 
@@ -144,16 +150,17 @@ class UserRepository {
 	public static function getEmail($userId) {
 		$db = dbConnect();
 
-		// Get user ID query
+		// Get user's email query
 		$query = "SELECT email FROM user WHERE id = :iduser";
 
-		// Get user ID
+		// Get user's email
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':iduser', $userId);
 			if (!$queryPrep->execute())
 				throw new Exception("Get user " . $userId . " email error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 
@@ -163,20 +170,43 @@ class UserRepository {
 	public static function getInfo($email) {
 		$db = dbConnect();
 
-		// Get user ID query
-		$query = "SELECT us.*, rl.student, rl.teacher, rl.admin FROM user us, role rl WHERE us.email = :email and us.id = rl.iduser";
+		// Get user's datas query
+		$query = "SELECT * FROM user WHERE email = :email";
 
-		// Get user ID
+		// Get user's datas
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':email', $email);
 			if (!$queryPrep->execute())
 				throw new Exception("Get user datas " . $email . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 
 		return $queryPrep->fetchAll(PDO::FETCH_ASSOC)[0] ?? NULL;
+	}
+
+	public static function getRole($email) {
+		$db = dbConnect();
+
+		$userId = UserRepository::getId($email);
+
+		// Get user's roles query
+		$query = "SELECT idrole FROM userrole WHERE iduser = :iduser";
+
+		// Get user's roles
+		try {
+			$queryPrep = $db->prepare($query);
+			$queryPrep->bindParam(':iduser', $userId);
+			if (!$queryPrep->execute())
+				throw new Exception("Get user " . $email . " roles error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
 	}
 
 	public static function getSetting($email) {
@@ -184,16 +214,17 @@ class UserRepository {
 
 		$userId = UserRepository::getId($email);
 
-		// Get user ID query
+		// Get user's settings query
 		$query = "SELECT * FROM setting WHERE iduser = :iduser";
 
-		// Get user ID
+		// Get user's settings
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':iduser', $userId);
 			if (!$queryPrep->execute())
 				throw new Exception("Get user setting " . $email . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 
@@ -204,7 +235,8 @@ class UserRepository {
 		$db = dbConnect();
 
 		// Get users query
-		$query = "SELECT us.id, us.surname, us.name, us.email, us.birthdate, rl.student, rl.teacher, rl.admin, cl.name AS 'classroom', us.active FROM user us INNER JOIN role rl ON us.id = rl.iduser LEFT JOIN userclassroom ucl ON us.id = ucl.iduser LEFT JOIN classroom cl ON cl.id = ucl.idclassroom ORDER BY id";
+		$query = "SELECT us.id, us.surname, us.name, us.email, us.birthdate, cl.name AS 'classroom', us.active FROM user us	LEFT JOIN userclassroom ucl ON us.id = ucl.iduser
+		LEFT JOIN classroom cl ON cl.id = ucl.idclassroom WHERE us.active = 1 ORDER BY us.id";
 
 		// Get users
 		try {
@@ -212,6 +244,7 @@ class UserRepository {
 			if (!$queryPrep->execute())
 				throw new Exception("Get users error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 
@@ -221,16 +254,17 @@ class UserRepository {
 	public static function isActive($email) {
 		$db = dbConnect();
 
-		// Get user ID query
+		// Get if user is active query
 		$query = "SELECT active FROM user WHERE email = :email";
 
-		// Get user ID
+		// Get if user is active
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':email', $email);
 			if (!$queryPrep->execute())
 				throw new Exception("Get active user " . $email . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 
@@ -243,10 +277,10 @@ class UserRepository {
 		$date = date('Y-m-d H:i:s');
 		$userId = UserRepository::getId($_SESSION["login"]);
 
-		// Theme query
+		// Update user's settings query
 		$queryTheme = "UPDATE setting SET theme = :theme, updatedate = :date WHERE iduser = :iduser";
 
-		// Theme
+		// Update user's settings
 		try {
 			$queryPrepTheme = $db->prepare($queryTheme);
 			$queryPrepTheme->bindParam(':iduser', $userId);
@@ -258,7 +292,77 @@ class UserRepository {
 			else
 				throw new Exception("Theme " . $setting["theme"] . " change error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
+	}
+
+	public static function link($userId, $moduleId) {
+		$db = dbConnect();
+
+		$query = "";
+		// Create links query
+		if (UserRepository::getLink(UserRepository::getEmail($userId))) {
+			$query = "UPDATE link SET idlink = :idlink WHERE iduser = :iduser";
+		} else {
+			$query = "INSERT INTO link (iduser, idlink) VALUES (:iduser, :idlink)";
+		}
+
+		// Create link
+		try {
+			$queryPrep = $db->prepare($query);
+			$queryPrep->bindParam(':iduser', $userId);
+			$queryPrep->bindParam(':idlink', $moduleId);
+
+			if ($queryPrep->execute())
+				LogRepository::dbSave("Link " . $moduleId . " create to " . $userId);
+			else
+				throw new Exception("Link " . $moduleId . " to " . $userId . " error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+	}
+
+	public static function getLink($email) {
+		$db = dbConnect();
+
+		$userId = UserRepository::getId($email);
+
+		// Get link query
+		$query = "SELECT idlink FROM link WHERE iduser = :iduser";
+
+		// Get link
+		try {
+			$queryPrep = $db->prepare($query);
+			$queryPrep->bindParam(':iduser', $userId);
+			if (!$queryPrep->execute())
+				throw new Exception("Get link " . $email . " error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
+	}
+
+	public static function getUserByLink($linkId) {
+		$db = dbConnect();
+
+		// Get user by link query
+		$query = "SELECT iduser FROM link WHERE idlink = :idlink";
+
+		// Get user by link
+		try {
+			$queryPrep = $db->prepare($query);
+			$queryPrep->bindParam(':idlink', $linkId);
+			if (!$queryPrep->execute())
+				throw new Exception("Get user with link " . $linkId . " error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
 	}
 }

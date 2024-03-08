@@ -1,10 +1,14 @@
+<?php
+	// Logic
+	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_nameFormat.php");
+?>
+
 <body>
 	<nav class="navbar">
 		<div class="logo-container left">
 			<?php
 				// Icon path
-				$cheminImage = "/public/img/logo.ico";
-				echo "<img src=" . $cheminImage . "></img>";
+				echo "<img src='/public/img/logo.ico'></img>";
 			?>
 		</div>
 			<a class="bold title left no-hover-color">LabSupervisor</a>
@@ -23,47 +27,31 @@
 		<?php
 			// If the user is connected
 			} else {
-				$roleList = permissionChecker(true, true, true, true);
-			// If the user is a teacher
-			if (in_array("teacher", $roleList)) { ?>
-					<li>
-						<a class="title" href="/classes"><i class="ri-folder-line"></i> Classes</a>
-					</li>
-					<li>
-						<a class="title" href="/sessioncreation"><i class="ri-computer-line"></i> Créer une session</a>
-					</li>
-					<li>
-						<a class="title" href="/sessions"><i class="ri-slideshow-3-line"></i> Voir mes sessions</a>
-					</li>
-		<?php }
-			// If the user is a student
-			else if(in_array("student", $roleList)) { ?>
-				<li>
-					<a class="title" href="/sessions"><i class="ri-slideshow-3-line"></i> Voir mes sessions</a>
-				</li>
-		<?php }
-			// If the user is an admin
-			else if (in_array("admin", $roleList)) { ?>
-				<li>
-					<a class="title" href="/utilisateurs"><i class="ri-folder-line"></i> Utlisateurs</a>
-				</li>
-				<li>
-					<a class="title" href="/classes"><i class="ri-folder-line"></i> Classes</a>
-				</li>
-				<li>
-					<a class="title" href="#"><i class="ri-slideshow-3-line"></i> Sessions</a>
-				</li>
-				<li>
-					<a class="title" href="/log?trace"><i class="ri-computer-line"></i> Logs</a>
-				</li>
-		<?php
-			}
-			// Profil part if connected
+				$navbarItem = "";
+				$roleList = permissionChecker(true, "");
+
+				if (in_array(admin, $roleList) || in_array(teacher, $roleList)) {
+					$navbarItem .= '<li><a class="title" href="/classes"><i class="ri-folder-line"></i> Classes</a></li>';
+				}
+
+				if (in_array(teacher, $roleList)) {
+					$navbarItem .= '<li><a class="title" href="/sessioncreation"><i class="ri-computer-line"></i> Créer une session</a></li>';
+				}
+
+				if (in_array(admin, $roleList) || in_array(student, $roleList) || in_array(teacher, $roleList)) {
+					$navbarItem .= '<li><a class="title" href="/sessions"><i class="ri-slideshow-3-line"></i> Voir mes sessions</a></li>';
+				}
+
+				if (in_array(admin, $roleList)) {
+					$navbarItem .= '<li><a class="title" href="/utilisateurs"><i class="ri-folder-line"></i> Utlisateurs</a></li>';
+					$navbarItem .= '<li><a class="title" href="/logs?trace"><i class="ri-computer-line"></i> Logs</a></li>';
+				}
+
+				echo $navbarItem;
+
+				// Profil part if connected
+				$username = nameFormat($_SESSION["login"], true);
 		?>
-			<?php
-				$userInfo = UserRepository::getInfo($_SESSION["login"]);
-				$username = $userInfo["name"] . " " . $userInfo["surname"];
-			?>
 			<li><a class="title case profil" href="#"><i class="ri-user-line"></i> <?=$username?></a>
 				<ul class="sub">
 					<li>
@@ -86,7 +74,7 @@
 	<style>
 		body {
 			<?php
-			// Check if user is connected
+			// Check if user is connected to change his theme
 			if (isset($_SESSION["login"])) {
 				$userSetting = UserRepository::getSetting($_SESSION["login"]);
 

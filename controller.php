@@ -1,51 +1,54 @@
 <?php
-	$page = explode("?", $_SERVER["REQUEST_URI"]);
+// Only get main url part
+$page = explode("?", $_SERVER["REQUEST_URI"]);
 
-	switch ($page[0]) {
-		case "/":
-			include "pages/index.php";
-			break;
-		case "/compte":
-			include "pages/account.php";
-			break;
-		case "/dashboard":
-			include "pages/dashboard.php";
-			break;
-		case "/log":
-			include "pages/log.php";
-			break;
-		case "/register":
-			include "pages/register.php";
-			break;
-		case "/login":
-			include "pages/login.php";
-			break;
-		case "/sessions":
-			include "pages/session.php";
-			break;
-		case "/sessioncreation":
-			include "pages/sessioncreation.php";
-			break;
-		case "/utilisateurs":
-			include "pages/user.php";
-			break;
-		case "/classes":
-			include "pages/classroom.php";
-			break;
-		case "/panel":
-			include "pages/sessionpanel.php";
-			break;
-		case "/parametres":
-			include "pages/setting.php";
-			break;
-		case "/deconnexion":
-			include "logic/disconnect.php";
-			break;
-		case "/denied":
-			include "pages/denied.php";
-			break;
-		default:
-			include "pages/notfound.php";
-			break;
-	}
-?>
+switch ($page[0]) {
+	case "/":
+		include "page/index.php";
+		break;
+	case "/compte":
+		include "page/account.php";
+		break;
+	case "/dashboard":
+		include "page/dashboard.php";
+		break;
+	case "/logs":
+		include "page/log.php";
+		break;
+	case "/register":
+		include "page/register.php";
+		break;
+	case "/login":
+		include "page/login.php";
+		break;
+	case "/sessions":
+		include "page/session.php";
+		break;
+	case "/sessioncreation":
+		include "page/sessioncreation.php";
+		break;
+	case "/utilisateurs":
+		include "page/user.php";
+		break;
+	case "/classes":
+		include "page/classroom.php";
+		break;
+	case "/panel":
+		include "page/sessionpanel.php";
+		break;
+	case "/parametres":
+		include "page/setting.php";
+		break;
+	case "/deconnexion":
+		include "logic/disconnect.php";
+		break;
+	case "/connect":
+		include "api/index.php";
+		break;
+	case "/denied":
+		include "page/denied.php";
+		break;
+	default:
+		include "page/notfound.php";
+		break;
+}

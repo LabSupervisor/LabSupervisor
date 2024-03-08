@@ -14,10 +14,14 @@ if (isset($_POST['saveSession'])) {
 		"date" => $date
 	);
 
+	// Create session
 	$session = new Session($sessionData);
 	$sessionRepo->createSession($session);
+	$sessionId = SessionRepository::getId($title);
 
-	// Chapter
+	// Add classroom student to session
+	$classUsers = ClassroomRepository::getUsers(ClassroomRepository::getName($_POST["classes"]));
+
 	$nbChapter = $_POST["nbChapter"];
 	for($i = 1; $i<= $nbChapter; $i++){
 		$titleChapter = $_POST['titleChapter'.$i];
@@ -27,15 +31,23 @@ if (isset($_POST['saveSession'])) {
 			continue;
 		}
 
+		// Add chapters
 		SessionRepository::addChapter($_POST['titleChapter'.$i], $_POST['chapterDescription'.$i], $creatorId, $title);
+
+		$chapterId = SessionRepository::getChapterId($titleChapter);
+
+		// Add status
+		foreach ($classUsers as $userId) {
+			SessionRepository::addStatus($sessionId, $chapterId, $userId["iduser"]);
+		}
 	}
 
-	// Add classroom student to session
-	$classUsers = ClassroomRepository::getUsers(ClassroomRepository::getName($_POST["classes"]));
-
+	// Add participants
 	foreach ($classUsers as $userId) {
 		SessionRepository::addParticipant($userId["iduser"], $title);
 	}
+	// Add teacher to his own session
+	SessionRepository::addParticipant(UserRepository::getId($_SESSION["login"]), $title);
 
 	header("Location: /sessions");
 }

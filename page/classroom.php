@@ -1,8 +1,10 @@
 <?php
+	// Import header
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader("Classes");
 
-	permissionChecker(true, false, true, true);
+	// Ask for permissions
+	permissionChecker(true, array(admin, teacher));
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateClassroom.php");

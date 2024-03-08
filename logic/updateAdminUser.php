@@ -1,7 +1,6 @@
 <?php
-if (isset($_POST["userId"])) {
+if (isset($_POST["modify"])) {
 	$userRepo = new UserRepository();
-
 	$email = UserRepository::getEmail($_POST["userId"]);
 
 	$userData = array(
@@ -11,6 +10,7 @@ if (isset($_POST["userId"])) {
 		"birthDate" => $_POST["birthdate"]
 	);
 
+	// Update user
 	$user = new User($userData);
 	$userRepo->update($user);
 

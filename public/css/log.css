@@ -1,186 +1,184 @@
 /* Table */
 .table-container {
-    display: flex;
+	display: flex;
 	flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    margin: 20px;
+	align-items: center;
+	height: 100vh;
+	margin: 20px;
 	margin-top: 30px;
-    margin-bottom: 50px;
+	margin-bottom: 50px;
 	max-height: 500px;
 	overflow-y: auto;
 }
 
 .table-container2 {
-    display: flex;
+	display: flex;
 	flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    margin: 20px;
+	align-items: center;
+	height: 100vh;
+	margin: 20px;
 	margin-top: 30px;
-    margin-bottom: 50px;
+	margin-bottom: 50px;
 	max-height: 500px;
 	overflow-y: auto;
 }
 
 table {
-    width: 1100px;
-    border-collapse: collapse;
-    border-radius: 25px;
-    overflow: hidden;
+	width: 1100px;
+	border-collapse: collapse;
+	border-radius: 25px;
+	overflow: hidden;
 	color: var(--text-color);
 }
 tbody{
-    position: relative;
-    bottom: -38px;
+	position: relative;
+	bottom: -38px;
 }
 
 thead {
-    backdrop-filter: blur(100px);
-    background-color: #555555ad;
-    position: absolute;
-    width: 1100px;
-    border-collapse: collapse;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
-    z-index: 10;
+	backdrop-filter: blur(100px);
+	background-color: #555555ad;
+	position: absolute;
+	width: 1100px;
+	border-collapse: collapse;
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
+	z-index: 10;
 }
 
-
 th, td {
-    border: 10px;
-    padding: 11px;
-    text-align: center;
+	border: 10px;
+	padding: 11px;
+	text-align: center;
 }
 
 tbody tr:nth-child(even) {
-    background-color: #00000075;
+	background-color: #00000075;
 }
 tbody tr:nth-child(odd) {
-    background-color: #33333370;
+	background-color: #33333370;
 }
 
 /* Sperate collumn to easy apparence modification Error page */
 th.col1, td.col1 {
-    width: 10%;
+	width: 10%;
 }
 
 th.col2, td.col2 {
-    width: 25%;
+	width: 25%;
 }
 
 th.col3, td.col3 {
-    width: 30%;
-    width: 150px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+	width: 30%;
+	width: 150px;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 th.col4, td.col4 {
-    width: 55%;
+	width: 55%;
 }
 
 /* Sperate collumn to easy apparence modification Trace page */
 th.col-1, td.col-1 {
-    width: 10%;
+	width: 10%;
 }
 
 th.col-2, td.col-2 {
-    width: 8%;
-    overflow: hidden;
-    text-overflow: ellipsis;
+	width: 8%;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 th.col-3, td.col-3 {
-    width: 26%;
+	width: 26%;
 }
 /* Messages collumn with tooltip */
 .col-2 {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 100px;
 }
 
 .col-2-container {
-    width: 6%;
+	width: 6%;
 }
 
 .col-2-tooltip {
-    display: none;
+	display: none;
 	position: absolute;
 	text-align: center;
-    border: 10px solid #cccccc00;
-    max-width: 300px;
-    z-index: 1;
-    width: 340px;
-    padding: 15px;
-    background-color: rgb(48 48 48 / 69%);
-    backdrop-filter: blur(6px);
-    border-radius: 25px;
-    margin-top: 25px;
-    word-wrap: break-word;
+	border: 10px solid #cccccc00;
+	max-width: 300px;
+	z-index: 1;
+	width: 340px;
+	padding: 15px;
+	background-color: rgb(48 48 48 / 69%);
+	backdrop-filter: blur(6px);
+	border-radius: 25px;
+	margin-top: 25px;
+	word-wrap: break-word;
 	padding: 5px;
 }
 
 .col-2-container:hover .col-2-tooltip {
-    display: block;
+	display: block;
 }
 
 /* Messages collumn with tooltip */
 .col3 {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 100px;
 }
 
 .col3-container {
-    position: relative;
+	position: relative;
 }
 
-
 .col3-tooltip {
-    display: none;
+	display: none;
 	position: absolute;
 	text-align: center;
-    border: 10px solid #cccccc00;
-    max-width: 300px;
-    z-index: 1;
-    width: 340px;
-    padding: 15px;
-    background-color: rgb(48 48 48 / 69%);
-    backdrop-filter: blur(6px);
-    border-radius: 25px;
-    margin-top: 25px;
-    word-wrap: break-word;
+	border: 10px solid #cccccc00;
+	max-width: 300px;
+	z-index: 1;
+	width: 340px;
+	padding: 15px;
+	background-color: rgb(48 48 48 / 69%);
+	backdrop-filter: blur(6px);
+	border-radius: 25px;
+	margin-top: 25px;
+	word-wrap: break-word;
 	padding: 5px;
 }
 
 .col3-container:hover .col3-tooltip {
-    display: block;
+	display: block;
 }
 
 /* Control button and date selection */
 .button-container {
-    display: flex;
-    justify-content: center;
-    background-color: rgba(48, 48, 48, 0.479);
-    padding: 15px;
-    border-radius: 25px;
-    max-width: 250px; /* Establece un ancho máximo */
-    margin: 10px auto; /* Centra horizontalmente y añade margen superior e inferior */
+	display: flex;
+	justify-content: center;
+	background-color: rgba(48, 48, 48, 0.479);
+	padding: 15px;
+	border-radius: 25px;
+	max-width: 250px; /* Establece un ancho máximo */
+	margin: 10px auto; /* Centra horizontalmente y añade margen superior e inferior */
 }
 
 .button-container a {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 .button-container button {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    margin: 5px;
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	margin: 5px;
 	background-color: var(--background-hover-color);
 	border-radius: 25px;
 	border-color: var(--border-color);
@@ -194,8 +192,8 @@ th.col-3, td.col-3 {
 }
 
 .button-container button i {
-    margin-right: 5px;
-    font-size: 20px;
+	margin-right: 5px;
+	font-size: 20px;
 }
 
 .button-container button:hover {
@@ -204,9 +202,8 @@ th.col-3, td.col-3 {
 	cursor: pointer;
 }
 
-
 .left-buttons {
-    display: flex;
+	display: flex;
 }
 
 .right-buttons {
@@ -216,18 +213,18 @@ th.col-3, td.col-3 {
 
 /* Form */
 form {
-    text-align: center;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
+	text-align: center;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: baseline;
 }
 
 /* Date */
 form input[type="date"] {
-    padding: 8px;
-    color: var(--text-color);
-    margin: 5px;
+	padding: 8px;
+	color: var(--text-color);
+	margin: 5px;
 	background-color: var(--background-hover-color);
 	border-radius: 25px;
 	border-color: var(--border-color);
@@ -239,13 +236,13 @@ form input[type="date"] {
 	padding-right: 20px;
 }
 input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: invert(1);
-    cursor: pointer;
+	filter: invert(1);
+	cursor: pointer;
 }
 
 /* Send button */
 form input[type="submit"] {
-    margin: 5px;
+	margin: 5px;
 	background-color: var(--background-hover-color);
 	border-radius: 25px;
 	border-color: var(--border-color);
@@ -265,12 +262,12 @@ form input[type="submit"]:hover {
 }
 
 .PageErreur {
-    background-color: rgb(48 48 48 / 69%);
-    width: 300px;
-    display: flex;
-    margin: auto;
-    padding: 20px;
-    border-radius: 25px;
+	background-color: rgb(48 48 48 / 69%);
+	width: 300px;
+	display: flex;
+	margin: auto;
+	padding: 20px;
+	border-radius: 25px;
 }
 
 /*Second tooltip*/
@@ -304,25 +301,25 @@ form input[type="submit"]:hover {
 
 /* Second page buttons */
 .button-container2 {
-    display: flex;
-    align-items: center;
-    background-color: rgba(48, 48, 48, 0.479);
-    padding: 15px;
-    border-radius: 25px;
-    overflow: hidden;
-    width: fit-content;
-    margin: auto;
+	display: flex;
+	align-items: center;
+	background-color: rgba(48, 48, 48, 0.479);
+	padding: 15px;
+	border-radius: 25px;
+	overflow: hidden;
+	width: fit-content;
+	margin: auto;
 }
 
 .button-container2 a {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 .button-container2 button {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    margin: 5px;
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	margin: 5px;
 	background-color: var(--background-hover-color);
 	border-radius: 25px;
 	border-color: var(--border-color);
@@ -336,8 +333,8 @@ form input[type="submit"]:hover {
 }
 
 .button-container2 button i {
-    margin-right: 5px;
-    font-size: 20px;
+	margin-right: 5px;
+	font-size: 20px;
 }
 
 .button-container2 button:hover {
@@ -347,10 +344,10 @@ form input[type="submit"]:hover {
 }
 
 .left-buttons2 {
-    display: flex;
-    margin-right: 20px;
+	display: flex;
+	margin-right: 20px;
 }
 
 .right-buttons2 {
-    display: flex;
+	display: flex;
 }

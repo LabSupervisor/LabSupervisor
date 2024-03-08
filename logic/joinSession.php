@@ -1,10 +1,16 @@
 <?php
 if (isset($_POST["connect"])) {
-	$role = UserRepository::getInfo($_SESSION["login"]);
+	// Get user's roles
+	$role = UserRepository::getRole($_SESSION["login"]);
+	$roleList = array();
+	foreach ($role as $value) {
+		array_push($roleList, $value["idrole"]);
+	}
 
 	$_SESSION["session"] = array_search("Rejoindre", $_POST['connect']);
 
-	if ($role["teacher"])
+	// Redirect teacher to /dashboard and student to /panel
+	if (in_array(teacher, $roleList))
 		header("Location: /dashboard");
 	else
 		header("Location: /panel");

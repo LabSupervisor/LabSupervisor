@@ -1,5 +1,6 @@
 <?php
 if (isset($_POST['changeSetting'])) {
+	// Convert theme value
 	if ($_POST["theme"] == "light")
 		$theme = 0;
 	else
@@ -9,6 +10,7 @@ if (isset($_POST['changeSetting'])) {
 		"theme" => $theme
 	);
 
+	// Update user's settings
 	UserRepository::updateSetting($userSetting);
 
 	header("Refresh:0");

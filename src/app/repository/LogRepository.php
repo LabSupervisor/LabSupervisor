@@ -7,17 +7,20 @@ class LogRepository extends Exception{
 			// Insert log query
 			$query = "INSERT INTO log (iduser, message) VALUES (:iduser, :message)";
 
-			// Get user ID
-			$userId = UserRepository::getId($_SESSION["login"]);
+			if (isset($_SESSION["login"])) {
+				// Get user ID
+				$userId = UserRepository::getId($_SESSION["login"]);
 
-			// Insert log
-			$queryPrep = $db->prepare($query);
-			$queryPrep->bindParam(':iduser', $userId, \PDO::PARAM_STR);
-			$queryPrep->bindParam(':message', $message, \PDO::PARAM_STR);
+				// Insert log
+				$queryPrep = $db->prepare($query);
+				$queryPrep->bindParam(':iduser', $userId, \PDO::PARAM_STR);
+				$queryPrep->bindParam(':message', $message, \PDO::PARAM_STR);
 
-			if (!$queryPrep->execute())
-				throw new Exception("DB Log save error ");
+				if (!$queryPrep->execute())
+					throw new Exception("DB Log save error ");
+			}
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 	}
@@ -25,11 +28,11 @@ class LogRepository extends Exception{
 	public static function fileSave(Exception $e) {
 		$stacktrace = $e->getTraceAsString();
 		$message = $e->getMessage();
-		$logFile = $_SERVER['DOCUMENT_ROOT'] . "/logs/" . date("Y-m-d") . ".log";
+		$logFile = $_SERVER['DOCUMENT_ROOT'] . "/log/" . date("Y-m-d") . ".log";
 
 		// Check if log folder exist
-		if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/logs/"))
-			mkdir($_SERVER['DOCUMENT_ROOT'] . "/logs", 0777, true);
+		if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/log/"))
+			mkdir($_SERVER['DOCUMENT_ROOT'] . "/log", 0777, true);
 
 		// Open or create log file if not exist
 		$file = fopen($logFile, "a+");
@@ -45,15 +48,16 @@ class LogRepository extends Exception{
 	public static function getLogs() {
 		$db = dbConnect();
 
-		// Get users query
+		// Get logs query
 		$query = "SELECT * FROM log";
 
-		// Get users
+		// Get logs
 		try {
 			$queryPrep = $db->prepare($query);
 			if (!$queryPrep->execute())
 				throw new Exception("Get logs error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 

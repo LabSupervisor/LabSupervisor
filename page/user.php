@@ -1,13 +1,18 @@
 <?php
+	// Import header
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader("Administration utilisateur");
+
+	permissionChecker(true, array(admin));
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_roleFormat.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateAdminUser.php");
+	require($_SERVER["DOCUMENT_ROOT"] . "/logic/deleteAdminUser.php");
 ?>
 
 <script>
+	// Create update fields
 	function updateUser(userId) {
 		var form = document.getElementById("form");
 
@@ -20,12 +25,11 @@
 
 		var modifyButtonDisable = document.getElementsByClassName("modifybutton");
 
+		// Disable all modify buttons
 		for (let i = 0; i < modifyButtonDisable.length; i++) {
 			const element = modifyButtonDisable[i];
 			element.setAttribute("disabled", "true");
 		}
-
-		// var name = document.getElementById("name).innerHTML;
 
 		var inputSurname = document.createElement("input");
 		inputSurname.setAttribute("type", "text");
@@ -46,7 +50,6 @@
 		inputBirthdate.setAttribute("require", "true");
 		inputBirthdate.setAttribute("value", birthdate);
 
-		// Transformer le texte en input
 		surnameElement.replaceChildren(inputSurname);
 		nameElement.replaceChildren(inputName);
 		birthdateElement.replaceChildren(inputBirthdate);
@@ -58,13 +61,11 @@
 
 		form.appendChild(inputUserId);
 
-		// document.getElementById("name).innerHTML = "<input type='text' id='name_' value='" + name + "'>";
-
-		// Créer l'élément "confirm avec le bouton "Confirmer"
 		var modifyButton = document.getElementById("modify_" + userId);
 
 		confirmButton = document.createElement("input");
 		confirmButton.setAttribute("type", "submit");
+		confirmButton.setAttribute("name", "modify")
 		modifyButton.parentNode.replaceChild(confirmButton, modifyButton);
 	}
 </script>
@@ -84,21 +85,26 @@
 		<tbody>
 			<?php
 				foreach (UserRepository::getUsers() as $user) {
+					// Only select active user
 					if (UserRepository::isActive($user["email"])) {
 						$userId = $user['id'];
 			?>
-				<tr>
-					<td id="surname_<?=$userId?>"><?=$user['surname']?></td>
-					<td id="name_<?=$userId?>"><?=$user['name']?></td>
-					<td><?=$user['email']?></td>
-					<td id="birthdate_<?=$userId?>"><?=$user['birthdate']?></td>
-					<td><?=roleFormat($user["student"], $user["teacher"], $user["admin"])?></td>
-					<td><?=$user["classroom"]?></td>
+			<tr>
+				<td id="surname_<?=$userId?>"><?=$user['surname']?></td>
+				<td id="name_<?=$userId?>"><?=$user['name']?></td>
+				<td><?=$user['email']?></td>
+				<td id="birthdate_<?=$userId?>"><?=$user['birthdate']?></td>
+				<td><?=roleFormat($user['email'])?></td>
+				<td><?=$user["classroom"]?></td>
+				<td><button class="modifybutton" type="button" id="modify_<?=$userId?>" onclick="updateUser(<?=$userId?>)">Modifier</button></td>
+				<td>
+				<form method="POST" action="#">
+					<input type="hidden" name="userId" value="<?= $userId ?>">
+					<button class="deletebutton" type="submit" name="send" id="delete_<?= $userId ?>">Supprimer</button>
+				</form>
 
-					<td><button class="modifybutton" type="button" id="modify_<?=$userId?>" onclick="updateUser(<?=$userId?>)">Modifier</button></td>
-
-					<td><button disabled>Supprimer</button></td>
-				</tr>
+				</td>
+			</tr>
 			<?php
 					}
 				}
