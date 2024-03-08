@@ -10,10 +10,10 @@
 	<div class="errorcontent">
 		<a class="errortitle">403</a>
 		<br>
-		<a class="errorsubtitle">Accès refusé.</a>
+		<a class="errorsubtitle"><?= lang("ERROR_DENIED") ?></a>
 		<br>
 		<a href="/">
-			<button class="button">Retourner à l'accueil</button>
+			<button class="button"><?= lang("ERROR_DENIED_BACK") ?></button>
 		</a>
 	</div>
 </div>

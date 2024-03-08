@@ -75,7 +75,7 @@ CREATE TABLE `setting` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `iduser` int(11) NOT NULL,
   `theme` int(11) NOT NULL DEFAULT 0,
-  `background` varchar(100) NOT NULL DEFAULT 'default.png',
+  `lang` varchar(50) NOT NULL DEFAULT 'fr_FR',
   `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `setting_user_FK` (`iduser`)

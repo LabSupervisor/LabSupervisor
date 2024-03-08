@@ -32,6 +32,17 @@
 		</tr>
 		<tr>
 			<td>
+				Langue
+			</td>
+			<td>
+				<select name="lang">
+					<option value="fr_FR">Français</option>
+					<option value="en_UK">Anglais</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>
 				<input type=submit name="changeSetting" value="Enregistrer"></input>
 			</td>
 		</tr>

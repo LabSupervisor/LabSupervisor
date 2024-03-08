@@ -9,5 +9,5 @@ if (isset($_POST["login"])) {
 		}
 	}
 	// Default error
-	echo "Invalid password or user";
+	echo lang("LOGIN_ERROR_NOTFOUND");
 }

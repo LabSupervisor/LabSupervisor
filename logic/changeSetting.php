@@ -7,7 +7,8 @@ if (isset($_POST['changeSetting'])) {
 		$theme = 1;
 
 	$userSetting = array(
-		"theme" => $theme
+		"theme" => $theme,
+		"lang" => $_POST["lang"]
 	);
 
 	// Update user's settings

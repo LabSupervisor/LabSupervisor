@@ -11,16 +11,16 @@
 				echo "<img src='/public/img/logo.ico'></img>";
 			?>
 		</div>
-			<a class="bold title left no-hover-color">LabSupervisor</a>
+			<a class="bold title left no-hover-color"><?= lang("NAVBAR_TITLE") ?></a>
 				<ul>
 					<li>
-						<a class="title" href="/"><i class="ri-home-line"></i> Accueil</a>
+						<a class="title" href="/"><i class="ri-home-line"></i> <?= lang("NAVBAR_HOME") ?></a>
 					</li>
 		<?php
 			// Check if user is connected
 			if (!isset($_SESSION["login"])) { ?>
 					<li>
-						<a class="title" href="/login"><i class="ri-user-line"></i> Connexion</a>
+						<a class="title" href="/login"><i class="ri-user-line"></i> <?= lang("NAVBAR_CONNECT") ?></a>
 					</li>
 				</ul>
 			</nav>
@@ -31,20 +31,20 @@
 				$roleList = permissionChecker(true, "");
 
 				if (in_array(admin, $roleList) || in_array(teacher, $roleList)) {
-					$navbarItem .= '<li><a class="title" href="/classes"><i class="ri-folder-line"></i> Classes</a></li>';
+					$navbarItem .= '<li><a class="title" href="/classes"><i class="ri-folder-line"></i> ' . lang("NAVBAR_CLASS") . '</a></li>';
 				}
 
 				if (in_array(teacher, $roleList)) {
-					$navbarItem .= '<li><a class="title" href="/sessioncreation"><i class="ri-computer-line"></i> Créer une session</a></li>';
+					$navbarItem .= '<li><a class="title" href="/sessioncreation"><i class="ri-computer-line"></i> ' . lang("NAVBAR_CREATE_SESSION") . '</a></li>';
 				}
 
 				if (in_array(admin, $roleList) || in_array(student, $roleList) || in_array(teacher, $roleList)) {
-					$navbarItem .= '<li><a class="title" href="/sessions"><i class="ri-slideshow-3-line"></i> Voir mes sessions</a></li>';
+					$navbarItem .= '<li><a class="title" href="/sessions"><i class="ri-slideshow-3-line"></i> ' . lang("NAVBAR_SESSION") . '</a></li>';
 				}
 
 				if (in_array(admin, $roleList)) {
-					$navbarItem .= '<li><a class="title" href="/utilisateurs"><i class="ri-folder-line"></i> Utlisateurs</a></li>';
-					$navbarItem .= '<li><a class="title" href="/logs?trace"><i class="ri-computer-line"></i> Logs</a></li>';
+					$navbarItem .= '<li><a class="title" href="/utilisateurs"><i class="ri-folder-line"></i> ' . lang("NAVBAR_USER") . '</a></li>';
+					$navbarItem .= '<li><a class="title" href="/logs?trace"><i class="ri-computer-line"></i> ' . lang("NAVBAR_LOG") . '</a></li>';
 				}
 
 				echo $navbarItem;
@@ -55,13 +55,13 @@
 			<li><a class="title case profil" href="#"><i class="ri-user-line"></i> <?=$username?></a>
 				<ul class="sub">
 					<li>
-						<a class="title" href="/compte"><i class="ri-account-circle-line"></i> Compte</a>
+						<a class="title" href="/compte"><i class="ri-account-circle-line"></i> <?= lang("NAVBAR_PROFIL_ACCOUNT") ?></a>
 					</li>
 					<li>
-						<a class="title" href="/parametres"><i class="ri-settings-4-line"></i> Options</a>
+						<a class="title" href="/parametres"><i class="ri-settings-4-line"></i> <?= lang("NAVBAR_PROFIL_SETTING") ?></a>
 					</li>
 					<li>
-						<a class="title" href="/deconnexion"><i class="ri-logout-box-line"></i> Deconnexion</a>
+						<a class="title" href="/deconnexion"><i class="ri-logout-box-line"></i> <?= lang("NAVBAR_PROFIL_DISCONNECT") ?></a>
 					</li>
 				</ul>
 				</li>

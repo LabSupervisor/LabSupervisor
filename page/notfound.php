@@ -10,10 +10,10 @@
 	<div class="errorcontent">
 		<a class="errortitle">404</a>
 		<br>
-		<a class="errorsubtitle">La page demandée n'existe pas.</a>
+		<a class="errorsubtitle"><?= lang("ERROR_NOTFOUND") ?></a>
 		<br>
 		<a href="/">
-			<button class="button">Retourner à l'accueil</button>
+			<button class="button"><?= lang("ERROR_NOTFOUND_BACK") ?></button>
 		</a>
 	</div>
 </div>

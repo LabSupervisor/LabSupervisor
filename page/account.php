@@ -15,35 +15,35 @@
 <link rel="stylesheet" href="/public/css/account.css">
 
 <div class="AccountDiv">
-    <h2>Paramètres du compte</h2>
+    <h2><?= lang("ACCOUNT_TITLE") ?></h2>
     <form action="" method="post">
         <div class="form-group">
-            <label for="new_name">Nom :</label>
+            <label for="new_name"><?= lang("ACCOUNT_NAME") ?></label>
             <input type="text" class="newname" name="new_name" value="<?php echo $user['name']; ?>">
         </div>
         <div class="form-group">
-            <label for="new_surname">Prénom :</label>
+            <label for="new_surname"><?= lang("ACCOUNT_SURNAME") ?></label>
             <input type="text" class="newsurname" name="new_surname" value="<?php echo $user['surname']; ?>">
         </div>
         <div class="form-group">
-            <label for="birthdate">Date de naissance :</label>
+            <label for="birthdate"><?= lang("ACCOUNT_BIRTHDATE") ?></label>
             <input type="date" class="newbirthDate" name="new_birthDate" value="<?php echo $user['birthdate']; ?>">
         </div>
         <div class="form-group">
-            <label for="new_password">Mot de passe :</label>
+            <label for="new_password"><?= lang("ACCOUNT_PASSWORD") ?></label>
             <input type="password" id="password" class="newpassword" name="new_password" aria-autocomplete="list">
             <button type="button" class="ShowPasswordButton" onclick="togglePasswordVisibility('password', 'eyeIcon')">
                 <i id="eyeIcon" class="ri-eye-off-line"></i>
             </button>
         </div>
         <div class="form-group">
-            <label for="conf_password">Confirmer :</label>
+            <label for="conf_password"><?= lang("ACCOUNT_PASSWORD_CONFIRM") ?></label>
             <input type="password" id="passwordConf" class="confpassword" name="conf_password">
             <button type="button" class="ShowPasswordButton" onclick="togglePasswordVisibility('passwordConf', 'eyeIconConf')">
                 <i id="eyeIconConf" class="ri-eye-off-line"></i>
             </button>
         </div>
-        <input type="submit" class="button" value="Enregistrer les modifications">
+        <input type="submit" class="button" value="<?= lang("ACCOUNT_SUBMIT") ?>">
     </form>
 </div>
 

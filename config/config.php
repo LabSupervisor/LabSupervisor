@@ -41,3 +41,6 @@ define("teacher", 3);
 
 // Import permission checker
 require($_SERVER['DOCUMENT_ROOT'] . "/logic/ft_permissionChecker.php");
+
+// Import lang
+require($_SERVER['DOCUMENT_ROOT'] . '/logic/ft_lang.php');

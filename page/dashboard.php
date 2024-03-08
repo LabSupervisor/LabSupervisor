@@ -58,7 +58,7 @@
 		$inviteCell = '<div class="invite-cell" id="invite-cell">';
 		$inviteCell .= '<div class="user-icon2"><i class="ri-user-add-line"></i></div>';
 		$inviteCell .= '<div class="name-and-balls-container">';
-		$inviteCell .= "<p>Inviter d'autres utilisateurs</p>";
+		$inviteCell .= "<p>" . lang("DASHBOARD_ADDUSER") . "</p>";
 
 		$inviteCell .= '</div>';
 		$inviteCell .= '</div>';

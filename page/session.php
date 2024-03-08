@@ -35,11 +35,11 @@
 	<table>
 		<thead>
 			<tr>
-				<td>Sujet</td>
-				<td>Précisions</td>
-				<td>Professeur</td>
-				<td>Date</td>
-				<td>Etat</td>
+				<td><?= lang("SESSION_SUBJECT") ?></td>
+				<td><?= lang("SESSION_DESCRIPTION") ?></td>
+				<td><?= lang("SESSION_TEACHER") ?></td>
+				<td><?= lang("SESSION_DATE") ?></td>
+				<td><?= lang("SESSION_STATE") ?></td>
 			</tr>
 		</thead>
 		<tbody>
@@ -57,16 +57,16 @@
 						echo '<td class="col3">'. $creatorName ."</td>";
 						echo '<td class="col4">'. $line["date"] ."</td>";
 						if (in_array(admin, $roleList)) {
-							echo "<td><i class='ri-lock-line'></i> Verrouillé</td>";
+							echo "<td><i class='ri-lock-line'></i> " . lang("SESSION_STATE_LOCK") . "</td>";
 						} else {
 							echo "<td>";
 
 							// Only select existed user
 							if ($line["active"]) {
 								if ($line["date"] > date('Y-m-d H:i:s')) {
-									echo "<i class='ri-timer-line'></i> Prochainement";
+									echo "<i class='ri-timer-line'></i> " . lang("SESSION_STATE_SOON");
 								} else {
-									echo "<form method='POST'><input type='submit' name='connect[" . $line["id"] . "]' value='Rejoindre' class='button'></input></form>";
+									echo "<form method='POST'><input type='submit' name='connect[" . $line["id"] . "]' value='" . lang("SESSION_STATE_OPEN") . "' class='button'></input></form>";
 								}
 							} else {
 								echo "Terminé";

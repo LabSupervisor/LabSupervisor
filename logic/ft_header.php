@@ -5,9 +5,9 @@
 
 		// Page title
 		if ($title != "")
-			$title = $title . " - LabSupervisor";
+			$title = $title . " - " . lang("MAIN_TITLE");
 		else
-			$title = "LabSupervisor";
+			$title = lang("MAIN_TITLE");
 
 		// Select user color theme
 		if (isset($_SESSION["login"]))

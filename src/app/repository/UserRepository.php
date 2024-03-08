@@ -278,13 +278,14 @@ class UserRepository {
 		$userId = UserRepository::getId($_SESSION["login"]);
 
 		// Update user's settings query
-		$queryTheme = "UPDATE setting SET theme = :theme, updatedate = :date WHERE iduser = :iduser";
+		$queryTheme = "UPDATE setting SET theme = :theme, lang = :lang, updatedate = :date WHERE iduser = :iduser";
 
 		// Update user's settings
 		try {
 			$queryPrepTheme = $db->prepare($queryTheme);
 			$queryPrepTheme->bindParam(':iduser', $userId);
 			$queryPrepTheme->bindParam(':theme', $setting["theme"]);
+			$queryPrepTheme->bindParam(':lang', $setting["lang"]);
 			$queryPrepTheme->bindParam(':date', $date);
 
 			if ($queryPrepTheme->execute())

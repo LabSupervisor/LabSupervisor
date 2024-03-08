@@ -59,15 +59,15 @@
 <form class="sessions" method="post">
 	<input type="hidden" value="1" name="nbChapter" id="nbChapter">
 	<fieldset>
-		<legend> Information </legend>
-		<strong class="strong1"> Titre : </strong>
+		<legend><?= lang("SESSION_CREATE_TITLE_INFORMATION") ?></legend>
+		<strong class="strong1"><?= lang("SESSION_CREATE_INFORMATION_TITLE") ?></strong>
 		<input type="text" id="titleSession" class="firstbox" name="titleSession" required>
-		<strong class="strong2"> Description : </strong>
+		<strong class="strong2"><?= lang("SESSION_CREATE_INFORMATION_DESCRIPTION") ?></strong>
 		<textarea id="descriptionSession" class="secondbox" name="descriptionSession"></textarea>
 	</fieldset>
 	<fieldset>
-		<legend> Participants </legend>
-		<strong> Classes : </strong>
+		<legend><?= lang("SESSION_CREATE_TITLE_PARTICIPANT") ?></legend>
+		<strong><?= lang("SESSION_CREATE_PARTICIPANT_CLASS") ?></strong>
 
 		<?php
 		$classrooms = ClassroomRepository::getClassrooms();
@@ -87,19 +87,19 @@
 		</div>
 	</fieldset>
 	<fieldset>
-   		<legend>Chapitres</legend>
+   		<legend><?= lang("SESSION_CREATE_TITLE_CHAPTER") ?></legend>
    			<div class="buttonC">
-			<strong class="strong1">Titre :</strong>
+			<strong class="strong1"><?= lang("SESSION_CREATE_CHAPTER_TITLE") ?></strong>
   			<input type="text" id="titleChapter1" class="firstbox" name="titleChapter1">
-   			<strong class="strong2">Description :</strong>
+   			<strong class="strong2"><?= lang("SESSION_CREATE_CHAPTER_DESCRIPTION") ?></strong>
    			<textarea id="chapterDescription1" class="secondbox" name="chapterDescription1"></textarea>
 			</div>
 			<button type="button" id="btn-chapter" class="button chapterButton" onclick="addChapter()">+ Chapitre</button>
 	</fieldset>
 	<fieldset>
-		<legend> Date </legend>
-		<strong> Date : </strong>
+		<legend><?= lang("SESSION_CREATE_TITLE_DATE") ?></legend>
+		<strong><?= lang("SESSION_CREATE_DATE_DATE") ?></strong>
 		<input type="datetime-local" id="date" name="date"  required>
 	</fieldset>
-	<input type="submit" name="saveSession" class="button" value="Enregistrer">
+	<input type="submit" name="saveSession" class="button" value="<?= lang("SESSION_CREATE_SUBMIT") ?>">
 </form>

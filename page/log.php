@@ -17,10 +17,10 @@
 	<table>
 		<thead>
 			<tr>
-				<th class="col1">ID</th>
-				<th class="col2">Utilisateur</th>
-				<th class="col3">Message</th>
-				<th class="col4">Date</th>
+				<th class="col1"><?= lang("LOG_TRACE_ID") ?></th>
+				<th class="col2"><?= lang("LOG_TRACE_USER") ?></th>
+				<th class="col3"><?= lang("LOG_TRACE_MESSAGE") ?></th>
+				<th class="col4"><?= lang("LOG_TRACE_DATE") ?></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -47,10 +47,10 @@
 </div>
 <div class="button-container">
 	<a href="/logs?trace">
-		<button><i class="ri-draft-line"></i> Trace</button>
+		<button><i class="ri-draft-line"></i> <?= lang("LOG_TRACE") ?></button>
 	</a>
 	<a href="/logs?error">
-		<button><i class="ri-error-warning-line"></i> Erreur</button>
+		<button><i class="ri-error-warning-line"></i> <?= lang("LOG_ERROR") ?></button>
 	</a>
 </div>
 <?php
@@ -73,9 +73,9 @@
 	<table>
 		<thead>
 			<tr>
-				<th class="col-1">Erreur</th>
-				<th class="col-2">Message</th>
-				<th class="col-3">Heure</th>
+				<th class="col-1"><?= lang("LOG_ERROR_ERROR") ?></th>
+				<th class="col-2"><?= lang("LOG_ERROR_MESSAGE") ?></th>
+				<th class="col-3"><?= lang("LOG_ERROR_DATE") ?></th>
 			</tr>
 		</thead>
 		<tbody-wrapper>
@@ -132,17 +132,17 @@
 		<div class="left-buttons2">
 
 		<a href="/logs?trace">
-			<button><i class="ri-draft-line"></i> Trace</button>
+			<button><i class="ri-draft-line"></i> <?= lang("LOG_TRACE") ?></button>
 		</a>
 		<a href="/logs?error">
-			<button><i class="ri-error-warning-line"></i> Erreur</button>
+			<button><i class="ri-error-warning-line"></i> <?= lang("LOG_ERROR") ?></button>
 		</a>
 		</div>
 		<div class="right-buttons2">
 			<form method="get">
 				<input type="hidden" name="error">
 				<input type="date" name="date">
-				<input type="submit" value="Envoyer">
+				<input type="submit" value="<?= lang("LOG_ERROR_SUBMIT") ?>">
 			</form>
 		</div>
 	</div>
@@ -150,15 +150,15 @@
 
 	<?php
 	} else {
-		echo "Fichier introuvable"; ?>
+		echo lang("LOG_ERROR_FILENOTFOUND"); ?>
 
 	<div class="button-container2">
 		<div class="left-buttons2">
 		<a href="/logs?trace">
-			<button><i class="ri-draft-line"></i> Trace</button>
+			<button><i class="ri-draft-line"></i> <?= lang("LOG_TRACE") ?></button>
 		</a>
 		<a href="/logs?error">
-			<button><i class="ri-error-warning-line"></i> Erreur</button>
+			<button><i class="ri-error-warning-line"></i> <?= lang("LOG_ERROR") ?></button>
 		</a>
 		</div>
 		<div class="right-buttons2">

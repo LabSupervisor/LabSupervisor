@@ -16,19 +16,17 @@
 
 <div class="LoginDiv">
 	<form action="login" method="post">
-		<h2>Connexion</h2>
-		<input type="text" id="username" name="email" class="Username" placeholder="Adresse email" required autofocus><br>
+		<h2><?= lang("LOGIN_TITLE") ?></h2>
+		<input type="text" id="username" name="email" class="Username" placeholder="<?= lang("LOGIN_EMAIL") ?>" required autofocus><br>
 		<div class="PasswordContainer">
-			<input type="password" id="password" name="password" placeholder="Mot de passe" class="Password" required><br>
+			<input type="password" id="password" name="password" placeholder="<?= lang("LOGIN_PASSWORD") ?>" class="Password" required><br>
 			<button type="button" id="showPasswordButton" class="ShowPasswordButton" onclick="togglePasswordVisibility()">
 				<i id="eyeIcon" class="ri-eye-off-line"></i>
 			</button>
 		</div>
 		<div class="LoginDivButons">
-			<input type="submit" name="login" value="Se connecter" class="button">
-			<a href="/register" class="register-link">
-				Pas encore de compte ?
-			</a>
+			<input type="submit" name="login" value="<?= lang("LOGIN_SUBMIT") ?>" class="button">
+			<a href="/register" class="register-link"><?= lang("LOGIN_NOTSIGN") ?></a>
 		</div>
 	</form>
 </div>

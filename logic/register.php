@@ -12,9 +12,9 @@ if (isset($_POST["register"])) {
 
 	// Checking if the password is the same from confirm
 	if ($_POST['password'] != $_POST['confpass']) {
-		echo "Password and Confirm Password do not match!";
+		echo lang("REGISTER_ERROR_NOTSAME");
 	} elseif (UserRepository::getId($_POST['email'])) {
-		echo "Email already taken. Please choose another.";
+		echo lang("REGISTER_ERROR_EMAILTAKEN");
 	} else {
 		// Create user
 		$userRepo = new UserRepository();
