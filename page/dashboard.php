@@ -4,7 +4,7 @@
 	mainHeader("Options");
 
 	// Ask for permissions
-	permissionChecker(true, false, true, false);
+	permissionChecker(true, array(teacher));
 ?>
 
 <link rel="stylesheet" href="/public/css/dashboard.css">

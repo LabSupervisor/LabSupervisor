@@ -4,7 +4,7 @@
 	mainHeader("Création de session");
 
 	// Ask for permissions
-	permissionChecker(true, false, true, false);
+	permissionChecker(true, array(teacher));
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php');

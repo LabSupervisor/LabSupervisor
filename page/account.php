@@ -4,7 +4,7 @@
 	mainHeader("Compte");
 
 	// Ask for permissions
-	permissionChecker(true, true, true, true);
+	permissionChecker(true, array(admin, student, teacher));
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateUser.php");

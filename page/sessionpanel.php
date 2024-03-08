@@ -4,7 +4,7 @@
 	mainHeader("Session en cours");
 
 	// Ask for permissions
-	permissionChecker(true, true, false, false);
+	permissionChecker(true, array(student));
 ?>
 
 <?php

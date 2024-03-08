@@ -4,7 +4,7 @@
 	mainHeader("Log");
 
 	// Ask for permissions
-	permissionChecker(true, false, false, true);
+	permissionChecker(true, array(admin));
 ?>
 
 <link rel="stylesheet" href="/public/css/log.css">

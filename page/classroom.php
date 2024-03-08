@@ -4,7 +4,7 @@
 	mainHeader("Classes");
 
 	// Ask for permissions
-	permissionChecker(true, false, true, true);
+	permissionChecker(true, array(admin, teacher));
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateClassroom.php");

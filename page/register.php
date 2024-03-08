@@ -4,7 +4,7 @@
 	mainHeader("Création de compte");
 
 	// Ask for permissions
-	permissionChecker(false, false, false, false);
+	permissionChecker(false, "");
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . '/logic/register.php');
