@@ -3,6 +3,8 @@
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader("Administration utilisateur");
 
+	permissionChecker(true, array(admin));
+
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_roleFormat.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateAdminUser.php");

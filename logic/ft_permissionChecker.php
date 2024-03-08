@@ -1,37 +1,38 @@
 <?php
-function permissionChecker($connect, $student, $teacher, $admin) {
+
+function permissionChecker($connect, $accessList) {
+	// If connected is imposed
 	if ($connect == true) {
-		// Check if user is connected
-		if (isset($_SESSION["login"])) {
-			$access = array(
-				"student" => $student,
-				"teacher" => $teacher,
-				"admin" => $admin
-			);
+		// If accessList is specified
+		if ($accessList != "") {
+			// Check if user is connected
+			if (isset($_SESSION["login"])) {
 
-			$role = UserRepository::getInfo($_SESSION["login"]);
+				$userRole = UserRepository::getRole($_SESSION["login"]);
 
-			// Verify role with page persmission
-			if (!(($access["student"] && $role["student"]) || ($access["teacher"] && $role["teacher"]) || ($access["admin"] && $role["admin"]))) {
-				// Redirected if not authorised
-				header("Location: /denied");
+				$access = false;
+				foreach ($userRole as $value) {
+					if (in_array($value, $accessList)) {
+						$access = true;
+					}
+				}
+
+				if (!$access)
+					header("Location: /denied");
+
+				return $userRole;
+
+			// Redirected if connected session is imposed and user not connected
 			} else {
-				$roleList = array();
-				if ($role["student"])
-					array_push($roleList, "student");
-				if ($role["teacher"])
-					array_push($roleList, "teacher");
-				if ($role["admin"])
-					array_push($roleList, "admin");
-				return $roleList;
+				header("Location: /denied");
 			}
 		} else {
-			// Redirected if connected session is imposed
-			header("Location: /denied");
+			return UserRepository::getRole($_SESSION["login"]);
 		}
+	// If disconnected is imposed
 	} else {
+		// Redirected if disconnected session is imposed and user is connected
 		if (isset($_SESSION["login"])) {
-			// Redirected if connected session is imposed
 			header("Location: /denied");
 		}
 	}

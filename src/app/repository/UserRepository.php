@@ -171,7 +171,7 @@ class UserRepository {
 		$db = dbConnect();
 
 		// Get user's datas query
-		$query = "SELECT us.*, rl.student, rl.teacher, rl.admin FROM user us, role rl WHERE us.email = :email and us.id = rl.iduser";
+		$query = "SELECT * FROM user WHERE email = :email";
 
 		// Get user's datas
 		try {
@@ -179,6 +179,28 @@ class UserRepository {
 			$queryPrep->bindParam(':email', $email);
 			if (!$queryPrep->execute())
 				throw new Exception("Get user datas " . $email . " error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_ASSOC)[0] ?? NULL;
+	}
+
+	public static function getRole($email) {
+		$db = dbConnect();
+
+		$userId = UserRepository::getId($email);
+
+		// Get user's roles query
+		$query = "SELECT * FROM userrole WHERE iduser = :iduser";
+
+		// Get user's roles
+		try {
+			$queryPrep = $db->prepare($query);
+			$queryPrep->bindParam(':iduser', $userId);
+			if (!$queryPrep->execute())
+				throw new Exception("Get user " . $email . " roles error");
 		} catch (Exception $e) {
 			// Log error
 			LogRepository::fileSave($e);

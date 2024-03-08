@@ -49,15 +49,12 @@ CREATE TABLE `participant` (
 
 DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `iduser` int(11) DEFAULT NULL,
-  `student` tinyint(1) NOT NULL DEFAULT 1,
-  `teacher` tinyint(1) NOT NULL DEFAULT 0,
-  `admin` tinyint(1) NOT NULL DEFAULT 0,
-  `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`),
-  KEY `role_user_FK` (`iduser`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `creationdate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3;
 
 DROP TABLE IF EXISTS `session`;
 CREATE TABLE `session` (
@@ -110,6 +107,17 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+DROP TABLE IF EXISTS `userrole`;
+CREATE TABLE `userrole` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `iduser` int NOT NULL,
+  `idrole` int NOT NULL DEFAULT '2',
+  `updatedate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `userrole_user_FK` (`iduser`),
+  KEY `userrole_role_FK` (`idrole`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
 DROP TABLE IF EXISTS `userclassroom`;
 CREATE TABLE `userclassroom` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -139,8 +147,9 @@ ALTER TABLE `participant`
   ADD CONSTRAINT `FK_session_participant` FOREIGN KEY (`idsession`) REFERENCES `session` (`id`),
   ADD CONSTRAINT `participant_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`);
 
-ALTER TABLE `role`
-  ADD CONSTRAINT `role_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`);
+ALTER TABLE `userrole`
+  ADD CONSTRAINT `userrole_role_FK` FOREIGN KEY (`idrole`) REFERENCES `role` (`id`),
+  ADD CONSTRAINT `userrole_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`);
 
 ALTER TABLE `session`
   ADD CONSTRAINT `session_user_FK` FOREIGN KEY (`idcreator`) REFERENCES `user` (`id`);

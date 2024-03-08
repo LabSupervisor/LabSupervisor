@@ -4,7 +4,7 @@
 	mainHeader("Connexion");
 
 	// Ask for permissions
-	permissionChecker(false, false, false, false);
+	permissionChecker(false, "");
 ?>
 
 <?php

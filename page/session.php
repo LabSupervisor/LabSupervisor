@@ -4,7 +4,7 @@
 	mainHeader("Sessions");
 
 	// Ask for permissions and store it
-	$roleList = permissionChecker(true, true, true, true);
+	$roleList = permissionChecker(true, array(admin, student, teacher));
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/joinSession.php");

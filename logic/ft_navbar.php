@@ -28,9 +28,9 @@
 		<?php
 			// If the user is connected
 			} else {
-				$roleList = permissionChecker(true, true, true, true);
+				$roleList = permissionChecker(true, "");
 			// If the user is a teacher
-			if (in_array("teacher", $roleList)) { ?>
+			if (in_array(teacher, $roleList)) { ?>
 					<li>
 						<a class="title" href="/classes"><i class="ri-folder-line"></i> Classes</a>
 					</li>
@@ -42,13 +42,13 @@
 					</li>
 		<?php }
 			// If the user is a student
-			else if(in_array("student", $roleList)) { ?>
+			else if(in_array(student, $roleList)) { ?>
 				<li>
 					<a class="title" href="/sessions"><i class="ri-slideshow-3-line"></i> Voir mes sessions</a>
 				</li>
 		<?php }
 			// If the user is an admin
-			else if (in_array("admin", $roleList)) { ?>
+			else if (in_array(admin, $roleList)) { ?>
 				<li>
 					<a class="title" href="/utilisateurs"><i class="ri-folder-line"></i> Utlisateurs</a>
 				</li>
