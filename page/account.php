@@ -18,27 +18,27 @@
     <h2>Paramètres du compte</h2>
     <form action="" method="post">
         <div class="form-group">
-            <label for="new_name">Nouveau nom :</label>
+            <label for="new_name">Nom :</label>
             <input type="text" class="newname" name="new_name" value="<?php echo $user['name']; ?>">
         </div>
         <div class="form-group">
-            <label for="new_surname">Nouveau prénom :</label>
+            <label for="new_surname">Prénom :</label>
             <input type="text" class="newsurname" name="new_surname" value="<?php echo $user['surname']; ?>">
         </div>
         <div class="form-group">
-            <label for="birthdate">Nouvelle date de naissance :</label>
+            <label for="birthdate">Date de naissance :</label>
             <input type="date" class="newbirthDate" name="new_birthDate" value="<?php echo $user['birthdate']; ?>">
         </div>
         <div class="form-group">
-            <label for="new_password">Nouveau mot de passe :</label>
-            <input type="password" id="password" class="newpassword" name="new_password" aria-autocomplete="list" required>
+            <label for="new_password">Mot de passe :</label>
+            <input type="password" id="password" class="newpassword" name="new_password" aria-autocomplete="list">
             <button type="button" class="ShowPasswordButton" onclick="togglePasswordVisibility('password', 'eyeIcon')">
                 <i id="eyeIcon" class="ri-eye-off-line"></i>
             </button>
         </div>
         <div class="form-group">
-            <label for="conf_password">Veuillez confirmer :</label>
-            <input type="password" id="passwordConf" class="confpassword" name="conf_password" required>
+            <label for="conf_password">Confirmer :</label>
+            <input type="password" id="passwordConf" class="confpassword" name="conf_password">
             <button type="button" class="ShowPasswordButton" onclick="togglePasswordVisibility('passwordConf', 'eyeIconConf')">
                 <i id="eyeIconConf" class="ri-eye-off-line"></i>
             </button>
