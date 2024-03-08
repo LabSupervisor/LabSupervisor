@@ -12,17 +12,31 @@
 	$user = UserRepository::getInfo($_SESSION["login"]);
 ?>
 
-<h2>Paramètres du compte</h2>
-<form action="" method="post">
-	<label for="new_name">Nouveau nom:</label>
-	<input type="text" name="new_name" value="<?php echo $user['name']; ?>"><br>
-	<label for="new_surname">Nouveau prénom:</label>
-	<input type="text" name="new_surname" value="<?php echo $user['surname']; ?>"><br>
-	<label for="birthdate">Nouvelle date de naissance:</label>
-	<input type="date" name="new_birthDate" value="<?php echo $user['birthdate']; ?>" class="Birthdate"><br>
-	<label for="new_password">Nouveau mot de passe:</label>
-	<input type="password" name="new_password"><br>
-	<label for="new_password">Veuillez confirmer:</label>
-	<input type="password" name="conf_password"><br>
-	<input type="submit" value="Enregistrer les modifications">
-</form>
+<link rel="stylesheet" href="../public/css/account.css">
+
+<div class="AccountDiv">
+    <h2>Paramètres du compte</h2>
+    <form action="" method="post">
+        <div class="form-group">
+            <label for="new_name">Nouveau nom:</label>
+            <input type="text" class="newname" name="new_name" value="">
+        </div>
+        <div class="form-group">
+            <label for="new_surname">Nouveau prénom:</label>
+            <input type="text" class="newsurname" name="new_surname" value="">
+        </div>
+        <div class="form-group">
+            <label for="birthdate">Nouvelle date de naissance:</label>
+            <input type="date" class="newbirthDate" name="new_birthDate" value="">
+        </div>
+        <div class="form-group">
+            <label for="new_password">Nouveau mot de passe:</label>
+            <input type="password" class="newpassword" name="new_password" aria-autocomplete="list">
+        </div>
+        <div class="form-group">
+            <label for="conf_password">Veuillez confirmer:</label>
+            <input type="password" class="confpassword" name="conf_password">
+        </div>
+        <input type="submit" class="submit" value="Enregistrer les modifications">
+    </form>
+</div>
