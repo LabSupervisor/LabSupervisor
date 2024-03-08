@@ -38,12 +38,15 @@ label {
 input {
     flex: 1;
 }
+
 input:focus {
     outline: none !important;
 }
+
 input:focus-visible {
     outline: auto;
 }
+
 input::placeholder {
     color: rgba(255, 255, 255, 0.563);
     font-style: italic;
@@ -96,6 +99,7 @@ input::placeholder {
 	outline: none;
 	padding: 8px;
 }
+
 input[type="date"]::-webkit-calendar-picker-indicator {
     filter: invert(1);
 	font-size: 20px;
