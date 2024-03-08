@@ -79,7 +79,7 @@ class UserRepository {
 			$password = UserRepository::getInfo($bindParam["email"])["password"];
 
 		// Update user query
-		$query = "UPDATE user SET password = :password, name = :name, surname = :surname, birthdate = :birthdate, updatedate = current_timestamp() WHERE email = :email";
+		$query = "UPDATE user SET password = :password, name = :name, surname = :surname, birthdate = :birthdate WHERE email = :email";
 
 		// Update user
 		try {
@@ -111,7 +111,7 @@ class UserRepository {
 		$userId = UserRepository::getId($email);
 
 		// Delete user query
-		$query = "UPDATE user SET email = 'deleted#" . $userId . "', password = 'deleted', name = 'deleted', surname = 'deleted', birthDate = '1970-01-01', updatedate = current_timestamp(), active = 0 WHERE id = :iduser";
+		$query = "UPDATE user SET email = 'deleted#" . $userId . "', password = 'deleted', name = 'deleted', surname = 'deleted', birthDate = '1970-01-01', active = 0 WHERE id = :iduser";
 
 		// Delete user
 		try {
@@ -274,11 +274,10 @@ class UserRepository {
 	public static function updateSetting($setting) {
 		$db = dbConnect();
 
-		$date = date('Y-m-d H:i:s');
 		$userId = UserRepository::getId($_SESSION["login"]);
 
 		// Update user's settings query
-		$queryTheme = "UPDATE setting SET theme = :theme, lang = :lang, updatedate = :date WHERE iduser = :iduser";
+		$queryTheme = "UPDATE setting SET theme = :theme, lang = :lang WHERE iduser = :iduser";
 
 		// Update user's settings
 		try {
@@ -286,7 +285,6 @@ class UserRepository {
 			$queryPrepTheme->bindParam(':iduser', $userId);
 			$queryPrepTheme->bindParam(':theme', $setting["theme"]);
 			$queryPrepTheme->bindParam(':lang', $setting["lang"]);
-			$queryPrepTheme->bindParam(':date', $date);
 
 			if ($queryPrepTheme->execute())
 				LogRepository::dbSave("Theme change to " . $setting["theme"]);

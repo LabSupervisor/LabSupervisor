@@ -38,7 +38,7 @@ class ClassroomRepository {
 		$classroomId = ClassroomRepository::getId($bindParam["name"]);
 
 		// Update classroom query
-		$query = "UPDATE classroom SET name = :name, updatedate = current_timestamp() WHERE id = :id";
+		$query = "UPDATE classroom SET name = :name WHERE id = :id";
 
 		// Update classroom
 		try {
@@ -243,7 +243,7 @@ class ClassroomRepository {
 		$classroomId = ClassroomRepository::getId($name);
 
 		// Delete classroom query
-		$query = "UPDATE classroom SET name = 'deleted#" . $classroomId . "', updatedate = current_timestamp(), active = 0 WHERE id = :idclassroom";
+		$query = "UPDATE classroom SET name = 'deleted#" . $classroomId . "', active = 0 WHERE id = :idclassroom";
 
 		// Delete classroom
 		try {

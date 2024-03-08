@@ -41,7 +41,7 @@ class SessionRepository {
 		$sessionId = SessionRepository::getId($bindParam["title"]);
 
 		// Update session query
-		$query = "UPDATE session SET title = :title, description = :description, idcreator = :idcreator, date = :date, updatedate = current_timestamp() WHERE id = :id";
+		$query = "UPDATE session SET title = :title, description = :description, idcreator = :idcreator, date = :date WHERE id = :id";
 
 		// Update session
 		try {
@@ -343,7 +343,7 @@ class SessionRepository {
 		$sessionId = SessionRepository::getId($name);
 
 		// Delete session query
-		$query = "UPDATE session SET title = 'deleted#" . $sessionId . "', updatedate = current_timestamp(), active = 0 WHERE id = :idsession";
+		$query = "UPDATE session SET title = 'deleted#" . $sessionId . "', active = 0 WHERE id = :idsession";
 
 		// Delete session
 		try {

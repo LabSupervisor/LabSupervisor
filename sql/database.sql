@@ -10,7 +10,7 @@ CREATE TABLE `chapter` (
   `description` text DEFAULT NULL,
   `idcreator` int(11) NOT NULL,
   `creationdate` datetime NOT NULL DEFAULT current_timestamp(),
-  `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
+  `updatedate` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `chapter_session_FK` (`idsession`),
   KEY `chapter_user_FK` (`idcreator`)
@@ -22,7 +22,7 @@ CREATE TABLE `classroom` (
   `name` varchar(50) NOT NULL,
   `active` tinyint(1) NOT NULL DEFAULT 1,
   `creationdate` datetime NOT NULL DEFAULT current_timestamp(),
-  `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
+  `updatedate` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -41,7 +41,7 @@ CREATE TABLE `participant` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `iduser` int(11) NOT NULL,
   `idsession` int(11) NOT NULL,
-  `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
+  `updatedate` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `FK_session_participant` (`idsession`),
   KEY `participant_user_FK` (`iduser`)
@@ -65,7 +65,7 @@ CREATE TABLE `session` (
   `active` tinyint(1) NOT NULL DEFAULT 1,
   `date` datetime NOT NULL,
   `creationdate` datetime NOT NULL DEFAULT current_timestamp(),
-  `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
+  `updatedate` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `session_user_FK` (`idcreator`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -76,7 +76,7 @@ CREATE TABLE `setting` (
   `iduser` int(11) NOT NULL,
   `theme` int(11) NOT NULL DEFAULT 0,
   `lang` varchar(50) NOT NULL DEFAULT 'fr_FR',
-  `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
+  `updatedate` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `setting_user_FK` (`iduser`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -88,7 +88,7 @@ CREATE TABLE `status` (
   `idsession` int(11) DEFAULT NULL,
   `state` int(11) NOT NULL DEFAULT 0,
   `idchapter` int(11) DEFAULT NULL,
-  `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
+  `updatedate` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `status_user_FK` (`iduser`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -103,7 +103,7 @@ CREATE TABLE `user` (
   `birthdate` date NOT NULL,
   `active` tinyint(1) NOT NULL DEFAULT 1,
   `creationdate` datetime NOT NULL DEFAULT current_timestamp(),
-  `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
+  `updatedate` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -123,7 +123,7 @@ CREATE TABLE `userclassroom` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `iduser` int(11) NOT NULL,
   `idclassroom` int(11) NOT NULL,
-  `updatedate` datetime NOT NULL DEFAULT current_timestamp(),
+  `updatedate` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `usergroup_user_FK` (`iduser`),
   KEY `usergroup_group_FK` (`idclassroom`)
@@ -134,7 +134,7 @@ CREATE TABLE `link` (
   `id` int NOT NULL AUTO_INCREMENT,
   `iduser` int NOT NULL,
   `idlink` int NOT NULL,
-  `connectdate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `connectdate` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `link_user_FK` (`iduser`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
