@@ -18,15 +18,13 @@ function permissionChecker($connect, $accessList) {
 				}
 
 				if (!$access)
-					// header("Location: /denied");
-
-				return $userRole;
+					header("Location: /denied");
 
 			// Redirected if connected session is imposed and user not connected
 			} else {
-				// header("Location: /denied");
+				header("Location: /denied");
 			}
-		} 
+		}
 		$userRole = UserRepository::getRole($_SESSION["login"]);
 
 		$roleList = array();
@@ -34,6 +32,7 @@ function permissionChecker($connect, $accessList) {
 			array_push($roleList, $value["idrole"]);
 		}
 		return $roleList;
+
 	// If disconnected is imposed
 	} else {
 		// Redirected if disconnected session is imposed and user is connected

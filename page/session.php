@@ -56,7 +56,9 @@
 						echo '</td>';
 						echo '<td class="col3">'. $creatorName ."</td>";
 						echo '<td class="col4">'. $line["date"] ."</td>";
-						if (!in_array("admin", $roleList)) {
+						if (in_array(admin, $roleList)) {
+							echo "<td><i class='ri-lock-line'></i> Verrouillé</td>";
+						} else {
 							echo "<td>";
 
 							// Only select existed user
@@ -71,8 +73,6 @@
 							}
 
 							echo "</td>";
-						} else {
-							echo "<td><i class='ri-lock-line'></i> Verrouillé</td>";
 						}
 					}
 					echo "</tr>";
