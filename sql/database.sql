@@ -147,9 +147,6 @@ ALTER TABLE `participant`
   ADD CONSTRAINT `FK_session_participant` FOREIGN KEY (`idsession`) REFERENCES `session` (`id`),
   ADD CONSTRAINT `participant_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`);
 
-ALTER TABLE `role`
-  ADD CONSTRAINT `role_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`);
-
 ALTER TABLE `userrole`
   ADD CONSTRAINT `userrole_role_FK` FOREIGN KEY (`idrole`) REFERENCES `role` (`id`),
   ADD CONSTRAINT `userrole_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`);
