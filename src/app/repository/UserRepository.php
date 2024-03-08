@@ -35,7 +35,7 @@ class UserRepository {
 				$userId = $this->getId($bindParam["email"]);
 
 				// Create user role query
-				$queryRole = "INSERT INTO role (iduser) VALUES (:iduser)";
+				$queryRole = "INSERT INTO userrole (iduser) VALUES (:iduser)";
 
 				// Create user role
 				try {
