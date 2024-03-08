@@ -2,6 +2,7 @@
 function dbConnect()
 {
 	try {
+		// Get settings file
 		$infosConnexion = parse_ini_file($_SERVER["DOCUMENT_ROOT"] .'/config/setting.ini');
 
 		$infoBdd = array(
@@ -22,11 +23,13 @@ function dbConnect()
 		$port = $infoBdd['port'];
 		$charset = $infoBdd['charset'];
 
+		// Create PDO connection
 		$db = new PDO("$driver:dbname=$dbname; host=$hostname; port=$port; options='--client_encoding=$charset'", $username, $password, [PDO::MYSQL_ATTR_LOCAL_INFILE => true]);
 		$db->exec("SET NAMES 'UTF8'");
 
 		return $db;
 	} catch (Exception $e) {
+		// Log error
 		LogRepository::fileSave($e);
 	}
 }

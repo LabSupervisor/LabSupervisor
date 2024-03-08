@@ -1,6 +1,5 @@
 <?php
 
-// Check if the form is submitted
 if (isset($_POST["register"])) {
 	$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 	$userData = array(
@@ -17,6 +16,7 @@ if (isset($_POST["register"])) {
 	} elseif (UserRepository::getId($_POST['email'])) {
 		echo "Email already taken. Please choose another.";
 	} else {
+		// Create user
 		$userRepo = new UserRepository();
 		$user = new User($userData);
 		$userRepo->createUser($user);

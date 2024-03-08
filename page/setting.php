@@ -1,11 +1,12 @@
 <?php
+	// Import header
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader("Options");
 
+	// Ask for permissions
 	permissionChecker(true, true, true, true);
-?>
 
-<?php
+	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/changeSetting.php");
 ?>
 

@@ -1,4 +1,5 @@
 <?php
+	// Import header
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader("Administration utilisateur");
 
@@ -9,6 +10,7 @@
 ?>
 
 <script>
+	// Create update fields
 	function updateUser(userId) {
 		var form = document.getElementById("form");
 
@@ -21,6 +23,7 @@
 
 		var modifyButtonDisable = document.getElementsByClassName("modifybutton");
 
+		// Disable all modify buttons
 		for (let i = 0; i < modifyButtonDisable.length; i++) {
 			const element = modifyButtonDisable[i];
 			element.setAttribute("disabled", "true");
@@ -80,21 +83,18 @@
 		<tbody>
 			<?php
 				foreach (UserRepository::getUsers() as $user) {
+					// Only select active user
 					if (UserRepository::isActive($user["email"])) {
 						$userId = $user['id'];
 			?>
 				<tr>
-
-
 					<td id="surname_<?=$userId?>"><?=$user['surname']?></td>
 					<td id="name_<?=$userId?>"><?=$user['name']?></td>
 					<td><?=$user['email']?></td>
 					<td id="birthdate_<?=$userId?>"><?=$user['birthdate']?></td>
 					<td><?=roleFormat($user["student"], $user["teacher"], $user["admin"])?></td>
 					<td><?=$user["classroom"]?></td>
-
 					<td><button class="modifybutton" type="button" id="modify_<?=$userId?>" onclick="updateUser(<?=$userId?>)">Modifier</button></td>
-
 					<td>
 					<form method="POST" action="#">
 						<input type="hidden" name="userId" value="<?= $userId ?>">
@@ -110,4 +110,3 @@
 		</tbody>
 	</table>
 </form>
-

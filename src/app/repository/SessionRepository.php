@@ -5,8 +5,8 @@ class SessionRepository {
 	public function __construct() {}
 
 	public function createSession(Session $entity) {
-        if ($entity != NULL) {
-            $bindParam = $entity->__toArray();
+		if ($entity != NULL) {
+			$bindParam = $entity->__toArray();
 			// check if session doesn't exist
 			if (!$this->getId($bindParam["title"])) {
 				$db = dbConnect();
@@ -24,6 +24,7 @@ class SessionRepository {
 					if (!$queryPrep->execute())
 						throw new Exception("Create session " . $bindParam["title"] . " error");
 				} catch (Exception $e) {
+					// Log error
 					LogRepository::fileSave($e);
 				}
 			} else {
@@ -39,10 +40,10 @@ class SessionRepository {
 		$bindParam = $entity->__toArray();
 		$sessionId = SessionRepository::getId($bindParam["title"]);
 
-		// Update user query
+		// Update session query
 		$query = "UPDATE session SET title = :title, description = :description, idcreator = :idcreator, date = :date, updatedate = current_timestamp() WHERE id = :id";
 
-		// Update user
+		// Update session
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(":title", $bindParam["title"]);
@@ -55,6 +56,7 @@ class SessionRepository {
 			else
 				throw new Exception("Update session " . $bindParam["title"] . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 	}
@@ -62,16 +64,17 @@ class SessionRepository {
 	public static function getId($name) {
 		$db = dbConnect();
 
-		// Get user ID query
+		// Get session ID query
 		$query = "SELECT id FROM session WHERE title = :title";
 
-		// Get user ID
+		// Get session ID
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':title', $name);
 			if (!$queryPrep->execute())
 				throw new Exception("Get session id " . $name . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 
@@ -90,6 +93,7 @@ class SessionRepository {
 			if (!$queryPrep->execute())
 				throw new Exception("Get sessions error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 
@@ -99,16 +103,17 @@ class SessionRepository {
 	public static function getInfo($sessionId) {
 		$db = dbConnect();
 
-		// Get user ID query
+		// Get session's datas query
 		$query = "SELECT * FROM session WHERE id = :idsession";
 
-		// Get user ID
+		// Get session's datas
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':idsession', $sessionId);
 			if (!$queryPrep->execute())
 				throw new Exception("Get session datas " . $sessionId . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 
@@ -118,10 +123,10 @@ class SessionRepository {
 	public static function getStatus($chapter, $userId) {
 		$db = dbConnect();
 
-		// Get user status query
+		// Get user's status query
 		$query = "SELECT state FROM status WHERE idchapter = :idChapter AND iduser = :idUser";
 
-		// Get user status
+		// Get user's status
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':idChapter', $chapter);
@@ -129,6 +134,7 @@ class SessionRepository {
 			if (!$queryPrep->execute())
 				throw new Exception("Get status chapter " . $chapter . " for user " . UserRepository::getInfo($userId)["name"] . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 
@@ -138,16 +144,17 @@ class SessionRepository {
 	public static function getChapter($sessionId) {
 		$db = dbConnect();
 
-		// Get user status query
+		// Get session's chapter query
 		$query = "SELECT id, title, description FROM chapter WHERE idsession = :idsession";
 
-		// Get user status
+		// Get session's chapter
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':idsession', $sessionId);
 			if (!$queryPrep->execute())
 				throw new Exception("Get chapter from session " . $sessionId . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 
@@ -167,6 +174,7 @@ class SessionRepository {
 			if (!$queryPrep->execute())
 				throw new Exception("Get chapter id " . $chapter . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 
@@ -176,16 +184,17 @@ class SessionRepository {
 	public static function getParticipant($sessionId) {
 		$db = dbConnect();
 
-		// Get user status query
+		// Get session's participants query
 		$query = "SELECT us.name, us.surname, ch.title, st.state FROM user us, status st, session s, chapter ch WHERE us.id = st.iduser AND s.id = :idsession AND s.id = st.idsession AND ch.idsession = s.id AND st.idchapter = ch.id ORDER BY us.name ASC";
 
-		// Get user status
+		// Get session's participant status
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':idsession', $sessionId);
 			if (!$queryPrep->execute())
 				throw new Exception("Get participant from session " . $sessionId . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 
@@ -197,16 +206,17 @@ class SessionRepository {
 
 		$userId = UserRepository::getId($email);
 
-		// Get user status query
+		// Get user's sessions query
 		$query = "SELECT idsession FROM participant WHERE iduser = :iduser";
 
-		// Get user status
+		// Get user's sessions
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':iduser', $userId);
 			if (!$queryPrep->execute())
 				throw new Exception("Get sessions from user " . $userId . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 
@@ -233,6 +243,7 @@ class SessionRepository {
 			else
 				throw new Exception("Add chapter " . $creatorId . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 	}
@@ -242,10 +253,10 @@ class SessionRepository {
 
 		$sessionId = SessionRepository::getId($sessionName);
 
-		// Add chapter query
+		// Add participant query
 		$query = "INSERT INTO participant (iduser, idsession) VALUES (:iduser, :idsession)";
 
-		// Add chapter
+		// Add participant
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':iduser', $participantId);
@@ -255,6 +266,7 @@ class SessionRepository {
 			else
 				throw new Exception("Add participant " . $participantId . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 	}
@@ -272,12 +284,12 @@ class SessionRepository {
 			$queryPrep->bindParam(":idchapter", $chapterId);
 			$queryPrep->bindParam(":iduser", $userId);
 
-			// Exécutez la requête
 			if ($queryPrep->execute())
 				LogRepository::dbSave("Add status to chapter " . $chapterId . " for " . $userId);
 			else
 				throw new Exception("Add status to chapter " . $chapterId . " for " . $userId . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 	}
@@ -285,10 +297,10 @@ class SessionRepository {
 	public static function setStatus($sessionId, $chapterId, $userId, $state) {
 		$db = dbConnect();
 
-		// Add chapter query
+		// Set status query
 		$query = "UPDATE status SET state = :idStatus WHERE idchapter = :idChapter AND iduser = :idUser AND idsession = :idSession";
 
-		// Add chapter
+		// Set status
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':idUser', $userId);
@@ -300,6 +312,7 @@ class SessionRepository {
 			else
 				throw new Exception("Status " . $state . " from session " . $sessionId . " update error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 	}
@@ -307,16 +320,17 @@ class SessionRepository {
 	public static function isActive($name) {
 		$db = dbConnect();
 
-		// Get session ID query
+		// Get if session is active query
 		$query = "SELECT active FROM session WHERE title = :title";
 
-		// Get session ID
+		// Get if session is active
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':title', $name);
 			if (!$queryPrep->execute())
 				throw new Exception("Get active session " . $name . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 
@@ -340,6 +354,7 @@ class SessionRepository {
 			else
 				throw new Exception("Delete session " . $sessionId . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 	}

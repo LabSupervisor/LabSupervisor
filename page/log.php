@@ -1,13 +1,16 @@
 <?php
+	// Import header
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader("Log");
 
+	// Ask for permissions
 	permissionChecker(true, false, false, true);
 ?>
 
-<link rel="stylesheet" href="../public/css/log.css">
+<link rel="stylesheet" href="/public/css/log.css">
 
 <?php
+	// If traces are ask
 	if (isset($_GET["trace"])) {
 ?>
 <div class="table-container">
@@ -51,13 +54,16 @@
 	</a>
 </div>
 <?php
+// If errors are ask
 } else if (isset($_GET["error"])) {
+	// Select current date if no one is given: default value
 	if (!isset($_GET["date"])) {
 		$fileDate = date("Y-m-d");
 	} else {
 		$fileDate = $_GET["date"];
 	}
 
+	// Get errors file
 	$file = $_SERVER["DOCUMENT_ROOT"] . "/log/" . $fileDate . ".log";
 	if (file_exists($file)) {
 		$logs = file_get_contents($file);
@@ -75,6 +81,7 @@
 		<tbody-wrapper>
 			<tbody>
 			<?php
+				// Get dates
 				$listDate = array();
 				$temp = explode("\n", $logs);
 				foreach($temp as $value) {
@@ -87,6 +94,7 @@
 
 				$i = -1;
 				foreach($log as $temp) {
+					// Get error's values
 					$message = "";
 					$error = "";
 
@@ -101,6 +109,7 @@
 						}
 					}
 
+					// Prevent showing empty line
 					if (strlen($error) > 1) {
 						echo "<tr>";
 						echo "<td class='col-1'>" . $error . "</td>";
@@ -158,7 +167,7 @@
 				<input type="date" name="date">
 				<input type="submit" value="Envoyer">
 			</form>
-	    </div>
+		</div>
 	</div>
 <?php
 	}

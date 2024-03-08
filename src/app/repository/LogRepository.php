@@ -20,6 +20,7 @@ class LogRepository extends Exception{
 					throw new Exception("DB Log save error ");
 			}
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 	}
@@ -47,15 +48,16 @@ class LogRepository extends Exception{
 	public static function getLogs() {
 		$db = dbConnect();
 
-		// Get users query
+		// Get logs query
 		$query = "SELECT * FROM log";
 
-		// Get users
+		// Get logs
 		try {
 			$queryPrep = $db->prepare($query);
 			if (!$queryPrep->execute())
 				throw new Exception("Get logs error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 

@@ -1,11 +1,13 @@
 <?php
+	// Import header
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader("Options");
 
+	// Ask for permissions
 	permissionChecker(true, false, true, false);
 ?>
 
-<link rel="stylesheet" href="../public/css/dashboard.css">
+<link rel="stylesheet" href="/public/css/dashboard.css">
 
 <div id="preview-container">
 
@@ -115,55 +117,55 @@
 </div>
 
 <script>
-    // Change cell color between 5 definite colors
-    document.addEventListener('DOMContentLoaded', function() {
-        // Definite colours
-        const couloursCells = ["#f57e7e", "#f384ae", "#b778ff", "#ecff78", "#fbbc62"];
+	// Change cell color between 5 definite colors
+	document.addEventListener('DOMContentLoaded', function() {
+		// Definite colours
+		const couloursCells = ["#f57e7e", "#f384ae", "#b778ff", "#ecff78", "#fbbc62"];
 
-        // Obtaining all elements with the class ". user-icon"
-        const userIcons = document.querySelectorAll(".user-icon");
+		// Obtaining all elements with the class ". user-icon"
+		const userIcons = document.querySelectorAll(".user-icon");
 
-        // Iteration between the different colors available and aleatory cell selection
-        userIcons.forEach(function(userIcon) {
-            const randomColour = obtenerColorAleatorio();
+		// Iteration between the different colors available and aleatory cell selection
+		userIcons.forEach(function(userIcon) {
+			const randomColour = obtenerColorAleatorio();
 
-            // Apply color
-            userIcon.style.backgroundColor = randomColour;
-        });
+			// Apply color
+			userIcon.style.backgroundColor = randomColour;
+		});
 
-        // Function to avoid color repetition between cells
-        function obtenerColorAleatorio() {
-            // Get aleatory color from those that are available
-            const randomColour = couloursCells[Math.floor(Math.random() * couloursCells.length)];
-            return randomColour;
-        }
-    });
+		// Function to avoid color repetition between cells
+		function obtenerColorAleatorio() {
+			// Get aleatory color from those that are available
+			const randomColour = couloursCells[Math.floor(Math.random() * couloursCells.length)];
+			return randomColour;
+		}
+	});
 
 	// Code to display the tooltip in the opposite direction if it exceeds the page
 	document.addEventListener('DOMContentLoaded', function () {
-        // Function to modify the tooltips
-        function adjustTooltips() {
-            // Get all the elements with the 'tooltip' clase
-            const tooltips = document.querySelectorAll(".tooltip");
+		// Function to modify the tooltips
+		function adjustTooltips() {
+			// Get all the elements with the 'tooltip' clase
+			const tooltips = document.querySelectorAll(".tooltip");
 
-            // Iterate on each tooltip and modify it if necessary
-            tooltips.forEach(function (tooltip) {
-                // Obtaining the position of the tooltip
-                const tooltipRect = tooltip.getBoundingClientRect();
-                const windowWidth = window.innerWidth;
+			// Iterate on each tooltip and modify it if necessary
+			tooltips.forEach(function (tooltip) {
+				// Obtaining the position of the tooltip
+				const tooltipRect = tooltip.getBoundingClientRect();
+				const windowWidth = window.innerWidth;
 
-                // Check if the tooltip exceeds the edge of the page
-                if (tooltipRect.right > windowWidth) {
-                    // Change the position of the tooltip (to reverse it)
-                    const offset = 30;
-                    tooltip.style.left = 'auto';
-                    tooltip.style.right = offset + 'px';
-                }
-            });
-        }
+				// Check if the tooltip exceeds the edge of the page
+				if (tooltipRect.right > windowWidth) {
+					// Change the position of the tooltip (to reverse it)
+					const offset = 30;
+					tooltip.style.left = 'auto';
+					tooltip.style.right = offset + 'px';
+				}
+			});
+		}
 
-        // Call the function when a change to the page size occur
-        adjustTooltips();
-        window.addEventListener('resize', adjustTooltips);
-    });
+		// Call the function when a change to the page size occur
+		adjustTooltips();
+		window.addEventListener('resize', adjustTooltips);
+	});
 </script>

@@ -1,4 +1,5 @@
 <?php
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$userData = array(
 		"email" => $_SESSION["login"]
@@ -21,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		}
 	}
 
+	// Update user
 	$user = new User($userData);
 	$userRepo = new UserRepository();
 	$userRepo->update($user);

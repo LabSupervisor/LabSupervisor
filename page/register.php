@@ -1,14 +1,16 @@
 <?php
+	// Import header
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader("Création de compte");
 
+	// Ask for permissions
 	permissionChecker(false, false, false, false);
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . '/logic/register.php');
 ?>
 
-<link rel="stylesheet" href="../public/css/register.css">
+<link rel="stylesheet" href="/public/css/register.css">
 
 <div class="RegisterDiv">
 	<form action="register" method="post">
@@ -30,13 +32,14 @@
 		<input type="text" name="surname" placeholder="Nom" class="Surname" required><br>
 		<input type="date" name="birthdate" class="Birthdate" required><br>
 		<input type="submit" name="register" value="Creer un compte" class="button">
-		<a href="http://labsupervisor.fr/login" class="login-link">
+		<a href="/login" class="login-link">
 			Déjà un compte ?
 		</a>
 	</form>
 </div>
 
-<script> // Password Hide/Show script (same in login)
+<script>
+// Password Hide/Show script (same in login)
 function togglePasswordVisibility() {
 	var passwordInput = document.getElementById('password');
 	var passwordConfInput = document.getElementById('passwordConf');

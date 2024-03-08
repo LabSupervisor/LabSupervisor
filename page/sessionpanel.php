@@ -1,7 +1,9 @@
 <?php
+	// Import header
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader("Session en cours");
 
+	// Ask for permissions
 	permissionChecker(true, true, false, false);
 ?>
 
@@ -55,6 +57,7 @@
 </table>
 
 <?php
+	// LS-Link
 	if (UserRepository::getLink($_SESSION["login"])){
 		echo "LS-LINK n°" . UserRepository::getLink($_SESSION["login"]);
 	}

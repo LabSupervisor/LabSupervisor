@@ -5,8 +5,8 @@ class UserRepository {
 	public function __construct() {}
 
 	public function createUser(User $entity) {
-        if ($entity != NULL) {
-            $bindParam = $entity->__toArray();
+		if ($entity != NULL) {
+			$bindParam = $entity->__toArray();
 			// check if user doesn't exist
 			if (!$this->getId($bindParam["email"])) {
 				$db = dbConnect();
@@ -28,6 +28,7 @@ class UserRepository {
 					if (!$queryPrep->execute())
 						throw new Exception("Create user " . $bindParam["email"] . " error");
 				} catch (Exception $e) {
+					// Log error
 					LogRepository::fileSave($e);
 				}
 
@@ -43,6 +44,7 @@ class UserRepository {
 					if (!$queryPrepRole->execute())
 						throw new Exception("Create user role " . $bindParam["email"] . " error");
 				} catch (Exception $e) {
+					// Log error
 					LogRepository::fileSave($e);
 				}
 
@@ -56,6 +58,7 @@ class UserRepository {
 					if (!$queryPrepSetting->execute())
 						throw new Exception("Create user setting " . $bindParam["email"] . " error");
 				} catch (Exception $e) {
+					// Log error
 					LogRepository::fileSave($e);
 				}
 			} else {
@@ -91,6 +94,7 @@ class UserRepository {
 			else
 				throw new Exception("Update user " . $bindParam["email"] . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 	}
@@ -118,6 +122,7 @@ class UserRepository {
 			else
 				throw new Exception("Delete user " . $userId . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 	}
@@ -135,6 +140,7 @@ class UserRepository {
 			if (!$queryPrep->execute())
 				throw new Exception("Get user id " . $email . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 
@@ -144,16 +150,17 @@ class UserRepository {
 	public static function getEmail($userId) {
 		$db = dbConnect();
 
-		// Get user ID query
+		// Get user's email query
 		$query = "SELECT email FROM user WHERE id = :iduser";
 
-		// Get user ID
+		// Get user's email
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':iduser', $userId);
 			if (!$queryPrep->execute())
 				throw new Exception("Get user " . $userId . " email error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 
@@ -163,16 +170,17 @@ class UserRepository {
 	public static function getInfo($email) {
 		$db = dbConnect();
 
-		// Get user ID query
+		// Get user's datas query
 		$query = "SELECT us.*, rl.student, rl.teacher, rl.admin FROM user us, role rl WHERE us.email = :email and us.id = rl.iduser";
 
-		// Get user ID
+		// Get user's datas
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':email', $email);
 			if (!$queryPrep->execute())
 				throw new Exception("Get user datas " . $email . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 
@@ -184,16 +192,17 @@ class UserRepository {
 
 		$userId = UserRepository::getId($email);
 
-		// Get user ID query
+		// Get user's settings query
 		$query = "SELECT * FROM setting WHERE iduser = :iduser";
 
-		// Get user ID
+		// Get user's settings
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':iduser', $userId);
 			if (!$queryPrep->execute())
 				throw new Exception("Get user setting " . $email . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 
@@ -212,6 +221,7 @@ class UserRepository {
 			if (!$queryPrep->execute())
 				throw new Exception("Get users error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 
@@ -221,16 +231,17 @@ class UserRepository {
 	public static function isActive($email) {
 		$db = dbConnect();
 
-		// Get user ID query
+		// Get if user is active query
 		$query = "SELECT active FROM user WHERE email = :email";
 
-		// Get user ID
+		// Get if user is active
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':email', $email);
 			if (!$queryPrep->execute())
 				throw new Exception("Get active user " . $email . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 
@@ -243,10 +254,10 @@ class UserRepository {
 		$date = date('Y-m-d H:i:s');
 		$userId = UserRepository::getId($_SESSION["login"]);
 
-		// Theme query
+		// Update user's settings query
 		$queryTheme = "UPDATE setting SET theme = :theme, updatedate = :date WHERE iduser = :iduser";
 
-		// Theme
+		// Update user's settings
 		try {
 			$queryPrepTheme = $db->prepare($queryTheme);
 			$queryPrepTheme->bindParam(':iduser', $userId);
@@ -258,6 +269,7 @@ class UserRepository {
 			else
 				throw new Exception("Theme " . $setting["theme"] . " change error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 	}
@@ -266,14 +278,14 @@ class UserRepository {
 		$db = dbConnect();
 
 		$query = "";
-		// Link query
+		// Create links query
 		if (UserRepository::getLink(UserRepository::getEmail($userId))) {
 			$query = "UPDATE link SET idlink = :idlink WHERE iduser = :iduser";
 		} else {
 			$query = "INSERT INTO link (iduser, idlink) VALUES (:iduser, :idlink)";
 		}
 
-		// Link
+		// Create link
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':iduser', $userId);
@@ -284,6 +296,7 @@ class UserRepository {
 			else
 				throw new Exception("Link " . $moduleId . " to " . $userId . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 	}
@@ -303,6 +316,7 @@ class UserRepository {
 			if (!$queryPrep->execute())
 				throw new Exception("Get link " . $email . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 
@@ -312,16 +326,17 @@ class UserRepository {
 	public static function getUserByLink($linkId) {
 		$db = dbConnect();
 
-		// Get link query
+		// Get user by link query
 		$query = "SELECT iduser FROM link WHERE idlink = :idlink";
 
-		// Get link
+		// Get user by link
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':idlink', $linkId);
 			if (!$queryPrep->execute())
 				throw new Exception("Get user with link " . $linkId . " error");
 		} catch (Exception $e) {
+			// Log error
 			LogRepository::fileSave($e);
 		}
 

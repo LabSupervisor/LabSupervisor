@@ -1,7 +1,9 @@
 <?php
+	// Import header
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader("Classes");
 
+	// Ask for permissions
 	permissionChecker(true, false, true, true);
 
 	// Logic

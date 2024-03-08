@@ -1,14 +1,16 @@
 <?php
+	// Import header
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader("Sessions");
 
+	// Ask for permissions and store it
 	$roleList = permissionChecker(true, true, true, true);
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/joinSession.php");
 ?>
 
-<link rel="stylesheet" href="../public/css/session.css">
+<link rel="stylesheet" href="/public/css/session.css">
 
 <?php
 	$sessionList = array();
@@ -57,6 +59,7 @@
 						if (!in_array("admin", $roleList)) {
 							echo "<td>";
 
+							// Only select existed user
 							if ($line["active"]) {
 								if ($line["date"] > date('Y-m-d H:i:s')) {
 									echo "<i class='ri-timer-line'></i> Prochainement";

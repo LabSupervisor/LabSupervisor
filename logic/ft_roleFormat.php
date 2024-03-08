@@ -9,5 +9,6 @@ function roleFormat($student, $teacher, $admin) {
 	if ($admin == True)
 		$result = $result . "Admin";
 
+	// Return formatted role
 	return $result;
 }

@@ -4,6 +4,7 @@ if (isset($_POST["connect"])) {
 
 	$_SESSION["session"] = array_search("Rejoindre", $_POST['connect']);
 
+	// Redirect teacher to /dashboard and student to /panel
 	if ($role["teacher"])
 		header("Location: /dashboard");
 	else

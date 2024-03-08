@@ -1,6 +1,7 @@
 <?php
+	// Import header
 	require($_SERVER['DOCUMENT_ROOT'] . '/logic/ft_header.php');
 	mainHeader("");
-
-	echo "Project LabSupervisor";
 ?>
+
+<a>Project LabSupervisor</a>

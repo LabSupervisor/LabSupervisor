@@ -1,4 +1,5 @@
 <?php
+// Only get main url part
 $page = explode("?", $_SERVER["REQUEST_URI"]);
 
 switch ($page[0]) {

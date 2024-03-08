@@ -90,7 +90,7 @@
 	<style>
 		body {
 			<?php
-			// Check if user is connected
+			// Check if user is connected to change his theme
 			if (isset($_SESSION["login"])) {
 				$userSetting = UserRepository::getSetting($_SESSION["login"]);
 
