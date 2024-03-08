@@ -53,7 +53,7 @@ input::placeholder {
 	font-style: italic;
 }
 
-.newname, .newsurname, .newbirthDate, .newpassword, .confpassword {
+.newname, .newsurname, .newpassword, .confpassword {
 	width: 325px;
 	border-top: 0;
 	border-left: 0;

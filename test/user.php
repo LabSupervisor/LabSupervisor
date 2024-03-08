@@ -9,12 +9,13 @@ $userData = array(
 	"email" => "test@test.com",
 	"name" => "test",
 	"surname" => "test",
-	"password" => "test",
-	"birthDate" => "2023-01-11"
+	"password" => "test"
 );
 
 $user = new User($userData);
 $userRepo->createUser($user);
+
+$_SESSION["login"] = $userData["email"];
 
 echo "<br>" . $userRepo->getId($_SESSION["login"]);
 echo "<br>" . UserRepository::getId($_SESSION["login"]);

@@ -18,10 +18,8 @@
 
 		var surnameElement = document.getElementById("surname_" + userId);
 		var nameElement = document.getElementById("name_" + userId);
-		var birthdateElement = document.getElementById("birthdate_" + userId);
 		var surname = surnameElement.innerHTML;
 		var name = nameElement.innerHTML;
-		var birthdate = birthdateElement.innerHTML;
 
 		var modifyButtonDisable = document.getElementsByClassName("modifybutton");
 
@@ -43,16 +41,8 @@
 		inputName.setAttribute("name", "name");
 		inputName.setAttribute("value", name);
 
-		var inputBirthdate = document.createElement("input");
-		inputBirthdate.setAttribute("type", "date");
-		inputBirthdate.setAttribute("id", "birthdate");
-		inputBirthdate.setAttribute("name", "birthdate");
-		inputBirthdate.setAttribute("require", "true");
-		inputBirthdate.setAttribute("value", birthdate);
-
 		surnameElement.replaceChildren(inputSurname);
 		nameElement.replaceChildren(inputName);
-		birthdateElement.replaceChildren(inputBirthdate);
 
 		var inputUserId = document.createElement("input");
 		inputUserId.setAttribute("type", "hidden");
@@ -93,7 +83,6 @@
 				<td id="surname_<?=$userId?>"><?=$user['surname']?></td>
 				<td id="name_<?=$userId?>"><?=$user['name']?></td>
 				<td><?=$user['email']?></td>
-				<td id="birthdate_<?=$userId?>"><?=$user['birthdate']?></td>
 				<td><?=roleFormat($user['email'])?></td>
 				<td><?=$user["classroom"]?></td>
 				<td><button class="modifybutton" type="button" id="modify_<?=$userId?>" onclick="updateUser(<?=$userId?>)">Modifier</button></td>

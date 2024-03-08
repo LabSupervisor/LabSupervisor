@@ -26,10 +26,6 @@
 			<input type="text" class="newsurname" name="new_surname" value="<?php echo $user['surname']; ?>">
 		</div>
 		<div class="form-group">
-			<label for="birthdate"><?= lang("ACCOUNT_BIRTHDATE") ?></label>
-			<input type="date" class="newbirthDate" name="new_birthDate" value="<?php echo $user['birthdate']; ?>">
-		</div>
-		<div class="form-group">
 			<label for="new_password"><?= lang("ACCOUNT_PASSWORD") ?></label>
 			<input type="password" id="password" class="newpassword" name="new_password" aria-autocomplete="list">
 			<button type="button" class="ShowPasswordButton" onclick="togglePasswordVisibility('password', 'eyeIcon')">

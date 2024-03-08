@@ -4,7 +4,6 @@ class User {
 	protected $name;
 	protected $surname;
 	protected $password;
-	protected $birthDate;
 
 	public function __construct(array $data = NULL) {
 		$this->hydrate($data);
@@ -55,9 +54,5 @@ class User {
 
 	protected function setPassword($password) {
 		$this->password = $password;
-	}
-
-	protected function setBirthDate($birthDate) {
-		$this->birthDate = $birthDate;
 	}
 }

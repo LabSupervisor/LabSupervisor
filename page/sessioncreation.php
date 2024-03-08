@@ -78,9 +78,9 @@
 			<select name="classes" id="classes">
 				<?php
 				foreach ($classrooms as $value) {
-				?>
-					<option value="<?php echo $value["id"]; ?>"><?php echo $value["name"]; ?></option>
-				<?php
+					if ($value["active"] == 1) {
+						echo "<option value=" . $value["id"] . ">" . $value["name"] . "</option>";
+					}
 				}
 				?>
 			</select>
@@ -90,7 +90,7 @@
    		<legend><?= lang("SESSION_CREATE_TITLE_CHAPTER") ?></legend>
    			<div class="buttonC">
 			<strong class="strong1"><?= lang("SESSION_CREATE_CHAPTER_TITLE") ?></strong>
-  			<input type="text" id="titleChapter1" class="firstbox" name="titleChapter1">
+  			<input type="text" id="titleChapter1" class="firstbox" name="titleChapter1" required>
    			<strong class="strong2"><?= lang("SESSION_CREATE_CHAPTER_DESCRIPTION") ?></strong>
    			<textarea id="chapterDescription1" class="secondbox" name="chapterDescription1"></textarea>
 			</div>

@@ -11,9 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if ($_POST['new_surname'])
 		$userData["surname"] = $_POST['new_surname'];
 
-	if ($_POST['new_birthDate'])
-		$userData["birthDate"] = $_POST['new_birthDate'];
-
 	if ($_POST['new_password']) {
 		if ($_POST['new_password'] != $_POST['conf_password']) {
 			echo "Les mots de passes ne correspondent pas !";

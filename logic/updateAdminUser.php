@@ -6,8 +6,7 @@ if (isset($_POST["modify"])) {
 	$userData = array(
 		"email" => $email,
 		"name" => $_POST["name"],
-		"surname" => $_POST["surname"],
-		"birthDate" => $_POST["birthdate"]
+		"surname" => $_POST["surname"]
 	);
 
 	// Update user

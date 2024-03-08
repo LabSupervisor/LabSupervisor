@@ -34,7 +34,6 @@
 	"ACCOUNT_TITLE": "Paramètres du compte",
 	"ACCOUNT_NAME": "Prénom :",
 	"ACCOUNT_SURNAME": "Nom :",
-	"ACCOUNT_BIRTHDATE": "Date de naissance :",
 	"ACCOUNT_PASSWORD": "Mot de passe :",
 	"ACCOUNT_PASSWORD_CONFIRM": "Confirmer :",
 	"ACCOUNT_SUBMIT": "Enregistrer",

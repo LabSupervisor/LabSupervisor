@@ -6,8 +6,7 @@ if (isset($_POST["register"])) {
 		"email" => $_POST['email'],
 		"name" => $_POST['name'],
 		"surname" => $_POST['surname'],
-		"password" => $password,
-		"birthDate" => $_POST['birthdate']
+		"password" => $password
 	);
 
 	// Checking if the password is the same from confirm

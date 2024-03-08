@@ -30,7 +30,6 @@
 		</div>
 		<input type="text" name="name" placeholder="<?= lang("REGISTER_NAME") ?>" class="Name" required><br>
 		<input type="text" name="surname" placeholder="<?= lang("REGISTER_SURNAME") ?>" class="Surname" required><br>
-		<input type="date" name="birthdate" class="Birthdate" required><br>
 		<input type="submit" name="register" value="<?= lang("REGISTER_SUBMIT") ?>" class="button">
 		<a href="/login" class="login-link"><?= lang("REGISTER_ALREADYSIGN") ?></a>
 	</form>

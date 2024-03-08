@@ -34,10 +34,9 @@
 	"ACCOUNT_TITLE": "Account settings",
 	"ACCOUNT_NAME": "Name:",
 	"ACCOUNT_SURNAME": "Surname:",
-	"ACCOUNT_BIRTHDATE": "Birth date:",
 	"ACCOUNT_PASSWORD": "Password:",
 	"ACCOUNT_PASSWORD_CONFIRM": "Confirm:",
-	"ACCOUNT_SUBMIT": "Save",
+	"ACCOUNT_SUBMIT": "Save changes",
 
 	"SESSION_SUBJECT": "Subject",
 	"SESSION_DESCRIPTION": "Description",
@@ -61,7 +60,7 @@
 	"SESSION_CREATE_CHAPTER_DESCRIPTION": "Description:",
 	"SESSION_CREATE_CHAPTER_ADD": "+ Chapter",
 	"SESSION_CREATE_DATE_DATE": "Date:",
-	"SESSION_CREATE_SUBMIT": "Save",
+	"SESSION_CREATE_SUBMIT": "Save changes",
 
 	"LOG_TRACE": "Traces",
 	"LOG_ERROR": "Errors",
@@ -75,7 +74,7 @@
 	"LOG_ERROR_FILENOTFOUND": "File not found",
 	"LOG_ERROR_SUBMIT": "Send",
 
-	"ERROR_NOTFOUND": "Page notfound.",
+	"ERROR_NOTFOUND": "Page not found.",
 	"ERROR_NOTFOUND_BACK": "Return home",
 	"ERROR_DENIED": "Access refused",
 	"ERROR_DENIED_BACK": "Return home"

@@ -12,7 +12,7 @@ class UserRepository {
 				$db = dbConnect();
 
 				// Create user query
-				$query = "INSERT INTO user (email, password, name, surname, birthdate) VALUES (:email, :password, :name, :surname, :birthdate)";
+				$query = "INSERT INTO user (email, password, name, surname) VALUES (:email, :password, :name, :surname)";
 
 				// Hash password using bcrypt
 				$password = password_hash($bindParam["password"], PASSWORD_BCRYPT);
@@ -24,7 +24,6 @@ class UserRepository {
 					$queryPrep->bindParam(":password", $password);
 					$queryPrep->bindParam(":name", $bindParam["name"]);
 					$queryPrep->bindParam(":surname", $bindParam["surname"]);
-					$queryPrep->bindParam(":birthdate", $bindParam["birthDate"]);
 					if (!$queryPrep->execute())
 						throw new Exception("Create user " . $bindParam["email"] . " error");
 				} catch (Exception $e) {
@@ -79,7 +78,7 @@ class UserRepository {
 			$password = UserRepository::getInfo($bindParam["email"])["password"];
 
 		// Update user query
-		$query = "UPDATE user SET password = :password, name = :name, surname = :surname, birthdate = :birthdate WHERE email = :email";
+		$query = "UPDATE user SET password = :password, name = :name, surname = :surname WHERE email = :email";
 
 		// Update user
 		try {
@@ -88,7 +87,6 @@ class UserRepository {
 			$queryPrep->bindParam(":password", $password);
 			$queryPrep->bindParam(":name", $bindParam["name"]);
 			$queryPrep->bindParam(":surname", $bindParam["surname"]);
-			$queryPrep->bindParam(":birthdate", $bindParam["birthDate"]);
 			if ($queryPrep->execute())
 				LogRepository::dbSave("Update user " . $bindParam["email"]);
 			else
@@ -111,7 +109,7 @@ class UserRepository {
 		$userId = UserRepository::getId($email);
 
 		// Delete user query
-		$query = "UPDATE user SET email = 'deleted#" . $userId . "', password = 'deleted', name = 'deleted', surname = 'deleted', birthDate = '1970-01-01', active = 0 WHERE id = :iduser";
+		$query = "UPDATE user SET email = 'deleted#" . $userId . "', password = 'deleted', name = 'deleted', surname = 'deleted', active = 0 WHERE id = :iduser";
 
 		// Delete user
 		try {
@@ -235,7 +233,7 @@ class UserRepository {
 		$db = dbConnect();
 
 		// Get users query
-		$query = "SELECT us.id, us.surname, us.name, us.email, us.birthdate, cl.name AS 'classroom', us.active FROM user us	LEFT JOIN userclassroom ucl ON us.id = ucl.iduser
+		$query = "SELECT us.id, us.surname, us.name, us.email, cl.name AS 'classroom', us.active FROM user us	LEFT JOIN userclassroom ucl ON us.id = ucl.iduser
 		LEFT JOIN classroom cl ON cl.id = ucl.idclassroom WHERE us.active = 1 ORDER BY us.id";
 
 		// Get users
