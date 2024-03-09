@@ -31,11 +31,11 @@
 	"LOGIN_NOTSIGN": "Pas encore de compte ?",
 	"LOGIN_ERROR_NOTFOUND": "Email ou mot de passe incorrect.",
 
-	"ACCOUNT_TITLE": "Paramètres du compte",
-	"ACCOUNT_NAME": "Prénom :",
-	"ACCOUNT_SURNAME": "Nom :",
-	"ACCOUNT_PASSWORD": "Mot de passe :",
-	"ACCOUNT_PASSWORD_CONFIRM": "Confirmer :",
+	"ACCOUNT_TITLE": "Informations du compte",
+	"ACCOUNT_NAME": "Prénom",
+	"ACCOUNT_SURNAME": "Nom",
+	"ACCOUNT_PASSWORD": "Mot de passe",
+	"ACCOUNT_PASSWORD_CONFIRM": "Confirmer",
 	"ACCOUNT_SUBMIT": "Enregistrer",
 
 	"SESSION_SUBJECT": "Sujet",

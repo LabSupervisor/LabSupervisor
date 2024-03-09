@@ -1,9 +1,16 @@
 /* Variables */
 :root {
 	--text-color: #FFFFFF;
+	--text-hover-color: #9b9b9b;
 
 	--navbar-background-color: #0B0A1D;
-	--text-hover-color: #6095ec;
-	--border-color: #0007C7;
 	--background-hover-color: #05005C;
+
+	--button-background-color: #c7c7c7;
+	--button-hover-color: #a5a5a5;
+
+	--background-case-color: #00000069;
+	--case-border-color: #a8a8a875;
+	--case-field-background-color: #c4c4c475;
+	--case-field-text-color: #ffffff90;
 }

@@ -12,19 +12,19 @@
 
 <link rel="stylesheet" href="/public/css/register.css">
 
-<div class="RegisterDiv">
+<div class="mainbox RegisterDiv">
 	<form action="register" method="post">
-		<h2><?= lang("REGISTER_TITLE") ?></h2>
+		<h2><i class="ri-user-line"></i> <?= lang("REGISTER_TITLE") ?></h2>
 		<input type="email" name="email" placeholder="<?= lang("REGISTER_EMAIL") ?>" class="Email" required autofocus><br>
 		<div class="PasswordContainer">
 			<input type="password" id="password" name="password" placeholder="<?= lang("REGISTER_PASSWORD") ?>" class="Password" required><br>
-			<button type="button" id="showPasswordButton" class="ShowPasswordButton" onclick="togglePasswordVisibility()">
+			<button type="button" id="showPasswordButton" class="ShowPasswordButton" onclick="togglePasswordVisibility('password', 'eyeIcon')">
 				<i id="eyeIcon" class="ri-eye-off-line"></i>
 			</button>
 		</div>
 		<div class="PasswordContainer">
 			<input type="password" id="passwordConf" name="confpass" placeholder="<?= lang("REGISTER_PASSWORD_CONFIRM") ?>" class="Password" required><br>
-			<button type="button" id="showPasswordButton" class="ShowPasswordButton" onclick="togglePasswordVisibility()">
+			<button type="button" id="showPasswordButton" class="ShowPasswordButton" onclick="togglePasswordVisibility('passwordConf', 'eyeIconConf')">
 				<i id="eyeIconConf" class="ri-eye-off-line"></i>
 			</button>
 		</div>
@@ -36,27 +36,17 @@
 </div>
 
 <script>
-// Password Hide/Show script (same in login)
-function togglePasswordVisibility() {
-	var passwordInput = document.getElementById('password');
-	var passwordConfInput = document.getElementById('passwordConf');
-	var eyeIcon = document.getElementById('eyeIcon');
-	var eyeIconConf = document.getElementById('eyeIconConf');
+	// Password Hide/Show script
+	function togglePasswordVisibility(inputId, eyeIconId) {
+		var passwordInput = document.getElementById(inputId);
+		var eyeIcon = document.getElementById(eyeIconId);
 
-	if (passwordInput.type === 'password') {
-		passwordInput.type = 'text';
-		eyeIcon.className = 'ri-eye-line';
-	} else {
-		passwordInput.type = 'password';
-		eyeIcon.className = 'ri-eye-off-line';
+		if (passwordInput.type === 'password') {
+			passwordInput.type = 'text';
+			eyeIcon.className = 'ri-eye-line';
+		} else {
+			passwordInput.type = 'password';
+			eyeIcon.className = 'ri-eye-off-line';
+		}
 	}
-
-	if (passwordConfInput.type === 'password') {
-		passwordConfInput.type = 'text';
-		eyeIconConf.className = 'ri-eye-line';
-	} else {
-		passwordConfInput.type = 'password';
-		eyeIconConf.className = 'ri-eye-off-line';
-	}
-}
 </script>

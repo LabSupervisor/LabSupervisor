@@ -1,20 +1,14 @@
 /* Main container */
 .RegisterDiv {
-	margin: auto;
 	text-align: center;
 	width: 325px;
-	background-color: #6f6f6f69;
-	border-radius: 25px;
 	padding: 27px;
-	margin-top: 200px;
-	color: white;
-	backdrop-filter: blur(6px);
+	user-select: none;
 }
+
 h2 {
-	color: white;
 	font-size: 30px;
 	margin-bottom: 20px;
-	border-bottom: 3px solid white;
 	padding-bottom: 10px;
 }
 
@@ -23,45 +17,21 @@ form {
 	flex-direction: column;
 }
 
-label {
-	margin-bottom: 5px;
-	display: flex;
-}
-
 /* All of the information in the formulary */
 .Email, .Password, .Name, .Surname {
-	width: 325px;
-	border-top: 0;
-	border-left: 0;
-	border-right: 0;
-	background: none;
-	border-color: white;
-	border-width: 2px;
+	background: var(--case-field-background-color);
+	border: 0;
+	border-radius: 7px;
 	font-size: 20px;
-	margin-top: 12px;
-	color: white;
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-	filter: invert(1);
-}
-
-input:focus {
-	outline: none !important;
-}
-input:focus-visible {
-	outline: auto;
-}
-
-input::placeholder {
-	color: rgba(255, 255, 255, 0.563);
-	font-style: italic;
+	padding: 15px;
+	color: var(--text-color);
+	width: -webkit-fill-available;
 }
 
 /* Password container and eye icon */
 .PasswordContainer {
 	position: relative;
-	margin-bottom: 12px;
+	margin-bottom: 19px;
 }
 
 .ShowPasswordButton {
@@ -73,17 +43,40 @@ input::placeholder {
 	border: none;
 	background: none;
 	font-size: 12px;
-	color: #333;
 }
 
 .ri-eye-line:before {
 	content: "\ecb5";
-	color: white;
+	color: var(--text-color);
 	font-size: 26px;
 }
 
 .ri-eye-off-line:before {
 	content: "\ecb7";
-	color: white;
+	color: var(--text-color);
 	font-size: 26px;
+}
+
+input:focus {
+	outline: none !important;
+}
+
+input:focus-visible {
+	outline: auto;
+}
+
+input::placeholder {
+	color: var(--case-field-text-color);
+}
+
+.login-link {
+	color: var(--text-color);
+	text-decoration: none;
+	font-size: 18px;
+	transition: 200ms;
+}
+
+.login-link:hover {
+	color: var(--text-hover-color);
+	transition: 200ms;
 }
