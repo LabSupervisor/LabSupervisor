@@ -44,6 +44,7 @@ td {
 	padding-left: 15px;
 	padding-right: 15px;
 	max-width: 50px;
+	min-height: 63px;
 }
 
 tr {

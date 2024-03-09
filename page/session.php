@@ -61,7 +61,7 @@
 						echo '<td class="col3">'. htmlspecialchars($creatorName) ."</td>";
 						echo '<td class="col4">'. $line["date"] ."</td>";
 						if (in_array(admin, $roleList)) {
-							echo "<td><i class='ri-lock-line'></i> " . lang("SESSION_STATE_LOCK") . "</td>";
+							echo "<td class='col5'><i class='ri-lock-line'></i> " . lang("SESSION_STATE_LOCK") . "</td>";
 						} else {
 							echo "<td class='col5'>";
 
