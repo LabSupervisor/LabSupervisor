@@ -13,93 +13,71 @@
 <link rel="stylesheet" href="/public/css/sessioncreation.css">
 
 <script>
+	// Update chapter count
 	var nbChapter = 1;
 
-	// Update chapter count
 	function addChapter() {
-	nbChapter++;
-	let div = document.createElement('div');
-	div.classList.add('buttonC');
+		nbChapter++;
+		let div = document.createElement('div');
 
-	// Division Line
-	let line = document.createElement('hr');
-	div.appendChild(line);
+		let inputTitle = document.createElement('input');
+		inputTitle.setAttribute("type", "text");
+		inputTitle.setAttribute("placeholder", "<?= lang("SESSION_CREATE_CHAPTER_TITLE") ?>");
+		inputTitle.setAttribute("name", "titleChapter" + nbChapter);
+		inputTitle.classList.add('field');
+		div.appendChild(inputTitle);
 
-	// Title + strong1, firstbox class
-	let title = document.createElement('strong');
-	title.innerHTML = "Titre : ";
-	title.classList.add('strong1');
-	div.appendChild(title);
+		let inputDescription = document.createElement('textarea');
+		inputDescription.setAttribute("name", "chapterDescription" + nbChapter);
+		inputDescription.setAttribute("placeholder", "<?= lang("SESSION_CREATE_CHAPTER_DESCRIPTION") ?>");
+		inputDescription.classList.add('field');
+		div.appendChild(inputDescription);
 
-	let inputTitle = document.createElement('input');
-	inputTitle.setAttribute("type", "text");
-	inputTitle.setAttribute("name", "titleChapter" + nbChapter);
-	inputTitle.classList.add('firstbox');
-	div.appendChild(inputTitle);
+		let btnChapter = document.getElementById('btn-chapter');
+		let parentDiv = btnChapter.parentNode;
+		parentDiv.insertBefore(div, btnChapter);
 
-	// Description + strong2, secondbox class
-	let description = document.createElement('strong');
-	description.innerHTML = ' Description : ';
-	description.classList.add('strong2');
-	div.appendChild(description);
-
-	let inputDescription = document.createElement('textarea');
-	inputDescription.setAttribute("name", "chapterDescription" + nbChapter);
-	inputDescription.classList.add('secondbox');
-	div.appendChild(inputDescription);
-
-	let btnChapter = document.getElementById('btn-chapter');
-	let parentDiv = btnChapter.parentNode;
-	parentDiv.insertBefore(div, btnChapter);
-
-	document.getElementById('nbChapter').value = nbChapter;
-}
+		document.getElementById('nbChapter').value = nbChapter;
+	}
 </script>
 
-<form class="sessions" method="post">
-	<input type="hidden" value="1" name="nbChapter" id="nbChapter">
-	<fieldset>
-		<legend><?= lang("SESSION_CREATE_TITLE_INFORMATION") ?></legend>
-		<strong class="strong1"><?= lang("SESSION_CREATE_INFORMATION_TITLE") ?></strong>
-		<input type="text" id="titleSession" class="firstbox" name="titleSession" required>
-		<strong class="strong2"><?= lang("SESSION_CREATE_INFORMATION_DESCRIPTION") ?></strong>
-		<textarea id="descriptionSession" class="secondbox" name="descriptionSession"></textarea>
-	</fieldset>
-	<fieldset>
-		<legend><?= lang("SESSION_CREATE_TITLE_PARTICIPANT") ?></legend>
-		<strong><?= lang("SESSION_CREATE_PARTICIPANT_CLASS") ?></strong>
+<div class="mainbox maindiv">
+	<form class="sessions" method="post">
+		<input type="hidden" value="1" name="nbChapter" id="nbChapter">
 
-		<?php
-		$classrooms = ClassroomRepository::getClassrooms();
-		?>
+		<!-- Main informations -->
+		<h2><?= lang("SESSION_CREATE_TITLE_INFORMATION") ?></h2>
+		<input type="text" placeholder="<?= lang("SESSION_CREATE_INFORMATION_TITLE") ?>" id="titleSession" class="field" name="titleSession" required>
+		<textarea placeholder="<?= lang("SESSION_CREATE_INFORMATION_DESCRIPTION") ?>" id="descriptionSession" class="field" name="descriptionSession"></textarea>
 
+		<!-- Participants -->
+		<h2><?= lang("SESSION_CREATE_TITLE_PARTICIPANT") ?></h2>
 		<div class="custom-select">
-			<span class="ri ri-arrow-down-wide-line"></span>
 			<select name="classes" id="classes">
-				<?php
+			<?php
+				$classrooms = ClassroomRepository::getClassrooms();
 				foreach ($classrooms as $value) {
 					if ($value["active"] == 1) {
 						echo "<option value=" . $value["id"] . ">" . $value["name"] . "</option>";
 					}
 				}
-				?>
+			?>
 			</select>
 		</div>
-	</fieldset>
-	<fieldset>
-   		<legend><?= lang("SESSION_CREATE_TITLE_CHAPTER") ?></legend>
-   			<div class="buttonC">
-			<strong class="strong1"><?= lang("SESSION_CREATE_CHAPTER_TITLE") ?></strong>
-  			<input type="text" id="titleChapter1" class="firstbox" name="titleChapter1" required>
-   			<strong class="strong2"><?= lang("SESSION_CREATE_CHAPTER_DESCRIPTION") ?></strong>
-   			<textarea id="chapterDescription1" class="secondbox" name="chapterDescription1"></textarea>
-			</div>
-			<button type="button" id="btn-chapter" class="button chapterButton" onclick="addChapter()">+ Chapitre</button>
-	</fieldset>
-	<fieldset>
-		<legend><?= lang("SESSION_CREATE_TITLE_DATE") ?></legend>
-		<strong><?= lang("SESSION_CREATE_DATE_DATE") ?></strong>
+
+		<!-- Chapters -->
+   		<h2><?= lang("SESSION_CREATE_TITLE_CHAPTER") ?></h2>
+		<input placeholder="<?= lang("SESSION_CREATE_CHAPTER_TITLE") ?>" type="text" id="titleChapter1" class="field" name="titleChapter1" required>
+		<textarea placeholder="<?= lang("SESSION_CREATE_CHAPTER_DESCRIPTION") ?>" id="chapterDescription1" class="field" name="chapterDescription1"></textarea>
+
+		<!-- Add chapter button -->
+		<button type="button" id="btn-chapter" class="button chapterButton" onclick="addChapter()">+ Chapitre</button>
+
+		<!-- Button -->
+		<h2><?= lang("SESSION_CREATE_TITLE_DATE") ?></h2>
 		<input type="datetime-local" id="date" name="date"  required>
-	</fieldset>
-	<input type="submit" name="saveSession" class="button" value="<?= lang("SESSION_CREATE_SUBMIT") ?>">
+
+		<!-- Send -->
+		<input type="submit" name="saveSession" class="button save" value="<?= lang("SESSION_CREATE_SUBMIT") ?>">
+	</div>
 </form>

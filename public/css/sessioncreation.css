@@ -1,150 +1,76 @@
 /* Main container */
-form.sessions {
-	margin: auto;
+.maindiv {
 	text-align: center;
-	width: fit-content;
+	width: 450px;
 	padding: 27px;
-	color: white;
+	user-select: none;
+	margin-top: 5vh !important;
 }
 
-fieldset {
-	background-color: #6f6f6fba;
-	border-radius: 15px;
-	backdrop-filter: blur(6px);
-	width: 500px;
-	display: flex;
-	flex-direction: column;
-	padding: 20px;
-	text-align: left;
-	border: 0;
-	padding-top: 40px;
+h2 {
+	font-size: 30px;
 	margin-bottom: 20px;
+	padding-bottom: 10px;
 }
 
-form.sessions fieldset legend {
-	position: absolute;
-	top: 10px;
-	left: 50%;
-	transform: translateX(-50%);
-	padding: 0 10px;
-}
-
-legend{
-	text-align: center;
-	text-decoration: underline;
-	font-size: 25px;
-}
-hr {
-	border-width: 3px;
-	border-style: solid;
-	margin-bottom: 15px;
-	border-color: #ffffff26;
-}
-
-.custom-select {
-	position: relative;
-	display: inline-block;
-	width: 200px;
-}
-
-.custom-select select {
-	width: 500px;
-	padding: 8px;
-	border-radius: 10px;
-	background-color: #ffffff46;
-	cursor: pointer;
-	outline: none;
-	appearance: none;
-}
-
-.custom-select span.ri {
-	position: absolute;
-	top: 50%;
-	left: 470px;
-	transform: translateY(-50%);
-	pointer-events: none;
-}
-
-form.sessions #classes option {
-	background-color: #505051;
-	color: #ffffff;
-}
-
-form.sessions #classes option:checked {
-	background-color: #6f6f6f;
-	color: #ffffff;
-}
-
-strong {
-	font-size: 16px;
-	font-weight: 400;
-	margin-bottom: 2px;
-}
-
-.strong2{
-	margin-top: 10px;
-}
-
-.firstbox {
-	background-color: #ffffff42;
-	height: 35px;
-	border-radius: 10px;
+select {
+	background: var(--case-field-background-color);
 	border: 0;
-	outline: none;
-	font-size: 16px;
-	padding: 8px;
+	border-radius: 7px;
+	font-size: 20px;
+	padding: 15px;
+	color: var(--text-color);
+	width: 100%;
+	margin-bottom: 3vh;
 }
 
-.secondbox {
-	background-color: #ffffff42;
-	min-height: 70px;
-	border-radius: 13px;
+.field {
+	background: var(--case-field-background-color);
 	border: 0;
-	outline: none;
-	font-size: 16px;
+	border-radius: 7px;
+	font-size: 20px;
+	padding: 15px;
+	color: var(--text-color);
+	width: -webkit-fill-available;
 	resize: vertical;
-	padding: 8px;
 	overflow: hidden;
-}
-
-.buttonC {
-	text-align: right;
-	border-radius: 15px;
-	display: flex;
-	flex-direction: column;
-	text-align: left;
-	border: 0;
-	margin-bottom: 20px;
+	min-height: 22px;
+	margin-bottom: 19px;
 }
 
 .chapterButton {
-	width: 160px;
-	border-radius: 25px;
-	padding: 8px;
-	color: white;
-	background-color: #6f6f6fe5;
-	border: 0;
-	font-size: 18px;
-	cursor: pointer !important;
-	transition: .25s cubic-bezier(.73,.17,.29,.78);
-	backdrop-filter: blur(6px);
-	position: relative;
-	left: 340px;
+	transform: translateX(165px);
+	margin-bottom: 3vh;
 }
 
 #date{
-	background-color: #ffffff42;
 	height: 35px;
 	border-radius: 10px;
 	border: 0;
 	font-size: 16px;
 	outline: none;
 	padding: 8px;
+	width: 100%;
 }
 input[type="datetime-local"]::-webkit-calendar-picker-indicator {
-	filter: invert(1);
+	color: var(--text-color);
 	font-size: 20px;
-	margin-right:10px;
+	margin-right: 10px;
 	outline: none;
 }
 
+input:focus, textarea:focus, option::focus {
+	outline: none !important;
+}
+
+input:focus-visible, textarea:focus-visible, option:focus-visible {
+	outline: none;
+}
+
+input::placeholder, textarea::placeholder {
+	color: var(--case-field-text-color);
+}
+
+.save {
+	margin-top: 3vh;
+}

@@ -27,6 +27,7 @@ body {
 	display: block;
 	margin: auto;
 	margin-top: 12vh;
+	margin-bottom: 6vh;
 	text-align: center;
 
 	background-color: var(--background-case-color);
