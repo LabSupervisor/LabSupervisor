@@ -4,6 +4,10 @@
 	color: var(--text-color);
 }
 
+::selection {
+    background-color: var(--button-background-color);
+}
+
 ::-webkit-scrollbar {
 	width: 0px;
 	background: none;

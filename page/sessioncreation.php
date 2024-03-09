@@ -73,7 +73,7 @@
 		<!-- Add chapter button -->
 		<button type="button" id="btn-chapter" class="button chapterButton" onclick="addChapter()">+ Chapitre</button>
 
-		<!-- Button -->
+		<!-- Date -->
 		<h2><?= lang("SESSION_CREATE_TITLE_DATE") ?></h2>
 		<input type="datetime-local" id="date" name="date"  required>
 

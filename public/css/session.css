@@ -1,88 +1,82 @@
+.table-container {
+	text-align: center;
+	width: -webkit-fill-available;
+	margin-left: 15vh;
+	margin-right: 15vh;
+	padding: 20px;
+	user-select: none;
+}
+
 table {
-	width: 1100px;
+	width: -webkit-fill-available;
 	border-collapse: collapse;
-	border-radius: 25px;
-	overflow: hidden;
-	color: var(--text-color);
 }
 
 thead {
-	background-color: #6f6f6f69;
-}
-th, td {
-	border: 10px;
-	padding: 11px;
-	text-align: center;
+	font-size: 24px;
 }
 
-tbody tr:nth-child(even) {
-	background-color: #00000075;
-}
-tbody tr:nth-child(odd) {
-	background-color: #33333370;
+.col1, .col4{
+	user-select: all;
 }
 
-th.col1, td.col1 {
-	min-width: 10px;
+.col5 {
+	display: flex;
+	overflow: visible;
+	align-items: center;
 }
 
-th.col2, td.col2 {
-	min-width: 20px;
-	max-width: 150px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-/* Messages collumn with tooltip */
-.col2 {
+th {
+    text-overflow: ellipsis;
+    overflow: hidden;
 	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	max-width: 100px;
+	padding-left: 15px;
+	padding-right: 15px;
+	font-size: 20px;
+	padding-bottom: 22px;
+	max-width: 50px;
+}
+
+td {
+    text-overflow: ellipsis;
+    overflow: hidden;
+	white-space: nowrap;
+	padding-left: 15px;
+	padding-right: 15px;
+	max-width: 50px;
+}
+
+tr {
+	padding: 100px;
+}
+
+tr:not(.thead) {
+	border: 0;
+	border-top: 2px;
+	border-style: solid;
+	border-color: var(--case-border-color);
 }
 
 .col2-container {
-	position: relative;
+	text-overflow: ellipsis;
 }
 
 .col2-tooltip {
-	display: none;
+	visibility: hidden;
+	user-select: all !important;
+	background-color: var(--background-case-color);
+	border-radius: 7px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: var(--case-border-color);
 	position: absolute;
-	text-align: center;
-	border: 10px solid #cccccc00;
-	max-width: 300px;
-	z-index: 1;
-	width: 340px;
-	padding: 15px;
-	background-color: rgb(48 48 48 / 69%);
-	backdrop-filter: blur(6px);
-	border-radius: 25px;
-	margin-top: 25px;
-	word-wrap: break-word;
-	padding: 5px;
+	text-wrap: pretty;
+	text-overflow: ellipsis;
+	padding: 10px;
+	max-width: 50%;
+	transform: translateY(-14px);
 }
 
 .col2-container:hover .col2-tooltip {
-	display: block;
-}
-
-th.col3, td.col3 {
-	min-width: 20px;
-}
-
-th.col4, td.col4 {
-	min-width: 100px;
-}
-
-th.col5, td.col5 {
-	min-width: 100px;
-}
-
-.table-container {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	margin: 20px;
-	text-align: center;
+	visibility: visible;
 }

@@ -31,15 +31,15 @@
 	}
 ?>
 
-<div class="table-container">
+<div class="mainbox table-container">
 	<table>
 		<thead>
-			<tr>
-				<td><?= lang("SESSION_SUBJECT") ?></td>
-				<td><?= lang("SESSION_DESCRIPTION") ?></td>
-				<td><?= lang("SESSION_TEACHER") ?></td>
-				<td><?= lang("SESSION_DATE") ?></td>
-				<td><?= lang("SESSION_STATE") ?></td>
+			<tr class="thead">
+				<th><?= lang("SESSION_SUBJECT") ?></th>
+				<th><?= lang("SESSION_DESCRIPTION") ?></th>
+				<th><?= lang("SESSION_TEACHER") ?></th>
+				<th><?= lang("SESSION_DATE") ?></th>
+				<th><?= lang("SESSION_STATE") ?></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -49,17 +49,25 @@
 					foreach($sessionList[$i] as $line) {
 						$creatorName = nameFormat(UserRepository::getEmail($line["idcreator"]), false);
 
-						echo '<td class="col1">'. $line["title"] ."</td>";
+						echo '<td class="col1">'. htmlspecialchars($line["title"]) ."</td>";
 						echo '<td class="col2-container">';
-						echo '<div class="col2-tooltip">' . htmlspecialchars($line["description"]) . '</div>';
-						echo '<div class="col2">'. $line["description"] ."</div>";
+						if ($line["description"]) {
+							echo '<div class="col2-tooltip">' . htmlspecialchars($line["description"]) . '</div>';
+						} else {
+							echo lang("SESSION_DESCRIPTION_EMPTY");
+						}
+						echo '<div class="col2">'. htmlspecialchars($line["description"]) ."</div>";
 						echo '</td>';
-						echo '<td class="col3">'. $creatorName ."</td>";
+						echo '<td class="col3">'. htmlspecialchars($creatorName) ."</td>";
 						echo '<td class="col4">'. $line["date"] ."</td>";
 						if (in_array(admin, $roleList)) {
 							echo "<td><i class='ri-lock-line'></i> " . lang("SESSION_STATE_LOCK") . "</td>";
 						} else {
-							echo "<td>";
+							echo "<td class='col5'>";
+
+							if (in_array(teacher, $roleList)) {
+								echo "<form method='POST'><input type='submit' name='modify[" . $line["id"] . "]' value='" . lang("SESSION_UPDATE") . "' class='button'></input></form>";
+							}
 
 							// Only select existed user
 							if ($line["active"]) {

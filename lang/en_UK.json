@@ -40,12 +40,14 @@
 
 	"SESSION_SUBJECT": "Subject",
 	"SESSION_DESCRIPTION": "Description",
+	"SESSION_DESCRIPTION_EMPTY": "Empty description",
 	"SESSION_TEACHER": "Teacher",
 	"SESSION_DATE": "Date",
 	"SESSION_STATE": "State",
 	"SESSION_STATE_LOCK": "Lock",
 	"SESSION_STATE_SOON": "Soon",
 	"SESSION_STATE_OPEN": "Join",
+	"SESSION_UPDATE": "Update",
 
 	"DASHBOARD_ADDUSER": "Invite other users",
 
