@@ -75,7 +75,7 @@
 
 		<!-- Date -->
 		<h2><?= lang("SESSION_CREATE_TITLE_DATE") ?></h2>
-		<input type="datetime-local" id="date" name="date"  required>
+		<input type="datetime-local" id="date" name="date" required>
 
 		<!-- Send -->
 		<input type="submit" name="saveSession" class="button save" value="<?= lang("SESSION_CREATE_SUBMIT") ?>">

@@ -13,14 +13,14 @@
 	// If traces are ask
 	if (isset($_GET["trace"])) {
 ?>
-<div class="table-container">
+<div class="mainbox table-container">
 	<table>
 		<thead>
-			<tr>
-				<th class="col1"><?= lang("LOG_TRACE_ID") ?></th>
-				<th class="col2"><?= lang("LOG_TRACE_USER") ?></th>
-				<th class="col3"><?= lang("LOG_TRACE_MESSAGE") ?></th>
-				<th class="col4"><?= lang("LOG_TRACE_DATE") ?></th>
+			<tr class="thead">
+				<th><?= lang("LOG_TRACE_ID") ?></th>
+				<th><?= lang("LOG_TRACE_USER") ?></th>
+				<th><?= lang("LOG_TRACE_MESSAGE") ?></th>
+				<th><?= lang("LOG_TRACE_DATE") ?></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -45,13 +45,9 @@
 		</tbody>
 	</table>
 </div>
-<div class="button-container">
-	<a href="/logs?trace">
-		<button><i class="ri-draft-line"></i> <?= lang("LOG_TRACE") ?></button>
-	</a>
-	<a href="/logs?error">
-		<button><i class="ri-error-warning-line"></i> <?= lang("LOG_ERROR") ?></button>
-	</a>
+<div class="mainbox button-container">
+	<a class="button2" href="/logs?trace"><i class="ri-draft-line"></i> <?= lang("LOG_TRACE") ?></a>
+	<a class="button2" href="/logs?error"><i class="ri-error-warning-line"></i> <?= lang("LOG_ERROR") ?></a>
 </div>
 <?php
 // If errors are ask
@@ -69,10 +65,10 @@
 		$logs = file_get_contents($file);
 ?>
 
-<div class="table-container2">
+<div class="mainbox table-container">
 	<table>
 		<thead>
-			<tr>
+			<tr class="thead">
 				<th class="col-1"><?= lang("LOG_ERROR_ERROR") ?></th>
 				<th class="col-2"><?= lang("LOG_ERROR_MESSAGE") ?></th>
 				<th class="col-3"><?= lang("LOG_ERROR_DATE") ?></th>
@@ -112,12 +108,17 @@
 					// Prevent showing empty line
 					if (strlen($error) > 1) {
 						echo "<tr>";
-						echo "<td class='col-1'>" . $error . "</td>";
-						echo "<td class='col-2-container'>";
-						echo '<div class="col-2-tooltip">' . htmlspecialchars(str_replace("##", "#", $message)) . '</div>';
-						echo '<div class="col-2">' . str_replace("##", "#", $message) . '</div>';
+
+						echo "<td class='col3-container'>";
+						echo '<div class="col3-tooltip">' . htmlspecialchars($message) . '</div>';
+						echo "<div class='col3'>" . htmlspecialchars($error) . "</div>";
+
+						echo "<td class='col3-container'>";
+						echo '<div class="col3-tooltip">' . htmlspecialchars(str_replace("##", "#", $message)) . '</div>';
+						echo '<div class="col3">' . str_replace("##", "#", htmlspecialchars($message)) . '</div>';
+
 						echo "</td>";
-						echo "<td class='col-3'>" . $listDate[$i] . "</td>";
+						echo "<td class='col3'>" . $listDate[$i] . "</td>";
 						echo "</tr>";
 					}
 					$i++;
@@ -128,48 +129,22 @@
 	</table>
 </div>
 
-	<div class="button-container2">
-		<div class="left-buttons2">
-
-		<a href="/logs?trace">
-			<button><i class="ri-draft-line"></i> <?= lang("LOG_TRACE") ?></button>
-		</a>
-		<a href="/logs?error">
-			<button><i class="ri-error-warning-line"></i> <?= lang("LOG_ERROR") ?></button>
-		</a>
-		</div>
-		<div class="right-buttons2">
-			<form method="get">
-				<input type="hidden" name="error">
-				<input type="date" name="date">
-				<input type="submit" value="<?= lang("LOG_ERROR_SUBMIT") ?>">
-			</form>
-		</div>
-	</div>
-</div>
-
 	<?php
 	} else {
-		echo lang("LOG_ERROR_FILENOTFOUND"); ?>
-
-	<div class="button-container2">
-		<div class="left-buttons2">
-		<a href="/logs?trace">
-			<button><i class="ri-draft-line"></i> <?= lang("LOG_TRACE") ?></button>
-		</a>
-		<a href="/logs?error">
-			<button><i class="ri-error-warning-line"></i> <?= lang("LOG_ERROR") ?></button>
-		</a>
-		</div>
-		<div class="right-buttons2">
-			<form method="get">
-				<input type="hidden" name="error">
-				<input type="date" name="date">
-				<input type="submit" value="Envoyer">
-			</form>
-		</div>
-	</div>
-<?php
+		echo lang("LOG_ERROR_FILENOTFOUND");
 	}
+	?>
+
+	<div class="mainbox button-container">
+		<a class="button2" href="/logs?trace"><i class="ri-draft-line"></i> <?= lang("LOG_TRACE") ?></a>
+		<a class="button2" href="/logs?error"><i class="ri-error-warning-line"></i> <?= lang("LOG_ERROR") ?></a>
+		<form method="get">
+			<input type="hidden" name="error">
+			<input type="date" id="date" name="date" value="<?= $fileDate ?>">
+			<input class="button" type="submit" value="<?= lang("LOG_ERROR_SUBMIT") ?>">
+		</form>
+	</div>
+
+<?php
 }
 ?>
