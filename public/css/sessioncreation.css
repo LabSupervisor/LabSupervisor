@@ -14,14 +14,13 @@ h2 {
 }
 
 select {
-	background: var(--case-field-background-color);
-	border: 0;
-	border-radius: 7px;
-	font-size: 20px;
-	padding: 15px;
-	color: var(--text-color);
 	width: 100%;
 	margin-bottom: 3vh;
+}
+
+option {
+	background-color: var(--background-case-color);
+	color: var(--text-color);
 }
 
 .field {
@@ -50,20 +49,22 @@ select {
 	font-size: 16px;
 	outline: none;
 	padding: 8px;
-	width: 100%;
+	width: -webkit-fill-available;
+	background: var(--case-field-background-color);
 }
+
 input[type="datetime-local"]::-webkit-calendar-picker-indicator {
-	color: var(--text-color);
-	font-size: 20px;
+	mask: url("/public/img/icon/calendar-2-line.svg");
+	background: var(--text-color);
 	margin-right: 10px;
 	outline: none;
 }
 
-input:focus, textarea:focus, option::focus {
+input:focus, textarea:focus, select:focus {
 	outline: none !important;
 }
 
-input:focus-visible, textarea:focus-visible, option:focus-visible {
+input:focus-visible, textarea:focus-visible, select:focus-visible {
 	outline: none;
 }
 

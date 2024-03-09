@@ -53,7 +53,7 @@
 		<!-- Participants -->
 		<h2><?= lang("SESSION_CREATE_TITLE_PARTICIPANT") ?></h2>
 		<div class="custom-select">
-			<select name="classes" id="classes">
+			<select name="classes" id="classes" class="field">
 			<?php
 				$classrooms = ClassroomRepository::getClassrooms();
 				foreach ($classrooms as $value) {
