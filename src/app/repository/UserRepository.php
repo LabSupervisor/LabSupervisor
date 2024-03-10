@@ -234,7 +234,7 @@ class UserRepository {
 
 		// Get users query
 		$query = "SELECT us.id, us.surname, us.name, us.email, cl.name AS 'classroom', us.active FROM user us	LEFT JOIN userclassroom ucl ON us.id = ucl.iduser
-		LEFT JOIN classroom cl ON cl.id = ucl.idclassroom WHERE us.active = 1 ORDER BY us.id";
+		LEFT JOIN classroom cl ON cl.id = ucl.idclassroom WHERE us.active = 1 GROUP BY email ORDER BY us.id";
 
 		// Get users
 		try {

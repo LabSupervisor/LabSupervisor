@@ -11,6 +11,8 @@
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/deleteAdminUser.php");
 ?>
 
+<link rel="stylesheet" href="/public/css/user.css">
+
 <script>
 	// Create update fields
 	function updateUser(userId) {
@@ -33,12 +35,16 @@
 		inputSurname.setAttribute("type", "text");
 		inputSurname.setAttribute("id", "surname");
 		inputSurname.setAttribute("name", "surname");
+		inputSurname.setAttribute("class", "surname");
+		inputSurname.setAttribute("placeholder", "<?= lang("USER_UPDATE_SURNAME") ?>");
 		inputSurname.setAttribute("value", surname);
 
 		var inputName = document.createElement("input");
 		inputName.setAttribute("type", "text");
 		inputName.setAttribute("id", "name");
 		inputName.setAttribute("name", "name");
+		inputName.setAttribute("class", "name");
+		inputName.setAttribute("placeholder", "<?= lang("USER_UPDATE_NAME") ?>");
 		inputName.setAttribute("value", name);
 
 		surnameElement.replaceChildren(inputSurname);
@@ -56,21 +62,23 @@
 		confirmButton = document.createElement("input");
 		confirmButton.setAttribute("type", "submit");
 		confirmButton.setAttribute("name", "modify")
+		confirmButton.setAttribute("class", "button")
 		modifyButton.parentNode.replaceChild(confirmButton, modifyButton);
 	}
 </script>
 
 <form id="form" method='POST'>
+	<div class="mainbox table-container">
 	<table>
 		<thead>
-			<td>Nom</td>
-			<td>Prénom</td>
-			<td>Adresse mail</td>
-			<td>Anniversaire</td>
-			<td>Rôle</td>
-			<td>Classe</td>
-			<td></td>
-			<td></td>
+				<tr class="thead">
+				<th><?= lang("USER_UPDATE_SURNAME") ?></th>
+				<th><?= lang("USER_UPDATE_NAME") ?></th>
+				<th><?= lang("USER_UPDATE_EMAIL") ?></th>
+				<th><?= lang("USER_UPDATE_ROLE") ?></th>
+				<th><?= lang("USER_UPDATE_CLASS") ?></th>
+				<th><?= lang("USER_UPDATE_ACTION") ?></th>
+			</tr>
 		</thead>
 		<tbody>
 			<?php
@@ -80,16 +88,15 @@
 						$userId = $user['id'];
 			?>
 			<tr>
-				<td id="surname_<?=$userId?>"><?=$user['surname']?></td>
-				<td id="name_<?=$userId?>"><?=$user['name']?></td>
-				<td><?=$user['email']?></td>
-				<td><?=roleFormat($user['email'])?></td>
-				<td><?=$user["classroom"]?></td>
-				<td><button class="modifybutton" type="button" id="modify_<?=$userId?>" onclick="updateUser(<?=$userId?>)">Modifier</button></td>
-				<td>
+				<td class="col1" id="surname_<?=$userId?>"><?=$user['surname']?></td>
+				<td class="col2" id="name_<?=$userId?>"><?=$user['name']?></td>
+				<td class="col3"><?=$user['email']?></td>
+				<td class="col4"> <?=roleFormat($user['email'])?></td>
+				<td class="col5"><?=$user["classroom"]?></td>
+				<td class="col6"><button class="modifybutton button" type="button" id="modify_<?=$userId?>" onclick="updateUser(<?=$userId?>)"><?= lang("USER_UPDATE_MODIFY") ?></button>
 				<form method="POST" action="#">
 					<input type="hidden" name="userId" value="<?= $userId ?>">
-					<button class="deletebutton" type="submit" name="send" id="delete_<?= $userId ?>">Supprimer</button>
+					<button class="button" type="submit" name="send" id="delete_<?= $userId ?>"><?= lang("USER_UPDATE_DELETE") ?></button>
 				</form>
 
 				</td>
@@ -100,4 +107,5 @@
 			?>
 		</tbody>
 	</table>
+	</div>
 </form>

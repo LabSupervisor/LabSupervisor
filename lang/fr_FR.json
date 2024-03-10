@@ -64,6 +64,15 @@
 	"SESSION_CREATE_DATE_DATE": "Date",
 	"SESSION_CREATE_SUBMIT": "Enregister",
 
+	"USER_UPDATE_SURNAME": "Nom",
+	"USER_UPDATE_NAME": "Prénom",
+	"USER_UPDATE_EMAIL": "Adresse email",
+	"USER_UPDATE_ROLE": "Rôle",
+	"USER_UPDATE_CLASS": "Classe",
+	"USER_UPDATE_ACTION": "Action",
+	"USER_UPDATE_MODIFY": "Modifier",
+	"USER_UPDATE_DELETE": "Supprimer",
+
 	"LOG_TRACE": "Traces",
 	"LOG_ERROR": "Erreurs",
 	"LOG_TRACE_ID": "ID",

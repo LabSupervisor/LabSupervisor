@@ -51,6 +51,13 @@ body {
 	transition: 200ms;
 }
 
+.button:disabled {
+	cursor: not-allowed !important;
+	background-color: var(--button-hover-color);
+	color: var(--text-hover-color);
+	font-style: italic;
+}
+
 .button:hover {
 	background-color: var(--button-hover-color);
 	transition: 200ms;
