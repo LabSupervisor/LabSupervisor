@@ -24,19 +24,19 @@
 			$navbarItem = "";
 			$roleList = permissionChecker(true, "");
 
-			if (in_array(admin, $roleList) || in_array(teacher, $roleList)) {
+			if (in_array(ADMIN, $roleList) || in_array(TEACHER, $roleList)) {
 				$navbarItem .= '<li><a href="/classes"><i class="ri-folder-line"></i> ' . lang("NAVBAR_CLASS") . '</a></li>';
 			}
 
-			if (in_array(teacher, $roleList)) {
+			if (in_array(TEACHER, $roleList)) {
 				$navbarItem .= '<li><a href="/sessioncreation"><i class="ri-computer-line"></i> ' . lang("NAVBAR_CREATE_SESSION") . '</a></li>';
 			}
 
-			if (in_array(admin, $roleList) || in_array(student, $roleList) || in_array(teacher, $roleList)) {
+			if (in_array(ADMIN, $roleList) || in_array(STUDENT, $roleList) || in_array(TEACHER, $roleList)) {
 				$navbarItem .= '<li><a href="/sessions"><i class="ri-slideshow-3-line"></i> ' . lang("NAVBAR_SESSION") . '</a></li>';
 			}
 
-			if (in_array(admin, $roleList)) {
+			if (in_array(ADMIN, $roleList)) {
 				$navbarItem .= '<li><a href="/utilisateurs"><i class="ri-folder-line"></i> ' . lang("NAVBAR_USER") . '</a></li>';
 				$navbarItem .= '<li><a href="/logs?trace"><i class="ri-computer-line"></i> ' . lang("NAVBAR_LOG") . '</a></li>';
 			}

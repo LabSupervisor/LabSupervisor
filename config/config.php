@@ -35,9 +35,9 @@ if (isset($_SESSION["login"])) {
 }
 
 // Variables
-define("admin", 1);
-define("student", 2);
-define("teacher", 3);
+define("ADMIN", 1);
+define("STUDENT", 2);
+define("TEACHER", 3);
 
 // Import permission checker
 require($_SERVER['DOCUMENT_ROOT'] . "/logic/ft_permissionChecker.php");

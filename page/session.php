@@ -4,7 +4,7 @@
 	mainHeader("Sessions");
 
 	// Ask for permissions and store it
-	$roleList = permissionChecker(true, array(admin, student, teacher));
+	$roleList = permissionChecker(true, array(ADMIN, STUDENT, TEACHER));
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/joinSession.php");
@@ -15,7 +15,7 @@
 <?php
 	$sessionList = array();
 	// Get all sessions for admin
-	if (in_array(admin, $roleList)) {
+	if (in_array(ADMIN, $roleList)) {
 		$session = SessionRepository::getSessions();
 
 		foreach($session as $value => $key) {
@@ -60,12 +60,12 @@
 						echo '</td>';
 						echo '<td class="col3">'. htmlspecialchars($creatorName) ."</td>";
 						echo '<td class="col4">'. $line["date"] ."</td>";
-						if (in_array(admin, $roleList)) {
+						if (in_array(ADMIN, $roleList)) {
 							echo "<td class='col5'><i class='ri-lock-line'></i> " . lang("SESSION_STATE_LOCK") . "</td>";
 						} else {
 							echo "<td class='col5'>";
 
-							if (in_array(teacher, $roleList)) {
+							if (in_array(TEACHER, $roleList)) {
 								echo "<form method='POST'><input type='submit' name='modify[" . $line["id"] . "]' value='" . lang("SESSION_UPDATE") . "' class='button'></input></form>";
 							}
 
