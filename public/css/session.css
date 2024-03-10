@@ -63,7 +63,6 @@ tr:not(.thead) {
 }
 
 .col2-tooltip {
-	visibility: hidden;
 	user-select: all !important;
 	background-color: var(--background-case-color);
 	border-radius: 7px;
@@ -74,10 +73,12 @@ tr:not(.thead) {
 	text-wrap: pretty;
 	text-overflow: ellipsis;
 	padding: 10px;
-	max-width: 50%;
+	max-width: 300px;
 	transform: translateY(-14px);
+	transition: opacity 200ms linear;
+	opacity: 0;
 }
 
 .col2-container:hover .col2-tooltip {
-	visibility: visible;
+	opacity: 100;
 }

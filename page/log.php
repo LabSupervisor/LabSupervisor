@@ -74,58 +74,56 @@
 				<th class="col-3"><?= lang("LOG_ERROR_DATE") ?></th>
 			</tr>
 		</thead>
-		<tbody-wrapper>
-			<tbody>
-			<?php
-				// Get dates
-				$listDate = array();
-				$temp = explode("\n", $logs);
-				foreach($temp as $value) {
-					if (preg_match("/\[" . $fileDate . " (.*?)\]/", $value, $matches)) {
-						array_push($listDate, $matches[1]);
-					}
+		<tbody>
+		<?php
+			// Get dates
+			$listDate = array();
+			$temp = explode("\n", $logs);
+			foreach($temp as $value) {
+				if (preg_match("/\[" . $fileDate . " (.*?)\]/", $value, $matches)) {
+					array_push($listDate, $matches[1]);
 				}
+			}
 
-				$log = preg_split("/\[" . $fileDate . " (.*?)\]/", $logs);
+			$log = preg_split("/\[" . $fileDate . " (.*?)\]/", $logs);
 
-				$i = -1;
-				foreach($log as $temp) {
-					// Get error's values
-					$message = "";
-					$error = "";
+			$i = -1;
+			foreach($log as $temp) {
+				// Get error's values
+				$message = "";
+				$error = "";
 
-					$data = explode("\n", $temp);
-					foreach($data as $value) {
-						if (!str_starts_with($value, "#")) {
-							if (strlen($value) > 1) {
-								$error = $value;
-							}
-						} else {
-							$message .= $value . " ";
+				$data = explode("\n", $temp);
+				foreach($data as $value) {
+					if (!str_starts_with($value, "#")) {
+						if (strlen($value) > 1) {
+							$error = $value;
 						}
+					} else {
+						$message .= $value . " ";
 					}
-
-					// Prevent showing empty line
-					if (strlen($error) > 1) {
-						echo "<tr>";
-
-						echo "<td class='col3-container'>";
-						echo '<div class="col3-tooltip">' . htmlspecialchars($message) . '</div>';
-						echo "<div class='col3'>" . htmlspecialchars($error) . "</div>";
-
-						echo "<td class='col3-container'>";
-						echo '<div class="col3-tooltip">' . htmlspecialchars(str_replace("##", "#", $message)) . '</div>';
-						echo '<div class="col3">' . str_replace("##", "#", htmlspecialchars($message)) . '</div>';
-
-						echo "</td>";
-						echo "<td class='col3'>" . $listDate[$i] . "</td>";
-						echo "</tr>";
-					}
-					$i++;
 				}
-			?>
-			</tbody>
-		</tbody-wrapper>
+
+				// Prevent showing empty line
+				if (strlen($error) > 1) {
+					echo "<tr>";
+
+					echo "<td class='col3-container'>";
+					echo '<div class="col3-tooltip">' . htmlspecialchars($message) . '</div>';
+					echo "<div class='col3'>" . htmlspecialchars($error) . "</div>";
+
+					echo "<td class='col3-container'>";
+					echo '<div class="col3-tooltip">' . htmlspecialchars(str_replace("##", "#", $message)) . '</div>';
+					echo '<div class="col3">' . str_replace("##", "#", htmlspecialchars($message)) . '</div>';
+
+					echo "</td>";
+					echo "<td class='col3'>" . $listDate[$i] . "</td>";
+					echo "</tr>";
+				}
+				$i++;
+			}
+		?>
+		</tbody>
 	</table>
 </div>
 
