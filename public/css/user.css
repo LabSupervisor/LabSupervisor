@@ -20,6 +20,10 @@ thead {
 	user-select: all;
 }
 
+.col1, .col2, .col3, .col4, .col5, .col6 {
+	max-width: fit-content;
+}
+
 .col6 {
 	overflow: visible;
 	display: flex;
