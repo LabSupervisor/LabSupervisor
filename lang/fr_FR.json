@@ -69,6 +69,7 @@
 	"USER_UPDATE_EMAIL": "Adresse email",
 	"USER_UPDATE_ROLE": "Rôle",
 	"USER_UPDATE_CLASS": "Classe",
+	"USER_UPDATE_CLASS_EMPTY": "Aucunes classes",
 	"USER_UPDATE_ACTION": "Action",
 	"USER_UPDATE_MODIFY": "Modifier",
 	"USER_UPDATE_DELETE": "Supprimer",

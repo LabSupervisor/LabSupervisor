@@ -92,7 +92,13 @@
 				<td class="col2" id="name_<?=$userId?>"><?=$user['name']?></td>
 				<td class="col3"><?=$user['email']?></td>
 				<td class="col4"> <?=roleFormat($user['email'])?></td>
-				<td class="col5"><?=$user["classroom"]?></td>
+				<?php
+					if ($user["classroom"]) {
+						echo "<td class='col5'>" . $user["classroom"] . "</td>";
+					} else {
+						echo "<td class='col5'>" . lang("USER_UPDATE_CLASS_EMPTY") . "</td>";
+					}
+				?>
 				<td class="col6"><button class="modifybutton button" type="button" id="modify_<?=$userId?>" onclick="updateUser(<?=$userId?>)"><?= lang("USER_UPDATE_MODIFY") ?></button>
 				<form method="POST" action="#">
 					<input type="hidden" name="userId" value="<?= $userId ?>">

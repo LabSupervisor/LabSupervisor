@@ -69,6 +69,7 @@
 	"USER_UPDATE_EMAIL": "Email address",
 	"USER_UPDATE_ROLE": "Role",
 	"USER_UPDATE_CLASS": "Classroom",
+	"USER_UPDATE_CLASS_EMPTY": "No classroom",
 	"USER_UPDATE_ACTION": "Action",
 	"USER_UPDATE_MODIFY": "Modify",
 	"USER_UPDATE_DELETE": "Delete",
