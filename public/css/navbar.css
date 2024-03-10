@@ -1,46 +1,14 @@
-/* Title👀 */
-.title {
-	position: relative;
-}
-
-/* Main bold class */
-.bold {
-	font-weight: bold;
-}
-
-/* Icon */
-.logo-container {
-	display: flex;
-	align-items: center;
-	margin-left: 20px;
-}
-
-.logo-container img {
-	max-height: 50px;
-	margin-right: 10px;
-}
-
-/* Profil */
-.case {
-	background-color: var(--background-hover-color);
-	border-radius: 25px;
-	border-color: var(--border-color);
-	border-width: 1px;
-	border-style: solid;
-	max-height: 13px;
-	margin-left: 20px;
-	margin-right: 25px;
-	transition: 200ms;
-}
-
 /* Navbar */
 .navbar {
+	list-style-type: none;
 	user-select: none;
-	text-align: right;
+	text-align: center;
 	background-color: var(--background-case-color);
 	backdrop-filter: blur(12px);
-	position: fixed;
+	position: sticky;
+	top: 0;
 	width: 100%;
+	height: 58px;
 	display: block;
 	z-index: 10;
 	border-top: 0;
@@ -52,79 +20,70 @@
 	box-shadow: 0px 0px 50px 0px #00000030;
 }
 
+/* Main bold class */
+.bold {
+	font-weight: bold;
+}
+
+/* Icon */
+.navbar .icon {
+	float: left;
+	max-width: 45px;
+	padding-right: 20px;
+	overflow: visible;
+	transform: translateY(-11px);
+}
+
 .navbar i {
 	margin-right: 10px;
 }
 
-.navbar .left{
-	float: left;
-}
-
-.navbar a {
+.navbar a:not(.not-profil, .icon) {
 	display: inline-block;
-	position: relative;
 
 	color: var(--text-color);
-	text-align: center;
-	padding: 14px 16px;
+	padding: 18px 16px 0px 16px;
 	text-decoration: none;
 	font-size: 17px;
 	transition: 200ms;
 }
 
-.navbar a:hover {
+.navbar a:hover:not(.not-profil, .no-hover-color) {
 	color: var(--text-hover-color);
 	transition: 200ms;
 }
 
-.navbar .profil:hover {
-	background-color: var(--border-color);
-	color: var(--text-color);
+.navbar .profil {
+	background-color: var(--button-background-color);
+	border-radius: 9px;
+	border: 0;
+	margin-left: 17px;
+	padding: 10px 16px 10px 16px;
 }
 
-.navbar .left.no-hover-color:hover {
-	color: var(--text-color);
-	transition: 200ms;
-}
-
-.navbar ul {
-	list-style-type: none;
-}
-
-.navbar ul li {
+.navbar li {
 	display: inline-block;
-	text-align: right;
-	position: relative;
 }
 
 .sub {
-	display: none;
-	position: absolute;
-	width: 100%;
-	background-color: var(--navbar-background-color);
-	transition: 20px;
+	display: flex;
+	opacity: 0;
+	flex-direction: column;
+	align-items: center;
 	align-content: center;
-	border-radius: 25px;
-	max-width: 85%;
-	margin-left: 10px;
+	position: absolute;
+	background-color: var(--button-hover-color);
+	border-radius: 15px;
+	padding: 15px;
+	transition: opacity 200ms linear;
+	transform: translateY(10px);
 }
 
-nav ul li:hover .sub {
-	display: block;
-	padding: 0px 0px;
+.profil:hover {
+	background-color: var(--button-hover-color);
+	cursor: pointer;
 }
 
-.sub li {
-	float: left;
-}
-
-.sub a {
-	padding-top: 0px;
-	padding: 14px 16px;
-	border-bottom: none;
-}
-
-.sub a:hover {
-	color: var(--text-hover-color);
-	transition: 200ms;
+.profil:hover .sub {
+	opacity: 100;
 }

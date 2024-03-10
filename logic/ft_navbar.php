@@ -5,72 +5,69 @@
 
 <body>
 	<nav class="navbar">
-		<div class="logo-container left">
-			<?php
-				// Icon path
-				echo "<img src='/public/img/logo.ico'></img>";
-			?>
-		</div>
-			<a class="bold title left no-hover-color"><?= lang("NAVBAR_TITLE") ?></a>
-				<ul>
-					<li>
-						<a class="title" href="/"><i class="ri-home-line"></i> <?= lang("NAVBAR_HOME") ?></a>
-					</li>
+		<li>
+			<a href="/" class="bold no-hover-color"><img class="icon" src='/public/img/logo.ico'></img><?= lang("NAVBAR_TITLE") ?></a>
+		</li>
+		<li>
+			<a href="/"><i class="ri-home-line"></i> <?= lang("NAVBAR_HOME") ?></a>
+		</li>
 		<?php
-			// Check if user is connected
-			if (!isset($_SESSION["login"])) { ?>
-					<li>
-						<a class="title" href="/login"><i class="ri-user-line"></i> <?= lang("NAVBAR_CONNECT") ?></a>
-					</li>
-				</ul>
-			</nav>
+		// Check if user is connected
+		if (!isset($_SESSION["login"])) { ?>
+		<li>
+			<a href="/login"><i class="ri-user-line"></i> <?= lang("NAVBAR_CONNECT") ?></a>
+		</li>
+	</nav>
 		<?php
-			// If the user is connected
-			} else {
-				$navbarItem = "";
-				$roleList = permissionChecker(true, "");
+		// If the user is connected
+		} else {
+			$navbarItem = "";
+			$roleList = permissionChecker(true, "");
 
-				if (in_array(admin, $roleList) || in_array(teacher, $roleList)) {
-					$navbarItem .= '<li><a class="title" href="/classes"><i class="ri-folder-line"></i> ' . lang("NAVBAR_CLASS") . '</a></li>';
-				}
+			if (in_array(admin, $roleList) || in_array(teacher, $roleList)) {
+				$navbarItem .= '<li><a href="/classes"><i class="ri-folder-line"></i> ' . lang("NAVBAR_CLASS") . '</a></li>';
+			}
 
-				if (in_array(teacher, $roleList)) {
-					$navbarItem .= '<li><a class="title" href="/sessioncreation"><i class="ri-computer-line"></i> ' . lang("NAVBAR_CREATE_SESSION") . '</a></li>';
-				}
+			if (in_array(teacher, $roleList)) {
+				$navbarItem .= '<li><a href="/sessioncreation"><i class="ri-computer-line"></i> ' . lang("NAVBAR_CREATE_SESSION") . '</a></li>';
+			}
 
-				if (in_array(admin, $roleList) || in_array(student, $roleList) || in_array(teacher, $roleList)) {
-					$navbarItem .= '<li><a class="title" href="/sessions"><i class="ri-slideshow-3-line"></i> ' . lang("NAVBAR_SESSION") . '</a></li>';
-				}
+			if (in_array(admin, $roleList) || in_array(student, $roleList) || in_array(teacher, $roleList)) {
+				$navbarItem .= '<li><a href="/sessions"><i class="ri-slideshow-3-line"></i> ' . lang("NAVBAR_SESSION") . '</a></li>';
+			}
 
-				if (in_array(admin, $roleList)) {
-					$navbarItem .= '<li><a class="title" href="/utilisateurs"><i class="ri-folder-line"></i> ' . lang("NAVBAR_USER") . '</a></li>';
-					$navbarItem .= '<li><a class="title" href="/logs?trace"><i class="ri-computer-line"></i> ' . lang("NAVBAR_LOG") . '</a></li>';
-				}
+			if (in_array(admin, $roleList)) {
+				$navbarItem .= '<li><a href="/utilisateurs"><i class="ri-folder-line"></i> ' . lang("NAVBAR_USER") . '</a></li>';
+				$navbarItem .= '<li><a href="/logs?trace"><i class="ri-computer-line"></i> ' . lang("NAVBAR_LOG") . '</a></li>';
+			}
 
-				echo $navbarItem;
+			echo $navbarItem;
 
-				// Profil part if connected
-				$username = nameFormat($_SESSION["login"], true);
 		?>
-			<li><a class="title case profil" href="#"><i class="ri-user-line"></i> <?=$username?></a>
-				<ul class="sub">
-					<li>
-						<a class="title" href="/compte"><i class="ri-account-circle-line"></i> <?= lang("NAVBAR_PROFIL_ACCOUNT") ?></a>
-					</li>
-					<li>
-						<a class="title" href="/parametres"><i class="ri-settings-4-line"></i> <?= lang("NAVBAR_PROFIL_SETTING") ?></a>
-					</li>
-					<li>
-						<a class="title" href="/deconnexion"><i class="ri-logout-box-line"></i> <?= lang("NAVBAR_PROFIL_DISCONNECT") ?></a>
-					</li>
-				</ul>
+		<li>
+			<div class="profil">
+			<a class="not-profil"><i class="ri-user-line"></i> <?= nameFormat($_SESSION["login"], true) ?></a>
+			<ul>
+				<div class="sub">
+				<li>
+					<a href="/compte"><i class="ri-account-circle-line"></i> <?= lang("NAVBAR_PROFIL_ACCOUNT") ?></a>
 				</li>
+				<li>
+					<a href="/parametres"><i class="ri-settings-4-line"></i> <?= lang("NAVBAR_PROFIL_SETTING") ?></a>
+				</li>
+				<li>
+					<a href="/deconnexion"><i class="ri-logout-box-line"></i> <?= lang("NAVBAR_PROFIL_DISCONNECT") ?></a>
+				</li>
+				</div>
 			</ul>
-		</nav>
-		<?php
+		</li>
+		</div>
+	</nav>
+	<?php
 		}
-		?>
+	?>
 
+	<!-- Background -->
 	<style>
 		body {
 			<?php
