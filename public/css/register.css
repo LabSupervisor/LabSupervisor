@@ -43,6 +43,7 @@ form {
 	border: none;
 	background: none;
 	font-size: 12px;
+	background-color: var(--case-field-background-color);
 }
 
 .ri-eye-line:before {
