@@ -10,6 +10,19 @@
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateUser.php");
 
 	$user = UserRepository::getInfo($_SESSION["login"]);
+
+    // Vérifier si le formulaire de modification a été soumis
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["save"])) {
+		require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateUser.php");
+        // Traitement des modifications du compte utilisateur
+    }
+
+    // Vérifier si le formulaire de suppression a été soumis
+    if (isset($_POST["confirm_delete"])) {
+        UserRepository::delete($user["email"]);
+        header("Location: /"); // Rediriger vers la page d'accueil après la suppression
+        exit; // Terminer le script pour empêcher toute autre exécution
+    }
 ?>
 
 <link rel="stylesheet" href="/public/css/account.css">
@@ -33,10 +46,26 @@
 		</div>
 		<input type="submit" class="button" value="<?= lang("ACCOUNT_SUBMIT") ?>">
 	</form>
+
+	<form id="confirmationForm" action="" method="post" style="display: none;">
+		<h2>Confirmation de suppression</h2>
+		<label for="yes_no">Voulez-vous supprimer définitivement ce compte ?
+			<input type="radio" name="pick_up" value="deleteY" required />Oui
+			<input type="radio" name="pick_up" value="deleteN" required />Non
+		</label>
+		<br>
+		<button type="button" id="cancel">Annuler</button>
+		<input type="submit" name="confirm_delete" value="Confirmer la suppression">
+	</form>
+
+	<?php if (!isset($_POST["confirm_delete"])) { ?>
+		<!-- Bouton pour afficher le formulaire de suppression -->
+		<button id="showDeleteForm">Supprimer le compte</button>
+	<?php } ?>
 </div>
 
 <script>
-	// Password Hide/Show script (same in login)
+	// Password Hide/Show script
 	function togglePasswordVisibility(inputId, eyeIconId) {
 		var passwordInput = document.getElementById(inputId);
 		var eyeIcon = document.getElementById(eyeIconId);
@@ -49,4 +78,27 @@
 			eyeIcon.className = 'ri-eye-off-line';
 		}
 	}
+
+	// Fonction pour afficher le "formulaire" de confirmation de suppression
+	document.getElementById('showDeleteForm').addEventListener('click', function(event) {
+		document.getElementById('confirmationForm').style.display = 'block';
+		document.getElementById('showDeleteForm').style.display = 'none';
+    });
+
+    // Fonction pour annuler la suppression et afficher le formulaire de modification
+    document.getElementById('cancel').addEventListener('click', function() {
+        document.getElementById('confirmationForm').style.display = 'none';
+        document.getElementById('showDeleteForm').style.display = 'block';
+    });
+
+    // Fonction pour gérer l'événement lors de la soumission du formulaire de confirmation de suppression
+    document.getElementById('confirmationForm').addEventListener('submit', function(event) {
+        var pick_up = document.querySelector('input[name="pick_up"]:checked').value;
+        if (pick_up === 'deleteN') {
+            // Si l'utilisateur a choisi "Non", réafficher le formulaire de base
+            document.getElementById('confirmationForm').style.display = 'none';
+            document.getElementById('showDeleteForm').style.display = 'block';
+            event.preventDefault(); // Empêcher la soumission du formulaire
+        }
+    });
 </script>
