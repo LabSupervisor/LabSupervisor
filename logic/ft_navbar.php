@@ -24,11 +24,8 @@
 			$navbarItem = "";
 			$roleList = permissionChecker(true, "");
 
-			if (in_array(ADMIN, $roleList) || in_array(TEACHER, $roleList)) {
-				$navbarItem .= '<li><a href="/classes"><i class="ri-folder-line"></i> ' . lang("NAVBAR_CLASS") . '</a></li>';
-			}
-
 			if (in_array(TEACHER, $roleList)) {
+				$navbarItem .= '<li><a href="/classes"><i class="ri-folder-line"></i> ' . lang("NAVBAR_CLASS") . '</a></li>';
 				$navbarItem .= '<li><a href="/sessioncreation"><i class="ri-computer-line"></i> ' . lang("NAVBAR_CREATE_SESSION") . '</a></li>';
 			}
 

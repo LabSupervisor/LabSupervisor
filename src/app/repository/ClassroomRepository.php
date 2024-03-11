@@ -136,18 +136,15 @@ class ClassroomRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
 	}
 
-	public static function getUsersNotInClassroom($name) {
+	public static function getUsersNotInClassroom() {
 		$db = dbConnect();
 
-		$classroomId = ClassroomRepository::getId($name);
-
 		// Get user not in classroom query
-		$query = "SELECT * FROM user WHERE id NOT IN (SELECT iduser FROM userclassroom WHERE idclassroom = :idclassroom) AND user.active = 1";
+		$query = "SELECT u.* FROM user u LEFT JOIN userclassroom uc ON u.id = uc.iduser	LEFT JOIN userrole ur ON u.id = ur.iduser WHERE uc.iduser IS NULL AND ur.idrole NOT IN (1, 3)";
 
 		// Get user not in classroom
 		try {
 			$queryPrep = $db->prepare($query);
-			$queryPrep->bindParam(":idclassroom", $classroomId);
 			if (!$queryPrep->execute())
 				throw new Exception("Get users not in classroom error");
 		} catch (Exception $e) {

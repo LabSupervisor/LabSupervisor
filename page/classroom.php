@@ -4,7 +4,7 @@
 	mainHeader("Classes");
 
 	// Ask for permissions
-	permissionChecker(true, array(ADMIN, TEACHER));
+	permissionChecker(true, array(TEACHER));
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateClassroom.php");
@@ -55,23 +55,18 @@
 		?>
 		</tbody>
 	</table>
-
-	<form method="POST">
-		<input type="hidden" name="class_id" value="<?= $classroom["id"] ?>">
-		<label for="student_id">Sélectionner un élève :</label>
-		<select name="student_id" id="student_id">
-			<?php
+		<?php
 			// Fetch students not already in this class
-			$students = ClassroomRepository::getUsersNotInClassroom($classroom["name"]);
-			foreach ($students as $student) {
-				echo "<option value='" . $student['id'] . "'>" . $student['name'] . " " . $student['surname'] . "</option>";
+			$students = ClassroomRepository::getUsersNotInClassroom();
+			if ($students) {
+				echo "<form method='POST'>";
+				echo "<input type='hidden' name='class_id' value=" . $classroom["id"] .">";
+				echo "<select name='student_id' id='student_id'><label for='student_id'>Sélectionner un élève :</label>";
+				foreach ($students as $student) {
+					echo "<option value='" . $student['id'] . "'>" . $student['name'] . " " . $student['surname'] . "</option>";
+				}
+				echo "</select><input type='submit' name='add_student' value='Ajouter'></form>";
 			}
-			?>
-		</select>
-		<input type="submit" name="add_student" value="Ajouter">
-	</form>
-
-<?php
 		}
 	}
 ?>

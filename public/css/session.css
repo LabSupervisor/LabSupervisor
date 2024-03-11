@@ -31,8 +31,8 @@ thead {
 }
 
 th {
-    text-overflow: ellipsis;
-    overflow: hidden;
+	text-overflow: ellipsis;
+	overflow: hidden;
 	white-space: nowrap;
 	padding-left: 15px;
 	padding-right: 15px;
@@ -42,8 +42,8 @@ th {
 }
 
 td {
-    text-overflow: ellipsis;
-    overflow: hidden;
+	text-overflow: ellipsis;
+	overflow: hidden;
 	white-space: nowrap;
 	padding-left: 15px;
 	padding-right: 15px;

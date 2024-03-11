@@ -7,7 +7,7 @@
 }
 
 ::selection {
-    background-color: var(--button-background-color);
+	background-color: var(--button-background-color);
 }
 
 ::-webkit-scrollbar {

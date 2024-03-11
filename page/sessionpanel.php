@@ -5,9 +5,8 @@
 
 	// Ask for permissions
 	permissionChecker(true, array(STUDENT));
-?>
 
-<?php
+	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateStatus.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/createLink.php");
 ?>

@@ -35,7 +35,7 @@
 	"ACCOUNT_NAME": "Name",
 	"ACCOUNT_SURNAME": "Surname",
 	"ACCOUNT_PASSWORD": "Password",
-	"ACCOUNT_PASSWORD_CONFIRM": "Confirm",
+	"ACCOUNT_PASSWORD_CONFIRM": "Confirm password",
 	"ACCOUNT_SUBMIT": "Save changes",
 
 	"SESSION_SUBJECT": "Subject",

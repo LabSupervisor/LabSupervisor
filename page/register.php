@@ -18,13 +18,13 @@
 		<input type="email" name="email" placeholder="<?= lang("REGISTER_EMAIL") ?>" class="Email" required autofocus><br>
 		<div class="PasswordContainer">
 			<input type="password" id="password" name="password" placeholder="<?= lang("REGISTER_PASSWORD") ?>" class="Password" required><br>
-			<button type="button" id="showPasswordButton" class="ShowPasswordButton" onclick="togglePasswordVisibility('password', 'eyeIcon')">
+			<button tabindex="-1" type="button" id="showPasswordButton" class="ShowPasswordButton" onclick="togglePasswordVisibility('password', 'eyeIcon')">
 				<i id="eyeIcon" class="ri-eye-off-line"></i>
 			</button>
 		</div>
 		<div class="PasswordContainer">
 			<input type="password" id="passwordConf" name="confpass" placeholder="<?= lang("REGISTER_PASSWORD_CONFIRM") ?>" class="Password" required><br>
-			<button type="button" id="showPasswordButton" class="ShowPasswordButton" onclick="togglePasswordVisibility('passwordConf', 'eyeIconConf')">
+			<button tabindex="-1" type="button" id="showPasswordButton" class="ShowPasswordButton" onclick="togglePasswordVisibility('passwordConf', 'eyeIconConf')">
 				<i id="eyeIconConf" class="ri-eye-off-line"></i>
 			</button>
 		</div>
