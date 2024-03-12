@@ -60,5 +60,16 @@
 	if (UserRepository::getLink($_SESSION["login"])){
 		echo "LS-LINK n°" . UserRepository::getLink($_SESSION["login"]);
 	}
-	echo "<br>LS-LINK : <form method='POST'><input type='number' name='number'/><input type='submit' name='link'/>";
+	echo "<br>LS-LINK : <form method='POST'><input type='number' name='number'/><input type='submit' name='link'/></form>";
 ?>
+
+<button id="shareButton">Partager</button>
+
+<script>
+	var userId = <?= UserRepository::getId($_SESSION["login"]) ?>;
+	var sessionId = <?= $_SESSION["session"] ?>;
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.2/peerjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js"></script>
+<script src="/public/js/clientScreenshare.js"></script>
