@@ -27,17 +27,18 @@
 				Thème
 			</td>
 			<td>
-				<select name="theme">
+				<form action="changeSetting.php" >
 					<?php
-					if ($userSetting["theme"] == "0") {
-						echo "<option selected='selected' value='light'>Mode clair</option>";
-						echo "<option value='dark'>Mode sombre</option>";
-					} else {
-						echo "<option value='light'>Mode clair</option>";
-						echo "<option selected='selected' value='dark'>Mode sombre</option>";
+					if ($userSetting["theme"] == "0"){
+						$theme = "dark" ;
+					}
+					else {
+						$theme = "light";
 					}
 					?>
-				</select>
+					<input type="submit" id="theme" name="theme" value="<?=$theme?>">
+
+				</form>
 			</td>
 		</tr>
 		<tr>
@@ -68,3 +69,5 @@
 		</tr>
 	</table>
 </form>
+
+
