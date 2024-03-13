@@ -57,14 +57,14 @@
 
 		<div class="PasswordContainer">
 			<input type="password" placeholder="<?= lang("ACCOUNT_PASSWORD") ?>" id="password" class="newpassword" name="new_password" aria-autocomplete="list">
-			<button type="button" class="ShowPasswordButton" onclick="togglePasswordVisibility('password', 'eyeIcon')">
+			<button tabindex="-1" type="button" class="ShowPasswordButton" onclick="togglePasswordVisibility('password', 'eyeIcon')">
 				<i id="eyeIcon" class="ri-eye-off-line"></i>
 			</button>
 		</div>
 
 		<div class="PasswordContainer">
 			<input type="password" placeholder="<?= lang("ACCOUNT_PASSWORD_CONFIRM") ?>" id="passwordConf" class="confpassword" name="conf_password">
-			<button type="button" class="ShowPasswordButton" onclick="togglePasswordVisibility('passwordConf', 'eyeIconConf')">
+			<button tabindex="-1" type="button" class="ShowPasswordButton" onclick="togglePasswordVisibility('passwordConf', 'eyeIconConf')">
 				<i id="eyeIconConf" class="ri-eye-off-line"></i>
 			</button>
 		</div>

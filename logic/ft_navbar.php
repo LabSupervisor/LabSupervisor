@@ -7,7 +7,7 @@
 <body>
 	<nav class="navbar">
 		<li>
-			<a href="/" class="bold no-hover-color"><img class="icon" src='/public/img/logo.ico'></img><?= lang("NAVBAR_TITLE") ?></a>
+			<a tabindex="-1" href="/" class="bold no-hover-color"><img class="icon" src='/public/img/logo.ico'></img><?= lang("NAVBAR_TITLE") ?></a>
 		</li>
 		<li>
 			<a href="/"><i class="ri-home-line"></i> <?= lang("NAVBAR_HOME") ?></a>

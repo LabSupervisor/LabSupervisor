@@ -1,12 +1,10 @@
 <?php
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST['new_name'])) {
 	$userData = array(
-		"email" => $_SESSION["login"]
+		"email" => $_SESSION["login"],
+		"name" => $_POST['new_name']
 	);
-
-	if ($_POST['new_name'])
-		$userData["name"] = $_POST['new_name'];
 
 	if ($_POST['new_surname'])
 		$userData["surname"] = $_POST['new_surname'];
