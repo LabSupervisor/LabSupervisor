@@ -8,7 +8,6 @@ if (isset($_POST["login"])) {
 			header("Location: /");
 		}
 	}
-	var_dump(UserRepository::getId($_POST['email']));
 	// Default error
 	echo lang("LOGIN_ERROR_NOTFOUND");
 }
