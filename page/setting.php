@@ -15,7 +15,7 @@
 	$userSetting = UserRepository::getSetting($_SESSION["login"]);
 
 	$background = array();
-	$background = scandir($_SERVER['DOCUMENT_ROOT'] . "/public/img/background/light/");
+	$background = scandir($_SERVER["DOCUMENT_ROOT"] . "/public/img/background/light/");
 	$temp = array(".", "..");
 	$background = array_diff($background, $temp);
 ?>
@@ -47,7 +47,7 @@
 			<td>
 				<select name="lang">
 				<?php
-					$langList = scandir($_SERVER['DOCUMENT_ROOT'] . "/lang/");
+					$langList = scandir($_SERVER["DOCUMENT_ROOT"] . "/lang/");
 					$temp = array(".", "..");
 					$langList = array_diff($langList, $temp);
 					foreach($langList as $lang) {

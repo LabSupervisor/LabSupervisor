@@ -1,6 +1,6 @@
 <?php
 
-require($_SERVER['DOCUMENT_ROOT'] . '/logic/ft_header.php');
+require($_SERVER["DOCUMENT_ROOT"] . '/logic/ft_header.php');
 mainHeader("Session Test");
 
 $sessionRepo = new SessionRepository();

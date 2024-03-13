@@ -1,6 +1,6 @@
 <?php
 	// Import header
-	require($_SERVER['DOCUMENT_ROOT'] . '/logic/ft_header.php');
+	require($_SERVER["DOCUMENT_ROOT"] . '/logic/ft_header.php');
 	mainHeader("");
 ?>
 

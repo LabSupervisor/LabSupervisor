@@ -1,11 +1,12 @@
 <?php
+
 class LogRepository extends Exception{
 	public static function dbSave($message) {
 		try {
 			$db = dbConnect();
 
 			// Insert log query
-			$query = "INSERT INTO log (iduser, message) VALUES (:iduser, :message)";
+			$query = "INSERT INTO log (idusner, message) VALUES (:iduser, :message)";
 
 			if (isset($_SESSION["login"])) {
 				// Get user ID
@@ -28,11 +29,11 @@ class LogRepository extends Exception{
 	public static function fileSave(Exception $e) {
 		$stacktrace = $e->getTraceAsString();
 		$message = $e->getMessage();
-		$logFile = $_SERVER['DOCUMENT_ROOT'] . "/log/" . date("Y-m-d") . ".log";
+		$logFile = $_SERVER["DOCUMENT_ROOT"] . "/log/" . date("Y-m-d") . ".log";
 
 		// Check if log folder exist
-		if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/log/"))
-			mkdir($_SERVER['DOCUMENT_ROOT'] . "/log", 0777, true);
+		if (!file_exists($_SERVER["DOCUMENT_ROOT"] . "/log/"))
+			mkdir($_SERVER["DOCUMENT_ROOT"] . "/log", 0777, true);
 
 		// Open or create log file if not exist
 		$file = fopen($logFile, "a+");

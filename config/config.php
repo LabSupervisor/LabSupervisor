@@ -7,14 +7,17 @@ error_reporting(E_ALL);
 // Start session
 session_start();
 
+// Load modules
+require $_SERVER["DOCUMENT_ROOT"] . "/vendor/autoload.php";
+
 // Import database
-require $_SERVER['DOCUMENT_ROOT'] . "/config/db.php";
+require $_SERVER["DOCUMENT_ROOT"] . "/config/db.php";
 
 // Load class
 function loadClass($class)
 {
-	$entityDirectory = $_SERVER['DOCUMENT_ROOT'] . "/src/app/entity/";
-	$repositoryDirectory = $_SERVER['DOCUMENT_ROOT'] . "/src/app/repository/";
+	$entityDirectory = $_SERVER["DOCUMENT_ROOT"] . "/src/app/entity/";
+	$repositoryDirectory = $_SERVER["DOCUMENT_ROOT"] . "/src/app/repository/";
 
 	// Import entity
 	if (file_exists($entityDirectory . $class . ".php"))
@@ -40,7 +43,7 @@ define("STUDENT", 2);
 define("TEACHER", 3);
 
 // Import permission checker
-require($_SERVER['DOCUMENT_ROOT'] . "/logic/ft_permissionChecker.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_permissionChecker.php");
 
 // Import lang
-require($_SERVER['DOCUMENT_ROOT'] . '/logic/ft_lang.php');
+require($_SERVER["DOCUMENT_ROOT"] . '/logic/ft_lang.php');
