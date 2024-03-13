@@ -11,4 +11,6 @@ function langFormat($lang) {
 		return "🇮🇹 Italiano";
 	if ($lang == "de_DE")
 		return "🇩🇪 Deutsch";
+	if ($lang == "nl_NL")
+		return "🇳🇱 Netherlands";
 }
