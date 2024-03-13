@@ -7,7 +7,6 @@
 	permissionChecker(true, array(ADMIN, STUDENT, TEACHER));
 
 	// Logic
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/changeSetting.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_langFormat.php");
 ?>
 
@@ -27,17 +26,7 @@
 				Thème
 			</td>
 			<td>
-				<select name="theme">
-					<?php
-					if ($userSetting["theme"] == "0") {
-						echo "<option selected='selected' value='light'>Mode clair</option>";
-						echo "<option value='dark'>Mode sombre</option>";
-					} else {
-						echo "<option value='light'>Mode clair</option>";
-						echo "<option selected='selected' value='dark'>Mode sombre</option>";
-					}
-					?>
-				</select>
+
 			</td>
 		</tr>
 		<tr>
@@ -68,3 +57,5 @@
 		</tr>
 	</table>
 </form>
+
+

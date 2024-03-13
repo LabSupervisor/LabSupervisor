@@ -1,6 +1,7 @@
 <?php
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_nameFormat.php");
+	require($_SERVER["DOCUMENT_ROOT"] . "/logic/changeSetting.php");
 ?>
 
 <body>
@@ -23,6 +24,7 @@
 		} else {
 			$navbarItem = "";
 			$roleList = permissionChecker(true, "");
+			$userSetting = UserRepository::getSetting($_SESSION["login"]);
 
 			if (in_array(TEACHER, $roleList)) {
 				$navbarItem .= '<li><a href="/classes"><i class="ri-folder-line"></i> ' . lang("NAVBAR_CLASS") . '</a></li>';
@@ -57,6 +59,22 @@
 				</li>
 				</div>
 			</ul>
+		</li>
+		<li>
+			<form method="POST">
+				<?php
+				if ($userSetting["theme"] == "0"){
+					$theme = "dark";
+					$icon = "<i class='ri-moon-line'></i>";
+				}
+				else {
+					$theme = "light";
+					$icon = "<i class='ri-sun-line'></i>";
+				}
+				?>
+				<input type="hidden" name="lang" value="<?= $userSetting["lang"] ?>">
+				<button class="buttonTheme" type="submit" name="theme" value="<?= $theme ?>"><?= $icon ?></button>
+			</form>
 		</li>
 		</div>
 	</nav>
