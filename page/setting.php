@@ -7,7 +7,6 @@
 	permissionChecker(true, array(ADMIN, STUDENT, TEACHER));
 
 	// Logic
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/changeSetting.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_langFormat.php");
 ?>
 
@@ -27,18 +26,7 @@
 				Thème
 			</td>
 			<td>
-				<form action="changeSetting.php" >
-					<?php
-					if ($userSetting["theme"] == "0"){
-						$theme = "dark" ;
-					}
-					else {
-						$theme = "light";
-					}
-					?>
-					<input type="submit" id="theme" name="theme" value="<?=$theme?>">
 
-				</form>
 			</td>
 		</tr>
 		<tr>

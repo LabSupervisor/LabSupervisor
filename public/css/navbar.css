@@ -87,3 +87,11 @@
 .profil:hover .sub {
 	opacity: 100;
 }
+
+.buttonTheme {
+	background: 0;
+	border: 0;
+	font-size: 20px;
+	margin-left: 14px;
+	transform: translateY(2px);
+}
