@@ -16,7 +16,7 @@ h2 {
 	flex-direction: column;
 }
 
-.newname, .newsurname, .newpassword, .confpassword {
+.newname, .newsurname, .lang, .newpassword, .confpassword {
 	background: var(--case-field-background-color);
 	border: 0;
 	border-radius: 7px;

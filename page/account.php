@@ -8,6 +8,7 @@
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateUser.php");
+	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_langFormat.php");
 
 	$user = UserRepository::getInfo($_SESSION["login"]);
 
@@ -30,20 +31,44 @@
 <div class="mainbox AccountDiv">
 	<form action="" method="post">
 		<h2><i class="ri-user-line"></i> <?= lang("ACCOUNT_TITLE") ?></h2>
+
 		<input type="text" placeholder="<?= lang("ACCOUNT_NAME") ?>" class="newname" name="new_name" value="<?php echo $user['name']; ?>" required>
+
 		<input type="text" placeholder="<?= lang("ACCOUNT_SURNAME") ?>" class="newsurname" name="new_surname" value="<?php echo $user['surname']; ?>" required>
+
+		<select class="lang" name="lang">
+			<?php
+				$userLang = UserRepository::getSetting($_SESSION["login"])["lang"];
+
+				$langList = scandir($_SERVER["DOCUMENT_ROOT"] . "/lang/");
+				$temp = array(".", "..");
+				$langList = array_diff($langList, $temp);
+
+				foreach($langList as $lang) {
+					$lang = str_replace(".json", "", $lang);
+					if ($lang == $userLang) {
+						echo "<option selected='selected' value='" . $lang . "'>" . langFormat($lang) . "</option>";
+					} else {
+						echo "<option value='" . $lang . "'>" . langFormat($lang) . "</option>";
+					}
+				}
+			?>
+		</select>
+
 		<div class="PasswordContainer">
 			<input type="password" placeholder="<?= lang("ACCOUNT_PASSWORD") ?>" id="password" class="newpassword" name="new_password" aria-autocomplete="list">
 			<button type="button" class="ShowPasswordButton" onclick="togglePasswordVisibility('password', 'eyeIcon')">
 				<i id="eyeIcon" class="ri-eye-off-line"></i>
 			</button>
 		</div>
+
 		<div class="PasswordContainer">
 			<input type="password" placeholder="<?= lang("ACCOUNT_PASSWORD_CONFIRM") ?>" id="passwordConf" class="confpassword" name="conf_password">
 			<button type="button" class="ShowPasswordButton" onclick="togglePasswordVisibility('passwordConf', 'eyeIconConf')">
 				<i id="eyeIconConf" class="ri-eye-off-line"></i>
 			</button>
 		</div>
+
 		<input type="submit" class="button" value="<?= lang("ACCOUNT_SUBMIT") ?>">
 	</form>
 

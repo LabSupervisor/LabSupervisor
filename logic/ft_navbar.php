@@ -1,7 +1,7 @@
 <?php
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_nameFormat.php");
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/changeSetting.php");
+	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateTheme.php");
 ?>
 
 <body>
@@ -50,9 +50,6 @@
 				<div class="sub">
 				<li>
 					<a href="/compte"><i class="ri-account-circle-line"></i> <?= lang("NAVBAR_PROFIL_ACCOUNT") ?></a>
-				</li>
-				<li>
-					<a href="/parametres"><i class="ri-settings-4-line"></i> <?= lang("NAVBAR_PROFIL_SETTING") ?></a>
 				</li>
 				<li>
 					<a href="/deconnexion"><i class="ri-logout-box-line"></i> <?= lang("NAVBAR_PROFIL_DISCONNECT") ?></a>

@@ -24,5 +24,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$userRepo = new UserRepository();
 	$userRepo->update($user);
 
+	// Update user language
+	$theme = UserRepository::getSetting($_SESSION["login"])["theme"];
+	$userSetting = array(
+		"theme" => $theme,
+		"lang" => $_POST["lang"]
+	);
+
+	// Update user's settings
+	UserRepository::updateSetting($userSetting);
+
 	header("Refresh:0");
 }

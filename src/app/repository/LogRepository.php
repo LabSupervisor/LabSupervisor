@@ -6,7 +6,7 @@ class LogRepository extends Exception{
 			$db = dbConnect();
 
 			// Insert log query
-			$query = "INSERT INTO log (idusner, message) VALUES (:iduser, :message)";
+			$query = "INSERT INTO log (iduser, message) VALUES (:iduser, :message)";
 
 			if (isset($_SESSION["login"])) {
 				// Get user ID

@@ -36,9 +36,6 @@ switch ($page[0]) {
 	case "/panel":
 		include "page/sessionpanel.php";
 		break;
-	case "/parametres":
-		include "page/setting.php";
-		break;
 	case "/deconnexion":
 		include "logic/disconnect.php";
 		break;

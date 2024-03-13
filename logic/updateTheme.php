@@ -1,6 +1,7 @@
 <?php
-if (isset($_POST['changeSetting']) || isset($_POST["theme"])) {
+if (isset($_POST["theme"])) {
 	// Convert theme value
+	$lang = UserRepository::getSetting($_SESSION["login"])["lang"];
 
 	if ($_POST["theme"] == "light")
 		$theme = 0;
@@ -9,7 +10,7 @@ if (isset($_POST['changeSetting']) || isset($_POST["theme"])) {
 
 	$userSetting = array(
 		"theme" => $theme,
-		"lang" => $_POST["lang"]
+		"lang" => $lang
 	);
 
 	// Update user's settings
