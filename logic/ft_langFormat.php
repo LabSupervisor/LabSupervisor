@@ -13,4 +13,8 @@ function langFormat($lang) {
 		return "🇩🇪 Deutsch";
 	if ($lang == "nl_NL")
 		return "🇳🇱 Netherlands";
+	if ($lang == "ja_JP")
+		return "🇯🇵 Japan";
+	if ($lang == "zh_TW")
+		return "🇨🇳 Chinese";
 }

@@ -24,6 +24,12 @@ Available langage:
 
 - French
 - English
+- Deutsch
+- Spanish
+- Italian
+- Japan
+- Chinese
+- Netherlands
 
 *To add a new langage, simply create a new file in `lang/` using existing file content with the corresponding translation.*
 
