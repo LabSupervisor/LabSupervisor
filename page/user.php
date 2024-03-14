@@ -10,18 +10,12 @@
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_roleFormat.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateAdminUser.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/deleteAdminUser.php");
+
+	$classrooms = ClassroomRepository::getClassrooms();
+	$jsonClassroom = json_encode($classrooms);
 ?>
 
 <link rel="stylesheet" href="/public/css/user.css">
-
-<?php
-$tabClass = ClassroomRepository::getClassrooms();
-// Convertit le tableau PHP en chaîne JSON pour l'utiliser en JavaScript
-$classes_json = json_encode($tabClass);
-
-
-?>
-
 
 <script>
 	// Create update fields
@@ -60,14 +54,16 @@ $classes_json = json_encode($tabClass);
 		inputName.setAttribute("value", name);
 
 		var selectClassroom = document.createElement("select");
-		selectClassroom.setAttribute("id", "selectedClassroom");
-		selectClassroom.setAttribute("name", "selectedClassroom");
+		selectClassroom.setAttribute("id", "classroom");
+		selectClassroom.setAttribute("name", "classroom_" + userId);
+		selectClassroom.setAttribute("class", "classroom");
 		// Récupère les classes depuis la chaîne JSON
-		var classrooms = <?php echo $classes_json; ?>;
+		var classrooms = <?= $jsonClassroom ?>;
 		// Ajoute les options au menu déroulant
 		for (var i = 0; i < classrooms.length; i++) {
 			var option = document.createElement("option");
 			option.text = classrooms[i].name; // Utilise la propriété "name" de chaque objet
+			option.setAttribute("value", option.text);
 			selectClassroom.add(option);
 		}
 
@@ -81,7 +77,7 @@ $classes_json = json_encode($tabClass);
 			var selectedValue = selectedOption.value;
 
 			// Met à jour la valeur de l'élément input caché pour cet utilisateur
-			var hiddenInputId = "selectedClassroom_" + userId;
+			var hiddenInputId = "classroom_" + userId;
 			document.getElementById(hiddenInputId).value = selectedValue;
 		});
 
@@ -110,7 +106,7 @@ $classes_json = json_encode($tabClass);
 	<div class="mainbox table-container">
 	<table>
 		<thead>
-				<tr class="thead">
+			<tr class="thead">
 				<th><?= lang("USER_UPDATE_SURNAME") ?></th>
 				<th><?= lang("USER_UPDATE_NAME") ?></th>
 				<th><?= lang("USER_UPDATE_EMAIL") ?></th>
@@ -139,10 +135,10 @@ $classes_json = json_encode($tabClass);
 						echo lang("USER_UPDATE_CLASS_EMPTY");
 					}
 					?>
-					<input type="hidden" name="selectedClassroom" id="selectedClassroom_<?=$userId?>">
+					<input type="hidden" name="classroom" id="classroom_<?=$userId?>">
 				</td>
 				<td class="col6"><button class="modifybutton button" type="button" id="modify_<?=$userId?>" onclick="updateUser(<?=$userId?>)"><?= lang("USER_UPDATE_MODIFY") ?></button>
-				<form method="POST" action="#">
+				<form method="POST">
 					<input type="hidden" name="userId" value="<?= $userId ?>">
 					<button class="button" type="submit" name="send" id="delete_<?= $userId ?>"><?= lang("USER_UPDATE_DELETE") ?></button>
 				</form>

@@ -155,6 +155,26 @@ class ClassroomRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
 	}
 
+	public static function getUserClassroom($userId) {
+		$db = dbConnect();
+
+		// Get user not in classroom query
+		$query = "SELECT idclassroom FROM userclassroom WHERE iduser = :iduser";
+
+		// Get user not in classroom
+		try {
+			$queryPrep = $db->prepare($query);
+			$queryPrep->bindParam(':iduser', $userId);
+			if (!$queryPrep->execute())
+				throw new Exception("Get users not in classroom error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
+	}
+
 	public static function addUser($userId, $classroomId) {
 		$db = dbConnect();
 
