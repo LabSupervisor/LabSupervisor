@@ -10,13 +10,23 @@ switch($_SERVER["REQUEST_METHOD"]) {
 			$json = file_get_contents("php://input");
 			$data = json_decode($json);
 
-			// Update status table
-			if (!SessionRepository::setStatus($data->idSession, $data->idChapter, UserRepository::getUserByLink($data->id), $data->idState)) {
-				throw new Exception("API Error");
+			if ($data->ask == "state") {
+				// Update status table
+				$status = SessionRepository::getStatus($data->idChapter, UserRepository::getUserByLink($data->id));
+
+				// Answer API
+				echo '{"Response": {"Status": ' . $status . '}}';
 			}
 
-			// Answer API
-			echo '{"Response": {"Message": "Status updated."}}';
+			if ($data->ask == "update") {
+				// Update status table
+				if (!SessionRepository::setStatus($data->idSession, $data->idChapter, UserRepository::getUserByLink($data->id), $data->idState)) {
+					throw new Exception("API Error");
+				}
+
+				// Answer API
+				echo '{"Response": {"Message": "Status updated."}}';
+			}
 		} catch (Exception $e) {
 			LogRepository::fileSave($e);
 		}
