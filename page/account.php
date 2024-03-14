@@ -10,20 +10,20 @@
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateUser.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_langFormat.php");
 
-	$user = UserRepository::getInfo($_SESSION["login"]);
-
-	// Vérifier si le formulaire de suppression a été soumis
+	// Delete account if ask for
 	if (isset($_POST["confirm_delete"])) {
-		UserRepository::delete($user["email"]);
-		header("Location: /"); // Rediriger vers la page d'accueil après la suppression
-		exit; // Terminer le script pour empêcher toute autre exécution
+		UserRepository::delete($_SESSION["login"]);
+		header("Location: /");
 	}
+
+	$user = UserRepository::getInfo($_SESSION["login"]);
 ?>
 
 <link rel="stylesheet" href="/public/css/account.css">
 
 <div class="mainbox AccountDiv">
-	<form action="" method="post">
+	<div id="updateCase">
+	<form method="post">
 		<h2><i class="ri-user-line"></i> <?= lang("ACCOUNT_TITLE") ?></h2>
 
 		<input type="text" placeholder="<?= lang("ACCOUNT_NAME") ?>" class="newname" name="new_name" value="<?php echo $user['name']; ?>" required>
@@ -65,22 +65,18 @@
 
 		<input type="submit" class="button" value="<?= lang("ACCOUNT_SUBMIT") ?>">
 	</form>
+	<button class="button" id="showDeleteForm"><?= lang("ACCOUNT_DELETE") ?></button>
+	</div>
 
-	<form id="confirmationForm" action="" method="post" style="display: none;">
-		<h2>Confirmation de suppression</h2>
-		<label for="yes_no">Voulez-vous supprimer définitivement ce compte ?
-			<input type="radio" name="pick_up" value="deleteY" required />Oui
-			<input type="radio" name="pick_up" value="deleteN" required />Non
-		</label>
+	<form id="confirmationForm" method="post" style="display: none;">
+		<h2><?= lang("ACCOUNT_DELETE_TITLE") ?></h2>
+		<a><?= lang("ACCOUNT_DELETE_DESCRIPTION") ?></a>
 		<br>
-		<button type="button" id="cancel">Annuler</button>
-		<input type="submit" name="confirm_delete" value="Confirmer la suppression">
+		<input type="checkbox" name="deleteConfirm" required /><?= lang("ACCOUNT_DELETE_YES") ?>
+		<br>
+		<button class="button" type="button" id="cancel"> <?= lang("ACCOUNT_DELETE_CANCEL") ?></button>
+		<input class="button" type="submit" name="confirm_delete" value="<?= lang("ACCOUNT_DELETE") ?>">
 	</form>
-
-	<?php if (!isset($_POST["confirm_delete"])) { ?>
-		<!-- Bouton pour afficher le formulaire de suppression -->
-		<button id="showDeleteForm">Supprimer le compte</button>
-	<?php } ?>
 </div>
 
 <script>
@@ -98,26 +94,14 @@
 		}
 	}
 
-	// Fonction pour afficher le "formulaire" de confirmation de suppression
+	// Change div display
 	document.getElementById('showDeleteForm').addEventListener('click', function(event) {
 		document.getElementById('confirmationForm').style.display = 'block';
-		document.getElementById('showDeleteForm').style.display = 'none';
+		document.getElementById('updateCase').style.display = 'none';
 	});
 
-	// Fonction pour annuler la suppression et afficher le formulaire de modification
 	document.getElementById('cancel').addEventListener('click', function() {
 		document.getElementById('confirmationForm').style.display = 'none';
-		document.getElementById('showDeleteForm').style.display = 'block';
-	});
-
-	// Fonction pour gérer l'événement lors de la soumission du formulaire de confirmation de suppression
-	document.getElementById('confirmationForm').addEventListener('submit', function(event) {
-		var pick_up = document.querySelector('input[name="pick_up"]:checked').value;
-		if (pick_up === 'deleteN') {
-			// Si l'utilisateur a choisi "Non", réafficher le formulaire de base
-			document.getElementById('confirmationForm').style.display = 'none';
-			document.getElementById('showDeleteForm').style.display = 'block';
-			event.preventDefault(); // Empêcher la soumission du formulaire
-		}
+		document.getElementById('updateCase').style.display = 'block';
 	});
 </script>

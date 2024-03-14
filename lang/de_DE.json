@@ -36,6 +36,11 @@
 	"ACCOUNT_PASSWORD": "Passwort",
 	"ACCOUNT_PASSWORD_CONFIRM": "Passwort bestätigen",
 	"ACCOUNT_SUBMIT": "Speichern",
+	"ACCOUNT_DELETE": "Konto löschen",
+	"ACCOUNT_DELETE_TITLE": "Löschbestätigung",
+	"ACCOUNT_DELETE_DESCRIPTION": "Sind Sie sicher, dass Sie dieses Konto dauerhaft löschen möchten?",
+	"ACCOUNT_DELETE_YES": "Ja, ich möchte dieses Konto dauerhaft löschen.",
+	"ACCOUNT_DELETE_CANCEL": "Abbrechen",
 
 	"SESSION_SUBJECT": "Thema",
 	"SESSION_DESCRIPTION": "Details",

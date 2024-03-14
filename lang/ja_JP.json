@@ -36,6 +36,11 @@
 	"ACCOUNT_PASSWORD": "パスワード",
 	"ACCOUNT_PASSWORD_CONFIRM": "パスワードの確認",
 	"ACCOUNT_SUBMIT": "保存",
+	"ACCOUNT_DELETE": "アカウントを削除",
+	"ACCOUNT_DELETE_TITLE": "削除の確認",
+	"ACCOUNT_DELETE_DESCRIPTION": "このアカウントを永久に削除してもよろしいですか？",
+	"ACCOUNT_DELETE_YES": "はい、このアカウントを永久に削除します。",
+	"ACCOUNT_DELETE_CANCEL": "キャンセル",
 
 	"SESSION_SUBJECT": "主題",
 	"SESSION_DESCRIPTION": "詳細",
