@@ -1,5 +1,5 @@
-setting.ini
 node_modules
 vendor
 .idea/*
 .vscode/*
+.env

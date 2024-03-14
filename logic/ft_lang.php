@@ -4,7 +4,7 @@ function lang($key) {
 	if (isset($_SESSION["login"]))
 		$userLang = UserRepository::getSetting($_SESSION["login"])["lang"];
 	else
-		$userLang = "fr_FR";
+		$userLang = DEFAULT_LANGUAGE;
 
 	// Get value
 	$json = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/lang/" . $userLang . ".json");
@@ -14,7 +14,7 @@ function lang($key) {
 		return $data->$key;
 	} else {
 		// Get default value
-		$default = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/lang/fr_FR.json");
+		$default = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/lang/" . DEFAULT_LANGUAGE . ".json");
 		$data = json_decode($default);
 		return $data->$key;
 	}

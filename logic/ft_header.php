@@ -17,7 +17,7 @@ function mainHeader($title) {
 		else
 			$theme = "colordark";
 	else
-		$theme = "colorlight";
+		$theme = DEFAULT_THEME;
 
 	$header = "";
 

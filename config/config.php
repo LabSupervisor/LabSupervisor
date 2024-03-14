@@ -1,4 +1,5 @@
 <?php
+
 // Show error
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -10,8 +11,17 @@ session_start();
 // Load modules
 require $_SERVER["DOCUMENT_ROOT"] . "/vendor/autoload.php";
 
-// Import database
-require $_SERVER["DOCUMENT_ROOT"] . "/config/db.php";
+// Load .env file
+$dotenv = Dotenv\Dotenv::createImmutable($_SERVER["DOCUMENT_ROOT"]);
+$dotenv->load();
+
+// Create constants
+define("DEFAULT_LANGUAGE", $_ENV['DEFAULT_LANGUAGE']);
+define("DEFAULT_THEME", $_ENV['DEFAULT_THEME']);
+
+define("ADMIN", 1);
+define("STUDENT", 2);
+define("TEACHER", 3);
 
 // Load class
 function loadClass($class)
@@ -29,6 +39,9 @@ function loadClass($class)
 }
 spl_autoload_register('loadClass');
 
+// Import database
+require $_SERVER["DOCUMENT_ROOT"] . "/config/db.php";
+
 // Check if user still exist in database
 if (isset($_SESSION["login"])) {
 	if (UserRepository::isActive($_SESSION["login"]) == 0) {
@@ -36,11 +49,6 @@ if (isset($_SESSION["login"])) {
 		unset($_SESSION["login"]);
 	}
 }
-
-// Variables
-define("ADMIN", 1);
-define("STUDENT", 2);
-define("TEACHER", 3);
 
 // Import permission checker
 require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_permissionChecker.php");

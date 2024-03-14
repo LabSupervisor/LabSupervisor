@@ -53,7 +53,11 @@ Execute `sql/database.sql` on your database server
 composer install
 `
 
-3. Screenshare server
+3. Parameters
+
+Rename `.env.example` to `.env` and fill credentials.
+
+4. Screenshare server
 
 `
 cd server/ && node server.js
