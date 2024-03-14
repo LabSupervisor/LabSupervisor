@@ -1,3 +1,4 @@
+/* Main style */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
 * {
@@ -23,6 +24,7 @@ body {
 	background-image: var(--background-image);
 }
 
+/* Case style */
 .mainbox {
 	display: block;
 	margin: auto;
@@ -40,6 +42,7 @@ body {
 	box-shadow: 0px 0px 50px 0px #00000030;
 }
 
+/* Button style */
 .button {
 	background-color: var(--button-background-color);
 	border-radius: 9px;
@@ -63,4 +66,58 @@ body {
 	background-color: var(--button-hover-color);
 	transition: 200ms;
 	cursor: pointer;
+}
+
+/* Checkbox style */
+.checkboxContainer {
+	position: relative;
+	cursor: pointer;
+	padding-left: 35px;
+}
+
+.checkboxContainer input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+}
+
+.checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 20px;
+	width: 20px;
+	border-radius: 3px;
+	background-color: #fff;
+	border-color: var(--case-border-color);
+}
+
+.checkboxContainer:hover input ~ .checkmark {
+	background-color: #eee;
+}
+
+.checkboxContainer input:checked ~ .checkmark {
+	background-color: var(--button-background-color);
+}
+
+.checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+
+.checkboxContainer input:checked ~ .checkmark:after {
+	display: block;
+}
+
+.checkboxContainer .checkmark:after {
+	left: 6px;
+	top: 3px;
+	width: 4px;
+	height: 8px;
+	border: solid var(--text-color);
+	border-width: 0 3px 3px 0;
+	transform: rotate(45deg);
 }

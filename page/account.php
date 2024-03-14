@@ -21,8 +21,7 @@
 
 <link rel="stylesheet" href="/public/css/account.css">
 
-<div class="mainbox AccountDiv">
-	<div id="updateCase">
+<div id="updateCase" class="mainbox AccountDiv">
 	<form method="post">
 		<h2><i class="ri-user-line"></i> <?= lang("ACCOUNT_TITLE") ?></h2>
 
@@ -66,16 +65,23 @@
 		<input type="submit" class="button" value="<?= lang("ACCOUNT_SUBMIT") ?>">
 	</form>
 	<button class="button" id="showDeleteForm"><?= lang("ACCOUNT_DELETE") ?></button>
-	</div>
+</div>
 
-	<form id="confirmationForm" method="post" style="display: none;">
-		<h2><?= lang("ACCOUNT_DELETE_TITLE") ?></h2>
-		<a><?= lang("ACCOUNT_DELETE_DESCRIPTION") ?></a>
+<div id="confirmationForm" class="mainbox AccountDiv confirmDelete"  style="display: none;">
+	<form method="post">
+		<h2><i class="ri-error-warning-line"></i> <?= lang("ACCOUNT_DELETE_TITLE") ?></h2>
+		<div class="deleteText">
+			<a><?= lang("ACCOUNT_DELETE_DESCRIPTION") ?></a>
+		</div>
+
+		<label class="checkboxContainer"><?= lang("ACCOUNT_DELETE_YES") ?>
+			<input class="checkbox" type="checkbox" id="deleteConfirm" name="deleteConfirm" required />
+			<span class="checkmark"></span>
+		</label>
+
 		<br>
-		<input type="checkbox" name="deleteConfirm" required /><?= lang("ACCOUNT_DELETE_YES") ?>
-		<br>
-		<button class="button" type="button" id="cancel"> <?= lang("ACCOUNT_DELETE_CANCEL") ?></button>
-		<input class="button" type="submit" name="confirm_delete" value="<?= lang("ACCOUNT_DELETE") ?>">
+		<button class="button deleteCaseButton" type="button" id="cancel"> <?= lang("ACCOUNT_DELETE_CANCEL") ?></button>
+		<input class="button deleteCaseButton" type="submit" name="confirm_delete" value="<?= lang("ACCOUNT_DELETE") ?>">
 	</form>
 </div>
 
