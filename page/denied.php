@@ -1,7 +1,7 @@
 <?php
 	// Import header
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
-	mainHeader("Accès refusé");
+	mainHeader(lang("ERROR_DENIED"));
 ?>
 
 <link rel="stylesheet" href="/public/css/error.css">

@@ -1,7 +1,7 @@
 <?php
 	// Import header
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
-	mainHeader("Administration utilisateur");
+	mainHeader(lang("NAVBAR_USER"));
 
 	// Ask for permissions
 	permissionChecker(true, array(ADMIN));

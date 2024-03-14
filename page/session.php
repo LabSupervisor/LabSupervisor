@@ -1,7 +1,7 @@
 <?php
 	// Import header
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
-	mainHeader("Sessions");
+	mainHeader(lang("NAVBAR_SESSION"));
 
 	// Ask for permissions and store it
 	$roleList = permissionChecker(true, array(ADMIN, STUDENT, TEACHER));

@@ -1,7 +1,7 @@
 <?php
 	// Import header
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
-	mainHeader("Page non trouvé");
+	mainHeader(lang("ERROR_NOTFOUND"));
 ?>
 
 <link rel="stylesheet" href="/public/css/error.css">

@@ -1,7 +1,7 @@
 <?php
 	// Import header
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
-	mainHeader("Création de session");
+	mainHeader(lang("NAVBAR_CREATE_SESSION"));
 
 	// Ask for permissions
 	permissionChecker(true, array(TEACHER));

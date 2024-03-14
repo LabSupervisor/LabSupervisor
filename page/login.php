@@ -1,7 +1,7 @@
 <?php
 	// Import header
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
-	mainHeader("Connexion");
+	mainHeader(lang("NAVBAR_CONNECT"));
 
 	// Ask for permissions
 	permissionChecker(false, "");

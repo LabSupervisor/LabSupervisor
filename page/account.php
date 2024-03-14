@@ -1,7 +1,7 @@
 <?php
 	// Import header
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
-	mainHeader("Compte");
+	mainHeader(lang("NAVBAR_PROFIL_ACCOUNT"));
 
 	// Ask for permissions
 	permissionChecker(true, array(ADMIN, STUDENT, TEACHER));

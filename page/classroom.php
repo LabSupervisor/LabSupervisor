@@ -1,7 +1,7 @@
 <?php
 	// Import header
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
-	mainHeader("Classes");
+	mainHeader(lang("NAVBAR_CLASS"));
 
 	// Ask for permissions
 	permissionChecker(true, array(TEACHER));

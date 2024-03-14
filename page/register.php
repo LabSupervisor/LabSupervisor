@@ -1,7 +1,7 @@
 <?php
 	// Import header
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
-	mainHeader("Création de compte");
+	mainHeader(lang("REGISTER_TITLE"));
 
 	// Ask for permissions
 	permissionChecker(false, "");
