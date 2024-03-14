@@ -10,5 +10,12 @@ function lang($key) {
 	$json = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/lang/" . $userLang . ".json");
 	$data = json_decode($json);
 
-	return $data->$key;
+	if (isset($data->$key)) {
+		return $data->$key;
+	} else {
+		// Get default value
+		$default = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/lang/fr_FR.json");
+		$data = json_decode($default);
+		return $data->$key;
+	}
 }

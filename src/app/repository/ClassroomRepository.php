@@ -158,15 +158,15 @@ class ClassroomRepository {
 	public static function getUserClassroom($userId) {
 		$db = dbConnect();
 
-		// Get user not in classroom query
+		// Get user classroom query
 		$query = "SELECT idclassroom FROM userclassroom WHERE iduser = :iduser";
 
-		// Get user not in classroom
+		// Get user classroom
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':iduser', $userId);
 			if (!$queryPrep->execute())
-				throw new Exception("Get users not in classroom error");
+				throw new Exception("Get user classroom error");
 		} catch (Exception $e) {
 			// Log error
 			LogRepository::fileSave($e);

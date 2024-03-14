@@ -30,6 +30,7 @@ Available langage:
 - Japan
 - Chinese
 - Netherlands
+- Russian
 
 *To add a new langage, simply create a new file in `lang/` using existing file content with the corresponding translation.*
 

@@ -62,24 +62,3 @@
 	echo $navbarItem;
 	?>
 </nav>
-
-<!-- Background -->
-<style>
-	body {
-		<?php
-		// Check if user is connected to change his theme
-		if (isset($_SESSION["login"])) {
-			$userSetting = UserRepository::getSetting($_SESSION["login"]);
-
-			if ($userSetting["theme"] == "0")
-				$theme = "light";
-			else
-				$theme = "dark";
-
-			echo 'background-image: url("/public/img/background/' . $theme .'/default.png")';
-		} else {
-			echo 'background-image: url("/public/img/background/light/default.png")';
-		}
-		?>
-	}
-</style>

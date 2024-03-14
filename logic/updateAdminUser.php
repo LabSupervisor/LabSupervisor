@@ -1,7 +1,6 @@
 <?php
 
 if (isset($_POST["modify"])) {
-	echo "";
 	$userRepo = new UserRepository();
 	$email = UserRepository::getEmail($_POST["userId"]);
 
@@ -15,6 +14,7 @@ if (isset($_POST["modify"])) {
 	$user = new User($userData);
 	$userRepo->update($user);
 
+	// Update user classroom
 	$userClass = ClassroomRepository::getUserClassroom($_POST["userId"]);
 	ClassroomRepository::removeUser($_POST["userId"], $userClass);
 	ClassroomRepository::addUser($_POST["userId"], ClassroomRepository::getId($_POST["classroom_" . $_POST["userId"]]));

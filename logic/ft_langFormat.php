@@ -17,4 +17,6 @@ function langFormat($lang) {
 		return "🇯🇵 Japan";
 	if ($lang == "zh_TW")
 		return "🇨🇳 Chinese";
+	if ($lang == "ru_RU")
+		return "🇷🇺 Russian";
 }

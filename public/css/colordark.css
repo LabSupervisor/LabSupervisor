@@ -2,6 +2,7 @@
 :root {
 	--text-color: #FFFFFF;
 	--text-hover-color: #9b9b9b;
+	--background-image: url("/public/img/background/dark/default.png");
 
 	--background-hover-color: #05005C;
 
