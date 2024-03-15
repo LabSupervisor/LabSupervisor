@@ -53,7 +53,10 @@
 	"SESSION_STATE_OPEN": "Beitreten",
 	"SESSION_UPDATE": "Bearbeiten",
 
-	"DASHBOARD_ADDUSER": "Weitere Benutzer einladen",
+	"DASHBOARD_TITLE": "Dashboard",
+	"DASHBOARD_STUDENT_NAME": "Student",
+	"DASHBOARD_CHAPTER": "Kapitel",
+	"DASHBOARD_STATUS": "Status",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "Informationen",
 	"SESSION_CREATE_TITLE_PARTICIPANT": "Teilnehmer",

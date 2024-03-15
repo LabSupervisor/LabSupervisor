@@ -120,7 +120,7 @@ class SessionRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
 	}
 
-	public static function getStatus($chapter, $userId) {
+	public static function getStatus($chapterId, $userId) {
 		$db = dbConnect();
 
 		// Get user's status query
@@ -129,10 +129,10 @@ class SessionRepository {
 		// Get user's status
 		try {
 			$queryPrep = $db->prepare($query);
-			$queryPrep->bindParam(':idChapter', $chapter);
+			$queryPrep->bindParam(':idChapter', $chapterId);
 			$queryPrep->bindParam(':idUser', $userId);
 			if (!$queryPrep->execute())
-				throw new Exception("Get status chapter " . $chapter . " for user " . UserRepository::getInfo($userId)["name"] . " error");
+				throw new Exception("Get status chapter " . $chapterId . " for user " . UserRepository::getInfo($userId)["name"] . " error");
 		} catch (Exception $e) {
 			// Log error
 			LogRepository::fileSave($e);
@@ -184,13 +184,16 @@ class SessionRepository {
 	public static function getParticipant($sessionId) {
 		$db = dbConnect();
 
+		$whitelistRole = STUDENT;
+
 		// Get session's participants query
-		$query = "SELECT us.name, us.surname, ch.title, st.state FROM user us, status st, session s, chapter ch WHERE us.id = st.iduser AND s.id = :idsession AND s.id = st.idsession AND ch.idsession = s.id AND st.idchapter = ch.id ORDER BY us.name ASC";
+		$query = "SELECT p.iduser FROM participant p, userrole rl WHERE p.idsession = :idsession AND rl.iduser = p.iduser AND rl.idrole = :idrole";
 
 		// Get session's participant status
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':idsession', $sessionId);
+			$queryPrep->bindParam(':idrole', $whitelistRole);
 			if (!$queryPrep->execute())
 				throw new Exception("Get participant from session " . $sessionId . " error");
 		} catch (Exception $e) {

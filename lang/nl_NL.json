@@ -53,7 +53,10 @@
 	"SESSION_STATE_OPEN": "Deelnemen",
 	"SESSION_UPDATE": "Bewerken",
 
-	"DASHBOARD_ADDUSER": "Andere gebruikers uitnodigen",
+	"DASHBOARD_TITLE": "Dashboard",
+	"DASHBOARD_STUDENT_NAME": "Student",
+	"DASHBOARD_CHAPTER": "Hoofdstukken",
+	"DASHBOARD_STATUS": "Status",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "Informatie",
 	"SESSION_CREATE_TITLE_PARTICIPANT": "Deelnemers",

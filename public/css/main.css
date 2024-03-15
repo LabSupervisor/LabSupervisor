@@ -121,3 +121,26 @@ body {
 	border-width: 0 3px 3px 0;
 	transform: rotate(45deg);
 }
+
+.statusBall {
+	background-color: gray;
+	border-radius: 20px;
+	height: 15px;
+	width: 15px;
+	margin: 6px;
+}
+
+.statusRed {
+	background-color: red;
+	box-shadow: 0px 0px 10px 0px red;
+}
+
+.statusYellow {
+	background-color: yellow;
+	box-shadow: 0px 0px 10px 0px yellow;
+}
+
+.statusGreen {
+	background-color: lime;
+	box-shadow: 0px 0px 10px 0px lime;
+}

@@ -7,7 +7,7 @@ if (isset($_POST["connect"])) {
 		array_push($roleList, $value["idrole"]);
 	}
 
-	$_SESSION["session"] = array_search("Rejoindre", $_POST['connect']);
+	$_SESSION["session"] = array_search(lang("SESSION_STATE_OPEN"), $_POST['connect']);
 
 	// Redirect teacher to /dashboard and student to /panel
 	if (in_array(TEACHER, $roleList))

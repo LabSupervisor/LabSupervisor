@@ -53,7 +53,10 @@
 	"SESSION_STATE_OPEN": "Присоединиться",
 	"SESSION_UPDATE": "Изменить",
 
-	"DASHBOARD_ADDUSER": "Пригласить других пользователей",
+	"DASHBOARD_TITLE": "Панель управления",
+	"DASHBOARD_STUDENT_NAME": "Студент",
+	"DASHBOARD_CHAPTER": "Главы",
+	"DASHBOARD_STATUS": "Статус",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "Информация",
 	"SESSION_CREATE_TITLE_PARTICIPANT": "Участники",
