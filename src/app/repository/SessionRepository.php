@@ -81,6 +81,26 @@ class SessionRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
 	}
 
+	public static function getName($id) {
+		$db = dbConnect();
+
+		// Get session name query
+		$query = "SELECT title FROM session WHERE id = :id";
+
+		// Get session name
+		try {
+			$queryPrep = $db->prepare($query);
+			$queryPrep->bindParam(':id', $id);
+			if (!$queryPrep->execute())
+				throw new Exception("Get session name " . $id . " error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
+	}
+
 	public static function getSessions() {
 		$db = dbConnect();
 
