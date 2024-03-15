@@ -1,4 +1,8 @@
 <?php
+
+// Import application
+require($_SERVER["DOCUMENT_ROOT"] . "/config/config.php");
+
 // Only get main url part
 $page = explode("?", $_SERVER["REQUEST_URI"]);
 
@@ -16,7 +20,11 @@ switch ($page[0]) {
 		include "page/log.php";
 		break;
 	case "/register":
-		include "page/register.php";
+		if ($_ENV["AUTHENTIFICATION_TYPE"] == "native") {
+			include "page/register.php";
+		} else {
+			include "page/notfound.php";
+		}
 		break;
 	case "/login":
 		include "page/login.php";

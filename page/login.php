@@ -23,7 +23,9 @@
 			</button>
 		</div>
 		<input type="submit" name="login" value="<?= lang("LOGIN_SUBMIT") ?>" class="button">
-		<a href="/register" class="register-link"><?= lang("LOGIN_NOTSIGN") ?></a>
+		<?php if ($_ENV["AUTHENTIFICATION_TYPE"] == "native") { ?>
+			<a href="/register" class="register-link"><?= lang("LOGIN_NOTSIGN") ?></a>
+		<?php } ?>
 	</form>
 </div>
 
