@@ -8,9 +8,23 @@
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_statusFormat.php");
+	require($_SERVER["DOCUMENT_ROOT"] . "/logic/endSession.php");
+
+	// Check if session is still open
+	if (!SessionRepository::isActive($_SESSION["session"])) {
+		header("Location: /denied");
+	}
 ?>
 
 <link rel="stylesheet" href="/public/css/dashboard.css">
+
+<div class="mainbox button-container">
+	<form method="POST">
+		<input type="hidden" name="sessionId" value="<?= $_SESSION["session"] ?>">
+		<input class="button" type="submit" name="modify" value="<?= lang("SESSION_UPDATE") ?>">
+		<input class="button" type="submit" name="close" value="<?= lang("DASHBOARD_SESSION_END") ?>">
+	</form>
+</div>
 
 <div class="mainbox table-container">
 	<table>

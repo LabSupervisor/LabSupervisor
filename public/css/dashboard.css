@@ -1,6 +1,7 @@
 .table-container {
 	text-align: center;
 	width: -webkit-fill-available;
+	margin-top: 2vh;
 	margin-left: 15vh;
 	margin-right: 15vh;
 	padding: 20px;
@@ -60,4 +61,11 @@ tr:not(.thead) {
 	border-top: 2px;
 	border-style: solid;
 	border-color: var(--case-border-color);
+}
+
+.button-container {
+	margin-top: 6vh;
+	width: fit-content;
+	height: fit-content;
+	padding: 10px;
 }

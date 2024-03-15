@@ -60,6 +60,7 @@
 	"DASHBOARD_STATUS_RED": "Ich brauche Hilfe",
 	"DASHBOARD_STATUS_YELLOW": "Arbeit in Bearbeitung",
 	"DASHBOARD_STATUS_GREEN": "Fertig!",
+	"DASHBOARD_SESSION_END": "Sitzung beenden",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "Informationen",
 	"SESSION_CREATE_TITLE_PARTICIPANT": "Teilnehmer",

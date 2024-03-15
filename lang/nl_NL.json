@@ -60,6 +60,7 @@
 	"DASHBOARD_STATUS_RED": "Ik heb hulp nodig",
 	"DASHBOARD_STATUS_YELLOW": "Werk in uitvoering",
 	"DASHBOARD_STATUS_GREEN": "Voltooid!",
+	"DASHBOARD_SESSION_END": "Sluit de sessie af",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "Informatie",
 	"SESSION_CREATE_TITLE_PARTICIPANT": "Deelnemers",

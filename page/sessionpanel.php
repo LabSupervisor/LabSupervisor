@@ -9,6 +9,11 @@
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateStatus.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/createLink.php");
+
+	// Check if session is still open
+	if (!SessionRepository::isActive($_SESSION["session"])) {
+		header("Location: /denied");
+	}
 ?>
 
 <script src="/public/js/ft_updateStatus.js"></script>

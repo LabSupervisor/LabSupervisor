@@ -189,7 +189,7 @@ class SessionRepository {
 		// Get session's participants query
 		$query = "SELECT p.iduser FROM participant p, userrole rl WHERE p.idsession = :idsession AND rl.iduser = p.iduser AND rl.idrole = :idrole";
 
-		// Get session's participant status
+		// Get session's participant
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':idsession', $sessionId);
@@ -314,6 +314,26 @@ class SessionRepository {
 				LogRepository::dbSave("Update status to " . $state . " from session " . $sessionId);
 			else
 				throw new Exception("Status " . $state . " from session " . $sessionId . " update error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+	}
+
+	public static function end($sessionId) {
+		$db = dbConnect();
+
+		// Update session state query
+		$query = "UPDATE session SET active = 0 WHERE id = :idSession";
+
+		// Update session state
+		try {
+			$queryPrep = $db->prepare($query);
+			$queryPrep->bindParam(':idSession', $sessionId);
+			if ($queryPrep->execute())
+				LogRepository::dbSave("Update session " . $sessionId . " state");
+			else
+				throw new Exception("Update session " . $sessionId . " state error");
 		} catch (Exception $e) {
 			// Log error
 			LogRepository::fileSave($e);

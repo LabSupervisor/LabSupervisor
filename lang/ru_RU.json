@@ -60,6 +60,7 @@
 	"DASHBOARD_STATUS_RED": "Мне нужна помощь",
 	"DASHBOARD_STATUS_YELLOW": "Работа в процессе",
 	"DASHBOARD_STATUS_GREEN": "Завершено!",
+	"DASHBOARD_SESSION_END": "Закрыть сессию",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "Информация",
 	"SESSION_CREATE_TITLE_PARTICIPANT": "Участники",
