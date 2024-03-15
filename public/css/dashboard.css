@@ -26,6 +26,10 @@ thead {
 	padding-bottom: 20px;
 }
 
+.col3 {
+	width: 200px;
+}
+
 th {
 	text-overflow: ellipsis;
 	overflow: hidden;

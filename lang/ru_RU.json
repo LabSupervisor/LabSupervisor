@@ -57,6 +57,9 @@
 	"DASHBOARD_STUDENT_NAME": "Студент",
 	"DASHBOARD_CHAPTER": "Главы",
 	"DASHBOARD_STATUS": "Статус",
+	"DASHBOARD_STATUS_RED": "Мне нужна помощь",
+	"DASHBOARD_STATUS_YELLOW": "Работа в процессе",
+	"DASHBOARD_STATUS_GREEN": "Завершено!",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "Информация",
 	"SESSION_CREATE_TITLE_PARTICIPANT": "Участники",

@@ -57,6 +57,9 @@
 	"DASHBOARD_STUDENT_NAME": "Etudiant",
 	"DASHBOARD_CHAPTER": "Chapitres",
 	"DASHBOARD_STATUS": "Statut",
+	"DASHBOARD_STATUS_RED": "J'ai besoin d'aide",
+	"DASHBOARD_STATUS_YELLOW": "Travail en cours",
+	"DASHBOARD_STATUS_GREEN": "Terminé !",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "Informations",
 	"SESSION_CREATE_TITLE_PARTICIPANT": "Participants",
