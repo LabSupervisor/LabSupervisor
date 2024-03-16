@@ -208,6 +208,26 @@ class UserRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
 	}
 
+	public static function getRoleId($role) {
+		$db = dbConnect();
+
+		// Get role id query
+		$query = "SELECT id FROM role WHERE name = :role";
+
+		// Get role id email
+		try {
+			$queryPrep = $db->prepare($query);
+			$queryPrep->bindParam(':role', $role);
+			if (!$queryPrep->execute())
+				throw new Exception("Get role " . $role . " id error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
+	}
+
 	public static function getSetting($email) {
 		$db = dbConnect();
 
@@ -242,6 +262,25 @@ class UserRepository {
 			$queryPrep = $db->prepare($query);
 			if (!$queryPrep->execute())
 				throw new Exception("Get users error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
+	}
+
+	public static function getRoles() {
+		$db = dbConnect();
+
+		// Get roles query
+		$query = "SELECT * FROM role";
+
+		// Get roles
+		try {
+			$queryPrep = $db->prepare($query);
+			if (!$queryPrep->execute())
+				throw new Exception("Get roles error");
 		} catch (Exception $e) {
 			// Log error
 			LogRepository::fileSave($e);
@@ -287,6 +326,30 @@ class UserRepository {
 				LogRepository::dbSave("Theme change to " . $setting["theme"]);
 			else
 				throw new Exception("Theme " . $setting["theme"] . " change error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+	}
+
+	public static function updateRole($userId, $role) {
+		$db = dbConnect();
+
+		$roleId = UserRepository::getRoleId($role);
+
+		// Update user's role query
+		$queryTheme = "UPDATE userrole SET idrole = :idrole WHERE iduser = :iduser";
+
+		// Update user's role
+		try {
+			$queryPrepTheme = $db->prepare($queryTheme);
+			$queryPrepTheme->bindParam(':iduser', $userId);
+			$queryPrepTheme->bindParam(':idrole', $roleId);
+
+			if ($queryPrepTheme->execute())
+				LogRepository::dbSave("User " . $userId . " role changed");
+			else
+				throw new Exception("User " . $userId . " role changed error");
 		} catch (Exception $e) {
 			// Log error
 			LogRepository::fileSave($e);

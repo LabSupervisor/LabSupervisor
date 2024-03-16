@@ -11,8 +11,13 @@
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateAdminUser.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/deleteAdminUser.php");
 
+	// Get classrooms
 	$classrooms = ClassroomRepository::getClassrooms();
 	$jsonClassroom = json_encode($classrooms);
+
+	// Get roles
+	$roles = UserRepository::getRoles();
+	$jsonRoles = json_encode($roles);
 ?>
 
 <link rel="stylesheet" href="/public/css/user.css">
@@ -25,9 +30,9 @@
 		var surnameElement = document.getElementById("surname_" + userId);
 		var nameElement = document.getElementById("name_" + userId);
 		var classRoomElement = document.getElementById("classroom_" + userId);
+		var roleElement = document.getElementById("role_" + userId);
 		var surname = surnameElement.innerHTML;
 		var name = nameElement.innerHTML;
-		var classRoom = surnameElement.innerHTML ;
 
 		var modifyButtonDisable = document.getElementsByClassName("modifybutton");
 
@@ -57,33 +62,36 @@
 		selectClassroom.setAttribute("id", "classroom");
 		selectClassroom.setAttribute("name", "classroom_" + userId);
 		selectClassroom.setAttribute("class", "classroom");
-		// Récupère les classes depuis la chaîne JSON
+		// Get json classroom list
 		var classrooms = <?= $jsonClassroom ?>;
-		// Ajoute les options au menu déroulant
+		// Add options to select menu
 		for (var i = 0; i < classrooms.length; i++) {
 			var option = document.createElement("option");
-			option.text = classrooms[i].name; // Utilise la propriété "name" de chaque objet
+			// Use "name" property
+			option.text = classrooms[i].name;
 			option.setAttribute("value", option.text);
 			selectClassroom.add(option);
 		}
 
-		// Ajoute un gestionnaire d'événements pour détecter le changement de sélection dans le menu déroulant
-		selectClassroom.addEventListener("change", function() {
-
-			// Récupère l'option sélectionnée dans le menu déroulant
-			var selectedOption = selectClassroom.options[selectClassroom.selectedIndex];
-
-			// Récupère la valeur de l'option sélectionnée (le nom de la classe)
-			var selectedValue = selectedOption.value;
-
-			// Met à jour la valeur de l'élément input caché pour cet utilisateur
-			var hiddenInputId = "classroom_" + userId;
-			document.getElementById(hiddenInputId).value = selectedValue;
-		});
+		var selectRole = document.createElement("select");
+		selectRole.setAttribute("id", "role");
+		selectRole.setAttribute("name", "role_" + userId);
+		selectRole.setAttribute("class", "role");
+		// Get json roles list
+		var roles = <?= $jsonRoles ?>;
+		// Add options to select menu
+		for (var i = 0; i < roles.length; i++) {
+			var option = document.createElement("option");
+			// Use "name" property
+			option.text = roles[i].name;
+			option.setAttribute("value", option.text);
+			selectRole.add(option);
+		}
 
 		surnameElement.replaceChildren(inputSurname);
 		nameElement.replaceChildren(inputName);
 		classRoomElement.replaceChildren(selectClassroom);
+		roleElement.replaceChildren(selectRole);
 
 		var inputUserId = document.createElement("input");
 		inputUserId.setAttribute("type", "hidden");
@@ -126,7 +134,7 @@
 				<td class="col1" id="surname_<?=$userId?>"><?=$user['surname']?></td>
 				<td class="col2" id="name_<?=$userId?>"><?=$user['name']?></td>
 				<td class="col3"><?=$user['email']?></td>
-				<td class="col4"> <?=roleFormat($user['email'])?></td>
+				<td class="col4" id="role_<?=$userId?>"><?=roleFormat($user['email'])?></td>
 				<td class="col5" id="classroom_<?=$userId?>">
 					<?php
 					if ($user["classroom"]) {

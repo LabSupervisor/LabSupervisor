@@ -14,6 +14,9 @@ if (isset($_POST["modify"])) {
 	$user = new User($userData);
 	$userRepo->update($user);
 
+	// Update user role
+	UserRepository::updateRole($_POST["userId"], $_POST["role_" . $_POST["userId"]]);
+
 	// Update user classroom
 	$userClass = ClassroomRepository::getUserClassroom($_POST["userId"]);
 	ClassroomRepository::removeUser($_POST["userId"], $userClass);
