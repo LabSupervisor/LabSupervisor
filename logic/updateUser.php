@@ -30,7 +30,7 @@ if (isset($_POST['new_name'])) {
 	);
 
 	// Update user's settings
-	UserRepository::updateSetting($userSetting);
+	UserRepository::updateSetting(UserRepository::getId($_SESSION["login"]), $userSetting);
 
 	header("Refresh:0");
 }

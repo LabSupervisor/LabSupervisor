@@ -22,7 +22,7 @@ function mainHeader($title) {
 	$header .= '<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">';
 	$header .= '<title>' . $title . '</title>';
 
-	$header .= '<link rel="stylesheet" href="/public/css/' . $theme . '.css">';
+	$header .= '<link id="headerTheme" rel="stylesheet" href="/public/css/' . $theme . '.css">';
 	$header .= '<link rel="stylesheet" href="/public/css/main.css">';
 	$header .= '<link rel="stylesheet" href="/public/css/navbar.css">';
 	$header .= '<link rel="stylesheet" href="/public/css/import/remixicon.css">';
@@ -30,6 +30,9 @@ function mainHeader($title) {
 	$header .= '</head>';
 
 	echo $header;
+
+	if (isset($_SESSION["login"]))
+		echo "<script>var userId = ". UserRepository::getId($_SESSION["login"]) . "</script>";
 
 	// Import navbar
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_navbar.php");

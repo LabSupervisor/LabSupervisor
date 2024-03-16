@@ -270,10 +270,8 @@ class UserRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
 	}
 
-	public static function updateSetting($setting) {
+	public static function updateSetting($userId, $setting) {
 		$db = dbConnect();
-
-		$userId = UserRepository::getId($_SESSION["login"]);
 
 		// Update user's settings query
 		$queryTheme = "UPDATE setting SET theme = :theme, lang = :lang WHERE iduser = :iduser";

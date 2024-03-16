@@ -7,7 +7,7 @@ switch($_SERVER["REQUEST_METHOD"]) {
 			$json = file_get_contents("php://input");
 			$data = json_decode($json);
 
-			if ($data->ask == "state_lslink") {
+			if ($data->ask == "lslink_state") {
 				$status = SessionRepository::getStatus($data->idChapter, UserRepository::getUserByLink($data->id));
 
 				// Answer API
@@ -29,6 +29,27 @@ switch($_SERVER["REQUEST_METHOD"]) {
 
 				// Answer API
 				echo '{"Response": {"Message": "Status updated."}}';
+			}
+
+			if ($data->ask == "update_theme") {
+				// Update theme
+				$lang = UserRepository::getSetting(UserRepository::getEmail($data->idUser))["lang"];
+
+				if ($data->theme == "light")
+					$theme = 0;
+				else
+					$theme = 1;
+
+				$userSetting = array(
+					"theme" => $theme,
+					"lang" => $lang
+				);
+
+				// Update user's settings
+				UserRepository::updateSetting($data->idUser, $userSetting);
+
+				// Answer API
+				echo '{"Response": {"Message": "Theme updated."}}';
 			}
 		} catch (Exception $e) {
 			LogRepository::fileSave($e);

@@ -1,7 +1,6 @@
 <?php
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_nameFormat.php");
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateTheme.php");
 
 	$navbarItem = "";
 ?>
@@ -56,9 +55,13 @@
 		$navbarItem .= '<li><a href="/deconnexion"><i class="ri-logout-box-line"></i>' . lang("NAVBAR_PROFIL_DISCONNECT") . '</a></li></div></ul></div></li>';
 
 		// Theme
-		$navbarItem .= '<li><form method="POST"><input type="hidden" name="lang" value="' . $userSetting["lang"] . '">';
-		$navbarItem .= '<button class="buttonTheme" type="submit" name="theme" value="' . $theme . '">' . $icon . '</button></form></li>';
+		$navbarItem .= '<li><button class="buttonTheme" id="themeButton" type="button" name="theme" value="' . $theme . '">' . $icon . '</button></li>';
 	}
 	echo $navbarItem;
 	?>
 </nav>
+
+<?php
+	if (isset($_SESSION["login"]))
+		echo "<script src='/public/js/ft_updateTheme.js'></script>"
+?>
