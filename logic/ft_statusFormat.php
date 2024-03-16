@@ -1,6 +1,6 @@
 <?php
 
-function statusFormat($statusId) {
+function statusFormat($userId, $chapterId, $statusId) {
 	$status = "";
 	$text = "";
 	if ($statusId == 0) {
@@ -19,5 +19,5 @@ function statusFormat($statusId) {
 		$text = lang("DASHBOARD_STATUS_GREEN");
 	}
 
-	return "<div class='statusBall $status'><a>$text</a></div>";
+	return "<div id='" . $userId . "_" . $chapterId . "' class='statusBall $status'><a>$text</a></div>";
 }

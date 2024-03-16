@@ -1,8 +1,5 @@
 <?php
 
-// Import main functions
-require($_SERVER["DOCUMENT_ROOT"] . "/config/config.php");
-
 switch($_SERVER["REQUEST_METHOD"]) {
 	case "POST":
 		try {
@@ -10,9 +7,15 @@ switch($_SERVER["REQUEST_METHOD"]) {
 			$json = file_get_contents("php://input");
 			$data = json_decode($json);
 
-			if ($data->ask == "state") {
-				// Update status table
+			if ($data->ask == "state_lslink") {
 				$status = SessionRepository::getStatus($data->idChapter, UserRepository::getUserByLink($data->id));
+
+				// Answer API
+				echo '{"Response": {"Status": ' . $status . '}}';
+			}
+
+			if ($data->ask == "state") {
+				$status = SessionRepository::getStatus($data->idChapter, $data->idUser);
 
 				// Answer API
 				echo '{"Response": {"Status": ' . $status . '}}';
