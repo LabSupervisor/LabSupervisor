@@ -88,7 +88,7 @@
 					'Content-Type': 'application/json'
 					},
 					body: JSON.stringify({
-						"ask": "state",
+						"ask": "get_state",
 						"idUser": userId,
 						"idChapter": chapterId
 					})

@@ -7,15 +7,25 @@ function lang($key) {
 		$userLang = DEFAULT_LANGUAGE;
 
 	// Get value
-	$json = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/lang/" . $userLang . ".json");
-	$data = json_decode($json);
+	if (file_exists($_SERVER["DOCUMENT_ROOT"] . "/lang/" . $userLang . ".json")) {
+		$json = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/lang/" . $userLang . ".json");
+		$data = json_decode($json);
+	} else {
+		return "Missing entry";
+	}
 
 	if (isset($data->$key)) {
+		// If entry exist
 		return $data->$key;
 	} else {
-		// Get default value
+		// If entry doesn't exists, get default value
 		$default = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/lang/" . DEFAULT_LANGUAGE . ".json");
 		$data = json_decode($default);
-		return $data->$key;
+		if (isset($data->$key)) {
+			return $data->$key;
+		} else {
+			// If default value doesn't contain entry
+			return "Missing entry";
+		}
 	}
 }
