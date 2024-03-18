@@ -13,6 +13,7 @@
 	// If traces are ask
 	if (isset($_GET["trace"])) {
 ?>
+
 <div class="mainbox table-container">
 	<table>
 		<thead>
@@ -145,4 +146,8 @@
 
 <?php
 }
+?>
+
+<?php
+	require($_SERVER["DOCUMENT_ROOT"] . '/logic/ft_footer.php');
 ?>

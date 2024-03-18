@@ -26,6 +26,7 @@ function mainHeader($title) {
 	$header .= '<link rel="stylesheet" href="/public/css/main.css">';
 	$header .= '<link rel="stylesheet" href="/public/css/navbar.css">';
 	$header .= '<link rel="stylesheet" href="/public/css/import/remixicon.css">';
+	$header .= '<link rel="stylesheet" href="/public/css/footer.css">';
 
 	$header .= '</head>';
 
@@ -36,4 +37,6 @@ function mainHeader($title) {
 
 	// Import navbar
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_navbar.php");
+
+	echo '<div id="main">';
 }
