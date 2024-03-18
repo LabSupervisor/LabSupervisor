@@ -40,6 +40,7 @@ Available langage:
 - [PHP](https://www.php.net/) ^=8.1
 - [NodeJS](https://nodejs.org/) Latest
 - [MariaDB](https://mariadb.org/) Latest
+- [Composer](https://getcomposer.org/) Latest
 
 ## ⚙️ Installation
 
