@@ -9,5 +9,5 @@ if (isset($_POST["login"])) {
 		}
 	}
 	// Default error
-	echo lang("LOGIN_ERROR_NOTFOUND");
+	echo '<script> popupDisplay("' . lang("LOGIN_ERROR_NOTFOUND") .'"); </script>';
 }

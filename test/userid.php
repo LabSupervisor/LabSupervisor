@@ -6,7 +6,7 @@ $db = dbConnect();
 
 $queryIdUser = "SELECT id FROM user WHERE email = 'admin@labsupervisor.com' ";
 
-$queryIdUserPrep = $db->prepare($queryIdUser) ;
+$queryIdUserPrep = $db->prepare($queryIdUser);
 
 if ($queryIdUserPrep->execute()) {
 	// Récupérer la colonne 'id' en tant que chaîne de caractères
