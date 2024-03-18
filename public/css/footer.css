@@ -1,14 +1,11 @@
 footer {
-	border-style: solid;
     width: 100%;
-	max-width: 100% !important;
 	text-align: center;
 	background-color: var(--background-case-color);
     color: var(--text-color);
     padding: 10px;
-    left: 0;
-    bottom: 0;
 	backdrop-filter: blur(12px);
 	border: 0;
 	border-top: 2px solid var(--case-border-color);
+	user-select: none;
 }
