@@ -5,3 +5,7 @@
 ?>
 
 <a>Project LabSupervisor</a>
+
+<?php
+	require($_SERVER["DOCUMENT_ROOT"] . '/logic/ft_footer.php');
+?>

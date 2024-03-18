@@ -81,3 +81,7 @@
 		<input type="submit" name="saveSession" class="button save" value="<?= lang("SESSION_CREATE_SUBMIT") ?>">
 	</div>
 </form>
+
+<?php
+	require($_SERVER["DOCUMENT_ROOT"] . '/logic/ft_footer.php');
+?>

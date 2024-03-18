@@ -70,3 +70,7 @@
 		}
 	}
 ?>
+
+<?php
+	require($_SERVER["DOCUMENT_ROOT"] . '/logic/ft_footer.php');
+?>

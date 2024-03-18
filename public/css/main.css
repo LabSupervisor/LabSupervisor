@@ -22,6 +22,16 @@ body {
 	background-attachment: fixed;
 	background-size: cover;
 	background-image: var(--background-image);
+
+	/* This rule ensures that the page content extends at least the full height of the screen. */
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	overflow-x : hidden;
+}
+
+#main {
+	flex: 1;
 }
 
 /* Case style */
