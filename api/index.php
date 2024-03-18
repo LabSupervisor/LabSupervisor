@@ -8,25 +8,20 @@ switch($_SERVER["REQUEST_METHOD"]) {
 			$data = json_decode($json);
 
 			if ($data->ask == "lslink_get_state") {
-				$status = SessionRepository::getStatus($data->idChapter, UserRepository::getUserByLink($data->id));
+				$userId = UserRepository::getUserByLink($data->id);
+				$status = SessionRepository::getLastUpdateState($userId);
 				// Answer API
-				echo '{"Response": {"Status": ' . $status . '}}';
-			}
+				if ($status != "")
+					echo '{"Response": {"Status": ' . $status . '}}';
+				else
+					echo '{"Response": {"Error": "Unlink card"}}';
+				}
 
 			if ($data->ask == "get_state") {
 				$status = SessionRepository::getStatus($data->idChapter, $data->idUser);
 				// Answer API
 				echo '{"Response": {"Status": ' . $status . '}}';
 			}
-
-			// if ($data->ask == "lslink_update") {
-			// 	// Update status table
-			// 	if (!SessionRepository::setStatus($data->idSession, $data->idChapter, UserRepository::getUserByLink($data->id), $data->idState)) {
-			// 		throw new Exception("API Error");
-			// 	}
-			// 	// Answer API
-			// 	echo '{"Response": {"Message": "Status updated."}}';
-			// }
 
 			if ($data->ask == "update_theme") {
 				// Update theme
