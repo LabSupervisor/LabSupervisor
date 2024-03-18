@@ -6,21 +6,6 @@
 	user-select: none;
 }
 
-.custom-popup {
-	background-color: var(--background-case-color);
-	color: var(--text-color);
-	padding: 30px;
-	border-radius: 10px;
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 10;
-	border-top: 2px solid var(--case-border-color);
-	backdrop-filter: blur(12px);
-	box-shadow: 0px 0px 50px 0px #00000030;
-}
-
 h2 {
 	font-size: 30px;
 	margin-bottom: 20px;

@@ -9,19 +9,5 @@ if (isset($_POST["login"])) {
 		}
 	}
 	// Default error
-	echo '<script>
-	var popup = document.createElement("div");
-	popup.classList.add("custom-popup");
-	popup.textContent = " ' . lang("LOGIN_ERROR_NOTFOUND") . ' ";
-
-	var closeButton = document.createElement("button");
-	closeButton.classList.add("button");
-	closeButton.textContent = "OK";
-	closeButton.addEventListener("click", function() {
-		popup.remove();
-	});
-
-	popup.appendChild(closeButton);
-	document.body.appendChild(popup);
-	</script>';
+	echo '<script> popupDisplay("' . lang("LOGIN_ERROR_NOTFOUND") .'"); </script>';
 }

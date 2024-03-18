@@ -7,6 +7,7 @@
 	permissionChecker(false, "");
 
 	// Logic
+	echo '<script src="/public/js/ft_popup.js"></script>' ;
 	require($_SERVER["DOCUMENT_ROOT"] . '/logic/login.php');
 ?>
 
