@@ -1,6 +1,6 @@
 function popupDisplay(message){
 	var popup = document.createElement("div");
-	popup.classList.add("error-popup");
+	popup.classList.add("errorPopup");
 	popup.textContent = message;
 	var closeButton = document.createElement("button");
 	closeButton.classList.add("button");
