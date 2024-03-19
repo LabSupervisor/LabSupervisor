@@ -381,6 +381,27 @@ class SessionRepository {
 		}
 	}
 
+	public static function setState($sessionId, $state) {
+		$db = dbConnect();
+
+		// Set status query
+		$query = "UPDATE session SET state = :state WHERE id = :idSession";
+
+		// Set status
+		try {
+			$queryPrep = $db->prepare($query);
+			$queryPrep->bindParam(':idSession', $sessionId);
+			$queryPrep->bindParam(':state', $state);
+			if ($queryPrep->execute())
+				LogRepository::dbSave("Update state of " . $sessionId);
+			else
+				throw new Exception("State " . $sessionId . " update error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+	}
+
 	public static function isActive($name) {
 		$db = dbConnect();
 
@@ -393,6 +414,26 @@ class SessionRepository {
 			$queryPrep->bindParam(':title', $name);
 			if (!$queryPrep->execute())
 				throw new Exception("Get active session " . $name . " error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
+	}
+
+	public static function isPause($sessionId) {
+		$db = dbConnect();
+
+		// Get if session is active query
+		$query = "SELECT state FROM session WHERE id = :idSession";
+
+		// Get if session is active
+		try {
+			$queryPrep = $db->prepare($query);
+			$queryPrep->bindParam(':idSession', $sessionId);
+			if (!$queryPrep->execute())
+				throw new Exception("Get state session " . $sessionId . " error");
 		} catch (Exception $e) {
 			// Log error
 			LogRepository::fileSave($e);

@@ -8,11 +8,17 @@
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_statusFormat.php");
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/endSession.php");
+	require($_SERVER["DOCUMENT_ROOT"] . "/logic/adminSession.php");
 
 	// Check if session is still open
 	if (!SessionRepository::isActive(SessionRepository::getName($_SESSION["session"]))) {
 		header("Location: /sessions");
+	}
+
+	if (SessionRepository::isPause($_SESSION["session"])) {
+		$state = "play";
+	} else {
+		$state = "pause";
 	}
 ?>
 
@@ -28,6 +34,7 @@
 			<a class="button" href="/sessions">Retour</a>
 			<input type="hidden" name="sessionId" value="<?= $_SESSION["session"] ?>">
 			<input class="button" type="submit" name="modify" value="<?= lang("SESSION_UPDATE") ?>">
+			<button class="button" type="submit" name="pause" value="<?= $state ?>"><i class="ri-<?= $state ?>-line"></i></button>
 			<input class="button" type="submit" name="close" value="<?= lang("DASHBOARD_SESSION_END") ?>">
 		</form>
 		<form method="get">
@@ -70,7 +77,11 @@
 
 					$status = "";
 					foreach (SessionRepository::getChapter($_SESSION["session"]) as $value) {
-						$status = statusFormat($userId, SessionRepository::getChapterId($value["title"]), SessionRepository::getStatus(SessionRepository::getChapterId($value["title"]), $userId));
+						if ($state == "pause") {
+							$status = "<div class='statusBall'></div>";
+						} else {
+							$status = statusFormat($userId, SessionRepository::getChapterId($value["title"]), SessionRepository::getStatus(SessionRepository::getChapterId($value["title"]), $userId));
+						}
 
 						echo "<td class='col2'>" . $status . "</td>";
 					}
@@ -98,7 +109,11 @@
 					$index = 1;
 					foreach (SessionRepository::getChapter($_SESSION["session"]) as $value) {
 						$chapterList .= $index . ". " . $value["title"] . "<br>";
-						$statusList .= statusFormat($userId, SessionRepository::getChapterId($value["title"]), SessionRepository::getStatus(SessionRepository::getChapterId($value["title"]), $userId));
+						if ($state == "pause") {
+							$statusList .= "<div class='statusBall'></div>";
+						} else {
+							$statusList .= statusFormat($userId, SessionRepository::getChapterId($value["title"]), SessionRepository::getStatus(SessionRepository::getChapterId($value["title"]), $userId));
+						}
 
 						$index++;
 					}
