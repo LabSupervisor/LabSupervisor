@@ -152,6 +152,7 @@ body {
 	transform: rotate(45deg);
 }
 
+/* Status LED */
 .statusBall {
 	background-color: gray;
 	border-radius: 20px;

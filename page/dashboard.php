@@ -23,51 +23,98 @@
 	<?php if (SessionRepository::getInfo($_SESSION["session"])[0]["description"]) {?>
 		<a><?= SessionRepository::getInfo($_SESSION["session"])[0]["description"]?></a><br><br>
 	<?php } ?>
-	<form method="POST">
-		<a class="button" href="/sessions">Retour</a>
-		<input type="hidden" name="sessionId" value="<?= $_SESSION["session"] ?>">
-		<input class="button" type="submit" name="modify" value="<?= lang("SESSION_UPDATE") ?>">
-		<input class="button" type="submit" name="close" value="<?= lang("DASHBOARD_SESSION_END") ?>">
-	</form>
+	<div class="buttonBox">
+		<form method="POST">
+			<a class="button" href="/sessions">Retour</a>
+			<input type="hidden" name="sessionId" value="<?= $_SESSION["session"] ?>">
+			<input class="button" type="submit" name="modify" value="<?= lang("SESSION_UPDATE") ?>">
+			<input class="button" type="submit" name="close" value="<?= lang("DASHBOARD_SESSION_END") ?>">
+		</form>
+		<form method="get">
+			<?php
+				$view = "detail";
+				$currentView = "default";
+				if (isset($_GET["view"])) {
+					if ($_GET["view"] == "default") {
+						$view = "detail";
+						$currentView = "default";
+					} else {
+						$view = "default";
+						$currentView = "detail";
+					}
+				}
+			?>
+			<input type="hidden" name="view" value="<?= $view ?>">
+			<input class="button" type="submit" value="<?= lang("DASHBOARD_CHANGE_VIEW") ?>">
+		</form>
+	</div>
 </div>
 
 <div class="mainbox table-container">
 	<table>
-		<thead>
+		<?php if ($currentView == "default") { ?>
+			<thead>
+				<tr class="thead">
+					<th><?= lang("DASHBOARD_STUDENT_NAME") ?></th>
+				</tr>
+			</thead>
+			<tbody>
+			<?php
+				// Select paticipants
+				foreach (SessionRepository::getParticipant($_SESSION["session"]) as $value) {
+					$userId = $value["iduser"];
+					$participantName = UserRepository::getInfo(UserRepository::getEmail($userId));
+
+					echo "<tr>";
+					echo "<td class='col1'>" . $participantName["name"] . " " . $participantName["surname"] . "</td>";
+
+					$status = "";
+					foreach (SessionRepository::getChapter($_SESSION["session"]) as $value) {
+						$status = statusFormat($userId, SessionRepository::getChapterId($value["title"]), SessionRepository::getStatus(SessionRepository::getChapterId($value["title"]), $userId));
+
+						echo "<td class='col2'>" . $status . "</td>";
+					}
+					echo "</tr>";
+				}
+			?>
+			</tbody>
+		<?php } else { ?>
+			<thead>
 			<tr class="thead">
 				<th><?= lang("DASHBOARD_STUDENT_NAME") ?></th>
 				<th><?= lang("DASHBOARD_CHAPTER") ?></th>
 				<th><?= lang("DASHBOARD_STATUS") ?></th>
 			</tr>
-		</thead>
-		<tbody>
-		<?php
-			// Select paticipants
-			foreach (SessionRepository::getParticipant($_SESSION["session"]) as $value) {
-				$userId = $value["iduser"];
+			</thead>
+			<tbody>
+			<?php
+				// Select paticipants
+				foreach (SessionRepository::getParticipant($_SESSION["session"]) as $value) {
+					$userId = $value["iduser"];
 
-				// Get chapters and status
-				$chapterList = "";
-				$statusList = "";
-				$index = 1;
-				foreach (SessionRepository::getChapter($_SESSION["session"]) as $value) {
-					$chapterList .= $index . ". " . $value["title"] . "<br>";
-					$statusList .= statusFormat($userId, SessionRepository::getChapterId($value["title"]), SessionRepository::getStatus(SessionRepository::getChapterId($value["title"]), $userId));
+					// Get chapters and status
+					$chapterList = "";
+					$statusList = "";
+					$index = 1;
+					foreach (SessionRepository::getChapter($_SESSION["session"]) as $value) {
+						$chapterList .= $index . ". " . $value["title"] . "<br>";
+						$statusList .= statusFormat($userId, SessionRepository::getChapterId($value["title"]), SessionRepository::getStatus(SessionRepository::getChapterId($value["title"]), $userId));
 
-					$index++;
+						$index++;
+					}
+
+					$participantName = UserRepository::getInfo(UserRepository::getEmail($userId));
+
+					// Fill table
+					echo "<tr>";
+					echo "<td class='col1'>" . $participantName["name"] . " " . $participantName["surname"] . "</td>";
+					echo "<td class='col2'>" . $chapterList . "</td>";
+					echo "<td class='col3'>" . $statusList . "</td>";
+					echo "</tr>";
 				}
-
-				$participantName = UserRepository::getInfo(UserRepository::getEmail($userId));
-
-				// Fill table
-				echo "<tr>";
-				echo "<td class='col1'>" . $participantName["name"] . " " . $participantName["surname"] . "</td>";
-				echo "<td class='col2'>" . $chapterList . "</td>";
-				echo "<td class='col3'>" . $statusList . "</td>";
-				echo "</tr>";
-			}
-		?>
-		</tbody>
+			?>
+			</tbody>
+		<?php } ?>
 	</table>
 </div>
 

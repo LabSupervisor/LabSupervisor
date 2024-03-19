@@ -52,7 +52,7 @@
 	"SESSION_STATE_SOON": "Bald verfügbar",
 	"SESSION_STATE_OPEN": "Beitreten",
 	"SESSION_UPDATE": "Bearbeiten",
-	"SESSION_REOPEN": "Sitzung wieder öffnen",
+	"SESSION_OPEN": "Sitzung wieder öffnen",
 	"SESSION_END": "Fertig",
 
 	"DASHBOARD_TITLE": "Dashboard",
@@ -63,6 +63,7 @@
 	"DASHBOARD_STATUS_YELLOW": "Arbeit in Bearbeitung",
 	"DASHBOARD_STATUS_GREEN": "Fertig!",
 	"DASHBOARD_SESSION_END": "Sitzung beenden",
+	"DASHBOARD_CHANGE_VIEW": "Ansicht ändern",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "Informationen",
 	"SESSION_CREATE_TITLE_PARTICIPANT": "Teilnehmer",

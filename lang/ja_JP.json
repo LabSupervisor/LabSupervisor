@@ -52,7 +52,7 @@
 	"SESSION_STATE_SOON": "まもなく",
 	"SESSION_STATE_OPEN": "参加",
 	"SESSION_UPDATE": "編集",
-	"SESSION_REOPEN": "セッションを再開",
+	"SESSION_OPEN": "セッションを再開",
 	"SESSION_END": "完了",
 
 	"DASHBOARD_TITLE": "ダッシュボード",
@@ -63,6 +63,7 @@
 	"DASHBOARD_STATUS_YELLOW": "作業中",
 	"DASHBOARD_STATUS_GREEN": "完了しました！",
 	"DASHBOARD_SESSION_END": "セッションを終了する",
+	"DASHBOARD_CHANGE_VIEW": "表示を変更",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "情報",
 	"SESSION_CREATE_TITLE_PARTICIPANT": "参加者",

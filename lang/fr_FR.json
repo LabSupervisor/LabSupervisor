@@ -52,7 +52,7 @@
 	"SESSION_STATE_SOON": "Prochainement",
 	"SESSION_STATE_OPEN": "Rejoindre",
 	"SESSION_UPDATE": "Modifier",
-	"SESSION_REOPEN": "Réouvrir la session",
+	"SESSION_OPEN": "Ouvrir la session",
 	"SESSION_END": "Terminé",
 
 	"DASHBOARD_TITLE": "Dashboard",
@@ -63,6 +63,7 @@
 	"DASHBOARD_STATUS_YELLOW": "Travail en cours",
 	"DASHBOARD_STATUS_GREEN": "Terminé !",
 	"DASHBOARD_SESSION_END": "Clôturer la session",
+	"DASHBOARD_CHANGE_VIEW": "Changer de vue",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "Informations",
 	"SESSION_CREATE_TITLE_PARTICIPANT": "Participants",
