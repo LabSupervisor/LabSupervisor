@@ -52,6 +52,8 @@
 	"SESSION_STATE_SOON": "Bald verfügbar",
 	"SESSION_STATE_OPEN": "Beitreten",
 	"SESSION_UPDATE": "Bearbeiten",
+	"SESSION_REOPEN": "Sitzung wieder öffnen",
+	"SESSION_END": "Fertig",
 
 	"DASHBOARD_TITLE": "Dashboard",
 	"DASHBOARD_STUDENT_NAME": "Student",

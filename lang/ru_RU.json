@@ -52,6 +52,8 @@
 	"SESSION_STATE_SOON": "Скоро",
 	"SESSION_STATE_OPEN": "Присоединиться",
 	"SESSION_UPDATE": "Изменить",
+	"SESSION_REOPEN": "Возобновить сеанс",
+	"SESSION_END": "Закончено",
 
 	"DASHBOARD_TITLE": "Панель управления",
 	"DASHBOARD_STUDENT_NAME": "Студент",

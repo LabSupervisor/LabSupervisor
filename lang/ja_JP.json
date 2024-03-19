@@ -52,6 +52,8 @@
 	"SESSION_STATE_SOON": "まもなく",
 	"SESSION_STATE_OPEN": "参加",
 	"SESSION_UPDATE": "編集",
+	"SESSION_REOPEN": "セッションを再開",
+	"SESSION_END": "完了",
 
 	"DASHBOARD_TITLE": "ダッシュボード",
 	"DASHBOARD_STUDENT_NAME": "学生",

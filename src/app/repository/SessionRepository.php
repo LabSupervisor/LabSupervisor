@@ -360,16 +360,17 @@ class SessionRepository {
 		}
 	}
 
-	public static function end($sessionId) {
+	public static function state($sessionId, $state) {
 		$db = dbConnect();
 
 		// Update session state query
-		$query = "UPDATE session SET active = 0 WHERE id = :idSession";
+		$query = "UPDATE session SET active = :state WHERE id = :idSession";
 
 		// Update session state
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':idSession', $sessionId);
+			$queryPrep->bindParam(':state', $state);
 			if ($queryPrep->execute())
 				LogRepository::dbSave("Update session " . $sessionId . " state");
 			else

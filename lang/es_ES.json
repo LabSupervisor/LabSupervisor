@@ -52,6 +52,8 @@
 	"SESSION_STATE_SOON": "Próximamente",
 	"SESSION_STATE_OPEN": "Unirse",
 	"SESSION_UPDATE": "Modificar",
+	"SESSION_REOPEN": "Reabrir la sesión",
+	"SESSION_END": "Terminado",
 
 	"DASHBOARD_TITLE": "Tablero",
 	"DASHBOARD_STUDENT_NAME": "Estudiante",

@@ -52,6 +52,8 @@
 	"SESSION_STATE_SOON": "Binnenkort",
 	"SESSION_STATE_OPEN": "Deelnemen",
 	"SESSION_UPDATE": "Bewerken",
+	"SESSION_REOPEN": "Sessie heropenen",
+	"SESSION_END": "Voltooid",
 
 	"DASHBOARD_TITLE": "Dashboard",
 	"DASHBOARD_STUDENT_NAME": "Student",

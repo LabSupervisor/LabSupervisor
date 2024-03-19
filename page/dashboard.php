@@ -12,14 +12,19 @@
 
 	// Check if session is still open
 	if (!SessionRepository::isActive(SessionRepository::getName($_SESSION["session"]))) {
-		header("Location: /denied");
+		header("Location: /sessions");
 	}
 ?>
 
 <link rel="stylesheet" href="/public/css/dashboard.css">
 
 <div class="mainbox button-container">
+	<h2><?= SessionRepository::getName($_SESSION["session"])?></h2>
+	<?php if (SessionRepository::getInfo($_SESSION["session"])[0]["description"]) {?>
+		<a><?= SessionRepository::getInfo($_SESSION["session"])[0]["description"]?></a><br><br>
+	<?php } ?>
 	<form method="POST">
+		<a class="button" href="/sessions">Retour</a>
 		<input type="hidden" name="sessionId" value="<?= $_SESSION["session"] ?>">
 		<input class="button" type="submit" name="modify" value="<?= lang("SESSION_UPDATE") ?>">
 		<input class="button" type="submit" name="close" value="<?= lang("DASHBOARD_SESSION_END") ?>">

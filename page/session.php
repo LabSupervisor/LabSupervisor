@@ -8,6 +8,7 @@
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/joinSession.php");
+	require($_SERVER["DOCUMENT_ROOT"] . "/logic/openSession.php");
 ?>
 
 <link rel="stylesheet" href="/public/css/session.css">
@@ -77,7 +78,11 @@
 									echo "<form method='POST'><input type='submit' name='connect[" . $line["id"] . "]' value='" . lang("SESSION_STATE_OPEN") . "' class='button'></input></form>";
 								}
 							} else {
-								echo "Terminé";
+								if (in_array(TEACHER, $roleList)) {
+									echo "<form method='POST'><input type='submit' name='open[" . $line["id"] . "]' value='" . lang("SESSION_REOPEN") . "' class='button'></input></form>";
+								} else {
+									echo lang("SESSION_END");
+								}
 							}
 
 							echo "</td>";

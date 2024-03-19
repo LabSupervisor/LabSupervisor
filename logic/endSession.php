@@ -2,6 +2,5 @@
 
 // Close session
 if (isset($_POST["close"])) {
-	SessionRepository::end($_SESSION["session"]);
-	header("Location: /sessions");
+	SessionRepository::state($_SESSION["session"], 0);
 }

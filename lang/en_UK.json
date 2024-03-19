@@ -52,6 +52,8 @@
 	"SESSION_STATE_SOON": "Soon",
 	"SESSION_STATE_OPEN": "Join",
 	"SESSION_UPDATE": "Update",
+	"SESSION_REOPEN": "Reopen session",
+	"SESSION_END": "Finished",
 
 	"DASHBOARD_TITLE": "Dashboard",
 	"DASHBOARD_STUDENT_NAME": "Student",
