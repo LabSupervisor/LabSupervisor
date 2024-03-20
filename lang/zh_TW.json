@@ -54,6 +54,7 @@
 	"SESSION_UPDATE": "编辑",
 	"SESSION_OPEN": "重新打开会话",
 	"SESSION_END": "完成",
+	"SESSION_BUTTON_PAUSE": "更改会话状态",
 
 	"DASHBOARD_TITLE": "仪表板",
 	"DASHBOARD_STUDENT_NAME": "学生",

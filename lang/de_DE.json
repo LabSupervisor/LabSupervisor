@@ -54,6 +54,7 @@
 	"SESSION_UPDATE": "Bearbeiten",
 	"SESSION_OPEN": "Sitzung wieder öffnen",
 	"SESSION_END": "Fertig",
+	"SESSION_BUTTON_PAUSE": "Status der Sitzung ändern",
 
 	"DASHBOARD_TITLE": "Dashboard",
 	"DASHBOARD_STUDENT_NAME": "Student",

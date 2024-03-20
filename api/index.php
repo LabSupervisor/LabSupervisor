@@ -15,7 +15,7 @@ switch($_SERVER["REQUEST_METHOD"]) {
 					echo '{"Response": {"Status": ' . $status . '}}';
 				else
 					echo '{"Response": {"Error": "Unlink card"}}';
-				}
+			}
 
 			if ($data->ask == "get_state") {
 				$status = SessionRepository::getStatus($data->idChapter, $data->idUser);

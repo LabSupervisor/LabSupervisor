@@ -54,6 +54,7 @@
 	"SESSION_UPDATE": "Modifier",
 	"SESSION_OPEN": "Ouvrir la session",
 	"SESSION_END": "Terminé",
+	"SESSION_BUTTON_PAUSE": "Changer le statut de la session",
 
 	"DASHBOARD_TITLE": "Dashboard",
 	"DASHBOARD_STUDENT_NAME": "Etudiant",

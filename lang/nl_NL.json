@@ -54,6 +54,7 @@
 	"SESSION_UPDATE": "Bewerken",
 	"SESSION_OPEN": "Sessie heropenen",
 	"SESSION_END": "Voltooid",
+	"SESSION_BUTTON_PAUSE": "Wijzig de status van de sessie",
 
 	"DASHBOARD_TITLE": "Dashboard",
 	"DASHBOARD_STUDENT_NAME": "Student",
