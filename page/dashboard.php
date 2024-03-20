@@ -16,9 +16,9 @@
 	}
 
 	if (SessionRepository::isPause($_SESSION["session"])) {
-		$state = "play";
-	} else {
 		$state = "pause";
+	} else {
+		$state = "play";
 	}
 ?>
 
