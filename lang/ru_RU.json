@@ -54,7 +54,6 @@
 	"SESSION_UPDATE": "Изменить",
 	"SESSION_OPEN": "Возобновить сеанс",
 	"SESSION_END": "Закончено",
-	"SESSION_BUTTON_PAUSE": "Изменить состояние сеанса",
 
 	"DASHBOARD_TITLE": "Панель управления",
 	"DASHBOARD_STUDENT_NAME": "Студент",
@@ -65,6 +64,7 @@
 	"DASHBOARD_STATUS_GREEN": "Завершено!",
 	"DASHBOARD_SESSION_END": "Закрыть сессию",
 	"DASHBOARD_CHANGE_VIEW": "Изменить вид",
+	"DASHBOARD_BUTTON_PAUSE": "Изменить состояние сеанса",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "Информация",
 	"SESSION_CREATE_TITLE_PARTICIPANT": "Участники",

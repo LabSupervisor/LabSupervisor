@@ -356,21 +356,22 @@ class UserRepository {
 		}
 	}
 
-	public static function link($userId, $moduleId) {
+	public static function link($userId, $sessionId, $moduleId) {
 		$db = dbConnect();
 
 		$query = "";
 		// Create links query
-		if (UserRepository::getLink(UserRepository::getEmail($userId))) {
-			$query = "UPDATE link SET idlink = :idlink WHERE iduser = :iduser";
+		if (UserRepository::getLink(UserRepository::getEmail($userId), $sessionId)) {
+			$query = "UPDATE link SET idlink = :idlink, idSession = :idSession WHERE iduser = :iduser";
 		} else {
-			$query = "INSERT INTO link (iduser, idlink) VALUES (:iduser, :idlink)";
+			$query = "INSERT INTO link (iduser, idSession, idlink) VALUES (:iduser, :idSession, :idlink)";
 		}
 
 		// Create link
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':iduser', $userId);
+			$queryPrep->bindParam(':idSession', $sessionId);
 			$queryPrep->bindParam(':idlink', $moduleId);
 
 			if ($queryPrep->execute())
@@ -383,18 +384,19 @@ class UserRepository {
 		}
 	}
 
-	public static function getLink($email) {
+	public static function getLink($email, $sessionId) {
 		$db = dbConnect();
 
 		$userId = UserRepository::getId($email);
 
 		// Get link query
-		$query = "SELECT idlink FROM link WHERE iduser = :iduser";
+		$query = "SELECT idlink FROM link WHERE iduser = :iduser AND idsession = :idsession";
 
 		// Get link
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':iduser', $userId);
+			$queryPrep->bindParam(':idsession', $sessionId);
 			if (!$queryPrep->execute())
 				throw new Exception("Get link " . $email . " error");
 		} catch (Exception $e) {
@@ -405,13 +407,13 @@ class UserRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
 	}
 
-	public static function getUserByLink($linkId) {
+	public static function getLinkInfo($linkId) {
 		$db = dbConnect();
 
-		// Get user by link query
-		$query = "SELECT iduser FROM link WHERE idlink = :idlink";
+		// Get link info query
+		$query = "SELECT * FROM link WHERE idlink = :idlink";
 
-		// Get user by link
+		// Get link info
 		try {
 			$queryPrep = $db->prepare($query);
 			$queryPrep->bindParam(':idlink', $linkId);
@@ -422,6 +424,6 @@ class UserRepository {
 			LogRepository::fileSave($e);
 		}
 
-		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
+		return $queryPrep->fetchAll(PDO::FETCH_ASSOC)[0] ?? NULL;
 	}
 }

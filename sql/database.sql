@@ -133,6 +133,7 @@ DROP TABLE IF EXISTS `link`;
 CREATE TABLE `link` (
   `id` int NOT NULL AUTO_INCREMENT,
   `iduser` int NOT NULL,
+  `idsession` int NOT NULL,
   `idlink` int NOT NULL,
   `connectdate` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
@@ -171,3 +172,4 @@ ALTER TABLE `userclassroom`
 
 ALTER TABLE `link`
   ADD CONSTRAINT `link_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`);
+  ADD CONSTRAINT `link_session_FK` FOREIGN KEY (`idsession`) REFERENCES `session` (`id`);

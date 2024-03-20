@@ -54,7 +54,6 @@
 	"SESSION_UPDATE": "編集",
 	"SESSION_OPEN": "セッションを再開",
 	"SESSION_END": "完了",
-	"SESSION_BUTTON_PAUSE": "セッションのステータスを変更する",
 
 	"DASHBOARD_TITLE": "ダッシュボード",
 	"DASHBOARD_STUDENT_NAME": "学生",
@@ -65,6 +64,7 @@
 	"DASHBOARD_STATUS_GREEN": "完了しました！",
 	"DASHBOARD_SESSION_END": "セッションを終了する",
 	"DASHBOARD_CHANGE_VIEW": "表示を変更",
+	"DASHBOARD_BUTTON_PAUSE": "セッションのステータスを変更する",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "情報",
 	"SESSION_CREATE_TITLE_PARTICIPANT": "参加者",

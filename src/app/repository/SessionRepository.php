@@ -181,16 +181,17 @@ class SessionRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
 	}
 
-	public static function getLastUpdateState($userId) {
+	public static function getSessionStatus($userId, $sessionId) {
 		$db = dbConnect();
 
 		// Get session's chapter query
-		$query = "SELECT state FROM status WHERE iduser = :iduser ORDER BY updatedate DESC LIMIT 1";
+		$query = "SELECT state FROM status WHERE iduser = :idUser AND idsession = :idSession";
 
 		// Get session's chapter
 		try {
 			$queryPrep = $db->prepare($query);
-			$queryPrep->bindParam(':iduser', $userId);
+			$queryPrep->bindParam(':idUser', $userId);
+			$queryPrep->bindParam(':idSession', $sessionId);
 			if (!$queryPrep->execute())
 				throw new Exception("Get state from user " . $userId . " error");
 		} catch (Exception $e) {
@@ -198,7 +199,7 @@ class SessionRepository {
 			LogRepository::fileSave($e);
 		}
 
-		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
+		return $queryPrep->fetchAll(PDO::FETCH_COLUMN) ?? NULL;
 	}
 
 	public static function getChapterId($chapter) {

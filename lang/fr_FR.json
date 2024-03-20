@@ -54,7 +54,6 @@
 	"SESSION_UPDATE": "Modifier",
 	"SESSION_OPEN": "Ouvrir la session",
 	"SESSION_END": "Terminé",
-	"SESSION_BUTTON_PAUSE": "Changer le statut de la session",
 
 	"DASHBOARD_TITLE": "Dashboard",
 	"DASHBOARD_STUDENT_NAME": "Etudiant",
@@ -65,6 +64,7 @@
 	"DASHBOARD_STATUS_GREEN": "Terminé !",
 	"DASHBOARD_SESSION_END": "Clôturer la session",
 	"DASHBOARD_CHANGE_VIEW": "Changer de vue",
+	"DASHBOARD_BUTTON_PAUSE": "Changer le statut de la session",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "Informations",
 	"SESSION_CREATE_TITLE_PARTICIPANT": "Participants",

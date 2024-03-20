@@ -54,7 +54,6 @@
 	"SESSION_UPDATE": "Bewerken",
 	"SESSION_OPEN": "Sessie heropenen",
 	"SESSION_END": "Voltooid",
-	"SESSION_BUTTON_PAUSE": "Wijzig de status van de sessie",
 
 	"DASHBOARD_TITLE": "Dashboard",
 	"DASHBOARD_STUDENT_NAME": "Student",
@@ -65,6 +64,7 @@
 	"DASHBOARD_STATUS_GREEN": "Voltooid!",
 	"DASHBOARD_SESSION_END": "Sluit de sessie af",
 	"DASHBOARD_CHANGE_VIEW": "Verander weergave",
+	"DASHBOARD_BUTTON_PAUSE": "Wijzig de status van de sessie",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "Informatie",
 	"SESSION_CREATE_TITLE_PARTICIPANT": "Deelnemers",

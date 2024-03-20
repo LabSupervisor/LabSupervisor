@@ -62,10 +62,10 @@
 
 <?php
 	// LS-Link
-	if (UserRepository::getLink($_SESSION["login"])){
-		echo "LS-LINK n°" . UserRepository::getLink($_SESSION["login"]);
+	if (UserRepository::getLink($_SESSION["login"], $_SESSION["session"])){
+		echo "LS-LINK n°" . UserRepository::getLink($_SESSION["login"], $_SESSION["session"]);
 	}
-	echo "<br>LS-LINK : <form method='POST'><input type='number' name='number'/><input type='submit' name='link'/></form>";
+	echo "<br>LS-LINK : <form method='POST'><input type='hidden' name='sessionId' value='" . $_SESSION["session"] . "'><input type='number' name='number'/><input type='submit' name='link'/></form>";
 ?>
 
 <button id="shareButton">Partager</button>
