@@ -10,32 +10,32 @@ switch($_SERVER["REQUEST_METHOD"]) {
 			if ($data->ask == "lslink_get_state") {
 				$linkInfo = UserRepository::getLinkInfo($data->id);
 				// $status = SessionRepository::getLastUpdateState($linkInfo["iduser"]);
-				$status = SessionRepository::getSessionStatus($linkInfo["iduser"], $linkInfo["idsession"]);
+				if ($linkInfo) {
+					$status = SessionRepository::getSessionStatus($linkInfo["iduser"], $linkInfo["idsession"]);
 
-				$statusDisplay = 0;
-				// If student need help
-				if (in_array("1", $status)) {
-					$statusDisplay = 1;
-				} else {
-					// If student is working
-					if (in_array("2", $status)) {
-						$statusDisplay = 2;
-					// If student finish tasks
+					$statusDisplay = 0;
+					// If student need help
+					if (in_array("1", $status)) {
+						$statusDisplay = 1;
 					} else {
-						if (in_array("3", $status)) {
-							$statusDisplay = 3;
-						// If no tasks started
+						// If student is working
+						if (in_array("2", $status)) {
+							$statusDisplay = 2;
+						// If student finish tasks
 						} else {
-							$statusDisplay = 0;
+							if (in_array("3", $status)) {
+								$statusDisplay = 3;
+							// If no tasks started
+							} else {
+								$statusDisplay = 0;
+							}
 						}
 					}
-				}
 
-				// Answer API
-				if ($status != "")
 					echo '{"Response": {"Status": ' . $statusDisplay . '}}';
-				else
+				} else {
 					echo '{"Response": {"Error": "Unlink card"}}';
+				}
 			}
 
 			if ($data->ask == "get_state") {
