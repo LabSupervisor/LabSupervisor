@@ -1,5 +1,7 @@
 <?php
 
+require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_statusPicker.php");
+
 switch($_SERVER["REQUEST_METHOD"]) {
 	case "POST":
 		try {
@@ -11,28 +13,7 @@ switch($_SERVER["REQUEST_METHOD"]) {
 				$linkInfo = UserRepository::getLinkInfo($data->id);
 				// $status = SessionRepository::getLastUpdateState($linkInfo["iduser"]);
 				if ($linkInfo) {
-					$status = SessionRepository::getSessionStatus($linkInfo["iduser"], $linkInfo["idsession"]);
-
-					$statusDisplay = 0;
-					// If student need help
-					if (in_array("1", $status)) {
-						$statusDisplay = 1;
-					} else {
-						// If student is working
-						if (in_array("2", $status)) {
-							$statusDisplay = 2;
-						// If student finish tasks
-						} else {
-							if (in_array("3", $status)) {
-								$statusDisplay = 3;
-							// If no tasks started
-							} else {
-								$statusDisplay = 0;
-							}
-						}
-					}
-
-					echo '{"Response": {"Status": ' . $statusDisplay . '}}';
+					echo '{"Response": {"Status": ' . statusPicker(SessionRepository::getSessionStatus($linkInfo["iduser"], $linkInfo["idsession"])) . '}}';
 				} else {
 					echo '{"Response": {"Error": "Unlink card"}}';
 				}
