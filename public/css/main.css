@@ -161,16 +161,6 @@ body {
 	margin: 6px;
 }
 
-.statusBall a {
-	margin-left: 22px;
-	opacity: 0;
-	transition: opacity 100ms linear;
-}
-
-.statusBall:hover a {
-	opacity: 100;
-}
-
 .statusRed {
 	background-color: red;
 	box-shadow: 0px 0px 10px 0px red;

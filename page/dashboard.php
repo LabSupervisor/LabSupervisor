@@ -171,7 +171,7 @@
 
 		function statusUpdate(DOMElement, statusId) {
 			let status = "";
-			let text = "";
+			let text = <?= lang("DASHBOARD_STATUS_WAITING") ?>;
 			if (statusId == 0) {
 				status = "";
 			}

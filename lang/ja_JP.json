@@ -62,6 +62,7 @@
 	"DASHBOARD_STATUS_RED": "助けが必要です",
 	"DASHBOARD_STATUS_YELLOW": "作業中",
 	"DASHBOARD_STATUS_GREEN": "完了しました！",
+	"DASHBOARD_STATUS_WAITING": "タスクが開始されていません",
 	"DASHBOARD_SESSION_END": "セッションを終了する",
 	"DASHBOARD_CHANGE_VIEW": "表示を変更",
 	"DASHBOARD_BUTTON_PAUSE": "セッションのステータスを変更する",

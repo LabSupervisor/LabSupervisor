@@ -62,6 +62,7 @@
 	"DASHBOARD_STATUS_RED": "Мне нужна помощь",
 	"DASHBOARD_STATUS_YELLOW": "Работа в процессе",
 	"DASHBOARD_STATUS_GREEN": "Завершено!",
+	"DASHBOARD_STATUS_WAITING": "Задача не начата",
 	"DASHBOARD_SESSION_END": "Закрыть сессию",
 	"DASHBOARD_CHANGE_VIEW": "Изменить вид",
 	"DASHBOARD_BUTTON_PAUSE": "Изменить состояние сеанса",

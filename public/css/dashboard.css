@@ -6,6 +6,8 @@
 	margin-right: 15vh;
 	padding: 20px;
 	user-select: none;
+	text-overflow: clip;
+	overflow: visible;
 }
 
 table {
@@ -91,4 +93,20 @@ tr:not(.thead) {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	text-decoration: none;
+}
+
+.statusBall a {
+	margin-left: 22px;
+	opacity: 0;
+	transition: opacity 100ms linear;
+	background-color: var(--background-case-color);
+	border: var(--case-border-color) solid 2px;
+	border-radius: 7px;
+	padding: 5px;
+	position: absolute;
+	transform: translateY(-10px);
+}
+
+.statusBall:hover a {
+	opacity: 100;
 }

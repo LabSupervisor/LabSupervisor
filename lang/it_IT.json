@@ -62,6 +62,7 @@
 	"DASHBOARD_STATUS_RED": "Ho bisogno di aiuto",
 	"DASHBOARD_STATUS_YELLOW": "Lavoro in corso",
 	"DASHBOARD_STATUS_GREEN": "Fatto!",
+	"DASHBOARD_STATUS_WAITING": "Attività non iniziata",
 	"DASHBOARD_SESSION_END": "Chiudi la sessione",
 	"DASHBOARD_CHANGE_VIEW": "Cambia visualizzazione",
 	"DASHBOARD_BUTTON_PAUSE": "Cambia lo stato della sessione",

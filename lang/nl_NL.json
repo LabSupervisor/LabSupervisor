@@ -62,6 +62,7 @@
 	"DASHBOARD_STATUS_RED": "Ik heb hulp nodig",
 	"DASHBOARD_STATUS_YELLOW": "Werk in uitvoering",
 	"DASHBOARD_STATUS_GREEN": "Voltooid!",
+	"DASHBOARD_STATUS_WAITING": "Taak niet gestart",
 	"DASHBOARD_SESSION_END": "Sluit de sessie af",
 	"DASHBOARD_CHANGE_VIEW": "Verander weergave",
 	"DASHBOARD_BUTTON_PAUSE": "Wijzig de status van de sessie",

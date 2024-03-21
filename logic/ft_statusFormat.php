@@ -2,7 +2,7 @@
 
 function statusFormat($userId, $chapterId, $statusId) {
 	$status = "";
-	$text = "";
+	$text = lang("DASHBOARD_STATUS_WAITING");
 	if ($statusId == 0) {
 		$status = "";
 	}
