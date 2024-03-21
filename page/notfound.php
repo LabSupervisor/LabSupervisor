@@ -2,6 +2,8 @@
 	// Import header
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
 	mainHeader(lang("ERROR_NOTFOUND"));
+
+	http_response_code(404);
 ?>
 
 <link rel="stylesheet" href="/public/css/error.css">

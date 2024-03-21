@@ -2,6 +2,8 @@
 
 require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_statusPicker.php");
 
+header('Content-Type: application/json');
+
 switch($_SERVER["REQUEST_METHOD"]) {
 	case "POST":
 		try {
@@ -16,7 +18,8 @@ switch($_SERVER["REQUEST_METHOD"]) {
 				if ($linkInfo) {
 					echo '{"Response": {"Status": ' . statusPicker(SessionRepository::getSessionStatus($linkInfo["iduser"], $linkInfo["idsession"])) . '}}';
 				} else {
-					echo '{"Response": {"Error": "Unlink card"}}';
+					http_response_code(404);
+					echo '{"Response": {"Error": 404}}';
 				}
 			}
 
