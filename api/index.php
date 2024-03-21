@@ -9,9 +9,10 @@ switch($_SERVER["REQUEST_METHOD"]) {
 			$json = file_get_contents("php://input");
 			$data = json_decode($json);
 
+			// LS-LINK asking for state
 			if ($data->ask == "lslink_get_state") {
 				$linkInfo = UserRepository::getLinkInfo($data->id);
-				// $status = SessionRepository::getLastUpdateState($linkInfo["iduser"]);
+				// Answer API
 				if ($linkInfo) {
 					echo '{"Response": {"Status": ' . statusPicker(SessionRepository::getSessionStatus($linkInfo["iduser"], $linkInfo["idsession"])) . '}}';
 				} else {
@@ -19,12 +20,14 @@ switch($_SERVER["REQUEST_METHOD"]) {
 				}
 			}
 
+			// Application asking for state
 			if ($data->ask == "get_state") {
 				$status = SessionRepository::getStatus($data->idChapter, $data->idUser);
 				// Answer API
 				echo '{"Response": {"Status": ' . $status . '}}';
 			}
 
+			// Application asking to update user theme
 			if ($data->ask == "update_theme") {
 				// Update theme
 				$lang = UserRepository::getSetting(UserRepository::getEmail($data->idUser))["lang"];
