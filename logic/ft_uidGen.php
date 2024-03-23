@@ -1,6 +1,6 @@
 <?php
 
-function uuidGen() {
+function uidGen() {
 	$char = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_";
     $result = "";
     $randomByte = random_bytes(10);

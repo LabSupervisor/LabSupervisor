@@ -1,5 +1,5 @@
 <?php
 
-require($_SERVER["DOCUMENT_ROOT"] . '/logic/ft_uuidGen.php');
+require($_SERVER["DOCUMENT_ROOT"] . '/logic/ft_uidGen.php');
 
-echo uuidGen();
+echo uidGen();
