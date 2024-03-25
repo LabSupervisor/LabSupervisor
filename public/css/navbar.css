@@ -26,15 +26,25 @@
 }
 
 /* Icon */
+.iconGlobal {
+	display: flex;
+}
+
 .navbar .icon {
 	float: left;
 	max-width: 45px;
 	padding-right: 20px;
 	overflow: visible;
-	transform: translateY(-11px);
+	transform: translateY(-20px);
+	height: 60px;
 }
 
-.iconGlobal {
+.navbar .iconText {
+	transform: translateY(2px);
+}
+
+.navbar .item {
+	transform: translateY(-42px);
 }
 
 .navbar i {

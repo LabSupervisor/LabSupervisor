@@ -34,6 +34,38 @@ body {
 	flex: 1;
 }
 
+/* Icon */
+.iconEye {
+	stroke: var(--text-color);
+}
+
+@keyframes rotation {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+@keyframes rotation_rev {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(-360deg);
+	}
+}
+
+.iconGreen, .iconRed {
+	animation: rotation 30s linear infinite;
+	transform-origin: center center;
+}
+
+.iconYellow {
+	animation: rotation_rev 40s linear infinite;
+	transform-origin: center center;
+}
+
 /* Case style */
 .mainbox {
 	display: block;
