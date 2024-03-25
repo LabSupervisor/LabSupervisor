@@ -73,7 +73,8 @@
 					$participantName = UserRepository::getInfo(UserRepository::getEmail($userId));
 
 					echo "<tr>";
-					echo "<td class='col1'>" . $participantName["name"] . " " . $participantName["surname"] . "</td>";
+					echo "<td class='col1'>" . $participantName["name"] . "</td>";
+					echo "<td class='col1'>" . $participantName["surname"] . "</td>";
 
 					$status = "";
 					foreach (SessionRepository::getChapter($_SESSION["session"]) as $value) {
@@ -93,6 +94,7 @@
 			<thead>
 			<tr class="thead">
 				<th><?= lang("DASHBOARD_STUDENT_NAME") ?></th>
+				<th></th>
 				<th><?= lang("DASHBOARD_CHAPTER") ?></th>
 				<th><?= lang("DASHBOARD_STATUS") ?></th>
 			</tr>
@@ -122,7 +124,8 @@
 
 					// Fill table
 					echo "<tr>";
-					echo "<td class='col1'>" . $participantName["name"] . " " . $participantName["surname"] . "</td>";
+					echo "<td class='col1'>" . $participantName["name"] . "</td>";
+					echo "<td class='col1'>" . $participantName["surname"] . "</td>";
 					echo "<td class='col2'>" . $chapterList . "</td>";
 					echo "<td class='col3'>" . $statusList . "</td>";
 					echo "</tr>";
