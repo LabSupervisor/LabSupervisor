@@ -10,7 +10,7 @@
 	<?php
 
 	// Icon
-	$navbarItem .= '<li><a tabindex="-1" href="/" class="bold no-hover-color"><img class="icon" src="/public/img/logo.ico"></img>' . lang("NAVBAR_TITLE") . '</a></li>';
+	$navbarItem .= '<li><a tabindex="-1" href="/" class="bold no-hover-color"><div class="iconGlobal"><div><img class="icon" src="/public/img/logo.svg"></img></div><div>' . lang("NAVBAR_TITLE") . '</div></div></a></li>';
 	$navbarItem .= '<li><a href="/"><i class="ri-home-line"></i>' . lang("NAVBAR_HOME") . '</a></li>';
 
 	// If the user is not connected
