@@ -25,8 +25,8 @@ thead {
 
 .col2 {
 	text-align: left;
-	padding-top: 20px;
-	padding-bottom: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .col3 {
@@ -59,7 +59,7 @@ tr {
 
 tr:not(.thead) {
 	border: 0;
-	border-top: 2px;
+	border-top: 1px;
 	border-style: solid;
 	border-color: var(--case-border-color);
 }

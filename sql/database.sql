@@ -171,5 +171,5 @@ ALTER TABLE `userclassroom`
   ADD CONSTRAINT `usergroup_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`);
 
 ALTER TABLE `link`
-  ADD CONSTRAINT `link_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`);
+  ADD CONSTRAINT `link_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`),
   ADD CONSTRAINT `link_session_FK` FOREIGN KEY (`idsession`) REFERENCES `session` (`id`);
