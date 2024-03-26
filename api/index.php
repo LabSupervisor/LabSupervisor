@@ -23,11 +23,23 @@ switch($_SERVER["REQUEST_METHOD"]) {
 				}
 			}
 
-			// Application asking for state
-			if ($data->ask == "get_state") {
+			// Application asking for user status
+			if ($data->ask == "get_status") {
 				$status = SessionRepository::getStatus($data->idChapter, $data->idUser);
 				// Answer API
 				echo '{"Response": {"Status": ' . $status . '}}';
+			}
+
+			// Application asking for session state
+			if ($data->ask == "get_state") {
+				$status = SessionRepository::isActive(SessionRepository::getName($data->idSession));
+				// Answer API
+				if (isset($status)) {
+					echo '{"Response": {"Status": ' . $status . '}}';
+				} else {
+					http_response_code(404);
+					echo '{"Response": {"Error": 404}}';
+				}
 			}
 
 			// Application asking to update user theme

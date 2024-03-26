@@ -12,7 +12,7 @@
 
 	// Check if session is still open
 	if (!SessionRepository::isActive(SessionRepository::getName($_SESSION["session"]))) {
-		header("Location: /denied");
+		header("Location: /sessionend");
 	}
 ?>
 
@@ -70,14 +70,21 @@
 
 <button id="shareButton">Partager</button>
 
+<!-- Create "global" varaibles -->
 <script>
 	var userId = <?= UserRepository::getId($_SESSION["login"]) ?>;
 	var sessionId = <?= $_SESSION["session"] ?>;
 </script>
 
+<!-- Import PeerJS server -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.2/peerjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js"></script>
+
+<!-- Import screenshare engine -->
 <script src="/public/js/clientScreenshare.js"></script>
+
+<!-- Import is session active check -->
+<script src="/public/js/sessionActiveCheck.js"></script>
 
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . '/logic/ft_footer.php');

@@ -79,9 +79,9 @@
 								}
 							} else {
 								if (in_array(TEACHER, $roleList)) {
-									echo "<form method='POST'><input type='submit' name='open[" . $line["id"] . "]' value='" . lang("SESSION_OPEN") . "' class='button'></input></form>";
+									echo "<form method='POST'><input type='submit' name='open[" . $line["id"] . "]' value='" . lang("SESSION_ACTION_OPEN") . "' class='button'></input></form>";
 								} else {
-									echo lang("SESSION_END");
+									echo lang("SESSION_ACTION_END");
 								}
 							}
 

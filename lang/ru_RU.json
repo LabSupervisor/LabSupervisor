@@ -52,8 +52,11 @@
 	"SESSION_STATE_SOON": "Скоро",
 	"SESSION_STATE_OPEN": "Присоединиться",
 	"SESSION_UPDATE": "Изменить",
-	"SESSION_OPEN": "Возобновить сеанс",
-	"SESSION_END": "Закончено",
+	"SESSION_ACTION_OPEN": "Возобновить сеанс",
+	"SESSION_ACTION_END": "Закончено",
+	"SESSION_END": "Сессия завершена",
+	"SESSION_END_MESSAGE": "Эта сессия теперь завершена",
+	"SESSION_END_BACK": "Вернуться к списку сессий",
 
 	"DASHBOARD_TITLE": "Панель управления",
 	"DASHBOARD_STUDENT_NAME": "Студент",

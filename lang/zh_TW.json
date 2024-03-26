@@ -52,8 +52,11 @@
 	"SESSION_STATE_SOON": "即将开始",
 	"SESSION_STATE_OPEN": "加入",
 	"SESSION_UPDATE": "编辑",
-	"SESSION_OPEN": "重新打开会话",
-	"SESSION_END": "完成",
+	"SESSION_ACTION_OPEN": "重新打开会话",
+	"SESSION_ACTION_END": "完成",
+	"SESSION_END": "会话结束",
+	"SESSION_END_MESSAGE": "此会话现已结束",
+	"SESSION_END_BACK": "返回会话列表",
 
 	"DASHBOARD_TITLE": "仪表板",
 	"DASHBOARD_STUDENT_NAME": "学生",

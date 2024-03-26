@@ -50,6 +50,9 @@ switch ($page[0]) {
 	case "/connect":
 		include "api/index.php";
 		break;
+	case "/sessionend":
+		include "page/sessionend.php";
+		break;
 	case "/denied":
 		include "page/denied.php";
 		break;

@@ -52,8 +52,11 @@
 	"SESSION_STATE_SOON": "Soon",
 	"SESSION_STATE_OPEN": "Join",
 	"SESSION_UPDATE": "Update",
-	"SESSION_OPEN": "Open session",
-	"SESSION_END": "Finished",
+	"SESSION_ACTION_OPEN": "Open session",
+	"SESSION_ACTION_END": "Finished",
+	"SESSION_END": "Session ended",
+	"SESSION_END_MESSAGE": "This session has now ended",
+	"SESSION_END_BACK": "Return to session list",
 
 	"DASHBOARD_TITLE": "Dashboard",
 	"DASHBOARD_STUDENT_NAME": "Student",
