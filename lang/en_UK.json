@@ -57,6 +57,7 @@
 	"SESSION_END": "Session ended",
 	"SESSION_END_MESSAGE": "This session has now ended",
 	"SESSION_END_BACK": "Return to session list",
+	"SESSION_PAUSED": "The session is temporarily paused.",
 
 	"DASHBOARD_TITLE": "Dashboard",
 	"DASHBOARD_STUDENT_NAME": "Student",

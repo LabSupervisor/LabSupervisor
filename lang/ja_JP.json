@@ -57,6 +57,7 @@
 	"SESSION_END": "セッション終了",
 	"SESSION_END_MESSAGE": "このセッションは終了しました",
 	"SESSION_END_BACK": "セッションリストに戻る",
+	"SESSION_PAUSED": "セッションは一時停止されています。",
 
 	"DASHBOARD_TITLE": "ダッシュボード",
 	"DASHBOARD_STUDENT_NAME": "学生",

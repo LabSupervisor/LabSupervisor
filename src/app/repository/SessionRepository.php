@@ -161,6 +161,26 @@ class SessionRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
 	}
 
+	public static function getState($sessionId) {
+		$db = dbConnect();
+
+		// Get if session is active query
+		$query = "SELECT state FROM session WHERE id = :id";
+
+		// Get if session is active
+		try {
+			$queryPrep = $db->prepare($query);
+			$queryPrep->bindParam(':id', $sessionId);
+			if (!$queryPrep->execute())
+				throw new Exception("Get state session " . $sessionId . " error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
+	}
+
 	public static function getChapter($sessionId) {
 		$db = dbConnect();
 
@@ -365,7 +385,7 @@ class SessionRepository {
 		$db = dbConnect();
 
 		// Update session state query
-		$query = "UPDATE session SET active = :state WHERE id = :idSession";
+		$query = "UPDATE session SET state = :state WHERE id = :idSession";
 
 		// Update session state
 		try {
@@ -401,46 +421,6 @@ class SessionRepository {
 			// Log error
 			LogRepository::fileSave($e);
 		}
-	}
-
-	public static function isActive($name) {
-		$db = dbConnect();
-
-		// Get if session is active query
-		$query = "SELECT active FROM session WHERE title = :title";
-
-		// Get if session is active
-		try {
-			$queryPrep = $db->prepare($query);
-			$queryPrep->bindParam(':title', $name);
-			if (!$queryPrep->execute())
-				throw new Exception("Get active session " . $name . " error");
-		} catch (Exception $e) {
-			// Log error
-			LogRepository::fileSave($e);
-		}
-
-		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
-	}
-
-	public static function isPause($sessionId) {
-		$db = dbConnect();
-
-		// Get if session is active query
-		$query = "SELECT state FROM session WHERE id = :idSession";
-
-		// Get if session is active
-		try {
-			$queryPrep = $db->prepare($query);
-			$queryPrep->bindParam(':idSession', $sessionId);
-			if (!$queryPrep->execute())
-				throw new Exception("Get state session " . $sessionId . " error");
-		} catch (Exception $e) {
-			// Log error
-			LogRepository::fileSave($e);
-		}
-
-		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
 	}
 
 	public static function delete($name) {

@@ -11,11 +11,11 @@
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/adminSession.php");
 
 	// Check if session is still open
-	if (!SessionRepository::isActive(SessionRepository::getName($_SESSION["session"]))) {
+	if (SessionRepository::getState($_SESSION["session"]) == 0) {
 		header("Location: /sessions");
 	}
 
-	if (SessionRepository::isPause($_SESSION["session"])) {
+	if (SessionRepository::getState($_SESSION["session"]) == 2) {
 		$state = "pause";
 	} else {
 		$state = "play";

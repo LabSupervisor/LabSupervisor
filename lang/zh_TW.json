@@ -57,6 +57,7 @@
 	"SESSION_END": "会话结束",
 	"SESSION_END_MESSAGE": "此会话现已结束",
 	"SESSION_END_BACK": "返回会话列表",
+	"SESSION_PAUSED": "会话暂时暂停。",
 
 	"DASHBOARD_TITLE": "仪表板",
 	"DASHBOARD_STUDENT_NAME": "学生",

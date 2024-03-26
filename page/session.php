@@ -71,7 +71,7 @@
 							}
 
 							// Only select existed user
-							if ($line["active"]) {
+							if ($line["state"] != 0) {
 								if ($line["date"] > date('Y-m-d H:i:s')) {
 									echo "<i class='ri-timer-line'></i> " . lang("SESSION_STATE_SOON");
 								} else {

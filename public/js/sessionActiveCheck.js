@@ -12,8 +12,18 @@ setInterval(() => {
 	}).then((response) => {
 		return response.json()
 	}).then((res) => {
-		if (res.Response.Status == 0) {
-			window.location = "/sessionend";
+		switch (res.Response.Status) {
+			case 0:
+				window.location = "/sessionend";
+				break;
+			case 1:
+				document.getElementById("statusBox").style.display = "block";
+				document.getElementById("statusBoxPaused").style.display = "none";
+				break;
+			case 2:
+				document.getElementById("statusBox").style.display = "none";
+				document.getElementById("statusBoxPaused").style.display = "block";
+				break;
 		}
 	}).catch((error) => {
 		console.log(error)

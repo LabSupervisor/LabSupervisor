@@ -16,7 +16,7 @@ $session = new Session($sessionData);
 $sessionRepo->createSession($session);
 
 echo "<br>" . SessionRepository::getId($sessionData["title"]);
-echo "<br>" . SessionRepository::isActive($sessionData["title"]);
+echo "<br>" . SessionRepository::getState(SessionRepository::getId($sessionData["title"]));
 
 echo "<form method='post'><input type='hidden' name='title' value='" . $sessionData["title"] . "'><input type='submit' name='delete' value='Delete'/></form>";
 

@@ -32,7 +32,7 @@ switch($_SERVER["REQUEST_METHOD"]) {
 
 			// Application asking for session state
 			if ($data->ask == "get_state") {
-				$status = SessionRepository::isActive(SessionRepository::getName($data->idSession));
+				$status = SessionRepository::getState($data->idSession);
 				// Answer API
 				if (isset($status)) {
 					echo '{"Response": {"Status": ' . $status . '}}';

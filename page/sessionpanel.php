@@ -11,54 +11,64 @@
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/createLink.php");
 
 	// Check if session is still open
-	if (!SessionRepository::isActive(SessionRepository::getName($_SESSION["session"]))) {
+	if (SessionRepository::getState($_SESSION["session"]) == 0) {
 		header("Location: /sessionend");
+	}
+
+	// If session is not paused
+	$styleBox = "style='display: block'";
+	$styleTitle = "style='display: none'";
+	if (SessionRepository::getState($_SESSION["session"]) == 2) {
+		$styleBox = "style='display: none'";
+		$styleTitle = "style='display: block'";
 	}
 ?>
 
 <script src="/public/js/ft_updateStatus.js"></script>
-
-<h2>Modifier votre Statut </h2>
 
 <form method="post" id="formupdate">
 	<input type="hidden" name="chapter" value="0" id="chapter">
 	<input type="hidden" name="status" value="0" id="status">
 </form>
 
-<table>
-	<thead>
-		<tr>
-			<th>Chapitre</th>
-			<th>Action</th>
-			<th>Status</th>
-		</tr>
-	</thead>
-	<tbody>
+<div id="statusBoxPaused" <?= $styleTitle ?>>
+	<h2><?= lang("SESSION_PAUSED") ?></h2>
+</div>
 
-		<?php
-			foreach (SessionRepository::getChapter($_SESSION["session"]) as $chapter) { ?>
+<div id="statusBox" <?= $styleBox ?>>
+	<table>
+		<thead>
 			<tr>
-				<td>
-					<?php echo $chapter["title"]; ?>
-				</td>
-				<td>
-					<input type="hidden" name="liste" value="<?php echo $chapter['id']; ?>">
-					<button onclick="setStatus(<?=$chapter['id']?>,3)">Terminé !</button>
-					<button onclick="setStatus(<?=$chapter['id']?>,2)">Travail en cours...</button>
-					<button onclick="setStatus(<?=$chapter['id']?>,1)">J'ai besoin d'aide !</button>
-				</td>
-				<td>
-					<?php
-						echo SessionRepository::getStatus($chapter['id'], UserRepository::getId($_SESSION["login"]));
-					?>
-				</td>
+				<th>Chapitre</th>
+				<th>Action</th>
+				<th>Status</th>
 			</tr>
-		<?php
-			}
-		?>
-
-	</tbody>
-</table>
+		</thead>
+		<tbody>
+			<?php
+				foreach (SessionRepository::getChapter($_SESSION["session"]) as $chapter) { ?>
+				<tr>
+					<td>
+						<?php echo $chapter["title"]; ?>
+					</td>
+					<td>
+						<input type="hidden" name="liste" value="<?php echo $chapter['id']; ?>">
+						<button onclick="setStatus(<?=$chapter['id']?>,3)">Terminé !</button>
+						<button onclick="setStatus(<?=$chapter['id']?>,2)">Travail en cours...</button>
+						<button onclick="setStatus(<?=$chapter['id']?>,1)">J'ai besoin d'aide !</button>
+					</td>
+					<td>
+						<?php
+							echo SessionRepository::getStatus($chapter['id'], UserRepository::getId($_SESSION["login"]));
+						?>
+					</td>
+				</tr>
+			<?php
+				}
+			?>
+		</tbody>
+	</table>
+</div>
 
 <?php
 	// LS-Link
