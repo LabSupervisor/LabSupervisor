@@ -56,8 +56,13 @@ body {
 	}
 }
 
-.iconGreen, .iconRed {
+.iconGreen {
 	animation: rotation 30s linear infinite;
+	transform-origin: center center;
+}
+
+.iconRed {
+	animation: rotation 35s linear infinite;
 	transform-origin: center center;
 }
 
