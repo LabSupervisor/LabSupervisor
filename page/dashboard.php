@@ -197,6 +197,13 @@
 	}, 3000);
 </script>
 
+<button id="getScreenshare">Get screenshare</button>
+<div id="screenshare"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.2/peerjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js"></script>
+<script src="/public/js/viewerScreenshare.js"></script>
+
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . '/logic/ft_footer.php');
 ?>

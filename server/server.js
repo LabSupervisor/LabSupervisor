@@ -18,29 +18,25 @@ const io = new Server(server, {
 // On client connect
 io.on("connection", socket => {
 	console.log(socket.id + " connected!");
-	activeScreenshare["id"] += socket.id;
-
-	console.log(activeScreenshare);
-
-	// Emit screenshare
-	// socket.on("share", data => {
-	// 	socket.broadcast.emit("new", data);
-	// });
 
 	// On client disconnect
 	socket.on("disconnect", () => {
 		console.log(socket.id + " disconnected!");
-		// activeScreenshare["id"].splice(activeScreenshare["id"].indexOf(socket.id), 1);
-		activeScreenshare = activeScreenshare.filter(element => element.id !== socket.id);
+		// TODO Remove connection uuid from list
 	});
 
-	socket.on("screenshare", data => {
-		console.log(data);
-		console.log(JSON.stringify(data));
+	// Listen to coming screenshare
+	socket.on("share", data => {
+		// Store screenshare peer id
+		activeScreenshare[data[0]] = data[1];
+		console.log(activeScreenshare);
 	});
 
-	socket.on("get", data => {
-		socket.emit("send", activeScreenshare[data]);
+	// Listen to screenshare ask
+	socket.on("get", id => {
+		// Transfer screenshare peer id
+		console.log("Screenshare ask: " + id);
+		socket.emit("response", activeScreenshare[id]);
 	})
 });
 
