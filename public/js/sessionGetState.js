@@ -2,13 +2,10 @@ setInterval(() => {
 	fetch("/connect", {
 		method: 'post',
 		headers: {
-		'Accept': 'application/json',
-		'Content-Type': 'application/json'
+			'Accept': 'application/json',
+			'Content-Type': 'application/json'
 		},
-		body: JSON.stringify({
-			"ask": "get_state",
-			"idSession": sessionId
-		})
+		body: '{"ask": "get_state", "idSession": ' + sessionId + '}'
 	}).then((response) => {
 		return response.json()
 	}).then((res) => {

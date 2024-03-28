@@ -94,7 +94,7 @@
 <script src="/public/js/clientScreenshare.js"></script>
 
 <!-- Import is session active check -->
-<script src="/public/js/sessionActiveCheck.js"></script>
+<script src="/public/js/sessionGetState.js"></script>
 
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . '/logic/ft_footer.php');
