@@ -25,7 +25,6 @@
 			'</div>
 		</div>
 	</a></li>';
-	$navbarItem .= '<li class="item"><a href="/"><i class="ri-home-line"></i>' . lang("NAVBAR_HOME") . '</a></li>';
 
 	// If the user is not connected
 	if (!isset($_SESSION["login"])) {
@@ -47,6 +46,8 @@
 		}
 
 		// Teacher pages
+		$navbarItem .= '<li class="item"><a href="/"><i class="ri-home-line"></i>' . lang("NAVBAR_HOME") . '</a></li>';
+
 		if (in_array(TEACHER, $roleList)) {
 			$navbarItem .= '<li class="item"><a href="/classes"><i class="ri-folder-line"></i> ' . lang("NAVBAR_CLASS") . '</a></li>';
 			$navbarItem .= '<li class="item"><a href="/sessioncreation"><i class="ri-computer-line"></i> ' . lang("NAVBAR_CREATE_SESSION") . '</a></li>';

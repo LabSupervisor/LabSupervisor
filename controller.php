@@ -8,7 +8,10 @@ $page = explode("?", $_SERVER["REQUEST_URI"]);
 
 switch ($page[0]) {
 	case "/":
-		include "page/index.php";
+		if (isset($_SESSION["login"]))
+			include "page/index.php";
+		else
+			header("Location: /login");
 		break;
 	case "/compte":
 		include "page/account.php";
