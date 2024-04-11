@@ -2,6 +2,24 @@
 
 LabSupervisor is designed for education professionals, especially teachers, to enable them to monitor student work in real time. The aim is to set up discreet tracking, as well as visual monitoring of the current session.
 
+## 📝 Table of contents
+
+- [Features](#-features)
+	- Account system
+	- Role system
+	- Multi-langage
+- [Requirements](#-requirements)
+- [Account connection](#-account-connection)
+- [Installation](#-installation)
+	- Database
+	- Modules
+	- Parameters
+	- Screenshare server
+- [Environment development datas](#-environment-development-datas)
+- [Administration](#-administration)
+	- Error logs
+	- Trace logs
+
 ## 👾 Features
 
 - 🙂 Account system
@@ -42,11 +60,17 @@ Available langage:
 - [MariaDB](https://mariadb.org/) Latest
 - [Composer](https://getcomposer.org/) Latest
 
+## 🔗 Account connection
+
+To connect with an existing account, use their email address and password.
+
 ## ⚙️ Installation
 
 1. Database
 
-Execute `sql/database.sql` on your database server
+- Execute `sql/database.sql` on your database server
+
+- Execute `sql/data.sql` on your database server
 
 2. Modules
 
@@ -56,13 +80,27 @@ composer install
 
 3. Parameters
 
-Rename `.env.example` to `.env` and fill credentials.
+Rename `.env.example` to `.env` and <u>fill credentials</u>.
 
 4. Screenshare server
 
 `
 cd server/ && node server.js
 `
+
+## 📌 Environment development datas
+
+`sql/data_dev.sql` provide test data set with 150 users and situation.
+
+The account's password are their name in lowercase without any special characters.
+
+```
+Example:
+	Name: Jérome
+	Surname Bélier
+	Email: jerome.belier@gmail.com
+	Password: jerome
+```
 
 ## 🚧 Administration
 
