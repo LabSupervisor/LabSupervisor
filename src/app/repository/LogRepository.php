@@ -3,8 +3,6 @@
 class LogRepository extends Exception{
 	public static function dbSave($message) {
 		try {
-			$db = dbConnect();
-
 			// Insert log query
 			$query = "INSERT INTO log (iduser, message) VALUES (:iduser, :message)";
 
@@ -13,7 +11,7 @@ class LogRepository extends Exception{
 				$userId = UserRepository::getId($_SESSION["login"]);
 
 				// Insert log
-				$queryPrep = $db->prepare($query);
+				$queryPrep = DATABASE->prepare($query);
 				$queryPrep->bindParam(':iduser', $userId, \PDO::PARAM_STR);
 				$queryPrep->bindParam(':message', $message, \PDO::PARAM_STR);
 
@@ -47,14 +45,12 @@ class LogRepository extends Exception{
 	}
 
 	public static function getLogs() {
-		$db = dbConnect();
-
 		// Get logs query
 		$query = "SELECT * FROM log";
 
 		// Get logs
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			if (!$queryPrep->execute())
 				throw new Exception("Get logs error");
 		} catch (Exception $e) {

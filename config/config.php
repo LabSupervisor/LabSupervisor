@@ -39,8 +39,13 @@ function loadClass($class)
 }
 spl_autoload_register('loadClass');
 
+// Declare connection
+require($_SERVER["DOCUMENT_ROOT"] . "/src/app/repository/DatabaseRepository.php");
+$db = new Database;
+define("DATABASE", $db->getConnection());
+
 // Import database
-require $_SERVER["DOCUMENT_ROOT"] . "/config/db.php";
+// require $_SERVER["DOCUMENT_ROOT"] . "/config/db.php";
 
 // Check if user still exist in database
 if (isset($_SESSION["login"])) {

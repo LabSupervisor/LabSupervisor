@@ -9,8 +9,6 @@ class UserRepository {
 			$bindParam = $entity->__toArray();
 			// check if user doesn't exist
 			if (!$this->getId($bindParam["email"])) {
-				$db = dbConnect();
-
 				// Create user query
 				$query = "INSERT INTO user (email, password, name, surname) VALUES (:email, :password, :name, :surname)";
 
@@ -20,7 +18,7 @@ class UserRepository {
 
 				// Create user
 				try {
-					$queryPrep = $db->prepare($query);
+					$queryPrep = DATABASE->prepare($query);
 					$queryPrep->bindParam(":email", $bindParam["email"]);
 					$queryPrep->bindParam(":password", $password);
 					$queryPrep->bindParam(":name", $bindParam["name"]);
@@ -39,7 +37,7 @@ class UserRepository {
 
 				// Create user role
 				try {
-					$queryPrepRole = $db->prepare($queryRole);
+					$queryPrepRole = DATABASE->prepare($queryRole);
 					$queryPrepRole->bindParam(":iduser", $userId);
 					if (!$queryPrepRole->execute())
 						throw new Exception("Create user role " . $bindParam["email"] . " error");
@@ -53,7 +51,7 @@ class UserRepository {
 
 				// Create user setting
 				try {
-					$queryPrepSetting = $db->prepare($querySetting);
+					$queryPrepSetting = DATABASE->prepare($querySetting);
 					$queryPrepSetting->bindParam(":iduser", $userId);
 					if (!$queryPrepSetting->execute())
 						throw new Exception("Create user setting " . $bindParam["email"] . " error");
@@ -69,8 +67,6 @@ class UserRepository {
 	}
 
 	public function update(User $entity) {
-		$db = dbConnect();
-
 		$bindParam = $entity->__toArray();
 
 		if ($bindParam["password"])
@@ -83,7 +79,7 @@ class UserRepository {
 
 		// Update user
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(":email", $bindParam["email"]);
 			$queryPrep->bindParam(":password", $password);
 			$queryPrep->bindParam(":name", $bindParam["name"]);
@@ -105,8 +101,6 @@ class UserRepository {
 	}
 
 	public static function delete($email) {
-		$db = dbConnect();
-
 		$userId = UserRepository::getId($email);
 
 		// Delete user query
@@ -114,7 +108,7 @@ class UserRepository {
 
 		// Delete user
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(":iduser", $userId);
 			if ($queryPrep->execute())
 				LogRepository::dbSave("User " . $userId . " delete");
@@ -127,14 +121,12 @@ class UserRepository {
 	}
 
 	public static function getId($email) {
-		$db = dbConnect();
-
 		// Get user ID query
 		$query = "SELECT id FROM user WHERE email = :email";
 
 		// Get user ID
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':email', $email);
 			if (!$queryPrep->execute())
 				throw new Exception("Get user id " . $email . " error");
@@ -147,14 +139,12 @@ class UserRepository {
 	}
 
 	public static function getEmail($userId) {
-		$db = dbConnect();
-
 		// Get user's email query
 		$query = "SELECT email FROM user WHERE id = :iduser";
 
 		// Get user's email
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':iduser', $userId);
 			if (!$queryPrep->execute())
 				throw new Exception("Get user " . $userId . " email error");
@@ -167,14 +157,12 @@ class UserRepository {
 	}
 
 	public static function getInfo($email) {
-		$db = dbConnect();
-
 		// Get user's datas query
 		$query = "SELECT * FROM user WHERE email = :email";
 
 		// Get user's datas
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':email', $email);
 			if (!$queryPrep->execute())
 				throw new Exception("Get user datas " . $email . " error");
@@ -187,8 +175,6 @@ class UserRepository {
 	}
 
 	public static function getRole($email) {
-		$db = dbConnect();
-
 		$userId = UserRepository::getId($email);
 
 		// Get user's roles query
@@ -196,7 +182,7 @@ class UserRepository {
 
 		// Get user's roles
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':iduser', $userId);
 			if (!$queryPrep->execute())
 				throw new Exception("Get user " . $email . " roles error");
@@ -209,14 +195,12 @@ class UserRepository {
 	}
 
 	public static function getRoleId($role) {
-		$db = dbConnect();
-
 		// Get role id query
 		$query = "SELECT id FROM role WHERE name = :role";
 
 		// Get role id email
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':role', $role);
 			if (!$queryPrep->execute())
 				throw new Exception("Get role " . $role . " id error");
@@ -229,8 +213,6 @@ class UserRepository {
 	}
 
 	public static function getSetting($email) {
-		$db = dbConnect();
-
 		$userId = UserRepository::getId($email);
 
 		// Get user's settings query
@@ -238,7 +220,7 @@ class UserRepository {
 
 		// Get user's settings
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':iduser', $userId);
 			if (!$queryPrep->execute())
 				throw new Exception("Get user setting " . $email . " error");
@@ -251,15 +233,13 @@ class UserRepository {
 	}
 
 	public static function getUsers() {
-		$db = dbConnect();
-
 		// Get users query
 		$query = "SELECT us.id, us.surname, us.name, us.email, cl.name AS 'classroom', us.active FROM user us	LEFT JOIN userclassroom ucl ON us.id = ucl.iduser
 		LEFT JOIN classroom cl ON cl.id = ucl.idclassroom WHERE us.active = 1 GROUP BY email ORDER BY us.id";
 
 		// Get users
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			if (!$queryPrep->execute())
 				throw new Exception("Get users error");
 		} catch (Exception $e) {
@@ -271,14 +251,12 @@ class UserRepository {
 	}
 
 	public static function getRoles() {
-		$db = dbConnect();
-
 		// Get roles query
 		$query = "SELECT * FROM role";
 
 		// Get roles
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			if (!$queryPrep->execute())
 				throw new Exception("Get roles error");
 		} catch (Exception $e) {
@@ -290,14 +268,12 @@ class UserRepository {
 	}
 
 	public static function isActive($email) {
-		$db = dbConnect();
-
 		// Get if user is active query
 		$query = "SELECT active FROM user WHERE email = :email";
 
 		// Get if user is active
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':email', $email);
 			if (!$queryPrep->execute())
 				throw new Exception("Get active user " . $email . " error");
@@ -310,14 +286,12 @@ class UserRepository {
 	}
 
 	public static function updateSetting($userId, $setting) {
-		$db = dbConnect();
-
 		// Update user's settings query
 		$queryTheme = "UPDATE setting SET theme = :theme, lang = :lang WHERE iduser = :iduser";
 
 		// Update user's settings
 		try {
-			$queryPrepTheme = $db->prepare($queryTheme);
+			$queryPrepTheme = DATABASE->prepare($queryTheme);
 			$queryPrepTheme->bindParam(':iduser', $userId);
 			$queryPrepTheme->bindParam(':theme', $setting["theme"]);
 			$queryPrepTheme->bindParam(':lang', $setting["lang"]);
@@ -333,8 +307,6 @@ class UserRepository {
 	}
 
 	public static function updateRole($userId, $role) {
-		$db = dbConnect();
-
 		$roleId = UserRepository::getRoleId($role);
 
 		// Update user's role query
@@ -342,7 +314,7 @@ class UserRepository {
 
 		// Update user's role
 		try {
-			$queryPrepTheme = $db->prepare($queryTheme);
+			$queryPrepTheme = DATABASE->prepare($queryTheme);
 			$queryPrepTheme->bindParam(':iduser', $userId);
 			$queryPrepTheme->bindParam(':idrole', $roleId);
 
@@ -357,8 +329,6 @@ class UserRepository {
 	}
 
 	public static function link($userId, $sessionId, $moduleId) {
-		$db = dbConnect();
-
 		$query = "";
 		// Create links query
 		if (UserRepository::getLink(UserRepository::getEmail($userId), $sessionId)) {
@@ -369,7 +339,7 @@ class UserRepository {
 
 		// Create link
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':iduser', $userId);
 			$queryPrep->bindParam(':idSession', $sessionId);
 			$queryPrep->bindParam(':idlink', $moduleId);
@@ -385,8 +355,6 @@ class UserRepository {
 	}
 
 	public static function getLink($email, $sessionId) {
-		$db = dbConnect();
-
 		$userId = UserRepository::getId($email);
 
 		// Get link query
@@ -394,7 +362,7 @@ class UserRepository {
 
 		// Get link
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':iduser', $userId);
 			$queryPrep->bindParam(':idsession', $sessionId);
 			if (!$queryPrep->execute())
@@ -408,14 +376,12 @@ class UserRepository {
 	}
 
 	public static function getLinkInfo($linkId) {
-		$db = dbConnect();
-
 		// Get link info query
 		$query = "SELECT * FROM link WHERE idlink = :idlink";
 
 		// Get link info
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':idlink', $linkId);
 			if (!$queryPrep->execute())
 				throw new Exception("Get user with link " . $linkId . " error");

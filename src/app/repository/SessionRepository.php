@@ -9,14 +9,12 @@ class SessionRepository {
 			$bindParam = $entity->__toArray();
 			// check if session doesn't exist
 			if (!$this->getId($bindParam["title"])) {
-				$db = dbConnect();
-
 				// Create session query
 				$query = "INSERT INTO session (title, description, idcreator, date) VALUES (:title, :description, :idcreator, :date)";
 
 				// Create session
 				try {
-					$queryPrep = $db->prepare($query);
+					$queryPrep = DATABASE->prepare($query);
 					$queryPrep->bindParam(":title", $bindParam["title"]);
 					$queryPrep->bindParam(":description", $bindParam["description"]);
 					$queryPrep->bindParam(":idcreator", $bindParam["idcreator"]);
@@ -35,8 +33,6 @@ class SessionRepository {
 	}
 
 	public function update(Session $entity) {
-		$db = dbConnect();
-
 		$bindParam = $entity->__toArray();
 		$sessionId = SessionRepository::getId($bindParam["title"]);
 
@@ -45,7 +41,7 @@ class SessionRepository {
 
 		// Update session
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(":title", $bindParam["title"]);
 			$queryPrep->bindParam(":description", $bindParam["description"]);
 			$queryPrep->bindParam(":idcreator", $bindParam["idcreator"]);
@@ -62,14 +58,12 @@ class SessionRepository {
 	}
 
 	public static function getId($name) {
-		$db = dbConnect();
-
 		// Get session ID query
 		$query = "SELECT id FROM session WHERE title = :title";
 
 		// Get session ID
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':title', $name);
 			if (!$queryPrep->execute())
 				throw new Exception("Get session id " . $name . " error");
@@ -82,14 +76,12 @@ class SessionRepository {
 	}
 
 	public static function getName($id) {
-		$db = dbConnect();
-
 		// Get session name query
 		$query = "SELECT title FROM session WHERE id = :id";
 
 		// Get session name
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':id', $id);
 			if (!$queryPrep->execute())
 				throw new Exception("Get session name " . $id . " error");
@@ -102,14 +94,12 @@ class SessionRepository {
 	}
 
 	public static function getSessions() {
-		$db = dbConnect();
-
 		// Get sessions query
 		$query = "SELECT * FROM session";
 
 		// Get sessions
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			if (!$queryPrep->execute())
 				throw new Exception("Get sessions error");
 		} catch (Exception $e) {
@@ -121,14 +111,12 @@ class SessionRepository {
 	}
 
 	public static function getInfo($sessionId) {
-		$db = dbConnect();
-
 		// Get session's datas query
 		$query = "SELECT * FROM session WHERE id = :idsession";
 
 		// Get session's datas
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':idsession', $sessionId);
 			if (!$queryPrep->execute())
 				throw new Exception("Get session datas " . $sessionId . " error");
@@ -141,14 +129,12 @@ class SessionRepository {
 	}
 
 	public static function getStatus($chapterId, $userId) {
-		$db = dbConnect();
-
 		// Get user's status query
 		$query = "SELECT state FROM status WHERE idchapter = :idChapter AND iduser = :idUser";
 
 		// Get user's status
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':idChapter', $chapterId);
 			$queryPrep->bindParam(':idUser', $userId);
 			if (!$queryPrep->execute())
@@ -162,14 +148,12 @@ class SessionRepository {
 	}
 
 	public static function getState($sessionId) {
-		$db = dbConnect();
-
 		// Get if session is active query
 		$query = "SELECT state FROM session WHERE id = :id";
 
 		// Get if session is active
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':id', $sessionId);
 			if (!$queryPrep->execute())
 				throw new Exception("Get state session " . $sessionId . " error");
@@ -182,14 +166,12 @@ class SessionRepository {
 	}
 
 	public static function getChapter($sessionId) {
-		$db = dbConnect();
-
 		// Get session's chapter query
 		$query = "SELECT id, title, description FROM chapter WHERE idsession = :idsession";
 
 		// Get session's chapter
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':idsession', $sessionId);
 			if (!$queryPrep->execute())
 				throw new Exception("Get chapter from session " . $sessionId . " error");
@@ -202,14 +184,12 @@ class SessionRepository {
 	}
 
 	public static function getSessionStatus($userId, $sessionId) {
-		$db = dbConnect();
-
 		// Get session's chapter query
 		$query = "SELECT state FROM status WHERE iduser = :idUser AND idsession = :idSession";
 
 		// Get session's chapter
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':idUser', $userId);
 			$queryPrep->bindParam(':idSession', $sessionId);
 			if (!$queryPrep->execute())
@@ -223,14 +203,12 @@ class SessionRepository {
 	}
 
 	public static function getChapterId($chapter) {
-		$db = dbConnect();
-
 		// Get chapter id query
 		$query = "SELECT id FROM chapter WHERE title = :title";
 
 		// Get chapter id
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':title', $chapter);
 			if (!$queryPrep->execute())
 				throw new Exception("Get chapter id " . $chapter . " error");
@@ -243,8 +221,6 @@ class SessionRepository {
 	}
 
 	public static function getParticipant($sessionId) {
-		$db = dbConnect();
-
 		$whitelistRole = STUDENT;
 
 		// Get session's participants query
@@ -252,7 +228,7 @@ class SessionRepository {
 
 		// Get session's participant
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':idsession', $sessionId);
 			$queryPrep->bindParam(':idrole', $whitelistRole);
 			if (!$queryPrep->execute())
@@ -266,8 +242,6 @@ class SessionRepository {
 	}
 
 	public static function getUserSessions($email) {
-		$db = dbConnect();
-
 		$userId = UserRepository::getId($email);
 
 		// Get user's sessions query
@@ -275,7 +249,7 @@ class SessionRepository {
 
 		// Get user's sessions
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':iduser', $userId);
 			if (!$queryPrep->execute())
 				throw new Exception("Get sessions from user " . $userId . " error");
@@ -288,8 +262,6 @@ class SessionRepository {
 	}
 
 	public static function addChapter($name, $description, $creatorId, $sessionName) {
-		$db = dbConnect();
-
 		$sessionId = SessionRepository::getId($sessionName);
 
 		// Add chapter query
@@ -297,7 +269,7 @@ class SessionRepository {
 
 		// Add chapter
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':idsession', $sessionId);
 			$queryPrep->bindParam(':title', $name);
 			$queryPrep->bindParam(':description', $description);
@@ -313,8 +285,6 @@ class SessionRepository {
 	}
 
 	public static function addParticipant($participantId, $sessionName) {
-		$db = dbConnect();
-
 		$sessionId = SessionRepository::getId($sessionName);
 
 		// Add participant query
@@ -322,7 +292,7 @@ class SessionRepository {
 
 		// Add participant
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':iduser', $participantId);
 			$queryPrep->bindParam(':idsession', $sessionId);
 			if ($queryPrep->execute())
@@ -336,14 +306,12 @@ class SessionRepository {
 	}
 
 	public static function addStatus($sessionId, $chapterId, $userId) {
-		$db = dbConnect();
-
 		// Add status query
 		$query = "INSERT INTO status (idsession, idchapter, iduser) VALUES (:idsession, :idchapter, :iduser)";
 
 		// Add status
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(":idsession", $sessionId);
 			$queryPrep->bindParam(":idchapter", $chapterId);
 			$queryPrep->bindParam(":iduser", $userId);
@@ -359,14 +327,12 @@ class SessionRepository {
 	}
 
 	public static function setStatus($sessionId, $chapterId, $userId, $state) {
-		$db = dbConnect();
-
 		// Set status query
 		$query = "UPDATE status SET state = :idStatus WHERE idchapter = :idChapter AND iduser = :idUser AND idsession = :idSession";
 
 		// Set status
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':idUser', $userId);
 			$queryPrep->bindParam(':idSession', $sessionId);
 			$queryPrep->bindParam(':idChapter', $chapterId);
@@ -382,14 +348,12 @@ class SessionRepository {
 	}
 
 	public static function state($sessionId, $state) {
-		$db = dbConnect();
-
 		// Update session state query
 		$query = "UPDATE session SET state = :state WHERE id = :idSession";
 
 		// Update session state
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':idSession', $sessionId);
 			$queryPrep->bindParam(':state', $state);
 			if ($queryPrep->execute())
@@ -403,14 +367,12 @@ class SessionRepository {
 	}
 
 	public static function setState($sessionId, $state) {
-		$db = dbConnect();
-
 		// Set status query
 		$query = "UPDATE session SET state = :state WHERE id = :idSession";
 
 		// Set status
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':idSession', $sessionId);
 			$queryPrep->bindParam(':state', $state);
 			if ($queryPrep->execute())
@@ -424,8 +386,6 @@ class SessionRepository {
 	}
 
 	public static function delete($name) {
-		$db = dbConnect();
-
 		$sessionId = SessionRepository::getId($name);
 
 		// Delete session query
@@ -433,7 +393,7 @@ class SessionRepository {
 
 		// Delete session
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(":idsession", $sessionId);
 			if ($queryPrep->execute())
 				LogRepository::dbSave("Session " . $sessionId . " delete");

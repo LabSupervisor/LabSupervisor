@@ -1,15 +1,13 @@
 <?php
-	require($_SERVER["DOCUMENT_ROOT"] . '/logic/ft_header.php');
-	mainHeader("DB Test");
 
-	$db = dbConnect();
+require($_SERVER["DOCUMENT_ROOT"] . '/logic/ft_header.php');
+mainHeader("DB Test");
 
-	$query = "SELECT * FROM user";
+$query = "SELECT * FROM user";
 
-	$reqPrep = $db->prepare($query);
-	$reqPrep->execute();
+$reqPrep = DATABASE->prepare($query);
+$reqPrep->execute();
 
-	foreach($reqPrep->fetchAll() as $value => $key) {
-		echo $value . "<br>";
-	}
-?>
+foreach($reqPrep->fetchAll() as $value => $key) {
+	echo $value . "<br>";
+}

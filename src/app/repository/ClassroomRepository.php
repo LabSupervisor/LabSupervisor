@@ -9,14 +9,12 @@ class ClassroomRepository {
 			$bindParam = $entity->__toArray();
 			// check if classroom doesn't exist
 			if (!$this->getId($bindParam["name"])) {
-				$db = dbConnect();
-
 				// Create classroom query
 				$query = "INSERT INTO classroom (name) VALUES (:name)";
 
 				// Create classroom
 				try {
-					$queryPrep = $db->prepare($query);
+					$queryPrep = DATABASE->prepare($query);
 					$queryPrep->bindParam(":name", $bindParam["name"]);
 					if (!$queryPrep->execute())
 						throw new Exception("Create classroom " . $bindParam["name"] . " error");
@@ -32,8 +30,6 @@ class ClassroomRepository {
 	}
 
 	public function update(Classroom $entity) {
-		$db = dbConnect();
-
 		$bindParam = $entity->__toArray();
 		$classroomId = ClassroomRepository::getId($bindParam["name"]);
 
@@ -42,7 +38,7 @@ class ClassroomRepository {
 
 		// Update classroom
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(":name", $bindParam["name"]);
 			$queryPrep->bindParam(":id", $classroomId);
 			if ($queryPrep->execute())
@@ -56,14 +52,12 @@ class ClassroomRepository {
 	}
 
 	public static function getId($name) {
-		$db = dbConnect();
-
 		// Get classroom ID query
 		$query = "SELECT id FROM classroom WHERE name = :name";
 
 		// Get classroom ID
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':name', $name);
 			if (!$queryPrep->execute())
 				throw new Exception("Get classroom id " . $name . " error");
@@ -76,14 +70,12 @@ class ClassroomRepository {
 	}
 
 	public static function getName($id) {
-		$db = dbConnect();
-
 		// Get classroom name query
 		$query = "SELECT name FROM classroom WHERE id = :id";
 
 		// Get classroom name
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':id', $id);
 			if (!$queryPrep->execute())
 				throw new Exception("Get classroom name " . $id . " error");
@@ -96,14 +88,12 @@ class ClassroomRepository {
 	}
 
 	public static function getClassrooms() {
-		$db = dbConnect();
-
 		// Get classrooms query
 		$query = "SELECT * FROM classroom";
 
 		// Get classrooms
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			if (!$queryPrep->execute())
 				throw new Exception("Get classrooms error");
 		} catch (Exception $e) {
@@ -115,8 +105,6 @@ class ClassroomRepository {
 	}
 
 	public static function getUsers($name) {
-		$db = dbConnect();
-
 		$classroomId = ClassroomRepository::getId($name);
 
 		// Get classroom's user query
@@ -124,7 +112,7 @@ class ClassroomRepository {
 
 		// Get classroom's user
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(":idclassroom", $classroomId);
 			if (!$queryPrep->execute())
 				throw new Exception("Get classroom users error");
@@ -137,14 +125,12 @@ class ClassroomRepository {
 	}
 
 	public static function getUsersNotInClassroom() {
-		$db = dbConnect();
-
 		// Get user not in classroom query
 		$query = "SELECT u.* FROM user u LEFT JOIN userclassroom uc ON u.id = uc.iduser	LEFT JOIN userrole ur ON u.id = ur.iduser WHERE uc.iduser IS NULL AND ur.idrole NOT IN (1, 3)";
 
 		// Get user not in classroom
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			if (!$queryPrep->execute())
 				throw new Exception("Get users not in classroom error");
 		} catch (Exception $e) {
@@ -156,14 +142,12 @@ class ClassroomRepository {
 	}
 
 	public static function getUserClassroom($userId) {
-		$db = dbConnect();
-
 		// Get user classroom query
 		$query = "SELECT idclassroom FROM userclassroom WHERE iduser = :iduser";
 
 		// Get user classroom
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':iduser', $userId);
 			if (!$queryPrep->execute())
 				throw new Exception("Get user classroom error");
@@ -176,14 +160,12 @@ class ClassroomRepository {
 	}
 
 	public static function addUser($userId, $classroomId) {
-		$db = dbConnect();
-
 		// Add user to classroom query
 		$query = "INSERT INTO userclassroom (idclassroom, iduser) VALUES (:classroomId, :studentId)";
 
 		// Add user to classroom
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':classroomId', $classroomId);
 			$queryPrep->bindParam(':studentId', $userId);
 			if (!$queryPrep->execute())
@@ -195,14 +177,12 @@ class ClassroomRepository {
 	}
 
 	public static function removeUser($userId, $classroomId) {
-		$db = dbConnect();
-
 		// Remove user from classroom query
 		$query = "DELETE FROM userclassroom WHERE idclassroom = :classroomId AND iduser = :studentId";
 
 		// Remove user from classroom
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':classroomId', $classroomId);
 			$queryPrep->bindParam(':studentId', $userId);
 			if (!$queryPrep->execute())
@@ -214,14 +194,12 @@ class ClassroomRepository {
 	}
 
 	public static function isActive($name) {
-		$db = dbConnect();
-
 		// Get if classroom is active query
 		$query = "SELECT active FROM classroom WHERE name = :name";
 
 		// Get if classroom is active
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':name', $name);
 			if (!$queryPrep->execute())
 				throw new Exception("Get active classroom " . $name . " error");
@@ -234,14 +212,12 @@ class ClassroomRepository {
 	}
 
 	public static function isUserInClassroom($userId, $classroomId) {
-		$db = dbConnect();
-
 		// Get users in classroom query
 		$query = "SELECT id FROM userclassroom WHERE idclassroom = :classroomId AND iduser = :studentId";
 
 		// Get users in classroom
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':classroomId', $classroomId);
 			$queryPrep->bindParam(':studentId', $userId);
 			if (!$queryPrep->execute())
@@ -255,8 +231,6 @@ class ClassroomRepository {
 	}
 
 	public static function delete($name) {
-		$db = dbConnect();
-
 		$classroomId = ClassroomRepository::getId($name);
 
 		// Delete classroom query
@@ -264,7 +238,7 @@ class ClassroomRepository {
 
 		// Delete classroom
 		try {
-			$queryPrep = $db->prepare($query);
+			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(":idclassroom", $classroomId);
 			if ($queryPrep->execute())
 				LogRepository::dbSave("Classroom " . $classroomId . " delete");
