@@ -1,6 +1,7 @@
 # 👀 LabSupervisor
 
-LabSupervisor is designed for education professionals, especially teachers, to enable them to monitor student work in real time. The aim is to set up discreet tracking, as well as visual monitoring of the current session.
+> [!NOTE]
+> LabSupervisor is designed for education professionals, especially teachers, to enable them to monitor student work in real time. The aim is to set up discreet tracking, as well as visual monitoring of the current session.
 
 ## 📝 Table of contents
 
@@ -66,29 +67,31 @@ To connect with an existing account, use their email address and password.
 
 ## ⚙️ Installation
 
-1. Database
+1. <u>Database</u>
 
-- Execute `sql/database.sql` on your database server
+	- Execute `sql/database.sql` on your database server
 
-- Execute `sql/data.sql` on your database server
+	- Execute `sql/data.sql` on your database server
 
-2. Modules
+2. <u>Modules</u>
 
-`
-composer install
-`
+> [!WARNING]
+> Make sure to have the [correct PHP version](#-requirements).
 
-3. Parameters
+Use `composer install` on a terminal open in project's root folder.
 
-Rename `.env.example` to `.env` and <u>fill credentials</u>.
+3. <u>Parameters</u>
 
-4. Screenshare server
+Rename `.env.example` to `.env` <u>and fill credentials</u>.
 
-`
-cd server/ && node server.js
-`
+4. <u>Screenshare server</u>
+
+Execute `cd server/ && node server.js` on a terminal open in project's root folder.
 
 ## 📌 Environment development datas
+
+> [!CAUTION]
+> Those datas are only for testing purpose, do not commit them on production server.
 
 `sql/data_dev.sql` provide test data set with 150 users and situation.
 
