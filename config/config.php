@@ -12,8 +12,7 @@ session_start();
 require $_SERVER["DOCUMENT_ROOT"] . "/vendor/autoload.php";
 
 // Load .env file
-$dotenv = Dotenv\Dotenv::createImmutable($_SERVER["DOCUMENT_ROOT"]);
-$dotenv->load();
+$dotenv = Dotenv\Dotenv::createImmutable($_SERVER["DOCUMENT_ROOT"])->load();
 
 // Create constants
 define("DEFAULT_LANGUAGE", $_ENV['DEFAULT_LANGUAGE']);
@@ -30,22 +29,21 @@ function loadClass($class)
 	$repositoryDirectory = $_SERVER["DOCUMENT_ROOT"] . "/src/app/repository/";
 
 	// Import entity
-	if (file_exists($entityDirectory . $class . ".php"))
+	if (file_exists($entityDirectory . $class . ".php")) {
 		require($entityDirectory . $class . ".php");
+	}
 
 	// Import repository
-	if (file_exists($repositoryDirectory . $class . ".php"))
+	if (file_exists($repositoryDirectory . $class . ".php")) {
 		require($repositoryDirectory . $class . ".php");
+	}
 }
 spl_autoload_register('loadClass');
 
-// Declare connection
+// Declare database connection
 require($_SERVER["DOCUMENT_ROOT"] . "/src/app/repository/DatabaseRepository.php");
 $db = new Database;
 define("DATABASE", $db->getConnection());
-
-// Import database
-// require $_SERVER["DOCUMENT_ROOT"] . "/config/db.php";
 
 // Check if user still exist in database
 if (isset($_SESSION["login"])) {
