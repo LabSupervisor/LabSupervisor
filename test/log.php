@@ -1,6 +1,8 @@
 <?php
 
-require($_SERVER["DOCUMENT_ROOT"] . '/function/ft_header.php');
+use LabSupervisor\app\repository\LogRepository;
+use function LabSupervisor\functions\mainHeader;
+
 mainHeader("Log Test");
 
 try {

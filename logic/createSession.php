@@ -1,4 +1,10 @@
 <?php
+
+use LabSupervisor\app\repository\SessionRepository;
+use LabSupervisor\app\repository\ClassroomRepository;
+use LabSupervisor\app\repository\UserRepository;
+use LabSupervisor\app\entity\Session;
+
 if (isset($_POST['saveSession'])) {
 	$sessionRepo = new SessionRepository();
 

@@ -14,6 +14,10 @@ require $_SERVER["DOCUMENT_ROOT"] . "/vendor/autoload.php";
 // Load .env file
 $dotenv = Dotenv\Dotenv::createImmutable($_SERVER["DOCUMENT_ROOT"])->load();
 
+use LabSupervisor\app\repository\DatabaseRepository;
+use LabSupervisor\app\repository\ActiveDirectoryRepository;
+use LabSupervisor\app\repository\UserRepository;
+
 // Create constants
 define("DEFAULT_LANGUAGE", $_ENV['DEFAULT_LANGUAGE']);
 define("DEFAULT_THEME", $_ENV['DEFAULT_THEME']);
@@ -21,24 +25,6 @@ define("DEFAULT_THEME", $_ENV['DEFAULT_THEME']);
 define("ADMIN", 1);
 define("STUDENT", 2);
 define("TEACHER", 3);
-
-// Load class
-function loadClass($class)
-{
-	$entityDirectory = $_SERVER["DOCUMENT_ROOT"] . "/src/app/entity/";
-	$repositoryDirectory = $_SERVER["DOCUMENT_ROOT"] . "/src/app/repository/";
-
-	// Import entity
-	if (file_exists($entityDirectory . $class . ".php")) {
-		require($entityDirectory . $class . ".php");
-	}
-
-	// Import repository
-	if (file_exists($repositoryDirectory . $class . ".php")) {
-		require($repositoryDirectory . $class . ".php");
-	}
-}
-spl_autoload_register('loadClass');
 
 // Declare database connection
 $db = new DatabaseRepository;
@@ -56,9 +42,3 @@ if (isset($_SESSION["login"])) {
 		unset($_SESSION["login"]);
 	}
 }
-
-// Import permission checker
-require($_SERVER["DOCUMENT_ROOT"] . "/function/ft_permissionChecker.php");
-
-// Import lang
-require($_SERVER["DOCUMENT_ROOT"] . '/function/ft_lang.php');

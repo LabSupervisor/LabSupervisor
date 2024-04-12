@@ -1,5 +1,10 @@
 <?php
 
+namespace LabSupervisor\app\repository;
+use Exception;
+use PDO;
+use LabSupervisor\app\entity\Classroom;
+
 class ClassroomRepository {
 
 	public function __construct() {}

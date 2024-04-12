@@ -1,6 +1,9 @@
 <?php
 
-require($_SERVER["DOCUMENT_ROOT"] . '/function/ft_header.php');
+use LabSupervisor\app\repository\ClassroomRepository;
+use LabSupervisor\app\entity\Classroom;
+use function LabSupervisor\functions\mainHeader;
+
 mainHeader("Classroom Test");
 
 $classroomRepo = new ClassroomRepository();

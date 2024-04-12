@@ -1,5 +1,9 @@
 <?php
 
+namespace LabSupervisor\app\repository;
+use Exception;
+use PDO;
+
 class LogRepository extends Exception{
 	public static function dbSave($message) {
 		try {
@@ -12,8 +16,8 @@ class LogRepository extends Exception{
 
 				// Insert log
 				$queryPrep = DATABASE->prepare($query);
-				$queryPrep->bindParam(':iduser', $userId, \PDO::PARAM_STR);
-				$queryPrep->bindParam(':message', $message, \PDO::PARAM_STR);
+				$queryPrep->bindParam(':iduser', $userId);
+				$queryPrep->bindParam(':message', $message);
 
 				if (!$queryPrep->execute())
 					throw new Exception("DB Log save error ");

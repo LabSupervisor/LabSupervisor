@@ -1,6 +1,8 @@
 <?php
+
+	use function LabSupervisor\functions\mainHeader;
+
 	// Import header
-	require($_SERVER["DOCUMENT_ROOT"] . '/function/ft_header.php');
 	mainHeader("");
 ?>
 

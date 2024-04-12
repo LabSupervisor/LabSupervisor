@@ -1,6 +1,8 @@
 <?php
-	// Logic
-	require($_SERVER["DOCUMENT_ROOT"] . "/function/ft_nameFormat.php");
+	use LabSupervisor\app\repository\UserRepository;
+	use function LabSupervisor\functions\lang;
+	use function LabSupervisor\functions\nameFormat;
+	use function LabSupervisor\functions\permissionChecker;
 
 	$navbarItem = "";
 ?>

@@ -1,6 +1,10 @@
 <?php
 
-require($_SERVER["DOCUMENT_ROOT"] . '/function/ft_header.php');
+use LabSupervisor\app\repository\UserRepository;
+use LabSupervisor\app\repository\SessionRepository;
+use LabSupervisor\app\entity\Session;
+use function LabSupervisor\functions\mainHeader;
+
 mainHeader("Session Test");
 
 $sessionRepo = new SessionRepository();

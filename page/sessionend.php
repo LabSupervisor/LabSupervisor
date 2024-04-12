@@ -1,6 +1,9 @@
 <?php
+
+	use function LabSupervisor\functions\mainHeader;
+	use function LabSupervisor\functions\lang;
+
 	// Import header
-	require($_SERVER["DOCUMENT_ROOT"] . "/function/ft_header.php");
 	mainHeader(lang("SESSION_END"));
 ?>
 

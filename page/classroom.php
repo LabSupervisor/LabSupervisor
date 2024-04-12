@@ -1,6 +1,12 @@
 <?php
+
+	use LabSupervisor\app\repository\ClassroomRepository;
+	use LabSupervisor\app\repository\UserRepository;
+	use function LabSupervisor\functions\mainHeader;
+	use function LabSupervisor\functions\lang;
+	use function LabSupervisor\functions\permissionChecker;
+
 	// Import header
-	require($_SERVER["DOCUMENT_ROOT"] . "/function/ft_header.php");
 	mainHeader(lang("NAVBAR_CLASS"));
 
 	// Ask for permissions

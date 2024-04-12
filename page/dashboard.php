@@ -1,13 +1,19 @@
 <?php
+
+	use LabSupervisor\app\repository\SessionRepository;
+	use LabSupervisor\app\repository\UserRepository;
+	use function LabSupervisor\functions\mainHeader;
+	use function LabSupervisor\functions\lang;
+	use function LabSupervisor\functions\permissionChecker;
+	use function LabSupervisor\functions\statusFormat;
+
 	// Import header
-	require($_SERVER["DOCUMENT_ROOT"] . "/function/ft_header.php");
 	mainHeader(lang("DASHBOARD_TITLE"));
 
 	// Ask for permissions
 	permissionChecker(true, array(TEACHER));
 
 	// Logic
-	require($_SERVER["DOCUMENT_ROOT"] . "/function/ft_statusFormat.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/adminSession.php");
 
 	// Check if session is still open

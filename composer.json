@@ -30,10 +30,13 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"LabSupervisor\\LabSupervisor\\": [
+			"LabSupervisor\\": [
 				"/",
 				"src/"
 			]
-		}
+		},
+        "files": [
+			"function/include.php"
+		]
 	}
 }

@@ -1,4 +1,7 @@
 <?php
+
+namespace LabSupervisor\app\entity;
+
 class User {
 	protected $email;
 	protected $name;

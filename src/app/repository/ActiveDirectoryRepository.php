@@ -1,5 +1,8 @@
 <?php
 
+namespace LabSupervisor\app\repository;
+use Exception;
+
 class ActiveDirectoryRepository {
 	protected static $connection;
 

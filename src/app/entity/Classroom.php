@@ -1,4 +1,7 @@
 <?php
+
+namespace LabSupervisor\app\entity;
+
 class Classroom	{
 	protected $name;
 

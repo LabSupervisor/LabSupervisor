@@ -1,6 +1,13 @@
 <?php
+
+	use LabSupervisor\app\repository\SessionRepository;
+	use LabSupervisor\app\repository\UserRepository;
+	use function LabSupervisor\functions\mainHeader;
+	use function LabSupervisor\functions\lang;
+	use function LabSupervisor\functions\permissionChecker;
+	use function LabSupervisor\functions\nameFormat;
+
 	// Import header
-	require($_SERVER["DOCUMENT_ROOT"] . "/function/ft_header.php");
 	mainHeader(lang("NAVBAR_SESSION"));
 
 	// Ask for permissions and store it

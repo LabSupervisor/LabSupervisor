@@ -1,6 +1,9 @@
 <?php
 
-require($_SERVER["DOCUMENT_ROOT"] . "/function/ft_statusPicker.php");
+use LabSupervisor\app\repository\UserRepository;
+use LabSupervisor\app\repository\SessionRepository;
+use LabSupervisor\app\repository\LogRepository;
+use function LabSupervisor\functions\statusPicker;
 
 header('Content-Type: application/json');
 

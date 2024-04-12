@@ -1,5 +1,5 @@
 <?php
 
-require($_SERVER["DOCUMENT_ROOT"] . '/function/ft_uidGen.php');
+use function LabSupervisor\functions\uidGen;
 
 echo uidGen();

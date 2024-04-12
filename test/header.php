@@ -1,6 +1,7 @@
 <?php
 
-require($_SERVER["DOCUMENT_ROOT"] . '/function/ft_header.php');
+use function LabSupervisor\functions\mainHeader;
+
 mainHeader("AAAAAAAAAAH");
 
 echo "test";

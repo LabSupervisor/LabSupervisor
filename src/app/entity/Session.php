@@ -1,5 +1,7 @@
 <?php
 
+namespace LabSupervisor\app\entity;
+
 class Session {
 
 	protected $title;

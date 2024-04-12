@@ -1,14 +1,15 @@
 <?php
+	use LabSupervisor\app\repository\UserRepository;
+	use function LabSupervisor\functions\mainHeader;
+	use function LabSupervisor\functions\lang;
+	use function LabSupervisor\functions\langFormat;
+	use function LabSupervisor\functions\permissionChecker;
+
 	// Import header
-	require($_SERVER["DOCUMENT_ROOT"] . "/function/ft_header.php");
 	mainHeader(lang("NAVBAR_PROFIL_ACCOUNT"));
 
 	// Ask for permissions
 	permissionChecker(true, array(ADMIN, STUDENT, TEACHER));
-
-	// Logic
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateUser.php");
-	require($_SERVER["DOCUMENT_ROOT"] . "/function/ft_langFormat.php");
 
 	// Delete account if ask for
 	if (isset($_POST["confirm_delete"])) {

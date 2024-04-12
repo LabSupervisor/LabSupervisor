@@ -1,6 +1,9 @@
 <?php
 
-require($_SERVER["DOCUMENT_ROOT"] . '/function/ft_header.php');
+use LabSupervisor\app\repository\UserRepository;
+use LabSupervisor\app\entity\User;
+use function LabSupervisor\functions\mainHeader;
+
 mainHeader("User Test");
 
 $userRepo = new UserRepository();

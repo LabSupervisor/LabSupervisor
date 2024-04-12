@@ -1,4 +1,9 @@
 <?php
+
+use LabSupervisor\app\repository\UserRepository;
+use function LabSupervisor\functions\mainHeader;
+use function LabSupervisor\functions\lang;
+
 if (isset($_POST["login"])) {
 	if (UserRepository::getId($_POST['email'])) {
 		// Check if password correspond to database

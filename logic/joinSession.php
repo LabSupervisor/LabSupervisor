@@ -1,4 +1,8 @@
 <?php
+
+use LabSupervisor\app\repository\UserRepository;
+use function LabSupervisor\functions\lang;
+
 if (isset($_POST["connect"])) {
 	// Get user's roles
 	$role = UserRepository::getRole($_SESSION["login"]);

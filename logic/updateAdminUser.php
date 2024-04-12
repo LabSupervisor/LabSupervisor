@@ -1,5 +1,9 @@
 <?php
 
+use LabSupervisor\app\repository\UserRepository;
+use LabSupervisor\app\repository\ClassroomRepository;
+use LabSupervisor\app\entity\User;
+
 if (isset($_POST["modify"])) {
 	$userRepo = new UserRepository();
 	$email = UserRepository::getEmail($_POST["userId"]);

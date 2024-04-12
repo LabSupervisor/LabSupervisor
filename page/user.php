@@ -1,13 +1,19 @@
 <?php
+
+	use LabSupervisor\app\repository\UserRepository;
+	use LabSupervisor\app\repository\ClassroomRepository;
+	use function LabSupervisor\functions\mainHeader;
+	use function LabSupervisor\functions\lang;
+	use function LabSupervisor\functions\permissionChecker;
+	use function LabSupervisor\functions\roleFormat;
+
 	// Import header
-	require($_SERVER["DOCUMENT_ROOT"] . "/function/ft_header.php");
 	mainHeader(lang("NAVBAR_USER"));
 
 	// Ask for permissions
 	permissionChecker(true, array(ADMIN));
 
 	// Logic
-	require($_SERVER["DOCUMENT_ROOT"] . "/function/ft_roleFormat.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateAdminUser.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/deleteAdminUser.php");
 

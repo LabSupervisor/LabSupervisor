@@ -1,5 +1,8 @@
 <?php
 
+use LabSupervisor\app\repository\UserRepository;
+use LabSupervisor\app\entity\User;
+
 if (isset($_POST['new_name'])) {
 	$userData = array(
 		"email" => $_SESSION["login"],
