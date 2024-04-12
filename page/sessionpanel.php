@@ -1,6 +1,6 @@
 <?php
 	// Import header
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
+	require($_SERVER["DOCUMENT_ROOT"] . "/function/ft_header.php");
 	mainHeader("Session en cours");
 
 	// Ask for permissions
@@ -78,7 +78,8 @@
 	echo "<br>LS-LINK : <form method='POST'><input type='hidden' name='sessionId' value='" . $_SESSION["session"] . "'><input type='number' name='number'/><input type='submit' name='link'/></form>";
 ?>
 
-<button id="shareButton">Partager</button>
+<button id="getScreenshare">Get screenshare</button>
+<div id="screenshare"></div>
 
 <!-- Create "global" varaibles -->
 <script>
@@ -97,5 +98,5 @@
 <script src="/public/js/sessionGetState.js"></script>
 
 <?php
-	require($_SERVER["DOCUMENT_ROOT"] . '/logic/ft_footer.php');
+	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');
 ?>

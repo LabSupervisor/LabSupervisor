@@ -1,6 +1,6 @@
 <?php
 	// Import header
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
+	require($_SERVER["DOCUMENT_ROOT"] . "/function/ft_header.php");
 	mainHeader(lang("SESSION_END"));
 ?>
 
@@ -19,5 +19,5 @@
 </div>
 
 <?php
-	require($_SERVER["DOCUMENT_ROOT"] . '/logic/ft_footer.php');
+	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');
 ?>

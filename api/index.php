@@ -1,6 +1,6 @@
 <?php
 
-require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_statusPicker.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/function/ft_statusPicker.php");
 
 header('Content-Type: application/json');
 

@@ -1,6 +1,6 @@
 <?php
 	// Import header
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
+	require($_SERVER["DOCUMENT_ROOT"] . "/function/ft_header.php");
 	mainHeader(lang("NAVBAR_PROFIL_ACCOUNT"));
 
 	// Ask for permissions
@@ -8,7 +8,7 @@
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateUser.php");
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_langFormat.php");
+	require($_SERVER["DOCUMENT_ROOT"] . "/function/ft_langFormat.php");
 
 	// Delete account if ask for
 	if (isset($_POST["confirm_delete"])) {
@@ -113,5 +113,5 @@
 </script>
 
 <?php
-	require($_SERVER["DOCUMENT_ROOT"] . '/logic/ft_footer.php');
+	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');
 ?>

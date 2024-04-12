@@ -1,6 +1,6 @@
 <?php
 	// Import header
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
+	require($_SERVER["DOCUMENT_ROOT"] . "/function/ft_header.php");
 	mainHeader(lang("NAVBAR_CONNECT"));
 
 	// Ask for permissions
@@ -47,5 +47,5 @@
 </script>
 
 <?php
-	require($_SERVER["DOCUMENT_ROOT"] . '/logic/ft_footer.php');
+	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');
 ?>

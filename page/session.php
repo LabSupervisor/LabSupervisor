@@ -1,6 +1,6 @@
 <?php
 	// Import header
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
+	require($_SERVER["DOCUMENT_ROOT"] . "/function/ft_header.php");
 	mainHeader(lang("NAVBAR_SESSION"));
 
 	// Ask for permissions and store it
@@ -103,5 +103,5 @@
 		echo "<div class='nosessionmain'><div class='nosessioncontent'><a class='nosessiontitle'>" . lang("SESSION_EMPTY") . "</a></div></div>";
 	}
 
-	require($_SERVER["DOCUMENT_ROOT"] . '/logic/ft_footer.php');
+	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');
 ?>

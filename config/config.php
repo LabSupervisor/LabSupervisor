@@ -58,7 +58,7 @@ if (isset($_SESSION["login"])) {
 }
 
 // Import permission checker
-require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_permissionChecker.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/function/ft_permissionChecker.php");
 
 // Import lang
-require($_SERVER["DOCUMENT_ROOT"] . '/logic/ft_lang.php');
+require($_SERVER["DOCUMENT_ROOT"] . '/function/ft_lang.php');

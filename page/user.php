@@ -1,13 +1,13 @@
 <?php
 	// Import header
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
+	require($_SERVER["DOCUMENT_ROOT"] . "/function/ft_header.php");
 	mainHeader(lang("NAVBAR_USER"));
 
 	// Ask for permissions
 	permissionChecker(true, array(ADMIN));
 
 	// Logic
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_roleFormat.php");
+	require($_SERVER["DOCUMENT_ROOT"] . "/function/ft_roleFormat.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateAdminUser.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/deleteAdminUser.php");
 
@@ -162,5 +162,5 @@
 </form>
 
 <?php
-	require($_SERVER["DOCUMENT_ROOT"] . '/logic/ft_footer.php');
+	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');
 ?>

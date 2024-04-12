@@ -1,13 +1,13 @@
 <?php
 	// Import header
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_header.php");
+	require($_SERVER["DOCUMENT_ROOT"] . "/function/ft_header.php");
 	mainHeader(lang("DASHBOARD_TITLE"));
 
 	// Ask for permissions
 	permissionChecker(true, array(TEACHER));
 
 	// Logic
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/ft_statusFormat.php");
+	require($_SERVER["DOCUMENT_ROOT"] . "/function/ft_statusFormat.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/adminSession.php");
 
 	// Check if session is still open
@@ -205,5 +205,5 @@
 <script src="/public/js/viewerScreenshare.js"></script>
 
 <?php
-	require($_SERVER["DOCUMENT_ROOT"] . '/logic/ft_footer.php');
+	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');
 ?>
