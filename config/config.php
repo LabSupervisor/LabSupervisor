@@ -44,6 +44,11 @@ spl_autoload_register('loadClass');
 $db = new DatabaseRepository;
 define("DATABASE", $db->getConnection());
 
+if ($_ENV["AUTHENTIFICATION_TYPE"] == "ad") {
+	$ad = new ActiveDirectoryRepository;
+	define("AD", $ad->getConnection());
+}
+
 // Check if user still exist in database
 if (isset($_SESSION["login"])) {
 	if (UserRepository::isActive($_SESSION["login"]) == 0) {
