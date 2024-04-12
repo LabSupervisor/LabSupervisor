@@ -62,7 +62,7 @@ CREATE TABLE `session` (
   `title` varchar(50) NOT NULL,
   `description` text DEFAULT NULL,
   `idcreator` int(11) NOT NULL,
-  `pause` tinyint(1) NOT NULL DEFAULT 1,
+  `state` tinyint(1) NOT NULL DEFAULT 1,
   `date` datetime NOT NULL,
   `creationdate` datetime NOT NULL DEFAULT current_timestamp(),
   `updatedate` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
