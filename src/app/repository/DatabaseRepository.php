@@ -1,6 +1,6 @@
 <?php
 
-class Database {
+class DatabaseRepository {
 	private static $connection;
 
 	public function __construct() {
