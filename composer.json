@@ -1,5 +1,33 @@
 {
+    "name": "labsupervisor/labsupervisor",
+    "description": "A supervising application giving monitoring features to academic teachers.",
+    "keywords": [
+        "monitoring",
+        "academic",
+        "teacher"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Erick Paoletti",
+            "email": "erick.paoletti@gmail.com"
+        },
+        {
+            "name": "Marine Gonnord",
+            "email": "marine.gonnord@lyon.ort.asso.fr"
+        },
+        {
+            "name": "Gautier Trapeau",
+            "email": "gautier.trapeau@lyon.ort.asso.fr"
+        }
+    ],
     "require": {
+        "php": "^8.1",
         "vlucas/phpdotenv": "^5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vendor\\Namespace\\": ""
+        }
     }
 }
