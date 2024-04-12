@@ -58,6 +58,7 @@
 	"SESSION_END_MESSAGE": "Questa sessione è ora terminata",
 	"SESSION_END_BACK": "Torna alla lista delle sessioni",
 	"SESSION_PAUSED": "La sessione è temporaneamente interrotta.",
+	"SESSION_EMPTY": "Attualmente non ci sono sessioni disponibili.",
 
 	"DASHBOARD_TITLE": "Dashboard",
 	"DASHBOARD_STUDENT_NAME": "Studente",

@@ -86,3 +86,16 @@ tr:not(.thead) {
 .col2-container:hover .col2-tooltip {
 	opacity: 100;
 }
+
+.nosessionmain {
+	display: block;
+	width: 80%;
+	margin: auto;
+	margin-top: 25vh;
+	text-align: center;
+	user-select: none;
+}
+
+.nosessiontitle {
+	font-size: 30px;
+}

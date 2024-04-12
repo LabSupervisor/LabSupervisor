@@ -58,6 +58,7 @@
 	"SESSION_END_MESSAGE": "Deze sessie is nu beëindigd",
 	"SESSION_END_BACK": "Terug naar sessielijst",
 	"SESSION_PAUSED": "De sessie is tijdelijk onderbroken.",
+	"SESSION_EMPTY": "Er zijn momenteel geen sessies beschikbaar.",
 
 	"DASHBOARD_TITLE": "Dashboard",
 	"DASHBOARD_STUDENT_NAME": "Student",

@@ -58,6 +58,7 @@
 	"SESSION_END_MESSAGE": "Diese Sitzung ist jetzt beendet",
 	"SESSION_END_BACK": "Zurück zur Sitzungsliste",
 	"SESSION_PAUSED": "Die Sitzung ist vorübergehend unterbrochen.",
+	"SESSION_EMPTY": "Aktuell sind keine Sitzungen verfügbar.",
 
 	"DASHBOARD_TITLE": "Dashboard",
 	"DASHBOARD_STUDENT_NAME": "Student",

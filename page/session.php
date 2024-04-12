@@ -30,6 +30,9 @@
 			array_push($sessionList, SessionRepository::getInfo($key["idsession"]));
 		}
 	}
+
+
+	if (count($sessionList) > 0) {
 ?>
 
 <div class="mainbox table-container">
@@ -96,5 +99,9 @@
 </div>
 
 <?php
+	} else {
+		echo "<div class='nosessionmain'><div class='nosessioncontent'><a class='nosessiontitle'>" . lang("SESSION_EMPTY") . "</a></div></div>";
+	}
+
 	require($_SERVER["DOCUMENT_ROOT"] . '/logic/ft_footer.php');
 ?>

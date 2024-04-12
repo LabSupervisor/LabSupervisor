@@ -58,6 +58,7 @@
 	"SESSION_END_MESSAGE": "Эта сессия теперь завершена",
 	"SESSION_END_BACK": "Вернуться к списку сессий",
 	"SESSION_PAUSED": "Сеанс временно приостановлен.",
+	"SESSION_EMPTY": "В настоящее время нет доступных сеансов.",
 
 	"DASHBOARD_TITLE": "Панель управления",
 	"DASHBOARD_STUDENT_NAME": "Студент",
