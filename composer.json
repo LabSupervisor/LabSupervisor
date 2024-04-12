@@ -10,15 +10,18 @@
     "authors": [
         {
             "name": "Erick Paoletti",
-            "email": "erick.paoletti@gmail.com"
+            "email": "erick.paoletti@gmail.com",
+			"role": "Author"
         },
         {
             "name": "Marine Gonnord",
-            "email": "marine.gonnord@lyon.ort.asso.fr"
+            "email": "marine.gonnord@lyon.ort.asso.fr",
+			"role": "Developer"
         },
         {
             "name": "Gautier Trapeau",
-            "email": "gautier.trapeau@lyon.ort.asso.fr"
+            "email": "gautier.trapeau@lyon.ort.asso.fr",
+			"role": "Developer"
         }
     ],
     "require": {
