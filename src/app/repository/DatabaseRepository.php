@@ -6,21 +6,23 @@ use
 	Exception;
 
 class DatabaseRepository {
-	private static $connection;
+	private $connection;
 
 	public function __construct() {
 		try {
 			$hostname = $_ENV['DATABASE_HOST'];
+			$port = $_ENV['DATABASE_PORT'];
+			
 			$dbname = $_ENV['DATABASE_NAME'];
 			$username = $_ENV['DATABASE_USER'];
 			$password = $_ENV['DATABASE_PASSWORD'];
+
 			$driver = $_ENV['DATABASE_DRIVER'];
-			$port = $_ENV['DATABASE_PORT'];
 			$charset = $_ENV['DATABASE_CHARSET'];
 
 			// Create PDO connection
-			self::$connection = new PDO("$driver:dbname=$dbname; host=$hostname; port=$port; options='--client_encoding=$charset'", $username, $password);
-			self::$connection->exec("SET NAMES '$charset'");
+			$this->connection = new PDO("$driver:dbname=$dbname; host=$hostname; port=$port; options='--client_encoding=$charset'", $username, $password);
+			$this->connection->exec("SET NAMES '$charset'");
 
 		} catch (Exception $e) {
 			// Log error
@@ -29,6 +31,6 @@ class DatabaseRepository {
 	}
 
 	public function getConnection() {
-		return self::$connection;
+		return $this->connection;
 	}
 }
