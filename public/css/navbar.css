@@ -20,6 +20,10 @@
 	box-shadow: 0px 0px 50px 0px #00000030;
 }
 
+ul {
+	transform: translateX(-22px);
+}
+
 /* Main bold class */
 .bold {
 	font-weight: bold;

@@ -12,7 +12,7 @@
 	<?php
 
 	// Icon
-	$navbarItem .= '
+	$navbarItem .= '<ul>
 	<li><a tabindex="-1" href="/" class="bold no-hover-color">
 		<div class="iconGlobal">
 			<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -30,7 +30,7 @@
 
 	// If the user is not connected
 	if (!isset($_SESSION["login"])) {
-		$navbarItem .= '<li class="item"><a href="/login"><i class="ri-user-line"></i>' . lang("NAVBAR_CONNECT") . '</a></li></nav>';
+		$navbarItem .= '<li class="item"><a href="/login"><i class="ri-user-line"></i>' . lang("NAVBAR_CONNECT") . '</a></li></ul></nav>';
 
 	// If the user is connected
 	} else {
@@ -80,5 +80,5 @@
 
 <?php
 	if (isset($_SESSION["login"]))
-		echo "<script src='/public/js/ft_updateTheme.js'></script>";
+		echo "<script src='/public/js/ft_updateTheme.js'></script></ul></nav>";
 ?>
