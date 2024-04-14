@@ -1,8 +1,9 @@
 <?php
 
 namespace LabSupervisor\app\repository;
-use Exception;
-use PDO;
+use
+	PDO,
+	Exception;
 
 class LogRepository extends Exception{
 	public static function dbSave($message) {

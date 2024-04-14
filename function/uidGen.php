@@ -2,7 +2,6 @@
 
 namespace LabSupervisor\functions;
 
-
 if (!function_exists(__NAMESPACE__ . "/uidGen")) {
 	function uidGen() {
 		$char = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_";

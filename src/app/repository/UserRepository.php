@@ -1,9 +1,10 @@
 <?php
 
 namespace LabSupervisor\app\repository;
-use PDO;
-use Exception;
-use LabSupervisor\app\entity\User;
+use
+	PDO,
+	Exception,
+	LabSupervisor\app\entity\User;
 
 class UserRepository {
 

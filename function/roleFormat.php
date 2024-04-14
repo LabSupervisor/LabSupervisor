@@ -3,7 +3,6 @@
 namespace LabSupervisor\functions;
 use LabSupervisor\app\repository\UserRepository;
 
-
 if (!function_exists(__NAMESPACE__ . "/roleFormat")) {
 	function roleFormat($email) {
 		$result = "";

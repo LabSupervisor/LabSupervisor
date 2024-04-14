@@ -1,11 +1,13 @@
 <?php
 
-	use LabSupervisor\app\repository\UserRepository;
-	use LabSupervisor\app\repository\ClassroomRepository;
-	use function LabSupervisor\functions\mainHeader;
-	use function LabSupervisor\functions\lang;
-	use function LabSupervisor\functions\permissionChecker;
-	use function LabSupervisor\functions\roleFormat;
+	use
+		LabSupervisor\app\repository\UserRepository,
+		LabSupervisor\app\repository\ClassroomRepository;
+	use function
+		LabSupervisor\functions\mainHeader,
+		LabSupervisor\functions\lang,
+		LabSupervisor\functions\permissionChecker,
+		LabSupervisor\functions\roleFormat;
 
 	// Import header
 	mainHeader(lang("NAVBAR_USER"));

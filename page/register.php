@@ -1,7 +1,8 @@
 <?php
-	use function LabSupervisor\functions\mainHeader;
-	use function LabSupervisor\functions\lang;
-	use function LabSupervisor\functions\permissionChecker;
+	use function
+		LabSupervisor\functions\mainHeader,
+		LabSupervisor\functions\lang,
+		LabSupervisor\functions\permissionChecker;
 
 	// Import header
 	mainHeader(lang("REGISTER_TITLE"));

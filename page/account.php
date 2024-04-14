@@ -1,9 +1,10 @@
 <?php
 	use LabSupervisor\app\repository\UserRepository;
-	use function LabSupervisor\functions\mainHeader;
-	use function LabSupervisor\functions\lang;
-	use function LabSupervisor\functions\langFormat;
-	use function LabSupervisor\functions\permissionChecker;
+	use function
+		LabSupervisor\functions\mainHeader,
+		LabSupervisor\functions\lang,
+		LabSupervisor\functions\langFormat,
+		LabSupervisor\functions\permissionChecker;
 
 	// Import header
 	mainHeader(lang("NAVBAR_PROFIL_ACCOUNT"));

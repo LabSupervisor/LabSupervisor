@@ -1,7 +1,8 @@
 <?php
 
-use LabSupervisor\app\repository\UserRepository;
-use LabSupervisor\app\entity\User;
+use
+	LabSupervisor\app\repository\UserRepository,
+	LabSupervisor\app\entity\User;
 use function LabSupervisor\functions\lang;
 
 if (isset($_POST["register"])) {

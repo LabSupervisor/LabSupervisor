@@ -1,7 +1,6 @@
 <?php
 
 use LabSupervisor\app\repository\UserRepository;
-use function LabSupervisor\functions\mainHeader;
 use function LabSupervisor\functions\lang;
 
 if (isset($_POST["login"])) {

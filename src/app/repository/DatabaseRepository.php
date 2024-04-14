@@ -1,8 +1,9 @@
 <?php
 
 namespace LabSupervisor\app\repository;
-use PDO;
-use Exception;
+use
+	PDO,
+	Exception;
 
 class DatabaseRepository {
 	private static $connection;

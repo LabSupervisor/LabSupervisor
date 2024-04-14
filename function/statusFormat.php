@@ -2,7 +2,6 @@
 
 namespace LabSupervisor\functions;
 
-
 if (!function_exists(__NAMESPACE__ . "/statusFormat")) {
 	function statusFormat($userId, $chapterId, $statusId) {
 		$status = "";

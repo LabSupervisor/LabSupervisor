@@ -1,10 +1,12 @@
 <?php
 
-	use LabSupervisor\app\repository\UserRepository;
-	use LabSupervisor\app\repository\SessionRepository;
-	use function LabSupervisor\functions\mainHeader;
-	use function LabSupervisor\functions\lang;
-	use function LabSupervisor\functions\permissionChecker;
+	use
+		LabSupervisor\app\repository\UserRepository,
+		LabSupervisor\app\repository\SessionRepository;
+	use function
+		LabSupervisor\functions\mainHeader,
+		LabSupervisor\functions\lang,
+		LabSupervisor\functions\permissionChecker;
 
 	// Import header
 	mainHeader("Session en cours");

@@ -1,9 +1,10 @@
 <?php
 
 namespace LabSupervisor\app\repository;
-use PDO;
-use Exception;
-use LabSupervisor\app\entity\Session;
+use
+	PDO,
+	Exception,
+	LabSupervisor\app\entity\Session;
 
 class SessionRepository {
 

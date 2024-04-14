@@ -1,11 +1,13 @@
 <?php
 
-	use LabSupervisor\app\repository\SessionRepository;
-	use LabSupervisor\app\repository\UserRepository;
-	use function LabSupervisor\functions\mainHeader;
-	use function LabSupervisor\functions\lang;
-	use function LabSupervisor\functions\permissionChecker;
-	use function LabSupervisor\functions\nameFormat;
+	use
+		LabSupervisor\app\repository\SessionRepository,
+		LabSupervisor\app\repository\UserRepository;
+	use function
+		LabSupervisor\functions\mainHeader,
+		LabSupervisor\functions\lang,
+		LabSupervisor\functions\permissionChecker,
+		LabSupervisor\functions\nameFormat;
 
 	// Import header
 	mainHeader(lang("NAVBAR_SESSION"));
@@ -37,7 +39,6 @@
 			array_push($sessionList, SessionRepository::getInfo($key["idsession"]));
 		}
 	}
-
 
 	if (count($sessionList) > 0) {
 ?>

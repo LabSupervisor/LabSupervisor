@@ -1,8 +1,9 @@
 <?php
 
-use LabSupervisor\app\repository\UserRepository;
-use LabSupervisor\app\repository\ClassroomRepository;
-use LabSupervisor\app\entity\User;
+use
+	LabSupervisor\app\repository\UserRepository,
+	LabSupervisor\app\repository\ClassroomRepository,
+	LabSupervisor\app\entity\User;
 
 if (isset($_POST["modify"])) {
 	$userRepo = new UserRepository();

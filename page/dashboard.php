@@ -1,11 +1,13 @@
 <?php
 
-	use LabSupervisor\app\repository\SessionRepository;
-	use LabSupervisor\app\repository\UserRepository;
-	use function LabSupervisor\functions\mainHeader;
-	use function LabSupervisor\functions\lang;
-	use function LabSupervisor\functions\permissionChecker;
-	use function LabSupervisor\functions\statusFormat;
+	use
+		LabSupervisor\app\repository\SessionRepository,
+		LabSupervisor\app\repository\UserRepository;
+	use function
+		LabSupervisor\functions\mainHeader,
+		LabSupervisor\functions\lang,
+		LabSupervisor\functions\permissionChecker,
+		LabSupervisor\functions\statusFormat;
 
 	// Import header
 	mainHeader(lang("DASHBOARD_TITLE"));

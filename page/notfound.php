@@ -1,7 +1,8 @@
 <?php
 
-	use function LabSupervisor\functions\mainHeader;
-	use function LabSupervisor\functions\lang;
+	use function
+		LabSupervisor\functions\mainHeader,
+		LabSupervisor\functions\lang;
 
 	// Import header
 	mainHeader(lang("ERROR_NOTFOUND"));

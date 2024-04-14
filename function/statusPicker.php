@@ -2,7 +2,6 @@
 
 namespace LabSupervisor\functions;
 
-
 if (!function_exists(__NAMESPACE__ . "/statusPicker")) {
 	function statusPicker($statusList) {
 		// If student need help
