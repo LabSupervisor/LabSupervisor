@@ -89,8 +89,6 @@ else if (isset($_POST['updateSession'])){
 	var_dump($chapterActiveBd ) ;
 	echo '</br>' . '</br>' ;
 
-
-
 	//nombre de chapitre dans la page
 	$nbChapter = $_POST["nbChapter"];
 	echo "nombre chapitre sur la page : " . $nbChapter . '</br>';

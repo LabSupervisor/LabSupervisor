@@ -24,7 +24,6 @@ function addToChapterToBeUpdatedList(updatedChapterId){
 	// alert(updatedChapterId);
 
 	if(document.querySelector('#_'+updatedChapterId) == null){
-	// // Créer un champ caché pour stocker l'ID du chapitre supprimé
 		let updatedChaptersInput = document.createElement('input');
 		updatedChaptersInput.setAttribute('type', 'hidden');
 		updatedChaptersInput.setAttribute('id', '_' + updatedChapterId );
@@ -34,7 +33,6 @@ function addToChapterToBeUpdatedList(updatedChapterId){
 	}
 
 	if(document.querySelector('#_title_'+updatedChapterId) == null){
-		// // Créer un champ caché pour stocker l'ID du chapitre supprimé
 		let updatedChapterTitle = document.querySelector('#titleChapter'+updatedChapterId).value;
 		updatedChaptersInput = document.createElement('input');
 		updatedChaptersInput.setAttribute('type', 'hidden');
@@ -49,7 +47,6 @@ function addToChapterToBeUpdatedList(updatedChapterId){
 	}
 
 	if(document.querySelector('#_desc_'+updatedChapterId) == null){
-		// // Créer un champ caché pour stocker l'ID du chapitre supprimé
 		let updatedChapterDesc = document.querySelector('#chapterDescription'+updatedChapterId).value;
 		updatedChaptersInput = document.createElement('input');
 		updatedChaptersInput.setAttribute('type', 'hidden');
@@ -174,7 +171,7 @@ function deleteChapter(button) {
 					<input placeholder="<?= lang("SESSION_CREATE_CHAPTER_TITLE") ?>" type="text" id="titleChapter<?= $chapter["id"] ?>" class="field" value="<?= $chapter["title"] ?>" onchange="addToChapterToBeUpdatedList(this.parentNode.id)">
 
 					<textarea placeholder="<?= lang("SESSION_CREATE_CHAPTER_DESCRIPTION") ?>"
-					id="chapterDescription<?= $chapter["id"] ?>" class="field"><?= $chapter["description"] ?></textarea>
+					id="chapterDescription<?= $chapter["id"] ?>" class="field" onchange="addToChapterToBeUpdatedList(this.parentNode.id)" ><?= $chapter["description"] ?></textarea>
 
 					<!-- Delete chapter button -->
 					<button type="button" class="button chapterButton" onclick="deleteChapter(this)">- Chapitre</button>
