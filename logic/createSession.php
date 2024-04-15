@@ -86,36 +86,30 @@ else if (isset($_POST['updateSession'])){
 	$sessionData = SessionRepository::getInfo($idSession);
 
 	$chapterActiveBd = SessionRepository::getActiveChapter($idSession);
-	var_dump($chapterActiveBd ) ;
-	echo '</br>' . '</br>' ;
+	// var_dump($chapterActiveBd ) ;
+	// echo '</br>' . '</br>' ;
 
 	//nombre de chapitre dans la page
 	$nbChapter = $_POST["nbChapter"];
-	echo "nombre chapitre sur la page : " . $nbChapter . '</br>';
-	var_dump($_POST);
+	// echo "nombre chapitre sur la page : " . $nbChapter . '</br>';
+	// var_dump($_POST);
 
-	// echo "jsuis la";
-	// for($i = 1; $i<= $nbChapter; $i++){
-	// 	$titleChapter = $_POST['titleChapter'.$i];
-	// 	$chapterDescription = $_POST['chapterDescription'.$i];
-	// 	$chapterId = $_POST['idChapter'.$i];
+	if (isset($_POST['updatedChapters'])) {
+		$updatedChapters = $_POST['updatedChapters'] ;
+		foreach ($updatedChapters as $updatedChapter){
+			SessionRepository::updateChapter($updatedChapter['title'], $updatedChapter['desc'], $creatorId, $updatedChapter['id'] , $date);
+		}
+	}
 
-	// 	if ($titleChapter == ""){
-	// 		continue;
-	// 	}
+	if (isset($_POST['deletedChapters'])) {
+		$deletededChapters = $_POST['deletedChapters'];
+		foreach ($deletededChapters as $deletedChapter) {
+			SessionRepository::deleteChapter($deletedChapter);
+		}
+	}
 
-	// 	if (!empty($chapterId)) {
-	// 		SessionRepository::updateChapter($titleChapter, $chapterDescription, $creatorId, $chapterId, $date);
-	// 	}
-	// 	// add chapter
-	// 	else {
-	// 		SessionRepository::addChapter($_POST['titleChapter'.$i], $_POST['chapterDescription'.$i], $creatorId, $title);
-	// 	}
-
-		//	to do, add status
-	// }
-
-	// header("Location: /sessions");
+	//	to do, add status
+	header("Location: /sessions");
 }
 
 // Case 3 : prefill the session form with session data
@@ -126,12 +120,12 @@ else if (isset($_POST['sessionId'])){
 }
 
 // Case 4 : delete a chapter
-else if (isset($_POST['deleteChapters[]'])){
-	$chapterIds = $_POST["deleteChapters[]"];
-	var_dump($chapterIds);
-	foreach ($chapterIds as $chapterId) {
-		SessionRepository::deleteChapter($chapterId);
-	}
-	header("Location: /sessions");
+// else if (isset($_POST['deleteChapters[]'])){
+// 	$chapterIds = $_POST["deleteChapters[]"];
+// 	var_dump($chapterIds);
+// 	foreach ($chapterIds as $chapterId) {
+// 		SessionRepository::deleteChapter($chapterId);
+// 	}
+// 	header("Location: /sessions");
 
-}
+// }
