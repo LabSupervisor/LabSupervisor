@@ -8,6 +8,7 @@ CREATE TABLE `chapter` (
   `idsession` int(11) NOT NULL,
   `title` varchar(100) NOT NULL,
   `description` text DEFAULT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT 1,
   `idcreator` int(11) NOT NULL,
   `creationdate` datetime NOT NULL DEFAULT current_timestamp(),
   `updatedate` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),

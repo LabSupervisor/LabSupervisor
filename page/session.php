@@ -78,8 +78,9 @@
 							echo "<td class='col5'>";
 
 							if (in_array(TEACHER, $roleList)) {
-								echo "<form method='POST'><input type='submit' name='modify[" . $line["id"] . "]' value='" . lang("SESSION_UPDATE") . "' class='button'></input></form>";
+								echo "<form method='POST' action='/sessionmodifier'><input type='hidden' name='sessionId' value='" . $line["id"] . "'><input type='submit' value='" . lang("SESSION_UPDATE") . "' class='button'></input></form>";
 							}
+
 
 							// Only select existed user
 							if ($line["state"] != 0) {

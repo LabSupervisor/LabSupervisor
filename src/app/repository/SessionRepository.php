@@ -189,6 +189,24 @@ class SessionRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
 	}
 
+	public static function getActiveChapter($sessionId) {
+
+		// Get session's chapter query
+		$query = "SELECT id, title, description FROM chapter WHERE idsession = :idsession AND active = 1";
+		// Get session's chapter
+		try {
+			$queryPrep = DATABASE->prepare($query);
+			$queryPrep->bindParam(':idsession', $sessionId);
+			if (!$queryPrep->execute())
+				throw new Exception("Get active chapter from session " . $sessionId . " error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
+	}
+
 	public static function getSessionStatus($userId, $sessionId) {
 		// Get session's chapter query
 		$query = "SELECT state FROM status WHERE iduser = :idUser AND idsession = :idSession";
@@ -284,6 +302,46 @@ class SessionRepository {
 				LogRepository::dbSave("Add chapter " . $creatorId);
 			else
 				throw new Exception("Add chapter " . $creatorId . " error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+	}
+
+	public static function updateChapter($name, $description, $creatorId, $chapterId, $date) {
+		// Update chapter query
+		$query = "UPDATE chapter SET title = :title, description = :description, idcreator = :idcreator, updatedate = :date WHERE id = :id";
+
+		try {
+			$queryPrep = DATABASE->prepare($query);
+			$queryPrep->bindParam(':title', $name);
+			$queryPrep->bindParam(':description', $description);
+			$queryPrep->bindParam(':idcreator', $creatorId);
+			$queryPrep->bindParam(':id', $chapterId );
+			$queryPrep->bindParam(':date', $date);
+
+			if ($queryPrep->execute())
+				LogRepository::dbSave("update chapter " .$chapterId ."with creator". $creatorId);
+			else
+				throw new Exception("update chapter " . $chapterId . " error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+	}
+
+	public static function  deleteChapter($chapterId){
+		// Delete session query
+		$query = "UPDATE chapter SET title = 'deleted#" . $chapterId . "', active = 0 WHERE id = :idchapter";
+
+		// Delete session
+		try {
+			$queryPrep = DATABASE->prepare($query);
+			$queryPrep->bindParam(":idchapter", $chapterId);
+			if ($queryPrep->execute())
+				LogRepository::dbSave("Chapitre " . $chapterId . " delete");
+			else
+				throw new Exception("Delete chapitre " . $chapterId . " error");
 		} catch (Exception $e) {
 			// Log error
 			LogRepository::fileSave($e);
