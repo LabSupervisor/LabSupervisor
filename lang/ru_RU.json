@@ -71,6 +71,7 @@
 	"DASHBOARD_SESSION_END": "Закрыть сессию",
 	"DASHBOARD_CHANGE_VIEW": "Изменить вид",
 	"DASHBOARD_BUTTON_PAUSE": "Изменить состояние сеанса",
+	"DASHBOARD_PAUSE": "На паузе",
 	"DASHBOARD_BACK": "Назад",
 	"DASHBOARD_SCREENSHARE": "Поделиться экраном",
 	"DASHBOARD_SCREENSHARE_OPEN": "Открыть общий экран",

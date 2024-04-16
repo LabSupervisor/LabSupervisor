@@ -71,6 +71,7 @@
 	"DASHBOARD_SESSION_END": "End session",
 	"DASHBOARD_CHANGE_VIEW": "Change view",
 	"DASHBOARD_BUTTON_PAUSE": "Change session status",
+	"DASHBOARD_PAUSE": "Paused",
 	"DASHBOARD_BACK": "Back",
 	"DASHBOARD_SCREENSHARE": "Screen share",
 	"DASHBOARD_SCREENSHARE_OPEN": "Open screen share",

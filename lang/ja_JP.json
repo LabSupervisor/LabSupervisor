@@ -71,6 +71,7 @@
 	"DASHBOARD_SESSION_END": "セッションを終了する",
 	"DASHBOARD_CHANGE_VIEW": "表示を変更",
 	"DASHBOARD_BUTTON_PAUSE": "セッションのステータスを変更する",
+	"DASHBOARD_PAUSE": "一時停止中",
 	"DASHBOARD_BACK": "戻る",
 	"DASHBOARD_SCREENSHARE": "画面共有",
 	"DASHBOARD_SCREENSHARE_OPEN": "画面共有を開く",

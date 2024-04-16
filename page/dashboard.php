@@ -25,15 +25,17 @@
 
 	if (SessionRepository::getState($_SESSION["session"]) == 2) {
 		$state = "pause";
+		$stateText = " | " . lang("DASHBOARD_PAUSE");
 	} else {
 		$state = "play";
+		$stateText = "";
 	}
 ?>
 
 <link rel="stylesheet" href="/public/css/dashboard.css">
 
 <div class="mainbox button-container">
-	<h2><?= SessionRepository::getName($_SESSION["session"])?></h2>
+	<h2><?= SessionRepository::getName($_SESSION["session"]) . $stateText?></h2>
 	<?php if (SessionRepository::getInfo($_SESSION["session"])[0]["description"]) {?>
 		<a><?= SessionRepository::getInfo($_SESSION["session"])[0]["description"]?></a><br><br>
 	<?php } ?>
@@ -89,11 +91,7 @@
 
 					$status = "";
 					foreach (SessionRepository::getChapter($_SESSION["session"]) as $value) {
-						if ($state == "pause") {
-							$status = "<div class='statusBall'></div>";
-						} else {
-							$status = statusFormat($userId, SessionRepository::getChapterId($value["title"]), SessionRepository::getStatus(SessionRepository::getChapterId($value["title"]), $userId));
-						}
+						$status = statusFormat($userId, SessionRepository::getChapterId($value["title"]), SessionRepository::getStatus(SessionRepository::getChapterId($value["title"]), $userId));
 
 						echo "<td class='col2'>" . $status . "</td>";
 					}
@@ -123,11 +121,7 @@
 					$index = 1;
 					foreach (SessionRepository::getChapter($_SESSION["session"]) as $value) {
 						$chapterList .= $index . ". " . $value["title"] . "<br>";
-						if ($state == "pause") {
-							$statusList .= "<div class='statusBall'></div>";
-						} else {
-							$statusList .= statusFormat($userId, SessionRepository::getChapterId($value["title"]), SessionRepository::getStatus(SessionRepository::getChapterId($value["title"]), $userId));
-						}
+						$statusList .= statusFormat($userId, SessionRepository::getChapterId($value["title"]), SessionRepository::getStatus(SessionRepository::getChapterId($value["title"]), $userId));
 
 						$index++;
 					}
