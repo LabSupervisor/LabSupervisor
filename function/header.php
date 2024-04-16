@@ -4,7 +4,7 @@ namespace LabSupervisor\functions;
 use LabSupervisor\app\repository\UserRepository;
 
 if (!function_exists(__NAMESPACE__ . "/mainHeader")) {
-	function mainHeader($title) {
+	function mainHeader($title, $navbar) {
 		// Page title
 		if ($title != "")
 			$title = $title . " - " . lang("MAIN_TITLE");
@@ -39,8 +39,10 @@ if (!function_exists(__NAMESPACE__ . "/mainHeader")) {
 		if (isset($_SESSION["login"]))
 			echo "<script>var userId = ". UserRepository::getId($_SESSION["login"]) . "</script>";
 
-		// Import navbar
-		require($_SERVER["DOCUMENT_ROOT"] . "/include/navbar.php");
+		if ($navbar) {
+			// Import navbar
+			require($_SERVER["DOCUMENT_ROOT"] . "/include/navbar.php");
+		}
 
 		echo '<div id="main">';
 	}

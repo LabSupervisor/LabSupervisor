@@ -71,6 +71,9 @@
 	"DASHBOARD_SESSION_END": "Sitzung beenden",
 	"DASHBOARD_CHANGE_VIEW": "Ansicht ändern",
 	"DASHBOARD_BUTTON_PAUSE": "Status der Sitzung ändern",
+	"DASHBOARD_BACK": "Zurück",
+	"DASHBOARD_SCREENSHARE": "Bildschirm teilen",
+	"DASHBOARD_SCREENSHARE_OPEN": "Bildschirm teilen öffnen",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "Informationen",
 	"SESSION_CREATE_TITLE_PARTICIPANT": "Teilnehmer",

@@ -5,7 +5,7 @@
 		LabSupervisor\functions\permissionChecker;
 
 	// Import header
-	mainHeader(lang("REGISTER_TITLE"));
+	mainHeader(lang("REGISTER_TITLE"), true);
 
 	// Ask for permissions
 	permissionChecker(false, "");

@@ -71,6 +71,9 @@
 	"DASHBOARD_SESSION_END": "Sluit de sessie af",
 	"DASHBOARD_CHANGE_VIEW": "Verander weergave",
 	"DASHBOARD_BUTTON_PAUSE": "Wijzig de status van de sessie",
+	"DASHBOARD_BACK": "Terug",
+	"DASHBOARD_SCREENSHARE": "Scherm delen",
+	"DASHBOARD_SCREENSHARE_OPEN": "Scherm delen openen",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "Informatie",
 	"SESSION_CREATE_TITLE_PARTICIPANT": "Deelnemers",

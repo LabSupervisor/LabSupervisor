@@ -9,7 +9,7 @@
 		LabSupervisor\functions\permissionChecker;
 
 	// Import header
-	mainHeader("Session en cours");
+	mainHeader("Session en cours", true);
 
 	// Ask for permissions
 	permissionChecker(true, array(STUDENT));
@@ -86,12 +86,11 @@
 	echo "<br>LS-LINK : <form method='POST'><input type='hidden' name='sessionId' value='" . $_SESSION["session"] . "'><input type='number' name='number'/><input type='submit' name='link'/></form>";
 ?>
 
-<button id="getScreenshare">Get screenshare</button>
+<button id="shareButton">Start screenshare</button>
 <div id="screenshare"></div>
 
 <!-- Create "global" varaibles -->
 <script>
-	var userId = <?= UserRepository::getId($_SESSION["login"]) ?>;
 	var sessionId = <?= $_SESSION["session"] ?>;
 </script>
 

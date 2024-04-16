@@ -10,7 +10,7 @@
 		LabSupervisor\functions\statusFormat;
 
 	// Import header
-	mainHeader(lang("DASHBOARD_TITLE"));
+	mainHeader(lang("DASHBOARD_TITLE"), true);
 
 	// Ask for permissions
 	permissionChecker(true, array(TEACHER));
@@ -39,7 +39,7 @@
 	<?php } ?>
 	<div class="buttonBox">
 		<form method="POST">
-			<a class="button" href="/sessions">Retour</a>
+			<a class="button" href="/sessions"><?= lang("DASHBOARD_BACK") ?></a>
 			<input type="hidden" name="sessionId" value="<?= $_SESSION["session"] ?>">
 			<input class="button" type="submit" name="modify" value="<?= lang("SESSION_UPDATE") ?>">
 			<button class="button" type="submit" title="<?= lang("DASHBOARD_BUTTON_PAUSE") ?>" name="pause" value="<?= $state ?>"><i class="ri-<?= $state ?>-line"></i></button>
@@ -71,6 +71,8 @@
 			<thead>
 				<tr class="thead">
 					<th><?= lang("DASHBOARD_STUDENT_NAME") ?></th>
+					<th></th>
+					<th><?= lang("DASHBOARD_SCREENSHARE") ?></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -83,6 +85,7 @@
 					echo "<tr>";
 					echo "<td class='col1'>" . $participantName["name"] . "</td>";
 					echo "<td class='col1'>" . $participantName["surname"] . "</td>";
+					echo "<td><button class='screenShareButton' title=\"" . lang("DASHBOARD_SCREENSHARE_OPEN") . "\" id='getScreenshare' onclick='window.open(\"/screenshare?userId=" . $userId . "\", \"_blank\")'><i class='ri-eye-line'></i></button></td>";
 
 					$status = "";
 					foreach (SessionRepository::getChapter($_SESSION["session"]) as $value) {
@@ -103,6 +106,7 @@
 			<tr class="thead">
 				<th><?= lang("DASHBOARD_STUDENT_NAME") ?></th>
 				<th></th>
+				<th><?= lang("DASHBOARD_SCREENSHARE") ?></th>
 				<th><?= lang("DASHBOARD_CHAPTER") ?></th>
 				<th><?= lang("DASHBOARD_STATUS") ?></th>
 			</tr>
@@ -134,6 +138,7 @@
 					echo "<tr>";
 					echo "<td class='col1'>" . $participantName["name"] . "</td>";
 					echo "<td class='col1'>" . $participantName["surname"] . "</td>";
+					echo "<td><button class='screenShareButton' title=\"" . lang("DASHBOARD_SCREENSHARE_OPEN") . "\" id='getScreenshare' onclick='window.open(\"/screenshare?userId=" . $userId . "\", \"_blank\")'><i class='ri-eye-line'></i></button></td>";
 					echo "<td class='col2'>" . $chapterList . "</td>";
 					echo "<td class='col3'>" . $statusList . "</td>";
 					echo "</tr>";
@@ -171,7 +176,7 @@
 		function statusUpdate(status) {
 			Object.entries(status.Response).forEach(([participant, indexParticipant]) => {
 				Object.entries(status.Response[participant]).forEach(([chapter, indexChapter]) => {
-					
+
 					DOMElement = document.getElementById(participant + "_" + chapter);
 
 					let statusDisplay = "";
@@ -199,13 +204,6 @@
 		}
 	}, 3000);
 </script>
-
-<button id="getScreenshare">Get screenshare</button>
-<div id="screenshare"></div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.2/peerjs.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js"></script>
-<script src="/public/js/viewerScreenshare.js"></script>
 
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');

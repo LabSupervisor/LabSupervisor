@@ -1,0 +1,29 @@
+@font-face {
+	font-family: "Inter";
+	src: url("/public/css/import/inter.ttf");
+}
+
+.errormain {
+	display: block;
+	width: 80%;
+	margin: auto;
+	margin-top: 25vh;
+	text-align: center;
+}
+
+.errortitle {
+	font-size: 30px;
+}
+
+#screenshare {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+video {
+	width: 960px;
+	height: 540px;
+	border-radius: 10px;
+}
