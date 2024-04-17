@@ -1,5 +1,5 @@
 const grid = document.getElementById('screenshare');
-const socket = io('ws://localhost:3000');
+const socket = io('ws://' + videoServerHost +':' + videoServerPort);
 
 // Update video display
 function addVideoStream(mediaStream) {

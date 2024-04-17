@@ -147,9 +147,7 @@
 
 <script>
 	var idSession = <?= $_SESSION["session"] ?>;
-</script>
 
-<script>
 	setInterval(() => {
 		fetch("/connect", {
 			method: 'post',

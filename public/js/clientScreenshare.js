@@ -1,6 +1,6 @@
 const shareButton = document.getElementById('shareButton');
 const grid = document.getElementById('videogrid');
-const socket = io('ws://localhost:3000');
+const socket = io('ws://' + videoServerHost +':' + videoServerPort);
 let data = [];
 
 // Start sharing
