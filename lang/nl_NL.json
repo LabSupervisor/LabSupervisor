@@ -89,6 +89,12 @@
 	"SESSION_CREATE_DATE_DATE": "Datum",
 	"SESSION_CREATE_SUBMIT": "Opslaan",
 
+	"CLASSROOM_NAME": "Klassen",
+	"CLASSROOM_STUDENT_NAME": "Voornaam",
+	"CLASSROOM_STUDENT_SURNAME": "Achternaam",
+	"CLASSROOM_STUDENT_EMAIL": "E-mailadres",
+	"CLASSROOM_STUDENT_REMOVE": "Verwijderen",
+
 	"USER_UPDATE_SURNAME": "Achternaam",
 	"USER_UPDATE_NAME": "Voornaam",
 	"USER_UPDATE_EMAIL": "E-mail",

@@ -89,6 +89,12 @@
 	"SESSION_CREATE_DATE_DATE": "Fecha",
 	"SESSION_CREATE_SUBMIT": "Guardar",
 
+	"CLASSROOM_NAME": "Clases",
+	"CLASSROOM_STUDENT_NAME": "Nombre",
+	"CLASSROOM_STUDENT_SURNAME": "Apellido",
+	"CLASSROOM_STUDENT_EMAIL": "Correo electrónico",
+	"CLASSROOM_STUDENT_REMOVE": "Eliminar",
+
 	"USER_UPDATE_SURNAME": "Apellido",
 	"USER_UPDATE_NAME": "Nombre",
 	"USER_UPDATE_EMAIL": "Correo electrónico",

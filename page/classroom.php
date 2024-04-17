@@ -41,6 +41,7 @@
 
 	// Side menu
 	echo '<div id="lateral-selector" class="mainbox">';
+	echo "<h2>" . lang("CLASSROOM_NAME") . "</h2>";
 
 	for($i = 0; $i < count($classrooms); $i++) {
 		$classroom = $classrooms[$i];
@@ -72,9 +73,9 @@
 			<table>
 				<thead>
 					<tr>
-						<th>Nom</th>
-						<th>Prénom</th>
-						<th>Email</th>
+						<th><?= lang("CLASSROOM_STUDENT_SURNAME") ?></th>
+						<th><?= lang("CLASSROOM_STUDENT_NAME") ?></th>
+						<th><?= lang("CLASSROOM_STUDENT_EMAIL") ?></th>
 						<th></th>
 					</tr>
 				</thead>
@@ -98,7 +99,7 @@
 								<form action="" method="post">
 									<input type="hidden" name="class_id" value="<?= $classroom["id"] ?>">
 									<input type="hidden" name="remove_student" value="<?= $student["iduser"] ?>">
-									<input type="submit" class="button" value="Retirer">
+									<input type="submit" class="button" value="<?= lang("CLASSROOM_STUDENT_REMOVE") ?>">
 								</form>
 							</td>
 						</tr>

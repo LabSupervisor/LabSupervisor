@@ -89,6 +89,12 @@
 	"SESSION_CREATE_DATE_DATE": "Дата",
 	"SESSION_CREATE_SUBMIT": "Сохранить",
 
+	"CLASSROOM_NAME": "Классы",
+	"CLASSROOM_STUDENT_NAME": "Имя",
+	"CLASSROOM_STUDENT_SURNAME": "Фамилия",
+	"CLASSROOM_STUDENT_EMAIL": "Адрес электронной почты",
+	"CLASSROOM_STUDENT_REMOVE": "Удалить",
+
 	"USER_UPDATE_SURNAME": "Фамилия",
 	"USER_UPDATE_NAME": "Имя",
 	"USER_UPDATE_EMAIL": "Адрес электронной почты",

@@ -89,6 +89,12 @@
 	"SESSION_CREATE_DATE_DATE": "Date",
 	"SESSION_CREATE_SUBMIT": "Save changes",
 
+	"CLASSROOM_NAME": "Classroom",
+	"CLASSROOM_STUDENT_NAME": "Name",
+	"CLASSROOM_STUDENT_SURNAME": "Surname",
+	"CLASSROOM_STUDENT_EMAIL": "Email Address",
+	"CLASSROOM_STUDENT_REMOVE": "Remove",
+
 	"USER_UPDATE_SURNAME": "Surname",
 	"USER_UPDATE_NAME": "Name",
 	"USER_UPDATE_EMAIL": "Email address",
