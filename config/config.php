@@ -14,9 +14,10 @@ require $_SERVER["DOCUMENT_ROOT"] . "/vendor/autoload.php";
 // Load .env file
 $dotenv = Dotenv\Dotenv::createImmutable($_SERVER["DOCUMENT_ROOT"])->load();
 
-use LabSupervisor\app\repository\DatabaseRepository;
-use LabSupervisor\app\repository\ActiveDirectoryRepository;
-use LabSupervisor\app\repository\UserRepository;
+use
+	LabSupervisor\app\repository\DatabaseRepository,
+	LabSupervisor\app\repository\ActiveDirectoryRepository,
+	LabSupervisor\app\repository\UserRepository;
 
 // Create constants
 define("DEFAULT_LANGUAGE", $_ENV['DEFAULT_LANGUAGE']);

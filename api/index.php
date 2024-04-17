@@ -1,8 +1,9 @@
 <?php
 
-use LabSupervisor\app\repository\UserRepository;
-use LabSupervisor\app\repository\SessionRepository;
-use LabSupervisor\app\repository\LogRepository;
+use
+	LabSupervisor\app\repository\UserRepository,
+	LabSupervisor\app\repository\SessionRepository,
+	LabSupervisor\app\repository\LogRepository;
 use function LabSupervisor\functions\statusPicker;
 
 header('Content-Type: application/json');
