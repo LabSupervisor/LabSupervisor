@@ -105,18 +105,27 @@ function deleteChapter(button) {
 		let chapterContainer = button.parentNode;
 
 		// Récupérer l'ID du chapitre à supprimer en utilisant la classe 'chapter-id'
-		let deletedChapterId = chapterContainer.querySelector('.chapter-id').value;
+		let deletedChapterIdInput = chapterContainer.querySelector('.chapter-id');
+		console.log('deletedChapterIdInput : ' + deletedChapterIdInput);
 
-		// Créer un champ caché pour stocker l'ID du chapitre supprimé
-		let deletedChaptersInput = document.createElement('input');
-		deletedChaptersInput.setAttribute('type', 'hidden');
-		deletedChaptersInput.setAttribute('name', 'deletedChapters[]');
-		deletedChaptersInput.setAttribute('value', deletedChapterId);
-		document.querySelector('#formSession').appendChild(deletedChaptersInput);
+		// Si la balise n'existe pas, il faut simplement supprimer le container HTML
+		// if(deletedChapterIdInput == null){
+		// }
+		// Sinon, on continue le traitement de la suppression
+		if (deletedChapterIdInput !=null) {
+			deletedChapterId = deletedChapterIdInput.value;
+			console.log('deletedChapterId : ' + deletedChapterId);
+
+			// Créer un champ caché dans un autre formulaire pour stocker l'ID du chapitre supprimé
+			let deletedChaptersInput = document.createElement('input');
+			deletedChaptersInput.setAttribute('type', 'hidden');
+			deletedChaptersInput.setAttribute('name', 'deletedChapters[]');
+			deletedChaptersInput.setAttribute('value', deletedChapterId);
+			document.querySelector('#formSession').appendChild(deletedChaptersInput);
+		}
 
 		chapterContainer.remove();
 
-		document.getElementById('nbChapter').value = nbChapter - 1;
 	} else {
 		alert("Vous ne pouvez pas supprimer tous les chapitres.");
 	}
