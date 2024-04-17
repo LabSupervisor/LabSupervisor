@@ -25,9 +25,11 @@
 
 	if (SessionRepository::getState($_SESSION["session"]) == 2) {
 		$state = "pause";
+		$stateButton = "<i class=\"ri-play-line\"></i>";
 		$stateText = " | " . lang("DASHBOARD_PAUSE");
 	} else {
 		$state = "play";
+		$stateButton = "<i class=\"ri-pause-line\"></i>";
 		$stateText = "";
 	}
 ?>
@@ -44,7 +46,7 @@
 			<a class="button" href="/sessions"><?= lang("DASHBOARD_BACK") ?></a>
 			<input type="hidden" name="sessionId" value="<?= $_SESSION["session"] ?>">
 			<input class="button" type="submit" name="modify" value="<?= lang("SESSION_UPDATE") ?>">
-			<button class="button" type="submit" title="<?= lang("DASHBOARD_BUTTON_PAUSE") ?>" name="pause" value="<?= $state ?>"><i class="ri-<?= $state ?>-line"></i></button>
+			<button class="button" type="submit" title="<?= lang("DASHBOARD_BUTTON_PAUSE") ?>" name="pause" value="<?= $state ?>"><?= $stateButton ?></button>
 			<input class="button" type="submit" name="close" value="<?= lang("DASHBOARD_SESSION_END") ?>">
 		</form>
 		<form method="get">
