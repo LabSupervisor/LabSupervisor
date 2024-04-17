@@ -7,7 +7,7 @@
 		LabSupervisor\functions\lang,
 		LabSupervisor\functions\permissionChecker;
 
-	mainHeader(lang("NAVBAR_CLASS"));
+	mainHeader(lang("NAVBAR_CLASS"), true);
 
 	permissionChecker(true, array(TEACHER));
 
