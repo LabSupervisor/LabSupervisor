@@ -10,7 +10,7 @@
 		LabSupervisor\functions\nameFormat;
 
 	// Import header
-	mainHeader(lang("NAVBAR_SESSION"));
+	mainHeader(lang("NAVBAR_SESSION"), true);
 
 	// Ask for permissions and store it
 	$roleList = permissionChecker(true, array(ADMIN, STUDENT, TEACHER));

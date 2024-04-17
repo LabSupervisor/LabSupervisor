@@ -7,10 +7,13 @@
 		LabSupervisor\functions\permissionChecker;
 
 	// Import header
-	mainHeader(lang("NAVBAR_PROFIL_ACCOUNT"));
+	mainHeader(lang("NAVBAR_PROFIL_ACCOUNT"), true);
 
 	// Ask for permissions
 	permissionChecker(true, array(ADMIN, STUDENT, TEACHER));
+
+	// Logic
+	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateUser.php");
 
 	// Delete account if ask for
 	if (isset($_POST["confirm_delete"])) {

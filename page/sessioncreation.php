@@ -7,7 +7,7 @@
 		LabSupervisor\functions\permissionChecker;
 
 	// Import header
-	mainHeader(lang("NAVBAR_CREATE_SESSION"));
+	mainHeader(lang("NAVBAR_CREATE_SESSION"), true);
 
 	// Ask for permissions
 	permissionChecker(true, array(TEACHER));

@@ -9,7 +9,7 @@
 		LabSupervisor\functions\permissionChecker;
 
 	// Import header
-	mainHeader(lang("NAVBAR_LOG"));
+	mainHeader(lang("NAVBAR_LOG"), true);
 
 	// Ask for permissions
 	permissionChecker(true, array(ADMIN));

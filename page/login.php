@@ -5,7 +5,7 @@
 		LabSupervisor\functions\permissionChecker;
 
 	// Import header
-	mainHeader(lang("NAVBAR_CONNECT"));
+	mainHeader(lang("NAVBAR_CONNECT"), true);
 
 	// Ask for permissions
 	permissionChecker(false, "");

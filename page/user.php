@@ -10,7 +10,7 @@
 		LabSupervisor\functions\roleFormat;
 
 	// Import header
-	mainHeader(lang("NAVBAR_USER"));
+	mainHeader(lang("NAVBAR_USER"), true);
 
 	// Ask for permissions
 	permissionChecker(true, array(ADMIN));

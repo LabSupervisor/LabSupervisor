@@ -7,7 +7,9 @@ let data = [];
 shareButton.addEventListener('click', async () => {
 	// Ask web browser
 	const mediaStream = await navigator.mediaDevices.getDisplayMedia({
-		video: true,
+		video: {
+			displaySurface: 'monitor'
+		},
 		audio: false
 	});
 

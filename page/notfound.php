@@ -5,7 +5,7 @@
 		LabSupervisor\functions\lang;
 
 	// Import header
-	mainHeader(lang("ERROR_NOTFOUND"));
+	mainHeader(lang("ERROR_NOTFOUND"), true);
 
 	http_response_code(404);
 ?>
