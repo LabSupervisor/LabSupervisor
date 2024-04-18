@@ -49,6 +49,13 @@ switch($_SERVER["REQUEST_METHOD"]) {
 				echo $state;
 			}
 
+			// Application asking to update user status
+			if ($data->ask == "update_status") {
+				SessionRepository::setStatus($data->idSession, $data->idChapter, $data->idUser, $data->idState);
+				// Answer API
+				echo '{"Response": {"Message": "Status updated."}}';
+			}
+
 			// Application asking for session state
 			if ($data->ask == "get_state") {
 				$status = SessionRepository::getState($data->idSession);

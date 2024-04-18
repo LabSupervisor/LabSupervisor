@@ -34,11 +34,6 @@
 
 <link rel="stylesheet" href="/public/css/sessionpanel.css">
 
-<form method="post" id="formupdate">
-	<input type="hidden" name="chapter" value="0" id="chapter">
-	<input type="hidden" name="status" value="0" id="status">
-</form>
-
 <div id="statusBoxPaused" <?= $styleTitle ?>>
 	<h2><?= lang("SESSION_PAUSED") ?></h2>
 </div>
@@ -54,16 +49,30 @@
 		</thead>
 		<tbody>
 			<?php
-				foreach (SessionRepository::getChapter($_SESSION["session"]) as $chapter) { ?>
+				foreach (SessionRepository::getChapter($_SESSION["session"]) as $chapter) {
+
+					$statusBall = "statusBall";
+					switch (SessionRepository::getStatus($chapter['id'], UserRepository::getId($_SESSION["login"]))) {
+						case "1":
+							$statusBall = "statusBall statusRed";
+							break;
+						case "2":
+							$statusBall = "statusBall statusYellow";
+							break;
+						case "3":
+							$statusBall = "statusBall statusGreen";
+							break;
+					}
+			?>
 				<tr>
 					<td class="col1"><?= $chapter["title"] ?></td>
 					<td class="col2">
 						<input type="hidden" name="liste" value="<?php echo $chapter['id']; ?>">
-						<button class="button" onclick="setStatus(<?=$chapter['id']?>,1)"><i class="ri-error-warning-line"></i>J'ai besoin d'aide !</button>
-						<button class="button" onclick="setStatus(<?=$chapter['id']?>,2)"><i class="ri-edit-line"></i> Travail en cours...</button>
-						<button class="button" onclick="setStatus(<?=$chapter['id']?>,3)"><i class="ri-thumb-up-line"></i> Terminé !</button>
+						<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 1)"><i class="ri-error-warning-line"></i>J'ai besoin d'aide !</button>
+						<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 2)"><i class="ri-edit-line"></i> Travail en cours...</button>
+						<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 3)"><i class="ri-thumb-up-line"></i> Terminé !</button>
 					</td>
-					<td class="col3"><?= SessionRepository::getStatus($chapter['id'], UserRepository::getId($_SESSION["login"])) ?></td>
+					<td class="col3"><div class="<?= $statusBall ?>" id="statusBall_<?= $chapter['id'] ?>"></div></td>
 				</tr>
 			<?php
 				}
