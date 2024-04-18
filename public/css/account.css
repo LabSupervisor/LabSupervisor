@@ -83,3 +83,7 @@ input::placeholder {
 .checkboxContainer label {
 	margin-left: 10px;
 }
+
+.confirmDelete .back {
+	margin-right: 30px;
+}
