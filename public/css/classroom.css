@@ -54,12 +54,11 @@
 }
 
 .select-student {
-	padding: 10px;
-	border-radius: 5px;
-	background-color: var(--button-background-color);
+	background: var(--case-field-background-color);
 	border: 0;
-}
-
-.select-student:hover {
-	background-color: var(--button-hover-color);
+	border-radius: 7px;
+	font-size: 15px;
+	padding: 9px;
+	color: var(--text-color);
+	cursor: pointer;
 }

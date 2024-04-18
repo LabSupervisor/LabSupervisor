@@ -27,6 +27,10 @@ h2 {
 	width: -webkit-fill-available;
 }
 
+.lang {
+	cursor: pointer;
+}
+
 .PasswordContainer {
 	position: relative;
 }
