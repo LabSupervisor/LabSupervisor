@@ -37,7 +37,12 @@ if (!function_exists(__NAMESPACE__ . "/mainHeader")) {
 		echo $header;
 
 		if (isset($_SESSION["login"]))
-			echo "<script>var userId = ". UserRepository::getId($_SESSION["login"]) . "</script>";
+			echo
+				"<script>" .
+					"var userId = ". UserRepository::getId($_SESSION["login"]) . ";" .
+					"var userLang = '". UserRepository::getSetting($_SESSION["login"])["lang"] . "';" .
+					"var defaultLang = '". DEFAULT_LANGUAGE . "';" .
+				"</script>";
 
 		if ($navbar) {
 			// Import navbar

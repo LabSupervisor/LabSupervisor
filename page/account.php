@@ -39,8 +39,7 @@
 				$userLang = UserRepository::getSetting($_SESSION["login"])["lang"];
 
 				$langList = scandir($_SERVER["DOCUMENT_ROOT"] . "/lang/");
-				$temp = array(".", "..");
-				$langList = array_diff($langList, $temp);
+				$langList = array_diff($langList, array(".", "..", "index.php"));
 
 				foreach($langList as $lang) {
 					$lang = str_replace(".json", "", $lang);

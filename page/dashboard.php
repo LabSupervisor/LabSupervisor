@@ -145,6 +145,8 @@
 	</table>
 </div>
 
+<script src="/public/js/ft_lang.js"></script>
+
 <script>
 	var idSession = <?= $_SESSION["session"] ?>;
 
@@ -174,21 +176,22 @@
 					DOMElement = document.getElementById(participant + "_" + chapter);
 
 					let statusDisplay = "";
-					let text = "<?= lang("DASHBOARD_STATUS_WAITING") ?>";
+					let text = "";
 					if (status.Response[participant][chapter] == 0) {
+						text = lang("DASHBOARD_STATUS_WAITING");
 						statusDisplay = "";
 					}
 					if (status.Response[participant][chapter] == 1) {
 						statusDisplay = "statusRed";
-						text = "<?= lang("DASHBOARD_STATUS_RED") ?>";
+						text = lang("DASHBOARD_STATUS_RED");
 					}
 					if (status.Response[participant][chapter] == 2) {
 						statusDisplay = "statusYellow";
-						text = "<?= lang("DASHBOARD_STATUS_YELLOW") ?>";
+						text = lang("DASHBOARD_STATUS_YELLOW");
 					}
 					if (status.Response[participant][chapter] == 3) {
 						statusDisplay = "statusGreen";
-						text = "<?= lang("DASHBOARD_STATUS_GREEN") ?>";
+						text = lang("DASHBOARD_STATUS_GREEN");
 					}
 
 					DOMElement.className = "statusBall " + statusDisplay;
