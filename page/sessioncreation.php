@@ -18,35 +18,6 @@
 
 <link rel="stylesheet" href="/public/css/sessioncreation.css">
 
-<script>
-	// Update chapter count
-	var nbChapter = 1;
-
-	function addChapter() {
-		nbChapter++;
-		let div = document.createElement('div');
-
-		let inputTitle = document.createElement('input');
-		inputTitle.setAttribute("type", "text");
-		inputTitle.setAttribute("placeholder", "<?= lang("SESSION_CREATE_CHAPTER_TITLE") ?>");
-		inputTitle.setAttribute("name", "titleChapter" + nbChapter);
-		inputTitle.classList.add('field');
-		div.appendChild(inputTitle);
-
-		let inputDescription = document.createElement('textarea');
-		inputDescription.setAttribute("name", "chapterDescription" + nbChapter);
-		inputDescription.setAttribute("placeholder", "<?= lang("SESSION_CREATE_CHAPTER_DESCRIPTION") ?>");
-		inputDescription.classList.add('field');
-		div.appendChild(inputDescription);
-
-		let btnChapter = document.getElementById('btn-chapter');
-		let parentDiv = btnChapter.parentNode;
-		parentDiv.insertBefore(div, btnChapter);
-
-		document.getElementById('nbChapter').value = nbChapter;
-	}
-</script>
-
 <div class="mainbox maindiv">
 	<form class="sessions" method="post">
 		<input type="hidden" value="1" name="nbChapter" id="nbChapter">
@@ -87,6 +58,13 @@
 		<input type="submit" name="saveSession" class="button save" value="<?= lang("SESSION_CREATE_SUBMIT") ?>">
 	</div>
 </form>
+
+<script>
+	var nbChapter = 1;
+</script>
+
+<script src="/public/js/ft_lang.js"></script>
+<script src="/public/js/ft_addChapter.js"></script>
 
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');
