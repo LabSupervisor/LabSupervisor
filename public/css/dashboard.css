@@ -123,3 +123,8 @@ tr:not(.thead) {
 .screenShareButton:hover {
 	color: var(--text-hover-color);
 }
+
+.back {
+	margin-left: 30px;
+	margin-right: 30px;
+}

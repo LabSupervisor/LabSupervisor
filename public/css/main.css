@@ -153,6 +153,16 @@ body {
 	cursor: pointer;
 }
 
+.back {
+	cursor: pointer;
+	transition: 200ms;
+}
+
+.back:hover {
+	color: var(--text-hover-color);
+	transition: 200ms;
+}
+
 /* Checkbox style */
 .checkboxContainer {
 	position: relative;

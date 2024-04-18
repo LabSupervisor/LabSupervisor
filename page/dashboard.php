@@ -32,6 +32,18 @@
 		$stateButton = "<i class=\"ri-pause-line\"></i>";
 		$stateText = "";
 	}
+
+	$view = "detail";
+	$currentView = "default";
+	if (isset($_GET["view"])) {
+		if ($_GET["view"] == "default") {
+			$view = "detail";
+			$currentView = "default";
+		} else {
+			$view = "default";
+			$currentView = "detail";
+		}
+	}
 ?>
 
 <link rel="stylesheet" href="/public/css/dashboard.css">
@@ -43,28 +55,15 @@
 	<?php } ?>
 	<div class="buttonBox">
 		<form method="POST">
-			<a class="button" href="/sessions"><?= lang("DASHBOARD_BACK") ?></a>
+			<a class="back" href="/sessions"><i class="ri-arrow-left-line"></i> <?= lang("DASHBOARD_BACK") ?></a>
 			<input type="hidden" name="sessionId" value="<?= $_SESSION["session"] ?>">
-			<input class="button" type="submit" name="modify" value="<?= lang("SESSION_UPDATE") ?>">
-			<button class="button" type="submit" title="<?= lang("DASHBOARD_BUTTON_PAUSE") ?>" name="pause" value="<?= $state ?>"><?= $stateButton ?></button>
-			<input class="button" type="submit" name="close" value="<?= lang("DASHBOARD_SESSION_END") ?>">
+			<button class="button" type="submit" name="modify"><i class="ri-pencil-line"></i> <?= lang("SESSION_UPDATE") ?></button>
+			<button class="button" type="submit" name="pause" value="<?= $state ?>" title="<?= lang("DASHBOARD_BUTTON_PAUSE") ?>"><?= $stateButton ?></button>
+			<button class="button" type="submit" name="close"><i class="ri-close-circle-line"></i> <?= lang("DASHBOARD_SESSION_END") ?></button>
 		</form>
 		<form method="get">
-			<?php
-				$view = "detail";
-				$currentView = "default";
-				if (isset($_GET["view"])) {
-					if ($_GET["view"] == "default") {
-						$view = "detail";
-						$currentView = "default";
-					} else {
-						$view = "default";
-						$currentView = "detail";
-					}
-				}
-			?>
 			<input type="hidden" name="view" value="<?= $view ?>">
-			<input class="button" type="submit" value="<?= lang("DASHBOARD_CHANGE_VIEW") ?>">
+			<button class="button" type="submit"><i class="ri-arrow-left-right-line"></i> <?= lang("DASHBOARD_CHANGE_VIEW") ?></button>
 		</form>
 	</div>
 </div>
