@@ -31,25 +31,18 @@ if (isset($_POST['saveSession'])) {
 	// Add classroom student to session
 	$classUsers = ClassroomRepository::getUsers(ClassroomRepository::getName($_POST["classes"]));
 
-	$nbChapter = $_POST["nbChapter"];
-	for($i = 1; $i<= $nbChapter; $i++){
-		$titleChapter = $_POST['titleChapter'.$i];
-		$chapterDescription = $_POST['chapterDescription'.$i];
+	if (isset($_POST['addChapters'])){
+		$addChapters = $_POST['addChapters'];
+		foreach ($addChapters as $addChapter){
 
-		if ($titleChapter == ""){
-			continue;
-		}
-
-		// Add chapters
-		SessionRepository::addChapter($_POST['titleChapter'.$i], $_POST['chapterDescription'.$i], $creatorId, $title);
-
-		$chapterId = SessionRepository::getChapterId($titleChapter);
-
-		// Add status
-		foreach ($classUsers as $userId) {
-			SessionRepository::addStatus($sessionId, $chapterId, $userId["iduser"]);
+			SessionRepository::addChapter($addChapter['title'], $addChapter['desc'], $creatorId,  $sessionId);
 		}
 	}
+
+	// // Add status
+	// foreach ($classUsers as $userId) {
+	// 	SessionRepository::addStatus($sessionId, $chapterId, $userId["iduser"]);
+	// }
 
 	// Add participants
 	foreach ($classUsers as $userId) {
@@ -85,14 +78,13 @@ else if (isset($_POST['updateSession'])){
 	$sessionRepo->update($session);
 	$sessionData = SessionRepository::getInfo($idSession);
 
-	$chapterActiveBd = SessionRepository::getActiveChapter($idSession);
-	// var_dump($chapterActiveBd ) ;
-	// echo '</br>' . '</br>' ;
-
-	//nombre de chapitre dans la page
-	$nbChapter = $_POST["nbChapter"];
-	// echo "nombre chapitre sur la page : " . $nbChapter . '</br>';
-	// var_dump($_POST);
+	if (isset($_POST['addChapters'])){
+		$addChapters = $_POST['addChapters'];
+		foreach ($addChapters as $addChapter){
+			SessionRepository::addChapter($addChapter['title'], $addChapter['desc'], $creatorId,  $idSession);
+		}
+	}
+		//	to do, add status
 
 	if (isset($_POST['updatedChapters'])) {
 		$updatedChapters = $_POST['updatedChapters'] ;
@@ -108,7 +100,6 @@ else if (isset($_POST['updateSession'])){
 		}
 	}
 
-	//	to do, add status
 	header("Location: /sessions");
 }
 
@@ -118,14 +109,3 @@ else if (isset($_POST['sessionId'])){
 	$sessionData = SessionRepository::getInfo($_POST['sessionId']);
 	$session = new Session($sessionData[0]);
 }
-
-// Case 4 : delete a chapter
-// else if (isset($_POST['deleteChapters[]'])){
-// 	$chapterIds = $_POST["deleteChapters[]"];
-// 	var_dump($chapterIds);
-// 	foreach ($chapterIds as $chapterId) {
-// 		SessionRepository::deleteChapter($chapterId);
-// 	}
-// 	header("Location: /sessions");
-
-// }

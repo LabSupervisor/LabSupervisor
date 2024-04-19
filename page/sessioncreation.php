@@ -15,125 +15,12 @@
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php');
+
+	$idProv = 1;
 ?>
 
 <link rel="stylesheet" href="/public/css/sessioncreation.css">
-
-<script>
-function addToChapterToBeUpdatedList(updatedChapterId){
-	// alert(updatedChapterId);
-
-	if(document.querySelector('#_'+updatedChapterId) == null){
-		let updatedChaptersInput = document.createElement('input');
-		updatedChaptersInput.setAttribute('type', 'hidden');
-		updatedChaptersInput.setAttribute('id', '_' + updatedChapterId );
-		updatedChaptersInput.setAttribute('name', 'updatedChapters['+updatedChapterId+'][id]');
-		updatedChaptersInput.setAttribute('value', updatedChapterId);
-		document.querySelector('#formSession').appendChild(updatedChaptersInput);
-	}
-
-	if(document.querySelector('#_title_'+updatedChapterId) == null){
-		let updatedChapterTitle = document.querySelector('#titleChapter'+updatedChapterId).value;
-		updatedChaptersInput = document.createElement('input');
-		updatedChaptersInput.setAttribute('type', 'hidden');
-		updatedChaptersInput.setAttribute('id', '_title_' + updatedChapterId );
-		updatedChaptersInput.setAttribute('name', 'updatedChapters['+updatedChapterId+'][title]');
-		updatedChaptersInput.setAttribute('value', updatedChapterTitle);
-		document.querySelector('#formSession').appendChild(updatedChaptersInput);
-	} else {
-		// mettre à jour la value
-		let updatedChapterTitle = document.querySelector('#titleChapter'+updatedChapterId).value;
-		updatedChaptersInput.setAttribute('value', updatedChapterTitle);
-	}
-
-	if(document.querySelector('#_desc_'+updatedChapterId) == null){
-		let updatedChapterDesc = document.querySelector('#chapterDescription'+updatedChapterId).value;
-		updatedChaptersInput = document.createElement('input');
-		updatedChaptersInput.setAttribute('type', 'hidden');
-		updatedChaptersInput.setAttribute('id', '_desc_' + updatedChapterId );
-		updatedChaptersInput.setAttribute('name', 'updatedChapters['+updatedChapterId+'][desc]');
-		updatedChaptersInput.setAttribute('value', updatedChapterDesc);
-		document.querySelector('#formSession').appendChild(updatedChaptersInput);
-	} else {
-		// mettre à jour la value
-		let updatedChapterDesc = document.querySelector('#chapterDescription'+updatedChapterId).value;
-		updatedChaptersInput.setAttribute('value', updatedChapterDesc);
-	}
-}
-
-function addChapter(){
-	let nbChapter = document.getElementById('nbChapter').value;
-	nbChapter++;
-
-	let div = document.createElement('div');
-	div.classList.add('chapter-container');
-
-	let inputTitle = document.createElement('input');
-	inputTitle.setAttribute("type", "text");
-	inputTitle.setAttribute("placeholder", "<?= lang("SESSION_CREATE_CHAPTER_TITLE") ?>");
-	inputTitle.setAttribute("name", "titleChapter" + nbChapter);
-	inputTitle.classList.add('field');
-	div.appendChild(inputTitle);
-
-	let inputDescription = document.createElement('textarea');
-	inputDescription.setAttribute("name", "chapterDescription" + nbChapter);
-	inputDescription.setAttribute("placeholder", "<?= lang("SESSION_CREATE_CHAPTER_DESCRIPTION") ?>");
-	inputDescription.classList.add('field');
-	div.appendChild(inputDescription);
-
-	// Bouton de suppression
-	let deleteButton = document.createElement('button');
-	deleteButton.setAttribute("type", "button");
-	deleteButton.classList.add('button', 'chapterButton');
-	deleteButton.textContent = '- Chapitre';
-	deleteButton.addEventListener('click', function() {
-		deleteChapter(this);
-	});
-	div.appendChild(deleteButton);
-
-	// Insérer la nouvelle zone de chapitre après le dernier chapitre existant
-	let lastChapterContainer = document.querySelector('.chapter-container:last-of-type');
-	lastChapterContainer.parentNode.insertBefore(div, lastChapterContainer.nextSibling);
-
-	document.getElementById('nbChapter').value = nbChapter;
-}
-
-function deleteChapter(button) {
-	let nbChapter = document.querySelectorAll('.chapter-container').length;
-
-	if (nbChapter > 1) {
-		let chapterContainer = button.parentNode;
-
-		// Récupérer l'ID du chapitre à supprimer en utilisant la classe 'chapter-id'
-		let deletedChapterIdInput = chapterContainer.querySelector('.chapter-id');
-		console.log('deletedChapterIdInput : ' + deletedChapterIdInput);
-
-		// Si la balise n'existe pas, il faut simplement supprimer le container HTML
-		// if(deletedChapterIdInput == null){
-		// }
-		// Sinon, on continue le traitement de la suppression
-		if (deletedChapterIdInput !=null) {
-			deletedChapterId = deletedChapterIdInput.value;
-			console.log('deletedChapterId : ' + deletedChapterId);
-
-			// Créer un champ caché dans un autre formulaire pour stocker l'ID du chapitre supprimé
-			let deletedChaptersInput = document.createElement('input');
-			deletedChaptersInput.setAttribute('type', 'hidden');
-			deletedChaptersInput.setAttribute('name', 'deletedChapters[]');
-			deletedChaptersInput.setAttribute('value', deletedChapterId);
-			document.querySelector('#formSession').appendChild(deletedChaptersInput);
-		}
-
-		chapterContainer.remove();
-
-	} else {
-		alert("Vous ne pouvez pas supprimer tous les chapitres.");
-	}
-}
-
-
-</script>
-
+<script src="/public/js/session.js"></script>
 <div class="mainbox maindiv">
 	<form id="formSession" class="sessions" method="post">
 		<!-- Main informations -->
@@ -188,17 +75,13 @@ function deleteChapter(button) {
 				<?php
 			}
 
-			// Champ caché pour stocker les chapitres supprimés
+			// Champ caché pour stocker les chapitres supprimés //HEIN?
 
 		}
 		else  { //create session
 		?>
 			<div class="chapter-container">
-				<input placeholder="<?= lang("SESSION_CREATE_CHAPTER_TITLE") ?>" type="text" id="titleChapter1" class="field" name="titleChapter1">
-				<textarea placeholder="<?= lang("SESSION_CREATE_CHAPTER_DESCRIPTION") ?>" id="chapterDescription1" class="field" name="chapterDescription1"></textarea>
 
-				<!-- Delete chapter button -->
-				<button type="button" id="delete-chapter" class="button chapterButton" onclick="deleteChapter(this)">- Chapitre</button>
 			</div>
 		<?php
 		}
@@ -208,7 +91,7 @@ function deleteChapter(button) {
 		<input type="hidden" value="<?= $nbChapter ?>" name="nbChapter" id="nbChapter">
 
 		<!-- Add chapter button -->
-		<button type="button" id="btn-chapter" class="button chapterButton" onclick="addChapter()">+ Chapitre</button>
+		<button type="button" id="btn-chapter" class="button chapterButton" data-id="1" onclick="addHTMLChapter('<?= lang("SESSION_CREATE_CHAPTER_TITLE") ?>', '<?= lang("SESSION_CREATE_CHAPTER_DESCRIPTION") ?>', this)">+ Chapitre</button>
 
 		<!-- Date -->
 		<h2><?= lang("SESSION_CREATE_TITLE_DATE") ?></h2>

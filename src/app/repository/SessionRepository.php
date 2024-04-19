@@ -285,8 +285,7 @@ class SessionRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
 	}
 
-	public static function addChapter($name, $description, $creatorId, $sessionName) {
-		$sessionId = SessionRepository::getId($sessionName);
+	public static function addChapter($name, $description, $creatorId, $sessionId) {
 
 		// Add chapter query
 		$query = "INSERT INTO chapter (idsession, title, description, idcreator) VALUES (:idsession, :title, :description, :idcreator)";
