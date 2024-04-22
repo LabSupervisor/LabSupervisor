@@ -40,7 +40,7 @@ class SessionRepository {
 
 	public function update(Session $entity) {
 		$bindParam = $entity->__toArray();
-		$sessionId = SessionRepository::getId($bindParam["title"]);
+		// $sessionId = SessionRepository::getId($bindParam["title"]);
 
 		// Update session query
 		$query = "UPDATE session SET title = :title, description = :description, idcreator = :idcreator, date = :date WHERE id = :id";
@@ -52,7 +52,7 @@ class SessionRepository {
 			$queryPrep->bindParam(":description", $bindParam["description"]);
 			$queryPrep->bindParam(":idcreator", $bindParam["idcreator"]);
 			$queryPrep->bindParam(":date", $bindParam["date"]);
-			$queryPrep->bindParam(":id", $sessionId);
+			$queryPrep->bindParam(":id", $bindParam["id"]);
 			if ($queryPrep->execute())
 				LogRepository::dbSave("Update session " . $bindParam["title"]);
 			else
@@ -307,9 +307,9 @@ class SessionRepository {
 		}
 	}
 
-	public static function updateChapter($name, $description, $creatorId, $chapterId, $date) {
+	public static function updateChapter($name, $description, $creatorId, $chapterId) {
 		// Update chapter query
-		$query = "UPDATE chapter SET title = :title, description = :description, idcreator = :idcreator, updatedate = :date WHERE id = :id";
+		$query = "UPDATE chapter SET title = :title, description = :description, idcreator = :idcreator WHERE id = :id ";
 
 		try {
 			$queryPrep = DATABASE->prepare($query);
@@ -317,7 +317,6 @@ class SessionRepository {
 			$queryPrep->bindParam(':description', $description);
 			$queryPrep->bindParam(':idcreator', $creatorId);
 			$queryPrep->bindParam(':id', $chapterId );
-			$queryPrep->bindParam(':date', $date);
 
 			if ($queryPrep->execute())
 				LogRepository::dbSave("update chapter " .$chapterId ."with creator". $creatorId);

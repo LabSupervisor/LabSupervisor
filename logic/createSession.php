@@ -28,26 +28,24 @@ if (isset($_POST['saveSession'])) {
 	$sessionRepo->createSession($session);
 	$sessionId = SessionRepository::getId($title);
 
-	// Add classroom student to session
 	$classUsers = ClassroomRepository::getUsers(ClassroomRepository::getName($_POST["classes"]));
-
-	if (isset($_POST['addChapters'])){
-		$addChapters = $_POST['addChapters'];
-		foreach ($addChapters as $addChapter){
-
-			SessionRepository::addChapter($addChapter['title'], $addChapter['desc'], $creatorId,  $sessionId);
-		}
-	}
-
-	// // Add status
-	// foreach ($classUsers as $userId) {
-	// 	SessionRepository::addStatus($sessionId, $chapterId, $userId["iduser"]);
-	// }
 
 	// Add participants
 	foreach ($classUsers as $userId) {
 		SessionRepository::addParticipant($userId["iduser"], $title);
 	}
+
+	if (isset($_POST['addChapters'])){
+		$addChapters = $_POST['addChapters'];
+		foreach ($addChapters as $addChapter){
+			SessionRepository::addChapter($addChapter['title'], $addChapter['desc'], $creatorId,  $sessionId);
+			foreach ($classUsers as $userId) {
+				$chapterId = SessionRepository::getChapterId($addChapter['title']);
+				SessionRepository::addStatus($sessionId, $chapterId, $userId["iduser"]);
+			}
+		}
+	}
+
 	// Add teacher to his own session
 	SessionRepository::addParticipant(UserRepository::getId($_SESSION["login"]), $title);
 
@@ -56,40 +54,43 @@ if (isset($_POST['saveSession'])) {
 
 // Case 2 : update an existing session after the user pressed the 'Update' button
 else if (isset($_POST['updateSession'])){
-
 	$sessionRepo = new SessionRepository();
 
 	$title = $_POST['titleSession'];
 	$description = $_POST['descriptionSession'];
 	$creatorId = UserRepository::getId($_SESSION["login"]);
 	$date = $_POST['date'];
-	$idSession = $_POST['idSession'];
+	$sessionId = $_POST['idSession'];
 
 	$sessionData = array(
 		"title" => $title,
 		"description" => $description,
 		"idcreator" => $creatorId,
 		"date" => $date,
-		"idSession" => $idSession
+		"id" => $sessionId
 	);
 
 	// Create session
 	$session = new Session($sessionData);
 	$sessionRepo->update($session);
-	$sessionData = SessionRepository::getInfo($idSession);
+
+	$classUsers = ClassroomRepository::getUsers(ClassroomRepository::getName($_POST["classes"]));
 
 	if (isset($_POST['addChapters'])){
 		$addChapters = $_POST['addChapters'];
 		foreach ($addChapters as $addChapter){
-			SessionRepository::addChapter($addChapter['title'], $addChapter['desc'], $creatorId,  $idSession);
+			SessionRepository::addChapter($addChapter['title'], $addChapter['desc'], $creatorId,  $sessionId);
+			foreach ($classUsers as $userId) {
+				$chapterId = SessionRepository::getChapterId($addChapter['title']);
+				SessionRepository::addStatus($sessionId, $chapterId, $userId["iduser"]);
+			}
 		}
 	}
-		//	to do, add status
 
 	if (isset($_POST['updatedChapters'])) {
 		$updatedChapters = $_POST['updatedChapters'] ;
 		foreach ($updatedChapters as $updatedChapter){
-			SessionRepository::updateChapter($updatedChapter['title'], $updatedChapter['desc'], $creatorId, $updatedChapter['id'] , $date);
+			SessionRepository::updateChapter($updatedChapter['title'], $updatedChapter['desc'], $creatorId, $updatedChapter['id']);
 		}
 	}
 
@@ -106,6 +107,13 @@ else if (isset($_POST['updateSession'])){
 // Case 3 : prefill the session form with session data
 else if (isset($_POST['sessionId'])){
 	$sessionRepo = new SessionRepository();
-	$sessionData = SessionRepository::getInfo($_POST['sessionId']);
-	$session = new Session($sessionData[0]);
+	$sessionInfo = SessionRepository::getInfo($_POST['sessionId']);
+	$sessionData = array(
+		"title" => $sessionInfo[0]['title'],
+		"description" => $sessionInfo[0]['description'] ,
+		"idcreator" => $sessionInfo[0]['idcreator'],
+		"date" => $sessionInfo[0]['date'],
+		"idSession" => $sessionInfo[0]['id']
+	);
+	$session = new Session($sessionData);
 }
