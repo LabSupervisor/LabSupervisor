@@ -9,7 +9,7 @@
 		LabSupervisor\functions\permissionChecker;
 
 	// Import header
-	mainHeader("Session en cours");
+	mainHeader("Session en cours", true);
 
 	// Ask for permissions
 	permissionChecker(true, array(STUDENT));
@@ -32,18 +32,13 @@
 	}
 ?>
 
-<script src="/public/js/ft_updateStatus.js"></script>
-
-<form method="post" id="formupdate">
-	<input type="hidden" name="chapter" value="0" id="chapter">
-	<input type="hidden" name="status" value="0" id="status">
-</form>
+<link rel="stylesheet" href="/public/css/sessionpanel.css">
 
 <div id="statusBoxPaused" <?= $styleTitle ?>>
 	<h2><?= lang("SESSION_PAUSED") ?></h2>
 </div>
 
-<div id="statusBox" <?= $styleBox ?>>
+<div class="mainbox statusBox" id="statusBox" <?= $styleBox ?>>
 	<table>
 		<thead>
 			<tr>
@@ -54,22 +49,30 @@
 		</thead>
 		<tbody>
 			<?php
-				foreach (SessionRepository::getChapter($_SESSION["session"]) as $chapter) { ?>
+				foreach (SessionRepository::getChapter($_SESSION["session"]) as $chapter) {
+
+					$statusBall = "statusBall";
+					switch (SessionRepository::getStatus($chapter['id'], UserRepository::getId($_SESSION["login"]))) {
+						case "1":
+							$statusBall = "statusBall statusRed";
+							break;
+						case "2":
+							$statusBall = "statusBall statusYellow";
+							break;
+						case "3":
+							$statusBall = "statusBall statusGreen";
+							break;
+					}
+			?>
 				<tr>
-					<td>
-						<?php echo $chapter["title"]; ?>
-					</td>
-					<td>
+					<td class="col1"><?= $chapter["title"] ?></td>
+					<td class="col2">
 						<input type="hidden" name="liste" value="<?php echo $chapter['id']; ?>">
-						<button onclick="setStatus(<?=$chapter['id']?>,3)">Terminé !</button>
-						<button onclick="setStatus(<?=$chapter['id']?>,2)">Travail en cours...</button>
-						<button onclick="setStatus(<?=$chapter['id']?>,1)">J'ai besoin d'aide !</button>
+						<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 1)"><i class="ri-error-warning-line"></i>J'ai besoin d'aide !</button>
+						<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 2)"><i class="ri-edit-line"></i> Travail en cours...</button>
+						<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 3)"><i class="ri-thumb-up-line"></i> Terminé !</button>
 					</td>
-					<td>
-						<?php
-							echo SessionRepository::getStatus($chapter['id'], UserRepository::getId($_SESSION["login"]));
-						?>
-					</td>
+					<td class="col3"><div class="<?= $statusBall ?>" id="statusBall_<?= $chapter['id'] ?>"></div></td>
 				</tr>
 			<?php
 				}
@@ -86,14 +89,17 @@
 	echo "<br>LS-LINK : <form method='POST'><input type='hidden' name='sessionId' value='" . $_SESSION["session"] . "'><input type='number' name='number'/><input type='submit' name='link'/></form>";
 ?>
 
-<button id="getScreenshare">Get screenshare</button>
+<button id="shareButton">Start screenshare</button>
 <div id="screenshare"></div>
 
 <!-- Create "global" varaibles -->
 <script>
-	var userId = <?= UserRepository::getId($_SESSION["login"]) ?>;
 	var sessionId = <?= $_SESSION["session"] ?>;
+	var videoServerHost = "<?= $_ENV["VIDEO_SERVER_HOST"] ?>";
+	var videoServerPort = <?= $_ENV["VIDEO_SERVER_PORT"] ?>;
 </script>
+
+<script src="/public/js/ft_updateStatus.js"></script>
 
 <!-- Import PeerJS server -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.2/peerjs.min.js"></script>

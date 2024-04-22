@@ -1,18 +1,22 @@
-const getshareButton = document.getElementById('getScreenshare');
 const grid = document.getElementById('screenshare');
-const socket = io('ws://localhost:3000');
+const socket = io('ws://' + videoServerHost +':' + videoServerPort);
 
 // Update video display
 function addVideoStream(mediaStream) {
 	const video = document.createElement('video');
+	video.setAttribute("controls", "true");
 	video.srcObject = mediaStream;
 	grid.appendChild(video);
 	video.play();
 }
 
-getshareButton.addEventListener('click', async () => {
+startScrenshare();
+
+async function startScrenshare() {
 	const mediaStream = await navigator.mediaDevices.getDisplayMedia({
-		video: true,
+		video: {
+			displaySurface: 'monitor'
+		},
 		audio: false
 	});
 
@@ -21,7 +25,7 @@ getshareButton.addEventListener('click', async () => {
 
 	// Create peer connection
 	peer.on('open', function () {
-		socket.emit('get', 14);
+		socket.emit('get', requestId);
 	});
 
 	socket.on('response', id => {
@@ -30,5 +34,5 @@ getshareButton.addEventListener('click', async () => {
 		call.on('stream', stream => {
 			addVideoStream(stream);
 		});
-	})
-});
+	});
+}

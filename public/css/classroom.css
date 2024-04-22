@@ -1,0 +1,64 @@
+/* Side menu */
+#lateral-selector {
+	display: inline-block;
+	width: calc(20% - 4px);
+	margin: 10vh 5%;
+	vertical-align: top;
+}
+
+.classname {
+	margin: 5px 20px 5px 20px;
+	padding: 5px;
+	font-size: 20px;
+	cursor: pointer;
+	border-radius: 9px;
+	max-height: 80%;
+}
+
+.classname:hover {
+	background-color: var(--button-hover-color);
+}
+
+.classname[selected] {
+	background-color: var(--button-background-color);
+}
+
+/* Classroom's students */
+.content-class {
+	display: none;
+	width: calc(59% - 4px);
+	margin: 10vh 5%;
+}
+
+.content-class[selected] {
+	display: inline-block;
+}
+
+.content-class h2 {
+	margin-top: 10px;
+}
+
+.content-class table {
+	width: -webkit-fill-available;
+	margin: 2cqmin;
+	text-align: left;
+	border-collapse: collapse;
+}
+
+.content-class tr {
+	height: 40px;
+}
+
+.content-class tbody tr {
+	border-top: 1px solid var(--case-border-color);
+}
+
+.select-student {
+	background: var(--case-field-background-color);
+	border: 0;
+	border-radius: 7px;
+	font-size: 15px;
+	padding: 9px;
+	color: var(--text-color);
+	cursor: pointer;
+}

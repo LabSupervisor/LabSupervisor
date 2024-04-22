@@ -5,7 +5,7 @@
 		LabSupervisor\functions\lang;
 
 	// Import header
-	mainHeader(lang("SESSION_END"));
+	mainHeader(lang("SESSION_END"), true);
 ?>
 
 <link rel="stylesheet" href="/public/css/error.css">

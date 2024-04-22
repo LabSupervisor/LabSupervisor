@@ -1,0 +1,35 @@
+.statusBox {
+	text-align: center;
+	width: -webkit-fill-available;
+	margin-left: 15vh;
+	margin-right: 15vh;
+	padding: 20px;
+	user-select: none;
+}
+
+thead {
+	font-size: 24px;
+}
+
+th {
+	padding-left: 15px;
+	padding-right: 15px;
+	font-size: 20px;
+	padding-bottom: 22px;
+}
+
+td {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+tr {
+	padding: 100px;
+}
+
+tr:not(.thead) {
+	border: 0;
+	border-top: 1px;
+	border-style: solid;
+	border-color: var(--case-border-color);
+}

@@ -19,6 +19,21 @@
 	background: none;
 }
 
+/* Input autocomplete style */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px var(--case-field-background-color) inset;
+  -webkit-text-fill-color: var(--text-color);
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 body {
 	height: 100%;
 	width: 100%;
@@ -83,7 +98,7 @@ body {
 	text-align: center;
 
 	background-color: var(--background-case-color);
-	border-radius: 25px;
+	border-radius: 20px;
 	border-style: solid;
 	border-width: 2px;
 	border-color: var(--case-border-color);
@@ -136,6 +151,19 @@ body {
 	background-color: var(--button-hover-color);
 	transition: 200ms;
 	cursor: pointer;
+}
+
+.back {
+	background-color: transparent;
+	border: 0;
+	font-size: 16px;
+	cursor: pointer;
+	transition: 200ms;
+}
+
+.back:hover {
+	color: var(--text-hover-color);
+	transition: 200ms;
 }
 
 /* Checkbox style */

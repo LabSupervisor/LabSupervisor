@@ -5,7 +5,7 @@
 		LabSupervisor\functions\permissionChecker;
 
 	// Import header
-	mainHeader(lang("NAVBAR_CONNECT"));
+	mainHeader(lang("NAVBAR_CONNECT"), true);
 
 	// Ask for permissions
 	permissionChecker(false, "");
@@ -34,21 +34,7 @@
 	</form>
 </div>
 
-<script>
-	// Password Hide/Show script
-	function togglePasswordVisibility() {
-		var passwordInput = document.getElementById('password');
-		var eyeIcon = document.getElementById('eyeIcon');
-
-		if (passwordInput.type === 'password') {
-			passwordInput.type = 'text';
-			eyeIcon.className = 'ri-eye-line';
-		} else {
-			passwordInput.type = 'password';
-			eyeIcon.className = 'ri-eye-off-line';
-		}
-	}
-</script>
+<script src="/public/js/loginPassword.js"></script>
 
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');

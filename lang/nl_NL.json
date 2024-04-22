@@ -71,6 +71,10 @@
 	"DASHBOARD_SESSION_END": "Sluit de sessie af",
 	"DASHBOARD_CHANGE_VIEW": "Verander weergave",
 	"DASHBOARD_BUTTON_PAUSE": "Wijzig de status van de sessie",
+	"DASHBOARD_PAUSE": "Gepauzeerd",
+	"DASHBOARD_BACK": "Terug",
+	"DASHBOARD_SCREENSHARE": "Scherm delen",
+	"DASHBOARD_SCREENSHARE_OPEN": "Scherm delen openen",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "Informatie",
 	"SESSION_CREATE_TITLE_PARTICIPANT": "Deelnemers",
@@ -84,6 +88,12 @@
 	"SESSION_CREATE_CHAPTER_ADD": "+ Hoofdstuk",
 	"SESSION_CREATE_DATE_DATE": "Datum",
 	"SESSION_CREATE_SUBMIT": "Opslaan",
+
+	"CLASSROOM_NAME": "Klassen",
+	"CLASSROOM_STUDENT_NAME": "Voornaam",
+	"CLASSROOM_STUDENT_SURNAME": "Achternaam",
+	"CLASSROOM_STUDENT_EMAIL": "E-mailadres",
+	"CLASSROOM_STUDENT_REMOVE": "Verwijderen",
 
 	"USER_UPDATE_SURNAME": "Achternaam",
 	"USER_UPDATE_NAME": "Voornaam",

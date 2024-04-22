@@ -7,10 +7,13 @@
 		LabSupervisor\functions\permissionChecker;
 
 	// Import header
-	mainHeader(lang("NAVBAR_PROFIL_ACCOUNT"));
+	mainHeader(lang("NAVBAR_PROFIL_ACCOUNT"), true);
 
 	// Ask for permissions
 	permissionChecker(true, array(ADMIN, STUDENT, TEACHER));
+
+	// Logic
+	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateUser.php");
 
 	// Delete account if ask for
 	if (isset($_POST["confirm_delete"])) {
@@ -36,8 +39,7 @@
 				$userLang = UserRepository::getSetting($_SESSION["login"])["lang"];
 
 				$langList = scandir($_SERVER["DOCUMENT_ROOT"] . "/lang/");
-				$temp = array(".", "..");
-				$langList = array_diff($langList, $temp);
+				$langList = array_diff($langList, array(".", "..", "index.php"));
 
 				foreach($langList as $lang) {
 					$lang = str_replace(".json", "", $lang);
@@ -64,9 +66,9 @@
 			</button>
 		</div>
 
-		<input type="submit" class="button" value="<?= lang("ACCOUNT_SUBMIT") ?>">
+		<button type="submit" class="button"><i class="ri-save-2-line"></i> <?= lang("ACCOUNT_SUBMIT") ?></button>
 	</form>
-	<button class="button" id="showDeleteForm"><?= lang("ACCOUNT_DELETE") ?></button>
+	<button class="back" id="showDeleteForm"><i class="ri-delete-bin-line"></i> <?= lang("ACCOUNT_DELETE") ?></button>
 </div>
 
 <div id="confirmationForm" class="mainbox AccountDiv confirmDelete"  style="display: none;">
@@ -82,37 +84,12 @@
 		</label>
 
 		<br>
-		<button class="button deleteCaseButton" type="button" id="cancel"> <?= lang("ACCOUNT_DELETE_CANCEL") ?></button>
-		<input class="button deleteCaseButton" type="submit" name="confirm_delete" value="<?= lang("ACCOUNT_DELETE") ?>">
+		<button class="back deleteCaseButton" type="button" id="cancel"><i class="ri-arrow-left-line"></i> <?= lang("ACCOUNT_DELETE_CANCEL") ?></button>
+		<button class="button deleteCaseButton" type="submit" name="confirm_delete"><i class="ri-delete-bin-line"></i> <?= lang("ACCOUNT_DELETE") ?></button>
 	</form>
 </div>
 
-<script>
-	// Password Hide/Show script
-	function togglePasswordVisibility(inputId, eyeIconId) {
-		var passwordInput = document.getElementById(inputId);
-		var eyeIcon = document.getElementById(eyeIconId);
-
-		if (passwordInput.type === 'password') {
-			passwordInput.type = 'text';
-			eyeIcon.className = 'ri-eye-line';
-		} else {
-			passwordInput.type = 'password';
-			eyeIcon.className = 'ri-eye-off-line';
-		}
-	}
-
-	// Change div display
-	document.getElementById('showDeleteForm').addEventListener('click', function(event) {
-		document.getElementById('confirmationForm').style.display = 'block';
-		document.getElementById('updateCase').style.display = 'none';
-	});
-
-	document.getElementById('cancel').addEventListener('click', function() {
-		document.getElementById('confirmationForm').style.display = 'none';
-		document.getElementById('updateCase').style.display = 'block';
-	});
-</script>
+<script src="/public/js/accountPassword.js"></script>
 
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');

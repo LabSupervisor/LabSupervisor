@@ -3,7 +3,7 @@
 	use function LabSupervisor\functions\mainHeader;
 
 	// Import header
-	mainHeader("");
+	mainHeader("", true);
 ?>
 
 <a>Project LabSupervisor</a>

@@ -8,7 +8,7 @@
 		LabSupervisor\functions\permissionChecker;
 
 	// Import header
-	mainHeader(lang("NAVBAR_CREATE_SESSION"));
+	mainHeader(lang("NAVBAR_CREATE_SESSION"), true);
 
 	// Ask for permissions
 	permissionChecker(true, array(TEACHER));
@@ -20,7 +20,7 @@
 ?>
 
 <link rel="stylesheet" href="/public/css/sessioncreation.css">
-<script src="/public/js/session.js"></script>
+
 <div class="mainbox maindiv">
 	<form id="formSession" class="sessions" method="post">
 		<!-- Main informations -->
@@ -108,6 +108,13 @@
 		<?php } ?>
 	</form>
 </div>
+
+<script>
+	var nbChapter = 1;
+</script>
+
+<script src="/public/js/ft_lang.js"></script>
+<script src="/public/js/ft_addChapter.js"></script>
 
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');

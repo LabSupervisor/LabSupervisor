@@ -59,6 +59,9 @@ switch ($page[0]) {
 	case "/sessionend":
 		include "page/sessionend.php";
 		break;
+	case "/screenshare":
+		include "page/screenshare.php";
+		break;
 	case "/denied":
 		include "page/denied.php";
 		break;

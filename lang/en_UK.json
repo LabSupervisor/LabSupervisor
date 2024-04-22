@@ -71,6 +71,10 @@
 	"DASHBOARD_SESSION_END": "End session",
 	"DASHBOARD_CHANGE_VIEW": "Change view",
 	"DASHBOARD_BUTTON_PAUSE": "Change session status",
+	"DASHBOARD_PAUSE": "Paused",
+	"DASHBOARD_BACK": "Back",
+	"DASHBOARD_SCREENSHARE": "Screen share",
+	"DASHBOARD_SCREENSHARE_OPEN": "Open screen share",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "Informations",
 	"SESSION_CREATE_TITLE_PARTICIPANT": "Participants",
@@ -84,6 +88,12 @@
 	"SESSION_CREATE_CHAPTER_ADD": "+ Chapter",
 	"SESSION_CREATE_DATE_DATE": "Date",
 	"SESSION_CREATE_SUBMIT": "Save changes",
+
+	"CLASSROOM_NAME": "Classroom",
+	"CLASSROOM_STUDENT_NAME": "Name",
+	"CLASSROOM_STUDENT_SURNAME": "Surname",
+	"CLASSROOM_STUDENT_EMAIL": "Email Address",
+	"CLASSROOM_STUDENT_REMOVE": "Remove from classroom",
 
 	"USER_UPDATE_SURNAME": "Surname",
 	"USER_UPDATE_NAME": "Name",

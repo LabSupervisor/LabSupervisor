@@ -5,7 +5,7 @@
 		LabSupervisor\functions\lang;
 
 	// Import header
-	mainHeader(lang("ERROR_DENIED"));
+	mainHeader(lang("ERROR_DENIED"), true);
 
 	http_response_code(403);
 ?>
