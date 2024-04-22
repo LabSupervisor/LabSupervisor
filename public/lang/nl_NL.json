@@ -87,6 +87,7 @@
 	"SESSION_PANEL_LSLINK_CONNECT": "Verbinden",
 	"SESSION_PANEL_LSLINK_MODIFY": "Aanpassen",
 	"SESSION_PANEL_LSLINK_NUMBER": "Momenteel verbonden met LS-link #",
+	"SESSION_PANEL_LSLINK_DISCONNECT": "Ontkoppelen",
 	"SESSION_PANEL_PAUSED": "De sessie is tijdelijk onderbroken.",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "Informatie",

@@ -87,6 +87,7 @@
 	"SESSION_PANEL_LSLINK_CONNECT": "Verbinden",
 	"SESSION_PANEL_LSLINK_MODIFY": "Bearbeiten",
 	"SESSION_PANEL_LSLINK_NUMBER": "Derzeit mit LS-Link #",
+	"SESSION_PANEL_LSLINK_DISCONNECT": "Trennen",
 	"SESSION_PANEL_PAUSED": "Die Sitzung ist vorübergehend unterbrochen.",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "Informationen",

@@ -87,6 +87,7 @@
 	"SESSION_PANEL_LSLINK_CONNECT": "Conectar",
 	"SESSION_PANEL_LSLINK_MODIFY": "Modificar",
 	"SESSION_PANEL_LSLINK_NUMBER": "Actualmente conectado a LS-Link #",
+	"SESSION_PANEL_LSLINK_DISCONNECT": "Desconectar",
 	"SESSION_PANEL_PAUSED": "La sesión está temporalmente suspendida.",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "Información",

@@ -102,11 +102,21 @@
 
 		<?php
 			$buttonText = '<i class="ri-link"></i> ' . lang("SESSION_PANEL_LSLINK_CONNECT");
+			$unlinkButton = "";
 			if (UserRepository::getLink($_SESSION["login"], $_SESSION["session"])){
 				echo lang("SESSION_PANEL_LSLINK_NUMBER") . UserRepository::getLink($_SESSION["login"], $_SESSION["session"]);
 				$buttonText = '<i class="ri-pencil-line"></i> ' . lang("SESSION_PANEL_LSLINK_MODIFY");
+				$unlinkButton = "<button class='button' type='submit' name='disconnect' value=" . UserRepository::getLink($_SESSION["login"], $_SESSION["session"]) . "><i class=\"ri-dislike-line\"></i> " . lang("SESSION_PANEL_LSLINK_DISCONNECT") . "</button>";
 			}
-			echo "<form method='POST'><input type='hidden' name='sessionId' value='" . $_SESSION["session"] . "'><input class='lslinkid' type='number' name='number'/><button class='button' type='submit' name='link'>" . $buttonText . "</button></form>";
+			echo "<div class='lslinkButton'><form method='POST'>";
+			echo "<input type='hidden' name='sessionId' value='" . $_SESSION["session"] . "'>";
+			echo "<input class='lslinkid' type='number' name='number'/>";
+			echo "<button class='button' type='submit' name='link'>" . $buttonText . "</button>";
+			echo "</form>";
+
+			echo"<form method='POST'>";
+			echo $unlinkButton;
+			echo"</form></div>";
 		?>
 	</div>
 </div>

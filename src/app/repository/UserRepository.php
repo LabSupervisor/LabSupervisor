@@ -360,6 +360,28 @@ class UserRepository {
 		}
 	}
 
+	public static function unlink($userId, $sessionId, $moduleId) {
+		$query = "";
+		// Unlinks query
+		$query = "DELETE FROM link WHERE iduser = :iduser AND idsession = :idsession AND idlink = :idlink";
+
+		// Unlink
+		try {
+			$queryPrep = DATABASE->prepare($query);
+			$queryPrep->bindParam(':iduser', $userId);
+			$queryPrep->bindParam(':idsession', $sessionId);
+			$queryPrep->bindParam(':idlink', $moduleId);
+
+			if ($queryPrep->execute())
+				LogRepository::dbSave("Unlink " . $moduleId . " from " . $userId);
+			else
+				throw new Exception("Unlink " . $moduleId . " from " . $userId . " error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+	}
+
 	public static function getLink($email, $sessionId) {
 		$userId = UserRepository::getId($email);
 

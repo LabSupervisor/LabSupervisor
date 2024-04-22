@@ -87,6 +87,7 @@
 	"SESSION_PANEL_LSLINK_CONNECT": "Подключить",
 	"SESSION_PANEL_LSLINK_MODIFY": "Изменить",
 	"SESSION_PANEL_LSLINK_NUMBER": "В настоящее время подключено к LS-Link #",
+	"SESSION_PANEL_LSLINK_DISCONNECT": "Отключить",
 	"SESSION_PANEL_PAUSED": "Сеанс временно приостановлен.",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "Информация",
