@@ -81,7 +81,6 @@
 								echo "<form method='POST' action='/sessionmodifier'><input type='hidden' name='sessionId' value='" . $line["id"] . "'><button type='submit' class='button'><i class=\"ri-pencil-line\"></i> " . lang("SESSION_UPDATE") . "</button></form>";
 							}
 
-
 							// Only select existed user
 							if ($line["state"] != 0) {
 								if ($line["date"] > date('Y-m-d H:i:s')) {

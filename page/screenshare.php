@@ -13,22 +13,7 @@
 
 <?php
 	if (!isset($_GET["userId"])) {
-?>
-		<style>
-			* {
-				background-color: black;
-				color: white;
-				user-select: none;
-			}
-		</style>
-
-		<div class="errormain">
-			<div class="errorcontent">
-				<a class="errortitle">Invalid request.</a>
-			</div>
-		</div>
-<?php
-		return;
+		echo "<script>window.open('','_self').close();</script>";
 	}
 
 	mainHeader(UserRepository::getInfo(UserRepository::getEmail($_GET["userId"]))["name"] . " " . UserRepository::getInfo(UserRepository::getEmail($_GET["userId"]))["surname"], false);

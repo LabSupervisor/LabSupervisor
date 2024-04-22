@@ -3,18 +3,6 @@
 	src: url("/public/css/import/inter.ttf");
 }
 
-.errormain {
-	display: block;
-	width: 80%;
-	margin: auto;
-	margin-top: 25vh;
-	text-align: center;
-}
-
-.errortitle {
-	font-size: 30px;
-}
-
 #screenshare {
 	position: fixed;
 	top: 50%;
