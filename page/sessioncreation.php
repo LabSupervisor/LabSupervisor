@@ -25,9 +25,9 @@
 	<form id="formSession" class="sessions" method="post">
 		<!-- Main informations -->
 		<h2><?= lang("SESSION_CREATE_TITLE_INFORMATION") ?></h2>
-		<input type="text" placeholder="<?= lang("SESSION_CREATE_INFORMATION_TITLE") ?>" id="titleSession" class="field" name="titleSession" value="<?= isset($sessionData) ? $sessionData[0]['title'] : "" ?>" required>
+		<input type="text" placeholder="<?= lang("SESSION_CREATE_INFORMATION_TITLE") ?>" id="titleSession" class="field" name="titleSession" value="<?= isset($sessionData) ? $sessionData['title'] : "" ?>" required>
 
-		<textarea placeholder="<?= lang("SESSION_CREATE_INFORMATION_DESCRIPTION") ?>" id="descriptionSession" class="field" name="descriptionSession" required><?= isset($sessionData) ? $sessionData[0]['description'] : "" ?></textarea>
+		<textarea placeholder="<?= lang("SESSION_CREATE_INFORMATION_DESCRIPTION") ?>" id="descriptionSession" class="field" name="descriptionSession" required><?= isset($sessionData) ? $sessionData['description'] : "" ?></textarea>
 
 		<!-- Participants -->
 
@@ -55,7 +55,6 @@
 		// Check session exist (BD)
 		if (isset($_POST['sessionId'])) {
 			$tabChapter = SessionRepository::getActiveChapter($_POST['sessionId']);
-			$nbChapter = count($tabChapter);
 
 			// Print field exist chapter (BD)
 			foreach ($tabChapter as $i => $chapter) {
@@ -75,13 +74,10 @@
 				<?php
 			}
 
-			// Champ caché pour stocker les chapitres supprimés //HEIN?
-
 		}
 		else  { //create session
 		?>
 			<div class="chapter-container">
-
 			</div>
 		<?php
 		}
@@ -95,7 +91,7 @@
 
 		<!-- Date -->
 		<h2><?= lang("SESSION_CREATE_TITLE_DATE") ?></h2>
-		<input type="datetime-local" id="date" name="date" value="<?= isset($sessionData) ? $sessionData[0]['updatedate'] : "" ?>">
+		<input type="datetime-local" id="date" name="date" value="<?= isset($sessionData) ? $sessionData['date'] : "" ?>">
 
 		<!-- Send -->
 		<?php
