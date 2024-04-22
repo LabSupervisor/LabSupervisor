@@ -11,8 +11,8 @@ if (!function_exists(__NAMESPACE__ . "/lang")) {
 			$userLang = DEFAULT_LANGUAGE;
 
 		// Get value
-		if (file_exists($_SERVER["DOCUMENT_ROOT"] . "/lang/" . $userLang . ".json")) {
-			$json = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/lang/" . $userLang . ".json");
+		if (file_exists($_SERVER["DOCUMENT_ROOT"] . "/public/lang/" . $userLang . ".json")) {
+			$json = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/public/lang/" . $userLang . ".json");
 			$data = json_decode($json);
 		} else {
 			return "Missing entry";
@@ -23,7 +23,7 @@ if (!function_exists(__NAMESPACE__ . "/lang")) {
 			return $data->$key;
 		} else {
 			// If entry doesn't exists, get default value
-			$default = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/lang/" . DEFAULT_LANGUAGE . ".json");
+			$default = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/public/lang/" . DEFAULT_LANGUAGE . ".json");
 			$data = json_decode($default);
 			if (isset($data->$key)) {
 				return $data->$key;

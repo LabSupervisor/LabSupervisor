@@ -38,7 +38,7 @@
 			<?php
 				$userLang = UserRepository::getSetting($_SESSION["login"])["lang"];
 
-				$langList = scandir($_SERVER["DOCUMENT_ROOT"] . "/lang/");
+				$langList = scandir($_SERVER["DOCUMENT_ROOT"] . "/public/lang/");
 				$langList = array_diff($langList, array(".", "..", "index.php"));
 
 				foreach($langList as $lang) {

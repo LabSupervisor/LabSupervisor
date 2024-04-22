@@ -1,7 +1,7 @@
 let langData;
 var useLang = userLang || defaultLang;
 
-fetch("/lang/" + useLang + ".json")
+fetch("/public/lang/" + useLang + ".json")
 	.then(response => response.json())
 	.then(data => {
 		langData = data;
