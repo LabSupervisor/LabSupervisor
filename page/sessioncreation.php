@@ -1,6 +1,7 @@
 <?php
 
-	use LabSupervisor\app\repository\ClassroomRepository;
+	use LabSupervisor\app\repository\ClassroomRepository,
+		LabSupervisor\app\repository\SessionRepository;
 	use function
 		LabSupervisor\functions\mainHeader,
 		LabSupervisor\functions\lang,
@@ -14,20 +15,23 @@
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php');
+
+	$idProv = 1;
 ?>
 
 <link rel="stylesheet" href="/public/css/sessioncreation.css">
 
 <div class="mainbox maindiv">
-	<form class="sessions" method="post">
-		<input type="hidden" value="1" name="nbChapter" id="nbChapter">
-
+	<form id="formSession" class="sessions" method="post">
 		<!-- Main informations -->
 		<h2><?= lang("SESSION_CREATE_TITLE_INFORMATION") ?></h2>
-		<input type="text" placeholder="<?= lang("SESSION_CREATE_INFORMATION_TITLE") ?>" id="titleSession" class="field" name="titleSession" required>
-		<textarea placeholder="<?= lang("SESSION_CREATE_INFORMATION_DESCRIPTION") ?>" id="descriptionSession" class="field" name="descriptionSession"></textarea>
+		<input type="text" placeholder="<?= lang("SESSION_CREATE_INFORMATION_TITLE") ?>" id="titleSession" class="field" name="titleSession" value="<?= isset($sessionData) ? $sessionData[0]['title'] : "" ?>" required>
+
+		<textarea placeholder="<?= lang("SESSION_CREATE_INFORMATION_DESCRIPTION") ?>" id="descriptionSession" class="field" name="descriptionSession" required><?= isset($sessionData) ? $sessionData[0]['description'] : "" ?></textarea>
 
 		<!-- Participants -->
+
+		<!-- TODO : update session user (classe/users?) -->
 		<h2><?= lang("SESSION_CREATE_TITLE_PARTICIPANT") ?></h2>
 		<div class="custom-select">
 			<select name="classes" id="classes" class="field">
@@ -43,21 +47,67 @@
 		</div>
 
 		<!-- Chapters -->
-   		<h2><?= lang("SESSION_CREATE_TITLE_CHAPTER") ?></h2>
-		<input placeholder="<?= lang("SESSION_CREATE_CHAPTER_TITLE") ?>" type="text" id="titleChapter1" class="field" name="titleChapter1" required>
-		<textarea placeholder="<?= lang("SESSION_CREATE_CHAPTER_DESCRIPTION") ?>" id="chapterDescription1" class="field" name="chapterDescription1"></textarea>
+		<h2><?= lang("SESSION_CREATE_TITLE_CHAPTER") ?></h2>
+
+		<?php
+		$nbChapter = 1 ;
+
+		// Check session exist (BD)
+		if (isset($_POST['sessionId'])) {
+			$tabChapter = SessionRepository::getActiveChapter($_POST['sessionId']);
+			$nbChapter = count($tabChapter);
+
+			// Print field exist chapter (BD)
+			foreach ($tabChapter as $i => $chapter) {
+				?>
+				<div class="chapter-container" id="<?= $chapter["id"] ?>">
+					<!-- id chapter -->
+					<input type="hidden" class="chapter-id" id="idChapter<?= $chapter["id"] ?>" value="<?= $chapter["id"] ?>"/>
+
+					<input placeholder="<?= lang("SESSION_CREATE_CHAPTER_TITLE") ?>" type="text" id="titleChapter<?= $chapter["id"] ?>" class="field" value="<?= $chapter["title"] ?>" onchange="addToChapterToBeUpdatedList(this.parentNode.id)">
+
+					<textarea placeholder="<?= lang("SESSION_CREATE_CHAPTER_DESCRIPTION") ?>"
+					id="chapterDescription<?= $chapter["id"] ?>" class="field" onchange="addToChapterToBeUpdatedList(this.parentNode.id)" ><?= $chapter["description"] ?></textarea>
+
+					<!-- Delete chapter button -->
+					<button type="button" class="button chapterButton" onclick="deleteChapter(this)">- Chapitre</button>
+				</div>
+				<?php
+			}
+
+			// Champ caché pour stocker les chapitres supprimés //HEIN?
+
+		}
+		else  { //create session
+		?>
+			<div class="chapter-container">
+
+			</div>
+		<?php
+		}
+		?>
+
+		<!-- Field allowing you to keep the number of chapters, updated by the js, sent to the form for chapter management -->
+		<input type="hidden" value="<?= $nbChapter ?>" name="nbChapter" id="nbChapter">
 
 		<!-- Add chapter button -->
-		<button type="button" id="btn-chapter" class="button chapterButton" onclick="addChapter()">+ Chapitre</button>
+		<button type="button" id="btn-chapter" class="button chapterButton" data-id="1" onclick="addHTMLChapter('<?= lang("SESSION_CREATE_CHAPTER_TITLE") ?>', '<?= lang("SESSION_CREATE_CHAPTER_DESCRIPTION") ?>', this)">+ Chapitre</button>
 
 		<!-- Date -->
 		<h2><?= lang("SESSION_CREATE_TITLE_DATE") ?></h2>
-		<input type="datetime-local" id="date" name="date" required>
+		<input type="datetime-local" id="date" name="date" value="<?= isset($sessionData) ? $sessionData[0]['updatedate'] : "" ?>">
 
 		<!-- Send -->
-		<input type="submit" name="saveSession" class="button save" value="<?= lang("SESSION_CREATE_SUBMIT") ?>">
-	</div>
-</form>
+		<?php
+			if (isset($_POST['sessionId'])) {
+		?>
+			<input type="hidden" name="idSession" value="<?=$_POST['sessionId'] ?>" />
+			<input type="submit" name="updateSession" class="button save" value="Mettre à jour">
+		<?php } else {  ?>
+			<input type="submit" name="saveSession" class="button save" value="<?= lang("SESSION_CREATE_SUBMIT") ?>">
+		<?php } ?>
+	</form>
+</div>
 
 <script>
 	var nbChapter = 1;

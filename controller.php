@@ -35,6 +35,9 @@ switch ($page[0]) {
 	case "/sessions":
 		include "page/session.php";
 		break;
+	case "/sessionmodifier":
+		include "page/sessioncreation.php";
+		break;
 	case "/sessioncreation":
 		include "page/sessioncreation.php";
 		break;
