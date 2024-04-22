@@ -74,6 +74,7 @@
 	margin-bottom: 19px;
 	color: var(--text-color);
 	margin-right: 12px;
+	max-width: 80px;
 }
 
 thead {
