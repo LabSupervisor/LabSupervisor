@@ -64,10 +64,10 @@
 					<!-- id chapter -->
 					<input type="hidden" class="chapter-id" id="idChapter<?= $chapter["id"] ?>" value="<?= $chapter["id"] ?>"/>
 
-					<input placeholder="<?= lang("SESSION_CREATE_CHAPTER_TITLE") ?>" type="text" id="titleChapter<?= $chapter["id"] ?>" class="field" value="<?= $chapter["title"] ?>" onchange="addToChapterToBeUpdatedList(this.parentNode.id)">
+					<input placeholder="<?= lang("SESSION_CREATE_CHAPTER_TITLE") ?>" type="text" id="titleChapter<?= $chapter["id"] ?>" class="field" value="<?= $chapter["title"] ?>" onchange="updateChapter(this.parentNode.id)">
 
 					<textarea placeholder="<?= lang("SESSION_CREATE_CHAPTER_DESCRIPTION") ?>"
-					id="chapterDescription<?= $chapter["id"] ?>" class="field" onchange="addToChapterToBeUpdatedList(this.parentNode.id)" ><?= $chapter["description"] ?></textarea>
+					id="chapterDescription<?= $chapter["id"] ?>" class="field" onchange="updateChapter(this.parentNode.id)" ><?= $chapter["description"] ?></textarea>
 
 					<!-- Delete chapter button -->
 					<button type="button" class="button chapterButton" onclick="deleteChapter(this)">- Chapitre</button>
@@ -114,7 +114,10 @@
 </script>
 
 <script src="/public/js/ft_lang.js"></script>
+<script src="/public/js/ft_lang.js"></script>
 <script src="/public/js/ft_addChapter.js"></script>
+<script src="/public/js/ft_updateChapter.js"></script>
+<script src="/public/js/ft_deleteChapter.js"></script>
 
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');
