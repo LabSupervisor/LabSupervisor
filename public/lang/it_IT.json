@@ -57,7 +57,6 @@
 	"SESSION_END": "Sessione terminata",
 	"SESSION_END_MESSAGE": "Questa sessione è ora terminata",
 	"SESSION_END_BACK": "Torna alla lista delle sessioni",
-	"SESSION_PAUSED": "La sessione è temporaneamente interrotta.",
 	"SESSION_EMPTY": "Attualmente non ci sono sessioni disponibili.",
 
 	"DASHBOARD_TITLE": "Dashboard",
@@ -88,6 +87,7 @@
 	"SESSION_PANEL_LSLINK_CONNECT": "Collegare",
 	"SESSION_PANEL_LSLINK_MODIFY": "Modificare",
 	"SESSION_PANEL_LSLINK_NUMBER": "Attualmente connesso a LS-Link #",
+	"SESSION_PANEL_PAUSED": "La sessione è temporaneamente interrotta.",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "Informazioni",
 	"SESSION_CREATE_TITLE_PARTICIPANT": "Partecipanti",

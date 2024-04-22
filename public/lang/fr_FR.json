@@ -57,7 +57,6 @@
 	"SESSION_END": "Session terminée",
 	"SESSION_END_MESSAGE": "Cette session est désormais terminée",
 	"SESSION_END_BACK": "Retourner à la liste des sessions",
-	"SESSION_PAUSED": "La session est temporairement interrompue.",
 	"SESSION_EMPTY": "Aucune session n'est actuellement disponible.",
 
 	"DASHBOARD_TITLE": "Tableau de bord",
@@ -88,6 +87,7 @@
 	"SESSION_PANEL_LSLINK_CONNECT": "Connecter",
 	"SESSION_PANEL_LSLINK_MODIFY": "Modifier",
 	"SESSION_PANEL_LSLINK_NUMBER": "Actuellement connecté à LS-LINK #",
+	"SESSION_PANEL_PAUSED": "La session est temporairement interrompue.",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "Informations",
 	"SESSION_CREATE_TITLE_PARTICIPANT": "Participants",

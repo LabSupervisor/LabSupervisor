@@ -57,7 +57,6 @@
 	"SESSION_END": "セッション終了",
 	"SESSION_END_MESSAGE": "このセッションは終了しました",
 	"SESSION_END_BACK": "セッションリストに戻る",
-	"SESSION_PAUSED": "セッションは一時停止されています。",
 	"SESSION_EMPTY": "現在、利用可能なセッションはありません。",
 
 	"DASHBOARD_TITLE": "ダッシュボード",
@@ -88,6 +87,7 @@
 	"SESSION_PANEL_LSLINK_CONNECT": "接続",
 	"SESSION_PANEL_LSLINK_MODIFY": "変更",
 	"SESSION_PANEL_LSLINK_NUMBER": "現在、LS-Link に接続中 #",
+	"SESSION_PANEL_PAUSED": "セッションは一時停止されています。",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "情報",
 	"SESSION_CREATE_TITLE_PARTICIPANT": "参加者",

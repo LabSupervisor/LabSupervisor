@@ -57,7 +57,6 @@
 	"SESSION_END": "Session ended",
 	"SESSION_END_MESSAGE": "This session has now ended",
 	"SESSION_END_BACK": "Return to session list",
-	"SESSION_PAUSED": "The session is temporarily paused.",
 	"SESSION_EMPTY": "Currently, no sessions are available.",
 
 	"DASHBOARD_TITLE": "Dashboard",
@@ -88,6 +87,7 @@
 	"SESSION_PANEL_LSLINK_CONNECT": "Connect",
 	"SESSION_PANEL_LSLINK_MODIFY": "Modify",
 	"SESSION_PANEL_LSLINK_NUMBER": "Currently connected to LS-Link #",
+	"SESSION_PANEL_PAUSED": "The session is temporarily paused.",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "Informations",
 	"SESSION_CREATE_TITLE_PARTICIPANT": "Participants",

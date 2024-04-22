@@ -34,51 +34,61 @@
 
 <link rel="stylesheet" href="/public/css/sessionpanel.css">
 
-<div id="statusBoxPaused" <?= $styleTitle ?>>
-	<h2><?= lang("SESSION_PAUSED") ?></h2>
-</div>
+<div class="mainbox statusBox">
+	<div class="sessionTitle">
+		<a class="back" href="/sessions"><i class="ri-arrow-left-line"></i> <?= lang("DASHBOARD_BACK") ?></a>
+		<div>
+			<h2><?= SessionRepository::getName($_SESSION["session"]) ?></h2>
+			<a><?= SessionRepository::getInfo($_SESSION["session"])[0]["description"] ?></a>
+		</div>
+	</div>
 
-<div class="mainbox statusBox" id="statusBox" <?= $styleBox ?>>
-	<table>
-		<thead>
-			<tr>
-				<th><?= lang("SESSION_PANEL_CHAPTER") ?></th>
-				<th><?= lang("SESSION_PANEL_ACTION") ?></th>
-				<th><?= lang("SESSION_PANEL_STATUS") ?></th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php
-				foreach (SessionRepository::getChapter($_SESSION["session"]) as $chapter) {
+	<div id="statusBoxPaused" <?= $styleTitle ?>>
+		<h2><?= lang("SESSION_PANEL_PAUSED") ?></h2>
+	</div>
 
-					$statusBall = "statusBall";
-					switch (SessionRepository::getStatus($chapter['id'], UserRepository::getId($_SESSION["login"]))) {
-						case "1":
-							$statusBall = "statusBall statusRed";
-							break;
-						case "2":
-							$statusBall = "statusBall statusYellow";
-							break;
-						case "3":
-							$statusBall = "statusBall statusGreen";
-							break;
-					}
-			?>
+	<div id="statusBox" <?= $styleBox ?>>
+		<table>
+			<thead>
 				<tr>
-					<td class="col1"><?= $chapter["title"] ?></td>
-					<td class="col2">
-						<input type="hidden" name="liste" value="<?php echo $chapter['id']; ?>">
-						<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 1)"><i class="ri-error-warning-line"></i> <?= lang("SESSION_PANEL_HELP") ?></button>
-						<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 2)"><i class="ri-edit-line"></i> <?= lang("SESSION_PANEL_WIP") ?></button>
-						<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 3)"><i class="ri-thumb-up-line"></i> <?= lang("SESSION_PANEL_DONE") ?></button>
-					</td>
-					<td class="col3"><div class="<?= $statusBall ?>" id="statusBall_<?= $chapter['id'] ?>"></div></td>
+					<th><?= lang("SESSION_PANEL_CHAPTER") ?></th>
+					<th><?= lang("SESSION_PANEL_ACTION") ?></th>
+					<th><?= lang("SESSION_PANEL_STATUS") ?></th>
 				</tr>
-			<?php
-				}
-			?>
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+				<?php
+					foreach (SessionRepository::getChapter($_SESSION["session"]) as $chapter) {
+
+						$statusBall = "statusBall";
+						switch (SessionRepository::getStatus($chapter['id'], UserRepository::getId($_SESSION["login"]))) {
+							case "1":
+								$statusBall = "statusBall statusRed";
+								break;
+							case "2":
+								$statusBall = "statusBall statusYellow";
+								break;
+							case "3":
+								$statusBall = "statusBall statusGreen";
+								break;
+						}
+				?>
+					<tr>
+						<td class="col1"><?= $chapter["title"] ?></td>
+						<td class="col2">
+							<input type="hidden" name="liste" value="<?php echo $chapter['id']; ?>">
+							<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 1)"><i class="ri-error-warning-line"></i> <?= lang("SESSION_PANEL_HELP") ?></button>
+							<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 2)"><i class="ri-edit-line"></i> <?= lang("SESSION_PANEL_WIP") ?></button>
+							<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 3)"><i class="ri-thumb-up-line"></i> <?= lang("SESSION_PANEL_DONE") ?></button>
+						</td>
+						<td class="col3"><div class="<?= $statusBall ?>" id="statusBall_<?= $chapter['id'] ?>"></div></td>
+					</tr>
+				<?php
+					}
+				?>
+			</tbody>
+		</table>
+	</div>
 </div>
 
 <div class="item">

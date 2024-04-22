@@ -57,7 +57,6 @@
 	"SESSION_END": "Сессия завершена",
 	"SESSION_END_MESSAGE": "Эта сессия теперь завершена",
 	"SESSION_END_BACK": "Вернуться к списку сессий",
-	"SESSION_PAUSED": "Сеанс временно приостановлен.",
 	"SESSION_EMPTY": "В настоящее время нет доступных сеансов.",
 
 	"DASHBOARD_TITLE": "Панель управления",
@@ -88,6 +87,7 @@
 	"SESSION_PANEL_LSLINK_CONNECT": "Подключить",
 	"SESSION_PANEL_LSLINK_MODIFY": "Изменить",
 	"SESSION_PANEL_LSLINK_NUMBER": "В настоящее время подключено к LS-Link #",
+	"SESSION_PANEL_PAUSED": "Сеанс временно приостановлен.",
 
 	"SESSION_CREATE_TITLE_INFORMATION": "Информация",
 	"SESSION_CREATE_TITLE_PARTICIPANT": "Участники",
