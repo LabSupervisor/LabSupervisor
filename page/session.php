@@ -78,7 +78,7 @@
 							echo "<td class='col5'>";
 
 							if (in_array(TEACHER, $roleList)) {
-								echo "<form method='POST' action='/sessionmodifier'><input type='hidden' name='sessionId' value='" . $line["id"] . "'><input type='submit' value='" . lang("SESSION_UPDATE") . "' class='button'></input></form>";
+								echo "<form method='POST' action='/sessionmodifier'><input type='hidden' name='sessionId' value='" . $line["id"] . "'><button type='submit' class='button'><i class=\"ri-pencil-line\"></i> " . lang("SESSION_UPDATE") . "</button></form>";
 							}
 
 
@@ -87,7 +87,7 @@
 								if ($line["date"] > date('Y-m-d H:i:s')) {
 									echo "<i class='ri-timer-line'></i> " . lang("SESSION_STATE_SOON");
 								} else {
-									echo "<form method='POST'><input type='submit' name='connect[" . $line["id"] . "]' value='" . lang("SESSION_STATE_OPEN") . "' class='button'></input></form>";
+									echo "<form method='POST'><button type='submit' name='connect[" . $line["id"] . "]' value='" . lang("SESSION_STATE_OPEN") . "' class='button'><i class=\"ri-login-box-line\"></i> " . lang("SESSION_STATE_OPEN") . "</button></form>";
 								}
 							} else {
 								if (in_array(TEACHER, $roleList)) {
