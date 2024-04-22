@@ -1,11 +1,12 @@
 <?php
 
 use
+	Dotenv\Dotenv,
 	LabSupervisor\app\repository\DatabaseRepository,
 	LabSupervisor\app\repository\ActiveDirectoryRepository;
 
 // Load .env file
-$dotenv = Dotenv\Dotenv::createImmutable(dirname(__FILE__) . "/../")->load();
+$dotenv = Dotenv::createImmutable(dirname(__FILE__) . "/../")->load();
 
 // Create constants
 define("DEFAULT_LANGUAGE", $_ENV['DEFAULT_LANGUAGE']);

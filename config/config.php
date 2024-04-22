@@ -11,13 +11,14 @@ session_start();
 // Load modules
 require $_SERVER["DOCUMENT_ROOT"] . "/vendor/autoload.php";
 
-// Load .env file
-$dotenv = Dotenv\Dotenv::createImmutable($_SERVER["DOCUMENT_ROOT"])->load();
-
 use
+	Dotenv\Dotenv,
 	LabSupervisor\app\repository\DatabaseRepository,
 	LabSupervisor\app\repository\ActiveDirectoryRepository,
 	LabSupervisor\app\repository\UserRepository;
+
+// Load .env file
+$dotenv = Dotenv::createImmutable($_SERVER["DOCUMENT_ROOT"])->load();
 
 // Create constants
 define("DEFAULT_LANGUAGE", $_ENV['DEFAULT_LANGUAGE']);
