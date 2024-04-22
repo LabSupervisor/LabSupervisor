@@ -81,15 +81,26 @@
 	</table>
 </div>
 
-<?php
-	// LS-Link
-	if (UserRepository::getLink($_SESSION["login"], $_SESSION["session"])){
-		echo "LS-LINK n°" . UserRepository::getLink($_SESSION["login"], $_SESSION["session"]);
-	}
-	echo "<br>LS-LINK : <form method='POST'><input type='hidden' name='sessionId' value='" . $_SESSION["session"] . "'><input type='number' name='number'/><input type='submit' name='link'/></form>";
-?>
+<div class="item">
+	<div class="mainbox screenshareBox">
+		<h2>Partage d'écran</h2>
+		<button class="button" id="shareButton">Start screenshare</button>
+	</div>
 
-<button id="shareButton">Start screenshare</button>
+	<div class="mainbox lslinkBox">
+		<h2>LS-Link</h2>
+
+		<?php
+			$buttonText = "Connecter";
+			if (UserRepository::getLink($_SESSION["login"], $_SESSION["session"])){
+				echo "Actuellement connecté à LS-LINK #" . UserRepository::getLink($_SESSION["login"], $_SESSION["session"]);
+				$buttonText = "Modifier";
+			}
+			echo "<form method='POST'><input type='hidden' name='sessionId' value='" . $_SESSION["session"] . "'><input class='lslinkid' type='number' name='number'/><button class='button' type='submit' name='link'><i class=\"ri-link\"></i> " . $buttonText . "</button></form>";
+		?>
+	</div>
+</div>
+
 <div id="screenshare"></div>
 
 <!-- Create "global" varaibles -->
