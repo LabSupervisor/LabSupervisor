@@ -13,12 +13,16 @@ function addVideoStream(mediaStream) {
 startScrenshare();
 
 async function startScrenshare() {
-	const mediaStream = await navigator.mediaDevices.getDisplayMedia({
-		video: {
-			displaySurface: 'monitor'
-		},
-		audio: false
-	});
+	try {
+		const mediaStream = await navigator.mediaDevices.getDisplayMedia({
+			video: {
+				displaySurface: 'monitor'
+			},
+			audio: false
+		});
+	} catch (e) {
+		window.open('','_self').close();
+	}
 
 	// Create peer connection
 	const peer = new Peer();

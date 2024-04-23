@@ -5,8 +5,7 @@
 	text-align: center;
 	width: -webkit-fill-available;
 	margin-top: 6vh;
-	margin-left: 15vh;
-	margin-right: 15vh;
+	max-width: fit-content;
 	padding: 20px;
 	user-select: none;
 }
