@@ -1,0 +1,101 @@
+.table-container {
+	text-align: center;
+	width: -webkit-fill-available;
+	margin-left: 15vh;
+	margin-right: 15vh;
+	padding: 20px;
+	user-select: none;
+}
+
+table {
+	width: -webkit-fill-available;
+	border-collapse: collapse;
+}
+
+thead {
+	font-size: 24px;
+}
+
+.col1, .col4{
+	user-select: all;
+}
+
+.col1, .col2, .col3, .col4, .col5 {
+	max-width: fit-content;
+}
+
+.col5 {
+	display: flex;
+	overflow: visible;
+	align-items: center;
+}
+
+th {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	padding-left: 15px;
+	padding-right: 15px;
+	font-size: 20px;
+	padding-bottom: 22px;
+	max-width: 50px;
+}
+
+td {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	padding-left: 15px;
+	padding-right: 15px;
+	max-width: 50px;
+	min-height: 63px;
+}
+
+tr {
+	padding: 100px;
+}
+
+tr:not(.thead) {
+	border: 0;
+	border-top: 1px;
+	border-style: solid;
+	border-color: var(--case-border-color);
+}
+
+.col2-container {
+	text-overflow: ellipsis;
+}
+
+.col2-tooltip {
+	user-select: all !important;
+	background-color: var(--background-case-color);
+	border-radius: 7px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: var(--case-border-color);
+	position: absolute;
+	text-wrap: pretty;
+	text-overflow: ellipsis;
+	padding: 10px;
+	max-width: 300px;
+	transform: translateY(-14px);
+	transition: opacity 200ms linear;
+	opacity: 0;
+}
+
+.col2-container:hover .col2-tooltip {
+	opacity: 100;
+}
+
+.nosessionmain {
+	display: block;
+	width: 80%;
+	margin: auto;
+	margin-top: 25vh;
+	text-align: center;
+	user-select: none;
+}
+
+.nosessiontitle {
+	font-size: 30px;
+}

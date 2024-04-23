@@ -1,0 +1,104 @@
+.statusBox {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	width: -webkit-fill-available;
+	margin-top: 6vh;
+	max-width: fit-content;
+	padding: 20px;
+	user-select: none;
+}
+
+.statusBall {
+	transform: translateX(18px);
+}
+
+.sessionTitle {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-top: 1vh;
+	margin-bottom: 4vh;
+	max-width: 60%;
+}
+
+.back {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding-right: 40px;
+}
+
+.back i {
+	margin-right: 5px;
+}
+
+.lslinkBox {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	margin-left: 0;
+	margin-top: 1vh;
+	text-align: center;
+	max-width: fit-content;
+	padding: 20px;
+	user-select: none;
+}
+
+.lslinkButton {
+	display: flex;
+	flex-direction: row;
+}
+
+.screenshareBox {
+	margin-right: 9vh;
+	margin-top: 1vh;
+	text-align: center;
+	max-width: fit-content;
+	padding: 20px;
+	user-select: none;
+}
+
+.item {
+	display: flex;
+}
+
+.lslinkid {
+	background: var(--case-field-background-color);
+	border: 0;
+	border-radius: 7px;
+	font-size: 15px;
+	padding: 11px;
+	margin-bottom: 19px;
+	color: var(--text-color);
+	margin-right: 12px;
+	max-width: 80px;
+}
+
+thead {
+	font-size: 24px;
+}
+
+th {
+	padding-left: 15px;
+	padding-right: 15px;
+	font-size: 20px;
+	padding-bottom: 22px;
+}
+
+td {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+tr {
+	padding: 100px;
+}
+
+tr:not(.thead) {
+	border: 0;
+	border-top: 1px;
+	border-style: solid;
+	border-color: var(--case-border-color);
+}

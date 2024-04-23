@@ -1,0 +1,47 @@
+<?php
+	use function
+		LabSupervisor\functions\mainHeader,
+		LabSupervisor\functions\lang,
+		LabSupervisor\functions\permissionChecker;
+
+	// Import header
+	mainHeader(lang("REGISTER_TITLE"), true);
+
+	// Ask for permissions
+	permissionChecker(false, "");
+
+	// Logic
+	echo '<script src="/public/js/ft_popup.js"></script>';
+	require($_SERVER["DOCUMENT_ROOT"] . '/logic/register.php');
+?>
+
+<link rel="stylesheet" href="/public/css/register.css">
+
+<div class="mainbox RegisterDiv">
+	<form action="register" method="post">
+		<h2><i class="ri-user-line"></i> <?= lang("REGISTER_TITLE") ?></h2>
+		<input type="email" name="email" placeholder="<?= lang("REGISTER_EMAIL") ?>" class="Email" required autofocus><br>
+		<div class="PasswordContainer">
+			<input type="password" id="password" name="password" placeholder="<?= lang("REGISTER_PASSWORD") ?>" class="Password" required><br>
+			<button tabindex="-1" type="button" id="showPasswordButton" class="ShowPasswordButton" onclick="togglePasswordVisibility('password', 'eyeIcon')">
+				<i id="eyeIcon" class="ri-eye-off-line"></i>
+			</button>
+		</div>
+		<div class="PasswordContainer">
+			<input type="password" id="passwordConf" name="confpass" placeholder="<?= lang("REGISTER_PASSWORD_CONFIRM") ?>" class="Password" required><br>
+			<button tabindex="-1" type="button" id="showPasswordButton" class="ShowPasswordButton" onclick="togglePasswordVisibility('passwordConf', 'eyeIconConf')">
+				<i id="eyeIconConf" class="ri-eye-off-line"></i>
+			</button>
+		</div>
+		<input type="text" name="name" placeholder="<?= lang("REGISTER_NAME") ?>" class="Name" required><br>
+		<input type="text" name="surname" placeholder="<?= lang("REGISTER_SURNAME") ?>" class="Surname" required><br>
+		<input type="submit" name="register" value="<?= lang("REGISTER_SUBMIT") ?>" class="button">
+		<a href="/login" class="login-link"><?= lang("REGISTER_ALREADYSIGN") ?></a>
+	</form>
+</div>
+
+<script src="/public/js/registerPassword.js"></script>
+
+<?php
+	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');
+?>

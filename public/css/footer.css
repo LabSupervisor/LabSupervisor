@@ -1,0 +1,17 @@
+footer {
+	width: 100%;
+	text-align: center;
+	background-color: var(--background-case-color);
+	color: var(--text-color);
+	padding: 10px;
+	backdrop-filter: blur(12px);
+	border: 0;
+	border-top: 2px solid var(--case-border-color);
+	user-select: none;
+}
+
+.ghLink {
+	text-decoration: none;
+	font-size: 21px;
+	margin-left: 10px;
+}

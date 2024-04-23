@@ -1,0 +1,77 @@
+/* Main container */
+.maindiv {
+	text-align: center;
+	width: 450px;
+	padding: 27px;
+	user-select: none;
+	margin-top: 5vh !important;
+}
+
+h2 {
+	font-size: 30px;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+}
+
+select {
+	width: 100%;
+	margin-bottom: 3vh;
+}
+
+option {
+	background-color: var(--background-case-color);
+	color: var(--text-color);
+}
+
+.field {
+	background: var(--case-field-background-color);
+	border: 0;
+	border-radius: 7px;
+	font-size: 20px;
+	padding: 15px;
+	color: var(--text-color);
+	width: -webkit-fill-available;
+	resize: vertical;
+	overflow: hidden;
+	min-height: 22px;
+	margin-bottom: 19px;
+}
+
+.chapterButton {
+	transform: translateX(165px);
+	margin-bottom: 3vh;
+}
+
+#date{
+	height: 35px;
+	border-radius: 10px;
+	border: 0;
+	font-size: 16px;
+	outline: none;
+	padding: 8px;
+	width: -webkit-fill-available;
+	background: var(--case-field-background-color);
+}
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+	mask: url("/public/img/icon/calendar-2-line.svg");
+	background: var(--text-color);
+	margin-right: 10px;
+	outline: none;
+}
+
+input:focus, textarea:focus, select:focus {
+	outline: none !important;
+}
+
+input:focus-visible, textarea:focus-visible, select:focus-visible {
+	outline: none;
+}
+
+input::placeholder, textarea::placeholder {
+	color: var(--case-field-text-color);
+}
+
+.save {
+	margin-top: 3vh;
+}

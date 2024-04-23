@@ -1,0 +1,93 @@
+.AccountDiv {
+	text-align: center;
+	width: 335px;
+	padding: 27px;
+	user-select: none;
+}
+
+h2 {
+	font-size: 30px;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+}
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+}
+
+.newname, .newsurname, .lang, .newpassword, .confpassword {
+	background: var(--case-field-background-color);
+	border: 0;
+	border-radius: 7px;
+	font-size: 20px;
+	padding: 15px;
+	margin-bottom: 19px;
+	color: var(--text-color);
+	width: -webkit-fill-available;
+}
+
+.lang {
+	cursor: pointer;
+}
+
+.PasswordContainer {
+	position: relative;
+}
+
+.ShowPasswordButton {
+	position: absolute;
+	top: 50%;
+	right: 5px;
+	transform: translateY(-80%);
+	cursor: pointer;
+	border: none;
+	background: none;
+	font-size: 12px;
+	background-color: var(--case-field-background-color);
+}
+
+.ri-eye-line:before {
+	content: "\ecb5";
+	color: var(--text-color);
+	font-size: 26px;
+}
+
+.ri-eye-off-line:before {
+	content: "\ecb7";
+	color: var(--text-color);
+	font-size: 26px;
+}
+
+input:focus {
+	outline: none !important;
+}
+
+input:focus-visible {
+	outline: auto;
+}
+
+input::placeholder {
+	color: var(--case-field-text-color);
+}
+
+.confirmDelete {
+	width: 400px;
+}
+
+.deleteCaseButton {
+	margin: 0;
+	margin-top: 30px;
+}
+
+.deleteText {
+	margin-bottom: 20px;
+}
+
+.checkboxContainer label {
+	margin-left: 10px;
+}
+
+.confirmDelete .back {
+	margin-right: 30px;
+}

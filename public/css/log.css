@@ -1,0 +1,142 @@
+.table-container {
+	text-align: center;
+	width: -webkit-fill-available;
+	margin-left: 15vh;
+	margin-right: 15vh;
+	padding: 20px;
+	user-select: none;
+	overflow-y: auto;
+	max-height: 500px;
+}
+
+table {
+	width: -webkit-fill-available;
+	border-collapse: collapse;
+}
+
+tbody {
+	height: 100px !important;
+}
+
+thead {
+	font-size: 24px;
+	position: sticky;
+	top: 0px;
+}
+
+.col3, .col4{
+	user-select: all;
+}
+
+th {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	padding-left: 15px;
+	padding-right: 15px;
+	font-size: 20px;
+	padding-bottom: 22px;
+	max-width: 50px;
+}
+
+td {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	padding: 15px;
+	max-width: 50px;
+}
+
+tr {
+	padding: 100px;
+}
+
+tr:not(.thead) {
+	border: 0;
+	border-top: 1px;
+	border-style: solid;
+	border-color: var(--case-border-color);
+}
+
+.col3-container {
+	text-overflow: ellipsis;
+}
+
+.col3-tooltip {
+	user-select: all !important;
+	background-color: var(--background-case-color);
+	border-radius: 7px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: var(--case-border-color);
+	position: absolute;
+	text-wrap: pretty;
+	text-overflow: ellipsis;
+	padding: 10px;
+	max-width: 600px;
+	transform: translateY(-14px);
+	transition: opacity 200ms linear;
+	opacity: 0;
+	z-index: 10;
+}
+
+.col3-container:hover .col3-tooltip {
+	opacity: 100;
+}
+
+.button2 {
+	background-color: var(--button-background-color);
+	border-radius: 9px;
+	border: 0;
+	height: 40px;
+	font-size: 16px;
+	margin: 10px;
+	padding-top: 11px;
+	padding-bottom: 11px;
+	padding-left: 20px;
+	padding-right: 20px;
+	transition: 200ms;
+	text-decoration: none;
+	max-height: 20px;
+}
+
+.button2:hover {
+	background-color: var(--button-hover-color);
+	transition: 200ms;
+	cursor: pointer;
+}
+
+.button-container {
+	display: flex;
+	margin-top: 2vh;
+	width: fit-content;
+	padding: 10px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+form {
+	display: flex;
+}
+
+#date{
+	height: 35px;
+	border-radius: 7px;
+	border: 0;
+	font-size: 16px;
+	outline: none;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	padding: 3px;
+	padding-left: 14px;
+	width: -webkit-fill-available;
+	background: var(--case-field-background-color);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+	mask: url("/public/img/icon/calendar-2-line.svg");
+	background: var(--text-color);
+	margin-right: 10px;
+	outline: none;
+}

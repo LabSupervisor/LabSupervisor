@@ -1,0 +1,245 @@
+/* Main style */
+@font-face {
+	font-family: "Inter";
+	src: url("/public/css/import/inter.ttf");
+}
+
+* {
+	margin: 0px;
+	font-family: "inter", sans-serif;
+	color: var(--text-color);
+}
+
+::selection {
+	background-color: var(--button-background-color);
+}
+
+::-webkit-scrollbar {
+	width: 0px;
+	background: none;
+}
+
+/* Input autocomplete style */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px var(--case-field-background-color) inset;
+  -webkit-text-fill-color: var(--text-color);
+}
+
+body {
+	height: 100%;
+	width: 100%;
+	background-attachment: fixed;
+	background-size: cover;
+	background-image: var(--background-image);
+
+	/* This rule ensures that the page content extends at least the full height of the screen. */
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	overflow-x : hidden;
+}
+
+#main {
+	flex: 1;
+}
+
+/* Icon */
+.iconEye {
+	stroke: var(--text-color);
+}
+
+@keyframes rotation {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+@keyframes rotation_rev {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(-360deg);
+	}
+}
+
+.iconGreen {
+	animation: rotation 30s linear infinite;
+	transform-origin: center center;
+}
+
+.iconRed {
+	animation: rotation 35s linear infinite;
+	transform-origin: center center;
+}
+
+.iconYellow {
+	animation: rotation_rev 40s linear infinite;
+	transform-origin: center center;
+}
+
+/* Case style */
+.mainbox {
+	display: block;
+	margin: auto;
+	margin-top: 10vh;
+	margin-bottom: 6vh;
+	text-align: center;
+
+	background-color: var(--background-case-color);
+	border-radius: 20px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: var(--case-border-color);
+	color: var(--text-color);
+	backdrop-filter: blur(12px);
+	box-shadow: 0px 0px 50px 0px #00000030;
+}
+
+.errorPopup {
+	background-color: var(--background-case-color);
+	color: var(--text-color);
+	padding: 30px;
+	border-radius: 10px;
+	position: fixed;
+	top: 30%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 11;
+	border: 2px solid #ff000030;
+	backdrop-filter: blur(12px);
+	box-shadow: 0px 0px 50px 0px #ff000030;
+}
+
+.errorPopup .button {
+	margin-left: 40px;
+}
+
+/* Button style */
+.button {
+	background-color: var(--button-background-color);
+	border-radius: 9px;
+	border: 0;
+	height: 40px;
+	font-size: 16px;
+	margin: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	transition: 200ms;
+	user-select: none;
+}
+
+.button:disabled {
+	cursor: not-allowed !important;
+	background-color: var(--button-hover-color);
+	color: var(--text-hover-color);
+	font-style: italic;
+}
+
+.button:hover {
+	background-color: var(--button-hover-color);
+	transition: 200ms;
+	cursor: pointer;
+}
+
+.back {
+	background-color: transparent;
+	border: 0;
+	font-size: 16px;
+	cursor: pointer;
+	transition: 200ms;
+	text-decoration: none;
+}
+
+.back:hover {
+	color: var(--text-hover-color);
+	transition: 200ms;
+}
+
+/* Checkbox style */
+.checkboxContainer {
+	position: relative;
+	cursor: pointer;
+	padding-left: 35px;
+}
+
+.checkboxContainer input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+}
+
+.checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 20px;
+	width: 20px;
+	border-radius: 3px;
+	background-color: #fff;
+	border-color: var(--case-border-color);
+}
+
+.checkboxContainer:hover input ~ .checkmark {
+	background-color: #eee;
+}
+
+.checkboxContainer input:checked ~ .checkmark {
+	background-color: var(--button-background-color);
+}
+
+.checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+
+.checkboxContainer input:checked ~ .checkmark:after {
+	display: block;
+}
+
+.checkboxContainer .checkmark:after {
+	left: 6px;
+	top: 3px;
+	width: 4px;
+	height: 8px;
+	border: solid var(--text-color);
+	border-width: 0 3px 3px 0;
+	transform: rotate(45deg);
+}
+
+/* Status LED */
+.statusBall {
+	background-color: gray;
+	border-radius: 20px;
+	height: 15px;
+	width: 15px;
+	margin: 6px;
+}
+
+.statusRed {
+	background-color: red;
+	box-shadow: 0px 0px 10px 0px red;
+}
+
+.statusYellow {
+	background-color: yellow;
+	box-shadow: 0px 0px 10px 0px yellow;
+}
+
+.statusGreen {
+	background-color: lime;
+	box-shadow: 0px 0px 10px 0px lime;
+}

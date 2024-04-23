@@ -1,1 +1,7 @@
-logs/*
+node_modules
+vendor
+.idea/*
+.vscode/*
+.env
+log/*.log
+.phpunit*
