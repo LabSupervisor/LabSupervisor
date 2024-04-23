@@ -24,7 +24,7 @@ function statusUpdate(status) {
 			}
 
 			DOMElement.className = "statusBall " + statusDisplay;
-			DOMElement.innerHTML = "<a>" + text + "</a>";
+			DOMElement.title = text;
 		})
 	})
 }

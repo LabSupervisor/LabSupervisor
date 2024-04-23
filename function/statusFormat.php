@@ -22,6 +22,6 @@ if (!function_exists(__NAMESPACE__ . "/statusFormat")) {
 			$text = lang("DASHBOARD_STATUS_GREEN");
 		}
 
-		return "<div id='" . $userId . "_" . $chapterId . "' class='statusBall $status'><a>$text</a></div>";
+		return "<div id='" . $userId . "_" . $chapterId . "' class='statusBall $status' title=\"$text\"></div>";
 	}
 }

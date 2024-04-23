@@ -75,6 +75,11 @@
 					<th><?= lang("DASHBOARD_STUDENT_NAME") ?></th>
 					<th></th>
 					<th><?= lang("DASHBOARD_SCREENSHARE") ?></th>
+					<?php
+						foreach (SessionRepository::getChapter($_SESSION["session"]) as $value) {
+							echo "<th><i class=\"ri-information-line\" title='" . $value["title"] . "'></i></th>";
+						}
+					?>
 				</tr>
 			</thead>
 			<tbody>
@@ -134,7 +139,7 @@
 					echo "<td class='col1'>" . $participantName["surname"] . "</td>";
 					echo "<td><button class='screenShareButton' title=\"" . lang("DASHBOARD_SCREENSHARE_OPEN") . "\" id='getScreenshare' onclick='window.open(\"/screenshare?userId=" . $userId . "\", \"_blank\")'><i class='ri-eye-line'></i></button></td>";
 					echo "<td class='col2'>" . $chapterList . "</td>";
-					echo "<td class='col3'>" . $statusList . "</td>";
+					echo "<td class='col3'><div class='statusBallGroup'>" . $statusList . "</div></td>";
 					echo "</tr>";
 				}
 			?>

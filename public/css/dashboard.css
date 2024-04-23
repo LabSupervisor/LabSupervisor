@@ -35,7 +35,7 @@ thead {
 
 th {
 	text-overflow: ellipsis;
-	overflow: hidden;
+	overflow: visible;
 	white-space: nowrap;
 	padding-left: 15px;
 	padding-right: 15px;
@@ -46,7 +46,7 @@ th {
 
 td {
 	text-overflow: ellipsis;
-	overflow: hidden;
+	overflow: visible;
 	white-space: nowrap;
 	padding-left: 15px;
 	padding-right: 15px;
@@ -95,20 +95,8 @@ tr:not(.thead) {
 	text-decoration: none;
 }
 
-.statusBall a {
-	margin-left: 22px;
-	opacity: 0;
-	transition: opacity 100ms linear;
-	background-color: var(--background-case-color);
-	border: var(--case-border-color) solid 2px;
-	border-radius: 7px;
-	padding: 5px;
-	position: absolute;
-	transform: translateY(-10px);
-}
-
-.statusBall:hover a {
-	opacity: 100;
+.statusBall {
+	transform: translateX(34px);
 }
 
 .screenShareButton {
