@@ -20,23 +20,23 @@ async function startScrenshare() {
 			},
 			audio: false
 		});
+		
+		// Create peer connection
+		const peer = new Peer();
+
+		// Create peer connection
+		peer.on('open', function () {
+			socket.emit('get', requestId);
+		});
+
+		socket.on('response', id => {
+			console.log(id);
+			const call = peer.call(id, mediaStream);
+			call.on('stream', stream => {
+				addVideoStream(stream);
+			});
+		});
 	} catch (e) {
 		window.open('','_self').close();
 	}
-
-	// Create peer connection
-	const peer = new Peer();
-
-	// Create peer connection
-	peer.on('open', function () {
-		socket.emit('get', requestId);
-	});
-
-	socket.on('response', id => {
-		console.log(id);
-		const call = peer.call(id, mediaStream);
-		call.on('stream', stream => {
-			addVideoStream(stream);
-		});
-	});
 }
