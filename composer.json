@@ -38,8 +38,11 @@
 				"src/"
 			]
 		},
-        "files": [
+		"files": [
 			"function/include.php"
 		]
+	},
+	"scripts": {
+		"start": "node server/server.js"
 	}
 }
