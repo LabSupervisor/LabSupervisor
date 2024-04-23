@@ -68,7 +68,13 @@
 					?>
 					<input type="hidden" name="classroom" id="classroom_<?=$userId?>">
 				</td>
-				<td class="col6"><button class="modifybutton button" type="button" id="modify_<?=$userId?>" onclick="updateUser(<?= $userId ?>)"><?= lang("USER_UPDATE_MODIFY") ?></button>
+				<?php
+					$classroomIdUser = ClassroomRepository::getUserClassroom($userId);
+					if (!$classroomIdUser)
+						$classroomIdUser = 0;
+					$roleIdUser = UserRepository::getRole(UserRepository::getEmail($userId))[0]["idrole"];
+				?>
+				<td class="col6"><button class="modifybutton button" type="button" id="modify_<?= $userId ?>" onclick="updateUser(<?= $userId ?>, <?= $classroomIdUser ?>, <?= $roleIdUser ?>)"><?= lang("USER_UPDATE_MODIFY") ?></button>
 				<form method="POST">
 					<input type="hidden" name="userId" value="<?= $userId ?>">
 					<button class="button" type="submit" name="send" id="delete_<?= $userId ?>"><?= lang("USER_UPDATE_DELETE") ?></button>
