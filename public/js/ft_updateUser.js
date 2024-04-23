@@ -41,7 +41,6 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 	selectRole.setAttribute("name", "role_" + userId);
 	selectRole.setAttribute("class", "role");
 
-
 	// Add options to select menu
 	for (var i = 0; i < classrooms.length; i++) {
 		var option = document.createElement("option");
@@ -66,25 +65,24 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 		selectRole.add(option);
 	}
 
+	surnameElement.replaceChildren(inputSurname);
+	nameElement.replaceChildren(inputName);
+	classRoomElement.replaceChildren(selectClassroom);
+	roleElement.replaceChildren(selectRole);
 
-    surnameElement.replaceChildren(inputSurname);
-    nameElement.replaceChildren(inputName);
-    classRoomElement.replaceChildren(selectClassroom);
-    roleElement.replaceChildren(selectRole);
+	var inputUserId = document.createElement("input");
+	inputUserId.setAttribute("type", "hidden");
+	inputUserId.setAttribute("name", "userId");
+	inputUserId.setAttribute("value", userId);
 
-    var inputUserId = document.createElement("input");
-    inputUserId.setAttribute("type", "hidden");
-    inputUserId.setAttribute("name", "userId");
-    inputUserId.setAttribute("value", userId);
+	form.appendChild(inputUserId);
 
-    form.appendChild(inputUserId);
+	var modifyButton = document.getElementById("modify_" + userId);
 
-    var modifyButton = document.getElementById("modify_" + userId);
-
-    confirmButton = document.createElement("input");
-    confirmButton.setAttribute("type", "submit");
-    confirmButton.setAttribute("name", "modify");
-    confirmButton.setAttribute("class", "button");
-    modifyButton.parentNode.replaceChild(confirmButton, modifyButton);
+	confirmButton = document.createElement("input");
+	confirmButton.setAttribute("type", "submit");
+	confirmButton.setAttribute("name", "modify");
+	confirmButton.setAttribute("class", "button");
+	modifyButton.parentNode.replaceChild(confirmButton, modifyButton);
 }
 

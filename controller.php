@@ -56,6 +56,10 @@ switch ($page[0]) {
 	case "/connect":
 		include "api/index.php";
 		break;
+	// This is not a debug.
+	case "/helloworld":
+		echo "<h1>Hello world!</h1>";
+		break;
 	case "/sessionend":
 		include "page/sessionend.php";
 		break;
