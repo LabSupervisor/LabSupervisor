@@ -312,9 +312,7 @@ class UserRepository {
 		}
 	}
 
-	public static function updateRole($userId, $role) {
-		$roleId = UserRepository::getRoleId($role);
-
+	public static function updateRole($userId, $roleId) {
 		// Update user's role query
 		$queryTheme = "UPDATE userrole SET idrole = :idrole WHERE iduser = :iduser";
 

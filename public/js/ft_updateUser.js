@@ -1,6 +1,5 @@
-function updateUser(userId) {
+function updateUser(userId, classroomIdUser, roleIdUser) {
 	var form = document.getElementById("form");
-
 	var surnameElement = document.getElementById("surname_" + userId);
 	var nameElement = document.getElementById("name_" + userId);
 	var classRoomElement = document.getElementById("classroom_" + userId);
@@ -37,46 +36,55 @@ function updateUser(userId) {
 	selectClassroom.setAttribute("name", "classroom_" + userId);
 	selectClassroom.setAttribute("class", "classroom");
 
+	var selectRole = document.createElement("select");
+	selectRole.setAttribute("id", "role");
+	selectRole.setAttribute("name", "role_" + userId);
+	selectRole.setAttribute("class", "role");
+
+
 	// Add options to select menu
 	for (var i = 0; i < classrooms.length; i++) {
 		var option = document.createElement("option");
 		// Use "name" property
 		option.text = classrooms[i].name;
-		option.setAttribute("value", option.text);
+		option.value = classrooms[i].id ;
+		if (classrooms[i].id == classroomIdUser) {
+			option.selected = true;  // sélectionnez l'option si elle correspond au rôle actuel
+		}
 		selectClassroom.add(option);
 	}
-
-	var selectRole = document.createElement("select");
-	selectRole.setAttribute("id", "role");
-	selectRole.setAttribute("name", "role_" + userId);
-	selectRole.setAttribute("class", "role");
 
 	// Add options to select menu
 	for (var i = 0; i < roles.length; i++) {
 		var option = document.createElement("option");
 		// Use "name" property
 		option.text = roles[i].name;
-		option.setAttribute("value", option.text);
+		option.value = roles[i].id ;
+		if (roles[i].id == roleIdUser) {
+			option.selected = true;  // sélectionnez l'option si elle correspond au rôle actuel
+		}
 		selectRole.add(option);
 	}
 
-	surnameElement.replaceChildren(inputSurname);
-	nameElement.replaceChildren(inputName);
-	classRoomElement.replaceChildren(selectClassroom);
-	roleElement.replaceChildren(selectRole);
 
-	var inputUserId = document.createElement("input");
-	inputUserId.setAttribute("type", "hidden");
-	inputUserId.setAttribute("name", "userId");
-	inputUserId.setAttribute("value", userId);
+    surnameElement.replaceChildren(inputSurname);
+    nameElement.replaceChildren(inputName);
+    classRoomElement.replaceChildren(selectClassroom);
+    roleElement.replaceChildren(selectRole);
 
-	form.appendChild(inputUserId);
+    var inputUserId = document.createElement("input");
+    inputUserId.setAttribute("type", "hidden");
+    inputUserId.setAttribute("name", "userId");
+    inputUserId.setAttribute("value", userId);
 
-	var modifyButton = document.getElementById("modify_" + userId);
+    form.appendChild(inputUserId);
 
-	confirmButton = document.createElement("input");
-	confirmButton.setAttribute("type", "submit");
-	confirmButton.setAttribute("name", "modify")
-	confirmButton.setAttribute("class", "button")
-	modifyButton.parentNode.replaceChild(confirmButton, modifyButton);
+    var modifyButton = document.getElementById("modify_" + userId);
+
+    confirmButton = document.createElement("input");
+    confirmButton.setAttribute("type", "submit");
+    confirmButton.setAttribute("name", "modify");
+    confirmButton.setAttribute("class", "button");
+    modifyButton.parentNode.replaceChild(confirmButton, modifyButton);
 }
+

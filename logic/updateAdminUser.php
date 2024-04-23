@@ -25,5 +25,6 @@ if (isset($_POST["modify"])) {
 	// Update user classroom
 	$userClass = ClassroomRepository::getUserClassroom($_POST["userId"]);
 	ClassroomRepository::removeUser($_POST["userId"], $userClass);
-	ClassroomRepository::addUser($_POST["userId"], ClassroomRepository::getId($_POST["classroom_" . $_POST["userId"]]));
+	if ($_POST["role_" . $_POST["userId"]] == STUDENT)
+		ClassroomRepository::addUser($_POST["userId"], $_POST["classroom_" . $_POST["userId"]]);
 }
