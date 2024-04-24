@@ -108,6 +108,7 @@
 	"CLASSROOM_STUDENT_SURNAME": "Apellido",
 	"CLASSROOM_STUDENT_EMAIL": "Correo electrónico",
 	"CLASSROOM_STUDENT_REMOVE": "Eliminar",
+	"CLASSROOM_ADD": "Agregar",
 
 	"USER_UPDATE_SURNAME": "Apellido",
 	"USER_UPDATE_NAME": "Nombre",

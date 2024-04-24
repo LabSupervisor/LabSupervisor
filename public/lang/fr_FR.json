@@ -108,6 +108,7 @@
 	"CLASSROOM_STUDENT_SURNAME": "Nom",
 	"CLASSROOM_STUDENT_EMAIL": "Adresse email",
 	"CLASSROOM_STUDENT_REMOVE": "Retirer de la classe",
+	"CLASSROOM_ADD": "Ajouter",
 
 	"USER_UPDATE_SURNAME": "Nom",
 	"USER_UPDATE_NAME": "Prénom",

@@ -1,13 +1,23 @@
+* {
+	user-select: none;
+}
+
+.mainGroup {
+	display: flex;
+	flex-direction: row;
+}
+
 /* Side menu */
-#lateral-selector {
-	display: inline-block;
-	width: calc(20% - 4px);
-	margin: 10vh 5%;
+#lateralSelector {
+	width: calc(15%);
+	margin-left: 15vh;
 	vertical-align: top;
+	padding: 20px;
+	height: fit-content;
 }
 
 .classname {
-	margin: 5px 20px 5px 20px;
+	margin: 5px 3% 5px 3%;
 	padding: 5px;
 	font-size: 20px;
 	cursor: pointer;
@@ -24,36 +34,40 @@
 }
 
 /* Classroom's students */
-.content-class {
+.contentClassroom {
 	display: none;
-	width: calc(59% - 4px);
-	margin: 10vh 5%;
+	width: calc(55% - 4px);
+	padding: 20px;
+	margin-right: 15vh;
 }
 
-.content-class[selected] {
-	display: inline-block;
+.contentClassroom[selected] {
+	display: block;
 }
 
-.content-class h2 {
+.contentClassroom h2 {
 	margin-top: 10px;
 }
 
-.content-class table {
+.contentClassroom table {
 	width: -webkit-fill-available;
 	margin: 2cqmin;
-	text-align: left;
 	border-collapse: collapse;
 }
 
-.content-class tr {
+.contentClassroom th {
+	font-size: 18px;
+}
+
+.contentClassroom tr {
 	height: 40px;
 }
 
-.content-class tbody tr {
+.contentClassroom tbody tr {
 	border-top: 1px solid var(--case-border-color);
 }
 
-.select-student {
+.selectStudent {
 	background: var(--case-field-background-color);
 	border: 0;
 	border-radius: 7px;
