@@ -1,6 +1,9 @@
 {
 	"MAIN_TITLE": "LabSupervisor",
-
+	"MAIN_ROLE_ADMIN": "管理者",
+	"MAIN_ROLE_STUDENT": "学生",
+	"MAIN_ROLE_TEACHER": "教師",
+	
 	"NAVBAR_TITLE": "LabSupervisor",
 	"NAVBAR_CONNECT": "接続",
 	"NAVBAR_HOME": "ホーム",

@@ -69,7 +69,7 @@ tr {
 
 tr:not(.thead) {
 	border: 0;
-	border-top: 2px;
+	border-top: 1px;
 	border-style: solid;
 	border-color: var(--case-border-color);
 }

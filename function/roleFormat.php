@@ -14,11 +14,11 @@ if (!function_exists(__NAMESPACE__ . "/roleFormat")) {
 		}
 
 		if (in_array(ADMIN, $roleList))
-			$result = $result . "Admin";
+			$result = $result . lang("MAIN_ROLE_ADMIN");
 		if (in_array(STUDENT, $roleList))
-			$result = $result . "Etudiant";
+			$result = $result . lang("MAIN_ROLE_STUDENT");
 		if (in_array(TEACHER, $roleList))
-			$result = $result . "Enseignant";
+			$result = $result . lang("MAIN_ROLE_TEACHER");
 
 		// Return formatted role
 		return $result;

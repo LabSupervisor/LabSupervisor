@@ -57,7 +57,7 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 	for (var i = 0; i < roles.length; i++) {
 		var option = document.createElement("option");
 		// Use "name" property
-		option.text = roles[i].name;
+		option.text = lang("MAIN_ROLE_" + roles[i].name.toUpperCase());
 		option.value = roles[i].id ;
 		if (roles[i].id == roleIdUser) {
 			option.selected = true;  // sélectionnez l'option si elle correspond au rôle actuel

@@ -1,5 +1,8 @@
 {
 	"MAIN_TITLE": "LabSupervisor",
+	"MAIN_ROLE_ADMIN": "Administrator",
+	"MAIN_ROLE_STUDENT": "Student",
+	"MAIN_ROLE_TEACHER": "Teacher",
 
 	"NAVBAR_TITLE": "LabSupervisor",
 	"NAVBAR_CONNECT": "Login",

@@ -1,6 +1,9 @@
 {
 	"MAIN_TITLE": "LabSupervisor",
-
+	"MAIN_ROLE_ADMIN": "Администратор",
+	"MAIN_ROLE_STUDENT": "Студент",
+	"MAIN_ROLE_TEACHER": "Преподаватель",
+	
 	"NAVBAR_TITLE": "LabSupervisor",
 	"NAVBAR_CONNECT": "Войти",
 	"NAVBAR_HOME": "Главная",

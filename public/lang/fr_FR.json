@@ -1,5 +1,8 @@
 {
 	"MAIN_TITLE": "LabSupervisor",
+	"MAIN_ROLE_ADMIN": "Administrateur",
+	"MAIN_ROLE_STUDENT": "Etudiant",
+	"MAIN_ROLE_TEACHER": "Enseignant",
 
 	"NAVBAR_TITLE": "LabSupervisor",
 	"NAVBAR_CONNECT": "Connexion",
@@ -45,7 +48,7 @@
 	"SESSION_SUBJECT": "Sujet",
 	"SESSION_DESCRIPTION": "Précisions",
 	"SESSION_DESCRIPTION_EMPTY": "Aucune précision disponible",
-	"SESSION_TEACHER": "Professeur",
+	"SESSION_TEACHER": "Enseignant",
 	"SESSION_DATE": "Date",
 	"SESSION_STATE": "Action",
 	"SESSION_STATE_LOCK": "Verrouillé",
