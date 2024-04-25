@@ -51,7 +51,6 @@
 	"SESSION_TEACHER": "Profesor",
 	"SESSION_DATE": "Fecha",
 	"SESSION_STATE": "Acción",
-	"SESSION_STATE_LOCK": "Bloqueado",
 	"SESSION_STATE_SOON": "Próximamente",
 	"SESSION_STATE_OPEN": "Unirse",
 	"SESSION_UPDATE": "Modificar",

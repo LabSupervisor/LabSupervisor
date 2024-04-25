@@ -3,7 +3,7 @@
 	"MAIN_ROLE_ADMIN": "Amministratore",
 	"MAIN_ROLE_STUDENT": "Studente",
 	"MAIN_ROLE_TEACHER": "Insegnante",
-	
+
 	"NAVBAR_TITLE": "LabSupervisor",
 	"NAVBAR_CONNECT": "Collegarsi",
 	"NAVBAR_HOME": "Home",
@@ -51,7 +51,6 @@
 	"SESSION_TEACHER": "Insegnante",
 	"SESSION_DATE": "Data",
 	"SESSION_STATE": "Azione",
-	"SESSION_STATE_LOCK": "Bloccato",
 	"SESSION_STATE_SOON": "Presto disponibile",
 	"SESSION_STATE_OPEN": "Unisciti",
 	"SESSION_UPDATE": "Modifica",

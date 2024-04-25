@@ -3,7 +3,7 @@
 	"MAIN_ROLE_ADMIN": "Администратор",
 	"MAIN_ROLE_STUDENT": "Студент",
 	"MAIN_ROLE_TEACHER": "Преподаватель",
-	
+
 	"NAVBAR_TITLE": "LabSupervisor",
 	"NAVBAR_CONNECT": "Войти",
 	"NAVBAR_HOME": "Главная",
@@ -51,7 +51,6 @@
 	"SESSION_TEACHER": "Преподаватель",
 	"SESSION_DATE": "Дата",
 	"SESSION_STATE": "Действие",
-	"SESSION_STATE_LOCK": "Заблокировано",
 	"SESSION_STATE_SOON": "Скоро",
 	"SESSION_STATE_OPEN": "Присоединиться",
 	"SESSION_UPDATE": "Изменить",

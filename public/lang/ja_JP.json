@@ -3,7 +3,7 @@
 	"MAIN_ROLE_ADMIN": "管理者",
 	"MAIN_ROLE_STUDENT": "学生",
 	"MAIN_ROLE_TEACHER": "教師",
-	
+
 	"NAVBAR_TITLE": "LabSupervisor",
 	"NAVBAR_CONNECT": "接続",
 	"NAVBAR_HOME": "ホーム",
@@ -51,7 +51,6 @@
 	"SESSION_TEACHER": "教師",
 	"SESSION_DATE": "日付",
 	"SESSION_STATE": "アクション",
-	"SESSION_STATE_LOCK": "ロック",
 	"SESSION_STATE_SOON": "まもなく",
 	"SESSION_STATE_OPEN": "参加",
 	"SESSION_UPDATE": "編集",

@@ -3,7 +3,7 @@
 	"MAIN_ROLE_ADMIN": "Beheerder",
 	"MAIN_ROLE_STUDENT": "Student",
 	"MAIN_ROLE_TEACHER": "Docent",
-	
+
 	"NAVBAR_TITLE": "LabSupervisor",
 	"NAVBAR_CONNECT": "Verbinding",
 	"NAVBAR_HOME": "Home",
@@ -51,7 +51,6 @@
 	"SESSION_TEACHER": "Leraar",
 	"SESSION_DATE": "Datum",
 	"SESSION_STATE": "Actie",
-	"SESSION_STATE_LOCK": "Vergrendeld",
 	"SESSION_STATE_SOON": "Binnenkort",
 	"SESSION_STATE_OPEN": "Deelnemen",
 	"SESSION_UPDATE": "Bewerken",
