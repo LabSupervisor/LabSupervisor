@@ -121,7 +121,9 @@
 	"USER_UPDATE_ACTION": "Aktion",
 	"USER_UPDATE_MODIFY": "Bearbeiten",
 	"USER_UPDATE_DELETE": "Löschen",
-
+	"USER_UPDATE_NOTIFICATION": "Änderungen gespeichert.",
+	"USER_UPDATE_DELETE_NOTIFICATION": "Benutzer gelöscht.",
+	
 	"LOG_TRACE": "Spuren",
 	"LOG_ERROR": "Fehler",
 	"LOG_TRACE_ID": "ID",

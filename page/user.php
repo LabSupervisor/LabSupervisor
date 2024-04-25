@@ -16,6 +16,7 @@
 	permissionChecker(true, array(ADMIN));
 
 	// Logic
+	echo '<script src="/public/js/ft_popup.js"></script>';
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateAdminUser.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/deleteAdminUser.php");
 

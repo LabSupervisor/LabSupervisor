@@ -121,6 +121,8 @@
 	"USER_UPDATE_ACTION": "アクション",
 	"USER_UPDATE_MODIFY": "編集",
 	"USER_UPDATE_DELETE": "削除",
+	"USER_UPDATE_NOTIFICATION": "変更が保存されました。",
+	"USER_UPDATE_DELETE_NOTIFICATION": "ユーザーが削除されました。",
 
 	"LOG_TRACE": "トレース",
 	"LOG_ERROR": "エラー",

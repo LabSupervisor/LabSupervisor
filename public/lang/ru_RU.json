@@ -121,6 +121,8 @@
 	"USER_UPDATE_ACTION": "Действие",
 	"USER_UPDATE_MODIFY": "Изменить",
 	"USER_UPDATE_DELETE": "Удалить",
+	"USER_UPDATE_NOTIFICATION": "Изменения сохранены.",
+	"USER_UPDATE_DELETE_NOTIFICATION": "Пользователь удален.",
 
 	"LOG_TRACE": "Отслеживание",
 	"LOG_ERROR": "Ошибки",

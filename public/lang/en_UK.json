@@ -121,6 +121,8 @@
 	"USER_UPDATE_ACTION": "Action",
 	"USER_UPDATE_MODIFY": "Modify",
 	"USER_UPDATE_DELETE": "Delete",
+	"USER_UPDATE_NOTIFICATION": "Changes saved.",
+	"USER_UPDATE_DELETE_NOTIFICATION": "User deleted.",
 
 	"LOG_TRACE": "Traces",
 	"LOG_ERROR": "Errors",

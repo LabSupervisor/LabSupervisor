@@ -121,6 +121,8 @@
 	"USER_UPDATE_ACTION": "Actie",
 	"USER_UPDATE_MODIFY": "Bewerken",
 	"USER_UPDATE_DELETE": "Verwijderen",
+	"USER_UPDATE_NOTIFICATION": "Wijzigingen opgeslagen.",
+	"USER_UPDATE_DELETE_NOTIFICATION": "Gebruiker verwijderd.",
 
 	"LOG_TRACE": "Sporen",
 	"LOG_ERROR": "Fouten",
