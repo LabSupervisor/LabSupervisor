@@ -109,11 +109,11 @@
 			}
 		?>
 			</div>
-		</div>
 		<?php
 		}
 	}
 ?>
+</div>
 
 <script src="/public/js/ft_selectClassroom.js"></script>
 
