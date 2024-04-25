@@ -33,7 +33,7 @@ option {
 	width: -webkit-fill-available;
 	resize: vertical;
 	overflow: hidden;
-	min-height: 22px;
+	min-height: 24px;
 	margin-bottom: 19px;
 }
 
