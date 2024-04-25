@@ -27,7 +27,7 @@
 		<h2><?= lang("SESSION_CREATE_TITLE_INFORMATION") ?></h2>
 		<input type="text" placeholder="<?= lang("SESSION_CREATE_INFORMATION_TITLE") ?>" id="titleSession" class="field" name="titleSession" value="<?= isset($sessionData) ? $sessionData['title'] : "" ?>" required>
 
-		<textarea placeholder="<?= lang("SESSION_CREATE_INFORMATION_DESCRIPTION") ?>" id="descriptionSession" class="field" name="descriptionSession" required><?= isset($sessionData) ? $sessionData['description'] : "" ?></textarea>
+		<textarea placeholder="<?= lang("SESSION_CREATE_INFORMATION_DESCRIPTION") ?>" id="descriptionSession" class="field" name="descriptionSession"><?= isset($sessionData) ? $sessionData['description'] : "" ?></textarea>
 
 		<!-- Participants -->
 
