@@ -34,7 +34,7 @@
 
 <link rel="stylesheet" href="/public/css/sessionpanel.css">
 
-<div class="mainbox statusBox">
+<div class="mainbox maintable">
 	<div class="sessionTitle">
 		<a class="back" href="/sessions"><i class="ri-arrow-left-line"></i> <?= lang("DASHBOARD_BACK") ?></a>
 		<div>

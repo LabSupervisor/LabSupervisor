@@ -67,19 +67,19 @@
 	</div>
 </div>
 
-<div class="mainbox table-container">
+<div class="mainbox maintable">
 	<table>
 		<?php if ($currentView == "default") { ?>
 			<thead>
 				<tr class="thead">
 					<th><?= lang("DASHBOARD_STUDENT_NAME") ?></th>
 					<th></th>
-					<th><?= lang("DASHBOARD_SCREENSHARE") ?></th>
 					<?php
 						foreach (SessionRepository::getChapter($_SESSION["session"]) as $value) {
 							echo "<th><i class=\"ri-information-line\" title='" . $value["title"] . "'></i></th>";
 						}
 					?>
+					<th><?= lang("DASHBOARD_SCREENSHARE") ?></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -92,7 +92,6 @@
 					echo "<tr>";
 					echo "<td class='col1'>" . $participantName["name"] . "</td>";
 					echo "<td class='col1'>" . $participantName["surname"] . "</td>";
-					echo "<td><button class='screenShareButton' title=\"" . lang("DASHBOARD_SCREENSHARE_OPEN") . "\" id='getScreenshare' onclick='window.open(\"/screenshare?userId=" . $userId . "\", \"_blank\")'><i class='ri-eye-line'></i></button></td>";
 
 					$status = "";
 					foreach (SessionRepository::getChapter($_SESSION["session"]) as $value) {
@@ -100,6 +99,8 @@
 
 						echo "<td class='col2'>" . $status . "</td>";
 					}
+
+					echo "<td><button class='screenShareButton' title=\"" . lang("DASHBOARD_SCREENSHARE_OPEN") . "\" id='getScreenshare' onclick='window.open(\"/screenshare?userId=" . $userId . "\", \"_blank\")'><i class='ri-eye-line'></i></button></td>";
 					echo "</tr>";
 				}
 			?>
@@ -109,9 +110,9 @@
 			<tr class="thead">
 				<th><?= lang("DASHBOARD_STUDENT_NAME") ?></th>
 				<th></th>
-				<th><?= lang("DASHBOARD_SCREENSHARE") ?></th>
 				<th><?= lang("DASHBOARD_CHAPTER") ?></th>
 				<th><?= lang("DASHBOARD_STATUS") ?></th>
+				<th><?= lang("DASHBOARD_SCREENSHARE") ?></th>
 			</tr>
 			</thead>
 			<tbody>
@@ -125,7 +126,7 @@
 					$statusList = "";
 					$index = 1;
 					foreach (SessionRepository::getChapter($_SESSION["session"]) as $value) {
-						$chapterList .= $index . ". " . $value["title"] . "<br>";
+						$chapterList .= $index . " - " . $value["title"] . "<br>";
 						$statusList .= statusFormat($userId, SessionRepository::getChapterId($value["title"]), SessionRepository::getStatus(SessionRepository::getChapterId($value["title"]), $userId));
 
 						$index++;
@@ -137,9 +138,9 @@
 					echo "<tr>";
 					echo "<td class='col1'>" . $participantName["name"] . "</td>";
 					echo "<td class='col1'>" . $participantName["surname"] . "</td>";
-					echo "<td><button class='screenShareButton' title=\"" . lang("DASHBOARD_SCREENSHARE_OPEN") . "\" id='getScreenshare' onclick='window.open(\"/screenshare?userId=" . $userId . "\", \"_blank\")'><i class='ri-eye-line'></i></button></td>";
 					echo "<td class='col2'>" . $chapterList . "</td>";
 					echo "<td class='col3'><div class='statusBallGroup'>" . $statusList . "</div></td>";
+					echo "<td><button class='screenShareButton' title=\"" . lang("DASHBOARD_SCREENSHARE_OPEN") . "\" id='getScreenshare' onclick='window.open(\"/screenshare?userId=" . $userId . "\", \"_blank\")'><i class='ri-eye-line'></i></button></td>";
 					echo "</tr>";
 				}
 			?>

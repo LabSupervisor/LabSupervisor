@@ -33,12 +33,8 @@
 	background-color: var(--button-background-color);
 }
 
-/* Classroom's students */
 .contentClassroom {
 	display: none;
-	width: calc(55% - 4px);
-	padding: 20px;
-	margin-right: 15vh;
 }
 
 .contentClassroom[selected] {
@@ -46,24 +42,7 @@
 }
 
 .contentClassroom h2 {
-	margin-top: 10px;
-}
-
-.contentClassroom table {
-	width: -webkit-fill-available;
-	border-collapse: collapse;
-}
-
-.contentClassroom th {
-	font-size: 18px;
-}
-
-.contentClassroom tr {
-	height: 40px;
-}
-
-.contentClassroom tbody tr {
-	border-top: 1px solid var(--case-border-color);
+	margin: 10px;
 }
 
 .selectStudent {

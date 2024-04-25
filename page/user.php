@@ -34,7 +34,7 @@
 <link rel="stylesheet" href="/public/css/user.css">
 
 <form id="form" method='POST'>
-	<div class="mainbox table-container">
+	<div class="mainbox maintable">
 	<table>
 		<thead>
 			<tr class="thead">

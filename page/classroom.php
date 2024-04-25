@@ -52,7 +52,7 @@
 				$selected = "selected";
 ?>
 
-			<div id="contentClassroom_<?php echo $classroom["id"]?>" class="mainbox contentClassroom" <?php echo $selected?>>
+			<div id="contentClassroom_<?php echo $classroom["id"]?>" class="mainbox maintable contentClassroom" <?php echo $selected?>>
 			<h2><?php echo $classroom["name"]?></h2>
 			<table>
 				<thead>
@@ -108,7 +108,8 @@
 				echo "</select><button type='submit' class='button' name='addStudent'><i class=\"ri-add-line\"></i> " . lang("CLASSROOM_ADD") . "</button></form>";
 			}
 		?>
-			</div></div>
+			</div>
+		</div>
 		<?php
 		}
 	}

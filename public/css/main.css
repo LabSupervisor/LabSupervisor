@@ -92,8 +92,7 @@ body {
 .mainbox {
 	display: block;
 	margin: auto;
-	margin-top: 10vh;
-	margin-bottom: 6vh;
+	margin-top: 6vh;
 	text-align: center;
 
 	background-color: var(--background-case-color);
@@ -242,4 +241,30 @@ body {
 .statusGreen {
 	background-color: lime;
 	box-shadow: 0px 0px 10px 0px lime;
+}
+
+/* Board */
+table {
+	border-collapse: collapse;
+}
+
+.maintable {
+	max-width: fit-content;
+	padding: 20px;
+	user-select: none;
+}
+
+.maintable th {
+	padding-left: 15px;
+	padding-right: 15px;
+	font-size: 20px;
+	padding-bottom: 22px;
+}
+
+.maintable td {
+	padding: 8px 15px 8px 15px;
+}
+
+.maintable tbody tr {
+	border-top: 1px solid var(--case-border-color);
 }
