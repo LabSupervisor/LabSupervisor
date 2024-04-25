@@ -123,6 +123,7 @@
 	"USER_UPDATE_DELETE": "削除",
 	"USER_UPDATE_NOTIFICATION": "変更が保存されました。",
 	"USER_UPDATE_DELETE_NOTIFICATION": "ユーザーが削除されました。",
+	"USER_UPDATE_DELETE_CONFIRMATION": "このユーザーを削除してもよろしいですか？",
 
 	"LOG_TRACE": "トレース",
 	"LOG_ERROR": "エラー",

@@ -123,6 +123,7 @@
 	"USER_UPDATE_DELETE": "Elimina",
 	"USER_UPDATE_NOTIFICATION": "Modifiche salvate.",
 	"USER_UPDATE_DELETE_NOTIFICATION": "Utente eliminato.",
+	"USER_UPDATE_DELETE_CONFIRMATION": "Sei sicuro di voler eliminare questo utente?",
 
 	"LOG_TRACE": "Tracce",
 	"LOG_ERROR": "Errori",

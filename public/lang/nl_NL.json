@@ -123,6 +123,7 @@
 	"USER_UPDATE_DELETE": "Verwijderen",
 	"USER_UPDATE_NOTIFICATION": "Wijzigingen opgeslagen.",
 	"USER_UPDATE_DELETE_NOTIFICATION": "Gebruiker verwijderd.",
+	"USER_UPDATE_DELETE_CONFIRMATION": "Weet je zeker dat je deze gebruiker wilt verwijderen?",
 
 	"LOG_TRACE": "Sporen",
 	"LOG_ERROR": "Fouten",

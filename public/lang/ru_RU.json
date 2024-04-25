@@ -123,6 +123,7 @@
 	"USER_UPDATE_DELETE": "Удалить",
 	"USER_UPDATE_NOTIFICATION": "Изменения сохранены.",
 	"USER_UPDATE_DELETE_NOTIFICATION": "Пользователь удален.",
+	"USER_UPDATE_DELETE_CONFIRMATION": "Вы уверены, что хотите удалить этого пользователя?",
 
 	"LOG_TRACE": "Отслеживание",
 	"LOG_ERROR": "Ошибки",
