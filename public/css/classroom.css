@@ -1,19 +1,17 @@
-* {
-	user-select: none;
-}
-
 .mainGroup {
 	display: flex;
+	align-items: center;
 	flex-direction: row;
+	user-select: none;
 }
 
 /* Side menu */
 #lateralSelector {
 	width: calc(15%);
-	margin-left: 15vh;
 	vertical-align: top;
 	padding: 20px;
 	height: fit-content;
+	margin-right: 0;
 }
 
 .classname {
