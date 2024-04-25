@@ -5,6 +5,10 @@
 	user-select: none;
 }
 
+.col3 {
+	user-select: text;
+}
+
 /* Side menu */
 #lateralSelector {
 	width: calc(15%);

@@ -11,6 +11,10 @@
 	flex-direction: row;
 }
 
+.col1, .col2, .col4 {
+	user-select: text;
+}
+
 .nosessionmain {
 	display: block;
 	width: 80%;

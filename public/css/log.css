@@ -1,5 +1,5 @@
 .col3, .col4{
-	user-select: all;
+	user-select: text;
 }
 
 .col3 {

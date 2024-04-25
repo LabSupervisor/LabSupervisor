@@ -77,7 +77,7 @@
 						<tr>
 							<td><?= $studInfos["surname"] ?></td>
 							<td><?= $studInfos["name"] ?></td>
-							<td><?= $studInfos["email"] ?></td>
+							<td class="col3"><?= $studInfos["email"] ?></td>
 							<td>
 								<!-- Delete user form -->
 								<form action="" method="post">
