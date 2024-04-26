@@ -22,7 +22,7 @@
 				echo "<script> window.open('','_self').close(); </script>";
 			}
 
-			mainHeader(UserRepository::getInfo(UserRepository::getEmail($_GET["userId"]))["name"] . " " . UserRepository::getInfo(UserRepository::getEmail($_GET["userId"]))["surname"], false);
+			mainHeader(UserRepository::getInfo($_GET["userId"])["name"] . " " . UserRepository::getInfo($_GET["userId"])["surname"], false);
 		?>
 
 		<script>

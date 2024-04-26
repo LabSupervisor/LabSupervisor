@@ -39,7 +39,7 @@ if (!function_exists(__NAMESPACE__ . "/mainHeader")) {
 		if (isset($_SESSION["login"]))
 			echo
 				"<script>" .
-					"var userId = ". UserRepository::getId($_SESSION["login"]) . ";" .
+					"var userId = ". $_SESSION["login"] . ";" .
 					"var userLang = '". UserRepository::getSetting($_SESSION["login"])["lang"] . "';" .
 					"var defaultLang = '". DEFAULT_LANGUAGE . "';" .
 				"</script>";

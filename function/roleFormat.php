@@ -4,9 +4,9 @@ namespace LabSupervisor\functions;
 use LabSupervisor\app\repository\UserRepository;
 
 if (!function_exists(__NAMESPACE__ . "/roleFormat")) {
-	function roleFormat($email) {
+	function roleFormat($userId) {
 		$result = "";
-		$userRole = UserRepository::getRole($email);
+		$userRole = UserRepository::getRole($userId);
 
 		$roleList = array();
 		foreach ($userRole as $value) {

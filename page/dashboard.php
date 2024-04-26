@@ -87,7 +87,7 @@
 				// Select paticipants
 				foreach (SessionRepository::getParticipant($_SESSION["session"]) as $value) {
 					$userId = $value["iduser"];
-					$participantName = UserRepository::getInfo(UserRepository::getEmail($userId));
+					$participantName = UserRepository::getInfo($userId);
 
 					echo "<tr>";
 					echo "<td class='col1'>" . $participantName["name"] . "</td>";
@@ -132,7 +132,7 @@
 						$index++;
 					}
 
-					$participantName = UserRepository::getInfo(UserRepository::getEmail($userId));
+					$participantName = UserRepository::getInfo($userId);
 
 					// Fill table
 					echo "<tr>";

@@ -51,14 +51,14 @@
 			<?php
 				foreach (UserRepository::getUsers() as $user) {
 					// Only select active user
-					if (UserRepository::isActive($user["email"])) {
+					if (UserRepository::isActive($user["id"])) {
 						$userId = $user['id'];
 			?>
 			<tr>
 				<td class="col1" id="surname_<?=$userId?>"><?=$user['surname']?></td>
 				<td class="col2" id="name_<?=$userId?>"><?=$user['name']?></td>
 				<td class="col3"><?=$user['email']?></td>
-				<td class="col4" id="role_<?=$userId?>"><?=roleFormat($user['email'])?></td>
+				<td class="col4" id="role_<?=$userId?>"><?=roleFormat($user['id'])?></td>
 				<td class="col5" id="classroom_<?=$userId?>">
 					<?php
 					if ($user["classroom"]) {
@@ -73,7 +73,7 @@
 					$classroomIdUser = ClassroomRepository::getUserClassroom($userId);
 					if (!$classroomIdUser)
 						$classroomIdUser = 0;
-					$roleIdUser = UserRepository::getRole(UserRepository::getEmail($userId))[0]["idrole"];
+					$roleIdUser = UserRepository::getRole($userId)[0]["idrole"];
 				?>
 				<td class="col6"><button class="modifybutton button" type="button" id="modify_<?= $userId ?>" onclick="updateUser(<?= $userId ?>, <?= $classroomIdUser ?>, <?= $roleIdUser ?>)"><?= lang("USER_UPDATE_MODIFY") ?></button>
 				<form method="POST" onsubmit="return confirm('<?= lang('USER_UPDATE_DELETE_CONFIRMATION') ?>');">

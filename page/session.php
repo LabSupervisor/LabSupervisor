@@ -63,7 +63,7 @@
 				for($i = 0; $i < count($sessionList); $i++) {
 					echo "<tr>";
 					foreach($sessionList[$i] as $line) {
-						$creatorName = nameFormat(UserRepository::getEmail($line["idcreator"]), false);
+						$creatorName = nameFormat($line["idcreator"], false);
 
 						echo '<td class="col1" title="' . htmlspecialchars($line["title"]) . '">'. htmlspecialchars($line["title"]) ."</td>";
 

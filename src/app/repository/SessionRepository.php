@@ -265,8 +265,7 @@ class SessionRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
 	}
 
-	public static function getUserSessions($email) {
-		$userId = UserRepository::getId($email);
+	public static function getUserSessions($userId) {
 
 		// Get user's sessions query
 		$query = "SELECT idsession FROM participant WHERE iduser = :iduser";

@@ -42,7 +42,7 @@
 			$logs = LogRepository::getLogs();
 
 			foreach ($logs as $line) {
-				$userInfo = UserRepository::getInfo(UserRepository::getEmail($line["iduser"]));
+				$userInfo = UserRepository::getInfo($line["iduser"]);
 				$username = $userInfo["name"] . " " . $userInfo["surname"];
 
 				echo "<tr>";

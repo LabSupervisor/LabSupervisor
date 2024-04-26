@@ -4,8 +4,8 @@ namespace LabSupervisor\functions;
 use LabSupervisor\app\repository\UserRepository;
 
 if (!function_exists(__NAMESPACE__ . "/nameFormat")) {
-	function nameFormat($email, $nameIsFirst) {
-		$user = UserRepository::getInfo($email);
+	function nameFormat($userId, $nameIsFirst) {
+		$user = UserRepository::getInfo($userId);
 
 		// "John S."
 		if ($nameIsFirst) {

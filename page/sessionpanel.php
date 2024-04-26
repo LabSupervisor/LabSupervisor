@@ -61,7 +61,7 @@
 					foreach (SessionRepository::getChapter($_SESSION["session"]) as $chapter) {
 
 						$statusBall = "statusBall";
-						switch (SessionRepository::getStatus($chapter['id'], UserRepository::getId($_SESSION["login"]))) {
+						switch (SessionRepository::getStatus($chapter['id'], $_SESSION["login"])) {
 							case "1":
 								$statusBall = "statusBall statusRed";
 								break;

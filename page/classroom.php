@@ -69,8 +69,8 @@
 			// Display classroom's student
 			$students = ClassroomRepository::getUsers($classroom["name"]);
 			foreach ($students as $student) {
-				if (UserRepository::isActive(UserRepository::getEmail($student["iduser"]))) {
-					$studInfos = UserRepository::getInfo(UserRepository::getEmail($student["iduser"]));
+				if (UserRepository::isActive($student["iduser"])) {
+					$studInfos = UserRepository::getInfo($student["iduser"]);
 
 					if (isset($studInfos)) {
 		?>
