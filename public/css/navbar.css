@@ -13,7 +13,7 @@
 	backdrop-filter: blur(12px);
 	border-bottom: 2px solid var(--case-border-color);
 	box-shadow: 0px 0px 50px 0px #00000030;
-	
+
 	height: 60px;
 }
 
@@ -100,7 +100,8 @@
 	padding: 15px;
 }
 
-.navbarGroup .profil .sub .item {
+.navbarGroup .profil .sub .item:first-child {
+	justify-content: center;
 	margin-bottom: 10px;
 }
 

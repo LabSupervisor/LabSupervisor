@@ -101,7 +101,7 @@
 						<a href="/compte"><i class="ri-account-circle-line"></i>' . lang("NAVBAR_PROFIL_ACCOUNT") . '</a>
 					</div>';
 		$navbarItem .= '
-					<div>
+					<div class="item">
 						<a href="/deconnexion"><i class="ri-logout-box-line"></i>' . lang("NAVBAR_PROFIL_DISCONNECT") . '</a>
 					</div>
 				</div>
