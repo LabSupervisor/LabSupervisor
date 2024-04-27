@@ -15,6 +15,14 @@
 	"NAVBAR_PROFIL_ACCOUNT": "Cuenta",
 	"NAVBAR_PROFIL_DISCONNECT": "Desconectar",
 
+	"INDEX_STUDENT_SESSION": "¡Desde aquí, puedes ver todas las sesiones en las que has sido inscrito!",
+	"INDEX_TEACHER_CLASSROOM": "En esta página encontrarás las diferentes clases de tu institución.",
+	"INDEX_TEACHER_CREATE_SESSION": "Esta página te permite crear una sesión y acceder a ella a través de los botones que se encuentran a continuación.",
+	"INDEX_TEACHER_SESSION": "Aquí tienes acceso a las sesiones que has creado o aquellas que requieren tu presencia.",
+	"INDEX_ADMIN_SESSION": "Esta página te permite ver todas las sesiones existentes. Como administrador, simplemente puedes verlas.",
+	"INDEX_ADMIN_USER": "Desde esta página, puedes supervisar a todos los usuarios registrados. Esto significa que puedes modificar cierta información o desactivar usuarios.",
+	"INDEX_ADMIN_LOG": "Aquí es donde se encuentra el historial global de la aplicación.",
+
 	"REGISTER_TITLE": "Registro",
 	"REGISTER_EMAIL": "Correo electrónico",
 	"REGISTER_PASSWORD": "Contraseña",

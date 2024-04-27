@@ -15,6 +15,14 @@
 	"NAVBAR_PROFIL_ACCOUNT": "Account",
 	"NAVBAR_PROFIL_DISCONNECT": "Logout",
 
+	"INDEX_STUDENT_SESSION": "From here, you can view all the sessions you've been add to!",
+	"INDEX_TEACHER_CLASSROOM": "On this page, you'll find the different classes of your school.",
+	"INDEX_TEACHER_CREATE_SESSION": "This page allows you to create a session and access it with the buttons below.",
+	"INDEX_TEACHER_SESSION": "Here, you have access to sessions you've created or those requiring your presence.",
+	"INDEX_ADMIN_SESSION": "This page allows you to view all existing sessions. As an administrator, you can simply view them.",
+	"INDEX_ADMIN_USER": "From this page, you can supervise all registered users. This means you can modify certain informations or disable users.",
+	"INDEX_ADMIN_LOG": "This is where the application's global history is located.",
+
 	"REGISTER_TITLE": "Register",
 	"REGISTER_EMAIL": "Email",
 	"REGISTER_PASSWORD": "Password",

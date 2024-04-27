@@ -15,6 +15,14 @@
 	"NAVBAR_PROFIL_ACCOUNT": "アカウント",
 	"NAVBAR_PROFIL_DISCONNECT": "ログアウト",
 
+	"INDEX_STUDENT_SESSION": "ここから、登録されているすべてのセッションを表示できます！",
+	"INDEX_TEACHER_CLASSROOM": "このページでは、あなたの学校のさまざまなクラスが表示されます。",
+	"INDEX_TEACHER_CREATE_SESSION": "このページでは、セッションを作成し、下のボタンを使用してアクセスできます。",
+	"INDEX_TEACHER_SESSION": "ここでは、作成したセッションやあなたの出席を必要とするセッションにアクセスできます。",
+	"INDEX_ADMIN_SESSION": "このページでは、すべての既存のセッションを表示できます。管理者として、それらを単に表示することができます。",
+	"INDEX_ADMIN_USER": "このページから、すべての登録ユーザーを監視できます。これは、特定の情報を変更したり、ユーザーを無効にしたりできることを意味します。",
+	"INDEX_ADMIN_LOG": "ここにアプリケーションのグローバル履歴があります。",
+
 	"REGISTER_TITLE": "登録",
 	"REGISTER_EMAIL": "Eメール",
 	"REGISTER_PASSWORD": "パスワード",
