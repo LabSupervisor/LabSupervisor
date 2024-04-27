@@ -1,4 +1,5 @@
 .boxGroup {
+	user-select: none;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
