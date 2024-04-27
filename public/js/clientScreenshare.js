@@ -1,13 +1,15 @@
 const shareButton = document.getElementById('shareButton');
 const grid = document.getElementById('videogrid');
-const socket = io('ws://localhost:3000');
+const socket = io('ws://' + videoServerHost +':' + videoServerPort);
 let data = [];
 
 // Start sharing
 shareButton.addEventListener('click', async () => {
 	// Ask web browser
 	const mediaStream = await navigator.mediaDevices.getDisplayMedia({
-		video: true,
+		video: {
+			displaySurface: 'monitor'
+		},
 		audio: false
 	});
 

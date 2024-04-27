@@ -1,8 +1,9 @@
 <?php
 
-use LabSupervisor\app\repository\UserRepository;
-use LabSupervisor\app\repository\SessionRepository;
-use LabSupervisor\app\repository\LogRepository;
+use
+	LabSupervisor\app\repository\UserRepository,
+	LabSupervisor\app\repository\SessionRepository,
+	LabSupervisor\app\repository\LogRepository;
 use function LabSupervisor\functions\statusPicker;
 
 header('Content-Type: application/json');
@@ -28,9 +29,31 @@ switch($_SERVER["REQUEST_METHOD"]) {
 
 			// Application asking for user status
 			if ($data->ask == "get_status") {
-				$status = SessionRepository::getStatus($data->idChapter, $data->idUser);
+				$participant = SessionRepository::getParticipant($data->idSession);
+				$chapter = SessionRepository::getChapter($data->idSession);
+
+				$state = '{"Response": {';
+
+				foreach ($participant as $value) {
+					$state .= '"' . $value["iduser"] . '": {';
+					foreach ($chapter as $value2) {
+						$state .= '"' . $value2["id"] . '" : ' . SessionRepository::getStatus($value2["id"], $value["iduser"]) . ",";
+					}
+					$state = substr($state, 0, -1);
+					$state .= "},";
+				}
+				$state = substr($state, 0, -1);
+				$state .= "}}";
+
 				// Answer API
-				echo '{"Response": {"Status": ' . $status . '}}';
+				echo $state;
+			}
+
+			// Application asking to update user status
+			if ($data->ask == "update_status") {
+				SessionRepository::setStatus($data->idSession, $data->idChapter, $data->idUser, $data->idState);
+				// Answer API
+				echo '{"Response": {"Message": "Status updated."}}';
 			}
 
 			// Application asking for session state
@@ -48,7 +71,7 @@ switch($_SERVER["REQUEST_METHOD"]) {
 			// Application asking to update user theme
 			if ($data->ask == "update_theme") {
 				// Update theme
-				$lang = UserRepository::getSetting(UserRepository::getEmail($data->idUser))["lang"];
+				$lang = UserRepository::getSetting($data->idUser)["lang"];
 				if ($data->theme == "light")
 					$theme = 0;
 				else

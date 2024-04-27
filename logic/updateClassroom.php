@@ -4,12 +4,12 @@ use LabSupervisor\app\repository\ClassroomRepository;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	// Add student
-	if (isset($_POST['add_student'])) {
-		if (!ClassroomRepository::isUserInClassroom($_POST['student_id'], $_POST['class_id'])) {
-			ClassroomRepository::addUser($_POST['student_id'], $_POST['class_id']);
+	if (isset($_POST['addStudent'])) {
+		if (!ClassroomRepository::isUserInClassroom($_POST['studentId'], $_POST['classroomId'])) {
+			ClassroomRepository::addUser($_POST['studentId'], $_POST['classroomId']);
 		}
 	// Remove student
-	} elseif (isset($_POST['remove_student'])) {
-		ClassroomRepository::removeUser($_POST['remove_student'], $_POST['class_id']);
+	} elseif (isset($_POST['removeStudent'])) {
+		ClassroomRepository::removeUser($_POST['removeStudent'], $_POST['classroomId']);
 	}
 }

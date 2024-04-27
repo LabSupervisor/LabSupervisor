@@ -9,7 +9,7 @@
 		LabSupervisor\functions\permissionChecker;
 
 	// Import header
-	mainHeader("Session en cours");
+	mainHeader("Session en cours", true);
 
 	// Ask for permissions
 	permissionChecker(true, array(STUDENT));
@@ -32,68 +32,108 @@
 	}
 ?>
 
-<script src="/public/js/ft_updateStatus.js"></script>
+<link rel="stylesheet" href="/public/css/sessionpanel.css">
 
-<form method="post" id="formupdate">
-	<input type="hidden" name="chapter" value="0" id="chapter">
-	<input type="hidden" name="status" value="0" id="status">
-</form>
+<div class="mainbox maintable">
+	<div class="sessionTitle">
+		<a class="back" href="/sessions"><i class="ri-arrow-left-line"></i> <?= lang("DASHBOARD_BACK") ?></a>
+		<div>
+			<h2><?= SessionRepository::getName($_SESSION["session"]) ?></h2>
+			<a><?= SessionRepository::getInfo($_SESSION["session"])[0]["description"] ?></a>
+		</div>
+	</div>
 
-<div id="statusBoxPaused" <?= $styleTitle ?>>
-	<h2><?= lang("SESSION_PAUSED") ?></h2>
-</div>
+	<div id="statusBoxPaused" <?= $styleTitle ?>>
+		<h2><?= lang("SESSION_PANEL_PAUSED") ?></h2>
+	</div>
 
-<div id="statusBox" <?= $styleBox ?>>
-	<table>
-		<thead>
-			<tr>
-				<th>Chapitre</th>
-				<th>Action</th>
-				<th>Status</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php
-				foreach (SessionRepository::getChapter($_SESSION["session"]) as $chapter) { ?>
+	<div id="statusBox" <?= $styleBox ?>>
+		<table>
+			<thead>
 				<tr>
-					<td>
-						<?php echo $chapter["title"]; ?>
-					</td>
-					<td>
-						<input type="hidden" name="liste" value="<?php echo $chapter['id']; ?>">
-						<button onclick="setStatus(<?=$chapter['id']?>,3)">Terminé !</button>
-						<button onclick="setStatus(<?=$chapter['id']?>,2)">Travail en cours...</button>
-						<button onclick="setStatus(<?=$chapter['id']?>,1)">J'ai besoin d'aide !</button>
-					</td>
-					<td>
-						<?php
-							echo SessionRepository::getStatus($chapter['id'], UserRepository::getId($_SESSION["login"]));
-						?>
-					</td>
+					<th><?= lang("SESSION_PANEL_CHAPTER") ?></th>
+					<th><?= lang("SESSION_PANEL_ACTION") ?></th>
+					<th><?= lang("SESSION_PANEL_STATUS") ?></th>
 				</tr>
-			<?php
-				}
-			?>
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+				<?php
+					foreach (SessionRepository::getChapter($_SESSION["session"]) as $chapter) {
+
+						$statusBall = "statusBall";
+						switch (SessionRepository::getStatus($chapter['id'], $_SESSION["login"])) {
+							case "1":
+								$statusBall = "statusBall statusRed";
+								break;
+							case "2":
+								$statusBall = "statusBall statusYellow";
+								break;
+							case "3":
+								$statusBall = "statusBall statusGreen";
+								break;
+						}
+				?>
+					<tr>
+						<td class="col1"><?= $chapter["title"] ?></td>
+						<td class="col2">
+							<input type="hidden" name="liste" value="<?php echo $chapter['id']; ?>">
+							<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 1)"><i class="ri-error-warning-line"></i> <?= lang("SESSION_PANEL_HELP") ?></button>
+							<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 2)"><i class="ri-edit-line"></i> <?= lang("SESSION_PANEL_WIP") ?></button>
+							<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 3)"><i class="ri-thumb-up-line"></i> <?= lang("SESSION_PANEL_DONE") ?></button>
+						</td>
+						<td class="col3"><div class="<?= $statusBall ?>" id="statusBall_<?= $chapter['id'] ?>"></div></td>
+					</tr>
+				<?php
+					}
+				?>
+			</tbody>
+		</table>
+	</div>
 </div>
 
-<?php
-	// LS-Link
-	if (UserRepository::getLink($_SESSION["login"], $_SESSION["session"])){
-		echo "LS-LINK n°" . UserRepository::getLink($_SESSION["login"], $_SESSION["session"]);
-	}
-	echo "<br>LS-LINK : <form method='POST'><input type='hidden' name='sessionId' value='" . $_SESSION["session"] . "'><input type='number' name='number'/><input type='submit' name='link'/></form>";
-?>
+<div class="item">
+	<div class="mainbox screenshareBox">
+		<h2><?= lang("SESSION_PANEL_SCREENSHARE") ?></h2>
+		<button class="button" id="shareButton"><i class="ri-share-line"></i> <?= lang("SESSION_PANEL_SCREENSHARE_START") ?></button>
+	</div>
 
-<button id="getScreenshare">Get screenshare</button>
+	<div class="mainbox lslinkBox">
+		<h2><?= lang("SESSION_PANEL_LSLINK") ?></h2>
+
+		<?php
+			$buttonText = '<i class="ri-link"></i> ' . lang("SESSION_PANEL_LSLINK_CONNECT");
+			$unlinkButton = "";
+			$linkId = "";
+			if (UserRepository::getLink($_SESSION["login"], $_SESSION["session"])) {
+				$linkId = UserRepository::getLink($_SESSION["login"], $_SESSION["session"]);
+
+				echo lang("SESSION_PANEL_LSLINK_NUMBER") . $linkId;
+				$buttonText = '<i class="ri-pencil-line"></i> ' . lang("SESSION_PANEL_LSLINK_MODIFY");
+				$unlinkButton = "<button class='button' type='submit' name='disconnect' value=" . $linkId . "><i class=\"ri-dislike-line\"></i> " . lang("SESSION_PANEL_LSLINK_DISCONNECT") . "</button>";
+			}
+			echo "<div class='lslinkButton'><form method='POST'>";
+			echo "<input type='hidden' name='sessionId' value='" . $_SESSION["session"] . "'>";
+			echo "<input class='lslinkid' type='number' name='number' value='" . $linkId. "'>";
+			echo "<button class='button' type='submit' name='link'>" . $buttonText . "</button>";
+			echo "</form>";
+
+			echo"<form method='POST'>";
+			echo $unlinkButton;
+			echo"</form></div>";
+		?>
+	</div>
+</div>
+
 <div id="screenshare"></div>
 
 <!-- Create "global" varaibles -->
 <script>
-	var userId = <?= UserRepository::getId($_SESSION["login"]) ?>;
 	var sessionId = <?= $_SESSION["session"] ?>;
+	var videoServerHost = "<?= $_ENV["VIDEO_SERVER_HOST"] ?>";
+	var videoServerPort = <?= $_ENV["VIDEO_SERVER_PORT"] ?>;
 </script>
+
+<script src="/public/js/ft_updateStatus.js"></script>
 
 <!-- Import PeerJS server -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.2/peerjs.min.js"></script>

@@ -4,11 +4,12 @@ use LabSupervisor\app\repository\UserRepository;
 use function LabSupervisor\functions\lang;
 
 if (isset($_POST["login"])) {
-	if (UserRepository::getId($_POST['email'])) {
+	$userId = UserRepository::getId($_POST["email"]);
+	if ($userId) {
 		// Check if password correspond to database
-		if (UserRepository::verifyPassword($_POST['email'], $_POST['password'])) {
+		if (UserRepository::verifyPassword($userId, $_POST['password'])) {
 			// Connect user
-			$_SESSION['login'] = $_POST['email'];
+			$_SESSION["login"] = $userId;
 			header("Location: /");
 		}
 	}

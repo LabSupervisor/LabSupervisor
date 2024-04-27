@@ -5,8 +5,7 @@
 		LabSupervisor\functions\roleFormat;
 
 	// Import header
-	mainHeader("");
-
+	mainHeader("", true);
 ?>
 
 <?php

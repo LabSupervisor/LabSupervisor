@@ -19,6 +19,20 @@
 	background: none;
 }
 
+/* Input autocomplete style */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px var(--case-field-background-color) inset;
+  -webkit-text-fill-color: var(--text-color);
+}
+
 body {
 	height: 100%;
 	width: 100%;
@@ -80,12 +94,11 @@ body {
 .mainbox {
 	display: block;
 	margin: auto;
-	margin-top: 10vh;
-	margin-bottom: 6vh;
+	margin-top: 6vh;
 	text-align: center;
 
 	background-color: var(--background-case-color);
-	border-radius: 25px;
+	border-radius: 20px;
 	border-style: solid;
 	border-width: 2px;
 	border-color: var(--case-border-color);
@@ -116,16 +129,22 @@ body {
 .errorPopup {
 	background-color: var(--background-case-color);
 	color: var(--text-color);
-	padding: 30px;
+	padding: 10px 20px 10px 26px;
 	border-radius: 10px;
 	position: fixed;
-	top: 30%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 11;
-	border: 2px solid #ff000030;
+	margin-top: 70px;
+	margin-right: 8px;
+	right: 0;
+	border: 2px solid var(--case-border-color);
 	backdrop-filter: blur(12px);
-	box-shadow: 0px 0px 50px 0px #ff000030;
+	box-shadow: 0px 0px 50px 0px #00000030;
+	user-select: none;
+}
+
+.errorPopup i {
+	font-size: 34px;
+	margin-right: 25px;
+	vertical-align: middle;
 }
 
 .errorPopup .button {
@@ -176,6 +195,20 @@ body {
 	background-color: var(--button-hover-color);
 	transition: 200ms;
 	cursor: pointer;
+}
+
+.back {
+	background-color: transparent;
+	border: 0;
+	font-size: 16px;
+	cursor: pointer;
+	transition: 200ms;
+	text-decoration: none;
+}
+
+.back:hover {
+	color: var(--text-hover-color);
+	transition: 200ms;
 }
 
 /* Checkbox style */
@@ -261,4 +294,30 @@ body {
 .statusGreen {
 	background-color: lime;
 	box-shadow: 0px 0px 10px 0px lime;
+}
+
+/* Board */
+table {
+	border-collapse: collapse;
+}
+
+.maintable {
+	max-width: fit-content;
+	padding: 20px;
+	user-select: none;
+}
+
+.maintable th {
+	padding-left: 15px;
+	padding-right: 15px;
+	font-size: 20px;
+	padding-bottom: 22px;
+}
+
+.maintable td {
+	padding: 8px 15px 8px 15px;
+}
+
+.maintable tbody tr {
+	border-top: 1px solid var(--case-border-color);
 }

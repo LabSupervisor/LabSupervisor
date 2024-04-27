@@ -1,0 +1,58 @@
+.mainGroup {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	user-select: none;
+}
+
+.col3 {
+	user-select: text;
+}
+
+/* Side menu */
+#lateralSelector {
+	width: calc(15%);
+	vertical-align: top;
+	padding: 20px;
+	height: fit-content;
+	margin-right: 0;
+}
+
+.classname {
+	margin: 5px 3% 5px 3%;
+	padding: 5px;
+	font-size: 20px;
+	cursor: pointer;
+	border-radius: 9px;
+	max-height: 80%;
+}
+
+.classname:hover {
+	background-color: var(--button-hover-color);
+}
+
+.classname[selected] {
+	background-color: var(--button-background-color);
+}
+
+.contentClassroom {
+	display: none;
+}
+
+.contentClassroom[selected] {
+	display: block;
+}
+
+.contentClassroom h2 {
+	margin: 10px;
+}
+
+.selectStudent {
+	background: var(--case-field-background-color);
+	border: 0;
+	border-radius: 7px;
+	font-size: 15px;
+	padding: 9px;
+	color: var(--text-color);
+	cursor: pointer;
+}

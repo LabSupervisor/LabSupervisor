@@ -35,6 +35,9 @@ switch ($page[0]) {
 	case "/sessions":
 		include "page/session.php";
 		break;
+	case "/sessionmodifier":
+		include "page/sessioncreation.php";
+		break;
 	case "/sessioncreation":
 		include "page/sessioncreation.php";
 		break;
@@ -53,8 +56,15 @@ switch ($page[0]) {
 	case "/connect":
 		include "api/index.php";
 		break;
+	// This is not a debug.
+	case "/helloworld":
+		echo "<h1>Hello world!</h1>";
+		break;
 	case "/sessionend":
 		include "page/sessionend.php";
+		break;
+	case "/screenshare":
+		include "page/screenshare.php";
 		break;
 	case "/denied":
 		include "page/denied.php";

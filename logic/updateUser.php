@@ -6,7 +6,7 @@ use
 
 if (isset($_POST['new_name'])) {
 	$userData = array(
-		"email" => $_SESSION["login"],
+		"email" => UserRepository::getEmail($_SESSION["login"]),
 		"name" => $_POST['new_name']
 	);
 
@@ -34,7 +34,7 @@ if (isset($_POST['new_name'])) {
 	);
 
 	// Update user's settings
-	UserRepository::updateSetting(UserRepository::getId($_SESSION["login"]), $userSetting);
+	UserRepository::updateSetting($_SESSION["login"], $userSetting);
 
 	header("Refresh:0");
 }

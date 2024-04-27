@@ -9,7 +9,7 @@
 		LabSupervisor\functions\permissionChecker;
 
 	// Import header
-	mainHeader(lang("NAVBAR_CLASS"));
+	mainHeader(lang("NAVBAR_CLASS"), true);
 
 	// Ask for permissions
 	permissionChecker(true, array(TEACHER));
@@ -18,67 +18,106 @@
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateClassroom.php");
 ?>
 
-<h2>Ajouter des élèves</h2>
+<link rel="stylesheet" href="/public/css/classroom.css">
 
 <?php
-	foreach (ClassroomRepository::getClassrooms() as $classroom) {
-		if (ClassroomRepository::isActive($classroom["name"])) {?>
+	$classrooms = ClassroomRepository::getClassrooms();
 
-	<h3>Classe <?php echo $classroom["name"]; ?></h3>
-	<table>
-		<thead>
-			<tr>
-				<th>Nom</th>
-				<th>Prénom</th>
-				<th>Email</th>
-			</tr>
-		</thead>
-		<tbody>
+	// Side menu
+	echo '<div class="mainGroup"><div id="lateralSelector" class="mainbox">';
+	echo "<h2>" . lang("CLASSROOM_NAME") . "</h2>";
+
+	for($i = 0; $i < count($classrooms); $i++) {
+		$classroom = $classrooms[$i];
+
+		$selected = "";
+		// Focus first class
+		if($i == 0)
+			$selected = "selected";
+
+		if ($classroom["active"] == "1") {
+			echo '<div id="classroom_' . $classroom["id"] . '" class="classname" ' . $selected . ' onclick="selectClass(' . $classroom["id"] . ')">' . $classroom["name"] . '</div>';
+		}
+	}
+	echo '</div>';
+
+	// Choosen classroom display
+	for($i = 0; $i < count($classrooms); $i++) {
+		$classroom = $classrooms[$i];
+
+		if ($classroom["active"] == "1") {
+			$selected = "";
+			// Focus first class
+			if ($i == 0)
+				$selected = "selected";
+?>
+
+			<div id="contentClassroom_<?php echo $classroom["id"]?>" class="mainbox maintable contentClassroom" <?php echo $selected?>>
+			<h2><?php echo $classroom["name"]?></h2>
+			<table>
+				<thead>
+					<tr>
+						<th><?= lang("CLASSROOM_STUDENT_SURNAME") ?></th>
+						<th><?= lang("CLASSROOM_STUDENT_NAME") ?></th>
+						<th><?= lang("CLASSROOM_STUDENT_EMAIL") ?></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+
 		<?php
-			// Fetch students for the current class
+			// Display classroom's student
 			$students = ClassroomRepository::getUsers($classroom["name"]);
 			foreach ($students as $student) {
-				if (UserRepository::isActive(UserRepository::getEmail($student["iduser"]))) {
-					$studInfos = UserRepository::getInfo(UserRepository::getEmail($student["iduser"]));
+				if (UserRepository::isActive($student["iduser"])) {
+					$studInfos = UserRepository::getInfo($student["iduser"]);
 
 					if (isset($studInfos)) {
 		?>
-				<tr>
-					<td><?= $studInfos["name"] ?></td>
-					<td><?= $studInfos["surname"] ?></td>
-					<td><?= $studInfos["email"] ?></td>
-					<td>
-						<form action="" method="post">
-							<input type="hidden" name="class_id" value="<?= $classroom["id"] ?>">
-							<input type="hidden" name="remove_student" value="<?= $student["iduser"] ?>">
-							<input type="submit" value="Retirer">
-						</form>
-					</td>
-				</tr>
-
+						<tr>
+							<td><?= $studInfos["surname"] ?></td>
+							<td><?= $studInfos["name"] ?></td>
+							<td class="col3"><?= $studInfos["email"] ?></td>
+							<td>
+								<!-- Delete user form -->
+								<form action="" method="post">
+									<input type="hidden" name="classroomId" value="<?= $classroom["id"] ?>">
+									<input type="hidden" name="removeStudent" value="<?= $student["iduser"] ?>">
+									<button type="submit" class="button"><i class="ri-eraser-line"></i> <?= lang("CLASSROOM_STUDENT_REMOVE") ?></button>
+								</form>
+							</td>
+						</tr>
 		<?php
 					}
 				}
 			}
 		?>
-		</tbody>
-	</table>
+				</tbody>
+			</table>
 		<?php
-			// Fetch students not already in this class
-			$students = ClassroomRepository::getUsersNotInClassroom();
-			if ($students) {
-				echo "<form method='POST'>";
-				echo "<input type='hidden' name='class_id' value=" . $classroom["id"] .">";
-				echo "<select name='student_id' id='student_id'><label for='student_id'>Sélectionner un élève :</label>";
-				foreach ($students as $student) {
-					echo "<option value='" . $student['id'] . "'>" . $student['name'] . " " . $student['surname'] . "</option>";
+
+			// Free student list
+			$freeStudents = ClassroomRepository::getUsersNotInClassroom();
+			if ($freeStudents) {
+				echo "<form class='freeStudents' method='POST'>";
+				echo "<input type='hidden' name='classroomId' value=" . $classroom["id"] .">";
+				echo "<select class='selectStudent' name='studentId' id='studentId'>";
+				foreach ($freeStudents as $student)	{
+					echo "<option value='" . $student['id'] . "'>" . $student['surname'] . " " . $student['name'] . "</option>";
 				}
-				echo "</select><input type='submit' name='add_student' value='Ajouter'></form>";
+				echo "</select><button type='submit' class='button' name='addStudent'><i class=\"ri-add-line\"></i> " . lang("CLASSROOM_ADD") . "</button></form>";
 			}
+		?>
+			</div>
+		<?php
 		}
 	}
 ?>
+</div>
+
+<script src="/public/js/ft_selectClassroom.js"></script>
 
 <?php
+	// Footer
 	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');
 ?>

@@ -56,8 +56,9 @@ Available langage:
 ## 🤔 Requirements
 
 - [Apache2](https://httpd.apache.org/) Latest
-- [PHP](https://www.php.net/) ^=8.1
+- [PHP](https://www.php.net/) >=8.1
 - [NodeJS](https://nodejs.org/) Latest
+- [NPM](https://www.npmjs.com/) Latest
 - [MariaDB](https://mariadb.org/) Latest
 - [Composer](https://getcomposer.org/) Latest
 
@@ -84,9 +85,13 @@ Use `composer install` on a terminal open in project's root folder.
 
 Rename `.env.example` to `.env` <u>and fill credentials</u>.
 
-4. <u>Screenshare server</u>
+4. <u>Install video server</u>
 
-Execute `cd server/ && node server.js` on a terminal open in project's root folder.
+Go to `server/` and open a terminal, execute `npm i`.
+
+5. <u>Start servers</u>
+
+Execute `composer start` on a terminal open in project's root folder.
 
 ## 📌 Environment development datas
 

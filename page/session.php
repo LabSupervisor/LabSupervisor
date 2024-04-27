@@ -10,7 +10,7 @@
 		LabSupervisor\functions\nameFormat;
 
 	// Import header
-	mainHeader(lang("NAVBAR_SESSION"));
+	mainHeader(lang("NAVBAR_SESSION"), true);
 
 	// Ask for permissions and store it
 	$roleList = permissionChecker(true, array(ADMIN, STUDENT, TEACHER));
@@ -43,7 +43,7 @@
 	if (count($sessionList) > 0) {
 ?>
 
-<div class="mainbox table-container">
+<div class="mainbox maintable">
 	<table>
 		<thead>
 			<tr class="thead">
@@ -51,7 +51,11 @@
 				<th><?= lang("SESSION_DESCRIPTION") ?></th>
 				<th><?= lang("SESSION_TEACHER") ?></th>
 				<th><?= lang("SESSION_DATE") ?></th>
-				<th><?= lang("SESSION_STATE") ?></th>
+				<?php
+					if (!in_array(ADMIN, $roleList)) {
+						echo "<th>" . lang("SESSION_STATE") . "</th>";
+					}
+				?>
 			</tr>
 		</thead>
 		<tbody>
@@ -59,26 +63,23 @@
 				for($i = 0; $i < count($sessionList); $i++) {
 					echo "<tr>";
 					foreach($sessionList[$i] as $line) {
-						$creatorName = nameFormat(UserRepository::getEmail($line["idcreator"]), false);
+						$creatorName = nameFormat($line["idcreator"], false);
 
-						echo '<td class="col1">'. htmlspecialchars($line["title"]) ."</td>";
-						echo '<td class="col2-container">';
-						if ($line["description"]) {
-							echo '<div class="col2-tooltip">' . htmlspecialchars($line["description"]) . '</div>';
-						} else {
-							echo lang("SESSION_DESCRIPTION_EMPTY");
-						}
-						echo '<div class="col2">'. htmlspecialchars($line["description"]) ."</div>";
-						echo '</td>';
+						echo '<td class="col1" title="' . htmlspecialchars($line["title"]) . '">'. htmlspecialchars($line["title"]) ."</td>";
+
+						if ($line["description"])
+							$description = htmlspecialchars($line["description"]);
+						else
+							$description = lang("SESSION_DESCRIPTION_EMPTY");
+						echo '<td class="col2" title="' . $description . '"><div class="col2">'. $description . "</div></td>";
+
 						echo '<td class="col3">'. htmlspecialchars($creatorName) ."</td>";
-						echo '<td class="col4">'. $line["date"] ."</td>";
-						if (in_array(ADMIN, $roleList)) {
-							echo "<td class='col5'><i class='ri-lock-line'></i> " . lang("SESSION_STATE_LOCK") . "</td>";
-						} else {
+						echo '<td class="col4">'. date("d/m/Y H:i", strtotime($line["date"])) ."</td>";
+						if (!in_array(ADMIN, $roleList)) {
 							echo "<td class='col5'>";
 
 							if (in_array(TEACHER, $roleList)) {
-								echo "<form method='POST'><input type='submit' name='modify[" . $line["id"] . "]' value='" . lang("SESSION_UPDATE") . "' class='button'></input></form>";
+								echo "<form method='POST' action='/sessionmodifier'><input type='hidden' name='sessionId' value='" . $line["id"] . "'><button type='submit' class='button'><i class=\"ri-pencil-line\"></i> " . lang("SESSION_UPDATE") . "</button></form>";
 							}
 
 							// Only select existed user
@@ -86,11 +87,11 @@
 								if ($line["date"] > date('Y-m-d H:i:s')) {
 									echo "<i class='ri-timer-line'></i> " . lang("SESSION_STATE_SOON");
 								} else {
-									echo "<form method='POST'><input type='submit' name='connect[" . $line["id"] . "]' value='" . lang("SESSION_STATE_OPEN") . "' class='button'></input></form>";
+									echo "<form method='POST'><button type='submit' name='connect[" . $line["id"] . "]' value='" . lang("SESSION_STATE_OPEN") . "' class='button'><i class=\"ri-login-box-line\"></i> " . lang("SESSION_STATE_OPEN") . "</button></form>";
 								}
 							} else {
 								if (in_array(TEACHER, $roleList)) {
-									echo "<form method='POST'><input type='submit' name='open[" . $line["id"] . "]' value='" . lang("SESSION_ACTION_OPEN") . "' class='button'></input></form>";
+									echo "<form method='POST'><button type='submit' name='open[" . $line["id"] . "]' value='" . lang("SESSION_ACTION_OPEN") . "' class='button'><i class=\"ri-door-open-line\"></i> " . lang("SESSION_ACTION_OPEN") . "</button></form>";
 								} else {
 									echo lang("SESSION_ACTION_END");
 								}

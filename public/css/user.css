@@ -1,32 +1,10 @@
-.table-container {
-	text-align: center;
-	width: -webkit-fill-available;
-	margin-left: 15vh;
-	margin-right: 15vh;
-	padding: 20px;
-	user-select: none;
-}
-
-table {
-	width: -webkit-fill-available;
-	border-collapse: collapse;
-}
-
-thead {
-	font-size: 24px;
-}
-
 .col1, .col2, .col3 {
-	user-select: all;
-}
-
-.col1, .col2, .col3, .col4, .col5, .col6 {
-	max-width: fit-content;
+	user-select: text;
 }
 
 .col6 {
-	overflow: visible;
 	display: flex;
+	flex-direction: row;
 }
 
 .name, .surname, .role, .classroom {
@@ -40,36 +18,4 @@ thead {
 
 input::placeholder {
 	color: var(--case-field-text-color);
-}
-
-th {
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
-	padding-left: 15px;
-	padding-right: 15px;
-	font-size: 20px;
-	padding-bottom: 22px;
-	max-width: 50px;
-}
-
-td {
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
-	padding-left: 15px;
-	padding-right: 15px;
-	max-width: 50px;
-	height: 63px;
-}
-
-tr {
-	padding: 100px;
-}
-
-tr:not(.thead) {
-	border: 0;
-	border-top: 2px;
-	border-style: solid;
-	border-color: var(--case-border-color);
 }

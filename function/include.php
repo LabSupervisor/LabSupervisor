@@ -2,8 +2,10 @@
 
 // Include all functions
 
-$files = array_diff(scandir($_SERVER["DOCUMENT_ROOT"] . "/function/"), array(".", "..", "include.php"));
+$functionPath = dirname(__FILE__) . "/../function/";
+
+$files = array_diff(scandir($functionPath), array(".", "..", "include.php"));
 
 foreach ($files as $file) {
-	require_once $_SERVER["DOCUMENT_ROOT"] . "/function/" . $file;
+	require_once $functionPath . $file;
 }
