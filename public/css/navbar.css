@@ -55,8 +55,9 @@
 }
 
 .navbarGroup .icon {
-	width: 60px;
-	margin-right: 10px;
+	width: 54px;
+	padding: 6px;
+	margin-right: 5px;
 
 	height: -webkit-fill-available;
 }
