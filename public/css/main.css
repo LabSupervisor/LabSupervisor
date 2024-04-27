@@ -47,6 +47,8 @@ body {
 	overflow-x : hidden;
 }
 
+
+
 #main {
 	flex: 1;
 }
@@ -92,8 +94,7 @@ body {
 .mainbox {
 	display: block;
 	margin: auto;
-	margin-top: 10vh;
-	margin-bottom: 6vh;
+	margin-top: 6vh;
 	text-align: center;
 
 	background-color: var(--background-case-color);
@@ -109,16 +110,22 @@ body {
 .errorPopup {
 	background-color: var(--background-case-color);
 	color: var(--text-color);
-	padding: 30px;
+	padding: 10px 20px 10px 26px;
 	border-radius: 10px;
 	position: fixed;
-	top: 30%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 11;
-	border: 2px solid #ff000030;
+	margin-top: 70px;
+	margin-right: 8px;
+	right: 0;
+	border: 2px solid var(--case-border-color);
 	backdrop-filter: blur(12px);
-	box-shadow: 0px 0px 50px 0px #ff000030;
+	box-shadow: 0px 0px 50px 0px #00000030;
+	user-select: none;
+}
+
+.errorPopup i {
+	font-size: 34px;
+	margin-right: 25px;
+	vertical-align: middle;
 }
 
 .errorPopup .button {
@@ -242,4 +249,30 @@ body {
 .statusGreen {
 	background-color: lime;
 	box-shadow: 0px 0px 10px 0px lime;
+}
+
+/* Board */
+table {
+	border-collapse: collapse;
+}
+
+.maintable {
+	max-width: fit-content;
+	padding: 20px;
+	user-select: none;
+}
+
+.maintable th {
+	padding-left: 15px;
+	padding-right: 15px;
+	font-size: 20px;
+	padding-bottom: 22px;
+}
+
+.maintable td {
+	padding: 8px 15px 8px 15px;
+}
+
+.maintable tbody tr {
+	border-top: 1px solid var(--case-border-color);
 }

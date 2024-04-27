@@ -1,13 +1,9 @@
-.statusBox {
+.maintable {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	text-align: center;
 	width: -webkit-fill-available;
-	margin-top: 6vh;
-	max-width: fit-content;
-	padding: 20px;
-	user-select: none;
 }
 
 .statusBall {
@@ -35,11 +31,11 @@
 }
 
 .lslinkBox {
+	margin-top: 6vh;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
 	margin-left: 0;
-	margin-top: 1vh;
 	text-align: center;
 	max-width: fit-content;
 	padding: 20px;
@@ -52,8 +48,8 @@
 }
 
 .screenshareBox {
+	margin-top: 6vh;
 	margin-right: 9vh;
-	margin-top: 1vh;
 	text-align: center;
 	max-width: fit-content;
 	padding: 20px;
@@ -74,31 +70,4 @@
 	color: var(--text-color);
 	margin-right: 12px;
 	max-width: 80px;
-}
-
-thead {
-	font-size: 24px;
-}
-
-th {
-	padding-left: 15px;
-	padding-right: 15px;
-	font-size: 20px;
-	padding-bottom: 22px;
-}
-
-td {
-	padding-left: 15px;
-	padding-right: 15px;
-}
-
-tr {
-	padding: 100px;
-}
-
-tr:not(.thead) {
-	border: 0;
-	border-top: 1px;
-	border-style: solid;
-	border-color: var(--case-border-color);
 }

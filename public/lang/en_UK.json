@@ -1,5 +1,8 @@
 {
 	"MAIN_TITLE": "LabSupervisor",
+	"MAIN_ROLE_ADMIN": "Administrator",
+	"MAIN_ROLE_STUDENT": "Student",
+	"MAIN_ROLE_TEACHER": "Teacher",
 
 	"NAVBAR_TITLE": "LabSupervisor",
 	"NAVBAR_CONNECT": "Login",
@@ -11,6 +14,14 @@
 	"NAVBAR_LOG": "Logs",
 	"NAVBAR_PROFIL_ACCOUNT": "Account",
 	"NAVBAR_PROFIL_DISCONNECT": "Logout",
+
+	"INDEX_STUDENT_SESSION": "From here, you can view all the sessions you've been add to!",
+	"INDEX_TEACHER_CLASSROOM": "On this page, you'll find the different classes of your school.",
+	"INDEX_TEACHER_CREATE_SESSION": "This page allows you to create a session and access it with the buttons below.",
+	"INDEX_TEACHER_SESSION": "Here, you have access to sessions you've created or those requiring your presence.",
+	"INDEX_ADMIN_SESSION": "This page allows you to view all existing sessions. As an administrator, you can simply view them.",
+	"INDEX_ADMIN_USER": "From this page, you can supervise all registered users. This means you can modify certain informations or disable users.",
+	"INDEX_ADMIN_LOG": "This is where the application's global history is located.",
 
 	"REGISTER_TITLE": "Register",
 	"REGISTER_EMAIL": "Email",
@@ -48,7 +59,6 @@
 	"SESSION_TEACHER": "Teacher",
 	"SESSION_DATE": "Date",
 	"SESSION_STATE": "State",
-	"SESSION_STATE_LOCK": "Lock",
 	"SESSION_STATE_SOON": "Soon",
 	"SESSION_STATE_OPEN": "Join",
 	"SESSION_UPDATE": "Update",
@@ -108,6 +118,7 @@
 	"CLASSROOM_STUDENT_SURNAME": "Surname",
 	"CLASSROOM_STUDENT_EMAIL": "Email Address",
 	"CLASSROOM_STUDENT_REMOVE": "Remove from classroom",
+	"CLASSROOM_ADD": "Add",
 
 	"USER_UPDATE_SURNAME": "Surname",
 	"USER_UPDATE_NAME": "Name",
@@ -118,6 +129,9 @@
 	"USER_UPDATE_ACTION": "Action",
 	"USER_UPDATE_MODIFY": "Modify",
 	"USER_UPDATE_DELETE": "Delete",
+	"USER_UPDATE_NOTIFICATION": "Changes saved.",
+	"USER_UPDATE_DELETE_NOTIFICATION": "User deleted.",
+	"USER_UPDATE_DELETE_CONFIRMATION": "Are you sure you want to delete this user?",
 
 	"LOG_TRACE": "Traces",
 	"LOG_ERROR": "Errors",

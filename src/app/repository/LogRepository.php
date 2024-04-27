@@ -13,7 +13,7 @@ class LogRepository extends Exception{
 
 			if (isset($_SESSION["login"])) {
 				// Get user ID
-				$userId = UserRepository::getId($_SESSION["login"]);
+				$userId = $_SESSION["login"];
 
 				// Insert log
 				$queryPrep = DATABASE->prepare($query);

@@ -1,5 +1,8 @@
 {
 	"MAIN_TITLE": "LabSupervisor",
+	"MAIN_ROLE_ADMIN": "Beheerder",
+	"MAIN_ROLE_STUDENT": "Student",
+	"MAIN_ROLE_TEACHER": "Docent",
 
 	"NAVBAR_TITLE": "LabSupervisor",
 	"NAVBAR_CONNECT": "Verbinding",
@@ -11,6 +14,14 @@
 	"NAVBAR_LOG": "Logs",
 	"NAVBAR_PROFIL_ACCOUNT": "Account",
 	"NAVBAR_PROFIL_DISCONNECT": "Afmelden",
+
+	"INDEX_STUDENT_SESSION": "Vanaf hier kunt u alle sessies bekijken waarvoor u bent ingeschreven!",
+	"INDEX_TEACHER_CLASSROOM": "Op deze pagina vindt u de verschillende klassen van uw instelling.",
+	"INDEX_TEACHER_CREATE_SESSION": "Op deze pagina kunt u een sessie maken en er toegang toe krijgen via de onderstaande knoppen.",
+	"INDEX_TEACHER_SESSION": "Hier heeft u toegang tot sessies die u heeft gemaakt of die uw aanwezigheid vereisen.",
+	"INDEX_ADMIN_SESSION": "Deze pagina geeft u toegang tot alle bestaande sessies. Als beheerder kunt u ze eenvoudig bekijken.",
+	"INDEX_ADMIN_USER": "Vanaf deze pagina kunt u alle geregistreerde gebruikers superviseren. Dit betekent dat u bepaalde informatie kunt wijzigen of gebruikers kunt uitschakelen.",
+	"INDEX_ADMIN_LOG": "Hier bevindt zich het globale logboek van de applicatie.",
 
 	"REGISTER_TITLE": "Registratie",
 	"REGISTER_EMAIL": "E-mail",
@@ -48,7 +59,6 @@
 	"SESSION_TEACHER": "Leraar",
 	"SESSION_DATE": "Datum",
 	"SESSION_STATE": "Actie",
-	"SESSION_STATE_LOCK": "Vergrendeld",
 	"SESSION_STATE_SOON": "Binnenkort",
 	"SESSION_STATE_OPEN": "Deelnemen",
 	"SESSION_UPDATE": "Bewerken",
@@ -108,6 +118,7 @@
 	"CLASSROOM_STUDENT_SURNAME": "Achternaam",
 	"CLASSROOM_STUDENT_EMAIL": "E-mailadres",
 	"CLASSROOM_STUDENT_REMOVE": "Verwijderen",
+	"CLASSROOM_ADD": "Toevoegen",
 
 	"USER_UPDATE_SURNAME": "Achternaam",
 	"USER_UPDATE_NAME": "Voornaam",
@@ -118,6 +129,9 @@
 	"USER_UPDATE_ACTION": "Actie",
 	"USER_UPDATE_MODIFY": "Bewerken",
 	"USER_UPDATE_DELETE": "Verwijderen",
+	"USER_UPDATE_NOTIFICATION": "Wijzigingen opgeslagen.",
+	"USER_UPDATE_DELETE_NOTIFICATION": "Gebruiker verwijderd.",
+	"USER_UPDATE_DELETE_CONFIRMATION": "Weet je zeker dat je deze gebruiker wilt verwijderen?",
 
 	"LOG_TRACE": "Sporen",
 	"LOG_ERROR": "Fouten",

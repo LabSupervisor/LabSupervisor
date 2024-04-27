@@ -10,6 +10,11 @@ function addVideoStream(mediaStream) {
 	video.play();
 }
 
+if (navigator.userAgent.includes("Firefox")) {
+	alert("This feature is not supported by Firefox.");
+	window.open('','_self').close();
+}
+
 startScrenshare();
 
 async function startScrenshare() {
@@ -20,7 +25,7 @@ async function startScrenshare() {
 			},
 			audio: false
 		});
-		
+
 		// Create peer connection
 		const peer = new Peer();
 

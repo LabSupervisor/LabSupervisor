@@ -1,5 +1,8 @@
 {
 	"MAIN_TITLE": "LabSupervisor",
+	"MAIN_ROLE_ADMIN": "Administrateur",
+	"MAIN_ROLE_STUDENT": "Etudiant",
+	"MAIN_ROLE_TEACHER": "Enseignant",
 
 	"NAVBAR_TITLE": "LabSupervisor",
 	"NAVBAR_CONNECT": "Connexion",
@@ -11,6 +14,14 @@
 	"NAVBAR_LOG": "Logs",
 	"NAVBAR_PROFIL_ACCOUNT": "Compte",
 	"NAVBAR_PROFIL_DISCONNECT": "Déconnecter",
+
+	"INDEX_STUDENT_SESSION": "D'ici vous pouvez consulter toutes les sessions auxquels vous avez été inscrit !",
+	"INDEX_TEACHER_CLASSROOM": "Sur cette page vous sont disposé les différentes classes de votre établissement.",
+	"INDEX_TEACHER_CREATE_SESSION": "C'est avec cette page qu'il vous est possible de créer une session ainsi que de la consulter grâce aux boutons ci-dessous",
+	"INDEX_TEACHER_SESSION": "Ici vous sont accessible les sessions de votre création ou celle demandant votre présence.",
+	"INDEX_ADMIN_SESSION": "Cette page vous permet de consulter toutes les sessions existantes. En tant qu'administrateur, leurs simple visualisation vous est possible",
+	"INDEX_ADMIN_USER": "Vous pouvez superviser tous les utilisateurs inscrits depuis cette page. Cela signifie avoir la possibilité d'en modifier certaines informations ou en désactiver.",
+	"INDEX_ADMIN_LOG": "Ici se situe l'historique global de l'application.",
 
 	"REGISTER_TITLE": "Inscription",
 	"REGISTER_EMAIL": "Email",
@@ -45,10 +56,9 @@
 	"SESSION_SUBJECT": "Sujet",
 	"SESSION_DESCRIPTION": "Précisions",
 	"SESSION_DESCRIPTION_EMPTY": "Aucune précision disponible",
-	"SESSION_TEACHER": "Professeur",
+	"SESSION_TEACHER": "Enseignant",
 	"SESSION_DATE": "Date",
 	"SESSION_STATE": "Action",
-	"SESSION_STATE_LOCK": "Verrouillé",
 	"SESSION_STATE_SOON": "Prochainement",
 	"SESSION_STATE_OPEN": "Rejoindre",
 	"SESSION_UPDATE": "Modifier",
@@ -108,6 +118,7 @@
 	"CLASSROOM_STUDENT_SURNAME": "Nom",
 	"CLASSROOM_STUDENT_EMAIL": "Adresse email",
 	"CLASSROOM_STUDENT_REMOVE": "Retirer de la classe",
+	"CLASSROOM_ADD": "Ajouter",
 
 	"USER_UPDATE_SURNAME": "Nom",
 	"USER_UPDATE_NAME": "Prénom",
@@ -118,6 +129,9 @@
 	"USER_UPDATE_ACTION": "Action",
 	"USER_UPDATE_MODIFY": "Modifier",
 	"USER_UPDATE_DELETE": "Supprimer",
+	"USER_UPDATE_NOTIFICATION": "Modifications enregistré.",
+	"USER_UPDATE_DELETE_NOTIFICATION": "Utilisateur supprimé.",
+	"USER_UPDATE_DELETE_CONFIRMATION": "Etes-vous certain de vouloir supprimer cet utilisateur ?",
 
 	"LOG_TRACE": "Traces",
 	"LOG_ERROR": "Erreurs",

@@ -13,7 +13,7 @@ if (isset($_POST['saveSession'])) {
 
 	$title = $_POST['titleSession'];
 	$description = $_POST['descriptionSession'];
-	$creatorId = UserRepository::getId($_SESSION["login"]);
+	$creatorId = $_SESSION["login"];
 	$date = $_POST['date'];
 
 	$sessionData = array(
@@ -47,7 +47,7 @@ if (isset($_POST['saveSession'])) {
 	}
 
 	// Add teacher to his own session
-	SessionRepository::addParticipant(UserRepository::getId($_SESSION["login"]), $title);
+	SessionRepository::addParticipant($_SESSION["login"], $title);
 
 	header("Location: /sessions");
 }
@@ -58,7 +58,7 @@ else if (isset($_POST['updateSession'])){
 
 	$title = $_POST['titleSession'];
 	$description = $_POST['descriptionSession'];
-	$creatorId = UserRepository::getId($_SESSION["login"]);
+	$creatorId = $_SESSION["login"];
 	$date = $_POST['date'];
 	$sessionId = $_POST['idSession'];
 

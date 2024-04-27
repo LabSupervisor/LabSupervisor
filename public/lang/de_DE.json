@@ -1,5 +1,8 @@
 {
 	"MAIN_TITLE": "LabSupervisor",
+	"MAIN_ROLE_ADMIN": "Administrator",
+	"MAIN_ROLE_STUDENT": "Student",
+	"MAIN_ROLE_TEACHER": "Lehrer",
 
 	"NAVBAR_TITLE": "LabSupervisor",
 	"NAVBAR_CONNECT": "Verbindung",
@@ -11,6 +14,14 @@
 	"NAVBAR_LOG": "Protokolle",
 	"NAVBAR_PROFIL_ACCOUNT": "Konto",
 	"NAVBAR_PROFIL_DISCONNECT": "Abmelden",
+
+	"INDEX_STUDENT_SESSION": "Von hier aus können Sie alle Sitzungen einsehen, an denen Sie teilgenommen haben!",
+	"INDEX_TEACHER_CLASSROOM": "Auf dieser Seite finden Sie die verschiedenen Klassen Ihrer Schule.",
+	"INDEX_TEACHER_CREATE_SESSION": "Auf dieser Seite können Sie eine Sitzung erstellen und über die unten stehenden Schaltflächen darauf zugreifen.",
+	"INDEX_TEACHER_SESSION": "Hier haben Sie Zugriff auf die von Ihnen erstellten Sitzungen oder solche, die Ihre Anwesenheit erfordern.",
+	"INDEX_ADMIN_SESSION": "Diese Seite ermöglicht Ihnen den Zugriff auf alle vorhandenen Sitzungen. Als Administrator können Sie sie einfach anzeigen.",
+	"INDEX_ADMIN_USER": "Von dieser Seite aus können Sie alle registrierten Benutzer überwachen. Dies bedeutet, dass Sie bestimmte Informationen ändern oder Benutzer deaktivieren können.",
+	"INDEX_ADMIN_LOG": "Hier finden Sie das globale Anwendungsprotokoll.",
 
 	"REGISTER_TITLE": "Registrierung",
 	"REGISTER_EMAIL": "E-Mail",
@@ -48,7 +59,6 @@
 	"SESSION_TEACHER": "Lehrer",
 	"SESSION_DATE": "Datum",
 	"SESSION_STATE": "Aktion",
-	"SESSION_STATE_LOCK": "Gesperrt",
 	"SESSION_STATE_SOON": "Bald verfügbar",
 	"SESSION_STATE_OPEN": "Beitreten",
 	"SESSION_UPDATE": "Bearbeiten",
@@ -108,6 +118,7 @@
 	"CLASSROOM_STUDENT_SURNAME": "Nachname",
 	"CLASSROOM_STUDENT_EMAIL": "E-Mail",
 	"CLASSROOM_STUDENT_REMOVE": "Entfernen",
+	"CLASSROOM_ADD": "Hinzufügen",
 
 	"USER_UPDATE_SURNAME": "Nachname",
 	"USER_UPDATE_NAME": "Vorname",
@@ -118,6 +129,9 @@
 	"USER_UPDATE_ACTION": "Aktion",
 	"USER_UPDATE_MODIFY": "Bearbeiten",
 	"USER_UPDATE_DELETE": "Löschen",
+	"USER_UPDATE_NOTIFICATION": "Änderungen gespeichert.",
+	"USER_UPDATE_DELETE_NOTIFICATION": "Benutzer gelöscht.",
+	"USER_UPDATE_DELETE_CONFIRMATION": "Sind Sie sicher, dass Sie diesen Benutzer löschen möchten?",
 
 	"LOG_TRACE": "Spuren",
 	"LOG_ERROR": "Fehler",

@@ -43,7 +43,7 @@
 	if (count($sessionList) > 0) {
 ?>
 
-<div class="mainbox table-container">
+<div class="mainbox maintable">
 	<table>
 		<thead>
 			<tr class="thead">
@@ -51,7 +51,11 @@
 				<th><?= lang("SESSION_DESCRIPTION") ?></th>
 				<th><?= lang("SESSION_TEACHER") ?></th>
 				<th><?= lang("SESSION_DATE") ?></th>
-				<th><?= lang("SESSION_STATE") ?></th>
+				<?php
+					if (!in_array(ADMIN, $roleList)) {
+						echo "<th>" . lang("SESSION_STATE") . "</th>";
+					}
+				?>
 			</tr>
 		</thead>
 		<tbody>
@@ -59,22 +63,19 @@
 				for($i = 0; $i < count($sessionList); $i++) {
 					echo "<tr>";
 					foreach($sessionList[$i] as $line) {
-						$creatorName = nameFormat(UserRepository::getEmail($line["idcreator"]), false);
+						$creatorName = nameFormat($line["idcreator"], false);
 
-						echo '<td class="col1">'. htmlspecialchars($line["title"]) ."</td>";
-						echo '<td class="col2-container">';
-						if ($line["description"]) {
-							echo '<div class="col2-tooltip">' . htmlspecialchars($line["description"]) . '</div>';
-						} else {
-							echo lang("SESSION_DESCRIPTION_EMPTY");
-						}
-						echo '<div class="col2">'. htmlspecialchars($line["description"]) ."</div>";
-						echo '</td>';
+						echo '<td class="col1" title="' . htmlspecialchars($line["title"]) . '">'. htmlspecialchars($line["title"]) ."</td>";
+
+						if ($line["description"])
+							$description = htmlspecialchars($line["description"]);
+						else
+							$description = lang("SESSION_DESCRIPTION_EMPTY");
+						echo '<td class="col2" title="' . $description . '"><div class="col2">'. $description . "</div></td>";
+
 						echo '<td class="col3">'. htmlspecialchars($creatorName) ."</td>";
 						echo '<td class="col4">'. date("d/m/Y H:i", strtotime($line["date"])) ."</td>";
-						if (in_array(ADMIN, $roleList)) {
-							echo "<td class='col5'><i class='ri-lock-line'></i> " . lang("SESSION_STATE_LOCK") . "</td>";
-						} else {
+						if (!in_array(ADMIN, $roleList)) {
 							echo "<td class='col5'>";
 
 							if (in_array(TEACHER, $roleList)) {

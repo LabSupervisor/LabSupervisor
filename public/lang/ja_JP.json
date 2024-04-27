@@ -1,5 +1,8 @@
 {
 	"MAIN_TITLE": "LabSupervisor",
+	"MAIN_ROLE_ADMIN": "管理者",
+	"MAIN_ROLE_STUDENT": "学生",
+	"MAIN_ROLE_TEACHER": "教師",
 
 	"NAVBAR_TITLE": "LabSupervisor",
 	"NAVBAR_CONNECT": "接続",
@@ -11,6 +14,14 @@
 	"NAVBAR_LOG": "ログ",
 	"NAVBAR_PROFIL_ACCOUNT": "アカウント",
 	"NAVBAR_PROFIL_DISCONNECT": "ログアウト",
+
+	"INDEX_STUDENT_SESSION": "ここから、登録されているすべてのセッションを表示できます！",
+	"INDEX_TEACHER_CLASSROOM": "このページでは、あなたの学校のさまざまなクラスが表示されます。",
+	"INDEX_TEACHER_CREATE_SESSION": "このページでは、セッションを作成し、下のボタンを使用してアクセスできます。",
+	"INDEX_TEACHER_SESSION": "ここでは、作成したセッションやあなたの出席を必要とするセッションにアクセスできます。",
+	"INDEX_ADMIN_SESSION": "このページでは、すべての既存のセッションを表示できます。管理者として、それらを単に表示することができます。",
+	"INDEX_ADMIN_USER": "このページから、すべての登録ユーザーを監視できます。これは、特定の情報を変更したり、ユーザーを無効にしたりできることを意味します。",
+	"INDEX_ADMIN_LOG": "ここにアプリケーションのグローバル履歴があります。",
 
 	"REGISTER_TITLE": "登録",
 	"REGISTER_EMAIL": "Eメール",
@@ -48,7 +59,6 @@
 	"SESSION_TEACHER": "教師",
 	"SESSION_DATE": "日付",
 	"SESSION_STATE": "アクション",
-	"SESSION_STATE_LOCK": "ロック",
 	"SESSION_STATE_SOON": "まもなく",
 	"SESSION_STATE_OPEN": "参加",
 	"SESSION_UPDATE": "編集",
@@ -108,6 +118,7 @@
 	"CLASSROOM_STUDENT_SURNAME": "姓",
 	"CLASSROOM_STUDENT_EMAIL": "Eメール",
 	"CLASSROOM_STUDENT_REMOVE": "削除",
+	"CLASSROOM_ADD": "追加",
 
 	"USER_UPDATE_SURNAME": "姓",
 	"USER_UPDATE_NAME": "名",
@@ -118,6 +129,9 @@
 	"USER_UPDATE_ACTION": "アクション",
 	"USER_UPDATE_MODIFY": "編集",
 	"USER_UPDATE_DELETE": "削除",
+	"USER_UPDATE_NOTIFICATION": "変更が保存されました。",
+	"USER_UPDATE_DELETE_NOTIFICATION": "ユーザーが削除されました。",
+	"USER_UPDATE_DELETE_CONFIRMATION": "このユーザーを削除してもよろしいですか？",
 
 	"LOG_TRACE": "トレース",
 	"LOG_ERROR": "エラー",

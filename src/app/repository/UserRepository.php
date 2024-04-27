@@ -78,7 +78,7 @@ class UserRepository {
 		if ($bindParam["password"])
 			$password = password_hash($bindParam["password"], PASSWORD_BCRYPT);
 		else
-			$password = UserRepository::getInfo($bindParam["email"])["password"];
+			$password = UserRepository::getInfo(UserRepository::getId($bindParam["email"]))["password"];
 
 		// Update user query
 		$query = "UPDATE user SET password = :password, name = :name, surname = :surname WHERE email = :email";
@@ -100,15 +100,13 @@ class UserRepository {
 		}
 	}
 
-	public static function verifyPassword($email, $password) {
-		$passwordHash = UserRepository::getInfo($email)["password"];
+	public static function verifyPassword($userId, $password) {
+		$passwordHash = UserRepository::getInfo($userId)["password"];
 
 		return password_verify($password, $passwordHash) ?? NULL;
 	}
 
-	public static function delete($email) {
-		$userId = UserRepository::getId($email);
-
+	public static function delete($userId) {
 		// Delete user query
 		$query = "UPDATE user SET email = 'deleted#" . $userId . "', password = 'deleted', name = 'deleted', surname = 'deleted', active = 0 WHERE id = :iduser";
 
@@ -162,16 +160,16 @@ class UserRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
 	}
 
-	public static function getInfo($email) {
+	public static function getInfo($userId) {
 		// Get user's datas query
-		$query = "SELECT * FROM user WHERE email = :email";
+		$query = "SELECT * FROM user WHERE id = :iduser";
 
 		// Get user's datas
 		try {
 			$queryPrep = DATABASE->prepare($query);
-			$queryPrep->bindParam(':email', $email);
+			$queryPrep->bindParam(':iduser', $userId);
 			if (!$queryPrep->execute())
-				throw new Exception("Get user datas " . $email . " error");
+				throw new Exception("Get user datas " . $userId . " error");
 		} catch (Exception $e) {
 			// Log error
 			LogRepository::fileSave($e);
@@ -180,9 +178,7 @@ class UserRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_ASSOC)[0] ?? NULL;
 	}
 
-	public static function getRole($email) {
-		$userId = UserRepository::getId($email);
-
+	public static function getRole($userId) {
 		// Get user's roles query
 		$query = "SELECT idrole FROM userrole WHERE iduser = :iduser";
 
@@ -191,7 +187,7 @@ class UserRepository {
 			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':iduser', $userId);
 			if (!$queryPrep->execute())
-				throw new Exception("Get user " . $email . " roles error");
+				throw new Exception("Get user " . $userId . " roles error");
 		} catch (Exception $e) {
 			// Log error
 			LogRepository::fileSave($e);
@@ -218,9 +214,7 @@ class UserRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
 	}
 
-	public static function getSetting($email) {
-		$userId = UserRepository::getId($email);
-
+	public static function getSetting($userId) {
 		// Get user's settings query
 		$query = "SELECT * FROM setting WHERE iduser = :iduser";
 
@@ -229,7 +223,7 @@ class UserRepository {
 			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(':iduser', $userId);
 			if (!$queryPrep->execute())
-				throw new Exception("Get user setting " . $email . " error");
+				throw new Exception("Get user setting " . $userId . " error");
 		} catch (Exception $e) {
 			// Log error
 			LogRepository::fileSave($e);
@@ -273,16 +267,16 @@ class UserRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
 	}
 
-	public static function isActive($email) {
+	public static function isActive($userId) {
 		// Get if user is active query
-		$query = "SELECT active FROM user WHERE email = :email";
+		$query = "SELECT active FROM user WHERE id = :iduser";
 
 		// Get if user is active
 		try {
 			$queryPrep = DATABASE->prepare($query);
-			$queryPrep->bindParam(':email', $email);
+			$queryPrep->bindParam(':iduser', $userId);
 			if (!$queryPrep->execute())
-				throw new Exception("Get active user " . $email . " error");
+				throw new Exception("Get active user " . $userId . " error");
 		} catch (Exception $e) {
 			// Log error
 			LogRepository::fileSave($e);
@@ -335,7 +329,7 @@ class UserRepository {
 	public static function link($userId, $sessionId, $moduleId) {
 		$query = "";
 		// Create links query
-		if (UserRepository::getLink(UserRepository::getEmail($userId), $sessionId)) {
+		if (UserRepository::getLink($userId, $sessionId)) {
 			$query = "UPDATE link SET idlink = :idlink, idSession = :idSession WHERE iduser = :iduser";
 		} else {
 			$query = "INSERT INTO link (iduser, idSession, idlink) VALUES (:iduser, :idSession, :idlink)";
@@ -380,9 +374,7 @@ class UserRepository {
 		}
 	}
 
-	public static function getLink($email, $sessionId) {
-		$userId = UserRepository::getId($email);
-
+	public static function getLink($userId, $sessionId) {
 		// Get link query
 		$query = "SELECT idlink FROM link WHERE iduser = :iduser AND idsession = :idsession";
 
@@ -392,7 +384,7 @@ class UserRepository {
 			$queryPrep->bindParam(':iduser', $userId);
 			$queryPrep->bindParam(':idsession', $sessionId);
 			if (!$queryPrep->execute())
-				throw new Exception("Get link " . $email . " error");
+				throw new Exception("Get link " . $userId . " error");
 		} catch (Exception $e) {
 			// Log error
 			LogRepository::fileSave($e);

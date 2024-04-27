@@ -25,7 +25,7 @@ if (isset($_POST["register"])) {
 		$userRepo->createUser($user);
 
 		// Connect user
-		$_SESSION["login"] = $_POST['email'];
+		$_SESSION["login"] = UserRepository::getId($_POST['email']);
 		header("Location: /");
 	}
 }

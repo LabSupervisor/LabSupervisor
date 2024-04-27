@@ -1,5 +1,8 @@
 {
 	"MAIN_TITLE": "LabSupervisor",
+	"MAIN_ROLE_ADMIN": "Amministratore",
+	"MAIN_ROLE_STUDENT": "Studente",
+	"MAIN_ROLE_TEACHER": "Insegnante",
 
 	"NAVBAR_TITLE": "LabSupervisor",
 	"NAVBAR_CONNECT": "Collegarsi",
@@ -11,6 +14,14 @@
 	"NAVBAR_LOG": "Log",
 	"NAVBAR_PROFIL_ACCOUNT": "Account",
 	"NAVBAR_PROFIL_DISCONNECT": "Disconnetti",
+
+	"INDEX_STUDENT_SESSION": "Da qui, puoi visualizzare tutte le sessioni a cui sei stato iscritto!",
+	"INDEX_TEACHER_CLASSROOM": "In questa pagina troverai le diverse classi della tua istituzione.",
+	"INDEX_TEACHER_CREATE_SESSION": "Questa pagina ti consente di creare una sessione e accedere ad essa attraverso i pulsanti sottostanti.",
+	"INDEX_TEACHER_SESSION": "Qui hai accesso alle sessioni che hai creato o a quelle che richiedono la tua presenza.",
+	"INDEX_ADMIN_SESSION": "Questa pagina ti consente di visualizzare tutte le sessioni esistenti. Come amministratore, puoi semplicemente visualizzarle.",
+	"INDEX_ADMIN_USER": "Da questa pagina, puoi supervisionare tutti gli utenti registrati. Ciò significa che puoi modificare determinate informazioni o disabilitare gli utenti.",
+	"INDEX_ADMIN_LOG": "Qui si trova la cronologia globale dell'applicazione.",
 
 	"REGISTER_TITLE": "Registrazione",
 	"REGISTER_EMAIL": "Email",
@@ -48,7 +59,6 @@
 	"SESSION_TEACHER": "Insegnante",
 	"SESSION_DATE": "Data",
 	"SESSION_STATE": "Azione",
-	"SESSION_STATE_LOCK": "Bloccato",
 	"SESSION_STATE_SOON": "Presto disponibile",
 	"SESSION_STATE_OPEN": "Unisciti",
 	"SESSION_UPDATE": "Modifica",
@@ -108,6 +118,7 @@
 	"CLASSROOM_STUDENT_SURNAME": "Cognome",
 	"CLASSROOM_STUDENT_EMAIL": "Email",
 	"CLASSROOM_STUDENT_REMOVE": "Rimuovere",
+	"CLASSROOM_ADD": "Aggiungi",
 
 	"USER_UPDATE_SURNAME": "Cognome",
 	"USER_UPDATE_NAME": "Nome",
@@ -118,6 +129,9 @@
 	"USER_UPDATE_ACTION": "Azione",
 	"USER_UPDATE_MODIFY": "Modifica",
 	"USER_UPDATE_DELETE": "Elimina",
+	"USER_UPDATE_NOTIFICATION": "Modifiche salvate.",
+	"USER_UPDATE_DELETE_NOTIFICATION": "Utente eliminato.",
+	"USER_UPDATE_DELETE_CONFIRMATION": "Sei sicuro di voler eliminare questo utente?",
 
 	"LOG_TRACE": "Tracce",
 	"LOG_ERROR": "Errori",

@@ -1,5 +1,8 @@
 {
 	"MAIN_TITLE": "LabSupervisor",
+	"MAIN_ROLE_ADMIN": "管理员",
+	"MAIN_ROLE_STUDENT": "学生",
+	"MAIN_ROLE_TEACHER": "教师",
 
 	"NAVBAR_TITLE": "LabSupervisor",
 	"NAVBAR_CONNECT": "连接",
@@ -11,6 +14,14 @@
 	"NAVBAR_LOG": "日志",
 	"NAVBAR_PROFIL_ACCOUNT": "账户",
 	"NAVBAR_PROFIL_DISCONNECT": "登出",
+
+	"INDEX_STUDENT_SESSION": "从这里，您可以查看您已注册的所有会话！",
+	"INDEX_TEACHER_CLASSROOM": "在此页面，您将找到您机构的不同班级。",
+	"INDEX_TEACHER_CREATE_SESSION": "此页面允许您创建会话并通过下面的按钮访问。",
+	"INDEX_TEACHER_SESSION": "在这里，您可以访问您创建的会话或需要您参与的会话。",
+	"INDEX_ADMIN_SESSION": "此页面允许您查看所有现有的会话。作为管理员，您可以简单地查看它们。",
+	"INDEX_ADMIN_USER": "从此页面，您可以监督所有注册用户。这意味着您可以修改某些信息或禁用用户。",
+	"INDEX_ADMIN_LOG": "这是应用程序的全局历史记录。",
 
 	"REGISTER_TITLE": "注册",
 	"REGISTER_EMAIL": "电子邮件",
@@ -48,7 +59,6 @@
 	"SESSION_TEACHER": "教师",
 	"SESSION_DATE": "日期",
 	"SESSION_STATE": "操作",
-	"SESSION_STATE_LOCK": "已锁定",
 	"SESSION_STATE_SOON": "即将开始",
 	"SESSION_STATE_OPEN": "加入",
 	"SESSION_UPDATE": "编辑",
@@ -108,6 +118,7 @@
 	"CLASSROOM_STUDENT_SURNAME": "姓氏",
 	"CLASSROOM_STUDENT_EMAIL": "电子邮件",
 	"CLASSROOM_STUDENT_REMOVE": "删除",
+	"CLASSROOM_ADD": "添加",
 
 	"USER_UPDATE_SURNAME": "姓氏",
 	"USER_UPDATE_NAME": "名字",
@@ -118,6 +129,9 @@
 	"USER_UPDATE_ACTION": "操作",
 	"USER_UPDATE_MODIFY": "编辑",
 	"USER_UPDATE_DELETE": "删除",
+	"USER_UPDATE_NOTIFICATION": "更改已保存。",
+	"USER_UPDATE_DELETE_NOTIFICATION": "用户已删除。",
+	"USER_UPDATE_DELETE_CONFIRMATION": "您确定要删除此用户吗？",
 
 	"LOG_TRACE": "跟踪",
 	"LOG_ERROR": "错误",
