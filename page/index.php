@@ -1,32 +1,21 @@
 <?php
-require_once 'function\roleFormat.php';
-use
-	LabSupervisor\app\repository\SessionRepository,
-	LabSupervisor\app\repository\UserRepository;
-	use function LabSupervisor\functions\mainHeader;
-	use function LabSupervisor\functions\permissionChecker;
-	use function LabSupervisor\functions\roleFormat;
+
+	use function
+		LabSupervisor\functions\mainHeader,
+		LabSupervisor\functions\roleFormat;
 
 	// Import header
 	mainHeader("");
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-
 <?php
-$id = LabSupervisor\functions\roleFormat($_SESSION["login"]);
-if ($id == 'Admin') {
-    ?>
-	<!-- HTML content specific to Admin role -->
-	<link rel="stylesheet" href="/public/css/log.css">
-	<div class="mainbox table-container">
-
+	$id = roleFormat($_SESSION["login"]);
+	if ($id == 'Admin') {
+?>
+		<!-- HTML content specific to Admin role -->
+		<link rel="stylesheet" href="/public/css/log.css">
+		<div class="mainbox table-container">
 			<div class="mainbox-index">
 				<p class="pindex">Sur cette page vous pouvez consulter toutes les sessions en cours créées par les professeurs, en tant qu'administrateurs vous pouvez seulements les consulter</p>
 				<a class="button-index" href='/sessions'>Mes Sessions</a>
@@ -41,22 +30,22 @@ if ($id == 'Admin') {
 				<p class="pindex">Ici vous pouvez consulter l'historique des modifications des autres admins</p>
 				<a class="button-index" href='/logs?trace'>Logs</a>
 			</div>
-	</div>
-    <?php
-} elseif ($id == 'Etudiant') {
-    ?>
-    <!-- HTML content specific to Etudiant role -->
-	<div class="mainbox table-container">
-		<div class="mainbox-index">
-		<p class="pindex">D'ici vous pouvez consulter toutes les sessions auquels vous avez été inscrit </p>
-		<a class="button-index" href='/session'>Mes Sessions</a>
 		</div>
-	</div>
-    <?php
-} elseif ($id == 'Enseignant') {
-    ?>
-    <!-- HTML content specific to Enseignant role -->
-	<div class="mainbox table-container">
+<?php
+	} elseif ($id == 'Etudiant') {
+?>
+		<!-- HTML content specific to Etudiant role -->
+		<div class="mainbox table-container">
+			<div class="mainbox-index">
+			<p class="pindex">D'ici vous pouvez consulter toutes les sessions auquels vous avez été inscrit </p>
+			<a class="button-index" href='/session'>Mes Sessions</a>
+			</div>
+		</div>
+<?php
+	} elseif ($id == 'Enseignant') {
+?>
+		<!-- HTML content specific to Enseignant role -->
+		<div class="mainbox table-container">
 			<div class="mainbox-index">
 				<p class="pindex">Sur cette page vous pouvez consulter les classes auquels vous avez été attitré</p>
 				<a class="button" href='/classes'>Mes Classes</a>
@@ -69,12 +58,10 @@ if ($id == 'Admin') {
 				<p class="pindex">Ici vous pouvez consulter les sessions auquels vous avez été inscrit ou que vous avez vous meme crée</p>
 				<a class="button-index" href='/sessions'>Mes Sessions</a>
 			</div>
-
 		</div>
 	</div>
-    <?php
-}
+<?php
+	}
 
-require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');
+	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');
 ?>
-
