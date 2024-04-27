@@ -2,15 +2,15 @@
 
 	use function
 		LabSupervisor\functions\mainHeader,
-		LabSupervisor\functions\roleFormat;
+		LabSupervisor\functions\permissionChecker;
 
 	// Import header
 	mainHeader("", true);
 ?>
 
 <?php
-	$id = roleFormat($_SESSION["login"]);
-	if ($id == 'Admin') {
+	$roleList = permissionChecker(true, "");
+	if (in_array(ADMIN, $roleList)) {
 ?>
 		<!-- HTML content specific to Admin role -->
 		<link rel="stylesheet" href="/public/css/log.css">
@@ -31,7 +31,7 @@
 			</div>
 		</div>
 <?php
-	} elseif ($id == 'Etudiant') {
+	} elseif (in_array(STUDENT, $roleList)) {
 ?>
 		<!-- HTML content specific to Etudiant role -->
 		<div class="mainbox table-container">
@@ -41,7 +41,7 @@
 			</div>
 		</div>
 <?php
-	} elseif ($id == 'Enseignant') {
+	} elseif (in_array(TEACHER, $roleList)) {
 ?>
 		<!-- HTML content specific to Enseignant role -->
 		<div class="mainbox table-container">
