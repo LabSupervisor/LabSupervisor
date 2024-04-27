@@ -248,7 +248,7 @@ class SessionRepository {
 		$whitelistRole = STUDENT;
 
 		// Get session's participants query
-		$query = "SELECT p.iduser FROM participant p, userrole rl WHERE p.idsession = :idsession AND rl.iduser = p.iduser AND rl.idrole = :idrole";
+		$query = "SELECT p.iduser FROM participant p, userrole rl, user us WHERE p.idsession = :idsession AND us.id = p.iduser AND us.active = 1 AND rl.iduser = p.iduser AND rl.idrole = :idrole";
 
 		// Get session's participant
 		try {
