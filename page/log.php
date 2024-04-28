@@ -69,10 +69,18 @@
 		?>
 		<button class="button" type="submit" name="page" value="<?= $_GET["page"] -1 ?>"><i class="ri-arrow-left-s-line"></i></button>
 		<?php
+			} else {
+		?>
+		<button class="button" disabled><i class="ri-arrow-left-s-line"></i></button>
+		<?php
 			}
 			if (count(LogRepository::getLogs()) >= $_GET["page"] * $max) {
 		?>
 		<button class="button" type="submit" name="page" value="<?= $_GET["page"] +1 ?>"><i class="ri-arrow-right-s-line"></i></button>
+		<?php
+			} else {
+		?>
+		<button class="button" disabled><i class="ri-arrow-right-s-line"></i></button>
 		<?php
 			}
 		?>
@@ -173,10 +181,18 @@
 		?>
 		<button class="button" type="submit" name="page" value="<?= $_GET["page"] -1 ?>"><i class="ri-arrow-left-s-line"></i></button>
 		<?php
+			} else {
+		?>
+		<button class="button" disabled><i class="ri-arrow-left-s-line"></i></button>
+		<?php
 			}
 			if (count($log) >= $_GET["page"] * $max) {
 		?>
 		<button class="button" type="submit" name="page" value="<?= $_GET["page"] +1 ?>"><i class="ri-arrow-right-s-line"></i></button>
+		<?php
+			} else {
+		?>
+		<button class="button" disabled><i class="ri-arrow-right-s-line"></i></button>
 		<?php
 			}
 		?>
