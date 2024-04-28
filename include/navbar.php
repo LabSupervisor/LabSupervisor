@@ -63,11 +63,11 @@
 		if (in_array(TEACHER, $roleList)) {
 			$navbarItem .= '
 			<div class="item">
-				<a href="/classes"><i class="ri-folder-line"></i> ' . lang("NAVBAR_CLASS") . '</a>
+				<a href="/classes" title="' . lang("INDEX_TEACHER_CLASSROOM") . '"><i class="ri-folder-line"></i> ' . lang("NAVBAR_CLASS") . '</a>
 			</div>';
 			$navbarItem .= '
 			<div class="item">
-				<a href="/sessioncreation"><i class="ri-computer-line"></i> ' . lang("NAVBAR_CREATE_SESSION") . '</a>
+				<a href="/sessioncreation" title="' . lang("INDEX_TEACHER_CREATE_SESSION") . '"><i class="ri-computer-line"></i> ' . lang("NAVBAR_CREATE_SESSION") . '</a>
 			</div>';
 		}
 
@@ -75,7 +75,7 @@
 		if (in_array(ADMIN, $roleList) || in_array(STUDENT, $roleList) || in_array(TEACHER, $roleList)) {
 			$navbarItem .= '
 			<div class="item">
-				<a href="/sessions"><i class="ri-slideshow-3-line"></i> ' . lang("NAVBAR_SESSION") . '</a>
+				<a href="/sessions" title="' . lang("INDEX_STUDENT_SESSION") . '"><i class="ri-slideshow-3-line"></i> ' . lang("NAVBAR_SESSION") . '</a>
 			</div>';
 		}
 
@@ -83,11 +83,11 @@
 		if (in_array(ADMIN, $roleList)) {
 			$navbarItem .= '
 			<div class="item">
-				<a href="/utilisateurs"><i class="ri-folder-line"></i> ' . lang("NAVBAR_USER") . '</a>
+				<a href="/utilisateurs" title="' . lang("INDEX_ADMIN_USER") . '"><i class="ri-folder-line"></i> ' . lang("NAVBAR_USER") . '</a>
 			</div>';
 			$navbarItem .= '
 			<div class="item">
-				<a href="/logs?trace"><i class="ri-computer-line"></i> ' . lang("NAVBAR_LOG") . '</a>
+				<a href="/logs?trace" title="' . lang("INDEX_ADMIN_LOG") . '"><i class="ri-computer-line"></i> ' . lang("NAVBAR_LOG") . '</a>
 			</div>';
 		}
 
