@@ -51,7 +51,7 @@ class LogRepository extends Exception{
 
 	public static function getLogs() {
 		// Get logs query
-		$query = "SELECT * FROM log";
+		$query = "SELECT * FROM log ORDER BY id DESC";
 
 		// Get logs
 		try {
