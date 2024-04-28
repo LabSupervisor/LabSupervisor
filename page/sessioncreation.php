@@ -30,8 +30,6 @@
 		<textarea placeholder="<?= lang("SESSION_CREATE_INFORMATION_DESCRIPTION") ?>" id="descriptionSession" class="field" name="descriptionSession"><?= isset($sessionData) ? $sessionData['description'] : "" ?></textarea>
 
 		<!-- Participants -->
-
-		<!-- TODO : update session user (classe/users?) -->
 		<h2><?= lang("SESSION_CREATE_TITLE_PARTICIPANT") ?></h2>
 		<div class="custom-select">
 			<select name="classes" id="classes" class="field">

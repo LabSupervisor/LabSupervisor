@@ -126,7 +126,7 @@
 
 <div id="screenshare"></div>
 
-<!-- Create "global" varaibles -->
+<!-- Create "global" variables -->
 <script>
 	var sessionId = <?= $_SESSION["session"] ?>;
 	var videoServerHost = "<?= $_ENV["VIDEO_SERVER_HOST"] ?>";
