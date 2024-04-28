@@ -25,15 +25,6 @@
 
 	// Get roles
 	$roles = UserRepository::getRoles();
-
-	$users = array();
-	$i = 0;
-	foreach (UserRepository::getUsers() as $user) {
-		if (UserRepository::isActive($user["id"])) {
-			$users[$i] = $user;
-			$i++;
-		}
-	}
 ?>
 
 <script>
@@ -64,7 +55,7 @@
 
 			$i = 0;
 			$max = 10;
-			foreach ($users as $user) {
+			foreach (UserRepository::getUsers() as $user) {
 				if ($i >= ($_GET["page"] -1) * $max && $i < $_GET["page"] * $max) {
 					$userId = $user['id'];
 			?>
@@ -110,7 +101,7 @@
 			<button class="button" type="submit" name="page" value="<?= $_GET["page"] -1 ?>"><i class="ri-arrow-left-s-line"></i></button>
 			<?php
 				}
-				if (count($users) >= $_GET["page"] * $max) {
+				if (count(UserRepository::getUsers()) >= $_GET["page"] * $max) {
 			?>
 			<button class="button" type="submit" name="page" value="<?= $_GET["page"] +1 ?>"><i class="ri-arrow-right-s-line"></i></button>
 			<?php

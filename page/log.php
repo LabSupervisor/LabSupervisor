@@ -20,12 +20,6 @@
 <?php
 	// If traces are ask
 	if (isset($_GET["trace"])) {
-		$logs = array();
-		$i = 0;
-		foreach (LogRepository::getLogs() as $log) {
-			$logs[$i] = $log;
-			$i++;
-		}
 ?>
 
 <div class="mainbox buttonContainer">
@@ -51,7 +45,7 @@
 
 			$i = 0;
 			$max = 20;
-			foreach ($logs as $line) {
+			foreach (LogRepository::getLogs() as $line) {
 				if ($i >= ($_GET["page"] -1) * $max && $i < $_GET["page"] * $max) {
 					$userInfo = UserRepository::getInfo($line["iduser"]);
 					$username = $userInfo["name"] . " " . $userInfo["surname"];
@@ -76,7 +70,7 @@
 		<button class="button" type="submit" name="page" value="<?= $_GET["page"] -1 ?>"><i class="ri-arrow-left-s-line"></i></button>
 		<?php
 			}
-			if (count($logs) >= $_GET["page"] * $max) {
+			if (count(LogRepository::getLogs()) >= $_GET["page"] * $max) {
 		?>
 		<button class="button" type="submit" name="page" value="<?= $_GET["page"] +1 ?>"><i class="ri-arrow-right-s-line"></i></button>
 		<?php
