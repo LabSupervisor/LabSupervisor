@@ -15,6 +15,12 @@
 	max-width: 450px;
 	margin-left: 3vh;
 	margin-right: 3vh;
+
+	/* Interesting, pretty doesn't exist in
+	Firefox and balance is relatively ugly.
+	Here Chromium use pretty, Firefox balance.*/
+	text-wrap: balance;
+	text-wrap: pretty;
 }
 
 .button {
