@@ -36,58 +36,86 @@
 
 <form id="form" method='POST'>
 	<div class="mainbox maintable">
-	<table>
-		<thead>
-			<tr class="thead">
-				<th><?= lang("USER_UPDATE_SURNAME") ?></th>
-				<th><?= lang("USER_UPDATE_NAME") ?></th>
-				<th><?= lang("USER_UPDATE_EMAIL") ?></th>
-				<th><?= lang("USER_UPDATE_ROLE") ?></th>
-				<th><?= lang("USER_UPDATE_CLASS") ?></th>
-				<th><?= lang("USER_UPDATE_ACTION") ?></th>
-			</tr>
-		</thead>
-		<tbody>
+		<table>
+			<thead>
+				<tr class="thead">
+					<th><?= lang("USER_UPDATE_SURNAME") ?></th>
+					<th><?= lang("USER_UPDATE_NAME") ?></th>
+					<th><?= lang("USER_UPDATE_EMAIL") ?></th>
+					<th><?= lang("USER_UPDATE_ROLE") ?></th>
+					<th><?= lang("USER_UPDATE_CLASS") ?></th>
+					<th><?= lang("USER_UPDATE_ACTION") ?></th>
+				</tr>
+			</thead>
+			<tbody>
 			<?php
-				foreach (UserRepository::getUsers() as $user) {
-					// Only select active user
-					if (UserRepository::isActive($user["id"])) {
-						$userId = $user['id'];
+			if (!isset($_GET["page"])) {
+				$_GET["page"] = 1;
+			}
+
+			$i = 0;
+			$max = 10;
+			foreach (UserRepository::getUsers() as $user) {
+				if ($i >= ($_GET["page"] -1) * $max && $i < $_GET["page"] * $max) {
+					$userId = $user['id'];
 			?>
-			<tr>
-				<td class="col1" id="surname_<?=$userId?>"><?=$user['surname']?></td>
-				<td class="col2" id="name_<?=$userId?>"><?=$user['name']?></td>
-				<td class="col3"><?=$user['email']?></td>
-				<td class="col4" id="role_<?=$userId?>"><?=roleFormat($user['id'])?></td>
-				<td class="col5" id="classroom_<?=$userId?>">
+				<tr>
+					<td class="col1" id="surname_<?=$userId?>"><?=$user['surname']?></td>
+					<td class="col2" id="name_<?=$userId?>"><?=$user['name']?></td>
+					<td class="col3"><?=$user['email']?></td>
+					<td class="col4" id="role_<?=$userId?>"><?=roleFormat($user['id'])?></td>
+					<td class="col5" id="classroom_<?=$userId?>">
+						<?php
+						if ($user["classroom"]) {
+							echo $user["classroom"];
+						} else {
+							echo lang("USER_UPDATE_CLASS_EMPTY");
+						}
+						?>
+						<input type="hidden" name="classroom" id="classroom_<?=$userId?>">
+					</td>
 					<?php
-					if ($user["classroom"]) {
-						echo $user["classroom"];
-					} else {
-						echo lang("USER_UPDATE_CLASS_EMPTY");
-					}
+						$classroomIdUser = ClassroomRepository::getUserClassroom($userId);
+						if (!$classroomIdUser)
+							$classroomIdUser = 0;
+						$roleIdUser = UserRepository::getRole($userId)[0]["idrole"];
 					?>
-					<input type="hidden" name="classroom" id="classroom_<?=$userId?>">
-				</td>
-				<?php
-					$classroomIdUser = ClassroomRepository::getUserClassroom($userId);
-					if (!$classroomIdUser)
-						$classroomIdUser = 0;
-					$roleIdUser = UserRepository::getRole($userId)[0]["idrole"];
-				?>
-				<td class="col6"><button class="modifybutton button" type="button" id="modify_<?= $userId ?>" onclick="updateUser(<?= $userId ?>, <?= $classroomIdUser ?>, <?= $roleIdUser ?>)"><?= lang("USER_UPDATE_MODIFY") ?></button>
-				<form method="POST" onsubmit="return confirm('<?= lang('USER_UPDATE_DELETE_CONFIRMATION') ?>');">
-					<input type="hidden" name="userId" value="<?= $userId ?>">
-					<button class="button" type="submit" name="send" id="delete_<?= $userId ?>"><?= lang("USER_UPDATE_DELETE") ?></button>
-				</form>
-				</td>
-			</tr>
+					<td class="col6"><button class="modifybutton button" type="button" id="modify_<?= $userId ?>" onclick="updateUser(<?= $userId ?>, <?= $classroomIdUser ?>, <?= $roleIdUser ?>)"><?= lang("USER_UPDATE_MODIFY") ?></button>
+					<form method="POST" onsubmit="return confirm('<?= lang('USER_UPDATE_DELETE_CONFIRMATION') ?>');">
+						<input type="hidden" name="userId" value="<?= $userId ?>">
+						<button class="button" type="submit" name="send" id="delete_<?= $userId ?>"><?= lang("USER_UPDATE_DELETE") ?></button>
+					</form>
+					</td>
+				</tr>
 			<?php
-					}
+				}
+				$i++;
+			}
+			?>
+			</tbody>
+		</table>
+		<form class="pageGroup" method="GET">
+			<?php
+				if ($_GET["page"] != 1) {
+			?>
+			<button class="button" type="submit" name="page" value="<?= $_GET["page"] -1 ?>"><i class="ri-arrow-left-s-line"></i></button>
+			<?php
+				} else {
+			?>
+			<button class="button" disabled><i class="ri-arrow-left-s-line"></i></button>
+			<?php
+				}
+				if (count(UserRepository::getUsers()) >= $_GET["page"] * $max) {
+			?>
+			<button class="button" type="submit" name="page" value="<?= $_GET["page"] +1 ?>"><i class="ri-arrow-right-s-line"></i></button>
+			<?php
+				} else {
+			?>
+			<button class="button" disabled><i class="ri-arrow-right-s-line"></i></button>
+			<?php
 				}
 			?>
-		</tbody>
-	</table>
+		</form>
 	</div>
 </form>
 

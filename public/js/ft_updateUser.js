@@ -48,7 +48,8 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 		option.text = classrooms[i].name;
 		option.value = classrooms[i].id ;
 		if (classrooms[i].id == classroomIdUser) {
-			option.selected = true;  // sélectionnez l'option si elle correspond au rôle actuel
+			// Select option for actual classroom
+			option.selected = true;
 		}
 		selectClassroom.add(option);
 	}
@@ -60,7 +61,8 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 		option.text = lang("MAIN_ROLE_" + roles[i].name.toUpperCase());
 		option.value = roles[i].id ;
 		if (roles[i].id == roleIdUser) {
-			option.selected = true;  // sélectionnez l'option si elle correspond au rôle actuel
+			// Select option for actual role
+			option.selected = true;
 		}
 		selectRole.add(option);
 	}

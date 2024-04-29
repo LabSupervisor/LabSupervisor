@@ -1,8 +1,6 @@
 <?php
 
-	use
-		LabSupervisor\app\repository\SessionRepository,
-		LabSupervisor\app\repository\UserRepository;
+	use LabSupervisor\app\repository\SessionRepository;
 	use function
 		LabSupervisor\functions\mainHeader,
 		LabSupervisor\functions\lang,
@@ -17,7 +15,6 @@
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/joinSession.php");
-	require($_SERVER["DOCUMENT_ROOT"] . "/logic/openSession.php");
 ?>
 
 <link rel="stylesheet" href="/public/css/session.css">
@@ -78,23 +75,16 @@
 						if (!in_array(ADMIN, $roleList)) {
 							echo "<td class='col5'>";
 
+							// Display modify button to teachers
 							if (in_array(TEACHER, $roleList)) {
 								echo "<form method='POST' action='/sessionmodifier'><input type='hidden' name='sessionId' value='" . $line["id"] . "'><button type='submit' class='button'><i class=\"ri-pencil-line\"></i> " . lang("SESSION_UPDATE") . "</button></form>";
 							}
 
-							// Only select existed user
-							if ($line["state"] != 0) {
-								if ($line["date"] > date('Y-m-d H:i:s')) {
-									echo "<i class='ri-timer-line'></i> " . lang("SESSION_STATE_SOON");
-								} else {
-									echo "<form method='POST'><button type='submit' name='connect[" . $line["id"] . "]' value='" . lang("SESSION_STATE_OPEN") . "' class='button'><i class=\"ri-login-box-line\"></i> " . lang("SESSION_STATE_OPEN") . "</button></form>";
-								}
+							// Only select active session
+							if ($line["state"] != 0 || in_array(TEACHER, $roleList)) {
+								echo "<form method='POST'><button type='submit' name='connect[" . $line["id"] . "]' value='" . lang("SESSION_STATE_OPEN") . "' class='button'><i class=\"ri-login-box-line\"></i> " . lang("SESSION_STATE_OPEN") . "</button></form>";
 							} else {
-								if (in_array(TEACHER, $roleList)) {
-									echo "<form method='POST'><button type='submit' name='open[" . $line["id"] . "]' value='" . lang("SESSION_ACTION_OPEN") . "' class='button'><i class=\"ri-door-open-line\"></i> " . lang("SESSION_ACTION_OPEN") . "</button></form>";
-								} else {
-									echo lang("SESSION_ACTION_END");
-								}
+								echo '<i class="ri-door-closed-line"></i> ' . lang("SESSION_ACTION_END");
 							}
 
 							echo "</td>";

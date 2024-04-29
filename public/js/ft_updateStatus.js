@@ -1,4 +1,4 @@
-function setStatus(idchapter, status){
+function setStatus(idchapter, status) {
 	fetch("/connect", {
 		method: 'post',
 		headers: {

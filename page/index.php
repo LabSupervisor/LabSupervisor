@@ -14,8 +14,8 @@
 <?php
 	$roleList = permissionChecker(true, "");
 	if (in_array(ADMIN, $roleList)) {
+		// HTML content specific to admin role
 ?>
-		<!-- HTML content specific to admin role -->
 		<div class="boxGroup">
 			<div class="mainbox">
 				<h2><?= lang("NAVBAR_SESSION") ?></h2>
@@ -37,8 +37,8 @@
 		</div>
 <?php
 	} elseif (in_array(STUDENT, $roleList)) {
+		// HTML content specific to student role
 ?>
-		<!-- HTML content specific to student role -->
 		<div class="boxGroup">
 			<div class="mainbox">
 				<h2><?= lang("NAVBAR_SESSION") ?></h2>
@@ -48,8 +48,8 @@
 		</div>
 <?php
 	} elseif (in_array(TEACHER, $roleList)) {
+		// HTML content specific to teacher role
 ?>
-		<!-- HTML content specific to teacher role -->
 		<div class="boxGroup">
 			<div class="mainbox">
 				<h2><?= lang("NAVBAR_CLASS") ?></h2>
