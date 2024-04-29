@@ -60,9 +60,6 @@ switch ($page[0]) {
 	case "/helloworld":
 		echo "<h1>Hello world!</h1>";
 		break;
-	case "/sessionend":
-		include "page/sessionend.php";
-		break;
 	case "/screenshare":
 		include "page/screenshare.php";
 		break;
