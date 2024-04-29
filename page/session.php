@@ -84,16 +84,12 @@
 
 							// Only select existed user
 							if ($line["state"] != 0) {
-								if ($line["date"] > date('Y-m-d H:i:s')) {
-									echo "<i class='ri-timer-line'></i> " . lang("SESSION_STATE_SOON");
-								} else {
-									echo "<form method='POST'><button type='submit' name='connect[" . $line["id"] . "]' value='" . lang("SESSION_STATE_OPEN") . "' class='button'><i class=\"ri-login-box-line\"></i> " . lang("SESSION_STATE_OPEN") . "</button></form>";
-								}
+								echo "<form method='POST'><button type='submit' name='connect[" . $line["id"] . "]' value='" . lang("SESSION_STATE_OPEN") . "' class='button'><i class=\"ri-login-box-line\"></i> " . lang("SESSION_STATE_OPEN") . "</button></form>";
 							} else {
 								if (in_array(TEACHER, $roleList)) {
 									echo "<form method='POST'><button type='submit' name='open[" . $line["id"] . "]' value='" . lang("SESSION_ACTION_OPEN") . "' class='button'><i class=\"ri-door-open-line\"></i> " . lang("SESSION_ACTION_OPEN") . "</button></form>";
 								} else {
-									echo lang("SESSION_ACTION_END");
+									echo '<i class="ri-door-closed-line"></i> ' . lang("SESSION_ACTION_END");
 								}
 							}
 

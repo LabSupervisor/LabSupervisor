@@ -59,7 +59,6 @@
 	"SESSION_TEACHER": "Lehrer",
 	"SESSION_DATE": "Datum",
 	"SESSION_STATE": "Aktion",
-	"SESSION_STATE_SOON": "Bald verfügbar",
 	"SESSION_STATE_OPEN": "Beitreten",
 	"SESSION_UPDATE": "Bearbeiten",
 	"SESSION_ACTION_OPEN": "Sitzung wieder öffnen",

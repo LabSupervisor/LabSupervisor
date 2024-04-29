@@ -59,7 +59,6 @@
 	"SESSION_TEACHER": "教師",
 	"SESSION_DATE": "日付",
 	"SESSION_STATE": "アクション",
-	"SESSION_STATE_SOON": "まもなく",
 	"SESSION_STATE_OPEN": "参加",
 	"SESSION_UPDATE": "編集",
 	"SESSION_ACTION_OPEN": "セッションを再開",

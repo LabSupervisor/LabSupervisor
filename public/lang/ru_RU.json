@@ -59,7 +59,6 @@
 	"SESSION_TEACHER": "Преподаватель",
 	"SESSION_DATE": "Дата",
 	"SESSION_STATE": "Действие",
-	"SESSION_STATE_SOON": "Скоро",
 	"SESSION_STATE_OPEN": "Присоединиться",
 	"SESSION_UPDATE": "Изменить",
 	"SESSION_ACTION_OPEN": "Возобновить сеанс",
