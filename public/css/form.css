@@ -53,14 +53,14 @@
 	cursor: pointer;
 }
 
-.registerLink {
+.link {
 	color: var(--text-color);
 	text-decoration: none;
 	font-size: 18px;
 	transition: 200ms;
 }
 
-.registerLink:hover {
+.link:hover {
 	color: var(--text-hover-color);
 	transition: 200ms;
 }

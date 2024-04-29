@@ -15,7 +15,7 @@
 	require($_SERVER["DOCUMENT_ROOT"] . '/logic/login.php');
 ?>
 
-<link rel="stylesheet" href="/public/css/login.css">
+<link rel="stylesheet" href="/public/css/form.css">
 
 <form class="mainbox mainform" action="login" method="post">
 	<div class="item">
@@ -34,7 +34,7 @@
 
 	<?php if ($_ENV["AUTHENTIFICATION_TYPE"] == "native") { ?>
 	<div class="item">
-		<a class="registerLink" href="/register"><?= lang("LOGIN_NOTSIGN") ?></a>
+		<a class="link" href="/register"><?= lang("LOGIN_NOTSIGN") ?></a>
 	</div>
 	<?php } ?>
 </form>
