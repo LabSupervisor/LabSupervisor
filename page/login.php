@@ -17,22 +17,27 @@
 
 <link rel="stylesheet" href="/public/css/login.css">
 
-<div class="mainbox LoginDiv">
-	<form action="login" method="post">
+<form class="mainbox mainform" action="login" method="post">
+	<div class="item">
 		<h2><i class="ri-user-line"></i> <?= lang("LOGIN_TITLE") ?></h2>
-		<input type="text" id="username" name="email" class="Username" placeholder="<?= lang("LOGIN_EMAIL") ?>" required autofocus><br>
-		<div class="PasswordContainer">
-			<input type="password" id="password" name="password" placeholder="<?= lang("LOGIN_PASSWORD") ?>" class="Password" required><br>
-			<button tabindex="-1" type="button" id="showPasswordButton" class="ShowPasswordButton" onclick="togglePasswordVisibility()">
-				<i id="eyeIcon" class="ri-eye-off-line"></i>
-			</button>
-		</div>
-		<input type="submit" name="login" value="<?= lang("LOGIN_SUBMIT") ?>" class="button">
-		<?php if ($_ENV["AUTHENTIFICATION_TYPE"] == "native") { ?>
-			<a href="/register" class="register-link"><?= lang("LOGIN_NOTSIGN") ?></a>
-		<?php } ?>
-	</form>
-</div>
+	</div>
+	<div class="item">
+		<input type="text" id="username" name="email" placeholder="<?= lang("LOGIN_EMAIL") ?>" required autofocus>
+	</div>
+	<div class="item">
+		<input type="password" id="password" name="password" placeholder="<?= lang("LOGIN_PASSWORD") ?>" required>
+		<button class="showPasswordButton" tabindex="-1" type="button" id="showPasswordButton" class="ShowPasswordButton" onclick="togglePasswordVisibility()"><i id="eyeIcon" class="ri-eye-off-line"></i></button>
+	</div>
+	<div class="item">
+		<button class="button" type="submit" name="login"><i class="ri-lock-unlock-line"></i> <?= lang("LOGIN_SUBMIT") ?></button>
+	</div>
+
+	<?php if ($_ENV["AUTHENTIFICATION_TYPE"] == "native") { ?>
+	<div class="item">
+		<a class="registerLink" href="/register"><?= lang("LOGIN_NOTSIGN") ?></a>
+	</div>
+	<?php } ?>
+</form>
 
 <script src="/public/js/loginPassword.js"></script>
 
