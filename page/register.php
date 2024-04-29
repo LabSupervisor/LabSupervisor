@@ -39,7 +39,7 @@
 		<input type="text" name="surname" placeholder="<?= lang("REGISTER_SURNAME") ?>" required>
 	</div>
 	<div class="item">
-		<button class="button" type="submit" name="register"><?= lang("REGISTER_SUBMIT") ?></button>
+		<button class="button" type="submit" name="register"><i class="ri-id-card-line"></i> <?= lang("REGISTER_SUBMIT") ?></button>
 	</div>
 	<div class="item">
 		<a href="/login" class="link"><?= lang("REGISTER_ALREADYSIGN") ?></a>
