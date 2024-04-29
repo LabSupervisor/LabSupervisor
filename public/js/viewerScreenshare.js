@@ -11,14 +11,15 @@ function addVideoStream(mediaStream) {
 }
 
 if (navigator.userAgent.includes("Firefox")) {
-	alert("This feature is not supported by Firefox.");
-	window.open('','_self').close();
+	document.getElementById('firefoxButton').style.display = 'flex';
+} else {
+	startScrenshare();
 }
-
-startScrenshare();
 
 async function startScrenshare() {
 	try {
+		document.getElementById('firefoxButton').style.display = 'none';
+
 		const mediaStream = await navigator.mediaDevices.getDisplayMedia({
 			video: {
 				displaySurface: 'monitor'

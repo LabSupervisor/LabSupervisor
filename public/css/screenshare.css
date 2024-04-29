@@ -15,3 +15,18 @@ video {
 	height: 540px;
 	border-radius: 10px;
 }
+
+.firefoxButton {
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+
+	margin: auto;
+	margin-top: 20%;
+
+	width: fit-content;
+}
+
+.firefoxButton h2 {
+	margin-bottom: 20px;
+}

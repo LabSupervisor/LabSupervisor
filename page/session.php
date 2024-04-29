@@ -1,8 +1,6 @@
 <?php
 
-	use
-		LabSupervisor\app\repository\SessionRepository,
-		LabSupervisor\app\repository\UserRepository;
+	use LabSupervisor\app\repository\SessionRepository;
 	use function
 		LabSupervisor\functions\mainHeader,
 		LabSupervisor\functions\lang,

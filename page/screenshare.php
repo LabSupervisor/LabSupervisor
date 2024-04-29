@@ -3,7 +3,8 @@
 	use LabSupervisor\app\repository\UserRepository;
 	use function
 		LabSupervisor\functions\mainHeader,
-		LabSupervisor\functions\permissionChecker;
+		LabSupervisor\functions\permissionChecker,
+		LabSupervisor\functions\lang;
 
 	// Ask for permissions
 	permissionChecker(true, array(TEACHER));
@@ -31,6 +32,11 @@
 			var videoServerPort = <?= $_ENV["VIDEO_SERVER_PORT"] ?>;
 		</script>
 
+		<div id="firefoxButton" class="firefoxButton" style="display: none;">
+			<h2><?= lang("DASHBOARD_SCREENSHARE") ?></h2>
+			<button class="button" onclick="startScrenshare()"><?= lang("DASHBOARD_SCREENSHARE_OPEN") ?></button>
+		</div>
+
 		<div id="screenshare"></div>
 
 		<!-- Import PeerJS server -->
@@ -39,6 +45,5 @@
 
 		<!-- Import screenshare engine -->
 		<script src="/public/js/viewerScreenshare.js"></script>
-
 	</body>
 </html>
