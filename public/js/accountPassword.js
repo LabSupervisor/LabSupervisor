@@ -13,8 +13,8 @@ function togglePasswordVisibility(inputId, eyeIconId) {
 }
 
 // Change div display
-document.getElementById('showDeleteForm').addEventListener('click', function(event) {
-	document.getElementById('confirmationForm').style.display = 'block';
+document.getElementById('showDeleteForm').addEventListener('click', function() {
+	document.getElementById('confirmationForm').style.display = 'flex';
 	document.getElementById('updateCase').style.display = 'none';
 });
 
