@@ -11,16 +11,25 @@
 	max-width: fit-content;
 }
 
+.subform {
+	display: flex;
+	flex-direction: column;
+}
+
 /* Title */
 .mainform h2 {
 	margin-bottom: 20px;
 	padding-bottom: 10px;
 
-	font-size: 30px;
+	font-size: 28px;
+}
+
+.mainform h2 i {
+	margin-right: 5px;
 }
 
 /* Inputs */
-.mainform input {
+.mainform input, .mainform textarea, .mainform select {
 	padding: 15px;
 	margin-bottom: 25px;
 
@@ -29,18 +38,33 @@
 	border-radius: 7px;
 	font-size: 20px;
 	color: var(--text-color);
+
+	overflow: hidden;
+
+	width: -webkit-fill-available;
+	width: -moz-available;
 }
 
-.mainform input::placeholder {
+.mainform textarea {
+	resize: vertical;
+
+	min-height: 24px;
+}
+
+.mainform input::placeholder, .mainform textarea::placeholder {
 	color: var(--case-field-text-color);
 }
 
-.mainform input:focus {
+.mainform input:focus, .mainform textarea:focus {
 	outline: none !important;
 }
 
 /* Buttons */
-.showPasswordButton {
+.mainform .button {
+	width: fit-content;
+}
+
+.mainform .showPasswordButton {
 	position: absolute;
 	transform: translateY(10px);
 
@@ -53,14 +77,33 @@
 	cursor: pointer;
 }
 
-.link {
+.mainform .link {
 	color: var(--text-color);
 	text-decoration: none;
 	font-size: 18px;
 	transition: 200ms;
 }
 
-.link:hover {
+.mainform .link:hover {
 	color: var(--text-hover-color);
 	transition: 200ms;
+}
+
+/* Date */
+.mainform #date{
+	height: 35px;
+	border-radius: 10px;
+	border: 0;
+	font-size: 16px;
+	outline: none;
+	padding: 8px;
+	width: -webkit-fill-available;
+	background: var(--case-field-background-color);
+}
+
+.mainform input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+	mask: url("/public/img/icon/calendar-2-line.svg");
+	background: var(--text-color);
+	margin-right: 10px;
+	outline: none;
 }

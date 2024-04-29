@@ -18,30 +18,30 @@
 <link rel="stylesheet" href="/public/css/form.css">
 
 <form class="mainbox mainform" action="register" method="post">
-	<div class="item">
+	<div>
 		<h2><i class="ri-user-line"></i> <?= lang("REGISTER_TITLE") ?></h2>
 	</div>
-	<div class="item">
+	<div>
 		<input type="email" name="email" placeholder="<?= lang("REGISTER_EMAIL") ?>" required autofocus>
 	</div>
-	<div class="item">
+	<div>
 		<input type="password" id="password" name="password" placeholder="<?= lang("REGISTER_PASSWORD") ?>" required>
 		<button class="showPasswordButton" tabindex="-1" type="button" id="showPasswordButton" onclick="togglePasswordVisibility('password', 'eyeIcon')"><i id="eyeIcon" class="ri-eye-off-line"></i></button>
 	</div>
-	<div class="item">
+	<div>
 		<input type="password" id="passwordConf" name="confpass" placeholder="<?= lang("REGISTER_PASSWORD_CONFIRM") ?>" required>
 		<button class="showPasswordButton" tabindex="-1" type="button" id="showPasswordButton" onclick="togglePasswordVisibility('passwordConf', 'eyeIconConf')"><i id="eyeIconConf" class="ri-eye-off-line"></i></button>
 	</div>
-	<div class="item">
+	<div>
 		<input type="text" name="name" placeholder="<?= lang("REGISTER_NAME") ?>" class="Name" required>
 	</div>
-	<div class="item">
+	<div>
 		<input type="text" name="surname" placeholder="<?= lang("REGISTER_SURNAME") ?>" required>
 	</div>
-	<div class="item">
+	<div>
 		<button class="button" type="submit" name="register"><i class="ri-id-card-line"></i> <?= lang("REGISTER_SUBMIT") ?></button>
 	</div>
-	<div class="item">
+	<div>
 		<a href="/login" class="link"><?= lang("REGISTER_ALREADYSIGN") ?></a>
 	</div>
 </form>

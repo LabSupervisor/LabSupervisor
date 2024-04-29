@@ -1,12 +1,12 @@
-function addHTMLChapter(title, description, button){
-	let newIdChapter = parseInt(button.getAttribute("data-id"));
+function addHTMLChapter(title, description, button) {
+	let newIdChapter = parseInt(button.getAttribute("dataid"));
 	// update the button to increment the id if it is clicked again
-	button.setAttribute("data-id", newIdChapter + 1);
+	button.setAttribute("dataid", newIdChapter +1);
 	let nbChapter = document.getElementById('nbChapter').value;
 	nbChapter++;
 
 	let div = document.createElement('div');
-	div.classList.add('chapter-container');
+	div.classList.add('subform');
 
 	let inputTitle = document.createElement('input');
 	inputTitle.setAttribute("type", "text");
@@ -25,13 +25,13 @@ function addHTMLChapter(title, description, button){
 	let deleteButton = document.createElement('button');
 	deleteButton.setAttribute("type", "button");
 	deleteButton.classList.add('button', 'chapterButton');
-	deleteButton.textContent = '- Chapitre';
+	deleteButton.textContent = lang("SESSION_CREATE_CHAPTER_REMOVE");
 	deleteButton.addEventListener('click', function() {
 		deleteChapter(this);
 	});
 	div.appendChild(deleteButton);
 
 	// Insert the new chapter zone after the last existing chapter
-	let lastChapterContainer = document.querySelector('.chapter-container:last-of-type');
-	lastChapterContainer.parentNode.insertBefore(div, lastChapterContainer.nextSibling);
+	let lastsubform = document.querySelector('.subform');
+	lastsubform.parentNode.insertBefore(div, lastsubform.nextSibling);
 }

@@ -1,11 +1,11 @@
 function deleteChapter(button) {
-	let nbChapter = document.querySelectorAll('.chapter-container').length;
+	let nbChapter = document.querySelectorAll('.subform').length;
 
 	if (nbChapter > 1) {
-		let chapterContainer = button.parentNode;
+		let subform = button.parentNode;
 
-		// Récupérer l'ID du chapitre à supprimer en utilisant la classe 'chapter-id'
-		let deletedChapterIdInput = chapterContainer.querySelector('.chapter-id');
+		// Récupérer l'ID du chapitre à supprimer en utilisant la classe 'chapterId'
+		let deletedChapterIdInput = subform.querySelector('.chapterId');
 		console.log('deletedChapterIdInput : ' + deletedChapterIdInput);
 
 		// Si la balise n'existe pas, il faut simplement supprimer le container HTML
@@ -24,9 +24,9 @@ function deleteChapter(button) {
 			document.querySelector('#formSession').appendChild(deletedChaptersInput);
 		}
 
-		chapterContainer.remove();
+		subform.remove();
 
 	} else {
-		alert("Vous ne pouvez pas supprimer tous les chapitres.");
+		alert(lang("SESSION_CREATE_CHAPTER_REMOVE_ERROR"));
 	}
 }
