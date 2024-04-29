@@ -17,11 +17,7 @@
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/adminSession.php");
-
-	// Check if session is still open
-	if (SessionRepository::getState($_SESSION["session"]) == 0) {
-		header("Location: /sessions");
-	}
+	require($_SERVER["DOCUMENT_ROOT"] . "/logic/openSession.php");
 
 	if (SessionRepository::getState($_SESSION["session"]) == 2) {
 		$state = "pause";
@@ -57,8 +53,18 @@
 		<form method="POST">
 			<a class="back" href="/sessions"><i class="ri-arrow-left-line"></i> <?= lang("DASHBOARD_BACK") ?></a>
 			<input type="hidden" name="sessionId" value="<?= $_SESSION["session"] ?>">
+		<?php
+		if (SessionRepository::getState($_SESSION["session"]) != 0) {
+		?>
 			<button class="button" type="submit" name="pause" value="<?= $state ?>" title="<?= lang("DASHBOARD_BUTTON_PAUSE") ?>"><?= $stateButton ?></button>
 			<button class="button" type="submit" name="close"><i class="ri-close-circle-line"></i> <?= lang("DASHBOARD_SESSION_END") ?></button>
+		<?php
+		} else {
+		?>
+			<button class="button" type="submit" name="open" value="1"><i class="ri-door-open-line"></i><?= lang("SESSION_ACTION_OPEN") ?></button>
+		<?php
+		}
+		?>
 		</form>
 		<form method="get">
 			<input type="hidden" name="view" value="<?= $view ?>">
@@ -78,8 +84,11 @@
 						foreach (SessionRepository::getChapter($_SESSION["session"]) as $value) {
 							echo "<th><i class=\"ri-information-line\" title='" . $value["title"] . "'></i></th>";
 						}
+
+						if (SessionRepository::getState($_SESSION["session"]) != 0) {
+							echo "<th>" . lang("DASHBOARD_SCREENSHARE") . "</th>";
+						}
 					?>
-					<th><?= lang("DASHBOARD_SCREENSHARE") ?></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -100,7 +109,9 @@
 						echo "<td class='col2'>" . $status . "</td>";
 					}
 
-					echo "<td><button class='screenShareButton' title=\"" . lang("DASHBOARD_SCREENSHARE_OPEN") . "\" id='getScreenshare' onclick='window.open(\"/screenshare?userId=" . $userId . "\", \"_blank\")'><i class='ri-eye-line'></i></button></td>";
+					if (SessionRepository::getState($_SESSION["session"]) != 0) {
+						echo "<td><button class='screenShareButton' title=\"" . lang("DASHBOARD_SCREENSHARE_OPEN") . "\" id='getScreenshare' onclick='window.open(\"/screenshare?userId=" . $userId . "\", \"_blank\")'><i class='ri-eye-line'></i></button></td>";
+					}
 					echo "</tr>";
 				}
 			?>
@@ -112,7 +123,11 @@
 				<th></th>
 				<th><?= lang("DASHBOARD_CHAPTER") ?></th>
 				<th><?= lang("DASHBOARD_STATUS") ?></th>
-				<th><?= lang("DASHBOARD_SCREENSHARE") ?></th>
+			<?php
+			if (SessionRepository::getState($_SESSION["session"]) != 0) {
+				echo "<th>" . lang("DASHBOARD_SCREENSHARE") . "</th>";
+			}
+			?>
 			</tr>
 			</thead>
 			<tbody>
@@ -140,7 +155,9 @@
 					echo "<td class='col1'>" . $participantName["surname"] . "</td>";
 					echo "<td class='col2'>" . $chapterList . "</td>";
 					echo "<td class='col3'><div class='statusBallGroup'>" . $statusList . "</div></td>";
-					echo "<td><button class='screenShareButton' title=\"" . lang("DASHBOARD_SCREENSHARE_OPEN") . "\" id='getScreenshare' onclick='window.open(\"/screenshare?userId=" . $userId . "\", \"_blank\")'><i class='ri-eye-line'></i></button></td>";
+					if (SessionRepository::getState($_SESSION["session"]) != 0) {
+						echo "<td><button class='screenShareButton' title=\"" . lang("DASHBOARD_SCREENSHARE_OPEN") . "\" id='getScreenshare' onclick='window.open(\"/screenshare?userId=" . $userId . "\", \"_blank\")'><i class='ri-eye-line'></i></button></td>";
+					}
 					echo "</tr>";
 				}
 			?>
