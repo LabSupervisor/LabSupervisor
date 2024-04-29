@@ -79,7 +79,7 @@ else if (isset($_POST['updateSession'])){
 	if (isset($_POST['addChapters'])){
 		$addChapters = $_POST['addChapters'];
 		foreach ($addChapters as $addChapter){
-			SessionRepository::addChapter($addChapter['title'], $addChapter['desc'], $creatorId,  $sessionId);
+			SessionRepository::addChapter($addChapter['title'], $addChapter['desc'], $creatorId, $sessionId);
 			foreach ($classUsers as $userId) {
 				$chapterId = SessionRepository::getChapterId($addChapter['title']);
 				SessionRepository::addStatus($sessionId, $chapterId, $userId["iduser"]);

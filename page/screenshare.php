@@ -19,7 +19,7 @@
 		<link rel="stylesheet" href="/public/css/screenshare.css">
 
 		<?php
-			if (!isset($_GET["userId"])) {
+			if (!isset($_GET["userId"]) || $_GET["userId"] <= 0) {
 				echo "<script> window.open('','_self').close(); </script>";
 			}
 

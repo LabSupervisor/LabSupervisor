@@ -327,7 +327,7 @@ class SessionRepository {
 		}
 	}
 
-	public static function  deleteChapter($chapterId){
+	public static function deleteChapter($chapterId){
 		// Delete session query
 		$query = "UPDATE chapter SET title = 'deleted#" . $chapterId . "', active = 0 WHERE id = :idchapter";
 
