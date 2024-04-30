@@ -53,7 +53,7 @@
 					echo "<tr>";
 					echo '<td>' . $line["id"] . '</td>';
 					echo '<td>' . $username . '</td>';
-					echo '<td class="col3">' . $line["message"] . '</td>';
+					echo '<td class="col3" title="' . $line["message"] . '">' . $line["message"] . '</td>';
 					echo '<td class="col4">' . $line["date"] . '</td>';
 					echo "</tr>";
 				}
@@ -162,8 +162,8 @@
 					// Prevent showing empty line
 					if (strlen($error) > 1) {
 						echo "<tr>";
-						echo "<td class='col3'><div class='col3' title='" . htmlspecialchars($error) . "'>" . htmlspecialchars($error) . "</div></td>";
-						echo "<td class='col3'><div class='col3' title='" . str_replace("##", "#", htmlspecialchars($message)) . "'>" . htmlspecialchars(str_replace("##", "#", $message)) . "</div></td>";
+						echo "<td class='col3' title='" . htmlspecialchars($error) . "'>" . htmlspecialchars($error) . "</td>";
+						echo "<td class='col3' title='" . str_replace("##", "#", htmlspecialchars($message)) . "'>" . htmlspecialchars(str_replace("##", "#", $message)) . "</td>";
 						echo "<td class='col3'>" . $listDate[$i] . "</td>";
 						echo "</tr>";
 					}
