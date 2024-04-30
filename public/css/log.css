@@ -3,11 +3,13 @@
 }
 
 .col3 {
-	max-width: 250px;
 	word-wrap: normal;
 	white-space: nowrap;
-	overflow: hidden;
 	text-overflow: ellipsis;
+
+	overflow: hidden;
+
+	max-width: 250px;
 }
 
 .pageGroup {
@@ -18,31 +20,35 @@
 
 .buttonContainer {
 	display: flex;
-	width: fit-content;
+
 	padding: 10px;
 	padding-top: 15px;
 	padding-bottom: 15px;
+
+	user-select: none;
+
+	width: fit-content;
 }
 
 .button2 {
 	background-color: var(--button-background-color);
 	border-radius: 9px;
 	border: 0;
-	height: 40px;
 	font-size: 16px;
-	margin: 10px;
-	padding-top: 11px;
-	padding-bottom: 11px;
-	padding-left: 20px;
-	padding-right: 20px;
-	transition: 200ms;
 	text-decoration: none;
+
+	margin: 10px;
+	padding: 11px 20px 11px 20px;
+	transition: 200ms;
+
+	height: 40px;
 	max-height: 20px;
 }
 
 .button2:hover {
 	background-color: var(--button-hover-color);
 	transition: 200ms;
+
 	cursor: pointer;
 }
 
@@ -51,34 +57,41 @@ form {
 }
 
 #date{
-	height: 36px;
 	border-radius: 7px;
 	border: 0;
 	font-size: 16px;
 	outline: none;
+	background: var(--case-field-background-color);
+
 	margin-top: 10px;
 	margin-left: 10px;
 	margin-right: 10px;
 	padding: 3px;
 	padding-left: 14px;
+
+	height: 36px;
 	width: fit-content;
-	background: var(--case-field-background-color);
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
 	mask: url("/public/img/icon/calendar-2-line.svg");
 	background: var(--text-color);
-	margin-right: 10px;
 	outline: none;
+
+	margin-right: 10px;
 }
 
 .nologmain {
 	display: block;
-	width: 80%;
+
+	text-align: center;
+
 	margin: auto;
 	margin-top: 25vh;
-	text-align: center;
+
 	user-select: none;
+
+	width: 80%;
 }
 
 .nologtitle {
