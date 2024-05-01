@@ -4,6 +4,8 @@
 	flex-direction: column;
 	text-align: center;
 
+	text-wrap: balance;
+
 	padding: 20px;
 
 	user-select: none;
@@ -14,6 +16,21 @@
 .subform {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+}
+
+.row {
+	display: flex;
+	flex-direction: row !important;
+}
+
+.column {
+	display: flex;
+	flex-direction: column;
+
+	padding: 20px;
+
+	width: 320px;
 }
 
 /* Title */
@@ -97,7 +114,7 @@
 	font-size: 16px;
 	outline: none;
 	padding: 8px;
-	width: -webkit-fill-available;
+	width: 280px;
 	background: var(--case-field-background-color);
 }
 

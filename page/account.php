@@ -27,7 +27,7 @@
 <link rel="stylesheet" href="/public/css/form.css">
 <link rel="stylesheet" href="/public/css/account.css">
 
-<div class="mainbox mainform" id="updateCase">
+<div class="mainbox mainform column" id="updateCase">
 	<form method="post">
 		<div>
 			<h2><i class="ri-user-line"></i> <?= lang("ACCOUNT_TITLE") ?></h2>
