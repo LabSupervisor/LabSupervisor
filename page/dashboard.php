@@ -95,24 +95,26 @@
 			<?php
 				// Select paticipants
 				foreach (SessionRepository::getParticipant($_SESSION["session"]) as $value) {
-					$userId = $value["iduser"];
-					$participantName = UserRepository::getInfo($userId);
+					if (UserRepository::isActive($value["iduser"]) == true AND UserRepository::getRole($value["iduser"])[0]["idrole"] == STUDENT) {
+						$userId = $value["iduser"];
+						$participantName = UserRepository::getInfo($userId);
 
-					echo "<tr>";
-					echo "<td class='col1'>" . $participantName["name"] . "</td>";
-					echo "<td class='col1'>" . $participantName["surname"] . "</td>";
+						echo "<tr>";
+						echo "<td class='col1'>" . $participantName["name"] . "</td>";
+						echo "<td class='col1'>" . $participantName["surname"] . "</td>";
 
-					$status = "";
-					foreach (SessionRepository::getChapter($_SESSION["session"]) as $value) {
-						$status = statusFormat($userId, SessionRepository::getChapterId($value["title"]), SessionRepository::getStatus(SessionRepository::getChapterId($value["title"]), $userId));
+						$status = "";
+						foreach (SessionRepository::getChapter($_SESSION["session"]) as $value) {
+							$status = statusFormat($userId, SessionRepository::getChapterId($value["title"]), SessionRepository::getStatus(SessionRepository::getChapterId($value["title"]), $userId));
 
-						echo "<td class='col2'>" . $status . "</td>";
+							echo "<td class='col2'>" . $status . "</td>";
+						}
+
+						if (SessionRepository::getState($_SESSION["session"]) != 0) {
+							echo "<td><button class='screenShareButton' title=\"" . lang("DASHBOARD_SCREENSHARE_OPEN") . "\" id='getScreenshare' onclick='window.open(\"/screenshare?userId=" . $userId . "\", \"_blank\")'><i class='ri-eye-line'></i></button></td>";
+						}
+						echo "</tr>";
 					}
-
-					if (SessionRepository::getState($_SESSION["session"]) != 0) {
-						echo "<td><button class='screenShareButton' title=\"" . lang("DASHBOARD_SCREENSHARE_OPEN") . "\" id='getScreenshare' onclick='window.open(\"/screenshare?userId=" . $userId . "\", \"_blank\")'><i class='ri-eye-line'></i></button></td>";
-					}
-					echo "</tr>";
 				}
 			?>
 			</tbody>
@@ -134,31 +136,33 @@
 			<?php
 				// Select paticipants
 				foreach (SessionRepository::getParticipant($_SESSION["session"]) as $value) {
-					$userId = $value["iduser"];
+					if (UserRepository::isActive($value["iduser"]) == true AND UserRepository::getRole($value["iduser"])[0]["idrole"] == STUDENT) {
+						$userId = $value["iduser"];
 
-					// Get chapters and status
-					$chapterList = "";
-					$statusList = "";
-					$index = 1;
-					foreach (SessionRepository::getChapter($_SESSION["session"]) as $value) {
-						$chapterList .= $index . " - " . $value["title"] . "<br>";
-						$statusList .= statusFormat($userId, SessionRepository::getChapterId($value["title"]), SessionRepository::getStatus(SessionRepository::getChapterId($value["title"]), $userId));
+						// Get chapters and status
+						$chapterList = "";
+						$statusList = "";
+						$index = 1;
+						foreach (SessionRepository::getChapter($_SESSION["session"]) as $value) {
+							$chapterList .= $index . " - " . $value["title"] . "<br>";
+							$statusList .= statusFormat($userId, SessionRepository::getChapterId($value["title"]), SessionRepository::getStatus(SessionRepository::getChapterId($value["title"]), $userId));
 
-						$index++;
+							$index++;
+						}
+
+						$participantName = UserRepository::getInfo($userId);
+
+						// Fill table
+						echo "<tr>";
+						echo "<td class='col1'>" . $participantName["name"] . "</td>";
+						echo "<td class='col1'>" . $participantName["surname"] . "</td>";
+						echo "<td class='col2'>" . $chapterList . "</td>";
+						echo "<td class='col3'><div class='statusBallGroup'>" . $statusList . "</div></td>";
+						if (SessionRepository::getState($_SESSION["session"]) != 0) {
+							echo "<td><button class='screenShareButton' title=\"" . lang("DASHBOARD_SCREENSHARE_OPEN") . "\" id='getScreenshare' onclick='window.open(\"/screenshare?userId=" . $userId . "\", \"_blank\")'><i class='ri-eye-line'></i></button></td>";
+						}
+						echo "</tr>";
 					}
-
-					$participantName = UserRepository::getInfo($userId);
-
-					// Fill table
-					echo "<tr>";
-					echo "<td class='col1'>" . $participantName["name"] . "</td>";
-					echo "<td class='col1'>" . $participantName["surname"] . "</td>";
-					echo "<td class='col2'>" . $chapterList . "</td>";
-					echo "<td class='col3'><div class='statusBallGroup'>" . $statusList . "</div></td>";
-					if (SessionRepository::getState($_SESSION["session"]) != 0) {
-						echo "<td><button class='screenShareButton' title=\"" . lang("DASHBOARD_SCREENSHARE_OPEN") . "\" id='getScreenshare' onclick='window.open(\"/screenshare?userId=" . $userId . "\", \"_blank\")'><i class='ri-eye-line'></i></button></td>";
-					}
-					echo "</tr>";
 				}
 			?>
 			</tbody>
@@ -166,7 +170,6 @@
 	</table>
 </div>
 
-<script src="/public/js/ft_lang.js"></script>
 <script src="/public/js/ft_statusUpdate.js"></script>
 <script src="/public/js/dashboardUpdate.js"></script>
 

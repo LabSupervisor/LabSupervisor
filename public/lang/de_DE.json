@@ -114,6 +114,8 @@
 	"SESSION_CREATE_SUBMIT": "Speichern",
 	"SESSION_CREATE_UPDATE": "Aktualisieren",
 	"SESSION_CREATE_CHAPTER_REMOVE_ERROR": "Sie können nicht alle Kapitel löschen.",
+	"SESSION_CREATE_DELETE": "Sitzung löschen",
+	"SESSION_CREATE_DELETE_CONFIRMATION": "Sind Sie sicher, dass Sie diese Sitzung löschen möchten?",
 
 	"CLASSROOM_NAME": "Klassen",
 	"CLASSROOM_STUDENT_NAME": "Vorname",

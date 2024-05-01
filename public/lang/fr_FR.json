@@ -114,6 +114,8 @@
 	"SESSION_CREATE_SUBMIT": "Enregister",
 	"SESSION_CREATE_UPDATE": "Mettre à jour",
 	"SESSION_CREATE_CHAPTER_REMOVE_ERROR": "Vous ne pouvez pas supprimer tous les chapitres.",
+	"SESSION_CREATE_DELETE": "Supprimer la session",
+	"SESSION_CREATE_DELETE_CONFIRMATION": "Etes-vous certain de vouloir supprimer cette session ?",
 
 	"CLASSROOM_NAME": "Classes",
 	"CLASSROOM_STUDENT_NAME": "Prénom",

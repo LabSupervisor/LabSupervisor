@@ -25,9 +25,9 @@
 							<circle class="iconEye" fill="none" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10" cx="10.81313" cy="10.441631" r="0.21434239" style="stroke-width:0.84206"/>
 							<path class="iconYellow" fill="none" stroke="#F4EB6D" stroke-linecap="round" stroke-miterlimit="10" d="M10,15.87c-3.24,0-5.87-2.63-5.87-5.87S6.76,4.13,10,4.13s5.87,2.63,5.87,5.87c0,0.7-0.12,1.38-0.35,2c-0.44,1.22-1.28,2.25-2.35,2.94"/>
 							<path class="iconGreen" fill="none" stroke="#8FC263" stroke-linecap="round" stroke-miterlimit="10" d="M7.73,6.63c1.86-1.25,4.38-0.76,5.64,1.1s0.76,4.38-1.1,5.64s-4.38,0.76-5.64-1.1c-0.27-0.4-0.46-0.84-0.57-1.28c-0.22-0.87-0.14-1.79,0.21-2.6"/>
-						</svg>'
-						. lang("NAVBAR_TITLE") .
-					'</a>
+						</svg>
+						<span id="navbarTitle">' . lang("NAVBAR_TITLE") . '</span>
+					</a>
 				</div>
 			</div>';
 
@@ -119,6 +119,7 @@
 ?>
 
 <?php
+	echo "<script src='/public/js/ft_lang.js'></script>";
 	if (isset($_SESSION["login"]))
 		echo "<script src='/public/js/ft_updateTheme.js'></script>";
 ?>

@@ -114,6 +114,8 @@
 	"SESSION_CREATE_SUBMIT": "Salva",
 	"SESSION_CREATE_UPDATE": "Aggiorna",
 	"SESSION_CREATE_CHAPTER_REMOVE_ERROR": "Non puoi eliminare tutti i capitoli.",
+	"SESSION_CREATE_DELETE": "Elimina sessione",
+	"SESSION_CREATE_DELETE_CONFIRMATION": "Sei sicuro di voler eliminare questa sessione?",
 
 	"CLASSROOM_NAME": "Classi",
 	"CLASSROOM_STUDENT_NAME": "Nome",
