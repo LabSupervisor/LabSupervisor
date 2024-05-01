@@ -2,10 +2,9 @@
 
 use
 	LabSupervisor\app\repository\SessionRepository,
+	LabSupervisor\app\entity\Session,
 	LabSupervisor\app\repository\ClassroomRepository,
-	LabSupervisor\app\entity\Session;
-use LabSupervisor\app\repository\UserRepository;
-use LabSupervisor\app\repository\LogRepository;
+	LabSupervisor\app\repository\UserRepository;
 
 // Case 1 : save all infos in order to create a new session
 if (isset($_POST['saveSession'])) {

@@ -1,6 +1,7 @@
 <?php
 
-	use LabSupervisor\app\repository\ClassroomRepository,
+	use
+		LabSupervisor\app\repository\ClassroomRepository,
 		LabSupervisor\app\repository\SessionRepository;
 	use function
 		LabSupervisor\functions\mainHeader,
@@ -115,7 +116,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<!-- Send -->
 		<?php
 			if (isset($_POST['sessionId'])) {
@@ -131,7 +132,7 @@
 		?>
 
 		<div>
-			<button class="button" type="submit" name="saveSession"><?= lang("SESSION_CREATE_SUBMIT") ?></button>
+			<button class="button" type="submit" name="saveSession"><i class="ri-save-2-line"></i> <?= lang("SESSION_CREATE_SUBMIT") ?></button>
 		</div>
 
 		<?php

@@ -108,19 +108,23 @@
 
 /* Date */
 .mainform #date{
-	height: 35px;
 	border-radius: 10px;
 	border: 0;
 	font-size: 16px;
 	outline: none;
-	padding: 8px;
-	width: 280px;
 	background: var(--case-field-background-color);
+
+	padding: 8px;
+
+	height: 35px;
+	width: -webkit-fill-available;
+	width: -moz-available;
 }
 
 .mainform input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 	mask: url("/public/img/icon/calendar-2-line.svg");
 	background: var(--text-color);
-	margin-right: 10px;
 	outline: none;
+	
+	margin-right: 10px;
 }

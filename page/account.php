@@ -1,4 +1,5 @@
 <?php
+
 	use LabSupervisor\app\repository\UserRepository;
 	use function
 		LabSupervisor\functions\mainHeader,

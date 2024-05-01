@@ -1,7 +1,6 @@
 <?php
 
 use LabSupervisor\app\repository\SessionRepository;
-use function LabSupervisor\functions\lang;
 
 // Open session
 if (isset($_POST["open"])) {
