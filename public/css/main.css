@@ -88,6 +88,20 @@ body {
 	transform-origin: center center;
 }
 
+/* Error */
+.noScript {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	flex-wrap: wrap;
+
+	background-color: #ff8989;
+
+	user-select: none;
+
+	height: 30px;
+}
+
 /* Case style */
 .mainbox {
 	display: block;
