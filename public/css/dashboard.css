@@ -1,10 +1,12 @@
 .button-container {
 	margin-top: 6vh;
+	padding: 10px;
+
+	user-select: none;
+
 	width: fit-content;
 	height: fit-content;
-	padding: 10px;
 	max-width: 100%;
-	user-select: none;
 }
 
 .buttonBox {
@@ -23,10 +25,11 @@
 }
 
 .button-container a {
+	text-decoration: none;
+
 	margin-left: 17px;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	text-decoration: none;
 }
 
 .col1, .col2 {
@@ -36,14 +39,19 @@
 .screenShareButton {
 	background: 0;
 	border: 0;
-	cursor: pointer;
 	font-size: 23px;
-	margin-left: 14px;
 	transform: translateY(2px);
+	color: var(--text-color);
+	transition: 200ms;
+
+	margin-left: 14px;
+
+	cursor: pointer;
 }
 
 .screenShareButton:hover {
 	color: var(--text-hover-color);
+	transition: 200ms;
 }
 
 .back {
