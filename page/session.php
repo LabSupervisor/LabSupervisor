@@ -60,9 +60,10 @@
 				<th><?= lang("SESSION_DESCRIPTION") ?></th>
 				<th><?= lang("SESSION_TEACHER") ?></th>
 				<th><?= lang("SESSION_DATE") ?></th>
+				<th><?= lang("SESSION_STATE") ?></th>
 				<?php
 					if (!in_array(ADMIN, $roleList)) {
-						echo "<th>" . lang("SESSION_STATE") . "</th>";
+						echo "<th>" . lang("SESSION_ACTION") . "</th>";
 					}
 				?>
 			</tr>
@@ -72,6 +73,12 @@
 				for($i = 0; $i < count($sessionList); $i++) {
 					echo "<tr>";
 					foreach($sessionList[$i] as $line) {
+						if ($line["state"] == 0) {
+							$buttonStyle = "statusRed";
+						} else {
+							$buttonStyle = "statusGreen";
+						}
+
 						$creatorName = nameFormat($line["idcreator"], false);
 
 						echo '<td class="col1" title="' . htmlspecialchars($line["title"]) . '">'. htmlspecialchars($line["title"]) ."</td>";
@@ -82,8 +89,9 @@
 							$description = lang("SESSION_DESCRIPTION_EMPTY");
 						echo '<td class="col2" title="' . $description . '"><div class="col2">'. $description . "</div></td>";
 
-						echo '<td class="col3">'. htmlspecialchars($creatorName) ."</td>";
-						echo '<td class="col4">'. date("d/m/Y H:i", strtotime($line["date"])) ."</td>";
+						echo '<td class="col3">' . htmlspecialchars($creatorName) . "</td>";
+						echo '<td class="col4">' . date("d/m/Y H:i", strtotime($line["date"])) . "</td>";
+						echo '<td class="colState"><div class="statusBall ' . $buttonStyle . '"</div></td>';
 						if (!in_array(ADMIN, $roleList)) {
 							echo "<td class='col5'>";
 
