@@ -68,8 +68,8 @@
 				<thead>
 					<tr>
 						<th><?= lang("SESSION_PANEL_CHAPTER") ?></th>
-						<th><?= lang("SESSION_PANEL_ACTION") ?></th>
 						<th><?= lang("SESSION_PANEL_STATUS") ?></th>
+						<th><?= lang("SESSION_PANEL_ACTION") ?></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -91,13 +91,13 @@
 					?>
 						<tr>
 							<td class="col1"><?= $chapter["title"] ?></td>
+							<td class="col3"><div class="<?= $statusBall ?>" id="statusBall_<?= $chapter['id'] ?>"></div></td>
 							<td class="col2">
 								<input type="hidden" name="liste" value="<?php echo $chapter['id']; ?>">
-								<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 1)"><i class="ri-error-warning-line"></i> <?= lang("SESSION_PANEL_HELP") ?></button>
-								<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 2)"><i class="ri-edit-line"></i> <?= lang("SESSION_PANEL_WIP") ?></button>
-								<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 3)"><i class="ri-thumb-up-line"></i> <?= lang("SESSION_PANEL_DONE") ?></button>
+								<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 1)"><i class="ri-error-warning-line" title="<?= lang("SESSION_PANEL_HELP") ?>"></i></button>
+								<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 2)" title="<?= lang("SESSION_PANEL_WIP") ?>"><i class="ri-edit-line"></i></button>
+								<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 3)" title="<?= lang("SESSION_PANEL_DONE") ?>"><i class="ri-thumb-up-line"></i></button>
 							</td>
-							<td class="col3"><div class="<?= $statusBall ?>" id="statusBall_<?= $chapter['id'] ?>"></div></td>
 						</tr>
 					<?php
 						}
