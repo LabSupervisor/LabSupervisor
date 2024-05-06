@@ -84,10 +84,6 @@
 						foreach (SessionRepository::getChapter($_SESSION["session"]) as $value) {
 							echo "<th><i class=\"ri-information-line\" title='" . $value["title"] . "'></i></th>";
 						}
-
-						if (SessionRepository::getState($_SESSION["session"]) != 0) {
-							echo "<th>" . lang("DASHBOARD_SCREENSHARE") . "</th>";
-						}
 					?>
 				</tr>
 			</thead>
@@ -125,11 +121,6 @@
 				<th></th>
 				<th><?= lang("DASHBOARD_CHAPTER") ?></th>
 				<th><?= lang("DASHBOARD_STATUS") ?></th>
-			<?php
-			if (SessionRepository::getState($_SESSION["session"]) != 0) {
-				echo "<th>" . lang("DASHBOARD_SCREENSHARE") . "</th>";
-			}
-			?>
 			</tr>
 			</thead>
 			<tbody>
