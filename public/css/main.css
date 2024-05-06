@@ -260,8 +260,8 @@ body {
 }
 
 .statusYellow {
-	background-color: yellow;
-	box-shadow: 0px 0px 10px 0px yellow;
+	background-color: #ffd000;
+	box-shadow: 0px 0px 10px 0px #ffd000;
 }
 
 .statusGreen {
