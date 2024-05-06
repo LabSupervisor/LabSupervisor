@@ -101,7 +101,7 @@ class SessionRepository {
 
 	public static function getSessions() {
 		// Get sessions query
-		$query = "SELECT * FROM session";
+		$query = "SELECT * FROM session ORDER BY date DESC";
 
 		// Get sessions
 		try {
@@ -265,7 +265,7 @@ class SessionRepository {
 	public static function getUserSessions($userId) {
 
 		// Get user's sessions query
-		$query = "SELECT idsession FROM participant WHERE iduser = :iduser";
+		$query = "SELECT idsession FROM participant pr, session s WHERE iduser = :iduser AND s.id = idsession ORDER BY s.date DESC";
 
 		// Get user's sessions
 		try {
