@@ -23,6 +23,17 @@
 	text-align: left;
 }
 
+.description {
+	font-size: 13px;
+	font-style: italic;
+	color: var(--text-hover-color);
+	text-align: justify;
+
+	margin-top: 5px;
+
+	max-width: 300px;
+}
+
 .back {
 	display: flex;
 	flex-direction: row;

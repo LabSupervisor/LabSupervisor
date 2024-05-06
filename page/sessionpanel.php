@@ -90,7 +90,12 @@
 							}
 					?>
 						<tr>
-							<td class="col1"><?= $chapter["title"] ?></td>
+							<td class="col1">
+								<?= $chapter["title"] ?>
+								<div class="description">
+									<?= $chapter["description"] ?>
+								</div>
+							</td>
 							<td class="col3"><div class="<?= $statusBall ?>" id="statusBall_<?= $chapter['id'] ?>"></div></td>
 							<td class="col2">
 								<input type="hidden" name="liste" value="<?php echo $chapter['id']; ?>">
