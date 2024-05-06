@@ -96,7 +96,7 @@ else if (isset($_POST['updateSession'])) {
 
 	if (isset($_POST['deletedChapters'])) {
 		$deletededChapters = $_POST['deletedChapters'];
-		$participant = SessionRepository::getParticipant($sessionId);
+		$participant = SessionRepository::getParticipants($sessionId);
 
 		foreach ($participant as $user) {
 			foreach ($deletededChapters as $value) {
@@ -129,7 +129,7 @@ else if (isset($_POST['sessionId'])) {
 // Case 4 : delete an existing session after the user pressed the 'Delete' button
 else if (isset($_POST['deleteSession'])) {
 	$sessionId = $_POST['deleteSession'];
-	$participant = SessionRepository::getParticipant($sessionId);
+	$participant = SessionRepository::getParticipants($sessionId);
 	$chapter = SessionRepository::getChapter($sessionId);
 
 	foreach ($participant as $user) {

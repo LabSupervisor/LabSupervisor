@@ -29,7 +29,7 @@ switch($_SERVER["REQUEST_METHOD"]) {
 
 			// Application asking for user status
 			if ($data->ask == "get_status") {
-				$participant = SessionRepository::getParticipant($data->idSession);
+				$participant = SessionRepository::getParticipants($data->idSession);
 				$chapter = SessionRepository::getChapter($data->idSession);
 
 				$state = '{"Response": {';

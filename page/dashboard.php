@@ -90,7 +90,7 @@
 			<tbody>
 			<?php
 				// Select paticipants
-				foreach (SessionRepository::getParticipant($_SESSION["session"]) as $value) {
+				foreach (SessionRepository::getParticipants($_SESSION["session"]) as $value) {
 					if (UserRepository::isActive($value["iduser"]) == true AND UserRepository::getRole($value["iduser"])[0]["idrole"] == STUDENT) {
 						$userId = $value["iduser"];
 						$participantName = UserRepository::getInfo($userId);
@@ -126,7 +126,7 @@
 			<tbody>
 			<?php
 				// Select paticipants
-				foreach (SessionRepository::getParticipant($_SESSION["session"]) as $value) {
+				foreach (SessionRepository::getParticipants($_SESSION["session"]) as $value) {
 					if (UserRepository::isActive($value["iduser"]) == true AND UserRepository::getRole($value["iduser"])[0]["idrole"] == STUDENT) {
 						$userId = $value["iduser"];
 

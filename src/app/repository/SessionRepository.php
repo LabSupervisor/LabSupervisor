@@ -244,9 +244,9 @@ class SessionRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
 	}
 
-	public static function getParticipant($sessionId, $full = false) {
+	public static function getParticipants($sessionId, $full = false) {
 		// Get session's participants query
-		$query = "SELECT p.iduser FROM participant p, user us WHERE p.idsession = :idsession AND us.id = p.iduser";
+		$query = "SELECT p.iduser FROM participant p, user us WHERE p.idsession = :idsession AND us.id = p.iduser ORDER BY surname ASC";
 
 		// Get session's participant
 		try {
