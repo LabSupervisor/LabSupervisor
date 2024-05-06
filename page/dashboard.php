@@ -96,8 +96,8 @@
 						$participantName = UserRepository::getInfo($userId);
 
 						echo "<tr>";
-						echo "<td class='col1'>" . $participantName["name"] . "</td>";
 						echo "<td class='col1'>" . $participantName["surname"] . "</td>";
+						echo "<td class='col1'>" . $participantName["name"] . "</td>";
 
 						$status = "";
 						foreach (SessionRepository::getChapter($_SESSION["session"]) as $value) {
@@ -145,8 +145,8 @@
 
 						// Fill table
 						echo "<tr>";
-						echo "<td class='col1'>" . $participantName["name"] . "</td>";
 						echo "<td class='col1'>" . $participantName["surname"] . "</td>";
+						echo "<td class='col1'>" . $participantName["name"] . "</td>";
 						echo "<td class='col2'>" . $chapterList . "</td>";
 						echo "<td class='col3'><div class='statusBallGroup'>" . $statusList . "</div></td>";
 						if (SessionRepository::getState($_SESSION["session"]) != 0) {
