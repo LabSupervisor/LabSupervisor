@@ -65,10 +65,6 @@
 			<div class="item">
 				<a href="/classes" title="' . lang("INDEX_TEACHER_CLASSROOM") . '"><i class="ri-folder-line"></i> ' . lang("NAVBAR_CLASS") . '</a>
 			</div>';
-			$navbarItem .= '
-			<div class="item">
-				<a href="/sessioncreation" title="' . lang("INDEX_TEACHER_CREATE_SESSION") . '"><i class="ri-computer-line"></i> ' . lang("NAVBAR_CREATE_SESSION") . '</a>
-			</div>';
 		}
 
 			// Global pages

@@ -40,6 +40,18 @@
 	if (count($sessionList) > 0) {
 ?>
 
+<?php
+	if (in_array(TEACHER, $roleList)) {
+?>
+
+<div class="mainbox buttonContainer">
+	<a class="button2" href="/sessioncreation"><i class="ri-computer-line"></i> <?= lang("NAVBAR_CREATE_SESSION") ?></a>
+</div>
+
+<?php
+	}
+?>
+
 <div class="mainbox maintable">
 	<table>
 		<thead>

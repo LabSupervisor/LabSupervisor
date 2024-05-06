@@ -28,3 +28,30 @@
 .nosessiontitle {
 	font-size: 30px;
 }
+
+.buttonContainer {
+	display: flex;
+
+	padding: 10px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+
+	user-select: none;
+
+	width: fit-content;
+}
+
+.button2 {
+	background-color: var(--button-background-color);
+	border-radius: 9px;
+	border: 0;
+	font-size: 16px;
+	text-decoration: none;
+
+	margin: 10px;
+	padding: 11px 20px 11px 20px;
+	transition: 200ms;
+
+	height: 40px;
+	max-height: 20px;
+}
