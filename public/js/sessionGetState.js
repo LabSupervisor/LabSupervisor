@@ -9,22 +9,30 @@ setInterval(() => {
 	}).then((response) => {
 		return response.json()
 	}).then((res) => {
+		let actionId = document.querySelectorAll("[id=action]");
+		let screenshareId = document.getElementById("screenshare");
+		let lslinkId = document.getElementById("lslink");
 		switch (res.Response.Status) {
 			case 0:
-				document.getElementById("sessionState").style.display = "block";
-				document.getElementById("sessionMain").style.display = "none";
+				for (var i = 0; i < actionId.length; i++) {
+					actionId[i].style.display = "none";
+				}
+				screenshareId.style.display = "none";
+				lslinkId.style.display = "none";
 				break;
 			case 1:
-				document.getElementById("sessionState").style.display = "none";
-				document.getElementById("sessionMain").style.display = "block";
-				document.getElementById("statusBox").style.display = "block";
-				document.getElementById("statusBoxPaused").style.display = "none";
+				for (var i = 0; i < actionId.length; i++) {
+					actionId[i].style.display = "block";
+				}
+				screenshareId.style.display = "block";
+				lslinkId.style.display = "block";
 				break;
 			case 2:
-				document.getElementById("sessionState").style.display = "none";
-				document.getElementById("sessionMain").style.display = "block";
-				document.getElementById("statusBox").style.display = "none";
-				document.getElementById("statusBoxPaused").style.display = "block";
+				for (var i = 0; i < actionId.length; i++) {
+					actionId[i].style.display = "none";
+				}
+				screenshareId.style.display = "block";
+				lslinkId.style.display = "block";
 				break;
 		}
 	}).catch((error) => {
