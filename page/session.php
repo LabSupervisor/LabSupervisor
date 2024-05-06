@@ -45,7 +45,9 @@
 ?>
 
 <div class="mainbox buttonContainer">
-	<a class="button2" href="/sessioncreation"><i class="ri-computer-line"></i> <?= lang("NAVBAR_CREATE_SESSION") ?></a>
+	<a href="/sessioncreation">
+		<button class="button" ><i class="ri-computer-line"></i> <?= lang("NAVBAR_CREATE_SESSION") ?></button>
+	</a>
 </div>
 
 <?php

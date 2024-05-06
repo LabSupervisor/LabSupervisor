@@ -7,7 +7,6 @@
 * {
 	margin: 0px;
 	font-family: "inter", sans-serif;
-	color: var(--text-color);
 }
 
 ::selection {
@@ -45,6 +44,11 @@ body {
 	display: flex;
 	flex-direction: column;
 	overflow-x : hidden;
+	color: var(--text-color);
+}
+
+body a {
+	color: inherit;
 }
 
 #main {
@@ -153,37 +157,48 @@ body {
 /* Button style */
 .button {
 	background-color: var(--button-background-color);
-	border-radius: 9px;
 	border: 0;
-	height: 40px;
+	border-radius: 9px;
 	font-size: 16px;
-	margin: 10px;
+	transition: 200ms;
+	color: var(--button-text-color);
+	text-decoration: none;
+
+	margin: 7px;
 	padding-left: 20px;
 	padding-right: 20px;
-	transition: 200ms;
+
 	user-select: none;
+
+	cursor: pointer;
+
+	height: 40px;
+	max-height: 40px;
 }
 
 .button:disabled {
-	cursor: not-allowed !important;
 	background-color: var(--button-hover-color);
 	color: var(--text-hover-color);
 	font-style: italic;
+
+	cursor: not-allowed !important;
 }
 
 .button:hover {
 	background-color: var(--button-hover-color);
 	transition: 200ms;
-	cursor: pointer;
+	color: var(--text-color);
 }
 
 .back {
 	background-color: transparent;
 	border: 0;
 	font-size: 16px;
-	cursor: pointer;
 	transition: 200ms;
 	text-decoration: none;
+	color: var(--text-color);
+
+	cursor: pointer;
 }
 
 .back:hover {

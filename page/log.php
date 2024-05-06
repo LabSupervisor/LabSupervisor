@@ -23,8 +23,12 @@
 ?>
 
 <div class="mainbox buttonContainer">
-	<a class="button2" href="/logs?trace"><i class="ri-draft-line"></i> <?= lang("LOG_TRACE") ?></a>
-	<a class="button2" href="/logs?error"><i class="ri-error-warning-line"></i> <?= lang("LOG_ERROR") ?></a>
+	<a href="/logs?trace">
+		<button class="button"><i class="ri-draft-line"></i> <?= lang("LOG_TRACE") ?></button>
+	</a>
+	<a href="/logs?error">
+		<button class="button"><i class="ri-error-warning-line"></i> <?= lang("LOG_ERROR") ?></button>
+	</a>
 </div>
 
 <div class="mainbox maintable">
@@ -98,12 +102,16 @@
 ?>
 
 <div class="mainbox buttonContainer">
-	<a class="button2" href="/logs?trace"><i class="ri-draft-line"></i> <?= lang("LOG_TRACE") ?></a>
-	<a class="button2" href="/logs?error"><i class="ri-error-warning-line"></i> <?= lang("LOG_ERROR") ?></a>
+	<a href="/logs?trace">
+		<button class="button"><i class="ri-draft-line"></i> <?= lang("LOG_TRACE") ?></button>
+	</a>
+	<a href="/logs?error">
+		<button class="button"><i class="ri-error-warning-line"></i> <?= lang("LOG_ERROR") ?></button>
+	</a>
 	<form method="get">
 		<input type="hidden" name="error">
 		<input type="date" id="date" name="date" value="<?= $fileDate ?>">
-		<input class="button" type="submit" value="<?= lang("LOG_ERROR_SUBMIT") ?>">
+		<button class="button" type="submit"><?= lang("LOG_ERROR_SUBMIT") ?></button>
 	</form>
 </div>
 

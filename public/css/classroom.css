@@ -33,6 +33,7 @@
 
 .classname[selected] {
 	background-color: var(--button-background-color);
+	color: var(--button-text-color);
 }
 
 .contentClassroom {
