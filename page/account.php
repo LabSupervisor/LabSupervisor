@@ -72,7 +72,7 @@
 			<button class="button" type="submit"><i class="ri-save-2-line"></i> <?= lang("ACCOUNT_SUBMIT") ?></button>
 		</div>
 	</form>
-	<button class="back" id="showDeleteForm" type=""><i class="ri-delete-bin-line"></i> <?= lang("ACCOUNT_DELETE") ?></button>
+	<a class="link" id="showDeleteForm"><i class="ri-delete-bin-line"></i> <?= lang("ACCOUNT_DELETE") ?></a>
 </div>
 
 <form class="mainbox confirmDelete" id="confirmationForm" style="display: none;" method="post">
@@ -85,7 +85,7 @@
 	</label>
 
 	<div>
-		<button class="back deleteCaseButton" type="button" id="cancel"><i class="ri-arrow-left-line"></i> <?= lang("ACCOUNT_DELETE_CANCEL") ?></button>
+		<a class="link" id="cancel"><i class="ri-arrow-left-line"></i> <?= lang("ACCOUNT_DELETE_CANCEL") ?></a>
 		<button class="button deleteCaseButton" type="submit" name="confirm_delete"><i class="ri-delete-bin-line"></i> <?= lang("ACCOUNT_DELETE") ?></button>
 	</div>
 </form>

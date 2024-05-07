@@ -45,13 +45,13 @@
 <link rel="stylesheet" href="/public/css/dashboard.css">
 
 <div class="mainbox button-container">
+	<a class="back" href="/sessions"><i class="ri-arrow-left-line"></i> <?= lang("MAIN_BUTTON_BACK") ?></a>
 	<h2><?= SessionRepository::getName($_SESSION["session"]) . $stateText?></h2>
 	<?php if (SessionRepository::getInfo($_SESSION["session"])[0]["description"]) {?>
 		<a><?= SessionRepository::getInfo($_SESSION["session"])[0]["description"]?></a><br><br>
 	<?php } ?>
 	<div class="buttonBox">
 		<form method="POST">
-			<a class="back" href="/sessions"><i class="ri-arrow-left-line"></i> <?= lang("DASHBOARD_BACK") ?></a>
 			<input type="hidden" name="sessionId" value="<?= $_SESSION["session"] ?>">
 		<?php
 		if (SessionRepository::getState($_SESSION["session"]) != 0) {

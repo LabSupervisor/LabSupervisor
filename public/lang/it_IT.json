@@ -3,6 +3,7 @@
 	"MAIN_ROLE_ADMIN": "Amministratore",
 	"MAIN_ROLE_STUDENT": "Studente",
 	"MAIN_ROLE_TEACHER": "Insegnante",
+	"MAIN_BUTTON_BACK": "Indietro",
 
 	"NAVBAR_TITLE": "LabSupervisor",
 	"NAVBAR_CONNECT": "Collegarsi",
@@ -81,7 +82,6 @@
 	"DASHBOARD_CHANGE_VIEW": "Cambia visualizzazione",
 	"DASHBOARD_BUTTON_PAUSE": "Cambia lo stato della sessione",
 	"DASHBOARD_PAUSE": "In pausa",
-	"DASHBOARD_BACK": "Indietro",
 	"DASHBOARD_SCREENSHARE": "Condivisione schermo",
 	"DASHBOARD_SCREENSHARE_OPEN": "Apri condivisione schermo",
 

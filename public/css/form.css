@@ -94,14 +94,18 @@
 	cursor: pointer;
 }
 
-.mainform .link {
+.link {
 	color: var(--text-color);
 	text-decoration: none;
 	font-size: 18px;
 	transition: 200ms;
+	border: 0;
+	background: 0;
+
+	cursor: pointer;
 }
 
-.mainform .link:hover {
+.link:hover {
 	color: var(--text-hover-color);
 	transition: 200ms;
 }

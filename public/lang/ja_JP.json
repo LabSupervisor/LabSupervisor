@@ -3,6 +3,7 @@
 	"MAIN_ROLE_ADMIN": "管理者",
 	"MAIN_ROLE_STUDENT": "学生",
 	"MAIN_ROLE_TEACHER": "教師",
+	"MAIN_BUTTON_BACK": "戻る",
 
 	"NAVBAR_TITLE": "LabSupervisor",
 	"NAVBAR_CONNECT": "接続",
@@ -81,7 +82,6 @@
 	"DASHBOARD_CHANGE_VIEW": "表示を変更",
 	"DASHBOARD_BUTTON_PAUSE": "セッションのステータスを変更する",
 	"DASHBOARD_PAUSE": "一時停止中",
-	"DASHBOARD_BACK": "戻る",
 	"DASHBOARD_SCREENSHARE": "画面共有",
 	"DASHBOARD_SCREENSHARE_OPEN": "画面共有を開く",
 

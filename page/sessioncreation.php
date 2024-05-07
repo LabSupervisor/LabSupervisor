@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="/public/css/form.css">
 
 <div class="mainbox mainform">
+	<a class="back" href="/sessions"><i class="ri-arrow-left-line"></i> <?= lang("MAIN_BUTTON_BACK") ?></a>
 	<form id="formSession" method="post">
 		<div class="row">
 			<div class="column">
@@ -145,7 +146,7 @@
 	?>
 
 	<form method="POST" onsubmit="return confirm('<?= lang('SESSION_CREATE_DELETE_CONFIRMATION') ?>');">
-		<button class="back" type="submit" name="deleteSession" value="<?= $_POST['sessionId'] ?>"><i class="ri-delete-bin-line"></i> <?= lang("SESSION_CREATE_DELETE") ?></button>
+		<button class="link" type="submit" name="deleteSession" value="<?= $_POST['sessionId'] ?>"><i class="ri-delete-bin-line"></i> <?= lang("SESSION_CREATE_DELETE") ?></button>
 	</form>
 
 	<?php } ?>

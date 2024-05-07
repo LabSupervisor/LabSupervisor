@@ -3,6 +3,7 @@
 	"MAIN_ROLE_ADMIN": "Beheerder",
 	"MAIN_ROLE_STUDENT": "Student",
 	"MAIN_ROLE_TEACHER": "Docent",
+	"MAIN_BUTTON_BACK": "Terug",
 
 	"NAVBAR_TITLE": "LabSupervisor",
 	"NAVBAR_CONNECT": "Verbinding",
@@ -81,7 +82,6 @@
 	"DASHBOARD_CHANGE_VIEW": "Verander weergave",
 	"DASHBOARD_BUTTON_PAUSE": "Wijzig de status van de sessie",
 	"DASHBOARD_PAUSE": "Gepauzeerd",
-	"DASHBOARD_BACK": "Terug",
 	"DASHBOARD_SCREENSHARE": "Scherm delen",
 	"DASHBOARD_SCREENSHARE_OPEN": "Scherm delen openen",
 

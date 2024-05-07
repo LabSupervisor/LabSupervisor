@@ -3,6 +3,7 @@
 	"MAIN_ROLE_ADMIN": "Администратор",
 	"MAIN_ROLE_STUDENT": "Студент",
 	"MAIN_ROLE_TEACHER": "Преподаватель",
+	"MAIN_BUTTON_BACK": "Назад",
 
 	"NAVBAR_TITLE": "LabSupervisor",
 	"NAVBAR_CONNECT": "Войти",
@@ -81,7 +82,6 @@
 	"DASHBOARD_CHANGE_VIEW": "Изменить вид",
 	"DASHBOARD_BUTTON_PAUSE": "Изменить состояние сеанса",
 	"DASHBOARD_PAUSE": "На паузе",
-	"DASHBOARD_BACK": "Назад",
 	"DASHBOARD_SCREENSHARE": "Поделиться экраном",
 	"DASHBOARD_SCREENSHARE_OPEN": "Открыть общий экран",
 

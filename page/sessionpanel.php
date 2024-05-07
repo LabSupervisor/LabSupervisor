@@ -39,7 +39,7 @@
 
 <div class="mainbox maintable">
 	<div class="sessionTitle">
-		<a class="back" href="/sessions"><i class="ri-arrow-left-line"></i> <?= lang("DASHBOARD_BACK") ?></a>
+		<a class="back" href="/sessions"><i class="ri-arrow-left-line"></i> <?= lang("MAIN_BUTTON_BACK") ?></a>
 		<div>
 			<h2><?= SessionRepository::getName($_SESSION["session"]) ?></h2>
 			<a><?= SessionRepository::getInfo($_SESSION["session"])[0]["description"] ?></a>

@@ -3,6 +3,7 @@
 	"MAIN_ROLE_ADMIN": "管理员",
 	"MAIN_ROLE_STUDENT": "学生",
 	"MAIN_ROLE_TEACHER": "教师",
+	"MAIN_BUTTON_BACK": "返回",
 
 	"NAVBAR_TITLE": "LabSupervisor",
 	"NAVBAR_CONNECT": "连接",
@@ -81,7 +82,6 @@
 	"DASHBOARD_CHANGE_VIEW": "切换视图",
 	"DASHBOARD_BUTTON_PAUSE": "更改会话状态",
 	"DASHBOARD_PAUSE": "暂停",
-	"DASHBOARD_BACK": "返回",
 	"DASHBOARD_SCREENSHARE": "屏幕共享",
 	"DASHBOARD_SCREENSHARE_OPEN": "打开屏幕共享",
 
