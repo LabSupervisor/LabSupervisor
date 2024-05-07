@@ -22,7 +22,7 @@ setInterval(() => {
 				break;
 			case 1:
 				for (var i = 0; i < actionId.length; i++) {
-					actionId[i].style.display = "block";
+					actionId[i].style.display = "";
 				}
 				screenshareId.style.display = "block";
 				lslinkId.style.display = "block";

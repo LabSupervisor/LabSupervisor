@@ -34,17 +34,6 @@
 	max-width: 300px;
 }
 
-/* .back {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	padding-right: 40px;
-} */
-
-.back i {
-	margin-right: 5px;
-}
-
 .lslinkBox {
 	margin-top: 6vh;
 	display: flex;

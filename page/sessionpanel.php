@@ -19,7 +19,7 @@
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/createLink.php");
 
 	// If session is not paused
-	$styleAction = "style='display: block'";
+	$styleAction = "";
 	$styleClosed = "style='display: block'";
 	// If session is not closed
 	if (SessionRepository::getState($_SESSION["session"]) != 0) {
