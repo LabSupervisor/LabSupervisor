@@ -22,7 +22,7 @@
 	if (SessionRepository::getState($_SESSION["session"]) == 2) {
 		$state = "pause";
 		$stateButton = "<i class=\"ri-play-line\"></i>";
-		$stateText = " | " . lang("DASHBOARD_PAUSE");
+		$stateText = "<div class='pausedTitle'>" . lang("DASHBOARD_PAUSE") . "</div>";
 	} else {
 		$state = "play";
 		$stateButton = "<i class=\"ri-pause-line\"></i>";
@@ -44,7 +44,7 @@
 
 <link rel="stylesheet" href="/public/css/dashboard.css">
 
-<div class="mainbox button-container">
+<div class="mainbox titlebox">
 	<a class="back" href="/sessions"><i class="ri-arrow-left-line"></i> <?= lang("MAIN_BUTTON_BACK") ?></a>
 	<h2><?= SessionRepository::getName($_SESSION["session"]) . $stateText?></h2>
 	<?php if (SessionRepository::getInfo($_SESSION["session"])[0]["description"]) {?>

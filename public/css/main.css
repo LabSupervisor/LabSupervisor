@@ -123,6 +123,30 @@ body a {
 	box-shadow: 0px 0px 50px 0px #00000030;
 }
 
+/* Title box */
+.titlebox {
+	padding: 15px;
+
+	user-select: none;
+
+	width: fit-content;
+	height: fit-content;
+	max-width: 70%;
+}
+
+.titlebox h2 {
+	margin: 20px 10px 10px 10px;
+}
+
+.titlebox a:not(.back) {
+	text-decoration: none;
+	text-wrap: balance;
+	text-wrap: pretty;
+
+	padding: 10px 20px 10px 20px;
+}
+
+/* Information popup */
 .errorPopup {
 	background-color: var(--background-case-color);
 	color: var(--text-color);
