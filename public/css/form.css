@@ -90,6 +90,7 @@
 	background: none;
 	font-size: 26px;
 	background-color: var(--case-field-background-color);
+	color: var(--text-color);
 
 	cursor: pointer;
 }
