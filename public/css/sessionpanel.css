@@ -1,22 +1,5 @@
-.maintable {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	text-align: center;
-	width: -webkit-fill-available;
-}
-
 .statusBall {
 	transform: translateX(18px);
-}
-
-.sessionTitle {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	margin-top: 1vh;
-	margin-bottom: 4vh;
-	max-width: 60%;
 }
 
 .col1 {
@@ -34,30 +17,23 @@
 	max-width: 300px;
 }
 
-.lslinkBox {
-	margin-top: 6vh;
+.buttonBox {
 	display: flex;
 	align-items: center;
-	flex-direction: column;
-	margin-left: 0;
-	text-align: center;
-	max-width: fit-content;
+	justify-content: center;
+}
+
+.lslinkBox {
 	padding: 20px;
+
 	user-select: none;
+
+	max-width: fit-content;
 }
 
 .lslinkButton {
 	display: flex;
 	flex-direction: row;
-}
-
-.screenshareBox {
-	margin-top: 6vh;
-	margin-right: 9vh;
-	text-align: center;
-	max-width: fit-content;
-	padding: 20px;
-	user-select: none;
 }
 
 .item {
@@ -69,9 +45,11 @@
 	border: 0;
 	border-radius: 7px;
 	font-size: 15px;
+	color: var(--text-color);
+
 	padding: 11px;
 	margin-bottom: 19px;
-	color: var(--text-color);
 	margin-right: 12px;
+	
 	max-width: 80px;
 }

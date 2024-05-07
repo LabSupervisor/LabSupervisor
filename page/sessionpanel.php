@@ -37,95 +37,85 @@
 <link rel="stylesheet" href="/public/css/sessionpanel.css">
 <link rel="stylesheet" href="/public/css/error.css">
 
-<div class="mainbox maintable">
-	<div class="sessionTitle">
-		<a class="back" href="/sessions"><i class="ri-arrow-left-line"></i> <?= lang("MAIN_BUTTON_BACK") ?></a>
-		<div>
-			<h2><?= SessionRepository::getName($_SESSION["session"]) ?></h2>
-			<a><?= SessionRepository::getInfo($_SESSION["session"])[0]["description"] ?></a>
-		</div>
-	</div>
-
-	<div>
-		<table>
-			<thead>
-				<tr>
-					<th><?= lang("SESSION_PANEL_CHAPTER") ?></th>
-					<th><?= lang("SESSION_PANEL_STATUS") ?></th>
-					<th id="action" <?= $styleAction ?>><?= lang("SESSION_PANEL_ACTION") ?></th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php
-					foreach (SessionRepository::getChapter($_SESSION["session"]) as $chapter) {
-
-						$statusBall = "statusBall";
-						switch (SessionRepository::getStatus($chapter['id'], $_SESSION["login"])) {
-							case "1":
-								$statusBall = "statusBall statusRed";
-								break;
-							case "2":
-								$statusBall = "statusBall statusYellow";
-								break;
-							case "3":
-								$statusBall = "statusBall statusGreen";
-								break;
-						}
-				?>
-					<tr>
-						<td class="col1">
-							<?= $chapter["title"] ?>
-							<div class="description">
-								<?= $chapter["description"] ?>
-							</div>
-						</td>
-						<td class="col3"><div class="<?= $statusBall ?>" id="statusBall_<?= $chapter['id'] ?>"></div></td>
-						<td class="col2" id="action" <?= $styleAction ?>>
-							<input type="hidden" name="liste" value="<?php echo $chapter['id']; ?>">
-							<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 1)" title="<?= lang("SESSION_PANEL_HELP") ?>"><i class="ri-error-warning-line"></i></button>
-							<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 2)" title="<?= lang("SESSION_PANEL_WIP") ?>"><i class="ri-edit-line"></i></button>
-							<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 3)" title="<?= lang("SESSION_PANEL_DONE") ?>"><i class="ri-thumb-up-line"></i></button>
-						</td>
-					</tr>
-				<?php
-					}
-				?>
-			</tbody>
-		</table>
+<div class="mainbox titlebox">
+	<a class="back" href="/sessions"><i class="ri-arrow-left-line"></i> <?= lang("MAIN_BUTTON_BACK") ?></a>
+	<h2><?= SessionRepository::getName($_SESSION["session"]) ?></h2>
+	<a><?= SessionRepository::getInfo($_SESSION["session"])[0]["description"] ?></a>
+	<div class="buttonBox" id="screenshare" <?= $styleClosed ?>>
+		<button class="button" id="shareButton"><i class="ri-share-line"></i> <?= lang("SESSION_PANEL_SCREENSHARE_START") ?></button>
 	</div>
 </div>
 
-<div class="item">
-	<div class="mainbox screenshareBox" id="screenshare" <?= $styleClosed ?>>
-		<h2><?= lang("SESSION_PANEL_SCREENSHARE") ?></h2>
-		<button class="button" id="shareButton"><i class="ri-share-line"></i> <?= lang("SESSION_PANEL_SCREENSHARE_START") ?></button>
-	</div>
-
-	<div class="mainbox lslinkBox" id="lslink" <?= $styleClosed ?>>
-		<h2><?= lang("SESSION_PANEL_LSLINK") ?></h2>
-
+<table class="mainbox maintable">
+	<thead>
+		<tr>
+			<th><?= lang("SESSION_PANEL_CHAPTER") ?></th>
+			<th><?= lang("SESSION_PANEL_STATUS") ?></th>
+			<th id="action" <?= $styleAction ?>><?= lang("SESSION_PANEL_ACTION") ?></th>
+		</tr>
+	</thead>
+	<tbody>
 		<?php
-			$buttonText = '<i class="ri-link"></i> ' . lang("SESSION_PANEL_LSLINK_CONNECT");
-			$unlinkButton = "";
-			$linkId = "";
-			if (UserRepository::getLink($_SESSION["login"], $_SESSION["session"])) {
-				$linkId = UserRepository::getLink($_SESSION["login"], $_SESSION["session"]);
+			foreach (SessionRepository::getChapter($_SESSION["session"]) as $chapter) {
 
-				echo lang("SESSION_PANEL_LSLINK_NUMBER") . $linkId;
-				$buttonText = '<i class="ri-pencil-line"></i> ' . lang("SESSION_PANEL_LSLINK_MODIFY");
-				$unlinkButton = "<button class='button' type='submit' name='disconnect' value=" . $linkId . "><i class=\"ri-dislike-line\"></i> " . lang("SESSION_PANEL_LSLINK_DISCONNECT") . "</button>";
-			}
-			echo "<div class='lslinkButton'><form method='POST'>";
-			echo "<input type='hidden' name='sessionId' value='" . $_SESSION["session"] . "'>";
-			echo "<input class='lslinkid' type='number' name='number' value='" . $linkId. "'>";
-			echo "<button class='button' type='submit' name='link'>" . $buttonText . "</button>";
-			echo "</form>";
-
-			echo"<form method='POST'>";
-			echo $unlinkButton;
-			echo"</form></div>";
+				$statusBall = "statusBall";
+				switch (SessionRepository::getStatus($chapter['id'], $_SESSION["login"])) {
+					case "1":
+						$statusBall = "statusBall statusRed";
+						break;
+					case "2":
+						$statusBall = "statusBall statusYellow";
+						break;
+					case "3":
+						$statusBall = "statusBall statusGreen";
+						break;
+				}
 		?>
-	</div>
+			<tr>
+				<td class="col1">
+					<?= $chapter["title"] ?>
+					<div class="description">
+						<?= $chapter["description"] ?>
+					</div>
+				</td>
+				<td class="col3"><div class="<?= $statusBall ?>" id="statusBall_<?= $chapter['id'] ?>"></div></td>
+				<td class="col2" id="action" <?= $styleAction ?>>
+					<input type="hidden" name="liste" value="<?php echo $chapter['id']; ?>">
+					<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 1)" title="<?= lang("SESSION_PANEL_HELP") ?>"><i class="ri-error-warning-line"></i></button>
+					<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 2)" title="<?= lang("SESSION_PANEL_WIP") ?>"><i class="ri-edit-line"></i></button>
+					<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 3)" title="<?= lang("SESSION_PANEL_DONE") ?>"><i class="ri-thumb-up-line"></i></button>
+				</td>
+			</tr>
+		<?php
+			}
+		?>
+	</tbody>
+</table>
+
+<div class="mainbox lslinkBox" id="lslink" <?= $styleClosed ?>>
+	<h2><?= lang("SESSION_PANEL_LSLINK") ?></h2>
+
+	<?php
+		$buttonText = '<i class="ri-link"></i> ' . lang("SESSION_PANEL_LSLINK_CONNECT");
+		$unlinkButton = "";
+		$linkId = "";
+		if (UserRepository::getLink($_SESSION["login"], $_SESSION["session"])) {
+			$linkId = UserRepository::getLink($_SESSION["login"], $_SESSION["session"]);
+
+			echo lang("SESSION_PANEL_LSLINK_NUMBER") . $linkId;
+			$buttonText = '<i class="ri-pencil-line"></i> ' . lang("SESSION_PANEL_LSLINK_MODIFY");
+			$unlinkButton = "<button class='button' type='submit' name='disconnect' value=" . $linkId . "><i class=\"ri-dislike-line\"></i> " . lang("SESSION_PANEL_LSLINK_DISCONNECT") . "</button>";
+		}
+		echo "<div class='lslinkButton'><form method='POST'>";
+		echo "<input type='hidden' name='sessionId' value='" . $_SESSION["session"] . "'>";
+		echo "<input class='lslinkid' type='number' name='number' value='" . $linkId. "'>";
+		echo "<button class='button' type='submit' name='link'>" . $buttonText . "</button>";
+		echo "</form>";
+
+		echo"<form method='POST'>";
+		echo $unlinkButton;
+		echo"</form></div>";
+	?>
 </div>
 
 <!-- Create "global" variables -->
