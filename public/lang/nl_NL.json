@@ -64,7 +64,7 @@
 	"SESSION_STATE_OPEN": "Deelnemen",
 	"SESSION_UPDATE": "Bewerken",
 	"SESSION_ACTION_OPEN": "Sessie heropenen",
-	"SESSION_ACTION_END": "Voltooid",
+	"SESSION_STATE_CONSULT": "Raadplegen",
 	"SESSION_END": "Sessie beëindigd",
 	"SESSION_END_MESSAGE": "Deze sessie is nu beëindigd",
 	"SESSION_END_BACK": "Terug naar sessielijst",

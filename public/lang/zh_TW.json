@@ -64,7 +64,7 @@
 	"SESSION_STATE_OPEN": "加入",
 	"SESSION_UPDATE": "编辑",
 	"SESSION_ACTION_OPEN": "重新打开会话",
-	"SESSION_ACTION_END": "完成",
+	"SESSION_STATE_CONSULT": "咨询",
 	"SESSION_END": "会话结束",
 	"SESSION_END_MESSAGE": "此会话现已结束",
 	"SESSION_END_BACK": "返回会话列表",

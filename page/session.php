@@ -106,7 +106,7 @@
 							if ($line["state"] != 0 || in_array(TEACHER, $roleList)) {
 								echo "<form method='POST'><button type='submit' name='connect[" . $line["id"] . "]' value='" . lang("SESSION_STATE_OPEN") . "' class='button'><i class=\"ri-login-box-line\"></i> " . lang("SESSION_STATE_OPEN") . "</button></form>";
 							} else {
-								echo '<i class="ri-door-closed-line"></i> ' . lang("SESSION_ACTION_END");
+								echo "<form method='POST'><button type='submit' name='connect[" . $line["id"] . "]' value='" . lang("SESSION_STATE_OPEN") . "' class='button'><i class=\"ri-login-box-line\"></i> " . lang("SESSION_STATE_CONSULT") . "</button></form>";;
 							}
 
 							echo "</td>";

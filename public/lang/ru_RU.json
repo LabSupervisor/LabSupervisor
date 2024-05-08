@@ -64,7 +64,7 @@
 	"SESSION_STATE_OPEN": "Присоединиться",
 	"SESSION_UPDATE": "Изменить",
 	"SESSION_ACTION_OPEN": "Возобновить сеанс",
-	"SESSION_ACTION_END": "Закончено",
+	"SESSION_STATE_CONSULT": "Консультация",
 	"SESSION_END": "Сессия завершена",
 	"SESSION_END_MESSAGE": "Эта сессия теперь завершена",
 	"SESSION_END_BACK": "Вернуться к списку сессий",
