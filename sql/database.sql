@@ -62,6 +62,7 @@ CREATE TABLE `session` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NOT NULL,
   `description` text DEFAULT NULL,
+  `idclassroom` int(11) NOT NULL,
   `idcreator` int(11) NOT NULL,
   `state` tinyint(1) NOT NULL DEFAULT 1,
   `date` datetime NOT NULL,
@@ -153,7 +154,8 @@ ALTER TABLE `userrole`
   ADD CONSTRAINT `userrole_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`);
 
 ALTER TABLE `session`
-  ADD CONSTRAINT `session_user_FK` FOREIGN KEY (`idcreator`) REFERENCES `user` (`id`);
+  ADD CONSTRAINT `session_user_FK` FOREIGN KEY (`idcreator`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `session_classroom_FK` FOREIGN KEY (`idclassroom`) REFERENCES `classroom` (`id`);
 
 ALTER TABLE `setting`
   ADD CONSTRAINT `setting_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`);

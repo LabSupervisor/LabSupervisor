@@ -2,12 +2,14 @@
 
 	use
 		LabSupervisor\app\repository\SessionRepository,
-		LabSupervisor\app\repository\UserRepository;
+		LabSupervisor\app\repository\UserRepository,
+		LabSupervisor\app\repository\ClassroomRepository;
 	use function
 		LabSupervisor\functions\mainHeader,
 		LabSupervisor\functions\lang,
 		LabSupervisor\functions\permissionChecker,
-		LabSupervisor\functions\statusFormat;
+		LabSupervisor\functions\statusFormat,
+		LabSupervisor\functions\nameFormat;
 
 	// Import header
 	mainHeader(lang("DASHBOARD_TITLE"), true);
@@ -18,6 +20,8 @@
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/adminSession.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/openSession.php");
+
+	$sessionInfo = SessionRepository::getInfo($_SESSION["session"])[0];
 
 	if (SessionRepository::getState($_SESSION["session"]) == 2) {
 		$state = "pause";
@@ -47,8 +51,8 @@
 <div class="mainbox titlebox">
 	<a class="back" href="/sessions"><i class="ri-arrow-left-line"></i> <?= lang("MAIN_BUTTON_BACK") ?></a>
 	<h2><?= SessionRepository::getName($_SESSION["session"]) . $stateText?></h2>
-	<?php if (SessionRepository::getInfo($_SESSION["session"])[0]["description"]) {?>
-		<a><?= SessionRepository::getInfo($_SESSION["session"])[0]["description"]?></a><br><br>
+	<?php if ($sessionInfo["description"]) {?>
+		<a><?= $sessionInfo["description"]?></a><br><br>
 	<?php } ?>
 	<div class="buttonBox">
 		<form method="POST">
@@ -70,6 +74,9 @@
 			<input type="hidden" name="view" value="<?= $view ?>">
 			<button class="button" type="submit"><i class="ri-arrow-left-right-line"></i> <?= lang("DASHBOARD_CHANGE_VIEW") ?></button>
 		</form>
+	</div>
+	<div class="infoBox">
+		<?= date("d F Y H:i", strtotime($sessionInfo["date"])) ?> | <?= nameFormat($sessionInfo["idcreator"], false) ?> - <?= ClassroomRepository::getName($sessionInfo["idclassroom"]) ?>
 	</div>
 </div>
 

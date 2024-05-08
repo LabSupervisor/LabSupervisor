@@ -13,12 +13,14 @@ if (isset($_POST['saveSession'])) {
 
 	$title = $_POST['titleSession'];
 	$description = $_POST['descriptionSession'];
+	$classroomId = $_POST['classes'];
 	$creatorId = $_SESSION["login"];
 	$date = $_POST['date'];
 
 	$sessionData = array(
 		"title" => $title,
 		"description" => $description,
+		"idclassroom" => $classroomId,
 		"idcreator" => $creatorId,
 		"date" => $date
 	);
@@ -28,7 +30,7 @@ if (isset($_POST['saveSession'])) {
 	$sessionRepo->createSession($session);
 	$sessionId = SessionRepository::getId($title);
 
-	$classUsers = ClassroomRepository::getUsers(ClassroomRepository::getName($_POST["classes"]));
+	$classUsers = ClassroomRepository::getUsers(ClassroomRepository::getName($classroomId));
 
 	// Add participants
 	foreach ($classUsers as $userId) {
@@ -58,6 +60,7 @@ else if (isset($_POST['updateSession'])) {
 
 	$title = $_POST['titleSession'];
 	$description = $_POST['descriptionSession'];
+	$classroomId = $_POST["classes"];
 	$creatorId = $_SESSION["login"];
 	$date = $_POST['date'];
 	$sessionId = $_POST['idSession'];
@@ -65,6 +68,7 @@ else if (isset($_POST['updateSession'])) {
 	$sessionData = array(
 		"title" => $title,
 		"description" => $description,
+		"idclassroom" => $classroomId,
 		"idcreator" => $creatorId,
 		"date" => $date,
 		"id" => $sessionId
@@ -74,7 +78,7 @@ else if (isset($_POST['updateSession'])) {
 	$session = new Session($sessionData);
 	$sessionRepo->update($session);
 
-	$classUsers = ClassroomRepository::getUsers(ClassroomRepository::getName($_POST["classes"]));
+	$classUsers = ClassroomRepository::getUsers(ClassroomRepository::getName($classroomId));
 
 	if (isset($_POST['addChapters'])) {
 		$addChapters = $_POST['addChapters'];

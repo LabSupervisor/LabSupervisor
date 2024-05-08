@@ -16,13 +16,14 @@ class SessionRepository {
 			// check if session doesn't exist
 			if (!$this->getId($bindParam["title"])) {
 				// Create session query
-				$query = "INSERT INTO session (title, description, idcreator, date) VALUES (:title, :description, :idcreator, :date)";
+				$query = "INSERT INTO session (title, description, idclassroom, idcreator, date) VALUES (:title, :description, :idclassroom, :idcreator, :date)";
 
 				// Create session
 				try {
 					$queryPrep = DATABASE->prepare($query);
 					$queryPrep->bindParam(":title", $bindParam["title"]);
 					$queryPrep->bindParam(":description", $bindParam["description"]);
+					$queryPrep->bindParam(":idclassroom", $bindParam["idclassroom"]);
 					$queryPrep->bindParam(":idcreator", $bindParam["idcreator"]);
 					$queryPrep->bindParam(":date", $bindParam["date"]);
 					if (!$queryPrep->execute())
@@ -43,13 +44,14 @@ class SessionRepository {
 		// $sessionId = SessionRepository::getId($bindParam["title"]);
 
 		// Update session query
-		$query = "UPDATE session SET title = :title, description = :description, idcreator = :idcreator, date = :date WHERE id = :id";
+		$query = "UPDATE session SET title = :title, description = :description, idclassroom = :idclassroom, idcreator = :idcreator, date = :date WHERE id = :id";
 
 		// Update session
 		try {
 			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(":title", $bindParam["title"]);
 			$queryPrep->bindParam(":description", $bindParam["description"]);
+			$queryPrep->bindParam(":idclassroom", $bindParam["idclassroom"]);
 			$queryPrep->bindParam(":idcreator", $bindParam["idcreator"]);
 			$queryPrep->bindParam(":date", $bindParam["date"]);
 			$queryPrep->bindParam(":id", $bindParam["id"]);

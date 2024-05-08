@@ -6,6 +6,7 @@ class Session {
 
 	protected $title;
 	protected $description;
+	protected $idclassroom;
 	protected $idcreator;
 	protected $date;
 	protected $id ;
@@ -51,6 +52,10 @@ class Session {
 
 	protected function setDescription($description) {
 		$this->description = $description;
+	}
+
+	protected function setIdClassroom($idclassroom) {
+		$this->idclassroom = $idclassroom;
 	}
 
 	protected function setIdCreator($idcreator) {

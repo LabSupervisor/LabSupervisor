@@ -17,6 +17,12 @@
 	max-width: 300px;
 }
 
+.infoBox {
+	color: var(--text-hover-color);
+	
+	margin: 10px 20px 0px 20px;
+}
+
 .buttonBox {
 	display: flex;
 	align-items: center;

@@ -2,11 +2,13 @@
 
 	use
 		LabSupervisor\app\repository\UserRepository,
-		LabSupervisor\app\repository\SessionRepository;
+		LabSupervisor\app\repository\SessionRepository,
+		LabSupervisor\app\repository\ClassroomRepository;
 	use function
 		LabSupervisor\functions\mainHeader,
 		LabSupervisor\functions\lang,
-		LabSupervisor\functions\permissionChecker;
+		LabSupervisor\functions\permissionChecker,
+		LabSupervisor\functions\nameFormat;
 
 	// Import header
 	mainHeader("Session en cours", true);
@@ -17,6 +19,8 @@
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateStatus.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/createLink.php");
+
+	$sessionInfo = SessionRepository::getInfo($_SESSION["session"])[0];
 
 	// If session is not paused
 	$styleAction = "";
@@ -42,9 +46,12 @@
 <div class="mainbox titlebox">
 	<a class="back" href="/sessions"><i class="ri-arrow-left-line"></i> <?= lang("MAIN_BUTTON_BACK") ?></a>
 	<h2><?= SessionRepository::getName($_SESSION["session"]) . $stateText?></h2>
-	<a><?= SessionRepository::getInfo($_SESSION["session"])[0]["description"] ?></a>
+	<a><?= $sessionInfo["description"] ?></a>
 	<div class="buttonBox" id="screenshare" <?= $styleClosed ?>>
 		<button class="button" id="shareButton"><i class="ri-share-line"></i> <?= lang("SESSION_PANEL_SCREENSHARE_START") ?></button>
+	</div>
+	<div class="infoBox">
+		<?= date("d F Y H:i", strtotime($sessionInfo["date"])) ?> | <?= nameFormat($sessionInfo["idcreator"], false) ?> - <?= ClassroomRepository::getName($sessionInfo["idclassroom"]) ?>
 	</div>
 </div>
 
