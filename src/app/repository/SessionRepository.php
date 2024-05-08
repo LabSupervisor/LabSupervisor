@@ -155,6 +155,25 @@ class SessionRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
 	}
 
+	public static function getStatusDone($sessionId, $userId) {
+		// Get user percent status query
+		$query = "SELECT count(state) FROM status WHERE idsession = :idsession and iduser = :iduser and state = 3";
+
+		// Get user percent status active
+		try {
+			$queryPrep = DATABASE->prepare($query);
+			$queryPrep->bindParam(':idsession', $sessionId);
+			$queryPrep->bindParam(':iduser', $userId);
+			if (!$queryPrep->execute())
+				throw new Exception("Get done state session " . $sessionId . " error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
+	}
+
 	public static function getState($sessionId) {
 		// Get if session is active query
 		$query = "SELECT state FROM session WHERE id = :id";

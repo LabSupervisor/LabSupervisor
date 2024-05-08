@@ -58,6 +58,13 @@ switch($_SERVER["REQUEST_METHOD"]) {
 				echo '{"Response": {"Message": "Status updated."}}';
 			}
 
+			// Application asking for user done state percent
+			if ($data->ask == "get_status_percent") {
+				$response = SessionRepository::getStatusDone($data->idSession, $data->idUser) / count(SessionRepository::getChapter($data->idSession)) * 100;
+				// Answer API
+				echo '{"Response": {"Percent": "' . $response . '"}}';
+			}
+
 			// Application asking for session state
 			if ($data->ask == "get_state") {
 				$status = SessionRepository::getState($data->idSession);

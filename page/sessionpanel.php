@@ -22,6 +22,9 @@
 
 	$sessionInfo = SessionRepository::getInfo($_SESSION["session"])[0];
 
+	// Percent system
+	$percentDone = SessionRepository::getStatusDone($_SESSION["session"], $_SESSION["login"]) / count(SessionRepository::getChapter($_SESSION["session"])) * 100;
+
 	// If session is not paused
 	$styleAction = "";
 	$stateText = "";
@@ -52,6 +55,10 @@
 	</div>
 	<div class="infoBox">
 		<?= date("d F Y H:i", strtotime($sessionInfo["date"])) ?> | <?= nameFormat($sessionInfo["idcreator"], false) ?> - <?= ClassroomRepository::getName($sessionInfo["idclassroom"]) ?>
+	</div>
+	<div class="progressBox">
+		<div class="progressPercent" id="percentValue"> <?= $percentDone ?>% </div>
+		<div class="progressBar" id="percentBar" style="width: <?= $percentDone ?>%"></div>
 	</div>
 </div>
 
