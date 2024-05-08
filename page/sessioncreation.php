@@ -48,7 +48,15 @@
 						$classrooms = ClassroomRepository::getClassrooms();
 						foreach ($classrooms as $value) {
 							if ($value["active"] == 1) {
-								echo "<option value=" . $value["id"] . ">" . $value["name"] . "</option>";
+								if (isset($_POST['sessionId'])) {
+									if ($value["id"] == SessionRepository::getClassroom($_POST['sessionId'])) {
+										echo "<option selected='selected' value=" . $value["id"] . ">" . $value["name"] . "</option>";
+									} else {
+										echo "<option value=" . $value["id"] . ">" . $value["name"] . "</option>";
+									}
+								} else {
+									echo "<option value=" . $value["id"] . ">" . $value["name"] . "</option>";
+								}
 							}
 						}
 					?>

@@ -246,6 +246,24 @@ class SessionRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
 	}
 
+	public static function getClassroom($sessionId) {
+		// Get session's classroom query
+		$query = "SELECT idclassroom FROM session WHERE id = :idsession";
+
+		// Get session's classroom
+		try {
+			$queryPrep = DATABASE->prepare($query);
+			$queryPrep->bindParam(':idsession', $sessionId);
+			if (!$queryPrep->execute())
+				throw new Exception("Get classroom from session " . $sessionId . " error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
+	}
+
 	public static function getParticipants($sessionId, $full = false) {
 		// Get session's participants query
 		$query = "SELECT p.iduser FROM participant p, user us WHERE p.idsession = :idsession AND us.id = p.iduser ORDER BY surname ASC";
