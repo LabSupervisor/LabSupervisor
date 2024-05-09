@@ -9,7 +9,7 @@
 		"route": "/classes",
 		"icon": "ri-folder-line",
 		"title": "NAVBAR_CLASS",
-		"role": [3]
+		"role": [1, 3]
 	},
 	"session": {
 		"route": "/sessions",

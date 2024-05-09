@@ -12,7 +12,7 @@
 	mainHeader(lang("NAVBAR_CLASS"), true);
 
 	// Ask for permissions
-	permissionChecker(true, array(TEACHER));
+	permissionChecker(true, array(ADMIN, TEACHER));
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateClassroom.php");
