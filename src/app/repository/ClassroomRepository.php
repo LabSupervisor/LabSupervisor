@@ -114,7 +114,7 @@ class ClassroomRepository {
 		$classroomId = ClassroomRepository::getId($name);
 
 		// Get classroom's user query
-		$query = "SELECT iduser FROM userclassroom WHERE idclassroom = :idclassroom";
+		$query = "SELECT iduser FROM userclassroom, user WHERE idclassroom = :idclassroom AND user.id = iduser ORDER BY user.surname ASC";
 
 		// Get classroom's user
 		try {
