@@ -27,14 +27,12 @@
 
 	// If session is not paused
 	$styleAction = "";
-	$stateText = "";
 	$styleClosed = "style='display: block'";
 	// If session is not closed
 	if (SessionRepository::getState($_SESSION["session"]) != 0) {
 		// If session is paused
 		if (SessionRepository::getState($_SESSION["session"]) == 2) {
 			$styleAction = "style='display: none'";
-			$stateText = "<div class='pausedTitle'>" . lang("DASHBOARD_PAUSE") . "</div>";
 		}
 	// If session is closed
 	} else {
@@ -48,7 +46,7 @@
 
 <div class="mainbox titlebox">
 	<a class="back" href="/sessions"><i class="ri-arrow-left-line"></i> <?= lang("MAIN_BUTTON_BACK") ?></a>
-	<h2><?= SessionRepository::getName($_SESSION["session"]) . $stateText?></h2>
+	<h2><?= SessionRepository::getName($_SESSION["session"])?><div class='pausedTitle' id="pausedTitle"><?= lang("DASHBOARD_PAUSE") ?></div></h2>
 	<a><?= $sessionInfo["description"] ?></a>
 	<div class="buttonBox" id="screenshare" <?= $styleClosed ?>>
 		<button class="button" id="shareButton"><i class="ri-share-line"></i> <?= lang("SESSION_PANEL_SCREENSHARE_START") ?></button>
