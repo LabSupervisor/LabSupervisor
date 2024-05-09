@@ -132,7 +132,7 @@ class ClassroomRepository {
 
 	public static function getUsersNotInClassroom() {
 		// Get user not in classroom query
-		$query = "SELECT u.* FROM user u LEFT JOIN userclassroom uc ON u.id = uc.iduser	LEFT JOIN userrole ur ON u.id = ur.iduser WHERE uc.iduser IS NULL AND ur.idrole NOT IN (1, 3)";
+		$query = "SELECT u.* FROM user u LEFT JOIN userclassroom uc ON u.id = uc.iduser	LEFT JOIN userrole ur ON u.id = ur.iduser WHERE uc.iduser IS NULL AND ur.idrole NOT IN (1, 3) ORDER BY u.surname ASC";
 
 		// Get user not in classroom
 		try {
