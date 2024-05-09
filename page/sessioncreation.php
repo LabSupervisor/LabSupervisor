@@ -82,7 +82,8 @@
 				?>
 
 				<div class="subform" id="<?= $chapter["id"] ?>">
-					<!-- id chapter -->
+
+				<!-- id chapter -->
 					<input type="hidden" class="chapterId" id="idChapter<?= $chapter["id"] ?>" value="<?= $chapter["id"] ?>"/>
 
 					<input placeholder="<?= lang("SESSION_CREATE_CHAPTER_TITLE") ?>" type="text" id="titleChapter<?= $chapter["id"] ?>" value="<?= $chapter["title"] ?>" onchange="updateChapter(this.parentNode.id)" required>
@@ -90,16 +91,23 @@
 					<textarea placeholder="<?= lang("SESSION_CREATE_CHAPTER_DESCRIPTION") ?>"id="chapterDescription<?= $chapter["id"] ?>" onchange="updateChapter(this.parentNode.id)" ><?= $chapter["description"] ?></textarea>
 
 					<!-- Delete chapter button -->
-					<button type="button" class="button chapterButton" onclick="deleteChapter(this)">- Chapitre</button>
+					<button type="button" class="button chapterButton" onclick="deleteChapter(this)"><?= lang("SESSION_CREATE_CHAPTER_REMOVE") ?></button>
 				</div>
 
 				<?php
 					}
-				//create session
+
+					//create session
 				} else {
+
 				?>
 
 				<div class="subform">
+					<input type="text" placeholder="<?= lang("SESSION_CREATE_CHAPTER_TITLE") ?>" name="addChapters[0][title]" class="field">
+					<textarea name="addChapters[0][desc]" placeholder="<?= lang("SESSION_CREATE_CHAPTER_DESCRIPTION") ?>" class="field"></textarea>
+
+					<!-- Delete chapter button -->
+					<button type="button" class="button chapterButton" onclick="deleteChapter(this)"><?= lang("SESSION_CREATE_CHAPTER_REMOVE") ?></button>
 				</div>
 
 				<?php } ?>
