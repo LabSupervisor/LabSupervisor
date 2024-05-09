@@ -23,7 +23,7 @@
 	$sessionInfo = SessionRepository::getInfo($_SESSION["session"])[0];
 
 	// Percent system
-	$percentDone = SessionRepository::getStatusDone($_SESSION["session"], $_SESSION["login"]) / count(SessionRepository::getChapter($_SESSION["session"])) * 100;
+	$percentDone = round(SessionRepository::getStatusDone($_SESSION["session"], $_SESSION["login"]) / count(SessionRepository::getChapter($_SESSION["session"])) * 100, 2);
 
 	// If session is not paused
 	$styleAction = "";

@@ -23,6 +23,9 @@
 
 	$sessionInfo = SessionRepository::getInfo($_SESSION["session"])[0];
 
+	// Percent system
+	$percentDone = round(SessionRepository::getAllStatusDone($_SESSION["session"]) / (count(SessionRepository::getChapter($_SESSION["session"])) * count(SessionRepository::getParticipants($_SESSION["session"]))) * 100, 2);
+
 	if (SessionRepository::getState($_SESSION["session"]) == 2) {
 		$state = "pause";
 		$stateButton = "<i class=\"ri-play-line\"></i>";
@@ -77,6 +80,10 @@
 	</div>
 	<div class="infoBox">
 		<?= date("d F Y H:i", strtotime($sessionInfo["date"])) ?> | <?= nameFormat($sessionInfo["idcreator"], false) ?> - <?= ClassroomRepository::getName($sessionInfo["idclassroom"]) ?>
+	</div>
+	<div class="progressBox">
+		<div class="progressPercent" id="percentValue"> <?= $percentDone ?>% </div>
+		<div class="progressBar" id="percentBar" style="width: <?= $percentDone ?>%"></div>
 	</div>
 </div>
 
