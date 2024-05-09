@@ -19,6 +19,18 @@
 	height: 60px;
 }
 
+/* Focus */
+.current {
+	position: absolute;
+	bottom: 10px;
+
+	border-radius: 2px;
+	background-color: var(--button-background-color);
+
+	width: 50px;
+	height: 3px;
+}
+
 /* Elements */
 .navbarGroup .item {
 	display: flex;
@@ -28,6 +40,10 @@
 	margin-right: 12px;
 
 	height: inherit;
+}
+
+.navbarGroup .item:not(.profil) {
+	justify-content: center;
 }
 
 .navbarGroup .item a {

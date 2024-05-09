@@ -41,62 +41,32 @@
 
 	// If the user is connected
 	} else {
-		$roleList = permissionChecker(true, "");
+		// Get navbar elements
+		$item = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/config/navbar.json"));
 
-		// Get current user theme
-		$userSetting = UserRepository::getSetting($_SESSION["login"]);
-		if ($userSetting["theme"] == "0"){
-			$theme = "dark";
-			$icon = "<i class='ri-moon-line'></i>";
-		}
-		else {
-			$theme = "light";
-			$icon = "<i class='ri-sun-line'></i>";
-		}
-
-		// Teacher pages
-		$navbarItem .= '
-			<div class="item">
-				<a href="/"><i class="ri-home-line"></i>' . lang("NAVBAR_HOME") . '</a>
-			</div>';
-
-		if (in_array(TEACHER, $roleList)) {
-			$navbarItem .= '
-			<div class="item">
-				<a href="/classes" title="' . lang("INDEX_TEACHER_CLASSROOM") . '"><i class="ri-folder-line"></i> ' . lang("NAVBAR_CLASS") . '</a>
-			</div>';
-		}
-
-			// Global pages
-		if (in_array(ADMIN, $roleList) || in_array(STUDENT, $roleList) || in_array(TEACHER, $roleList)) {
-			$navbarItem .= '
-			<div class="item">
-				<a href="/sessions" title="' . lang("INDEX_STUDENT_SESSION") . '"><i class="ri-slideshow-3-line"></i> ' . lang("NAVBAR_SESSION") . '</a>
-			</div>';
-		}
-
-		// Admin pages
-		if (in_array(ADMIN, $roleList)) {
-			$navbarItem .= '
-			<div class="item">
-				<a href="/utilisateurs" title="' . lang("INDEX_ADMIN_USER") . '"><i class="ri-folder-line"></i> ' . lang("NAVBAR_USER") . '</a>
-			</div>';
-			$navbarItem .= '
-			<div class="item">
-				<a href="/logs?trace" title="' . lang("INDEX_ADMIN_LOG") . '"><i class="ri-computer-line"></i> ' . lang("NAVBAR_LOG") . '</a>
-			</div>';
+		foreach ($item as $value) {
+			// Check permissions
+			if (array_intersect($value->role, permissionChecker(true, ""))) {
+				$selected = "";
+				if ($_SERVER["REQUEST_URI"] == $value->route) {
+					$selected = "<div class='current'></div>";
+				}
+				$navbarItem .= '
+				<div class="item">
+					<a href="' . $value->route . '"><i class="' . $value->icon . '"></i>' . lang($value->title) . '</a>' .
+				$selected .
+				'</div>';
+			}
 		}
 
 		// Profil pages
 		$navbarItem .= '
 			<div class="item profil">
-				<a class="title"><i class="ri-user-line"></i>' . nameFormat($_SESSION["login"], true) . '</a>';
-		$navbarItem .= '
+				<a class="title"><i class="ri-user-line"></i>' . nameFormat($_SESSION["login"], true) . '</a>
 				<div class="sub">
 					<div class="item">
 						<a href="/compte"><i class="ri-account-circle-line"></i>' . lang("NAVBAR_PROFIL_ACCOUNT") . '</a>
-					</div>';
-		$navbarItem .= '
+					</div>
 					<div class="item">
 						<a href="/deconnexion"><i class="ri-logout-box-line"></i>' . lang("NAVBAR_PROFIL_DISCONNECT") . '</a>
 					</div>
@@ -104,6 +74,16 @@
 			</div>';
 
 		// Theme
+
+		// Get current user theme
+		$theme = "light";
+		$icon = "<i class='ri-sun-line'></i>";
+
+		if (UserRepository::getSetting($_SESSION["login"])["theme"] == "0"){
+			$theme = "dark";
+			$icon = "<i class='ri-moon-line'></i>";
+		}
+
 		$navbarItem .= '
 			<div class="item">
 				<button class="theme" id="themeButton" type="button" name="theme" value="' . $theme . '">' . $icon . '</button>
