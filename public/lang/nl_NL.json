@@ -117,6 +117,7 @@
 	"SESSION_CREATE_CHAPTER_REMOVE_ERROR": "U kunt niet alle hoofdstukken verwijderen.",
 	"SESSION_CREATE_DELETE": "Sessie verwijderen",
 	"SESSION_CREATE_DELETE_CONFIRMATION": "Weet je zeker dat je deze sessie wilt verwijderen?",
+	"SESSION_CREATE_UPDATE_NOTIFICATION": "Sessie bijgewerkt.",
 
 	"CLASSROOM_NAME": "Klassen",
 	"CLASSROOM_STUDENT_NAME": "Voornaam",

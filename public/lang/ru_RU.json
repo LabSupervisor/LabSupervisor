@@ -117,6 +117,7 @@
 	"SESSION_CREATE_CHAPTER_REMOVE_ERROR": "Вы не можете удалить все главы.",
 	"SESSION_CREATE_DELETE": "Удалить сеанс",
 	"SESSION_CREATE_DELETE_CONFIRMATION": "Вы уверены, что хотите удалить эту сессию?",
+	"SESSION_CREATE_UPDATE_NOTIFICATION": "Сессия обновлена.",
 
 	"CLASSROOM_NAME": "Классы",
 	"CLASSROOM_STUDENT_NAME": "Имя",

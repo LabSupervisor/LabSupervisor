@@ -15,6 +15,7 @@
 	permissionChecker(true, array(TEACHER));
 
 	// Logic
+	echo '<script src="/public/js/ft_popup.js"></script>';
 	require($_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php');
 
 	$idProv = 1;
