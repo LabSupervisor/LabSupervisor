@@ -4,6 +4,7 @@ namespace LabSupervisor\app\entity;
 
 class Classroom	{
 	protected $name;
+	protected $id;
 
 	public function __construct(array $data = NULL) {
 		$this->hydrate($data);
@@ -42,6 +43,12 @@ class Classroom	{
 
 	protected function setName($name) {
 		$this->name = $name;
+	}
+
+	protected function setId($id) {
+		if (isset($id)) {
+			$this->id = $id;
+		}
 	}
 }
 

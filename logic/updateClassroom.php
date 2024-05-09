@@ -1,6 +1,8 @@
 <?php
 
-use LabSupervisor\app\repository\ClassroomRepository;
+use
+	LabSupervisor\app\entity\Classroom,
+	LabSupervisor\app\repository\ClassroomRepository;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	// Add student
@@ -11,5 +13,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	// Remove student
 	} elseif (isset($_POST['removeStudent'])) {
 		ClassroomRepository::removeUser($_POST['removeStudent'], $_POST['classroomId']);
+	} elseif (isset($_POST['modifyName'])) {
+		$classroomRepo = new ClassroomRepository;
+		$classroomData =  array(
+			"name" => $_POST['modifyName'],
+			"id" => $_POST['classroomId']
+		);
+		$classroom = new Classroom($classroomData);
+		$classroomRepo->update($classroom);
 	}
 }
