@@ -53,7 +53,12 @@
 ?>
 
 			<div id="contentClassroom_<?php echo $classroom["id"]?>" class="mainbox maintable contentClassroom" <?php echo $selected?>>
-			<h2><?php echo $classroom["name"]?></h2>
+
+			<form method="POST">
+				<input hidden name="classroomId" value="<?= ClassroomRepository::getId($classroom["name"]) ?>">
+				<input type="text" name="modifyName" value="<?= $classroom["name"] ?>"></input>
+				<button class="button" type="submit"><i class="ri-pencil-line"></i></button>
+			</form>
 			<table>
 				<thead>
 					<tr>

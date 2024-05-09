@@ -37,7 +37,6 @@ class ClassroomRepository {
 
 	public function update(Classroom $entity) {
 		$bindParam = $entity->__toArray();
-		$classroomId = ClassroomRepository::getId($bindParam["name"]);
 
 		// Update classroom query
 		$query = "UPDATE classroom SET name = :name WHERE id = :id";
@@ -46,7 +45,7 @@ class ClassroomRepository {
 		try {
 			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(":name", $bindParam["name"]);
-			$queryPrep->bindParam(":id", $classroomId);
+			$queryPrep->bindParam(":id", $bindParam["id"]);
 			if ($queryPrep->execute())
 				LogRepository::dbSave("Update classroom " . $bindParam["name"]);
 			else
