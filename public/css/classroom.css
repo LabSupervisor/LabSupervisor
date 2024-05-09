@@ -27,6 +27,20 @@
 	max-height: 80%;
 }
 
+input {
+	padding: 15px;
+
+	background: var(--case-field-background-color);
+	border: 0;
+	border-radius: 7px;
+	font-size: 20px;
+	color: var(--text-color);
+	transform: translateY(1px);
+
+	width: 100px;
+	height: 9px;
+}
+
 .classname:hover {
 	background-color: var(--button-hover-color);
 }

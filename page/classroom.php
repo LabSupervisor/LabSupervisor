@@ -88,7 +88,7 @@
 								<form action="" method="post">
 									<input type="hidden" name="classroomId" value="<?= $classroom["id"] ?>">
 									<input type="hidden" name="removeStudent" value="<?= $student["iduser"] ?>">
-									<button type="submit" class="button"><i class="ri-eraser-line"></i> <?= lang("CLASSROOM_STUDENT_REMOVE") ?></button>
+									<button type="submit" class="button" title="<?= lang("CLASSROOM_STUDENT_REMOVE") ?>"><i class="ri-eraser-line"></i></button>
 								</form>
 							</td>
 						</tr>
