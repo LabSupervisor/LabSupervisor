@@ -125,6 +125,7 @@
 	"CLASSROOM_STUDENT_EMAIL": "Correo electrónico",
 	"CLASSROOM_STUDENT_REMOVE": "Eliminar",
 	"CLASSROOM_ADD": "Agregar",
+	"CLASSROOM_ADD_PLACEHOLDER": "Nombre",
 
 	"USER_UPDATE_SURNAME": "Apellido",
 	"USER_UPDATE_NAME": "Nombre",

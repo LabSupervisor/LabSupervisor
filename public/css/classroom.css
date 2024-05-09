@@ -41,6 +41,10 @@ input {
 	height: 9px;
 }
 
+input::placeholder {
+	color: var(--case-field-text-color);
+}
+
 .classname:hover {
 	background-color: var(--button-hover-color);
 }

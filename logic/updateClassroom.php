@@ -13,7 +13,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	// Remove student
 	} elseif (isset($_POST['removeStudent'])) {
 		ClassroomRepository::removeUser($_POST['removeStudent'], $_POST['classroomId']);
-	} elseif (isset($_POST['modifyName'])) {
+	} elseif (isset($_POST["addClassroom"])) {
+		$classroomRepo = new ClassroomRepository;
+		$classroomData =  array(
+			"name" => $_POST['addClassroom']
+		);
+		$classroom = new Classroom($classroomData);
+		$classroomRepo->createClassroom($classroom);
+ 	} elseif (isset($_POST['modifyName'])) {
 		$classroomRepo = new ClassroomRepository;
 		$classroomData =  array(
 			"name" => $_POST['modifyName'],

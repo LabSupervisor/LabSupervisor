@@ -23,8 +23,10 @@
 <?php
 	$classrooms = ClassroomRepository::getClassrooms();
 
+	echo '<div class="mainGroup">';
+
 	// Side menu
-	echo '<div class="mainGroup"><div id="lateralSelector" class="mainbox">';
+	echo '<div id="lateralSelector" class="mainbox">';
 	echo "<h2>" . lang("CLASSROOM_NAME") . "</h2>";
 
 	for($i = 0; $i < count($classrooms); $i++) {
@@ -39,6 +41,14 @@
 			echo '<div id="classroom_' . $classroom["id"] . '" class="classname" ' . $selected . ' onclick="selectClass(' . $classroom["id"] . ')">' . $classroom["name"] . '</div>';
 		}
 	}
+	?>
+
+	<form method="POST">
+		<input type="text" name="addClassroom" placeholder="<?= lang("CLASSROOM_ADD_PLACEHOLDER") ?>">
+		<button class="button" type="submit" title="<?= lang("CLASSROOM_ADD") ?>"><i class="ri-add-line"></i></button>
+	</form>
+
+	<?php
 	echo '</div>';
 
 	// Choosen classroom display

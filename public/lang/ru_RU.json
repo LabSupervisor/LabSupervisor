@@ -125,6 +125,7 @@
 	"CLASSROOM_STUDENT_EMAIL": "Адрес электронной почты",
 	"CLASSROOM_STUDENT_REMOVE": "Удалить",
 	"CLASSROOM_ADD": "Добавить",
+	"CLASSROOM_ADD_PLACEHOLDER": "Имя",
 
 	"USER_UPDATE_SURNAME": "Фамилия",
 	"USER_UPDATE_NAME": "Имя",
