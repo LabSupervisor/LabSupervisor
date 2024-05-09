@@ -6,6 +6,8 @@ use
 	LabSupervisor\app\repository\ClassroomRepository,
 	LabSupervisor\app\repository\UserRepository;
 
+use function LabSupervisor\functions\lang;
+
 // Case 1 : save all infos in order to create a new session
 if (isset($_POST['saveSession'])) {
 
@@ -112,8 +114,8 @@ else if (isset($_POST['updateSession'])) {
 			SessionRepository::deleteChapter($deletedChapter);
 		}
 	}
-
-	header("Location: /sessions");
+	$_POST['sessionId'] = $sessionId;
+	echo '<script> popupDisplay("' . lang('SESSION_CREATE_UPDATE_NOTIFICATION') .'"); </script>';
 }
 
 // Case 3 : prefill the session form with session data
