@@ -5,7 +5,6 @@ use
 	LabSupervisor\app\entity\Session,
 	LabSupervisor\app\repository\ClassroomRepository,
 	LabSupervisor\app\repository\UserRepository;
-
 use function LabSupervisor\functions\lang;
 
 // Case 1 : save all infos in order to create a new session
