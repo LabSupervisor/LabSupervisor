@@ -23,6 +23,7 @@
 	"INDEX_ADMIN_SESSION": "Diese Seite ermöglicht Ihnen den Zugriff auf alle vorhandenen Sitzungen. Als Administrator können Sie sie einfach anzeigen.",
 	"INDEX_ADMIN_USER": "Von dieser Seite aus können Sie alle registrierten Benutzer überwachen. Dies bedeutet, dass Sie bestimmte Informationen ändern oder Benutzer deaktivieren können.",
 	"INDEX_ADMIN_LOG": "Hier finden Sie das globale Anwendungsprotokoll.",
+	"INDEX_ACCOUNT": "Von hier aus können Sie auf die Benutzerseite zugreifen, auf der Sie Ihre Kontoeinstellungen anzeigen und ändern können.",
 
 	"REGISTER_TITLE": "Registrierung",
 	"REGISTER_EMAIL": "E-Mail",

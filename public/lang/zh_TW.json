@@ -23,6 +23,7 @@
 	"INDEX_ADMIN_SESSION": "此页面允许您查看所有现有的会话。作为管理员，您可以简单地查看它们。",
 	"INDEX_ADMIN_USER": "从此页面，您可以监督所有注册用户。这意味着您可以修改某些信息或禁用用户。",
 	"INDEX_ADMIN_LOG": "这是应用程序的全局历史记录。",
+	"INDEX_ACCOUNT": "您可以从此处访问允许您查看和更改帐户设置的用户页面",
 
 	"REGISTER_TITLE": "注册",
 	"REGISTER_EMAIL": "电子邮件",

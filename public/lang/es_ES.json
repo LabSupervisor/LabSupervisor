@@ -23,6 +23,7 @@
 	"INDEX_ADMIN_SESSION": "Esta página te permite ver todas las sesiones existentes. Como administrador, simplemente puedes verlas.",
 	"INDEX_ADMIN_USER": "Desde esta página, puedes supervisar a todos los usuarios registrados. Esto significa que puedes modificar cierta información o desactivar usuarios.",
 	"INDEX_ADMIN_LOG": "Aquí es donde se encuentra el historial global de la aplicación.",
+	"INDEX_ACCOUNT": "Desde aquí puede acceder a la página de usuario que le permite ver y cambiar la configuración de su cuenta",
 
 	"REGISTER_TITLE": "Registro",
 	"REGISTER_EMAIL": "Correo electrónico",
