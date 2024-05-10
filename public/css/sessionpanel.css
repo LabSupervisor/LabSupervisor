@@ -23,30 +23,6 @@
 	margin: 10px 20px 10px 20px;
 }
 
-.progressBox {
-	position: absolute;
-	left: 0;
-	bottom: 0;
-
-	border-radius: 0px 0px 18px 18px;
-	overflow: hidden;
-
-	width: 100%;
-}
-
-.progressPercent {
-	margin-left: 10px;
-	text-align: left;
-	font-size: 14px;
-	color: var(--text-color);
-}
-
-.progressBar {
-	background-color: var(--button-background-color);
-
-	height: 5px;
-}
-
 .buttonBox {
 	display: flex;
 	align-items: center;
