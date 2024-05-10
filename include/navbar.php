@@ -48,7 +48,7 @@
 			// Check permissions
 			if (array_intersect($value->role, permissionChecker(true, ""))) {
 				$selected = "";
-				if ($_SERVER["REQUEST_URI"] == $value->route) {
+				if ($_SERVER["REQUEST_URI"] == $value->route || in_array($_SERVER["REQUEST_URI"], $value->aliase)) {
 					$selected = "<div class='current'></div>";
 				}
 				$navbarItem .= '
