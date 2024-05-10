@@ -48,12 +48,12 @@
 			// Check permissions
 			if (array_intersect($value->role, permissionChecker(true, ""))) {
 				$selected = "";
-				if ($_SERVER["REQUEST_URI"] == $value->route || in_array($_SERVER["REQUEST_URI"], $value->aliase)) {
+				if (in_array(explode("?", $_SERVER["REQUEST_URI"])[0], $value->route)) {
 					$selected = "<div class='current'></div>";
 				}
 				$navbarItem .= '
 				<div class="item">
-					<a href="' . $value->route . '"><i class="' . $value->icon . '"></i>' . lang($value->title) . '</a>' .
+					<a href="' . $value->route[0] . '"><i class="' . $value->icon . '"></i>' . lang($value->title) . '</a>' .
 				$selected .
 				'</div>';
 			}

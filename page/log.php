@@ -183,7 +183,7 @@
 	</table>
 	<form class="pageGroup" method="GET">
 		<input type="hidden" name="error">
-		<input type="hidden" name="date" value="<?= $_GET['date']?>">
+		<input type="hidden" name="date" value="<?= $fileDate ?>">
 		<?php
 			if ($_GET["page"] != 1) {
 		?>

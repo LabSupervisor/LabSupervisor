@@ -51,7 +51,6 @@ function setStatus(idchapter, status) {
 
 		percentValue.textContent = res.Response.Percent + "%"
 		percentBar.style.width = res.Response.Percent + "%"
-		console.log(res.Response.Percent)
 	}).catch((error) => {
 		console.log(error)
 	})
