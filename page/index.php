@@ -54,7 +54,7 @@
 			<div class="mainbox">
 				<h2><?= lang("NAVBAR_PROFIL_ACCOUNT") ?></h2>
 				<a><?= lang("INDEX_ACCOUNT") ?></a>
-				<a class="button" href="/utilisateurs"><i class="ri-folder-line"></i> <?= lang("NAVBAR_PROFIL_ACCOUNT") ?></a>
+				<a class="button" href="/compte"><i class="ri-folder-line"></i> <?= lang("NAVBAR_PROFIL_ACCOUNT") ?></a>
 			</div>
 		</div>
 <?php
@@ -79,7 +79,7 @@
 			</div><div class="mainbox">
 				<h2><?= lang("NAVBAR_PROFIL_ACCOUNT") ?></h2>
 				<a><?= lang("INDEX_ACCOUNT") ?></a>
-				<a class="button" href="/utilisateurs"><i class="ri-folder-line"></i> <?= lang("NAVBAR_PROFIL_ACCOUNT") ?></a>
+				<a class="button" href="/compte"><i class="ri-folder-line"></i> <?= lang("NAVBAR_PROFIL_ACCOUNT") ?></a>
 			</div>
 		</div>
 	</div>
