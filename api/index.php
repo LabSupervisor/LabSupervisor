@@ -4,7 +4,9 @@ use
 	LabSupervisor\app\repository\UserRepository,
 	LabSupervisor\app\repository\SessionRepository,
 	LabSupervisor\app\repository\LogRepository;
-use function LabSupervisor\functions\statusPicker;
+use function
+	LabSupervisor\functions\statusPicker,
+	LabSupervisor\functions\nameFormat;
 
 header('Content-Type: application/json');
 
@@ -70,6 +72,13 @@ switch($_SERVER["REQUEST_METHOD"]) {
 				$response = round(SessionRepository::getAllStatusDone($data->idSession) / (count(SessionRepository::getChapter($data->idSession)) * count(SessionRepository::getParticipants($data->idSession))) * 100, 2);
 				// Answer API
 				echo '{"Response": {"Percent": "' . $response . '"}}';
+			}
+
+			// Application asking for user name
+			if ($data->ask == "get_user_names") {
+				$response = nameFormat($data->idUser, true);
+				// Answer API
+				echo '{"Response": {"Names": "' . $response . '"}}';
 			}
 
 			// Application asking for session state

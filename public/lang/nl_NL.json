@@ -5,6 +5,8 @@
 	"MAIN_ROLE_TEACHER": "Docent",
 	"MAIN_BUTTON_BACK": "Terug",
 
+	"NOTIFICATION_NEED_HELP": "heeft hulp nodig!",
+
 	"NAVBAR_TITLE": "LabSupervisor",
 	"NAVBAR_CONNECT": "Verbinding",
 	"NAVBAR_HOME": "Home",

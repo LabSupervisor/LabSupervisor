@@ -5,6 +5,8 @@
 	"MAIN_ROLE_TEACHER": "教师",
 	"MAIN_BUTTON_BACK": "返回",
 
+	"NOTIFICATION_NEED_HELP": "需要帮助！",
+
 	"NAVBAR_TITLE": "LabSupervisor",
 	"NAVBAR_CONNECT": "连接",
 	"NAVBAR_HOME": "主页",

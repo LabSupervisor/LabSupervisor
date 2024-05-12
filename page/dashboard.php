@@ -176,6 +176,7 @@
 </div>
 
 <script src="/public/js/ft_statusUpdate.js"></script>
+<script src="/public/js/ft_notify.js"></script>
 <script src="/public/js/dashboardUpdate.js"></script>
 
 <script>

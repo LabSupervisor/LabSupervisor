@@ -5,6 +5,8 @@
 	"MAIN_ROLE_TEACHER": "Преподаватель",
 	"MAIN_BUTTON_BACK": "Назад",
 
+	"NOTIFICATION_NEED_HELP": "нуждается в помощи!",
+
 	"NAVBAR_TITLE": "LabSupervisor",
 	"NAVBAR_CONNECT": "Войти",
 	"NAVBAR_HOME": "Главная",
