@@ -36,13 +36,20 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 	selectClassroom.setAttribute("name", "classroom_" + userId);
 	selectClassroom.setAttribute("class", "classroom");
 
+	var optionNone = document.createElement("option");
+	optionNone.text = "Aucune classe";
+	optionNone.value = "0";
+
+	// Add the "no class" option to the top of the drop-down menu
+	selectClassroom.insertBefore(optionNone, selectClassroom.firstChild);
+
 	var selectRole = document.createElement("select");
 	selectRole.setAttribute("id", "role");
 	selectRole.setAttribute("name", "role_" + userId);
 	selectRole.setAttribute("class", "role");
 
 	// Add options to select menu
-	for (var i = 0; i < classrooms.length; i++) {
+	for (var i = 0; i < classrooms.length ; i++) {
 		var option = document.createElement("option");
 		// Use "name" property
 		option.text = classrooms[i].name;
@@ -53,6 +60,7 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 		}
 		selectClassroom.add(option);
 	}
+
 
 	// Add options to select menu
 	for (var i = 0; i < roles.length; i++) {
