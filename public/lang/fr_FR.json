@@ -62,7 +62,7 @@
 	"SESSION_DESCRIPTION_EMPTY": "Aucune précision disponible",
 	"SESSION_TEACHER": "Enseignant",
 	"SESSION_DATE": "Date",
-	"SESSION_STATE": "Status",
+	"SESSION_STATE": "Statut",
 	"SESSION_ACTION": "Actions",
 	"SESSION_STATE_OPEN": "Rejoindre",
 	"SESSION_STATE_CONSULT": "Consulter",

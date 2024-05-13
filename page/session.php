@@ -62,12 +62,8 @@
 				<th><?= lang("SESSION_DESCRIPTION") ?></th>
 				<th><?= lang("SESSION_TEACHER") ?></th>
 				<th><?= lang("SESSION_DATE") ?></th>
+				<th><i class="ri-group-line"></i></th>
 				<th><?= lang("SESSION_STATE") ?></th>
-				<?php
-					if (!in_array(ADMIN, $roleList)) {
-						echo "<th>" . lang("SESSION_ACTION") . "</th>";
-					}
-				?>
 			</tr>
 		</thead>
 		<tbody>
@@ -93,6 +89,7 @@
 
 						echo '<td class="col3">' . htmlspecialchars($creatorName) . "</td>";
 						echo '<td class="col4">' . date("d/m/Y H:i", strtotime($line["date"])) . "</td>";
+						echo '<td>' . sizeof(SessionRepository::getParticipants($line["id"])) . "</td>";
 						echo '<td class="colState"><div class="statusBall ' . $buttonStyle . '"</div></td>';
 						if (!in_array(ADMIN, $roleList)) {
 							echo "<td class='col5'>";

@@ -196,6 +196,24 @@ class UserRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
 	}
 
+	public static function getClassroom($userId) {
+		// Get user's classroom query
+		$query = "SELECT idclassroom FROM userclassroom WHERE iduser = :iduser";
+
+		// Get user's classroom
+		try {
+			$queryPrep = DATABASE->prepare($query);
+			$queryPrep->bindParam(':iduser', $userId);
+			if (!$queryPrep->execute())
+				throw new Exception("Get classroom of user " . $userId . " roles error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
+	}
+
 	public static function getSetting($userId) {
 		// Get user's settings query
 		$query = "SELECT * FROM setting WHERE iduser = :iduser";
@@ -216,8 +234,7 @@ class UserRepository {
 
 	public static function getUsers() {
 		// Get users query
-		$query = "SELECT us.id, us.surname, us.name, us.email, cl.name AS 'classroom', us.active FROM user us	LEFT JOIN userclassroom ucl ON us.id = ucl.iduser
-		LEFT JOIN classroom cl ON cl.id = ucl.idclassroom WHERE us.active = 1 GROUP BY email ORDER BY us.surname ASC";
+		$query = "SELECT us.id, us.surname, us.name, us.email, cl.name AS 'classroom', us.active FROM user us	LEFT JOIN userclassroom ucl ON us.id = ucl.iduser LEFT JOIN classroom cl ON cl.id = ucl.idclassroom WHERE us.active = 1 GROUP BY email ORDER BY us.surname ASC";
 
 		// Get users
 		try {
