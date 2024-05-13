@@ -1,17 +1,20 @@
 <?php
 
-	use LabSupervisor\app\repository\UserRepository;
+	use
+		LabSupervisor\app\repository\UserRepository,
+		LabSupervisor\app\repository\ClassroomRepository;
 	use function
 		LabSupervisor\functions\mainHeader,
 		LabSupervisor\functions\lang,
 		LabSupervisor\functions\langFormat,
-		LabSupervisor\functions\permissionChecker;
+		LabSupervisor\functions\permissionChecker,
+		LabSupervisor\functions\roleFormat;
 
 	// Import header
 	mainHeader(lang("NAVBAR_PROFIL_ACCOUNT"), true);
 
 	// Ask for permissions
-	permissionChecker(true, array(ADMIN, STUDENT, TEACHER));
+	$roleList = permissionChecker(true, array(ADMIN, STUDENT, TEACHER));
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateUser.php");
@@ -28,46 +31,59 @@
 <link rel="stylesheet" href="/public/css/form.css">
 <link rel="stylesheet" href="/public/css/account.css">
 
-<div class="mainbox mainform column" id="updateCase">
+<div class="mainbox mainform" id="updateCase">
 	<form method="post">
-		<div>
-			<h2><i class="ri-user-line"></i> <?= lang("ACCOUNT_TITLE") ?></h2>
-		</div>
-		<div>
-			<input type="text" placeholder="<?= lang("ACCOUNT_NAME") ?>" name="new_name" value="<?php echo $user['name']; ?>" required>
-		</div>
-		<div>
-			<input type="text" placeholder="<?= lang("ACCOUNT_SURNAME") ?>" name="new_surname" value="<?php echo $user['surname']; ?>" required>
-		</div>
-		<div>
-			<select name="lang">
+		<h2><i class="ri-user-line"></i> <?= lang("ACCOUNT_TITLE") ?></h2>
+		<div class="row">
+			<div class="column">
+				<!-- <div>
+					<h2><i class="ri-user-line"></i> <?= lang("ACCOUNT_TITLE") ?></h2>
+				</div> -->
+				<div>
+					<input type="text" placeholder="<?= lang("ACCOUNT_NAME") ?>" name="new_name" value="<?php echo $user['name']; ?>" required>
+				</div>
+				<div>
+					<input type="text" placeholder="<?= lang("ACCOUNT_SURNAME") ?>" name="new_surname" value="<?php echo $user['surname']; ?>" required>
+				</div>
+				<input class="disabled" value="<?= roleFormat($_SESSION["login"]) ?>"></input>
 				<?php
-					$userLang = UserRepository::getSetting($_SESSION["login"])["lang"];
-
-					$langList = scandir($_SERVER["DOCUMENT_ROOT"] . "/public/lang/");
-					$langList = array_diff($langList, array(".", "..", "index.php"));
-
-					foreach($langList as $lang) {
-						$lang = str_replace(".json", "", $lang);
-						if ($lang == $userLang) {
-							echo "<option selected='selected' value='" . $lang . "'>" . langFormat($lang) . "</option>";
-						} else {
-							echo "<option value='" . $lang . "'>" . langFormat($lang) . "</option>";
-						}
-					}
+				if (in_array(STUDENT, $roleList)) {
+					echo "<input class='disabled' disabled value=" . ClassroomRepository::getName(UserRepository::getClassroom($_SESSION["login"])) . "></input>";
+				}
 				?>
-			</select>
-		</div>
-		<div>
-			<input type="password" placeholder="<?= lang("ACCOUNT_PASSWORD") ?>" id="password" name="new_password">
-			<button class="showPasswordButton" tabindex="-1" type="button" onclick="togglePasswordVisibility('password', 'eyeIcon')"><i id="eyeIcon" class="ri-eye-off-line"></i></button>
-		</div>
+			</div>
+			<div class="column">
+				<input class="disabled" value="<?= UserRepository::getEmail($_SESSION["login"]) ?>"></input>
+				<div>
+					<select name="lang">
+						<?php
+							$userLang = UserRepository::getSetting($_SESSION["login"])["lang"];
 
-		<div>
-			<input type="password" placeholder="<?= lang("ACCOUNT_PASSWORD_CONFIRM") ?>" id="passwordConf" name="conf_password">
-			<button class="showPasswordButton" tabindex="-1" type="button" onclick="togglePasswordVisibility('passwordConf', 'eyeIconConf')"><i id="eyeIconConf" class="ri-eye-off-line"></i></button>
-		</div>
+							$langList = scandir($_SERVER["DOCUMENT_ROOT"] . "/public/lang/");
+							$langList = array_diff($langList, array(".", "..", "index.php"));
 
+							foreach($langList as $lang) {
+								$lang = str_replace(".json", "", $lang);
+								if ($lang == $userLang) {
+									echo "<option selected='selected' value='" . $lang . "'>" . langFormat($lang) . "</option>";
+								} else {
+									echo "<option value='" . $lang . "'>" . langFormat($lang) . "</option>";
+								}
+							}
+						?>
+					</select>
+				</div>
+				<div>
+					<input type="password" placeholder="<?= lang("ACCOUNT_PASSWORD") ?>" id="password" name="new_password">
+					<button class="showPasswordButton" tabindex="-1" type="button" onclick="togglePasswordVisibility('password', 'eyeIcon')"><i id="eyeIcon" class="ri-eye-off-line"></i></button>
+				</div>
+
+				<div>
+					<input type="password" placeholder="<?= lang("ACCOUNT_PASSWORD_CONFIRM") ?>" id="passwordConf" name="conf_password">
+					<button class="showPasswordButton" tabindex="-1" type="button" onclick="togglePasswordVisibility('passwordConf', 'eyeIconConf')"><i id="eyeIconConf" class="ri-eye-off-line"></i></button>
+				</div>
+			</div>
+		</div>
 		<div>
 			<button class="button" type="submit"><i class="ri-save-2-line"></i> <?= lang("ACCOUNT_SUBMIT") ?></button>
 		</div>
