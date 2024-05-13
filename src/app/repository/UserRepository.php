@@ -196,24 +196,6 @@ class UserRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
 	}
 
-	public static function getRoleId($role) {
-		// Get role id query
-		$query = "SELECT id FROM role WHERE name = :role";
-
-		// Get role id email
-		try {
-			$queryPrep = DATABASE->prepare($query);
-			$queryPrep->bindParam(':role', $role);
-			if (!$queryPrep->execute())
-				throw new Exception("Get role " . $role . " id error");
-		} catch (Exception $e) {
-			// Log error
-			LogRepository::fileSave($e);
-		}
-
-		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
-	}
-
 	public static function getSetting($userId) {
 		// Get user's settings query
 		$query = "SELECT * FROM setting WHERE iduser = :iduser";

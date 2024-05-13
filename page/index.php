@@ -20,19 +20,25 @@
 			<div class="mainbox">
 				<h2><?= lang("NAVBAR_SESSION") ?></h2>
 				<a><?= lang("INDEX_ADMIN_SESSION") ?></a>
-				<button class="button" onclick="window.location.href = '/sessions'"><i class="ri-slideshow-3-line"></i> <?= lang("NAVBAR_SESSION") ?></button>
+				<a class="button" href="/sessions"><i class="ri-slideshow-3-line"></i> <?= lang("NAVBAR_SESSION") ?></a>
 			</div>
 
 			<div class="mainbox">
 				<h2><?= lang("NAVBAR_USER") ?></h2>
 				<a><?= lang("INDEX_ADMIN_USER") ?></a>
-				<button class="button" onclick="window.location.href = '/utilisateurs'"><i class="ri-folder-line"></i> <?= lang("NAVBAR_USER") ?></button>
+				<a class="button" href="/utilisateurs"><i class="ri-folder-line"></i> <?= lang("NAVBAR_USER") ?></a>
 			</div>
 
 			<div class="mainbox">
 				<h2><?= lang("NAVBAR_LOG") ?></h2>
 				<a><?= lang("INDEX_ADMIN_LOG") ?></a>
-				<button class="button" onclick="window.location.href = '/logs?trace'"><i class="ri-computer-line"></i> <?= lang("NAVBAR_LOG") ?></button>
+				<a class="button" href="/compte"><i class="ri-computer-line"></i> <?= lang("NAVBAR_LOG") ?></a>
+			</div>
+
+			<div class="mainbox">
+				<h2><?= lang("NAVBAR_PROFIL_ACCOUNT") ?></h2>
+				<a><?= lang("INDEX_ACCOUNT") ?></a>
+				<a class="button" href="/compte"><i class="ri-account-circle-line"></i> <?= lang("NAVBAR_PROFIL_ACCOUNT") ?></a>
 			</div>
 		</div>
 <?php
@@ -43,7 +49,12 @@
 			<div class="mainbox">
 				<h2><?= lang("NAVBAR_SESSION") ?></h2>
 				<a><?= lang("INDEX_STUDENT_SESSION") ?></a>
-				<button class="button" onclick="window.location.href = '/sessions'"><i class="ri-slideshow-3-line"></i> <?= lang("NAVBAR_SESSION") ?></button>
+				<a class="button" onclick="/sessions"><i class="ri-slideshow-3-line"></i> <?= lang("NAVBAR_SESSION") ?></a>
+			</div>
+			<div class="mainbox">
+				<h2><?= lang("NAVBAR_PROFIL_ACCOUNT") ?></h2>
+				<a><?= lang("INDEX_ACCOUNT") ?></a>
+				<a class="button" href="/compte"><i class="ri-folder-line"></i> <?= lang("NAVBAR_PROFIL_ACCOUNT") ?></a>
 			</div>
 		</div>
 <?php
@@ -54,17 +65,21 @@
 			<div class="mainbox">
 				<h2><?= lang("NAVBAR_CLASS") ?></h2>
 				<a><?= lang("INDEX_TEACHER_CLASSROOM") ?></a>
-				<button class="button" onclick="window.location.href = '/classes'"><i class="ri-folder-line"></i> <?= lang("NAVBAR_CLASS") ?></button>
+				<a class="button" href="/classes"><i class="ri-folder-line"></i> <?= lang("NAVBAR_CLASS") ?></a>
 			</div>
 			<div class="mainbox">
 				<h2><?= lang("NAVBAR_CREATE_SESSION") ?></h2>
 				<a><?= lang("INDEX_TEACHER_CREATE_SESSION") ?></a>
-				<button class="button" onclick="window.location.href = '/sessioncreation'"><i class="ri-computer-line"></i> <?= lang("NAVBAR_CREATE_SESSION") ?></button>
+				<a class="button" href="/sessioncreation"><i class="ri-computer-line"></i> <?= lang("NAVBAR_CREATE_SESSION") ?></a>
 			</div>
 			<div class="mainbox">
 				<h2><?= lang("NAVBAR_SESSION") ?></h2>
 				<a><?= lang("INDEX_TEACHER_SESSION") ?></a>
-				<button class="button" onclick="window.location.href = '/sessions'"><i class="ri-slideshow-3-line"></i> <?= lang("NAVBAR_SESSION") ?></button>
+				<a class="button" href="/sessions"><i class="ri-slideshow-3-line"></i> <?= lang("NAVBAR_SESSION") ?></a>
+			</div><div class="mainbox">
+				<h2><?= lang("NAVBAR_PROFIL_ACCOUNT") ?></h2>
+				<a><?= lang("INDEX_ACCOUNT") ?></a>
+				<a class="button" href="/compte"><i class="ri-folder-line"></i> <?= lang("NAVBAR_PROFIL_ACCOUNT") ?></a>
 			</div>
 		</div>
 	</div>

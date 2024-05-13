@@ -12,7 +12,7 @@
 	mainHeader(lang("NAVBAR_CLASS"), true);
 
 	// Ask for permissions
-	permissionChecker(true, array(TEACHER));
+	permissionChecker(true, array(ADMIN, TEACHER));
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateClassroom.php");
@@ -23,8 +23,10 @@
 <?php
 	$classrooms = ClassroomRepository::getClassrooms();
 
+	echo '<div class="mainGroup">';
+
 	// Side menu
-	echo '<div class="mainGroup"><div id="lateralSelector" class="mainbox">';
+	echo '<div id="lateralSelector" class="mainbox">';
 	echo "<h2>" . lang("CLASSROOM_NAME") . "</h2>";
 
 	for($i = 0; $i < count($classrooms); $i++) {
@@ -39,6 +41,14 @@
 			echo '<div id="classroom_' . $classroom["id"] . '" class="classname" ' . $selected . ' onclick="selectClass(' . $classroom["id"] . ')">' . $classroom["name"] . '</div>';
 		}
 	}
+	?>
+
+	<form method="POST">
+		<input type="text" name="addClassroom" placeholder="<?= lang("CLASSROOM_ADD_PLACEHOLDER") ?>" required>
+		<button class="button" type="submit" title="<?= lang("CLASSROOM_ADD") ?>"><i class="ri-add-line"></i></button>
+	</form>
+
+	<?php
 	echo '</div>';
 
 	// Choosen classroom display
@@ -53,7 +63,12 @@
 ?>
 
 			<div id="contentClassroom_<?php echo $classroom["id"]?>" class="mainbox maintable contentClassroom" <?php echo $selected?>>
-			<h2><?php echo $classroom["name"]?></h2>
+
+			<form method="POST">
+				<input hidden name="classroomId" value="<?= ClassroomRepository::getId($classroom["name"]) ?>">
+				<input type="text" name="modifyName" value="<?= $classroom["name"] ?>"></input>
+				<button class="button" type="submit"><i class="ri-pencil-line"></i></button>
+			</form>
 			<table>
 				<thead>
 					<tr>
@@ -83,7 +98,7 @@
 								<form action="" method="post">
 									<input type="hidden" name="classroomId" value="<?= $classroom["id"] ?>">
 									<input type="hidden" name="removeStudent" value="<?= $student["iduser"] ?>">
-									<button type="submit" class="button"><i class="ri-eraser-line"></i> <?= lang("CLASSROOM_STUDENT_REMOVE") ?></button>
+									<button type="submit" class="button" title="<?= lang("CLASSROOM_STUDENT_REMOVE") ?>"><i class="ri-eraser-line"></i></button>
 								</form>
 							</td>
 						</tr>

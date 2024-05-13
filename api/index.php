@@ -4,7 +4,9 @@ use
 	LabSupervisor\app\repository\UserRepository,
 	LabSupervisor\app\repository\SessionRepository,
 	LabSupervisor\app\repository\LogRepository;
-use function LabSupervisor\functions\statusPicker;
+use function
+	LabSupervisor\functions\statusPicker,
+	LabSupervisor\functions\nameFormat;
 
 header('Content-Type: application/json');
 
@@ -29,18 +31,20 @@ switch($_SERVER["REQUEST_METHOD"]) {
 
 			// Application asking for user status
 			if ($data->ask == "get_status") {
-				$participant = SessionRepository::getParticipant($data->idSession);
+				$participant = SessionRepository::getParticipants($data->idSession);
 				$chapter = SessionRepository::getChapter($data->idSession);
 
 				$state = '{"Response": {';
 
 				foreach ($participant as $value) {
-					$state .= '"' . $value["iduser"] . '": {';
-					foreach ($chapter as $value2) {
-						$state .= '"' . $value2["id"] . '" : ' . SessionRepository::getStatus($value2["id"], $value["iduser"]) . ",";
+					if (UserRepository::isActive($value["iduser"]) == true AND UserRepository::getRole($value["iduser"])[0]["idrole"] == STUDENT) {
+						$state .= '"' . $value["iduser"] . '": {';
+						foreach ($chapter as $value2) {
+							$state .= '"' . $value2["id"] . '" : ' . SessionRepository::getStatus($value2["id"], $value["iduser"]) . ",";
+						}
+						$state = substr($state, 0, -1);
+						$state .= "},";
 					}
-					$state = substr($state, 0, -1);
-					$state .= "},";
 				}
 				$state = substr($state, 0, -1);
 				$state .= "}}";
@@ -54,6 +58,27 @@ switch($_SERVER["REQUEST_METHOD"]) {
 				SessionRepository::setStatus($data->idSession, $data->idChapter, $data->idUser, $data->idState);
 				// Answer API
 				echo '{"Response": {"Message": "Status updated."}}';
+			}
+
+			// Application asking for user done state percent
+			if ($data->ask == "get_status_percent") {
+				$response = round(SessionRepository::getStatusDone($data->idSession, $data->idUser) / count(SessionRepository::getChapter($data->idSession)) * 100, 2);
+				// Answer API
+				echo '{"Response": {"Percent": "' . $response . '"}}';
+			}
+
+			// Application asking for user done state percent
+			if ($data->ask == "get_all_status_percent") {
+				$response = round(SessionRepository::getAllStatusDone($data->idSession) / (count(SessionRepository::getChapter($data->idSession)) * count(SessionRepository::getParticipants($data->idSession))) * 100, 2);
+				// Answer API
+				echo '{"Response": {"Percent": "' . $response . '"}}';
+			}
+
+			// Application asking for user name
+			if ($data->ask == "get_user_names") {
+				$response = nameFormat($data->idUser, true);
+				// Answer API
+				echo '{"Response": {"Names": "' . $response . '"}}';
 			}
 
 			// Application asking for session state

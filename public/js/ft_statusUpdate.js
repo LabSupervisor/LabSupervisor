@@ -11,6 +11,25 @@ function statusUpdate(status) {
 				statusDisplay = "";
 			}
 			if (status.Response[participant][chapter] == 1) {
+				if (!DOMElement.classList.contains("statusRed")) {
+					fetch("/connect", {
+						method: 'post',
+						headers: {
+						'Accept': 'application/json',
+						'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({
+							"ask": "get_user_names",
+							"idUser": participant,
+						})
+					}).then((response) => {
+						return response.json()
+					}).then((res) => {
+						notify(res.Response.Names + " " + lang("NOTIFICATION_NEED_HELP"))
+					}).catch((error) => {
+						console.log(error);
+					})
+				}
 				statusDisplay = "statusRed";
 				text = lang("DASHBOARD_STATUS_RED");
 			}

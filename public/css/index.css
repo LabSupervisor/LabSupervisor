@@ -11,20 +11,26 @@
 .mainbox {
 	display: flex;
 	flex-direction: column;
+
 	padding: 20px;
-	width: 450px;
 	margin-left: 3vh;
 	margin-right: 3vh;
-
-	/* Interesting, pretty doesn't exist in
-	Firefox and balance is relatively ugly.
-	Here Chromium use pretty, Firefox balance.*/
 	text-wrap: balance;
 	text-wrap: pretty;
+
+	width: 450px;
 }
 
 .button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
 	margin-top: 30px;
+}
+
+.button i {
+	margin-right: 7px;
 }
 
 h2 {

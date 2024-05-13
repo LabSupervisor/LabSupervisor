@@ -1,0 +1,76 @@
+{
+	"home": {
+		"route": ["/"],
+		"page": "page/index.php",
+		"connect": true
+	},
+	"login": {
+		"route": ["/", "/login"],
+		"page": "page/login.php",
+		"connect": false
+	},
+	"register": {
+		"route": ["/register"],
+		"page": "page/register.php",
+		"connect": false
+	},
+	"disconnect": {
+		"route": ["/disconnect", "/deconnecter", "/deconnexion"],
+		"page": "logic/disconnect.php",
+		"connect": true
+	},
+	"sessions": {
+		"route": ["/sessions", "/session"],
+		"page": "page/session.php",
+		"connect": true
+	},
+	"sessioncreation": {
+		"route": ["/sessioncreation", "/sessionmodify", "/sessionmodifier"],
+		"page": "page/sessioncreation.php",
+		"connect": true
+	},
+	"panel": {
+		"route": ["/panel"],
+		"page": "page/sessionpanel.php",
+		"connect": true
+	},
+	"dashboard": {
+		"route": ["/dashboard"],
+		"page": "page/dashboard.php",
+		"connect": true
+	},
+	"screenshare": {
+		"route": ["/screenshare"],
+		"page": "page/screenshare.php",
+		"connect": true
+	},
+	"classroom": {
+		"route": ["/classroom", "/classes"],
+		"page": "page/classroom.php",
+		"connect": true
+	},
+	"user": {
+		"route": ["/users", "/user", "/utilisateurs", "/utilisateur"],
+		"page": "page/user.php",
+		"connect": true
+	},
+	"logs": {
+		"route": ["/logs"],
+		"page": "page/log.php",
+		"connect": true
+	},
+	"account": {
+		"route": ["/account", "/compte"],
+		"page": "page/account.php",
+		"connect": true
+	},
+	"denied": {
+		"route": ["/denied"],
+		"page": "page/denied.php",
+		"connect": true
+	},
+	"api": {
+		"route": ["/connect"],
+		"page": "api/index.php"
+	}
+}

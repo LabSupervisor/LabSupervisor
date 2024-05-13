@@ -37,7 +37,6 @@ class ClassroomRepository {
 
 	public function update(Classroom $entity) {
 		$bindParam = $entity->__toArray();
-		$classroomId = ClassroomRepository::getId($bindParam["name"]);
 
 		// Update classroom query
 		$query = "UPDATE classroom SET name = :name WHERE id = :id";
@@ -46,7 +45,7 @@ class ClassroomRepository {
 		try {
 			$queryPrep = DATABASE->prepare($query);
 			$queryPrep->bindParam(":name", $bindParam["name"]);
-			$queryPrep->bindParam(":id", $classroomId);
+			$queryPrep->bindParam(":id", $bindParam["id"]);
 			if ($queryPrep->execute())
 				LogRepository::dbSave("Update classroom " . $bindParam["name"]);
 			else
@@ -114,7 +113,7 @@ class ClassroomRepository {
 		$classroomId = ClassroomRepository::getId($name);
 
 		// Get classroom's user query
-		$query = "SELECT iduser FROM userclassroom WHERE idclassroom = :idclassroom";
+		$query = "SELECT iduser FROM userclassroom, user WHERE idclassroom = :idclassroom AND user.id = iduser ORDER BY user.surname ASC";
 
 		// Get classroom's user
 		try {
@@ -132,7 +131,7 @@ class ClassroomRepository {
 
 	public static function getUsersNotInClassroom() {
 		// Get user not in classroom query
-		$query = "SELECT u.* FROM user u LEFT JOIN userclassroom uc ON u.id = uc.iduser	LEFT JOIN userrole ur ON u.id = ur.iduser WHERE uc.iduser IS NULL AND ur.idrole NOT IN (1, 3)";
+		$query = "SELECT u.* FROM user u LEFT JOIN userclassroom uc ON u.id = uc.iduser	LEFT JOIN userrole ur ON u.id = ur.iduser WHERE uc.iduser IS NULL AND ur.idrole NOT IN (1, 3) ORDER BY u.surname ASC";
 
 		// Get user not in classroom
 		try {

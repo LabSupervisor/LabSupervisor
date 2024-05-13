@@ -50,5 +50,7 @@ if (!function_exists(__NAMESPACE__ . "/mainHeader")) {
 		}
 
 		echo '<div id="main">';
+
+		echo "<noscript><div class='noScript'>Please enable JavaScript on this website.</div></noscript>";
 	}
 }

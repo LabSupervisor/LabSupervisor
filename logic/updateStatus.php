@@ -1,8 +1,7 @@
 <?php
 
 use
-	LabSupervisor\app\repository\SessionRepository,
-	LabSupervisor\app\repository\UserRepository;
+	LabSupervisor\app\repository\SessionRepository;
 
 if (isset($_POST["status"])) {
 	// Update status table

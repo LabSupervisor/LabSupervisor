@@ -27,4 +27,10 @@ footer .linkGroup {
 footer .link {
 	text-decoration: none;
 	font-size: 21px;
+	transition: 200ms;
+}
+
+footer .link:hover {
+	color: var(--text-hover-color);
+	transition: 200ms;
 }

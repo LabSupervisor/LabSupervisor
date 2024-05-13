@@ -1,4 +1,4 @@
-document.getElementById("themeButton").addEventListener('click', function() {
+document.getElementById("themeButton").onclick = function() {
 	let currentTheme = document.getElementById("headerTheme").getAttribute("href");
 	let theme = "";
 	let icon = "";
@@ -12,6 +12,7 @@ document.getElementById("themeButton").addEventListener('click', function() {
 	}
 
 	document.getElementById("headerTheme").setAttribute("href", "/public/css/color" + theme + ".css");
+	document.getElementById("navbarTitle").textContent = lang("MAIN_TITLE");
 
 	fetch("/connect", {
 		method: 'post',
@@ -31,4 +32,11 @@ document.getElementById("themeButton").addEventListener('click', function() {
 	}).catch((error) => {
 		console.log(error)
 	})
-})
+}
+
+document.getElementById("themeButton").addEventListener("auxclick", function(e) {
+	if (e.button === 1) {
+		document.getElementById("headerTheme").setAttribute("href", "/public/css/colorextra.css");
+		document.getElementById("navbarTitle").textContent = "UwU";
+	}
+});

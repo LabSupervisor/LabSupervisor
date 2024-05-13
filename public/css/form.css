@@ -4,6 +4,8 @@
 	flex-direction: column;
 	text-align: center;
 
+	text-wrap: balance;
+
 	padding: 20px;
 
 	user-select: none;
@@ -14,6 +16,21 @@
 .subform {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+}
+
+.row {
+	display: flex;
+	flex-direction: row !important;
+}
+
+.column {
+	display: flex;
+	flex-direction: column;
+
+	padding: 20px;
+
+	width: 320px;
 }
 
 /* Title */
@@ -73,37 +90,46 @@
 	background: none;
 	font-size: 26px;
 	background-color: var(--case-field-background-color);
+	color: var(--text-color);
 
 	cursor: pointer;
 }
 
-.mainform .link {
+.link {
 	color: var(--text-color);
 	text-decoration: none;
 	font-size: 18px;
 	transition: 200ms;
+	border: 0;
+	background: 0;
+
+	cursor: pointer;
 }
 
-.mainform .link:hover {
+.link:hover {
 	color: var(--text-hover-color);
 	transition: 200ms;
 }
 
 /* Date */
 .mainform #date{
-	height: 35px;
-	border-radius: 10px;
+	border-radius: 7px;
 	border: 0;
 	font-size: 16px;
 	outline: none;
-	padding: 8px;
-	width: -webkit-fill-available;
 	background: var(--case-field-background-color);
+
+	padding: 8px;
+
+	height: 35px;
+	width: -webkit-fill-available;
+	width: -moz-available;
 }
 
 .mainform input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 	mask: url("/public/img/icon/calendar-2-line.svg");
 	background: var(--text-color);
-	margin-right: 10px;
 	outline: none;
+
+	margin-right: 10px;
 }

@@ -119,7 +119,6 @@
 	</div>
 </form>
 
-<script src="/public/js/ft_lang.js"></script>
 <script src="/public/js/ft_updateUser.js"></script>
 
 <?php

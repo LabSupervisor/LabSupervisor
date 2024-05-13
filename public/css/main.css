@@ -7,7 +7,6 @@
 * {
 	margin: 0px;
 	font-family: "inter", sans-serif;
-	color: var(--text-color);
 }
 
 ::selection {
@@ -45,6 +44,11 @@ body {
 	display: flex;
 	flex-direction: column;
 	overflow-x : hidden;
+	color: var(--text-color);
+}
+
+body a {
+	color: inherit;
 }
 
 #main {
@@ -88,6 +92,20 @@ body {
 	transform-origin: center center;
 }
 
+/* Error */
+.noScript {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	flex-wrap: wrap;
+
+	background-color: #ff8989;
+
+	user-select: none;
+
+	height: 30px;
+}
+
 /* Case style */
 .mainbox {
 	display: block;
@@ -105,6 +123,56 @@ body {
 	box-shadow: 0px 0px 50px 0px #00000030;
 }
 
+/* Title box */
+.titlebox {
+	padding: 15px;
+
+	user-select: none;
+
+	width: fit-content;
+	height: fit-content;
+	max-width: 70%;
+}
+
+.titlebox h2 {
+	margin: 20px 10px 10px 10px;
+}
+
+.titlebox a:not(.back) {
+	text-decoration: none;
+	text-wrap: balance;
+	text-wrap: pretty;
+
+	padding: 10px 20px 10px 20px;
+}
+
+/* Progress bar */
+.progressBox {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+
+	border-radius: 0px 0px 18px 18px;
+	overflow: hidden;
+
+	width: 100%;
+}
+
+.progressPercent {
+	margin-left: 10px;
+	text-align: left;
+	font-size: 14px;
+	color: var(--text-color);
+}
+
+.progressBar {
+	background-color: var(--button-background-color);
+	border-radius: 0px 3px 3px 0px;
+
+	height: 5px;
+}
+
+/* Information popup */
 .errorPopup {
 	background-color: var(--background-case-color);
 	color: var(--text-color);
@@ -139,37 +207,53 @@ body {
 /* Button style */
 .button {
 	background-color: var(--button-background-color);
-	border-radius: 9px;
 	border: 0;
-	height: 40px;
+	border-radius: 9px;
 	font-size: 16px;
-	margin: 10px;
+	transition: 200ms;
+	color: var(--button-text-color);
+	text-decoration: none;
+
+	margin: 7px;
 	padding-left: 20px;
 	padding-right: 20px;
-	transition: 200ms;
+
 	user-select: none;
+
+	cursor: pointer;
+
+	height: 40px;
+	max-height: 40px;
 }
 
 .button:disabled {
-	cursor: not-allowed !important;
 	background-color: var(--button-hover-color);
 	color: var(--text-hover-color);
 	font-style: italic;
+
+	cursor: not-allowed !important;
 }
 
 .button:hover {
 	background-color: var(--button-hover-color);
 	transition: 200ms;
-	cursor: pointer;
+	color: var(--text-color);
 }
 
 .back {
+	position: absolute;
+
 	background-color: transparent;
 	border: 0;
 	font-size: 16px;
-	cursor: pointer;
 	transition: 200ms;
 	text-decoration: none;
+	color: var(--text-color);
+
+	top: 15px;
+	left: 20px;
+
+	cursor: pointer;
 }
 
 .back:hover {
@@ -246,8 +330,8 @@ body {
 }
 
 .statusYellow {
-	background-color: yellow;
-	box-shadow: 0px 0px 10px 0px yellow;
+	background-color: #ffd000;
+	box-shadow: 0px 0px 10px 0px #ffd000;
 }
 
 .statusGreen {

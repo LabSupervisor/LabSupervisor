@@ -23,8 +23,12 @@
 ?>
 
 <div class="mainbox buttonContainer">
-	<a class="button2" href="/logs?trace"><i class="ri-draft-line"></i> <?= lang("LOG_TRACE") ?></a>
-	<a class="button2" href="/logs?error"><i class="ri-error-warning-line"></i> <?= lang("LOG_ERROR") ?></a>
+	<a href="/logs?trace">
+		<button class="button"><i class="ri-draft-line"></i> <?= lang("LOG_TRACE") ?></button>
+	</a>
+	<a href="/logs?error">
+		<button class="button"><i class="ri-error-warning-line"></i> <?= lang("LOG_ERROR") ?></button>
+	</a>
 </div>
 
 <div class="mainbox maintable">
@@ -53,7 +57,7 @@
 					echo "<tr>";
 					echo '<td>' . $line["id"] . '</td>';
 					echo '<td>' . $username . '</td>';
-					echo '<td class="col3">' . $line["message"] . '</td>';
+					echo '<td class="col3" title="' . $line["message"] . '">' . $line["message"] . '</td>';
 					echo '<td class="col4">' . $line["date"] . '</td>';
 					echo "</tr>";
 				}
@@ -98,12 +102,16 @@
 ?>
 
 <div class="mainbox buttonContainer">
-	<a class="button2" href="/logs?trace"><i class="ri-draft-line"></i> <?= lang("LOG_TRACE") ?></a>
-	<a class="button2" href="/logs?error"><i class="ri-error-warning-line"></i> <?= lang("LOG_ERROR") ?></a>
+	<a href="/logs?trace">
+		<button class="button"><i class="ri-draft-line"></i> <?= lang("LOG_TRACE") ?></button>
+	</a>
+	<a href="/logs?error">
+		<button class="button"><i class="ri-error-warning-line"></i> <?= lang("LOG_ERROR") ?></button>
+	</a>
 	<form method="get">
 		<input type="hidden" name="error">
 		<input type="date" id="date" name="date" value="<?= $fileDate ?>">
-		<input class="button" type="submit" value="<?= lang("LOG_ERROR_SUBMIT") ?>">
+		<button class="button" type="submit"><?= lang("LOG_ERROR_SUBMIT") ?></button>
 	</form>
 </div>
 
@@ -162,8 +170,8 @@
 					// Prevent showing empty line
 					if (strlen($error) > 1) {
 						echo "<tr>";
-						echo "<td class='col3'><div class='col3' title='" . htmlspecialchars($error) . "'>" . htmlspecialchars($error) . "</div></td>";
-						echo "<td class='col3'><div class='col3' title='" . str_replace("##", "#", htmlspecialchars($message)) . "'>" . htmlspecialchars(str_replace("##", "#", $message)) . "</div></td>";
+						echo "<td class='col3' title='" . htmlspecialchars($error) . "'>" . htmlspecialchars($error) . "</td>";
+						echo "<td class='col3' title='" . str_replace("##", "#", htmlspecialchars($message)) . "'>" . htmlspecialchars(str_replace("##", "#", $message)) . "</td>";
 						echo "<td class='col3'>" . $listDate[$i] . "</td>";
 						echo "</tr>";
 					}
@@ -175,7 +183,7 @@
 	</table>
 	<form class="pageGroup" method="GET">
 		<input type="hidden" name="error">
-		<input type="hidden" name="date" value="<?= $_GET['date']?>">
+		<input type="hidden" name="date" value="<?= $fileDate ?>">
 		<?php
 			if ($_GET["page"] != 1) {
 		?>

@@ -6,9 +6,10 @@ class Session {
 
 	protected $title;
 	protected $description;
+	protected $idclassroom;
 	protected $idcreator;
 	protected $date;
-	protected $id ;
+	protected $id;
 
 	public function __construct(array $data = NULL) {
 		$this->hydrate($data);
@@ -53,6 +54,10 @@ class Session {
 		$this->description = $description;
 	}
 
+	protected function setIdClassroom($idclassroom) {
+		$this->idclassroom = $idclassroom;
+	}
+
 	protected function setIdCreator($idcreator) {
 		$this->idcreator = $idcreator;
 	}
@@ -61,9 +66,9 @@ class Session {
 		$this->date = $date;
 	}
 
-	protected function setId($id){
-		if(isset($id)){
-			$this->id = $id ;
+	protected function setId($id) {
+		if (isset($id)) {
+			$this->id = $id;
 		}
 	}
 
