@@ -32,7 +32,7 @@
 			<div class="mainbox">
 				<h2><?= lang("NAVBAR_LOG") ?></h2>
 				<a><?= lang("INDEX_ADMIN_LOG") ?></a>
-				<a class="button" href="/compte"><i class="ri-computer-line"></i> <?= lang("NAVBAR_LOG") ?></a>
+				<a class="button" href="/logs?trace"><i class="ri-computer-line"></i> <?= lang("NAVBAR_LOG") ?></a>
 			</div>
 
 			<div class="mainbox">
@@ -49,7 +49,7 @@
 			<div class="mainbox">
 				<h2><?= lang("NAVBAR_SESSION") ?></h2>
 				<a><?= lang("INDEX_STUDENT_SESSION") ?></a>
-				<a class="button" onclick="/sessions"><i class="ri-slideshow-3-line"></i> <?= lang("NAVBAR_SESSION") ?></a>
+				<a class="button" href="/sessions"><i class="ri-slideshow-3-line"></i> <?= lang("NAVBAR_SESSION") ?></a>
 			</div>
 			<div class="mainbox">
 				<h2><?= lang("NAVBAR_PROFIL_ACCOUNT") ?></h2>
