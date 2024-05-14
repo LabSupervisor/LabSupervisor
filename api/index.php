@@ -37,7 +37,7 @@ switch($_SERVER["REQUEST_METHOD"]) {
 				$state = '{"Response": {';
 
 				foreach ($participant as $value) {
-					if (UserRepository::isActive($value["iduser"]) == true AND UserRepository::getRole($value["iduser"])[0]["idrole"] == STUDENT) {
+					if (UserRepository::isActive($value["iduser"]) == true AND in_array(STUDENT, UserRepository::getRole($value["iduser"]))) {
 						$state .= '"' . $value["iduser"] . '": {';
 						foreach ($chapter as $value2) {
 							$state .= '"' . $value2["id"] . '" : ' . SessionRepository::getStatus($value2["id"], $value["iduser"]) . ",";
