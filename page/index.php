@@ -1,8 +1,8 @@
 <?php
 
+	use LabSupervisor\app\repository\UserRepository;
 	use function
 		LabSupervisor\functions\mainHeader,
-		LabSupervisor\functions\permissionChecker,
 		LabSupervisor\functions\lang;
 
 	// Import header
@@ -12,7 +12,8 @@
 <link rel="stylesheet" href="/public/css/index.css">
 
 <?php
-	$roleList = permissionChecker(true, "");
+	$roleList = UserRepository::getRole($_SESSION["login"]);
+
 	if (in_array(ADMIN, $roleList)) {
 		// HTML content specific to admin role
 ?>

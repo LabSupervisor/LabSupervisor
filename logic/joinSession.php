@@ -4,17 +4,10 @@ use LabSupervisor\app\repository\UserRepository;
 use function LabSupervisor\functions\lang;
 
 if (isset($_POST["connect"])) {
-	// Get user's roles
-	$role = UserRepository::getRole($_SESSION["login"]);
-	$roleList = array();
-	foreach ($role as $value) {
-		array_push($roleList, $value["idrole"]);
-	}
-
 	$_SESSION["session"] = array_search(lang("SESSION_STATE_OPEN"), $_POST['connect']);
 
 	// Redirect teacher to /dashboard and student to /panel
-	if (in_array(TEACHER, $roleList))
+	if (in_array(TEACHER, UserRepository::getRole($_SESSION["login"])))
 		header("Location: /dashboard");
 	else
 		header("Location: /panel");

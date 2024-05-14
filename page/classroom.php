@@ -5,14 +5,10 @@
 		LabSupervisor\app\repository\UserRepository;
 	use function
 		LabSupervisor\functions\mainHeader,
-		LabSupervisor\functions\lang,
-		LabSupervisor\functions\permissionChecker;
+		LabSupervisor\functions\lang;
 
 	// Import header
 	mainHeader(lang("NAVBAR_CLASS"), true);
-
-	// Ask for permissions
-	permissionChecker(true, array(ADMIN, TEACHER));
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateClassroom.php");

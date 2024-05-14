@@ -5,19 +5,20 @@
 		LabSupervisor\app\repository\LogRepository;
 	use function
 		LabSupervisor\functions\mainHeader,
-		LabSupervisor\functions\lang,
-		LabSupervisor\functions\permissionChecker;
+		LabSupervisor\functions\lang;
 
 	// Import header
 	mainHeader(lang("NAVBAR_LOG"), true);
 
-	// Ask for permissions
-	permissionChecker(true, array(ADMIN));
 ?>
 
 <link rel="stylesheet" href="/public/css/log.css">
 
 <?php
+	if (!isset($_GET["trace"]) && !isset($_GET["error"])) {
+		$_GET["trace"] = "true";
+	}
+
 	// If traces are ask
 	if (isset($_GET["trace"])) {
 ?>

@@ -3,11 +3,8 @@
 	use LabSupervisor\app\repository\UserRepository;
 	use function
 		LabSupervisor\functions\mainHeader,
-		LabSupervisor\functions\permissionChecker,
 		LabSupervisor\functions\lang;
 
-	// Ask for permissions
-	permissionChecker(true, array(TEACHER));
 ?>
 
 <!DOCTYPE html>

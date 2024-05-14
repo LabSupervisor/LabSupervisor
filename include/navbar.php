@@ -3,8 +3,7 @@
 	use LabSupervisor\app\repository\UserRepository;
 	use function
 		LabSupervisor\functions\lang,
-		LabSupervisor\functions\nameFormat,
-		LabSupervisor\functions\permissionChecker;
+		LabSupervisor\functions\nameFormat;
 
 ?>
 
@@ -42,18 +41,27 @@
 	// If the user is connected
 	} else {
 		// Get navbar elements
-		$item = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/config/navbar.json"));
+		$item = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/config/route.json"));
 
+		// Only me now how this work. Don't ask me.
 		foreach ($item as $value) {
-			// Check permissions
-			if (array_intersect($value->role, permissionChecker(true, ""))) {
+			if (isset($value->navbar) && array_intersect($value->role, UserRepository::getRole($_SESSION["login"]))) {
 				$selected = "";
-				if (in_array(explode("?", $_SERVER["REQUEST_URI"])[0], $value->route)) {
+				$subRoutes = array();
+
+				if (isset($value->navbar->sub)) {
+					foreach ($value->navbar->sub as $subValue) {
+						$subRoutes = array_merge($subRoutes, $item->{$subValue}->route);
+					}
+				}
+
+				if (in_array(explode("?", $_SERVER["REQUEST_URI"])[0], array_merge($value->route, $subRoutes))) {
 					$selected = "<div class='current'></div>";
 				}
+
 				$navbarItem .= '
 				<div class="item">
-					<a href="' . $value->route[0] . '"><i class="' . $value->icon . '"></i>' . lang($value->title) . '</a>' .
+					<a href="' . $value->route[0] . '"><i class="' . $value->navbar->icon . '"></i>' . lang($value->navbar->title) . '</a>' .
 				$selected .
 				'</div>';
 			}

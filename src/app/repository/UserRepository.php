@@ -193,7 +193,12 @@ class UserRepository {
 			LogRepository::fileSave($e);
 		}
 
-		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
+		$response = $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
+		$roleList = array();
+		foreach ($response as $value) {
+			array_push($roleList, $value["idrole"]);
+		}
+		return $roleList;
 	}
 
 	public static function getClassroom($userId) {

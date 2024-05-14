@@ -7,15 +7,11 @@
 	use function
 		LabSupervisor\functions\mainHeader,
 		LabSupervisor\functions\lang,
-		LabSupervisor\functions\permissionChecker,
 		LabSupervisor\functions\statusFormat,
 		LabSupervisor\functions\nameFormat;
 
 	// Import header
 	mainHeader(lang("DASHBOARD_TITLE"), true);
-
-	// Ask for permissions
-	permissionChecker(true, array(TEACHER));
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/adminSession.php");
@@ -105,7 +101,7 @@
 			<?php
 				// Select paticipants
 				foreach (SessionRepository::getParticipants($_SESSION["session"]) as $value) {
-					if (UserRepository::isActive($value["iduser"]) == true AND UserRepository::getRole($value["iduser"])[0]["idrole"] == STUDENT) {
+					if (UserRepository::isActive($value["iduser"]) == true AND in_array(STUDENT, UserRepository::getRole($value["iduser"]))) {
 						$userId = $value["iduser"];
 						$participantName = UserRepository::getInfo($userId);
 
@@ -141,7 +137,7 @@
 			<?php
 				// Select paticipants
 				foreach (SessionRepository::getParticipants($_SESSION["session"]) as $value) {
-					if (UserRepository::isActive($value["iduser"]) == true AND UserRepository::getRole($value["iduser"])[0]["idrole"] == STUDENT) {
+					if (UserRepository::isActive($value["iduser"]) == true AND in_array(STUDENT, UserRepository::getRole($value["iduser"]))) {
 						$userId = $value["iduser"];
 
 						// Get chapters and status

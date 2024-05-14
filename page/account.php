@@ -7,14 +7,10 @@
 		LabSupervisor\functions\mainHeader,
 		LabSupervisor\functions\lang,
 		LabSupervisor\functions\langFormat,
-		LabSupervisor\functions\permissionChecker,
 		LabSupervisor\functions\roleFormat;
 
 	// Import header
 	mainHeader(lang("NAVBAR_PROFIL_ACCOUNT"), true);
-
-	// Ask for permissions
-	$roleList = permissionChecker(true, array(ADMIN, STUDENT, TEACHER));
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateUser.php");
@@ -44,7 +40,7 @@
 				</div>
 				<input class="disabled" value="<?= roleFormat($_SESSION["login"]) ?>" disabled></input>
 				<?php
-				if (in_array(STUDENT, $roleList)) {
+				if (in_array(STUDENT, UserRepository::getRole($_SESSION["login"]))) {
 					echo "<input class='disabled' disabled value=" . ClassroomRepository::getName(UserRepository::getClassroom($_SESSION["login"])) . " disabled></input>";
 				}
 				?>

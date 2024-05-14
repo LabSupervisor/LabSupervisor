@@ -7,14 +7,10 @@
 	use function
 		LabSupervisor\functions\mainHeader,
 		LabSupervisor\functions\lang,
-		LabSupervisor\functions\permissionChecker,
 		LabSupervisor\functions\nameFormat;
 
 	// Import header
 	mainHeader("Session en cours", true);
-
-	// Ask for permissions
-	permissionChecker(true, array(STUDENT));
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateStatus.php");

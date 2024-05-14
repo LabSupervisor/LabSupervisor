@@ -1,17 +1,15 @@
 <?php
 
-	use LabSupervisor\app\repository\SessionRepository;
+	use
+		LabSupervisor\app\repository\SessionRepository,
+		LabSupervisor\app\repository\UserRepository;
 	use function
 		LabSupervisor\functions\mainHeader,
 		LabSupervisor\functions\lang,
-		LabSupervisor\functions\permissionChecker,
 		LabSupervisor\functions\nameFormat;
 
 	// Import header
 	mainHeader(lang("NAVBAR_SESSION"), true);
-
-	// Ask for permissions and store it
-	$roleList = permissionChecker(true, array(ADMIN, STUDENT, TEACHER));
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/joinSession.php");
@@ -20,7 +18,9 @@
 <link rel="stylesheet" href="/public/css/session.css">
 
 <?php
+	$roleList = UserRepository::getRole($_SESSION["login"]);
 	$sessionList = array();
+
 	// Get all sessions for admin
 	if (in_array(ADMIN, $roleList)) {
 		$session = SessionRepository::getSessions();

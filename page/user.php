@@ -6,14 +6,10 @@
 	use function
 		LabSupervisor\functions\mainHeader,
 		LabSupervisor\functions\lang,
-		LabSupervisor\functions\permissionChecker,
 		LabSupervisor\functions\roleFormat;
 
 	// Import header
 	mainHeader(lang("NAVBAR_USER"), true);
-
-	// Ask for permissions
-	permissionChecker(true, array(ADMIN));
 
 	// Logic
 	echo '<script src="/public/js/ft_popup.js"></script>';
@@ -78,9 +74,8 @@
 						$classroomIdUser = ClassroomRepository::getUserClassroom($userId);
 						if (!$classroomIdUser)
 							$classroomIdUser = 0;
-						$roleIdUser = UserRepository::getRole($userId)[0]["idrole"];
 					?>
-					<td class="col6"><button class="modifybutton button" type="button" id="modify_<?= $userId ?>" onclick="updateUser(<?= $userId ?>, <?= $classroomIdUser ?>, <?= $roleIdUser ?>)"><?= lang("USER_UPDATE_MODIFY") ?></button>
+					<td class="col6"><button class="modifybutton button" type="button" id="modify_<?= $userId ?>" onclick="updateUser(<?= $userId ?>, <?= $classroomIdUser ?>, <?= UserRepository::getRole($userId)[0] ?>)"><?= lang("USER_UPDATE_MODIFY") ?></button>
 					<form method="POST" onsubmit="return confirmForm('<?= lang('USER_UPDATE_DELETE_CONFIRMATION') ?>');">
 						<input type="hidden" name="userId" value="<?= $userId ?>">
 						<button class="button" type="submit" name="send" id="delete_<?= $userId ?>"><?= lang("USER_UPDATE_DELETE") ?></button>

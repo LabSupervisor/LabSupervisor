@@ -5,14 +5,10 @@
 		LabSupervisor\app\repository\SessionRepository;
 	use function
 		LabSupervisor\functions\mainHeader,
-		LabSupervisor\functions\lang,
-		LabSupervisor\functions\permissionChecker;
+		LabSupervisor\functions\lang;
 
 	// Import header
 	mainHeader(lang("NAVBAR_CREATE_SESSION"), true);
-
-	// Ask for permissions
-	permissionChecker(true, array(TEACHER));
 
 	// Logic
 	echo '<script src="/public/js/ft_popup.js"></script>';

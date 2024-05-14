@@ -1,14 +1,10 @@
 <?php
 	use function
 		LabSupervisor\functions\mainHeader,
-		LabSupervisor\functions\lang,
-		LabSupervisor\functions\permissionChecker;
+		LabSupervisor\functions\lang;
 
 	// Import header
 	mainHeader(lang("REGISTER_TITLE"), true);
-
-	// Ask for permissions
-	permissionChecker(false, "");
 
 	// Logic
 	echo '<script src="/public/js/ft_popup.js"></script>';
