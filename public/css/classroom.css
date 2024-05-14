@@ -47,6 +47,11 @@ input {
 	height: 9px;
 }
 
+.classroomName {
+	width: 200px;
+	margin-bottom: 20px;
+}
+
 input::placeholder {
 	color: var(--case-field-text-color);
 }

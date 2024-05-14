@@ -43,7 +43,7 @@
 	}
 	?>
 
-	<form method="POST">
+	<form method="POST" onsubmit="loading()">
 		<input type="text" name="addClassroom" placeholder="<?= lang("CLASSROOM_ADD_PLACEHOLDER") ?>" required>
 		<button class="button" type="submit" title="<?= lang("CLASSROOM_ADD") ?>"><i class="ri-add-line"></i></button>
 	</form>
@@ -64,9 +64,9 @@
 
 			<div id="contentClassroom_<?php echo $classroom["id"]?>" class="mainbox maintable contentClassroom" <?php echo $selected?>>
 
-			<form method="POST">
+			<form method="POST" onsubmit="loading()">
 				<input hidden name="classroomId" value="<?= ClassroomRepository::getId($classroom["name"]) ?>">
-				<input type="text" name="modifyName" value="<?= $classroom["name"] ?>"></input>
+				<input class="classroomName" type="text" name="modifyName" value="<?= $classroom["name"] ?>"></input>
 				<button class="button" type="submit"><i class="ri-pencil-line"></i></button>
 			</form>
 			<table>
@@ -95,7 +95,7 @@
 							<td class="col3"><?= $studInfos["email"] ?></td>
 							<td>
 								<!-- Delete user form -->
-								<form action="" method="post">
+								<form action="" method="post" onsubmit="loading()">
 									<input type="hidden" name="classroomId" value="<?= $classroom["id"] ?>">
 									<input type="hidden" name="removeStudent" value="<?= $student["iduser"] ?>">
 									<button type="submit" class="button" title="<?= lang("CLASSROOM_STUDENT_REMOVE") ?>"><i class="ri-eraser-line"></i></button>
@@ -114,7 +114,7 @@
 			// Free student list
 			$freeStudents = ClassroomRepository::getUsersNotInClassroom();
 			if ($freeStudents) {
-				echo "<form class='freeStudents' method='POST'>";
+				echo "<form class='freeStudents' method='POST' onsubmit='loading()'>";
 				echo "<input type='hidden' name='classroomId' value=" . $classroom["id"] .">";
 				echo "<select class='selectStudent' name='studentId' id='studentId'>";
 				foreach ($freeStudents as $student)	{
@@ -131,6 +131,7 @@
 </div>
 
 <script src="/public/js/ft_selectClassroom.js"></script>
+<script src="/public/js/ft_loading.js"></script>
 
 <?php
 	// Footer
