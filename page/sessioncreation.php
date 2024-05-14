@@ -25,7 +25,7 @@
 
 <div class="mainbox mainform">
 	<a class="back" href="/sessions"><i class="ri-arrow-left-line"></i> <?= lang("MAIN_BUTTON_BACK") ?></a>
-	<form id="formSession" method="post">
+	<form id="formSession" method="post" onsubmit="loading()">
 		<div class="row">
 			<div class="column">
 				<!-- Main informations -->
@@ -72,7 +72,7 @@
 				</div>
 
 				<?php
-				$nbChapter = 1 ;
+				$nbChapter = 1;
 
 				// Check session exist
 				if (isset($_POST['sessionId'])) {
@@ -162,7 +162,7 @@
 		if (isset($_POST['sessionId'])) {
 	?>
 
-	<form method="POST" onsubmit="return confirm('<?= lang('SESSION_CREATE_DELETE_CONFIRMATION') ?>');">
+	<form method="POST" onsubmit="return confirmForm('<?= lang('SESSION_CREATE_DELETE_CONFIRMATION') ?>');">
 		<button class="link" type="submit" name="deleteSession" value="<?= $_POST['sessionId'] ?>"><i class="ri-delete-bin-line"></i> <?= lang("SESSION_CREATE_DELETE") ?></button>
 	</form>
 
@@ -176,6 +176,8 @@
 <script src="/public/js/ft_addChapter.js"></script>
 <script src="/public/js/ft_updateChapter.js"></script>
 <script src="/public/js/ft_deleteChapter.js"></script>
+<script src="/public/js/ft_loading.js"></script>
+<script src="/public/js/ft_popupConfirm.js"></script>
 
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');

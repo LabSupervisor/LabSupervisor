@@ -53,7 +53,7 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 		var option = document.createElement("option");
 		// Use "name" property
 		option.text = classrooms[i].name;
-		option.value = classrooms[i].id ;
+		option.value = classrooms[i].id;
 		if (classrooms[i].id == classroomIdUser) {
 			// Select option for actual classroom
 			option.selected = true;
@@ -66,7 +66,7 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 		var option = document.createElement("option");
 		// Use "name" property
 		option.text = lang("MAIN_ROLE_" + roles[i].name.toUpperCase());
-		option.value = roles[i].id ;
+		option.value = roles[i].id;
 		if (roles[i].id == roleIdUser) {
 			// Select option for actual role
 			option.selected = true;

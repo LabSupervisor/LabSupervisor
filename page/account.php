@@ -32,28 +32,25 @@
 <link rel="stylesheet" href="/public/css/account.css">
 
 <div class="mainbox mainform" id="updateCase">
-	<form method="post">
+	<form method="post" onsubmit="loading()">
 		<h2><i class="ri-user-line"></i> <?= lang("ACCOUNT_TITLE") ?></h2>
 		<div class="row">
 			<div class="column">
-				<!-- <div>
-					<h2><i class="ri-user-line"></i> <?= lang("ACCOUNT_TITLE") ?></h2>
-				</div> -->
 				<div>
 					<input type="text" placeholder="<?= lang("ACCOUNT_NAME") ?>" name="new_name" value="<?php echo $user['name']; ?>" required>
 				</div>
 				<div>
 					<input type="text" placeholder="<?= lang("ACCOUNT_SURNAME") ?>" name="new_surname" value="<?php echo $user['surname']; ?>" required>
 				</div>
-				<input class="disabled" value="<?= roleFormat($_SESSION["login"]) ?>"></input>
+				<input class="disabled" value="<?= roleFormat($_SESSION["login"]) ?>" disabled></input>
 				<?php
 				if (in_array(STUDENT, $roleList)) {
-					echo "<input class='disabled' disabled value=" . ClassroomRepository::getName(UserRepository::getClassroom($_SESSION["login"])) . "></input>";
+					echo "<input class='disabled' disabled value=" . ClassroomRepository::getName(UserRepository::getClassroom($_SESSION["login"])) . " disabled></input>";
 				}
 				?>
 			</div>
 			<div class="column">
-				<input class="disabled" value="<?= UserRepository::getEmail($_SESSION["login"]) ?>"></input>
+				<input class="disabled" value="<?= UserRepository::getEmail($_SESSION["login"]) ?>" disabled></input>
 				<div>
 					<select name="lang">
 						<?php
@@ -91,7 +88,7 @@
 	<a class="link" id="showDeleteForm"><i class="ri-delete-bin-line"></i> <?= lang("ACCOUNT_DELETE") ?></a>
 </div>
 
-<form class="mainbox confirmDelete" id="confirmationForm" style="display: none;" method="post">
+<form class="mainbox confirmDelete" id="confirmationForm" style="display: none;" method="post" onsubmit="loading()">
 	<h2><i class="ri-error-warning-line"></i> <?= lang("ACCOUNT_DELETE_TITLE") ?></h2>
 	<a><?= lang("ACCOUNT_DELETE_DESCRIPTION") ?></a>
 
@@ -107,6 +104,7 @@
 </form>
 
 <script src="/public/js/accountPassword.js"></script>
+<script src="/public/js/ft_loading.js"></script>
 
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');

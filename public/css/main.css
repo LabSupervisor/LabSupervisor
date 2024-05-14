@@ -60,6 +60,10 @@ body a {
 	stroke: var(--text-color);
 }
 
+.pupil {
+	fill: var(--text-color);
+}
+
 @keyframes rotation {
 	from {
 		transform: rotate(0deg);
@@ -91,6 +95,29 @@ body a {
 	stroke: var(--icon-yellow-color);
 	animation: rotation_rev 40s linear infinite;
 	transform-origin: center center;
+}
+
+/* Loading */
+.loading {
+	position: fixed;
+	display: none;
+	flex-direction: column;
+	align-items: center;
+
+	background-color: #00000050;
+
+	padding-top: 10%;
+
+	z-index: 1000;
+
+	user-select: none;
+
+	height: 100%;
+	width: 100%;
+}
+
+.loading svg {
+	height: 200px;
 }
 
 /* Error */

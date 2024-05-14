@@ -93,7 +93,7 @@ else if (isset($_POST['updateSession'])) {
 	}
 
 	if (isset($_POST['updatedChapters'])) {
-		$updatedChapters = $_POST['updatedChapters'] ;
+		$updatedChapters = $_POST['updatedChapters'];
 		foreach ($updatedChapters as $updatedChapter){
 			SessionRepository::updateChapter($updatedChapter['title'], $updatedChapter['desc'], $creatorId, $updatedChapter['id']);
 		}

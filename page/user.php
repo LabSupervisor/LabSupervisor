@@ -34,7 +34,7 @@
 
 <link rel="stylesheet" href="/public/css/user.css">
 
-<form id="form" method='POST'>
+<form id="form" method='POST' onsubmit="loading()">
 	<div class="mainbox maintable">
 		<table>
 			<thead>
@@ -81,7 +81,7 @@
 						$roleIdUser = UserRepository::getRole($userId)[0]["idrole"];
 					?>
 					<td class="col6"><button class="modifybutton button" type="button" id="modify_<?= $userId ?>" onclick="updateUser(<?= $userId ?>, <?= $classroomIdUser ?>, <?= $roleIdUser ?>)"><?= lang("USER_UPDATE_MODIFY") ?></button>
-					<form method="POST" onsubmit="return confirm('<?= lang('USER_UPDATE_DELETE_CONFIRMATION') ?>');">
+					<form method="POST" onsubmit="return confirmForm('<?= lang('USER_UPDATE_DELETE_CONFIRMATION') ?>');">
 						<input type="hidden" name="userId" value="<?= $userId ?>">
 						<button class="button" type="submit" name="send" id="delete_<?= $userId ?>"><?= lang("USER_UPDATE_DELETE") ?></button>
 					</form>
@@ -120,6 +120,8 @@
 </form>
 
 <script src="/public/js/ft_updateUser.js"></script>
+<script src="/public/js/ft_loading.js"></script>
+<script src="/public/js/ft_popupConfirm.js"></script>
 
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');
