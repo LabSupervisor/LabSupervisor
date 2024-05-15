@@ -1,6 +1,8 @@
 {
 	"home": {
-		"route": ["/"],
+		"route": [
+			"/"
+		],
 		"page": "page/index.php",
 		"connect": true,
 		"navbar": {
@@ -9,24 +11,40 @@
 		},
 		"role": [1, 2, 3]
 	},
+
 	"login": {
-		"route": ["/", "/login"],
+		"route": [
+			"/",
+			"/login"
+		],
 		"page": "page/login.php",
 		"connect": false
 	},
+
 	"register": {
-		"route": ["/register"],
+		"route": [
+			"/register"
+		],
 		"page": "page/register.php",
 		"connect": false
 	},
+
 	"disconnect": {
-		"route": ["/disconnect", "/deconnecter", "/deconnexion"],
+		"route": [
+			"/disconnect",
+			"/deconnecter",
+			"/deconnexion"
+		],
 		"page": "logic/disconnect.php",
 		"connect": true,
 		"role": [1, 2, 3]
 	},
+
 	"classroom": {
-		"route": ["/classroom", "/classes"],
+		"route": [
+			"/classroom",
+			"/classes"
+		],
 		"page": "page/classroom.php",
 		"connect": true,
 		"navbar": {
@@ -35,53 +53,85 @@
 		},
 		"role": [1, 3]
 	},
+
 	"sessions": {
-		"route": ["/sessions", "/session"],
+		"route": [
+			"/sessions",
+			"/session"
+		],
 		"page": "page/session.php",
 		"connect": true,
 		"navbar": {
 			"icon": "ri-slideshow-3-line",
 			"title": "NAVBAR_SESSION",
-			"sub": ["sessioncreation", "panel", "dashboard", "screenshare"]
+			"sub": [
+				"sessioncreation",
+				"panel",
+				"dashboard",
+				"screenshare"
+			]
 		},
 		"role": [1, 2, 3]
 	},
+
 	"sessioncreation": {
-		"route": ["/sessioncreation", "/sessionmodify", "/sessionmodifier"],
+		"route": [
+			"/sessioncreation",
+			"/sessionmodify",
+			"/sessionmodifier"
+		],
 		"page": "page/sessioncreation.php",
 		"connect": true,
 		"role": [3]
 	},
+
 	"panel": {
-		"route": ["/panel"],
+		"route": [
+			"/panel"
+		],
 		"page": "page/sessionpanel.php",
 		"connect": true,
 		"role": [2]
 	},
+
 	"dashboard": {
-		"route": ["/dashboard"],
+		"route": [
+			"/dashboard"
+		],
 		"page": "page/dashboard.php",
 		"connect": true,
 		"role": [3]
 	},
+
 	"screenshare": {
-		"route": ["/screenshare"],
+		"route": [
+			"/screenshare"
+		],
 		"page": "page/screenshare.php",
 		"connect": true,
 		"role": [3]
 	},
+
 	"user": {
-		"route": ["/users", "/user", "/utilisateurs", "/utilisateur"],
+		"route": [
+			"/users",
+			"/user",
+			"/utilisateurs",
+			"/utilisateur"
+		],
 		"page": "page/user.php",
 		"connect": true,
 		"navbar": {
-			"icon": "ri-folder-line",
+			"icon": "ri-folder-user-line",
 			"title": "NAVBAR_USER"
 		},
 		"role": [1]
 	},
+
 	"logs": {
-		"route": ["/logs"],
+		"route": [
+			"/logs"
+		],
 		"page": "page/log.php",
 		"connect": true,
 		"navbar": {
@@ -90,20 +140,30 @@
 		},
 		"role": [1]
 	},
+
 	"account": {
-		"route": ["/account", "/compte"],
+		"route": [
+			"/account",
+			"/compte"
+		],
 		"page": "page/account.php",
 		"connect": true,
 		"role": [1, 2, 3]
 	},
+
 	"denied": {
-		"route": ["/denied"],
+		"route": [
+			"/denied"
+		],
 		"page": "page/denied.php",
 		"connect": true,
 		"role": [1, 2, 3]
 	},
+	
 	"api": {
-		"route": ["/connect"],
+		"route": [
+			"/connect"
+		],
 		"page": "api/index.php"
 	}
 }

@@ -11,6 +11,7 @@
 .mainbox {
 	display: flex;
 	flex-direction: column;
+    justify-content: space-between;
 
 	padding: 20px;
 	margin-left: 3vh;
@@ -19,6 +20,7 @@
 	text-wrap: pretty;
 
 	width: 450px;
+	height: 180px;
 }
 
 .button {
