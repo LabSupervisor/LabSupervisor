@@ -31,7 +31,7 @@ if (isset($_POST['saveSession'])) {
 	$sessionRepo->createSession($session);
 	$sessionId = SessionRepository::getId($title);
 
-	$classUsers = ClassroomRepository::getUsers(ClassroomRepository::getName($classroomId));
+	$classUsers = ClassroomRepository::getUsers($classroomId);
 
 	// Add participants
 	foreach ($classUsers as $userId) {
@@ -79,7 +79,23 @@ else if (isset($_POST['updateSession'])) {
 	$session = new Session($sessionData);
 	$sessionRepo->update($session);
 
-	$classUsers = ClassroomRepository::getUsers(ClassroomRepository::getName($classroomId));
+	// Remove participants
+	foreach (SessionRepository::getParticipants($sessionId) as $user) {
+		foreach (SessionRepository::getChapter($sessionId) as $value) {
+			SessionRepository::deleteStatus($sessionId, $user["iduser"], $value["id"]);
+		}
+		UserRepository::unlink($user["iduser"], $sessionId, UserRepository::getLink($user["iduser"], $sessionId));
+		SessionRepository::deleteParticipant($sessionId, $user["iduser"]);
+	}
+
+	// Add participants
+	$classUsers = ClassroomRepository::getUsers($classroomId);
+	foreach ($classUsers as $userId) {
+		SessionRepository::addParticipant($userId["iduser"], $title);
+	}
+
+	// Add teacher to his own session
+	SessionRepository::addParticipant($creatorId, $title);
 
 	if (isset($_POST['addChapters'])) {
 		$addChapters = $_POST['addChapters'];
