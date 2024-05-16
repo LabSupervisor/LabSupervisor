@@ -2,15 +2,13 @@
 :root {
 	--text-color: #e9c5e7;
 	--text-hover-color: #f587ff;
-	--background-image: url("/public/img/background/dark/default.png");
+	--background-image: url("/public/img/background/dark/default.svg");
 
 	--icon-yellow-color: #F4EB6D;
-	
-	--background-hover-color: #54005c;
 
 	--button-background-color: #e01a73;
 	--button-hover-color: #bb5e86;
-	--button-text-color: #ff97fa;
+	--button-text-color: #ffffff;
 
 	--background-case-color: #00000069;
 	--case-border-color: #a8a8a875;

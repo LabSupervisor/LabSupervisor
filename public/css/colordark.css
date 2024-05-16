@@ -1,12 +1,10 @@
 /* Variables */
 :root {
 	--text-color: #FFFFFF;
-	--text-hover-color: #9b9b9b;
-	--background-image: url("/public/img/background/dark/default.png");
+	--text-hover-color: #cf9bb3;
+	--background-image: url("/public/img/background/dark/default.svg");
 
 	--icon-yellow-color: #F4EB6D;
-
-	--background-hover-color: #05005C;
 
 	--button-background-color: #7c1041;
 	--button-hover-color: #973660;
