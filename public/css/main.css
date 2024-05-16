@@ -99,13 +99,16 @@ body a {
 
 /* Loading */
 .loading {
-	position: fixed;
-	display: none;
+	display: flex;
 	flex-direction: column;
 	align-items: center;
+	position: fixed;
+    visibility: hidden;
 
 	background-color: #00000050;
 	backdrop-filter: blur(3px);
+    opacity: 0;
+    transition: opacity 200ms ease, visibility 200ms ease;
 
 	padding-top: 10%;
 
@@ -119,6 +122,11 @@ body a {
 
 .loading svg {
 	height: 200px;
+}
+
+.showLoading {
+    visibility: visible;
+    opacity: 1;
 }
 
 /* Error */

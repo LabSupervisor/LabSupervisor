@@ -1,3 +1,3 @@
 function loading() {
-	document.getElementById("loading").style.display = "flex";
+	document.getElementById("loading").classList.add("showLoading");
 }
