@@ -23,6 +23,8 @@
 		$_GET["id"] = $classrooms[0]["id"];
 	}
 
+	$students = ClassroomRepository::getUsers($_GET["id"]);
+
 	echo '<div class="mainGroup">';
 
 	// Side menu
@@ -66,8 +68,6 @@
 
 			<?php
 				// Display classroom's student
-				$students = ClassroomRepository::getUsers($_GET["id"]);
-
 				foreach ($students as $student) {
 					if (UserRepository::isActive($student["iduser"])) {
 						$studInfos = UserRepository::getInfo($student["iduser"]);
@@ -91,6 +91,7 @@
 			?>
 					</tbody>
 				</table>
+				<a><?= count($students) ?> <?= lang("MAIN_ROLE_STUDENT") ?></a>
 			<?php
 
 				// Free student list
