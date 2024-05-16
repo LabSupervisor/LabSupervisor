@@ -64,7 +64,7 @@ CREATE TABLE `session` (
   `description` text DEFAULT NULL,
   `idclassroom` int(11) NOT NULL,
   `idcreator` int(11) NOT NULL,
-  `state` tinyint(1) NOT NULL DEFAULT 1,
+  `state` tinyint(1) NOT NULL DEFAULT 0,
   `date` datetime NOT NULL,
   `creationdate` datetime NOT NULL DEFAULT current_timestamp(),
   `updatedate` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),

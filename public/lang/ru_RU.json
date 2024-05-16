@@ -122,6 +122,8 @@
 	"SESSION_CREATE_DELETE": "Удалить сеанс",
 	"SESSION_CREATE_DELETE_CONFIRMATION": "Вы уверены, что хотите удалить эту сессию?",
 	"SESSION_CREATE_UPDATE_NOTIFICATION": "Сессия обновлена.",
+	"SESSION_CREATE_STATE": "Статус",
+	"SESSION_CREATE_STATE_OPEN": "Должна ли сессия быть открыта сразу?",
 
 	"CLASSROOM_NAME": "Классы",
 	"CLASSROOM_STUDENT_NAME": "Имя",

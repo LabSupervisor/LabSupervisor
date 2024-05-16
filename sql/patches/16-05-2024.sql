@@ -1,0 +1,2 @@
+ALTER TABLE `session`
+  MODIFY COLUMN state tinyint(1) DEFAULT 0 NOT NULL;

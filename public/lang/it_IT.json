@@ -122,6 +122,8 @@
 	"SESSION_CREATE_DELETE": "Elimina sessione",
 	"SESSION_CREATE_DELETE_CONFIRMATION": "Sei sicuro di voler eliminare questa sessione?",
 	"SESSION_CREATE_UPDATE_NOTIFICATION": "Sessione aggiornata.",
+	"SESSION_CREATE_STATE": "Stato",
+	"SESSION_CREATE_STATE_OPEN": "La sessione deve essere aperta immediatamente?",
 
 	"CLASSROOM_NAME": "Classi",
 	"CLASSROOM_STUDENT_NAME": "Nome",

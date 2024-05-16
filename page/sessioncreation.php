@@ -120,14 +120,31 @@
 				</div>
 			</div>
 
-			<!-- Date -->
 			<div class="column">
+				<!-- Date -->
 				<div>
 					<h2><i class="ri-calendar-2-line"></i> <?= lang("SESSION_CREATE_TITLE_DATE") ?></h2>
 				</div>
 				<div>
 					<input type="datetime-local" id="date" name="date" value="<?= isset($sessionData) ? $sessionData['date'] : "" ?>" required>
 				</div>
+
+				<!-- State -->
+			<?php
+				if (!isset($_POST['sessionId'])) {
+			?>
+				<div>
+					<h2><i class="ri-door-open-line"></i> <?= lang("SESSION_CREATE_STATE") ?></h2>
+				</div>
+				<div>
+					<label class="checkboxContainer"><?= lang("SESSION_CREATE_STATE_OPEN") ?>
+						<input class="checkbox" type="checkbox" name="state">
+						<span class="checkmark"></span>
+					</label>
+				</div>
+			<?php
+				}
+			?>
 			</div>
 		</div>
 

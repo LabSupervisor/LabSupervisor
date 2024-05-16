@@ -52,6 +52,10 @@ if (isset($_POST['saveSession'])) {
 	// Add teacher to his own session
 	SessionRepository::addParticipant($_SESSION["login"], $title);
 
+	if (isset($_POST["state"])) {
+		SessionRepository::setState($sessionId, 1);
+	}
+
 	header("Location: /sessions");
 }
 
