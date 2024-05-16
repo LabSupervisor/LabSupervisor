@@ -1,14 +1,12 @@
-// Side menu, display classroom's students
 function selectClass(id) {
-	try	{
-		// Classroom's name
-		document.querySelector(".classname[selected]").removeAttribute("selected");
-		document.getElementById("classroom_" + id).setAttribute("selected","");
+	let url = new URL(window.location.href);
+	let params = url.searchParams;
 
-		// Classroom's students
-		document.querySelector(".contentClassroom[selected]").removeAttribute("selected");
-		document.getElementById("contentClassroom_" + id).setAttribute("selected","");
-	} catch(e) {
-		console.error(e.stack);
+	if (params.has("id")) {
+		params.set("id", id);
+	} else {
+		params.append("id", id);
 	}
+
+	window.location.href = url;
 }

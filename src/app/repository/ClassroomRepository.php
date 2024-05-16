@@ -109,9 +109,7 @@ class ClassroomRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
 	}
 
-	public static function getUsers($name) {
-		$classroomId = ClassroomRepository::getId($name);
-
+	public static function getUsers($classroomId) {
 		// Get classroom's user query
 		$query = "SELECT iduser FROM userclassroom, user WHERE idclassroom = :idclassroom AND user.id = iduser ORDER BY user.surname ASC";
 

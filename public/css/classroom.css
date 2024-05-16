@@ -11,7 +11,7 @@
 }
 
 /* Side menu */
-#lateralSelector {
+.lateral {
 	vertical-align: top;
 
 	padding: 20px;
@@ -56,21 +56,13 @@ input::placeholder {
 	color: var(--case-field-text-color);
 }
 
-.classname:hover {
+.classname:hover:not(.selected) {
 	background-color: var(--button-hover-color);
 }
 
-.classname[selected] {
+.selected {
 	background-color: var(--button-background-color);
 	color: var(--button-text-color);
-}
-
-.contentClassroom {
-	display: none;
-}
-
-.contentClassroom[selected] {
-	display: block;
 }
 
 .contentClassroom h2 {
