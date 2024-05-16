@@ -36,8 +36,6 @@
 			array_push($sessionList, SessionRepository::getInfo($key["idsession"]));
 		}
 	}
-
-	if (count($sessionList) > 0) {
 ?>
 
 <?php
@@ -52,6 +50,8 @@
 
 <?php
 	}
+
+	if (count($sessionList) > 0) {
 ?>
 
 <div class="mainbox maintable">
