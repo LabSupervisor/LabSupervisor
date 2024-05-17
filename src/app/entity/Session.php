@@ -12,38 +12,29 @@ class Session {
 	protected $id;
 
 	public function __construct(array $data = NULL) {
-		$this->hydrate($data);
-	}
+		$variable = get_class_vars(get_class($this));
 
-	public function hydrate(array $datas = NULL) {
-		$attrib = get_class_vars(get_class($this));
-
-		foreach ($attrib as $key => $val) {
-			if (isset($datas[$key])) {
+		foreach ($variable as $key => $val) {
+			if (isset($data[$key])) {
 				$mutateur = 'set' . $key;
-				$this->$mutateur($datas[$key]);
+				$this->$mutateur($data[$key]);
 			}
 		}
-		return $this;
 	}
 
 	public function __toArray() {
-		return $this->jsonSerialize();
-	}
-
-	public function jsonSerialize() {
 		$array = array();
 
-		$attrib = get_class_vars(get_class($this));
+		$variable = get_class_vars(get_class($this));
 
-		foreach ($attrib as $key => $val) {
+		foreach ($variable as $key => $val) {
 			$array[$key] = $this->get($key);
 		}
 		return $array;
 	}
 
-	protected function get($attribut) {
-		return $this->$attribut;
+	protected function get($variable) {
+		return $this->$variable;
 	}
 
 	protected function setTitle($title) {
