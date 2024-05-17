@@ -114,6 +114,12 @@ else if (isset($_POST['updateSession'])) {
 		}
 	}
 
+	foreach (SessionRepository::getChapter($sessionId) as $chapterId){
+		foreach ($classUsers as $userId) {
+			SessionRepository::addStatus($sessionId, $chapterId["id"], $userId["iduser"]);
+		}
+	}
+
 	if (isset($_POST['updatedChapters'])) {
 		$updatedChapters = $_POST['updatedChapters'];
 		foreach ($updatedChapters as $updatedChapter){
