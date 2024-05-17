@@ -121,6 +121,8 @@
 	"SESSION_CREATE_CHAPTER_REMOVE_ERROR": "すべての章を削除することはできません。",
 	"SESSION_CREATE_DELETE": "セッションを削除",
 	"SESSION_CREATE_DELETE_CONFIRMATION": "このセッションを削除してもよろしいですか？",
+	"SESSION_CREATE_DELETE_NOTIFICATION": "セッションが削除されました。",
+	"SESSION_CREATE_NOTIFICATION": "セッションが追加されました。",
 	"SESSION_CREATE_UPDATE_NOTIFICATION": "セッションが更新されました。",
 	"SESSION_CREATE_STATE": "ステータス",
 	"SESSION_CREATE_STATE_OPEN": "セッションをすぐに開きますか？",

@@ -11,7 +11,6 @@
 	mainHeader(lang("NAVBAR_CREATE_SESSION"), true);
 
 	// Logic
-	echo '<script src="/public/js/ft_popup.js"></script>';
 	require($_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php');
 
 	$idProv = 1;
@@ -187,6 +186,7 @@
 	var nbChapter = 1;
 </script>
 
+<script src="/public/js/ft_popup.js"></script>
 <script src="/public/js/ft_addChapter.js"></script>
 <script src="/public/js/ft_updateChapter.js"></script>
 <script src="/public/js/ft_deleteChapter.js"></script>
@@ -194,5 +194,9 @@
 <script src="/public/js/ft_popupConfirm.js"></script>
 
 <?php
+	if (isset($_POST["titleSession"])) {
+		echo '<script> popupDisplay("' . lang('SESSION_CREATE_UPDATE_NOTIFICATION') .'"); </script>';
+	}
+
 	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');
 ?>

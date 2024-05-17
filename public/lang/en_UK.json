@@ -121,6 +121,8 @@
 	"SESSION_CREATE_CHAPTER_REMOVE_ERROR": "You cannot delete all chapters.",
 	"SESSION_CREATE_DELETE": "Delete session",
 	"SESSION_CREATE_DELETE_CONFIRMATION": "Are you sure you want to delete this session?",
+	"SESSION_CREATE_DELETE_NOTIFICATION": "Session deleted.",
+	"SESSION_CREATE_NOTIFICATION": "Session added.",
 	"SESSION_CREATE_UPDATE_NOTIFICATION": "Session updated.",
 	"SESSION_CREATE_STATE": "Status",
 	"SESSION_CREATE_STATE_OPEN": "Should the session be opened immediately?",

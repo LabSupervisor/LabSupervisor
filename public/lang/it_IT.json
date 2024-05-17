@@ -121,6 +121,8 @@
 	"SESSION_CREATE_CHAPTER_REMOVE_ERROR": "Non puoi eliminare tutti i capitoli.",
 	"SESSION_CREATE_DELETE": "Elimina sessione",
 	"SESSION_CREATE_DELETE_CONFIRMATION": "Sei sicuro di voler eliminare questa sessione?",
+	"SESSION_CREATE_DELETE_NOTIFICATION": "Sessione eliminata.",
+	"SESSION_CREATE_NOTIFICATION": "Sessione aggiunta.",
 	"SESSION_CREATE_UPDATE_NOTIFICATION": "Sessione aggiornata.",
 	"SESSION_CREATE_STATE": "Stato",
 	"SESSION_CREATE_STATE_OPEN": "La sessione deve essere aperta immediatamente?",

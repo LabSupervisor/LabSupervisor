@@ -8,6 +8,12 @@
 		LabSupervisor\functions\lang,
 		LabSupervisor\functions\nameFormat;
 
+	if (isset($_COOKIE["notification"])) {
+		$notification = $_COOKIE["notification"];
+		unset($_COOKIE["notification"]);
+		setcookie("notification", "", time()-100);
+	}
+
 	// Import header
 	mainHeader(lang("NAVBAR_SESSION"), true);
 
@@ -116,9 +122,15 @@
 	</table>
 </div>
 
+<script src="/public/js/ft_popup.js"></script>
+
 <?php
 	} else {
 		echo "<div class='nosessionmain'><div class='nosessioncontent'><a class='nosessiontitle'>" . lang("SESSION_EMPTY") . "</a></div></div>";
+	}
+
+	if (isset($notification)) {
+		echo '<script> popupDisplay("' . $notification . '"); </script>';
 	}
 
 	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');

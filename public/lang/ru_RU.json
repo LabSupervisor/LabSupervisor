@@ -121,6 +121,8 @@
 	"SESSION_CREATE_CHAPTER_REMOVE_ERROR": "Вы не можете удалить все главы.",
 	"SESSION_CREATE_DELETE": "Удалить сеанс",
 	"SESSION_CREATE_DELETE_CONFIRMATION": "Вы уверены, что хотите удалить эту сессию?",
+	"SESSION_CREATE_DELETE_NOTIFICATION": "Сессия удалена.",
+	"SESSION_CREATE_NOTIFICATION": "Сессия добавлена.",
 	"SESSION_CREATE_UPDATE_NOTIFICATION": "Сессия обновлена.",
 	"SESSION_CREATE_STATE": "Статус",
 	"SESSION_CREATE_STATE_OPEN": "Должна ли сессия быть открыта сразу?",

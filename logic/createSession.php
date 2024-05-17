@@ -56,6 +56,8 @@ if (isset($_POST['saveSession'])) {
 		SessionRepository::setState($sessionId, 1);
 	}
 
+	setcookie("notification", lang('SESSION_CREATE_NOTIFICATION'), 0);
+
 	header("Location: /sessions");
 }
 
@@ -134,7 +136,6 @@ else if (isset($_POST['updateSession'])) {
 		}
 	}
 	$_POST['sessionId'] = $sessionId;
-	echo '<script> popupDisplay("' . lang('SESSION_CREATE_UPDATE_NOTIFICATION') .'"); </script>';
 }
 
 // Case 3 : prefill the session form with session data
@@ -170,6 +171,8 @@ else if (isset($_POST['deleteSession'])) {
 	}
 
 	SessionRepository::delete($sessionId);
+
+	setcookie("notification", lang('SESSION_CREATE_DELETE_NOTIFICATION'), 0);
 
 	header("Location: /sessions");
 }

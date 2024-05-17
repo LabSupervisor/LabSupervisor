@@ -121,6 +121,8 @@
 	"SESSION_CREATE_CHAPTER_REMOVE_ERROR": "U kunt niet alle hoofdstukken verwijderen.",
 	"SESSION_CREATE_DELETE": "Sessie verwijderen",
 	"SESSION_CREATE_DELETE_CONFIRMATION": "Weet je zeker dat je deze sessie wilt verwijderen?",
+	"SESSION_CREATE_DELETE_NOTIFICATION": "Sessie verwijderd.",
+	"SESSION_CREATE_NOTIFICATION": "Sessie toegevoegd.",
 	"SESSION_CREATE_UPDATE_NOTIFICATION": "Sessie bijgewerkt.",
 	"SESSION_CREATE_STATE": "Status",
 	"SESSION_CREATE_STATE_OPEN": "Moet de sessie direct worden geopend?",

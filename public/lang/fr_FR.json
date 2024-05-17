@@ -121,6 +121,8 @@
 	"SESSION_CREATE_CHAPTER_REMOVE_ERROR": "Vous ne pouvez pas supprimer tous les chapitres.",
 	"SESSION_CREATE_DELETE": "Supprimer la session",
 	"SESSION_CREATE_DELETE_CONFIRMATION": "Etes-vous certain de vouloir supprimer cette session ?",
+	"SESSION_CREATE_DELETE_NOTIFICATION": "Session supprimée.",
+	"SESSION_CREATE_NOTIFICATION": "Session ajoutée.",
 	"SESSION_CREATE_UPDATE_NOTIFICATION": "Session modifiée.",
 	"SESSION_CREATE_STATE": "Statut",
 	"SESSION_CREATE_STATE_OPEN": "La session doit-elle être directement ouverte ?",
