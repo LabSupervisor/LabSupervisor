@@ -92,7 +92,7 @@
 					<th></th>
 					<?php
 						foreach (SessionRepository::getChapter($_SESSION["session"]) as $value) {
-							echo "<th><i class=\"ri-information-line\" title='" . $value["title"] . "'></i></th>";
+							echo "<th><i class=\"ri-information-line\" title='" . htmlspecialchars($value["title"]) . "'></i></th>";
 						}
 					?>
 				</tr>
