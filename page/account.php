@@ -41,7 +41,9 @@
 				<input class="disabled" value="<?= roleFormat($_SESSION["login"]) ?>" disabled></input>
 				<?php
 				if (in_array(STUDENT, UserRepository::getRole($_SESSION["login"]))) {
-					echo "<input class='disabled' disabled value=" . ClassroomRepository::getName(UserRepository::getClassroom($_SESSION["login"])) . " disabled></input>";
+					if (UserRepository::getClassroom($_SESSION["login"])) {
+						echo "<input class='disabled' disabled value=" . ClassroomRepository::getName(UserRepository::getClassroom($_SESSION["login"])) . " disabled></input>";
+					}
 				}
 				?>
 			</div>
