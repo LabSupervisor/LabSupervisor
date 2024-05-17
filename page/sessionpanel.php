@@ -85,9 +85,9 @@
 		?>
 			<tr>
 				<td class="col1">
-					<?= $chapter["title"] ?>
+					<?= htmlspecialchars($chapter["title"]) ?>
 					<div class="description">
-						<?= $chapter["description"] ?>
+						<?= htmlspecialchars($chapter["description"]) ?>
 					</div>
 				</td>
 				<td class="col3"><div class="<?= $statusBall ?>" id="statusBall_<?= $chapter['id'] ?>"></div></td>
