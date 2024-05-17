@@ -8,10 +8,6 @@ function deleteChapter(button) {
 		let deletedChapterIdInput = subform.querySelector('.chapterId');
 		console.log('deletedChapterIdInput : ' + deletedChapterIdInput);
 
-		// Si la balise n'existe pas, il faut simplement supprimer le container HTML
-		// if(deletedChapterIdInput == null){
-		// }
-		// Sinon, on continue le traitement de la suppression
 		if (deletedChapterIdInput !=null) {
 			deletedChapterId = deletedChapterIdInput.value;
 			console.log('deletedChapterId : ' + deletedChapterId);

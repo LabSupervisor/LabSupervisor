@@ -1,4 +1,4 @@
-function popupDisplay(message){
+function popupDisplay(message) {
 	var popup = document.createElement("div");
 	popup.classList.add("errorPopup");
 

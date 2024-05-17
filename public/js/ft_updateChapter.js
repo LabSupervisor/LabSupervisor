@@ -1,9 +1,9 @@
-function updateChapter(updatedChapterId){
+function updateChapter(updatedChapterId) {
 
 	// si updatedChapterId est vide, il a un idProv donc
 	// rediriger vers addToChapterToBeAddList(idProv) si le chapitre n'existe pas?
 
-	if(document.querySelector('#_'+updatedChapterId) == null){
+	if(document.querySelector('#_'+updatedChapterId) == null) {
 		let updatedChaptersInput = document.createElement('input');
 		updatedChaptersInput.setAttribute('type', 'hidden');
 		updatedChaptersInput.setAttribute('id', '_' + updatedChapterId );
@@ -12,7 +12,7 @@ function updateChapter(updatedChapterId){
 		document.querySelector('#formSession').appendChild(updatedChaptersInput);
 	}
 
-	if(document.querySelector('#_title_'+updatedChapterId) == null){
+	if(document.querySelector('#_title_'+updatedChapterId) == null) {
 		let updatedChapterTitle = document.querySelector('#titleChapter'+updatedChapterId).value;
 		updatedChaptersInput = document.createElement('input');
 		updatedChaptersInput.setAttribute('type', 'hidden');
@@ -26,7 +26,7 @@ function updateChapter(updatedChapterId){
 		updatedChaptersInput.setAttribute('value', updatedChapterTitle);
 	}
 
-	if(document.querySelector('#_desc_'+updatedChapterId) == null){
+	if(document.querySelector('#_desc_'+updatedChapterId) == null) {
 		let updatedChapterDesc = document.querySelector('#chapterDescription'+updatedChapterId).value;
 		updatedChaptersInput = document.createElement('input');
 		updatedChaptersInput.setAttribute('type', 'hidden');

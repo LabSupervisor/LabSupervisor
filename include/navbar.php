@@ -87,7 +87,7 @@
 		$theme = "light";
 		$icon = "<i class='ri-sun-line'></i>";
 
-		if (UserRepository::getSetting($_SESSION["login"])["theme"] == "0"){
+		if (UserRepository::getSetting($_SESSION["login"])["theme"] == "0") {
 			$theme = "dark";
 			$icon = "<i class='ri-moon-line'></i>";
 		}

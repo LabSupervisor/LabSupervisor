@@ -416,7 +416,7 @@ class SessionRepository {
 		}
 	}
 
-	public static function deleteChapter($chapterId){
+	public static function deleteChapter($chapterId) {
 		// Delete chapter query
 		$query = "DELETE FROM chapter WHERE id = :idchapter";
 
@@ -434,9 +434,7 @@ class SessionRepository {
 		}
 	}
 
-	public static function addParticipant($participantId, $sessionName) {
-		$sessionId = SessionRepository::getId($sessionName);
-
+	public static function addParticipant($participantId, $sessionId) {
 		// Add participant query
 		$query = "INSERT INTO participant (iduser, idsession) VALUES (:iduser, :idsession)";
 
