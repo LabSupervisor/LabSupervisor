@@ -4,6 +4,11 @@
 		LabSupervisor\functions\mainHeader,
 		LabSupervisor\functions\lang;
 
+	$identifiant = "";
+	if (isset($_POST["email"])) {
+		$identifiant = $_POST["email"];
+	}
+
 	// Import header
 	mainHeader(lang("NAVBAR_CONNECT"), true);
 
@@ -19,7 +24,7 @@
 		<h2><i class="ri-user-line"></i> <?= lang("LOGIN_TITLE") ?></h2>
 	</div>
 	<div>
-		<input type="text" id="username" name="email" placeholder="<?= lang("LOGIN_EMAIL") ?>" required autofocus>
+		<input type="text" id="username" name="email" placeholder="<?= lang("LOGIN_EMAIL") ?>" value="<?= $identifiant ?>" required autofocus>
 	</div>
 	<div>
 		<input type="password" id="password" name="password" placeholder="<?= lang("LOGIN_PASSWORD") ?>" required>
