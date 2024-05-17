@@ -10,11 +10,11 @@ if (!function_exists(__NAMESPACE__ . "/nameFormat")) {
 		// "John S."
 		if ($nameIsFirst) {
 			$surname = substr($user["surname"], 0, 1);
-			return $user["name"] . " " . $surname . ".";
+			return htmlspecialchars($user["name"] . " " . $surname . ".");
 		// "J. Snow"
 		} else {
 			$name = substr($user["name"], 0, 1);
-			return $name . ". " . $user["surname"];
+			return htmlspecialchars($name . ". " . $user["surname"]);
 		}
 	}
 }

@@ -9,11 +9,11 @@
 		LabSupervisor\functions\langFormat,
 		LabSupervisor\functions\roleFormat;
 
-	// Import header
-	mainHeader(lang("NAVBAR_PROFIL_ACCOUNT"), true);
-
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateUser.php");
+
+	// Import header
+	mainHeader(lang("NAVBAR_PROFIL_ACCOUNT"), true);
 
 	// Delete account if ask for
 	if (isset($_POST["confirm_delete"])) {
