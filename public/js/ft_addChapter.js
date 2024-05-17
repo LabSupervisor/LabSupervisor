@@ -31,7 +31,7 @@ function addHTMLChapter(title, description, button) {
 	});
 	div.appendChild(deleteButton);
 
-	// Insert the new chapter zone after the last existing chapter
-	let lastsubform = document.querySelector('.subform');
-	lastsubform.parentNode.insertBefore(div, lastsubform.nextSibling);
+	let container = document.getElementById('fieldsContainer');
+	container.appendChild(div);
+	container.appendChild(button);
 }
