@@ -13,5 +13,6 @@
 			</div>
 		</footer>
 
+		<script src='https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.4.0/tsparticles.confetti.bundle.min.js'></script>
 	</body>
 </html>

@@ -31,7 +31,6 @@ if (!function_exists(__NAMESPACE__ . "/mainHeader")) {
 		$header .= '<link rel="stylesheet" href="/public/css/navbar.css">';
 		$header .= '<link rel="stylesheet" href="/public/css/import/remixicon.css">';
 		$header .= '<link rel="stylesheet" href="/public/css/footer.css">';
-		$header .= '<script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.4.0/tsparticles.confetti.bundle.min.js"></script>';
 
 		$header .= '</head>';
 
