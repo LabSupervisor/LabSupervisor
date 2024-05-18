@@ -38,5 +38,18 @@ document.getElementById("themeButton").addEventListener("auxclick", function(e) 
 	if (e.button === 1) {
 		document.getElementById("headerTheme").setAttribute("href", "/public/css/colorextra.css");
 		document.getElementById("navbarTitle").textContent = "UwU";
+
+		confetti({
+			particleCount: 50,
+			origin: { y: 0 },
+			spread: 1000,
+			scalar: 10,
+			shapes: ["emoji"],
+			shapeOptions: {
+				emoji: {
+					value: ["🦄", "🌈"],
+				},
+			},
+		});
 	}
 });

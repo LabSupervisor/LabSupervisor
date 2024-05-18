@@ -28,9 +28,18 @@
 	margin: 5px 3% 5px 3%;
 	padding: 5px;
 
+    width: -webkit-fill-available;
+	width: -moz-available;
 	max-height: 80%;
 
 	cursor: pointer;
+}
+
+.classnameGroup {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 }
 
 input {

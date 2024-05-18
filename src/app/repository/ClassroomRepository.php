@@ -129,7 +129,7 @@ class ClassroomRepository {
 
 	public static function getUsersNotInClassroom() {
 		// Get user not in classroom query
-		$query = "SELECT u.* FROM user u LEFT JOIN userclassroom uc ON u.id = uc.iduser	LEFT JOIN userrole ur ON u.id = ur.iduser WHERE uc.iduser IS NULL AND ur.idrole NOT IN (1, 3) ORDER BY u.surname ASC";
+		$query = "SELECT u.* FROM user u LEFT JOIN userclassroom uc ON u.id = uc.iduser LEFT JOIN userrole ur ON u.id = ur.iduser WHERE uc.iduser IS NULL AND ur.idrole NOT IN (1, 3) AND u.active = 1 ORDER BY u.surname ASC";
 
 		// Get user not in classroom
 		try {
@@ -235,7 +235,7 @@ class ClassroomRepository {
 
 	public static function delete($classroomId) {
 		// Delete classroom query
-		$query = "UPDATE classroom SET name = 'deleted#" . $classroomId . "', active = 0 WHERE id = :idclassroom";
+		$query = "DELETE FROM classroom WHERE id = :idclassroom";
 
 		// Delete classroom
 		try {

@@ -6,6 +6,7 @@
 	use function
 		LabSupervisor\functions\mainHeader,
 		LabSupervisor\functions\lang;
+	use LabSupervisor\app\repository\SessionRepository;
 
 	// Import header
 	mainHeader(lang("NAVBAR_CLASS"), true);
@@ -18,6 +19,8 @@
 
 <link rel="stylesheet" href="/public/css/classroom.css">
 
+	<div class="mainGroup">
+
 <?php
 	if (!isset($_GET["id"])) {
 		$_GET["id"] = $classrooms[0]["id"];
@@ -25,26 +28,42 @@
 
 	$students = ClassroomRepository::getUsers($_GET["id"]);
 
-	echo '<div class="mainGroup">';
-
 	// Side menu
 	echo '<div class="mainbox lateral">';
-		echo "<h2>" . lang("CLASSROOM_NAME") . "</h2>";
+	echo '<form method="POST" onsubmit="loading()">';
+	echo "<h2>" . lang("CLASSROOM_NAME") . "</h2>";
 
-		foreach ($classrooms as $value) {
-			$selected = "";
-			if ($_GET["id"] == $value["id"]) {
-				$selected = "selected";
-			}
+	foreach ($classrooms as $value) {
+		$selected = "";
+		if ($_GET["id"] == $value["id"]) {
+			$selected = "selected";
+		}
 
-			if ($value["active"] == "1") {
-				echo '<div id="classroom_' . $value["id"] . '" class="classname ' . $selected . '" onclick="selectClass(' . $value["id"] . ')">' . $value["name"] . '</div>';
+		if ($value["active"] == "1") {
+			echo '<div class="classnameGroup"><div id="classroom_' . $value["id"] . '" class="classname ' . $selected . '" onclick="selectClass(' . $value["id"] . ')">' . $value["name"] . '</div>';
+		}
+
+		$deletable = true;
+		foreach (SessionRepository::getSessions() as $sessionId) {
+			if ($value["id"] == $sessionId["idclassroom"]) {
+				$deletable = false;
 			}
 		}
-?>
 
+		if (count(ClassroomRepository::getUsers($value["id"])) > 0) {
+			$deletable = false;
+		}
+
+		if ($deletable) {
+			echo '<button class="button deleteClassroom" type="submit" name="deleteClassroom" value="' . $value["id"] . '"><i class="ri-delete-bin-line"></i></button></div>';
+		} else {
+			echo '</div>';
+		}
+	}
+?>
+		</form>
 		<form method="POST" onsubmit="loading()">
-			<input type="text" name="addClassroom" placeholder="<?= lang("CLASSROOM_ADD_PLACEHOLDER") ?>" required>
+			<input type="text" name="addClassroom" placeholder="<?= lang("CLASSROOM_ADD_PLACEHOLDER") ?>" maxlength="50" required>
 			<button class="button" type="submit" title="<?= lang("CLASSROOM_ADD") ?>"><i class="ri-add-line"></i></button>
 		</form>
 	</div>

@@ -51,6 +51,10 @@ if (isset($_POST["addClassroom"])) {
 	$classroomRepo->createClassroom($classroom);
 }
 
+if (isset($_POST["deleteClassroom"])) {
+	ClassroomRepository::delete($_POST["deleteClassroom"]);
+}
+
 // Modify classroom
 if (isset($_POST['modifyName'])) {
 	$classroomRepo = new ClassroomRepository;
