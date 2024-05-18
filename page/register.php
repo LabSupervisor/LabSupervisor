@@ -29,10 +29,10 @@
 		<button class="showPasswordButton" tabindex="-1" type="button" id="showPasswordButton" onclick="togglePasswordVisibility('passwordConf', 'eyeIconConf')"><i id="eyeIconConf" class="ri-eye-off-line"></i></button>
 	</div>
 	<div>
-		<input type="text" name="name" placeholder="<?= lang("REGISTER_NAME") ?>" class="Name" required>
+		<input type="text" name="name" placeholder="<?= lang("MAIN_NAME") ?>" class="Name" required>
 	</div>
 	<div>
-		<input type="text" name="surname" placeholder="<?= lang("REGISTER_SURNAME") ?>" required>
+		<input type="text" name="surname" placeholder="<?= lang("MAIN_SURNAME") ?>" required>
 	</div>
 	<div>
 		<button class="button" type="submit" name="register"><i class="ri-id-card-line"></i> <?= lang("REGISTER_SUBMIT") ?></button>

@@ -20,7 +20,7 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 	inputSurname.setAttribute("id", "surname");
 	inputSurname.setAttribute("name", "surname");
 	inputSurname.setAttribute("class", "surname");
-	inputSurname.setAttribute("placeholder", lang("USER_UPDATE_SURNAME"));
+	inputSurname.setAttribute("placeholder", lang("MAIN_NAME"));
 	inputSurname.setAttribute("value", surname);
 
 	var inputName = document.createElement("input");
@@ -28,7 +28,7 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 	inputName.setAttribute("id", "name");
 	inputName.setAttribute("name", "name");
 	inputName.setAttribute("class", "name");
-	inputName.setAttribute("placeholder", lang("USER_UPDATE_NAME"));
+	inputName.setAttribute("placeholder", lang("MAIN_NAME"));
 	inputName.setAttribute("value", name);
 
 	var selectClassroom = document.createElement("select");

@@ -59,8 +59,8 @@
 		<table>
 			<thead>
 				<tr>
-					<th><?= lang("CLASSROOM_STUDENT_SURNAME") ?></th>
-					<th><?= lang("CLASSROOM_STUDENT_NAME") ?></th>
+					<th><?= lang("MAIN_SURNAME") ?></th>
+					<th><?= lang("MAIN_NAME") ?></th>
 					<th><?= lang("CLASSROOM_STUDENT_EMAIL") ?></th>
 					<th></th>
 				</tr>

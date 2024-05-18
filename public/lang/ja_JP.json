@@ -5,6 +5,8 @@
 	"MAIN_ROLE_TEACHER": "教師",
 	"MAIN_BUTTON_BACK": "戻る",
 	"MAIN_LOADING": "読み込み中...",
+	"MAIN_NAME": "名",
+	"MAIN_SURNAME": "姓",
 
 	"NOTIFICATION_NEED_HELP": "助けが必要です！",
 
@@ -32,8 +34,6 @@
 	"REGISTER_EMAIL": "Eメール",
 	"REGISTER_PASSWORD": "パスワード",
 	"REGISTER_PASSWORD_CONFIRM": "パスワードの確認",
-	"REGISTER_NAME": "名",
-	"REGISTER_SURNAME": "姓",
 	"REGISTER_SUBMIT": "アカウントを作成",
 	"REGISTER_ALREADYSIGN": "すでにアカウントをお持ちですか？",
 	"REGISTER_ERROR_NOTSAME": "パスワードが一致しません。",
@@ -47,8 +47,6 @@
 	"LOGIN_ERROR_NOTFOUND": "Eメールまたはパスワードが間違っています。",
 
 	"ACCOUNT_TITLE": "アカウント情報",
-	"ACCOUNT_NAME": "名",
-	"ACCOUNT_SURNAME": "姓",
 	"ACCOUNT_PASSWORD": "パスワード",
 	"ACCOUNT_PASSWORD_CONFIRM": "パスワードの確認",
 	"ACCOUNT_SUBMIT": "保存",
@@ -128,15 +126,11 @@
 	"SESSION_CREATE_STATE_OPEN": "セッションをすぐに開きますか？",
 
 	"CLASSROOM_NAME": "クラス",
-	"CLASSROOM_STUDENT_NAME": "名",
-	"CLASSROOM_STUDENT_SURNAME": "姓",
 	"CLASSROOM_STUDENT_EMAIL": "Eメール",
 	"CLASSROOM_STUDENT_REMOVE": "削除",
 	"CLASSROOM_ADD": "追加",
 	"CLASSROOM_ADD_PLACEHOLDER": "名前",
 
-	"USER_UPDATE_SURNAME": "姓",
-	"USER_UPDATE_NAME": "名",
 	"USER_UPDATE_EMAIL": "Eメール",
 	"USER_UPDATE_ROLE": "役割",
 	"USER_UPDATE_CLASS": "クラス",

@@ -5,6 +5,8 @@
 	"MAIN_ROLE_TEACHER": "Docent",
 	"MAIN_BUTTON_BACK": "Terug",
 	"MAIN_LOADING": "Laden...",
+	"MAIN_NAME": "Voornaam",
+	"MAIN_SURNAME": "Achternaam",
 
 	"NOTIFICATION_NEED_HELP": "heeft hulp nodig!",
 
@@ -32,8 +34,6 @@
 	"REGISTER_EMAIL": "E-mail",
 	"REGISTER_PASSWORD": "Wachtwoord",
 	"REGISTER_PASSWORD_CONFIRM": "Bevestig wachtwoord",
-	"REGISTER_NAME": "Voornaam",
-	"REGISTER_SURNAME": "Achternaam",
 	"REGISTER_SUBMIT": "Account aanmaken",
 	"REGISTER_ALREADYSIGN": "Al een account?",
 	"REGISTER_ERROR_NOTSAME": "Het wachtwoord komt niet overeen.",
@@ -47,8 +47,6 @@
 	"LOGIN_ERROR_NOTFOUND": "Onjuist e-mailadres of wachtwoord.",
 
 	"ACCOUNT_TITLE": "Accountgegevens",
-	"ACCOUNT_NAME": "Voornaam",
-	"ACCOUNT_SURNAME": "Achternaam",
 	"ACCOUNT_PASSWORD": "Wachtwoord",
 	"ACCOUNT_PASSWORD_CONFIRM": "Bevestig wachtwoord",
 	"ACCOUNT_SUBMIT": "Opslaan",
@@ -128,15 +126,11 @@
 	"SESSION_CREATE_STATE_OPEN": "Moet de sessie direct worden geopend?",
 
 	"CLASSROOM_NAME": "Klassen",
-	"CLASSROOM_STUDENT_NAME": "Voornaam",
-	"CLASSROOM_STUDENT_SURNAME": "Achternaam",
 	"CLASSROOM_STUDENT_EMAIL": "E-mailadres",
 	"CLASSROOM_STUDENT_REMOVE": "Verwijderen",
 	"CLASSROOM_ADD": "Toevoegen",
 	"CLASSROOM_ADD_PLACEHOLDER": "Naam",
 
-	"USER_UPDATE_SURNAME": "Achternaam",
-	"USER_UPDATE_NAME": "Voornaam",
 	"USER_UPDATE_EMAIL": "E-mail",
 	"USER_UPDATE_ROLE": "Rol",
 	"USER_UPDATE_CLASS": "Klasse",

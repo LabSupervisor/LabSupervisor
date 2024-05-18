@@ -35,8 +35,8 @@
 		<table>
 			<thead>
 				<tr class="thead">
-					<th><?= lang("USER_UPDATE_SURNAME") ?></th>
-					<th><?= lang("USER_UPDATE_NAME") ?></th>
+					<th><?= lang("MAIN_SURNAME") ?></th>
+					<th><?= lang("MAIN_NAME") ?></th>
 					<th><?= lang("USER_UPDATE_EMAIL") ?></th>
 					<th><?= lang("USER_UPDATE_ROLE") ?></th>
 					<th><?= lang("USER_UPDATE_CLASS") ?></th>

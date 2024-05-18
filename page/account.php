@@ -33,10 +33,10 @@
 		<div class="row">
 			<div class="column">
 				<div>
-					<input type="text" placeholder="<?= lang("ACCOUNT_NAME") ?>" name="new_name" value="<?php echo $user['name']; ?>" required>
+					<input type="text" placeholder="<?= lang("MAIN_NAME") ?>" name="new_name" value="<?php echo $user['name']; ?>" required>
 				</div>
 				<div>
-					<input type="text" placeholder="<?= lang("ACCOUNT_SURNAME") ?>" name="new_surname" value="<?php echo $user['surname']; ?>" required>
+					<input type="text" placeholder="<?= lang("MAIN_SURNAME") ?>" name="new_surname" value="<?php echo $user['surname']; ?>" required>
 				</div>
 				<input class="disabled" value="<?= roleFormat($_SESSION["login"]) ?>" disabled></input>
 				<?php

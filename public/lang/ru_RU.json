@@ -5,6 +5,8 @@
 	"MAIN_ROLE_TEACHER": "Преподаватель",
 	"MAIN_BUTTON_BACK": "Назад",
 	"MAIN_LOADING": "Загрузка...",
+	"MAIN_NAME": "Имя",
+	"MAIN_SURNAME": "Фамилия",
 
 	"NOTIFICATION_NEED_HELP": "нуждается в помощи!",
 
@@ -32,8 +34,6 @@
 	"REGISTER_EMAIL": "Электронная почта",
 	"REGISTER_PASSWORD": "Пароль",
 	"REGISTER_PASSWORD_CONFIRM": "Подтвердить пароль",
-	"REGISTER_NAME": "Имя",
-	"REGISTER_SURNAME": "Фамилия",
 	"REGISTER_SUBMIT": "Создать аккаунт",
 	"REGISTER_ALREADYSIGN": "Уже есть аккаунт?",
 	"REGISTER_ERROR_NOTSAME": "Пароли не совпадают.",
@@ -47,8 +47,6 @@
 	"LOGIN_ERROR_NOTFOUND": "Неправильный адрес электронной почты или пароль.",
 
 	"ACCOUNT_TITLE": "Информация аккаунте",
-	"ACCOUNT_NAME": "Имя",
-	"ACCOUNT_SURNAME": "Фамилия",
 	"ACCOUNT_PASSWORD": "Пароль",
 	"ACCOUNT_PASSWORD_CONFIRM": "Подтвердить пароль",
 	"ACCOUNT_SUBMIT": "Сохранить",
@@ -128,15 +126,11 @@
 	"SESSION_CREATE_STATE_OPEN": "Должна ли сессия быть открыта сразу?",
 
 	"CLASSROOM_NAME": "Классы",
-	"CLASSROOM_STUDENT_NAME": "Имя",
-	"CLASSROOM_STUDENT_SURNAME": "Фамилия",
 	"CLASSROOM_STUDENT_EMAIL": "Адрес электронной почты",
 	"CLASSROOM_STUDENT_REMOVE": "Удалить",
 	"CLASSROOM_ADD": "Добавить",
 	"CLASSROOM_ADD_PLACEHOLDER": "Имя",
 
-	"USER_UPDATE_SURNAME": "Фамилия",
-	"USER_UPDATE_NAME": "Имя",
 	"USER_UPDATE_EMAIL": "Адрес электронной почты",
 	"USER_UPDATE_ROLE": "Роль",
 	"USER_UPDATE_CLASS": "Класс",

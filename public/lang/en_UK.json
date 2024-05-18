@@ -5,6 +5,8 @@
 	"MAIN_ROLE_TEACHER": "Teacher",
 	"MAIN_BUTTON_BACK": "Back",
 	"MAIN_LOADING": "Loading...",
+	"MAIN_NAME": "Name",
+	"MAIN_SURNAME": "Surname",
 
 	"NOTIFICATION_NEED_HELP": "needs help!",
 
@@ -32,8 +34,6 @@
 	"REGISTER_EMAIL": "Email",
 	"REGISTER_PASSWORD": "Password",
 	"REGISTER_PASSWORD_CONFIRM": "Confirm password",
-	"REGISTER_NAME": "Name",
-	"REGISTER_SURNAME": "Surname",
 	"REGISTER_SUBMIT": "Create account",
 	"REGISTER_ALREADYSIGN": "Already signin?",
 	"REGISTER_ERROR_NOTSAME": "Password doesn't match.",
@@ -47,8 +47,6 @@
 	"LOGIN_ERROR_NOTFOUND": "Email or password invalid.",
 
 	"ACCOUNT_TITLE": "Account informations",
-	"ACCOUNT_NAME": "Name",
-	"ACCOUNT_SURNAME": "Surname",
 	"ACCOUNT_PASSWORD": "Password",
 	"ACCOUNT_PASSWORD_CONFIRM": "Confirm password",
 	"ACCOUNT_SUBMIT": "Save changes",
@@ -128,15 +126,11 @@
 	"SESSION_CREATE_STATE_OPEN": "Should the session be opened immediately?",
 
 	"CLASSROOM_NAME": "Classroom",
-	"CLASSROOM_STUDENT_NAME": "Name",
-	"CLASSROOM_STUDENT_SURNAME": "Surname",
 	"CLASSROOM_STUDENT_EMAIL": "Email Address",
 	"CLASSROOM_STUDENT_REMOVE": "Remove from classroom",
 	"CLASSROOM_ADD": "Add",
 	"CLASSROOM_ADD_PLACEHOLDER": "Name",
 
-	"USER_UPDATE_SURNAME": "Surname",
-	"USER_UPDATE_NAME": "Name",
 	"USER_UPDATE_EMAIL": "Email address",
 	"USER_UPDATE_ROLE": "Role",
 	"USER_UPDATE_CLASS": "Classroom",

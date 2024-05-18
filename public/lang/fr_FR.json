@@ -5,6 +5,8 @@
 	"MAIN_ROLE_TEACHER": "Enseignant",
 	"MAIN_BUTTON_BACK": "Retour",
 	"MAIN_LOADING": "Chargement...",
+	"MAIN_NAME": "Prénom",
+	"MAIN_SURNAME": "Nom",
 
 	"NOTIFICATION_NEED_HELP": "a besoin d'aide !",
 
@@ -32,8 +34,6 @@
 	"REGISTER_EMAIL": "Email",
 	"REGISTER_PASSWORD": "Mot de passe",
 	"REGISTER_PASSWORD_CONFIRM": "Confirmer le mot de passe",
-	"REGISTER_NAME": "Prénom",
-	"REGISTER_SURNAME": "Nom",
 	"REGISTER_SUBMIT": "Créer un compte",
 	"REGISTER_ALREADYSIGN": "Déjà un compte ?",
 	"REGISTER_ERROR_NOTSAME": "Le mot de passe ne correspond pas.",
@@ -47,8 +47,6 @@
 	"LOGIN_ERROR_NOTFOUND": "Email ou mot de passe incorrect.",
 
 	"ACCOUNT_TITLE": "Informations du compte",
-	"ACCOUNT_NAME": "Prénom",
-	"ACCOUNT_SURNAME": "Nom",
 	"ACCOUNT_PASSWORD": "Mot de passe",
 	"ACCOUNT_PASSWORD_CONFIRM": "Confirmer le mot de passe",
 	"ACCOUNT_SUBMIT": "Enregistrer",
@@ -128,15 +126,11 @@
 	"SESSION_CREATE_STATE_OPEN": "La session doit-elle être directement ouverte ?",
 
 	"CLASSROOM_NAME": "Classes",
-	"CLASSROOM_STUDENT_NAME": "Prénom",
-	"CLASSROOM_STUDENT_SURNAME": "Nom",
 	"CLASSROOM_STUDENT_EMAIL": "Adresse email",
 	"CLASSROOM_STUDENT_REMOVE": "Retirer de la classe",
 	"CLASSROOM_ADD": "Ajouter",
 	"CLASSROOM_ADD_PLACEHOLDER": "Nom",
 
-	"USER_UPDATE_SURNAME": "Nom",
-	"USER_UPDATE_NAME": "Prénom",
 	"USER_UPDATE_EMAIL": "Adresse email",
 	"USER_UPDATE_ROLE": "Rôle",
 	"USER_UPDATE_CLASS": "Classe",
