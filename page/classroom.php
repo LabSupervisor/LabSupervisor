@@ -54,6 +54,7 @@
 			<input hidden name="classroomId" value="<?= $_GET["id"] ?>">
 			<input class="classroomName" type="text" name="modifyName" value="<?= ClassroomRepository::getName($_GET["id"]) ?>"></input>
 			<button class="button" type="submit"><i class="ri-pencil-line"></i></button>
+			<a class="studentNumber" title="<?= lang("MAIN_ROLE_STUDENT") ?>"><?= count($students) ?> <i class="ri-group-line"></i></a>
 		</form>
 		<table>
 			<thead>
@@ -91,7 +92,6 @@
 			?>
 					</tbody>
 				</table>
-				<a><?= count($students) ?> <?= lang("MAIN_ROLE_STUDENT") ?></a>
 			<?php
 
 				// Free student list

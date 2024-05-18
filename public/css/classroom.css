@@ -52,6 +52,12 @@ input {
 	margin-bottom: 20px;
 }
 
+.studentNumber {
+	font-size: 20px;
+
+	margin-left: 20px;
+}
+
 input::placeholder {
 	color: var(--case-field-text-color);
 }
