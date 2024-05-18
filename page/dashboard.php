@@ -88,8 +88,8 @@
 		<?php if ($currentView == "default") { ?>
 			<thead>
 				<tr class="thead">
-					<th><?= lang("MAIN_SURNAME") ?></th>
-					<th><?= lang("MAIN_NAME") ?></th>
+					<th class="col1"><?= lang("MAIN_SURNAME") ?></th>
+					<th class="col2"><?= lang("MAIN_NAME") ?></th>
 					<?php
 						foreach (SessionRepository::getChapter($_SESSION["session"]) as $value) {
 							echo "<th><i class=\"ri-information-line\" title='" . htmlspecialchars($value["title"]) . "'></i></th>";
@@ -127,8 +127,8 @@
 		<?php } else { ?>
 			<thead>
 			<tr class="thead">
-				<th><?= lang("MAIN_SURNAME") ?></th>
-				<th><?= lang("MAIN_NAME") ?></th>
+				<th class="col1"><?= lang("MAIN_SURNAME") ?></th>
+				<th class="col2"><?= lang("MAIN_NAME") ?></th>
 				<th><?= lang("DASHBOARD_CHAPTER") ?></th>
 				<th><?= lang("DASHBOARD_STATUS") ?></th>
 			</tr>
