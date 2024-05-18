@@ -196,16 +196,16 @@ class ClassroomRepository {
 		}
 	}
 
-	public static function isActive($name) {
+	public static function isActive($classroomId) {
 		// Get if classroom is active query
-		$query = "SELECT active FROM classroom WHERE name = :name";
+		$query = "SELECT active FROM classroom WHERE id = :id";
 
 		// Get if classroom is active
 		try {
 			$queryPrep = DATABASE->prepare($query);
-			$queryPrep->bindParam(':name', $name);
+			$queryPrep->bindParam(':id', $classroomId);
 			if (!$queryPrep->execute())
-				throw new Exception("Get active classroom " . $name . " error");
+				throw new Exception("Get active classroom " . $classroomId . " error");
 		} catch (Exception $e) {
 			// Log error
 			LogRepository::fileSave($e);
@@ -233,9 +233,7 @@ class ClassroomRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
 	}
 
-	public static function delete($name) {
-		$classroomId = ClassroomRepository::getId($name);
-
+	public static function delete($classroomId) {
 		// Delete classroom query
 		$query = "UPDATE classroom SET name = 'deleted#" . $classroomId . "', active = 0 WHERE id = :idclassroom";
 

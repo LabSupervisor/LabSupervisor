@@ -63,7 +63,7 @@
 					<td class="col5" id="classroom_<?=$userId?>">
 						<?php
 						if ($user["classroom"]) {
-							echo $user["classroom"];
+							echo ClassroomRepository::getName($user["classroom"]);
 						} else {
 							echo lang("USER_UPDATE_CLASS_EMPTY");
 						}
