@@ -2,11 +2,11 @@
 
 	use
 		LabSupervisor\app\repository\ClassroomRepository,
-		LabSupervisor\app\repository\UserRepository;
+		LabSupervisor\app\repository\UserRepository,
+		LabSupervisor\app\repository\SessionRepository;
 	use function
 		LabSupervisor\functions\mainHeader,
 		LabSupervisor\functions\lang;
-	use LabSupervisor\app\repository\SessionRepository;
 
 	// Import header
 	mainHeader(lang("NAVBAR_CLASS"), true);
