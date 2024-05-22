@@ -34,17 +34,20 @@ if (isset($_POST['saveSession'])) {
 	$classUsers = ClassroomRepository::getUsers($classroomId);
 
 	// Add participants
-	foreach ($classUsers as $userId) {
-		SessionRepository::addParticipant($userId["iduser"], $sessionId);
+	foreach ($classUsers as $user) {
+		SessionRepository::addParticipant($user["iduser"], $sessionId);
 	}
 
 	if (isset($_POST['addChapters'])) {
 		$addChapters = $_POST['addChapters'];
 		foreach ($addChapters as $addChapter) {
 			SessionRepository::addChapter($addChapter['title'], $addChapter['desc'], $creatorId, $sessionId);
-			foreach ($classUsers as $userId) {
-				$chapterId = SessionRepository::getChapterId($addChapter['title']);
-				SessionRepository::addStatus($sessionId, $chapterId, $userId["iduser"]);
+		}
+
+		$idChaptersNoStatus = SessionRepository::getChapterNoStatus($sessionId);
+		foreach ($classUsers as $user) {
+			foreach ($idChaptersNoStatus as $value) {
+				SessionRepository::addStatus($sessionId, $value['chapterId'], $user['iduser']);
 			}
 		}
 	}
@@ -85,38 +88,24 @@ else if (isset($_POST['updateSession'])) {
 	$session = new Session($sessionData);
 	$sessionRepo->update($session);
 
-	// Remove participants
 	foreach (SessionRepository::getParticipants($sessionId) as $user) {
-		foreach (SessionRepository::getChapter($sessionId) as $value) {
-			SessionRepository::deleteStatus($sessionId, $user["iduser"], $value["id"]);
-		}
 		UserRepository::unlink($user["iduser"], $sessionId, UserRepository::getLink($user["iduser"], $sessionId));
-		SessionRepository::deleteParticipant($sessionId, $user["iduser"]);
 	}
 
 	// Add participants
 	$classUsers = ClassroomRepository::getUsers($classroomId);
-	foreach ($classUsers as $userId) {
-		SessionRepository::addParticipant($userId["iduser"], $sessionId);
-	}
-
-	// Add teacher to his own session
-	SessionRepository::addParticipant($creatorId, $sessionId);
 
 	if (isset($_POST['addChapters'])) {
 		$addChapters = $_POST['addChapters'];
 		foreach ($addChapters as $addChapter) {
 			SessionRepository::addChapter($addChapter['title'], $addChapter['desc'], $creatorId, $sessionId);
-			foreach ($classUsers as $userId) {
-				$chapterId = SessionRepository::getChapterId($addChapter['title']);
-				SessionRepository::addStatus($sessionId, $chapterId, $userId["iduser"]);
-			}
 		}
-	}
 
-	foreach (SessionRepository::getChapter($sessionId) as $chapterId) {
-		foreach ($classUsers as $userId) {
-			SessionRepository::addStatus($sessionId, $chapterId["id"], $userId["iduser"]);
+		$idChaptersNoStatus = SessionRepository::getChapterNoStatus($sessionId);
+		foreach ($classUsers as $user) {
+			foreach ($idChaptersNoStatus as $value) {
+				SessionRepository::addStatus($sessionId, $value['chapterId'], $user['iduser']);
+			}
 		}
 	}
 
