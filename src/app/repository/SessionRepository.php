@@ -283,6 +283,24 @@ class SessionRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
 	}
 
+	public static function getChapterNoStatus($sessionId) {
+		// Get chapter with no status query
+		$query = "SELECT c.id AS chapterId, c.title, c.description, c.creationdate, c.updatedate FROM chapter c LEFT JOIN status s ON c.id = s.idchapter AND s.idsession = :idSession WHERE c.idsession = :idSession AND s.id IS NULL";
+
+		// Get chapter with no status
+		try {
+			$queryPrep = DATABASE->prepare($query);
+			$queryPrep->bindParam(':idSession', $sessionId);
+			if (!$queryPrep->execute())
+				throw new Exception("getChapterNoSatus " . $sessionId . " error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
+	}
+
 	public static function getClassroom($sessionId) {
 		// Get session's classroom query
 		$query = "SELECT idclassroom FROM session WHERE id = :idsession";
