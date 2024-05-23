@@ -7,7 +7,7 @@ use function LabSupervisor\functions\lang;
 
 if (isset($_POST["register"])) {
 	$userData = array(
-		"email" => $_POST['email'],
+		"email" => strtolower($_POST['email']),
 		"name" => $_POST['name'],
 		"surname" => $_POST['surname'],
 		"password" => $_POST['password']

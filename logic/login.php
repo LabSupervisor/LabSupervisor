@@ -4,7 +4,7 @@ use LabSupervisor\app\repository\UserRepository;
 use function LabSupervisor\functions\lang;
 
 if (isset($_POST["login"])) {
-	$userId = UserRepository::getId($_POST["email"]);
+	$userId = UserRepository::getId(strtolower($_POST["email"]));
 	if ($userId) {
 		// Check if password correspond to database
 		if (UserRepository::verifyPassword($userId, $_POST['password'])) {
