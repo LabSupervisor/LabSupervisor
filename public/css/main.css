@@ -315,6 +315,7 @@ body a {
 
 .checkmark {
 	position: absolute;
+	border: solid 2px var(--case-field-border-color);
 	top: 0;
 	left: 0;
 	height: 20px;

@@ -1,0 +1,18 @@
+/* Variables */
+:root {
+	--text-color: #ffffff;
+	--text-hover-color: #808080;
+	--background-image: url("/public/img/background/redDark.svg");
+
+	--icon-yellow-color: #fcaf0a;
+
+	--button-background-color: #8c8c8c;
+	--button-hover-color: #c4c4c4;
+	--button-text-color: #ffffff;
+
+	--background-case-color: #000000;
+	--case-border-color: #ffffff;
+	--case-field-background-color: #000000;
+	--case-field-border-color: #ffffff;
+	--case-field-text-color: #ffffff50;
+}

@@ -97,12 +97,8 @@ switch($_SERVER["REQUEST_METHOD"]) {
 			if ($data->ask == "update_theme") {
 				// Update theme
 				$lang = UserRepository::getSetting($data->idUser)["lang"];
-				if ($data->theme == "light")
-					$theme = 0;
-				else
-					$theme = 1;
 				$userSetting = array(
-					"theme" => $theme,
+					"theme" => $data->theme,
 					"lang" => $lang
 				);
 				// Update user's settings

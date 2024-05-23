@@ -76,7 +76,7 @@ DROP TABLE IF EXISTS `setting`;
 CREATE TABLE `setting` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `iduser` int(11) NOT NULL,
-  `theme` int(11) NOT NULL DEFAULT 0,
+  `theme` varchar(16) NOT NULL DEFAULT 'redLight',
   `lang` varchar(50) NOT NULL DEFAULT 'fr_FR',
   `updatedate` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),

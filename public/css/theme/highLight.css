@@ -1,0 +1,18 @@
+/* Variables */
+:root {
+	--text-color: #000000;
+	--text-hover-color: #2b2b2b;
+	--background-image: url("/public/img/background/redLight.png");
+
+	--icon-yellow-color: #fcaf0a;
+
+	--button-background-color: #8c8c8c;
+	--button-hover-color: #c4c4c4;
+	--button-text-color: #ffffff;
+
+	--background-case-color: #ffffff;
+	--case-border-color: #000000;
+	--case-field-background-color: #ffffff;
+	--case-field-border-color: #000000;
+	--case-field-text-color: #00000050;
+}

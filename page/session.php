@@ -14,11 +14,11 @@
 		setcookie("notification", "", time()-100);
 	}
 
-	// Import header
-	mainHeader(lang("NAVBAR_SESSION"), true);
-
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/joinSession.php");
+
+	// Import header
+	mainHeader(lang("NAVBAR_SESSION"), true);
 ?>
 
 <link rel="stylesheet" href="/public/css/session.css">

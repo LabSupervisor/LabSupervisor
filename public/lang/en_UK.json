@@ -20,6 +20,7 @@
 	"NAVBAR_LOG": "Logs",
 	"NAVBAR_PROFIL_ACCOUNT": "Account",
 	"NAVBAR_PROFIL_DISCONNECT": "Logout",
+	"NAVBAR_THEME_PICKER": "Themes",
 
 	"INDEX_STUDENT_SESSION": "From here, you can view all the sessions you've been add to!",
 	"INDEX_TEACHER_CLASSROOM": "On this page, you'll find the different classes of your school.",

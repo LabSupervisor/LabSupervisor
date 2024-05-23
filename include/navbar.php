@@ -83,18 +83,41 @@
 
 		// Theme
 
-		// Get current user theme
-		$theme = "light";
-		$icon = "<i class='ri-sun-line'></i>";
+		// // Get current user theme
+		// $theme = "light";
+		// $icon = "<i class='ri-sun-line'></i>";
 
-		if (UserRepository::getSetting($_SESSION["login"])["theme"] == "0") {
-			$theme = "dark";
-			$icon = "<i class='ri-moon-line'></i>";
-		}
+		// if (UserRepository::getSetting($_SESSION["login"])["theme"] == "0") {
+		// 	$theme = "Light";
+		// 	$icon = "<i class='ri-moon-line'></i>";
+		// }
+
+		// $navbarItem .= '
+		// 	<div class="item">
+		// 		<button class="theme" id="themeButton" type="button" name="theme"><i class="ri-sun-line"></i></button>
+		// 	</div>
+		// </div>';
 
 		$navbarItem .= '
-			<div class="item">
-				<button class="theme" id="themeButton" type="button" name="theme" value="' . $theme . '">' . $icon . '</button>
+			<div class="item theme">
+				<i class="ri-sun-line"></i>
+
+				<div class="themeContainer" id="themePicker">
+					<h2>' . lang("NAVBAR_THEME_PICKER") . '</h2>
+					<div class="themePicker">
+						<div class="themeColor themeRedLight" id="themeRedLight" title="RedWine"></div>
+						<div class="themeColor themeAquaLight" id="themeAquaLight" title="River"></div>
+						<div class="themeColor themeYellowLight" id="themeYellowLight" title="Sunset"></div>
+						<div class="themeColor themeGreenLight" id="themeGreenLight" title="Forest"></div>
+						<div class="themeColor themeHighLight" id="themeHighLight" title="High"></div>
+
+						<div class="themeColor themeRedDark" id="themeRedDark" title="MoonShine"></div>
+						<div class="themeColor themeAquaDark" id="themeAquaDark" title="Spectre"></div>
+						<div class="themeColor themeYellowDark" id="themeYellowDark" title="Fire"></div>
+						<div class="themeColor themeGreenDark" id="themeGreenDark" title="DarkForest"></div>
+						<div class="themeColor themeHighDark" id="themeHighDark" title="High"></div>
+					</div>
+				</div>
 			</div>
 		</div>';
 	}

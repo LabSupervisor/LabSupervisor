@@ -20,6 +20,7 @@
 	"NAVBAR_LOG": "日志",
 	"NAVBAR_PROFIL_ACCOUNT": "账户",
 	"NAVBAR_PROFIL_DISCONNECT": "登出",
+	"NAVBAR_THEME_PICKER": "主题",
 
 	"INDEX_STUDENT_SESSION": "从这里，您可以查看您已注册的所有会话！",
 	"INDEX_TEACHER_CLASSROOM": "在此页面，您将找到您机构的不同班级。",
