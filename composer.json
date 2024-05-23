@@ -15,12 +15,12 @@
 		},
 		{
 			"name": "Marine Gonnord",
-			"email": "marine.gonnord@lyon.ort.asso.fr",
+			"email": "marine.gonnord.pro@gmail.com",
 			"role": "Developer"
 		},
 		{
 			"name": "Gautier Trapeau",
-			"email": "gautier.trapeau@lyon.ort.asso.fr",
+			"email": "gautiertrp@outlook.fr",
 			"role": "Developer"
 		}
 	],
@@ -43,7 +43,10 @@
 		]
 	},
 	"scripts": {
-		"start": "node server/server.js",
+		"start": [
+			"Composer\\Config::disableProcessTimeout",
+			"node server/server.js"
+		],
 		"test": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always --display-deprecations test"
 	}
 }
