@@ -56,8 +56,8 @@
 					$userId = $user['id'];
 			?>
 				<tr>
-					<td class="col1" id="surname_<?=$userId?>"><?=$user['surname']?></td>
-					<td class="col2" id="name_<?=$userId?>"><?=$user['name']?></td>
+					<td class="col1" id="surname_<?=$userId?>"><?=ucfirst(strtolower($user['surname']))?></td>
+					<td class="col2" id="name_<?=$userId?>"><?=ucfirst(strtolower($user['name']))?></td>
 					<td class="col3"><?=$user['email']?></td>
 					<td class="col4" id="role_<?=$userId?>"><?=roleFormat($user['id'])?></td>
 					<td class="col5" id="classroom_<?=$userId?>">

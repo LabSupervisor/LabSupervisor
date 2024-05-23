@@ -93,8 +93,8 @@
 						$studInfos = UserRepository::getInfo($student["iduser"]);
 			?>
 				<tr>
-					<td><?= $studInfos["surname"] ?></td>
-					<td><?= $studInfos["name"] ?></td>
+					<td><?= ucfirst(strtolower($studInfos["surname"])) ?></td>
+					<td><?= ucfirst(strtolower($studInfos["name"])) ?></td>
 					<td class="col3"><?= $studInfos["email"] ?></td>
 					<td>
 						<!-- Delete user form -->

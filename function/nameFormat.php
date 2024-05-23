@@ -9,12 +9,12 @@ if (!function_exists(__NAMESPACE__ . "/nameFormat")) {
 
 		// "John S."
 		if ($nameIsFirst) {
-			$surname = substr($user["surname"], 0, 1);
-			return htmlspecialchars($user["name"] . " " . $surname . ".");
+			$surname = substr(ucfirst(strtolower($user["surname"])), 0, 1);
+			return htmlspecialchars(ucfirst(strtolower($user["name"])) . " " . $surname . ".");
 		// "J. Snow"
 		} else {
-			$name = substr($user["name"], 0, 1);
-			return htmlspecialchars($name . ". " . $user["surname"]);
+			$name = substr(ucfirst(strtolower($user["name"])), 0, 1);
+			return htmlspecialchars($name . ". " . ucfirst(strtolower($user["surname"])));
 		}
 	}
 }
