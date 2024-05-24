@@ -33,13 +33,20 @@ if (!function_exists(__NAMESPACE__ . "/mainHeader")) {
 
 		echo $header;
 
-		if (isset($_SESSION["login"]))
+		if (isset($_SESSION["login"])) {
 			echo
 				"<script>" .
-					"var userId = ". $_SESSION["login"] . ";" .
-					"var userLang = '". UserRepository::getSetting($_SESSION["login"])["lang"] . "';" .
-					"var defaultLang = '". DEFAULT_LANGUAGE . "';" .
+					"var userId = " . $_SESSION["login"] . ";" .
+					"var userLang = '" . UserRepository::getSetting($_SESSION["login"])["lang"] . "';" .
+					"var defaultLang = '" . DEFAULT_LANGUAGE . "';" .
 				"</script>";
+		} else {
+			echo
+				"<script>" .
+					"var userLang = '" . DEFAULT_LANGUAGE . "';" .
+					"var defaultLang = '" . DEFAULT_LANGUAGE . "';" .
+				"</script>";
+		}
 
 		if ($navbar) {
 			// Import navbar
