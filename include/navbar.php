@@ -109,13 +109,13 @@
 						<div class="themeColor themeAquaLight" id="themeAquaLight" title="River"></div>
 						<div class="themeColor themeYellowLight" id="themeYellowLight" title="Sunset"></div>
 						<div class="themeColor themeGreenLight" id="themeGreenLight" title="Forest"></div>
-						<div class="themeColor themeHighLight" id="themeHighLight" title="High"></div>
+						<div class="themeColor themeHighLight" id="themeHighLight" title="HighContrast"></div>
 
 						<div class="themeColor themeRedDark" id="themeRedDark" title="MoonShine"></div>
 						<div class="themeColor themeAquaDark" id="themeAquaDark" title="Spectre"></div>
 						<div class="themeColor themeYellowDark" id="themeYellowDark" title="Fire"></div>
 						<div class="themeColor themeGreenDark" id="themeGreenDark" title="DarkForest"></div>
-						<div class="themeColor themeHighDark" id="themeHighDark" title="High"></div>
+						<div class="themeColor themeHighDark" id="themeHighDark" title="HighContrast"></div>
 					</div>
 				</div>
 			</div>
