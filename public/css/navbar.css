@@ -190,6 +190,7 @@
 	border-radius: 22px;
 	background-color: gray;
 	box-sizing: border-box;
+	transition: 100ms;
 
 	padding: 22px;
 
@@ -201,6 +202,7 @@
 
 .navbarGroup .themeColor:hover {
 	box-shadow: inset 0px 0px 0px 2px var(--case-border-color);
+	transition: 100ms;
 }
 
 .navbarGroup .themeRedDark {
@@ -224,19 +226,19 @@
 }
 
 .navbarGroup .themeRedLight {
-	background: linear-gradient(45deg, #fff, #cf9bb3);
+	background: linear-gradient(45deg, #fff, #ad4f4f);
 }
 
 .navbarGroup .themeAquaLight {
-	background: linear-gradient(45deg, #fff, #b4c8dd);
+	background: linear-gradient(45deg, #fff, #439191);
 }
 
 .navbarGroup .themeYellowLight {
-	background: linear-gradient(45deg, #fff, #d6bf9f);
+	background: linear-gradient(45deg, #fff, #bb8b23);
 }
 
 .navbarGroup .themeGreenLight {
-	background: linear-gradient(45deg, #fff, #aedfbe);
+	background: linear-gradient(45deg, #fff, #59a059);
 }
 
 .navbarGroup .themeHighLight {
