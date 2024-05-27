@@ -95,7 +95,7 @@ else if (isset($_POST['updateSession'])) {
 	// Add participants
 	$classUsers = ClassroomRepository::getUsers($classroomId);
 
-	if(isset($_POST['classroomChange'])){
+	if(isset($_POST['classroomChange'])) {
 		// Remove participants
 		foreach (SessionRepository::getParticipants($sessionId) as $user) {
 			foreach (SessionRepository::getChapter($sessionId) as $value) {
