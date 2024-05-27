@@ -44,13 +44,13 @@
 
 <div class="mainbox titlebox">
 	<a class="back" href="/sessions"><i class="ri-arrow-left-line"></i> <?= lang("MAIN_BUTTON_BACK") ?></a>
-	<h2><?= SessionRepository::getName($_SESSION["session"])?><div class='pausedTitle' id="pausedTitle" <?= $stylePaused ?>><?= lang("DASHBOARD_PAUSE") ?></div></h2>
-	<a><?= $sessionInfo["description"] ?></a>
+	<h2><?= htmlspecialchars(SessionRepository::getName($_SESSION["session"])) ?><div class='pausedTitle' id="pausedTitle" <?= $stylePaused ?>><?= lang("DASHBOARD_PAUSE") ?></div></h2>
+	<a><?= htmlspecialchars($sessionInfo["description"]) ?></a>
 	<div class="buttonBox" id="screenshare" <?= $styleClosed ?>>
 		<button class="button" id="shareButton"><i class="ri-share-line"></i> <?= lang("SESSION_PANEL_SCREENSHARE_START") ?></button>
 	</div>
 	<div class="infoBox">
-		<?= date("d F Y H:i", strtotime($sessionInfo["date"])) ?> | <?= nameFormat($sessionInfo["idcreator"], false) ?> - <?= ClassroomRepository::getName($sessionInfo["idclassroom"]) ?>
+		<?= date("d F Y H:i", strtotime($sessionInfo["date"])) ?> | <?= htmlspecialchars(nameFormat($sessionInfo["idcreator"], false)) ?> - <?= htmlspecialchars(ClassroomRepository::getName($sessionInfo["idclassroom"])) ?>
 	</div>
 	<div class="progressBox">
 		<div class="progressPercent" id="percentValue"> <?= $percentDone ?>% </div>
