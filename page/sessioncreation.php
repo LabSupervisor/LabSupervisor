@@ -46,12 +46,12 @@
 							if ($value["active"] == 1) {
 								if (isset($_POST['sessionId'])) {
 									if ($value["id"] == SessionRepository::getClassroom($_POST['sessionId'])) {
-										echo "<option selected='selected' value=" . $value["id"] . ">" . $value["name"] . "</option>";
+										echo "<option selected='selected' value=" . $value["id"] . ">" . htmlspecialchars($value["name"]) . "</option>";
 									} else {
-										echo "<option value=" . $value["id"] . ">" . $value["name"] . "</option>";
+										echo "<option value=" . $value["id"] . ">" . htmlspecialchars($value["name"]) . "</option>";
 									}
 								} else {
-									echo "<option value=" . $value["id"] . ">" . $value["name"] . "</option>";
+									echo "<option value=" . $value["id"] . ">" . htmlspecialchars($value["name"]) . "</option>";
 								}
 							}
 						}

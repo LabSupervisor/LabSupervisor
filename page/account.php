@@ -42,13 +42,13 @@
 				<?php
 				if (in_array(STUDENT, UserRepository::getRole($_SESSION["login"]))) {
 					if (UserRepository::getClassroom($_SESSION["login"])) {
-						echo "<input class='disabled' disabled value=" . ClassroomRepository::getName(UserRepository::getClassroom($_SESSION["login"])) . " disabled></input>";
+						echo "<input class='disabled' disabled value=" . htmlspecialchars(ClassroomRepository::getName(UserRepository::getClassroom($_SESSION["login"]))) . " disabled></input>";
 					}
 				}
 				?>
 			</div>
 			<div class="column">
-				<input class="disabled" value="<?= UserRepository::getEmail($_SESSION["login"]) ?>" disabled></input>
+				<input class="disabled" value="<?= htmlspecialchars(UserRepository::getEmail($_SESSION["login"])) ?>" disabled></input>
 				<div>
 					<select name="lang">
 						<?php
@@ -69,7 +69,7 @@
 					</select>
 				</div>
 				<div>
-					<input type="password" placeholder="<?= lang("ACCOUNT_PASSWORD") ?>" id="password" name="new_password">
+					<input type="password" placeholder="<?= lang('ACCOUNT_PASSWORD') ?>" id="password" name="new_password">
 					<button class="showPasswordButton" tabindex="-1" type="button" onclick="togglePasswordVisibility('password', 'eyeIcon')"><i id="eyeIcon" class="ri-eye-off-line"></i></button>
 				</div>
 

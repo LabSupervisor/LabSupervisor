@@ -40,7 +40,7 @@
 		}
 
 		if ($value["active"] == "1") {
-			echo '<div class="classnameGroup"><div id="classroom_' . $value["id"] . '" class="classname ' . $selected . '" onclick="selectClass(' . $value["id"] . ')">' . $value["name"] . '</div>';
+			echo '<div class="classnameGroup"><div id="classroom_' . $value["id"] . '" class="classname ' . $selected . '" onclick="selectClass(' . $value["id"] . ')">' . htmlspecialchars($value["name"]) . '</div>';
 		}
 
 		$deletable = true;
@@ -93,9 +93,9 @@
 						$studInfos = UserRepository::getInfo($student["iduser"]);
 			?>
 				<tr>
-					<td><?= ucfirst(strtolower($studInfos["surname"])) ?></td>
-					<td><?= ucfirst(strtolower($studInfos["name"])) ?></td>
-					<td class="col3"><?= $studInfos["email"] ?></td>
+					<td><?= htmlspecialchars(ucfirst(strtolower($studInfos["surname"]))) ?></td>
+					<td><?= htmlspecialchars(ucfirst(strtolower($studInfos["name"]))) ?></td>
+					<td class="col3"><?= htmlspecialchars($studInfos["email"]) ?></td>
 					<td>
 						<!-- Delete user form -->
 						<form action="" method="post" onsubmit="loading()">
@@ -120,7 +120,7 @@
 					echo "<input type='hidden' name='classroomId' value=" . $_GET["id"] .">";
 					echo "<select class='selectStudent' name='studentId' id='studentId'>";
 					foreach ($freeStudents as $student)	{
-						echo "<option value='" . $student['id'] . "'>" . $student['surname'] . " " . $student['name'] . "</option>";
+						echo "<option value='" . $student['id'] . "'>" . htmlspecialchars($student['surname']) . " " . htmlspecialchars($student['name']) . "</option>";
 					}
 					echo "</select><button type='submit' class='button' name='addStudent'><i class=\"ri-add-line\"></i> " . lang("CLASSROOM_ADD") . "</button></form>";
 				}

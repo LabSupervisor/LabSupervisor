@@ -56,14 +56,14 @@
 					$userId = $user['id'];
 			?>
 				<tr>
-					<td class="col1" id="surname_<?=$userId?>"><?=ucfirst(strtolower($user['surname']))?></td>
-					<td class="col2" id="name_<?=$userId?>"><?=ucfirst(strtolower($user['name']))?></td>
-					<td class="col3"><?=$user['email']?></td>
-					<td class="col4" id="role_<?=$userId?>"><?=roleFormat($user['id'])?></td>
-					<td class="col5" id="classroom_<?=$userId?>">
+					<td class="col1" id="surname_<?= $userId ?>"><?= htmlspecialchars(ucfirst(strtolower($user['surname']))) ?></td>
+					<td class="col2" id="name_<?= $userId ?>"><?= htmlspecialchars(ucfirst(strtolower($user['name']))) ?></td>
+					<td class="col3"><?= $user['email'] ?></td>
+					<td class="col4" id="role_<?= $userId ?>"><?= roleFormat($user['id']) ?></td>
+					<td class="col5" id="classroom_<?= $userId ?>">
 						<?php
 						if ($user["classroom"]) {
-							echo ClassroomRepository::getName($user["classroom"]);
+							echo htmlspecialchars(ClassroomRepository::getName($user["classroom"]));
 						} else {
 							echo lang("USER_UPDATE_CLASS_EMPTY");
 						}

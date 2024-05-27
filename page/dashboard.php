@@ -49,9 +49,9 @@
 
 <div class="mainbox titlebox">
 	<a class="back" href="/sessions"><i class="ri-arrow-left-line"></i> <?= lang("MAIN_BUTTON_BACK") ?></a>
-	<h2><?= SessionRepository::getName($_SESSION["session"]) . $stateText?></h2>
-	<?php if ($sessionInfo["description"]) {?>
-		<a><?= $sessionInfo["description"]?></a><br><br>
+	<h2><?= htmlspecialchars(SessionRepository::getName($_SESSION["session"])) . $stateText ?></h2>
+	<?php if ($sessionInfo["description"]) { ?>
+		<a><?= htmlspecialchars($sessionInfo["description"]) ?></a><br><br>
 	<?php } ?>
 	<div class="buttonBox">
 		<form method="POST">
@@ -75,7 +75,7 @@
 		</form>
 	</div>
 	<div class="infoBox">
-		<?= date("d F Y H:i", strtotime($sessionInfo["date"])) ?> | <?= nameFormat($sessionInfo["idcreator"], false) ?> - <?= ClassroomRepository::getName($sessionInfo["idclassroom"]) ?>
+		<?= date("d F Y H:i", strtotime($sessionInfo["date"])) ?> | <?= htmlspecialchars(nameFormat($sessionInfo["idcreator"], false)) ?> - <?= htmlspecialchars(ClassroomRepository::getName($sessionInfo["idclassroom"])) ?>
 	</div>
 	<div class="progressBox">
 		<div class="progressPercent" id="percentValue"> <?= $percentDone ?>% </div>
@@ -106,8 +106,8 @@
 						$participantName = UserRepository::getInfo($userId);
 
 						echo "<tr>";
-						echo "<td class='col1'>" . $participantName["surname"] . "</td>";
-						echo "<td class='col1'>" . $participantName["name"] . "</td>";
+						echo "<td class='col1'>" . htmlspecialchars($participantName["surname"]) . "</td>";
+						echo "<td class='col1'>" . htmlspecialchars($participantName["name"]) . "</td>";
 
 						$status = "";
 						foreach (SessionRepository::getChapter($_SESSION["session"]) as $value) {
