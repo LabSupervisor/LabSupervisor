@@ -95,6 +95,32 @@ else if (isset($_POST['updateSession'])) {
 	// Add participants
 	$classUsers = ClassroomRepository::getUsers($classroomId);
 
+	if(isset($_POST['classroomChange'])){
+		// Remove participants
+		foreach (SessionRepository::getParticipants($sessionId) as $user) {
+			foreach (SessionRepository::getChapter($sessionId) as $value) {
+				SessionRepository::deleteStatus($sessionId, $user["iduser"], $value["id"]);
+			}
+			UserRepository::unlink($user["iduser"], $sessionId, UserRepository::getLink($user["iduser"], $sessionId));
+			SessionRepository::deleteParticipant($sessionId, $user["iduser"]);
+		}
+
+		// Add participants
+		$classUsers = ClassroomRepository::getUsers($classroomId);
+		foreach ($classUsers as $userId) {
+			SessionRepository::addParticipant($userId["iduser"], $sessionId);
+		}
+		foreach (SessionRepository::getChapter($sessionId) as $chapterId) {
+			foreach ($classUsers as $userId) {
+				SessionRepository::addStatus($sessionId, $chapterId["id"], $userId["iduser"]);
+			}
+		}
+
+		// Add teacher to his own session
+		SessionRepository::addParticipant($creatorId, $sessionId);
+
+	}
+
 	if (isset($_POST['addChapters'])) {
 		$addChapters = $_POST['addChapters'];
 		foreach ($addChapters as $addChapter) {
