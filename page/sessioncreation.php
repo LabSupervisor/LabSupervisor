@@ -7,11 +7,11 @@
 		LabSupervisor\functions\mainHeader,
 		LabSupervisor\functions\lang;
 
-	// Import header
-	mainHeader(lang("NAVBAR_CREATE_SESSION"), true);
-
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php');
+
+	// Import header
+	mainHeader(lang("NAVBAR_CREATE_SESSION"), true);
 
 	$idProv = 1;
 ?>
