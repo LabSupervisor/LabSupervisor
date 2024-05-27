@@ -118,6 +118,7 @@
 	font-size: 16px;
 	outline: none;
 	background: var(--case-field-background-color);
+	border: solid 2px var(--case-field-border-color);
 
 	padding: 8px;
 
