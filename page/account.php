@@ -40,11 +40,11 @@
 				</div>
 				<input class="disabled" value="<?= roleFormat($_SESSION["login"]) ?>" disabled></input>
 				<?php
-				if (in_array(STUDENT, UserRepository::getRole($_SESSION["login"]))) {
-					if (UserRepository::getClassroom($_SESSION["login"])) {
-						echo "<input class='disabled' disabled value=" . htmlspecialchars(ClassroomRepository::getName(UserRepository::getClassroom($_SESSION["login"]))) . " disabled></input>";
+					if (in_array(STUDENT, UserRepository::getRole($_SESSION["login"])) && UserRepository::getClassroom($_SESSION["login"])) {
+						echo "<input class='disabled' value='" . htmlspecialchars(ClassroomRepository::getName(UserRepository::getClassroom($_SESSION["login"]))) . "' disabled></input>";
+					} else {
+						echo "<input class='disabled' value='" . htmlspecialchars(lang("USER_UPDATE_CLASS_EMPTY")) . "' disabled></input>";
 					}
-				}
 				?>
 			</div>
 			<div class="column">
