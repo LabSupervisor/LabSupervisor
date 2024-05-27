@@ -1,8 +1,5 @@
 function updateChapter(updatedChapterId) {
 
-	// si updatedChapterId est vide, il a un idProv donc
-	// rediriger vers addToChapterToBeAddList(idProv) si le chapitre n'existe pas?
-
 	if(document.querySelector('#_'+updatedChapterId) == null) {
 		let updatedChaptersInput = document.createElement('input');
 		updatedChaptersInput.setAttribute('type', 'hidden');
