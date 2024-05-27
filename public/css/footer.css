@@ -7,6 +7,7 @@ footer {
 	backdrop-filter: blur(12px);
 	border-top: 2px solid var(--case-border-color);
 	user-select: none;
+	box-shadow: 0 0 30px 5px #00000030;
 }
 
 footer a {

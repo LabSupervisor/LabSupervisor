@@ -12,7 +12,7 @@
 	background-color: var(--background-case-color);
 	backdrop-filter: blur(12px);
 	border-bottom: 2px solid var(--case-border-color);
-	box-shadow: 0px 0px 50px 0px #00000030;
+	box-shadow: 0 0 30px 5px #00000030;
 
 	user-select: none;
 
