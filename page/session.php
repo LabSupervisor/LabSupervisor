@@ -95,7 +95,15 @@
 
 						echo '<td class="col3">' . htmlspecialchars($creatorName) . "</td>";
 						echo '<td class="col4">' . date("d/m/Y H:i", strtotime($line["date"])) . "</td>";
-						echo '<td>' . (sizeof(SessionRepository::getParticipants($line["id"])))-1 . "</td>";
+
+						$nbParticipantActive = 0;
+						foreach (SessionRepository::getParticipants($line["id"]) as $value) {
+							if (UserRepository::isActive($value["iduser"]) == true) {
+								$nbParticipantActive = $nbParticipantActive +1 ;
+							}
+						}
+
+						echo '<td>' . $nbParticipantActive-1 . "</td>";
 						echo '<td class="colState"><div class="statusBall ' . $buttonStyle . '"</div></td>';
 						if (!in_array(ADMIN, $roleList)) {
 							echo "<td class='col5'>";
