@@ -1,4 +1,4 @@
-function changeClassroom(updatedClassroomId) {
+function updateClassroom(updatedClassroomId) {
     let updatedClassroomInput = document.querySelector('#_classroom');
     if (updatedClassroomInput === null) {
         updatedClassroomInput = document.createElement('input');
@@ -10,4 +10,3 @@ function changeClassroom(updatedClassroomId) {
     }
     updatedClassroomInput.setAttribute('value', updatedClassroomId);
 }
-

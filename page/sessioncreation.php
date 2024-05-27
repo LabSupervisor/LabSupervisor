@@ -39,7 +39,7 @@
 					<h2><i class="ri-group-line"></i> <?= lang("SESSION_CREATE_TITLE_PARTICIPANT") ?></h2>
 				</div>
 				<div>
-					<select id="classroomSelect" name="classes" onchange="changeClassroom(this.value)">
+					<select id="classroomSelect" name="classes" onchange="updateClassroom(this.value)">
 					<?php
 						$classrooms = ClassroomRepository::getClassrooms();
 						foreach ($classrooms as $value) {
@@ -188,7 +188,7 @@
 
 <script src="/public/js/ft_popup.js"></script>
 <script src="/public/js/ft_addChapter.js"></script>
-<script src="/public/js/ft_changeClassroom.js"></script>
+<script src="/public/js/ft_updateClassroom.js"></script>
 <script src="/public/js/ft_updateChapter.js"></script>
 <script src="/public/js/ft_deleteChapter.js"></script>
 <script src="/public/js/ft_loading.js"></script>
