@@ -39,6 +39,7 @@
 	"REGISTER_ALREADYSIGN": "Already signin?",
 	"REGISTER_ERROR_NOTSAME": "Password doesn't match.",
 	"REGISTER_ERROR_EMAILTAKEN": "This email address is already taken.",
+	"REGISTER_ERROR_EMAILINVALID": "The email address is invalid.",
 
 	"LOGIN_TITLE": "Login",
 	"LOGIN_EMAIL": "Email address",

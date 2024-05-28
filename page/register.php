@@ -13,10 +13,14 @@
 	$identifiant = "";
 	$name = "";
 	$surname = "";
+	$password = "";
+	$passwordConfirm = "";
 	if (isset($_POST["email"])) {
 		$identifiant = $_POST["email"];
 		$name = $_POST["name"];
 		$surname = $_POST["surname"];
+		$password = $_POST["password"];
+		$passwordConfirm = $_POST["confpass"];
 	}
 ?>
 
@@ -30,11 +34,11 @@
 		<input type="email" name="email" placeholder="<?= lang("REGISTER_EMAIL") ?>" value="<?= $identifiant ?>" required autofocus>
 	</div>
 	<div>
-		<input type="password" id="password" name="password" placeholder="<?= lang("REGISTER_PASSWORD") ?>" required>
+		<input type="password" id="password" name="password" placeholder="<?= lang("REGISTER_PASSWORD") ?>" value="<?= $password ?>" required>
 		<button class="showPasswordButton" tabindex="-1" type="button" id="showPasswordButton" onclick="togglePasswordVisibility('password', 'eyeIcon')"><i id="eyeIcon" class="ri-eye-off-line"></i></button>
 	</div>
 	<div>
-		<input type="password" id="passwordConf" name="confpass" placeholder="<?= lang("REGISTER_PASSWORD_CONFIRM") ?>" required>
+		<input type="password" id="passwordConf" name="confpass" placeholder="<?= lang("REGISTER_PASSWORD_CONFIRM") ?>" value="<?= $passwordConfirm ?>" required>
 		<button class="showPasswordButton" tabindex="-1" type="button" id="showPasswordButton" onclick="togglePasswordVisibility('passwordConf', 'eyeIconConf')"><i id="eyeIconConf" class="ri-eye-off-line"></i></button>
 	</div>
 	<div>

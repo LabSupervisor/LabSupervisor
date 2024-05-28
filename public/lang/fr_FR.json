@@ -39,6 +39,7 @@
 	"REGISTER_ALREADYSIGN": "Déjà un compte ?",
 	"REGISTER_ERROR_NOTSAME": "Le mot de passe ne correspond pas.",
 	"REGISTER_ERROR_EMAILTAKEN": "Cette adresse email est déjà utilisée.",
+	"REGISTER_ERROR_EMAILINVALID": "L'adresse email est invalide.",
 
 	"LOGIN_TITLE": "Connexion",
 	"LOGIN_EMAIL": "Adresse email",

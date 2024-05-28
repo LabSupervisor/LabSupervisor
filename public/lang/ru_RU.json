@@ -39,6 +39,7 @@
 	"REGISTER_ALREADYSIGN": "Уже есть аккаунт?",
 	"REGISTER_ERROR_NOTSAME": "Пароли не совпадают.",
 	"REGISTER_ERROR_EMAILTAKEN": "Этот адрес электронной почты уже используется.",
+	"REGISTER_ERROR_EMAILINVALID": "Адрес электронной почты недействителен.",
 
 	"LOGIN_TITLE": "Войти",
 	"LOGIN_EMAIL": "Адрес электронной почты",

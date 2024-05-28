@@ -18,6 +18,8 @@ if (isset($_POST["register"])) {
 		echo '<script> popupDisplay("' . lang("REGISTER_ERROR_NOTSAME") .'"); </script>';
 	} elseif (UserRepository::getId($_POST['email'])) {
 		echo '<script> popupDisplay("' . lang("REGISTER_ERROR_EMAILTAKEN") .'"); </script>';
+	} elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+		echo '<script> popupDisplay("' . lang("REGISTER_ERROR_EMAILINVALID") .'"); </script>';
 	} else {
 		// Create user
 		$userRepo = new UserRepository();

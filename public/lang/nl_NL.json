@@ -39,6 +39,7 @@
 	"REGISTER_ALREADYSIGN": "Al een account?",
 	"REGISTER_ERROR_NOTSAME": "Het wachtwoord komt niet overeen.",
 	"REGISTER_ERROR_EMAILTAKEN": "Dit e-mailadres wordt al gebruikt.",
+	"REGISTER_ERROR_EMAILINVALID": "Het e-mailadres is ongeldig.",
 
 	"LOGIN_TITLE": "Inloggen",
 	"LOGIN_EMAIL": "E-mailadres",

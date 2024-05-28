@@ -39,6 +39,7 @@
 	"REGISTER_ALREADYSIGN": "已有账户？",
 	"REGISTER_ERROR_NOTSAME": "密码不匹配。",
 	"REGISTER_ERROR_EMAILTAKEN": "此电子邮件地址已被使用。",
+	"REGISTER_ERROR_EMAILINVALID": "电子邮件地址无效。",
 
 	"LOGIN_TITLE": "登录",
 	"LOGIN_EMAIL": "电子邮件",

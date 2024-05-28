@@ -39,6 +39,7 @@
 	"REGISTER_ALREADYSIGN": "すでにアカウントをお持ちですか？",
 	"REGISTER_ERROR_NOTSAME": "パスワードが一致しません。",
 	"REGISTER_ERROR_EMAILTAKEN": "このEメールアドレスは既に使用されています。",
+	"REGISTER_ERROR_EMAILINVALID": "メールアドレスが無効です。",
 
 	"LOGIN_TITLE": "ログイン",
 	"LOGIN_EMAIL": "Eメール",
