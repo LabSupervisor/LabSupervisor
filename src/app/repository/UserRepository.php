@@ -20,7 +20,6 @@ class UserRepository {
 
 				// Hash password using bcrypt
 				$password = password_hash($bindParam["password"], PASSWORD_BCRYPT);
-				LogRepository::fileSave(new Exception($bindParam["password"]));
 
 				// Create user
 				try {
