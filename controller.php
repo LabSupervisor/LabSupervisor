@@ -23,6 +23,9 @@ foreach ($item as $value) {
 					include $value->page;
 					return;
 				}
+			} else {
+				header("Location: /login");
+				return;
 			}
 		} else {
 			include $value->page;
