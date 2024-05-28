@@ -13,7 +13,7 @@
 			</div>
 		</footer>
 
-		<script src='https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.4.0/tsparticles.confetti.bundle.min.js'></script>
+		<script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.4.0/tsparticles.confetti.bundle.min.js"></script>
 		<script src="/public/js/code.js"></script>
 	</body>
 </html>
