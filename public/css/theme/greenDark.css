@@ -1,18 +1,18 @@
 /* Variables */
 :root {
 	--text-color: #FFFFFF;
-    --text-hover-color: #aedfbe;
-    --background-image: url("/public/img/background/greenLight.jpg");
+	--text-hover-color: #aedfbe;
+	--background-image: url("/public/img/background/greenLight.jpg");
 
-    --icon-yellow-color: #F4EB6D;
+	--icon-yellow-color: #F4EB6D;
 
-    --button-background-color: #107c41;
-    --button-hover-color: #36976a;
-    --button-text-color: #dafff0;
+	--button-background-color: #107c41;
+	--button-hover-color: #36976a;
+	--button-text-color: #dafff0;
 
-    --background-case-color: #00000069;
-    --case-border-color: #a8a8a875;
-    --case-field-background-color: #9e9e9e;
+	--background-case-color: #00000069;
+	--case-border-color: #a8a8a875;
+	--case-field-background-color: #9e9e9e;
 	--case-field-border-color: #ffffff00;
-    --case-field-text-color: #ffffff90;
+	--case-field-text-color: #ffffff90;
 }

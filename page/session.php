@@ -110,7 +110,7 @@
 
 							// Display modify button to teachers
 							if (in_array(TEACHER, $roleList)) {
-								echo "<form method='POST' action='/sessionmodifier'><input type='hidden' name='sessionId' value='" . $line["id"] . "'><button type='submit' class='button'><i class=\"ri-pencil-line\"></i> " . lang("SESSION_UPDATE") . "</button></form>";
+								echo "<form method='POST' action='/sessionmodifier'><input type='hidden' name='sessionId' value='" . $line["id"] . "'><button type='submit' class='button' title='" . lang("SESSION_UPDATE") . "'><i class=\"ri-pencil-line\"></i></button></form>";
 							}
 
 							// Only select active session
