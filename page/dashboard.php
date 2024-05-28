@@ -19,9 +19,6 @@
 
 	$sessionInfo = SessionRepository::getInfo($_SESSION["session"])[0];
 
-	// Percent system
-	$percentDone = round(SessionRepository::getAllStatusDone($_SESSION["session"]) / (count(SessionRepository::getChapter($_SESSION["session"])) * count(SessionRepository::getParticipants($_SESSION["session"]))) * 100, 2);
-
 	if (SessionRepository::getState($_SESSION["session"]) == 2) {
 		$state = "pause";
 		$stateButton = "<i class=\"ri-play-line\"></i>";
@@ -44,12 +41,18 @@
 		}
 	}
 
-
+	// Get participant count
 	$userCount = 0;
 	foreach (SessionRepository::getParticipants($_SESSION["session"]) as $value) {
 		if (UserRepository::isActive($value["iduser"]) == true AND in_array(STUDENT, UserRepository::getRole($value["iduser"]))) {
 			$userCount++;
 		}
+	}
+
+	$percentDone = 0;
+	if ($userCount > 0) {
+		// Percent system
+		$percentDone = round(SessionRepository::getAllStatusDone($_SESSION["session"]) / (count(SessionRepository::getChapter($_SESSION["session"])) * $userCount) * 100, 2);
 	}
 ?>
 
