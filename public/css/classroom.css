@@ -90,7 +90,7 @@ input::placeholder {
 
 .selectStudent {
 	background: var(--case-field-background-color);
-	border: 0;
+	border: solid 2px var(--case-field-border-color);
 	border-radius: 7px;
 	font-size: 15px;
 	color: var(--text-color);
