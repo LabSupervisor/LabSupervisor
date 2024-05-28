@@ -69,7 +69,20 @@ switch($_SERVER["REQUEST_METHOD"]) {
 
 			// Application asking for user done state percent
 			if ($data->ask == "get_all_status_percent") {
-				$response = round(SessionRepository::getAllStatusDone($data->idSession) / (count(SessionRepository::getChapter($data->idSession)) * count(SessionRepository::getParticipants($data->idSession))) * 100, 2);
+				// Get participant count
+				$userCount = 0;
+				foreach (SessionRepository::getParticipants($data->idSession) as $value) {
+					if (UserRepository::isActive($value["iduser"]) == true AND in_array(STUDENT, UserRepository::getRole($value["iduser"]))) {
+						$userCount++;
+					}
+				}
+
+				$response = 0;
+				if ($userCount > 0) {
+					// Percent system
+					$response = round(SessionRepository::getAllStatusDone($data->idSession) / (count(SessionRepository::getChapter($data->idSession)) * $userCount) * 100, 2);
+				}
+
 				// Answer API
 				echo '{"Response": {"Percent": "' . $response . '"}}';
 			}
