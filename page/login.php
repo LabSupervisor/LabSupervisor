@@ -24,11 +24,11 @@
 		<h2><i class="ri-user-line"></i> <?= lang("LOGIN_TITLE") ?></h2>
 	</div>
 	<div>
-		<input type="text" id="username" name="email" placeholder="<?= lang("LOGIN_EMAIL") ?>" value="<?= $identifiant ?>" required autofocus>
+		<input type="text" autocomplete="username" id="username" name="email" placeholder="<?= lang("LOGIN_EMAIL") ?>" value="<?= $identifiant ?>" required autofocus>
 	</div>
 	<div>
-		<input type="password" id="password" name="password" placeholder="<?= lang("LOGIN_PASSWORD") ?>" required>
-		<button class="showPasswordButton" tabindex="-1" type="button" id="showPasswordButton" class="ShowPasswordButton" onclick="togglePasswordVisibility()"><i id="eyeIcon" class="ri-eye-off-line"></i></button>
+		<input type="password" autocomplete="current-password" id="password" name="password" placeholder="<?= lang("LOGIN_PASSWORD") ?>" required>
+		<button class="showPasswordButton" tabindex="-1" type="button" id="showPasswordButton" onclick="togglePasswordVisibility()"><i id="eyeIcon" class="ri-eye-off-line"></i></button>
 	</div>
 	<div>
 		<button class="button" type="submit" name="login"><i class="ri-lock-unlock-line"></i> <?= lang("LOGIN_SUBMIT") ?></button>

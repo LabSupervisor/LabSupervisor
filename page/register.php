@@ -31,21 +31,21 @@
 		<h2><i class="ri-user-line"></i> <?= lang("REGISTER_TITLE") ?></h2>
 	</div>
 	<div>
-		<input type="email" name="email" placeholder="<?= lang("REGISTER_EMAIL") ?>" value="<?= $identifiant ?>" required autofocus>
+		<input type="email" autocomplete="username" name="email" placeholder="<?= lang("REGISTER_EMAIL") ?>" value="<?= $identifiant ?>" required autofocus>
 	</div>
 	<div>
-		<input type="password" id="password" name="password" placeholder="<?= lang("REGISTER_PASSWORD") ?>" value="<?= $password ?>" required>
-		<button class="showPasswordButton" tabindex="-1" type="button" id="showPasswordButton" onclick="togglePasswordVisibility('password', 'eyeIcon')"><i id="eyeIcon" class="ri-eye-off-line"></i></button>
+		<input type="password" autocomplete="new-password" id="password" name="password" placeholder="<?= lang("REGISTER_PASSWORD") ?>" value="<?= $password ?>" required>
+		<button class="showPasswordButton" tabindex="-1" type="button" onclick="togglePasswordVisibility('password', 'eyeIcon')"><i id="eyeIcon" class="ri-eye-off-line"></i></button>
 	</div>
 	<div>
-		<input type="password" id="passwordConf" name="confpass" placeholder="<?= lang("REGISTER_PASSWORD_CONFIRM") ?>" value="<?= $passwordConfirm ?>" required>
-		<button class="showPasswordButton" tabindex="-1" type="button" id="showPasswordButton" onclick="togglePasswordVisibility('passwordConf', 'eyeIconConf')"><i id="eyeIconConf" class="ri-eye-off-line"></i></button>
+		<input type="password" autocomplete="new-password" id="passwordConf" name="confpass" placeholder="<?= lang("REGISTER_PASSWORD_CONFIRM") ?>" value="<?= $passwordConfirm ?>" required>
+		<button class="showPasswordButton" tabindex="-1" type="button" onclick="togglePasswordVisibility('passwordConf', 'eyeIconConf')"><i id="eyeIconConf" class="ri-eye-off-line"></i></button>
 	</div>
 	<div>
-		<input type="text" name="name" placeholder="<?= lang("MAIN_NAME") ?>" class="Name" value="<?= $name ?>" required>
+		<input type="text" autocomplete="given-name" name="name" placeholder="<?= lang("MAIN_NAME") ?>" class="Name" value="<?= $name ?>" required>
 	</div>
 	<div>
-		<input type="text" name="surname" placeholder="<?= lang("MAIN_SURNAME") ?>" value="<?= $surname ?>" required>
+		<input type="text" autocomplete="family-name" name="surname" placeholder="<?= lang("MAIN_SURNAME") ?>" value="<?= $surname ?>" required>
 	</div>
 	<div>
 		<button class="button" type="submit" name="register"><i class="ri-id-card-line"></i> <?= lang("REGISTER_SUBMIT") ?></button>
