@@ -34,23 +34,21 @@ switch($_SERVER["REQUEST_METHOD"]) {
 				$participant = SessionRepository::getParticipants($data->idSession);
 				$chapter = SessionRepository::getChapter($data->idSession);
 
-				$state = '{"Response": {';
+				$response = array();
 
 				foreach ($participant as $value) {
-					if (UserRepository::isActive($value["iduser"]) == true AND in_array(STUDENT, UserRepository::getRole($value["iduser"]))) {
-						$state .= '"' . $value["iduser"] . '": {';
-						foreach ($chapter as $value2) {
-							$state .= '"' . $value2["id"] . '" : ' . SessionRepository::getStatus($value2["id"], $value["iduser"]) . ",";
+					if (UserRepository::isActive($value["iduser"]) == true && in_array(STUDENT, UserRepository::getRole($value["iduser"]))) {
+						$userId = $value["iduser"];
+						$response[$userId] = array();
+
+						foreach ($chapter as $chapterId) {
+							$response[$userId][$chapterId["id"]] = SessionRepository::getStatus($chapterId["id"], $userId);
 						}
-						$state = substr($state, 0, -1);
-						$state .= "},";
 					}
 				}
-				$state = substr($state, 0, -1);
-				$state .= "}}";
 
 				// Answer API
-				echo $state;
+				echo json_encode(["Response" => $response]);
 			}
 
 			// Application asking to update user status
