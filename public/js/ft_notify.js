@@ -10,5 +10,8 @@ function notify(msg) {
 				tag: "soManyNotification"
 			}
 		);
+		let audio = new Audio("/public/sound/notification.mp3")
+		audio.volume = 0.3;
+		audio.play()
 	}
 }

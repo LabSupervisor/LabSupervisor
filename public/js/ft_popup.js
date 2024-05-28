@@ -19,4 +19,8 @@ function popupDisplay(message) {
 
 	popup.appendChild(closeButton);
 	document.body.appendChild(popup);
+
+	let audio = new Audio("/public/sound/update.mp3")
+	audio.volume = 0.3;
+	audio.play()
 }
