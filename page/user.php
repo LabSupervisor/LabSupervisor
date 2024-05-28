@@ -75,11 +75,21 @@
 						if (!$classroomIdUser)
 							$classroomIdUser = 0;
 					?>
-					<td class="col6"><button class="modifybutton button" type="button" id="modify_<?= $userId ?>" onclick="updateUser(<?= $userId ?>, <?= $classroomIdUser ?>, <?= UserRepository::getRole($userId)[0] ?>)"><?= lang("USER_UPDATE_MODIFY") ?></button>
-					<form method="POST" onsubmit="return confirmForm('<?= lang('USER_UPDATE_DELETE_CONFIRMATION') ?>');">
-						<input type="hidden" name="userId" value="<?= $userId ?>">
-						<button class="button" type="submit" name="send" id="delete_<?= $userId ?>"><?= lang("USER_UPDATE_DELETE") ?></button>
-					</form>
+					<td class="col6">
+						<?php
+							if ($_SESSION["login"] != $userId) {
+						?>
+
+						<button class="modifybutton button" type="button" id="modify_<?= $userId ?>" title="<?= lang("USER_UPDATE_MODIFY") ?>" onclick="updateUser(<?= $userId ?>, <?= $classroomIdUser ?>, <?= UserRepository::getRole($userId)[0] ?>)"><i class="ri-pencil-line"></i></button>
+
+						<form method="POST" onsubmit="return confirmForm('<?= lang('USER_UPDATE_DELETE_CONFIRMATION') ?>');">
+							<input type="hidden" name="userId" value="<?= $userId ?>">
+							<button class="link" type="submit" name="send" id="delete_<?= $userId ?>"><i class="ri-delete-bin-line"></i> <?= lang("USER_UPDATE_DELETE") ?></button>
+						</form>
+
+						<?php
+							}
+						?>
 					</td>
 				</tr>
 			<?php

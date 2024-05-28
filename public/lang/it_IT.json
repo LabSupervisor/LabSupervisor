@@ -141,6 +141,7 @@
 	"USER_UPDATE_ACTION": "Azione",
 	"USER_UPDATE_MODIFY": "Modifica",
 	"USER_UPDATE_DELETE": "Elimina",
+	"USER_UPDATE_SAVE": "Salva",
 	"USER_UPDATE_NOTIFICATION": "Modifiche salvate.",
 	"USER_UPDATE_DELETE_NOTIFICATION": "Utente eliminato.",
 	"USER_UPDATE_DELETE_CONFIRMATION": "Sei sicuro di voler eliminare questo utente?",

@@ -141,6 +141,7 @@
 	"USER_UPDATE_ACTION": "Действие",
 	"USER_UPDATE_MODIFY": "Изменить",
 	"USER_UPDATE_DELETE": "Удалить",
+	"USER_UPDATE_SAVE": "Сохранить",
 	"USER_UPDATE_NOTIFICATION": "Изменения сохранены.",
 	"USER_UPDATE_DELETE_NOTIFICATION": "Пользователь удален.",
 	"USER_UPDATE_DELETE_CONFIRMATION": "Вы уверены, что хотите удалить этого пользователя?",

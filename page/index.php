@@ -31,7 +31,7 @@
 			<div class="mainbox">
 				<h2><?= lang("NAVBAR_USER") ?></h2>
 				<a><?= lang("INDEX_ADMIN_USER") ?></a>
-				<a class="button" href="/utilisateurs"><i class="ri-folder-line"></i> <?= lang("NAVBAR_USER") ?></a>
+				<a class="button" href="/utilisateurs"><i class="ri-folder-user-line"></i> <?= lang("NAVBAR_USER") ?></a>
 			</div>
 			<div class="mainbox">
 				<h2><?= lang("NAVBAR_LOG") ?></h2>

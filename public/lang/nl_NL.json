@@ -141,6 +141,7 @@
 	"USER_UPDATE_ACTION": "Actie",
 	"USER_UPDATE_MODIFY": "Bewerken",
 	"USER_UPDATE_DELETE": "Verwijderen",
+	"USER_UPDATE_SAVE": "Opslaan",
 	"USER_UPDATE_NOTIFICATION": "Wijzigingen opgeslagen.",
 	"USER_UPDATE_DELETE_NOTIFICATION": "Gebruiker verwijderd.",
 	"USER_UPDATE_DELETE_CONFIRMATION": "Weet je zeker dat je deze gebruiker wilt verwijderen?",

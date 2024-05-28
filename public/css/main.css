@@ -282,7 +282,11 @@ body a {
 	color: var(--text-hover-color);
 	font-style: italic;
 
-	cursor: not-allowed !important;
+	cursor: not-allowed;
+}
+
+.button:disabled:hover {
+	color: var(--text-hover-color);
 }
 
 .button:hover {
@@ -308,6 +312,22 @@ body a {
 }
 
 .back:hover {
+	color: var(--text-hover-color);
+	transition: 200ms;
+}
+
+.link {
+	color: var(--text-color);
+	text-decoration: none;
+	font-size: 16px;
+	transition: 200ms;
+	border: 0;
+	background: 0;
+
+	cursor: pointer;
+}
+
+.link:hover {
 	color: var(--text-hover-color);
 	transition: 200ms;
 }

@@ -88,10 +88,16 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 
 	var modifyButton = document.getElementById("modify_" + userId);
 
-	confirmButton = document.createElement("input");
+	confirmButton = document.createElement("button");
 	confirmButton.setAttribute("type", "submit");
 	confirmButton.setAttribute("name", "modify");
 	confirmButton.setAttribute("class", "button");
+	confirmButton.setAttribute("title", lang("USER_UPDATE_SAVE"));
+
+	var icon = document.createElement("i");
+	icon.classList.add("ri-save-2-line");
+	confirmButton.appendChild(icon);
+
 	modifyButton.parentNode.replaceChild(confirmButton, modifyButton);
 }
 
