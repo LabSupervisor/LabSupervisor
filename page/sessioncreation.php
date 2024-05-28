@@ -131,20 +131,23 @@
 
 				<!-- State -->
 			<?php
-				if (!isset($_POST['sessionId'])) {
+				$checked = "";
+				if (isset($_POST['sessionId'])) {
+					if (SessionRepository::getState($_POST['sessionId']) != 0) {
+						$checked = "checked";
+					}
+				}
 			?>
 				<div>
 					<h2><i class="ri-door-open-line"></i> <?= lang("SESSION_CREATE_STATE") ?></h2>
 				</div>
 				<div>
 					<label class="checkboxContainer"><?= lang("SESSION_CREATE_STATE_OPEN") ?>
-						<input class="checkbox" type="checkbox" name="state">
+						<input class="checkbox" type="checkbox" name="state" <?= $checked ?>>
 						<span class="checkmark"></span>
 					</label>
 				</div>
-			<?php
-				}
-			?>
+
 			</div>
 		</div>
 

@@ -7,7 +7,7 @@ function notify(msg) {
 		new Notification(lang("MAIN_TITLE"), {
 				body: msg,
 				icon: "/public/img/icon/logo.png",
-				tag: "soManyNotification"
+				tag: "labsupervisor_" + idSession
 			}
 		);
 		let audio = new Audio("/public/sound/notification.mp3")

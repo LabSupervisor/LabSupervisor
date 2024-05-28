@@ -156,6 +156,15 @@ else if (isset($_POST['updateSession'])) {
 			SessionRepository::deleteChapter($deletedChapter);
 		}
 	}
+
+	if (isset($_POST["state"])) {
+		if (SessionRepository::getState($sessionId) == 0) {
+			SessionRepository::setState($sessionId, 1);
+		}
+	} else {
+		SessionRepository::setState($sessionId, 0);
+	}
+
 	$_POST['sessionId'] = $sessionId;
 }
 
