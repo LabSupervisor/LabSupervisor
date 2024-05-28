@@ -5,8 +5,10 @@
 		LabSupervisor\functions\lang;
 
 	$identifiant = "";
+	$password = "";
 	if (isset($_POST["email"])) {
 		$identifiant = $_POST["email"];
+		$password = $_POST["password"];
 	}
 
 	// Import header
@@ -27,7 +29,7 @@
 		<input type="text" autocomplete="username" id="username" name="email" placeholder="<?= lang("LOGIN_EMAIL") ?>" value="<?= $identifiant ?>" required autofocus>
 	</div>
 	<div>
-		<input type="password" autocomplete="current-password" id="password" name="password" placeholder="<?= lang("LOGIN_PASSWORD") ?>" required>
+		<input type="password" autocomplete="current-password" id="password" name="password" placeholder="<?= lang("LOGIN_PASSWORD") ?>" value="<?= $password ?>" required>
 		<button class="showPasswordButton" tabindex="-1" type="button" id="showPasswordButton" onclick="togglePasswordVisibility()"><i id="eyeIcon" class="ri-eye-off-line"></i></button>
 	</div>
 	<div>
