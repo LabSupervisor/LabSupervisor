@@ -159,7 +159,7 @@
 		"connect": true,
 		"role": [1, 2, 3]
 	},
-	
+
 	"api": {
 		"route": [
 			"/connect"

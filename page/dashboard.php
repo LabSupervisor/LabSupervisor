@@ -65,24 +65,24 @@
 		<a><?= htmlspecialchars($sessionInfo["description"]) ?></a><br><br>
 	<?php } ?>
 	<div class="buttonBox">
-		<form method="POST">
+		<form method="POST" onsubmit="loading()">
 			<input type="hidden" name="sessionId" value="<?= $_SESSION["session"] ?>">
 		<?php
 		if (SessionRepository::getState($_SESSION["session"]) != 0) {
 		?>
+			<button class="button" type="submit" name="close" title="<?= lang("DASHBOARD_SESSION_END") ?>"><i class="ri-stop-line"></i></i></button>
 			<button class="button" type="submit" name="pause" value="<?= $state ?>" title="<?= lang("DASHBOARD_BUTTON_PAUSE") ?>"><?= $stateButton ?></button>
-			<button class="button" type="submit" name="close"><i class="ri-close-circle-line"></i> <?= lang("DASHBOARD_SESSION_END") ?></button>
 		<?php
 		} else {
 		?>
-			<button class="button" type="submit" name="open" value="1"><i class="ri-door-open-line"></i><?= lang("SESSION_ACTION_OPEN") ?></button>
+			<button class="button" type="submit" name="open" value="1" title="<?= lang("SESSION_ACTION_OPEN") ?>"><i class="ri-door-open-line"></i></button>
 		<?php
 		}
 		?>
 		</form>
 		<form method="get">
 			<input type="hidden" name="view" value="<?= $view ?>">
-			<button class="button" type="submit"><i class="ri-arrow-left-right-line"></i> <?= lang("DASHBOARD_CHANGE_VIEW") ?></button>
+			<button class="button" type="submit" title="<?= lang("DASHBOARD_CHANGE_VIEW") ?>"><i class="ri-arrow-left-right-line"></i></button>
 		</form>
 	</div>
 	<div class="infoBox">
@@ -161,7 +161,7 @@
 						$statusList = "";
 						$index = 1;
 						foreach (SessionRepository::getChapter($_SESSION["session"]) as $value) {
-							$chapterList .= $index . " - " . $value["title"] . "<br>";
+							$chapterList .= $index . " - " . htmlspecialchars($value["title"]) . "<br>";
 							$statusList .= statusFormat($userId, SessionRepository::getChapterId($value["title"]), SessionRepository::getStatus(SessionRepository::getChapterId($value["title"]), $userId));
 
 							$index++;
@@ -171,8 +171,8 @@
 
 						// Fill table
 						echo "<tr>";
-						echo "<td class='col1'>" . $participantName["surname"] . "</td>";
-						echo "<td class='col1'>" . $participantName["name"] . "</td>";
+						echo "<td class='col1'>" . htmlspecialchars($participantName["surname"]) . "</td>";
+						echo "<td class='col1'>" . htmlspecialchars($participantName["name"]) . "</td>";
 						echo "<td class='col2'>" . $chapterList . "</td>";
 						echo "<td class='col3'><div class='statusBallGroup'>" . $statusList . "</div></td>";
 						if (SessionRepository::getState($_SESSION["session"]) != 0) {
@@ -195,6 +195,7 @@
 
 <script src="/public/js/function/statusUpdate.js"></script>
 <script src="/public/js/function/notify.js"></script>
+<script src="/public/js/function/loading.js"></script>
 <script src="/public/js/dashboardUpdate.js"></script>
 
 <script>
