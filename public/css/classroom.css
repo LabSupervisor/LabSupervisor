@@ -10,6 +10,10 @@
 	user-select: text;
 }
 
+.maintable td {
+	padding: 2px 15px 2px 15px;
+}
+
 /* Side menu */
 .lateral {
 	vertical-align: top;
