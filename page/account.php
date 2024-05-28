@@ -102,7 +102,7 @@
 </form>
 
 <script src="/public/js/accountPassword.js"></script>
-<script src="/public/js/ft_loading.js"></script>
+<script src="/public/js/function/ft_loading.js"></script>
 
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');

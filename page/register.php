@@ -7,7 +7,7 @@
 	mainHeader(lang("REGISTER_TITLE"), true);
 
 	// Logic
-	echo '<script src="/public/js/ft_popup.js"></script>';
+	echo '<script src="/public/js/function/ft_popup.js"></script>';
 	require($_SERVER["DOCUMENT_ROOT"] . '/logic/register.php');
 
 	$identifiant = "";
@@ -56,7 +56,7 @@
 </form>
 
 <script src="/public/js/registerPassword.js"></script>
-<script src="/public/js/ft_loading.js"></script>
+<script src="/public/js/function/ft_loading.js"></script>
 
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');

@@ -128,8 +128,8 @@
 	</div>
 </div>
 
-<script src="/public/js/ft_selectClassroom.js"></script>
-<script src="/public/js/ft_loading.js"></script>
+<script src="/public/js/function/ft_selectClassroom.js"></script>
+<script src="/public/js/function/ft_loading.js"></script>
 
 <?php
 	// Footer

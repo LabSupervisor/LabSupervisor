@@ -189,13 +189,13 @@
 	var nbChapter = 1;
 </script>
 
-<script src="/public/js/ft_popup.js"></script>
-<script src="/public/js/ft_addChapter.js"></script>
-<script src="/public/js/ft_updateClassroom.js"></script>
-<script src="/public/js/ft_updateChapter.js"></script>
-<script src="/public/js/ft_deleteChapter.js"></script>
-<script src="/public/js/ft_loading.js"></script>
-<script src="/public/js/ft_popupConfirm.js"></script>
+<script src="/public/js/function/ft_popup.js"></script>
+<script src="/public/js/function/ft_addChapter.js"></script>
+<script src="/public/js/function/ft_updateClassroom.js"></script>
+<script src="/public/js/function/ft_updateChapter.js"></script>
+<script src="/public/js/function/ft_deleteChapter.js"></script>
+<script src="/public/js/function/ft_loading.js"></script>
+<script src="/public/js/function/ft_popupConfirm.js"></script>
 
 <?php
 	if (isset($_POST["titleSession"])) {

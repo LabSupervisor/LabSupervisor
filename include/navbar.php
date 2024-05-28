@@ -126,7 +126,7 @@
 ?>
 
 <?php
-	echo "<script src='/public/js/ft_lang.js'></script>";
+	echo "<script src='/public/js/function/ft_lang.js'></script>";
 	if (isset($_SESSION["login"]))
-		echo "<script src='/public/js/ft_updateTheme.js'></script>";
+		echo "<script src='/public/js/function/ft_updateTheme.js'></script>";
 ?>
