@@ -137,7 +137,7 @@
 	var videoServerPort = <?= $_ENV["VIDEO_SERVER_PORT"] ?>;
 </script>
 
-<script src="/public/js/function/ft_updateStatus.js"></script>
+<script src="/public/js/function/updateStatus.js"></script>
 
 <!-- Import PeerJS server -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.2/peerjs.min.js"></script>

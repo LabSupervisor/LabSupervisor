@@ -12,7 +12,7 @@
 	mainHeader(lang("NAVBAR_USER"), true);
 
 	// Logic
-	echo '<script src="/public/js/function/ft_popup.js"></script>';
+	echo '<script src="/public/js/function/popup.js"></script>';
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateAdminUser.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/deleteAdminUser.php");
 
@@ -114,9 +114,9 @@
 	</div>
 </form>
 
-<script src="/public/js/function/ft_updateUser.js"></script>
-<script src="/public/js/function/ft_loading.js"></script>
-<script src="/public/js/function/ft_popupConfirm.js"></script>
+<script src="/public/js/function/updateUser.js"></script>
+<script src="/public/js/function/loading.js"></script>
+<script src="/public/js/function/popupConfirm.js"></script>
 
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');

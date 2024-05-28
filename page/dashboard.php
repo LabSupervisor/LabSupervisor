@@ -193,8 +193,8 @@
 	}
 ?>
 
-<script src="/public/js/function/ft_statusUpdate.js"></script>
-<script src="/public/js/function/ft_notify.js"></script>
+<script src="/public/js/function/statusUpdate.js"></script>
+<script src="/public/js/function/notify.js"></script>
 <script src="/public/js/dashboardUpdate.js"></script>
 
 <script>

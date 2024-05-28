@@ -130,7 +130,7 @@
 	</table>
 </div>
 
-<script src="/public/js/function/ft_popup.js"></script>
+<script src="/public/js/function/popup.js"></script>
 
 <?php
 	} else {

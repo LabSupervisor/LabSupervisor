@@ -81,23 +81,6 @@
 				</div>
 			</div>';
 
-		// Theme
-
-		// // Get current user theme
-		// $theme = "light";
-		// $icon = "<i class='ri-sun-line'></i>";
-
-		// if (UserRepository::getSetting($_SESSION["login"])["theme"] == "0") {
-		// 	$theme = "Light";
-		// 	$icon = "<i class='ri-moon-line'></i>";
-		// }
-
-		// $navbarItem .= '
-		// 	<div class="item">
-		// 		<button class="theme" id="themeButton" type="button" name="theme"><i class="ri-sun-line"></i></button>
-		// 	</div>
-		// </div>';
-
 		$navbarItem .= '
 			<div class="item theme">
 				<i class="ri-sun-line"></i>
@@ -126,7 +109,7 @@
 ?>
 
 <?php
-	echo "<script src='/public/js/function/ft_lang.js'></script>";
+	echo "<script src='/public/js/function/lang.js'></script>";
 	if (isset($_SESSION["login"]))
-		echo "<script src='/public/js/function/ft_updateTheme.js'></script>";
+		echo "<script src='/public/js/function/updateTheme.js'></script>";
 ?>
