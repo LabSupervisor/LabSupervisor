@@ -22,7 +22,7 @@
 
 <link rel="stylesheet" href="/public/css/form.css">
 
-<form class="mainbox mainform" action="register" method="post">
+<form class="mainbox mainform" method="post" onsubmit="loading()">
 	<div>
 		<h2><i class="ri-user-line"></i> <?= lang("REGISTER_TITLE") ?></h2>
 	</div>
@@ -52,6 +52,7 @@
 </form>
 
 <script src="/public/js/registerPassword.js"></script>
+<script src="/public/js/ft_loading.js"></script>
 
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');

@@ -19,7 +19,7 @@
 
 <link rel="stylesheet" href="/public/css/form.css">
 
-<form class="mainbox mainform" action="login" method="post">
+<form class="mainbox mainform" method="post" onsubmit="loading()">
 	<div>
 		<h2><i class="ri-user-line"></i> <?= lang("LOGIN_TITLE") ?></h2>
 	</div>
@@ -42,6 +42,7 @@
 </form>
 
 <script src="/public/js/loginPassword.js"></script>
+<script src="/public/js/ft_loading.js"></script>
 
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');
