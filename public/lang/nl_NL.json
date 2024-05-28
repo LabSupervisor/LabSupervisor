@@ -87,6 +87,7 @@
 	"DASHBOARD_PAUSE": "Gepauzeerd",
 	"DASHBOARD_SCREENSHARE": "Scherm delen",
 	"DASHBOARD_SCREENSHARE_OPEN": "Scherm delen openen",
+	"DASHBOARD_EMPTY_CLASSROOM": "Er zijn geen studenten in deze sessie.",
 
 	"SESSION_PANEL_CHAPTER": "Hoofdstuk",
 	"SESSION_PANEL_ACTION": "Actie",

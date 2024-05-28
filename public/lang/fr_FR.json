@@ -87,6 +87,7 @@
 	"DASHBOARD_PAUSE": "En pause",
 	"DASHBOARD_SCREENSHARE": "Partage d'écran",
 	"DASHBOARD_SCREENSHARE_OPEN": "Ouvrir le partage d'écran",
+	"DASHBOARD_EMPTY_CLASSROOM": "Il n'y a aucun élève dans cette session.",
 
 	"SESSION_PANEL_CHAPTER": "Chapitre",
 	"SESSION_PANEL_ACTION": "Action",

@@ -87,6 +87,7 @@
 	"DASHBOARD_PAUSE": "На паузе",
 	"DASHBOARD_SCREENSHARE": "Поделиться экраном",
 	"DASHBOARD_SCREENSHARE_OPEN": "Открыть общий экран",
+	"DASHBOARD_EMPTY_CLASSROOM": "В этой сессии нет студентов.",
 
 	"SESSION_PANEL_CHAPTER": "Глава",
 	"SESSION_PANEL_ACTION": "Действие",

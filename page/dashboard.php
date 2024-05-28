@@ -43,6 +43,14 @@
 			$currentView = "detail";
 		}
 	}
+
+
+	$userCount = 0;
+	foreach (SessionRepository::getParticipants($_SESSION["session"]) as $value) {
+		if (UserRepository::isActive($value["iduser"]) == true AND in_array(STUDENT, UserRepository::getRole($value["iduser"]))) {
+			$userCount++;
+		}
+	}
 ?>
 
 <link rel="stylesheet" href="/public/css/dashboard.css">
@@ -83,6 +91,10 @@
 	</div>
 </div>
 
+<?php
+	if ($userCount > 0) {
+?>
+
 <div class="mainbox maintable">
 	<table>
 		<?php if ($currentView == "default") { ?>
@@ -102,6 +114,7 @@
 				// Select paticipants
 				foreach (SessionRepository::getParticipants($_SESSION["session"]) as $value) {
 					if (UserRepository::isActive($value["iduser"]) == true AND in_array(STUDENT, UserRepository::getRole($value["iduser"]))) {
+						$userCount++;
 						$userId = $value["iduser"];
 						$participantName = UserRepository::getInfo($userId);
 
@@ -170,6 +183,12 @@
 		<?php } ?>
 	</table>
 </div>
+
+<?php
+	} else {
+		echo "<div class='singleErrorContainer'><a class='singleErrorTitle'>" . lang("DASHBOARD_EMPTY_CLASSROOM") . "</a></div>";
+	}
+?>
 
 <script src="/public/js/ft_statusUpdate.js"></script>
 <script src="/public/js/ft_notify.js"></script>

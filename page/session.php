@@ -134,7 +134,7 @@
 
 <?php
 	} else {
-		echo "<div class='nosessionmain'><div class='nosessioncontent'><a class='nosessiontitle'>" . lang("SESSION_EMPTY") . "</a></div></div>";
+		echo "<div class='singleErrorContainer'><a class='singleErrorTitle'>" . lang("SESSION_EMPTY") . "</a></div>";
 	}
 
 	if (isset($notification)) {
