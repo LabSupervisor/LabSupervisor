@@ -39,6 +39,7 @@ form {
 	outline: none;
 	background: var(--case-field-background-color);
 	color: var(--text-color);
+	border: solid 2px var(--case-field-border-color);
 
 	margin-top: 6px;
 	margin-left: 10px;
