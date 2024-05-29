@@ -38,6 +38,7 @@ form {
 	font-size: 16px;
 	outline: none;
 	background: var(--case-field-background-color);
+	color: var(--text-color);
 
 	margin-top: 6px;
 	margin-left: 10px;
