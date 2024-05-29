@@ -70,7 +70,7 @@
 		// Profil pages
 		$navbarItem .= '
 			<div class="item profil">
-				<a class="title"><i class="ri-user-line"></i>' . nameFormat($_SESSION["login"], true) . '</a>
+				<a class="title" href="/compte"><i class="ri-user-line"></i>' . nameFormat($_SESSION["login"], true) . '</a>
 				<div class="sub">
 					<div class="item">
 						<a href="/compte"><i class="ri-account-circle-line"></i>' . lang("NAVBAR_PROFIL_ACCOUNT") . '</a>
