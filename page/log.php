@@ -67,7 +67,7 @@
 			?>
 		</tbody>
 	</table>
-	<form class="pageGroup" method="GET">
+	<form class="pageGroup" method="GET" onsubmit="loading()">
 		<input type="hidden" name="trace">
 		<?php
 			if ($_GET["page"] != 1) {
@@ -109,7 +109,7 @@
 	<a href="/logs?error">
 		<button class="button"><i class="ri-error-warning-line"></i> <?= lang("LOG_ERROR") ?></button>
 	</a>
-	<form method="get">
+	<form method="get" onsubmit="loading()">
 		<input type="hidden" name="error">
 		<input type="date" id="date" name="date" value="<?= $fileDate ?>">
 		<button class="button" type="submit"><?= lang("LOG_ERROR_SUBMIT") ?></button>
@@ -182,7 +182,7 @@
 		?>
 		</tbody>
 	</table>
-	<form class="pageGroup" method="GET">
+	<form class="pageGroup" method="GET" onsubmit="loading()">
 		<input type="hidden" name="error">
 		<input type="hidden" name="date" value="<?= $fileDate ?>">
 		<?php
@@ -217,6 +217,8 @@
 <?php
 }
 ?>
+
+<script src="/public/js/function/loading.js"></script>
 
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');

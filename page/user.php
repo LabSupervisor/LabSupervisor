@@ -99,7 +99,7 @@
 			?>
 			</tbody>
 		</table>
-		<form class="pageGroup" method="GET">
+		<form class="pageGroup" method="GET" onsubmit="loading()">
 			<?php
 				if ($_GET["page"] != 1) {
 			?>
