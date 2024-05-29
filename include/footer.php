@@ -3,7 +3,8 @@
 
 		<footer>
 			<div class="item">
-				<a>© <?= \LabSupervisor\functions\lang("MAIN_TITLE") ?> 2024</a>
+				<a>© <?= \LabSupervisor\functions\lang("MAIN_TITLE") ?> 2024 - </a>
+				<a class="version"> Beta V0.5</a>
 				<div class="linkGroup">
 					<a class="link" href="https://github.com/LabSupervisor/LabSupervisor" target="_blank" title="GitHub"><i class="ri-github-line"></i></a>
 					<a class="link" href="https://twitter.com/LabSupervisor" target="_blank" title="X"><i class="ri-twitter-line"></i></i></a>

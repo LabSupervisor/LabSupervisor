@@ -23,6 +23,7 @@ footer .item {
 
 footer .linkGroup {
 	margin-left: 20px;
+	margin-right: 20px;
 }
 
 footer .link {
@@ -34,4 +35,8 @@ footer .link {
 footer .link:hover {
 	color: var(--text-hover-color);
 	transition: 200ms;
+}
+
+footer .version {
+	font-style: italic;
 }
