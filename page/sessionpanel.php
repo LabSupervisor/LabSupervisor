@@ -121,7 +121,7 @@
 		}
 		echo "<div class='lslinkButton'><form method='POST'>";
 		echo "<input type='hidden' name='sessionId' value='" . $_SESSION["session"] . "'>";
-		echo "<input class='lslinkid' type='number' name='number' value='" . $linkId. "'>";
+		echo "<input class='lslinkid' type='number' min='100' max='999' name='number' value='" . $linkId. "'>";
 		echo "<button class='button' type='submit' name='link'>" . $buttonText . "</button>";
 		echo "</form>";
 
