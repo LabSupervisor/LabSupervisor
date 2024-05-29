@@ -10,18 +10,14 @@
 	// Import header
 	mainHeader(lang("NAVBAR_LOG"), true);
 
+	if (!isset($_GET["date"])) {
+		$logDate = date("Y-m-d");
+	} else {
+		$logDate = $_GET["date"];
+	}
 ?>
 
 <link rel="stylesheet" href="/public/css/log.css">
-
-<?php
-	if (!isset($_GET["trace"]) && !isset($_GET["error"])) {
-		$_GET["trace"] = "true";
-	}
-
-	// If traces are ask
-	if (isset($_GET["trace"])) {
-?>
 
 <div class="mainbox buttonContainer">
 	<a href="/logs?trace">
@@ -30,7 +26,29 @@
 	<a href="/logs?error">
 		<button class="button"><i class="ri-error-warning-line"></i> <?= lang("LOG_ERROR") ?></button>
 	</a>
+	<form method="get" onsubmit="loading()">
+		<?php
+			if (isset($_GET["trace"])) {
+				$page = "trace";
+			} else {
+				$page = "error";
+			}
+		?>
+		<input type="hidden" name="<?= $page ?>">
+		<input type="date" id="date" name="date" value="<?= $logDate ?>">
+		<button class="button" type="submit"><?= lang("LOG_ERROR_SUBMIT") ?></button>
+	</form>
 </div>
+
+<?php
+	if (!isset($_GET["trace"]) && !isset($_GET["error"])) {
+		$_GET["trace"] = "true";
+	}
+
+	// If traces are ask
+	if (isset($_GET["trace"])) {
+		// Select current date if no one is given: default value
+?>
 
 <div class="mainbox maintable">
 	<table>
@@ -50,7 +68,7 @@
 
 			$i = 0;
 			$max = 20;
-			foreach (LogRepository::getLogs() as $line) {
+			foreach (LogRepository::getLogs($logDate) as $line) {
 				if ($i >= ($_GET["page"] -1) * $max && $i < $_GET["page"] * $max) {
 					$userInfo = UserRepository::getInfo($line["iduser"]);
 					$username = $userInfo["name"] . " " . $userInfo["surname"];
@@ -69,6 +87,7 @@
 	</table>
 	<form class="pageGroup" method="GET" onsubmit="loading()">
 		<input type="hidden" name="trace">
+		<input type="hidden" name="date" value="<?= $logDate ?>">
 		<?php
 			if ($_GET["page"] != 1) {
 		?>
@@ -79,7 +98,7 @@
 		<button class="button" disabled><i class="ri-arrow-left-s-line"></i></button>
 		<?php
 			}
-			if (count(LogRepository::getLogs()) >= $_GET["page"] * $max) {
+			if (count(LogRepository::getLogs($logDate)) >= $_GET["page"] * $max) {
 		?>
 		<button class="button" type="submit" name="page" value="<?= $_GET["page"] +1 ?>"><i class="ri-arrow-right-s-line"></i></button>
 		<?php
@@ -91,34 +110,15 @@
 		?>
 	</form>
 </div>
+
 <?php
 // If errors are ask
 } else if (isset($_GET["error"])) {
-	// Select current date if no one is given: default value
-	if (!isset($_GET["date"])) {
-		$fileDate = date("Y-m-d");
-	} else {
-		$fileDate = $_GET["date"];
-	}
 ?>
-
-<div class="mainbox buttonContainer">
-	<a href="/logs?trace">
-		<button class="button"><i class="ri-draft-line"></i> <?= lang("LOG_TRACE") ?></button>
-	</a>
-	<a href="/logs?error">
-		<button class="button"><i class="ri-error-warning-line"></i> <?= lang("LOG_ERROR") ?></button>
-	</a>
-	<form method="get" onsubmit="loading()">
-		<input type="hidden" name="error">
-		<input type="date" id="date" name="date" value="<?= $fileDate ?>">
-		<button class="button" type="submit"><?= lang("LOG_ERROR_SUBMIT") ?></button>
-	</form>
-</div>
 
 <?php
 	// Get errors file
-	$file = $_SERVER["DOCUMENT_ROOT"] . "/log/" . $fileDate . ".log";
+	$file = $_SERVER["DOCUMENT_ROOT"] . "/log/" . $logDate . ".log";
 	if (file_exists($file)) {
 		$logs = file_get_contents($file);
 ?>
@@ -138,12 +138,12 @@
 			$listDate = array();
 			$temp = explode("\n", $logs);
 			foreach($temp as $value) {
-				if (preg_match("/\[" . $fileDate . " (.*?)\]/", $value, $matches)) {
+				if (preg_match("/\[" . $logDate . " (.*?)\]/", $value, $matches)) {
 					array_push($listDate, $matches[1]);
 				}
 			}
 
-			$log = preg_split("/\[" . $fileDate . " (.*?)\]/", $logs);
+			$log = preg_split("/\[" . $logDate . " (.*?)\]/", $logs);
 
 			if (!isset($_GET["page"])) {
 				$_GET["page"] = 1;
@@ -184,7 +184,7 @@
 	</table>
 	<form class="pageGroup" method="GET" onsubmit="loading()">
 		<input type="hidden" name="error">
-		<input type="hidden" name="date" value="<?= $fileDate ?>">
+		<input type="hidden" name="date" value="<?= $logDate ?>">
 		<?php
 			if ($_GET["page"] != 1) {
 		?>
@@ -207,13 +207,11 @@
 		?>
 	</form>
 </div>
-
 	<?php
 	} else {
 		echo "<div class='nologmain'><div class='nologcontent'><a class='nologtitle'>" . lang("LOG_ERROR_FILENOTFOUND") . "</a></div></div>";
 	}
 	?>
-
 <?php
 }
 ?>
