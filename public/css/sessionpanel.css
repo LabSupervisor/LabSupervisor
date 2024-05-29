@@ -29,6 +29,20 @@
 	justify-content: center;
 }
 
+.erase {
+	font-size: 20px;
+	transition: 200ms;
+
+	margin-right: 8px;
+
+	cursor: pointer;
+}
+
+.erase:hover {
+	color: var(--text-hover-color);
+	transition: 200ms;
+}
+
 .pausedTitle {
 	font-size: 20px;
 	font-style: italic;

@@ -93,6 +93,7 @@
 				<td class="col3"><div class="<?= $statusBall ?>" id="statusBall_<?= $chapter['id'] ?>"></div></td>
 				<td class="col2" id="action" <?= $styleAction ?>>
 					<input type="hidden" name="liste" value="<?php echo $chapter['id']; ?>">
+					<a class="erase" onclick="setStatus(<?= $chapter['id'] ?>, 0)" title="<?= lang("SESSION_PANEL_CANCEL") ?>"><i class="ri-eraser-line"></i></a>
 					<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 1)" title="<?= lang("SESSION_PANEL_HELP") ?>"><i class="ri-error-warning-line"></i></button>
 					<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 2)" title="<?= lang("SESSION_PANEL_WIP") ?>"><i class="ri-edit-line"></i></button>
 					<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 3)" title="<?= lang("SESSION_PANEL_DONE") ?>"><i class="ri-thumb-up-line"></i></button>

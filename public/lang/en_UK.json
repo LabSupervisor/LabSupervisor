@@ -93,6 +93,7 @@
 	"SESSION_PANEL_CHAPTER": "Chapter",
 	"SESSION_PANEL_ACTION": "Action",
 	"SESSION_PANEL_STATUS": "Status",
+	"SESSION_PANEL_CANCEL": "Cancel",
 	"SESSION_PANEL_HELP": "I need help!",
 	"SESSION_PANEL_WIP": "Work in progress.",
 	"SESSION_PANEL_DONE": "Done!",
