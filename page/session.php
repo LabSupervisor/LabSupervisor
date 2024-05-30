@@ -57,6 +57,10 @@
 <?php
 	}
 
+	if (!isset($_GET["page"])) {
+		$_GET["page"] = 1;
+	}
+
 	if (count($sessionList) > 0) {
 ?>
 
@@ -74,60 +78,87 @@
 		</thead>
 		<tbody>
 			<?php
+				$j = 0;
+				$max = 5;
 				for($i = 0; $i < count($sessionList); $i++) {
-					echo "<tr>";
-					foreach($sessionList[$i] as $line) {
-						if ($line["state"] == 0) {
-							$buttonStyle = "statusRed";
-						} else {
-							$buttonStyle = "statusGreen";
-						}
-
-						$creatorName = nameFormat($line["idcreator"], false);
-
-						echo '<td class="col1" title="' . htmlspecialchars($line["title"]) . '">'. htmlspecialchars($line["title"]) ."</td>";
-
-						if ($line["description"])
-							$description = htmlspecialchars($line["description"]);
-						else
-							$description = lang("SESSION_DESCRIPTION_EMPTY");
-						echo '<td class="col2" title="' . $description . '"><div class="col2">'. $description . "</div></td>";
-
-						echo '<td class="col3">' . htmlspecialchars($creatorName) . "</td>";
-						echo '<td class="col4">' . date("d/m/Y H:i", strtotime($line["date"])) . "</td>";
-
-						$nbParticipantActive = 0;
-						foreach (SessionRepository::getParticipants($line["id"]) as $value) {
-							if (UserRepository::isActive($value["iduser"]) == true) {
-								$nbParticipantActive = $nbParticipantActive +1 ;
-							}
-						}
-
-						echo '<td>' . $nbParticipantActive-1 . "</td>";
-						echo '<td class="colState"><div class="statusBall ' . $buttonStyle . '"</div></td>';
-						if (!in_array(ADMIN, $roleList)) {
-							echo "<td class='col5'>";
-
-							// Display modify button to teachers
-							if (in_array(TEACHER, $roleList)) {
-								echo "<form method='POST' action='/sessionmodifier'><input type='hidden' name='sessionId' value='" . $line["id"] . "'><button type='submit' class='button' title='" . lang("SESSION_UPDATE") . "'><i class=\"ri-pencil-line\"></i></button></form>";
-							}
-
-							// Only select active session
-							if ($line["state"] != 0 || in_array(TEACHER, $roleList)) {
-								echo "<form method='POST'><button type='submit' name='connect[" . $line["id"] . "]' value='" . lang("SESSION_STATE_OPEN") . "' class='button'><i class=\"ri-login-box-line\"></i> " . lang("SESSION_STATE_OPEN") . "</button></form>";
+					if ($j >= ($_GET["page"] -1) * $max && $j < $_GET["page"] * $max) {
+						echo "<tr>";
+						foreach($sessionList[$i] as $line) {
+							if ($line["state"] == 0) {
+								$buttonStyle = "statusRed";
 							} else {
-								echo "<form method='POST'><button type='submit' name='connect[" . $line["id"] . "]' value='" . lang("SESSION_STATE_OPEN") . "' class='button'><i class=\"ri-login-box-line\"></i> " . lang("SESSION_STATE_CONSULT") . "</button></form>";;
+								$buttonStyle = "statusGreen";
 							}
 
-							echo "</td>";
+							$creatorName = nameFormat($line["idcreator"], false);
+
+							echo '<td class="col1" title="' . htmlspecialchars($line["title"]) . '">'. htmlspecialchars($line["title"]) ."</td>";
+
+							if ($line["description"])
+								$description = htmlspecialchars($line["description"]);
+							else
+								$description = lang("SESSION_DESCRIPTION_EMPTY");
+							echo '<td class="col2" title="' . $description . '"><div class="col2">'. $description . "</div></td>";
+
+							echo '<td class="col3">' . htmlspecialchars($creatorName) . "</td>";
+							echo '<td class="col4">' . date("d/m/Y H:i", strtotime($line["date"])) . "</td>";
+
+							$nbParticipantActive = 0;
+							foreach (SessionRepository::getParticipants($line["id"]) as $value) {
+								if (UserRepository::isActive($value["iduser"]) == true) {
+									$nbParticipantActive = $nbParticipantActive +1 ;
+								}
+							}
+
+							echo '<td>' . $nbParticipantActive-1 . "</td>";
+							echo '<td class="colState"><div class="statusBall ' . $buttonStyle . '"</div></td>';
+							if (!in_array(ADMIN, $roleList)) {
+								echo "<td class='col5'>";
+
+								// Display modify button to teachers
+								if (in_array(TEACHER, $roleList)) {
+									echo "<form method='POST' action='/sessionmodifier'><input type='hidden' name='sessionId' value='" . $line["id"] . "'><button type='submit' class='button' title='" . lang("SESSION_UPDATE") . "'><i class=\"ri-pencil-line\"></i></button></form>";
+								}
+
+								// Only select active session
+								if ($line["state"] != 0 || in_array(TEACHER, $roleList)) {
+									echo "<form method='POST'><button type='submit' name='connect[" . $line["id"] . "]' value='" . lang("SESSION_STATE_OPEN") . "' class='button'><i class=\"ri-login-box-line\"></i> " . lang("SESSION_STATE_OPEN") . "</button></form>";
+								} else {
+									echo "<form method='POST'><button type='submit' name='connect[" . $line["id"] . "]' value='" . lang("SESSION_STATE_OPEN") . "' class='button'><i class=\"ri-login-box-line\"></i> " . lang("SESSION_STATE_CONSULT") . "</button></form>";;
+								}
+
+								echo "</td>";
+							}
 						}
+						echo "</tr>";
 					}
-					echo "</tr>";
+					$j++;
 				}
 			?>
 		</tbody>
 	</table>
+	<form class="pageGroup" method="GET" onsubmit="loading()">
+		<?php
+			if ($_GET["page"] != 1) {
+		?>
+		<button class="button" type="submit" name="page" value="<?= $_GET["page"] -1 ?>"><i class="ri-arrow-left-s-line"></i></button>
+		<?php
+			} else {
+		?>
+		<button class="button" disabled><i class="ri-arrow-left-s-line"></i></button>
+		<?php
+			}
+			if (count($sessionList) > $_GET["page"] * $max) {
+		?>
+		<button class="button" type="submit" name="page" value="<?= $_GET["page"] +1 ?>"><i class="ri-arrow-right-s-line"></i></button>
+		<?php
+			} else {
+		?>
+		<button class="button" disabled><i class="ri-arrow-right-s-line"></i></button>
+		<?php
+			}
+		?>
+	</form>
 </div>
 
 <script src="/public/js/function/popup.js"></script>
