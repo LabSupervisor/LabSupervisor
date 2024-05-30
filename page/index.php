@@ -71,11 +71,6 @@
 				<a class="button" href="/classes"><i class="ri-folder-line"></i> <?= lang("NAVBAR_CLASS") ?></a>
 			</div>
 			<div class="mainbox">
-				<h2><?= lang("NAVBAR_CREATE_SESSION") ?></h2>
-				<a><?= lang("INDEX_TEACHER_CREATE_SESSION") ?></a>
-				<a class="button" href="/sessioncreation"><i class="ri-computer-line"></i> <?= lang("NAVBAR_CREATE_SESSION") ?></a>
-			</div>
-			<div class="mainbox">
 				<h2><?= lang("NAVBAR_SESSION") ?></h2>
 				<a><?= lang("INDEX_TEACHER_SESSION") ?></a>
 				<a class="button" href="/sessions"><i class="ri-slideshow-3-line"></i> <?= lang("NAVBAR_SESSION") ?></a>
