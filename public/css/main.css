@@ -14,8 +14,15 @@
 }
 
 ::-webkit-scrollbar {
-	width: 0px;
-	background: none;
+	background-color: var(--background-case-color);
+
+	width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--button-background-color);
+
+	border-radius: 10px;
 }
 
 /* Input autocomplete style */
