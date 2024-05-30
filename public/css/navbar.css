@@ -140,6 +140,8 @@
 	color: var(--text-color);
 	position: relative;
 
+	z-index: 100;
+
 	width: 33px;
 }
 

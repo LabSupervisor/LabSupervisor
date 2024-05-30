@@ -7,6 +7,9 @@
 	"MAIN_LOADING": "読み込み中...",
 	"MAIN_NAME": "名",
 	"MAIN_SURNAME": "姓",
+	"MAIN_CANCEL": "キャンセル",
+	"MAIN_ADD": "追加",
+	"MAIN_SAVE": "保存",
 
 	"NOTIFICATION_NEED_HELP": "助けが必要です！",
 
@@ -130,10 +133,15 @@
 	"SESSION_CREATE_STATE_OPEN": "セッションをすぐに開きますか？",
 
 	"CLASSROOM_NAME": "クラス",
-	"CLASSROOM_STUDENT_EMAIL": "Eメール",
-	"CLASSROOM_STUDENT_REMOVE": "削除",
-	"CLASSROOM_ADD": "追加",
-	"CLASSROOM_ADD_PLACEHOLDER": "名前",
+	"CLASSROOM_ADD_STUDENT_TITLE": "学生を追加する",
+	"CLASSROOM_ADD_STUDENT_INFO": "複数の学生を選択するにはctrlキーを押し続けてください",
+	"CLASSROOM_ADD_STUDENT_EMPTY": "追加する学生がいません。",
+	"CLASSROOM_ADD_CLASSROOM_TITLE": "クラスを追加する",
+	"CLASSROOM_ADD_CLASSROOM_PLACEHOLDER": "名前",
+	"CLASSROOM_DELETE_CLASSROOM_CONFIRMATION": "このクラスを削除してもよろしいですか？",
+	"CLASSROOM_STUDENT_REMOVE": "クラスから削除する",
+	"CLASSROOM_STUDENT_EMAIL": "メールアドレス",
+	"CLASSROOM_EMPTY": "このクラスは空です。",
 
 	"USER_UPDATE_EMAIL": "Eメール",
 	"USER_UPDATE_ROLE": "役割",

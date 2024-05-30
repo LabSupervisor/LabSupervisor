@@ -7,6 +7,9 @@
 	"MAIN_LOADING": "Загрузка...",
 	"MAIN_NAME": "Имя",
 	"MAIN_SURNAME": "Фамилия",
+	"MAIN_CANCEL": "Отмена",
+	"MAIN_ADD": "Добавить",
+	"MAIN_SAVE": "Сохранить",
 
 	"NOTIFICATION_NEED_HELP": "нуждается в помощи!",
 
@@ -130,10 +133,15 @@
 	"SESSION_CREATE_STATE_OPEN": "Должна ли сессия быть открыта сразу?",
 
 	"CLASSROOM_NAME": "Классы",
-	"CLASSROOM_STUDENT_EMAIL": "Адрес электронной почты",
-	"CLASSROOM_STUDENT_REMOVE": "Удалить",
-	"CLASSROOM_ADD": "Добавить",
-	"CLASSROOM_ADD_PLACEHOLDER": "Имя",
+	"CLASSROOM_ADD_STUDENT_TITLE": "Добавить ученика",
+	"CLASSROOM_ADD_STUDENT_INFO": "Удерживайте клавишу ctrl, чтобы выбрать несколько учеников",
+	"CLASSROOM_ADD_STUDENT_EMPTY": "Нет учеников для добавления.",
+	"CLASSROOM_ADD_CLASSROOM_TITLE": "Добавить класс",
+	"CLASSROOM_ADD_CLASSROOM_PLACEHOLDER": "Имя",
+	"CLASSROOM_DELETE_CLASSROOM_CONFIRMATION": "Вы уверены, что хотите удалить этот класс?",
+	"CLASSROOM_STUDENT_REMOVE": "Удалить из класса",
+	"CLASSROOM_STUDENT_EMAIL": "Электронная почта",
+	"CLASSROOM_EMPTY": "Этот класс пуст.",
 
 	"USER_UPDATE_EMAIL": "Адрес электронной почты",
 	"USER_UPDATE_ROLE": "Роль",

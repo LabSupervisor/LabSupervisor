@@ -8,73 +8,137 @@
 		LabSupervisor\functions\mainHeader,
 		LabSupervisor\functions\lang;
 
-	// Import header
-	mainHeader(lang("NAVBAR_CLASS"), true);
-
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateClassroom.php");
 
-	$classrooms = ClassroomRepository::getClassrooms();
-?>
+	$classrooms = ClassroomRepository::getTeacherClassroom($_SESSION["login"]);
+	$classroomList = array();
+	foreach ($classrooms as $value) {
+		array_push($classroomList, $value["id"]);
+	}
 
-<link rel="stylesheet" href="/public/css/classroom.css">
-
-	<div class="mainGroup">
-
-<?php
 	if (!isset($_GET["id"])) {
 		$_GET["id"] = $classrooms[0]["id"];
 	}
 
+	if (!in_array($_GET["id"], $classroomList)) {
+		header("Location: /classroom");
+	}
+
+	// Import header
+	mainHeader(lang("NAVBAR_CLASS"), true);
+
 	$students = ClassroomRepository::getUsers($_GET["id"]);
+	$freeStudents = ClassroomRepository::getUsersNotInClassroom();
 
-	// Side menu
-	echo '<div class="mainbox lateral">';
-	echo '<form method="POST" onsubmit="loading()">';
-	echo "<h2>" . lang("CLASSROOM_NAME") . "</h2>";
-
-	foreach ($classrooms as $value) {
-		$selected = "";
-		if ($_GET["id"] == $value["id"]) {
-			$selected = "selected";
-		}
-
-		if ($value["active"] == "1") {
-			echo '<div class="classnameGroup"><div id="classroom_' . $value["id"] . '" class="classname ' . $selected . '" onclick="selectClass(' . $value["id"] . ')">' . htmlspecialchars($value["name"]) . '</div>';
-		}
-
-		$deletable = true;
-		foreach (SessionRepository::getSessions() as $sessionId) {
-			if ($value["id"] == $sessionId["idclassroom"]) {
-				$deletable = false;
-			}
-		}
-
-		if (count(ClassroomRepository::getUsers($value["id"])) > 0) {
-			$deletable = false;
-		}
-
-		if ($deletable) {
-			echo '<button class="button deleteClassroom" type="submit" name="deleteClassroom" value="' . $value["id"] . '"><i class="ri-delete-bin-line"></i></button></div>';
-		} else {
-			echo '</div>';
+	$deletable = "";
+	foreach (SessionRepository::getSessions() as $sessionId) {
+		if ($_GET["id"] == $sessionId["idclassroom"]) {
+			$deletable = "disabled";
 		}
 	}
+
+	if (count(ClassroomRepository::getUsers($_GET["id"])) > 0) {
+		$deletable = "disabled";
+	}
 ?>
+
+<link rel="stylesheet" href="/public/css/classroom.css">
+
+<div class='addPopup' id='addStudentPopup' tabindex='-1'>
+	<div class="mainbox popupbox">
+		<h2><?= lang("CLASSROOM_ADD_STUDENT_TITLE") ?></h2>
+
+		<?php
+			if ($freeStudents) {
+		?>
+		<?= lang("CLASSROOM_ADD_STUDENT_INFO") ?>
+		<form class="selectStudentForm" method="POST" onsubmit="loading()">
+			<input type='hidden' name='classroomId' value="<?= $_GET["id"] ?>">
+			<select class="selectStudent" name="studentId[]" multiple required>
+			<?php
+				foreach ($freeStudents as $student)	{
+					echo "<option value='" . $student['id'] . "'>" . htmlspecialchars($student['surname']) . " " . htmlspecialchars($student['name']) . "</option>";
+				}
+			?>
+			</select>
+
+			<div>
+				<button class="link" onclick="hidePopup('addStudentPopup')"><i class="ri-arrow-left-line"></i> <?= lang("MAIN_CANCEL") ?></button>
+				<button class="button" type="submit" name="addStudent"><?= lang("MAIN_ADD") ?></button>
+			</div>
 		</form>
-		<form method="POST" onsubmit="loading()">
-			<input type="text" name="addClassroom" placeholder="<?= lang("CLASSROOM_ADD_PLACEHOLDER") ?>" maxlength="50" required>
-			<button class="button" type="submit" title="<?= lang("CLASSROOM_ADD") ?>"><i class="ri-add-line"></i></button>
+
+		<?php
+			} else {
+				echo lang("CLASSROOM_ADD_STUDENT_EMPTY") . '<button class="link"><i class="ri-arrow-left-line"></i> ' . lang("MAIN_CANCEL") . '</button>';
+			}
+		?>
+	</div>
+</div>
+
+<div class='addPopup' id='addClassroomPopup' tabindex='-1'>
+	<div class="mainbox popupbox">
+		<h2><?= lang("CLASSROOM_ADD_CLASSROOM_TITLE") ?></h2>
+
+		<form class="selectStudentForm" method="POST" onsubmit="loading()">
+			<input class="addClassroomInput" type="text" name="addClassroom" placeholder="<?= lang("CLASSROOM_ADD_CLASSROOM_PLACEHOLDER") ?>" maxlength="50" required>
+
+			<div>
+				<button class="link" onclick="hidePopup('addClassroomPopup')"><i class="ri-arrow-left-line"></i> <?= lang("MAIN_CANCEL") ?></button>
+				<button class="button" type="submit" title="<?= lang("MAIN_ADD") ?>"><i class="ri-add-line"></i></button>
+			</div>
 		</form>
 	</div>
+</div>
 
-	<div id="contentClassroom_<?php echo $_GET["id"] ?>" class="mainbox maintable contentClassroom">
-		<form method="POST" onsubmit="loading()">
-			<input hidden name="classroomId" value="<?= $_GET["id"] ?>">
-			<input class="classroomName" type="text" name="modifyName" value="<?= ClassroomRepository::getName($_GET["id"]) ?>"></input>
-			<button class="button" type="submit"><i class="ri-pencil-line"></i></button>
-			<a class="studentNumber" title="<?= lang("MAIN_ROLE_STUDENT") ?>"><?= count($students) ?> <i class="ri-group-line"></i></a>
-		</form>
+<div class="mainGroup">
+	<div class="mainbox lateral">
+
+		<div class="classnameGroup">
+			<h2 class="classroomListTitle"><?= lang("CLASSROOM_NAME") ?></h2>
+			<button class="button" onclick="showPopup('addClassroomPopup')"><i class="ri-add-line"></i></button>
+		</div>
+
+		<?php
+			foreach ($classrooms as $value) {
+				$selected = "";
+				if ($_GET["id"] == $value["id"]) {
+					$selected = "selected";
+				}
+
+				if ($value["active"] == "1") {
+					echo '
+					<form method="GET" onsubmit="loading()">
+						<button class="classname ' . $selected . '" type="submit" name="id" value="' . $value["id"] . '">' . htmlspecialchars($value["name"]) . '</button>
+					</form>';
+				}
+			}
+		?>
+
+	</div>
+
+	<div class="mainbox maintable studentList">
+		<div class="classroomTitleBox">
+			<div class="classroomTitleItem">
+				<h2 class="classroomName" title="<?= ClassroomRepository::getName($_GET["id"]) ?>"><?= ClassroomRepository::getName($_GET["id"]) ?></h2>
+				<button class="button" type="submit"><i class="ri-pencil-line"></i></button>
+
+				<form method="POST" onsubmit="return confirmForm('<?= lang('CLASSROOM_DELETE_CLASSROOM_CONFIRMATION') ?>');">
+					<button class="button deleteClassroom" type="submit" name="deleteClassroom" value="<?= $_GET["id"] ?>" <?= $deletable ?>><i class="ri-delete-bin-line"></i></button>
+				</form>
+			</div>
+			<div class="classroomTitleItem">
+				<a class="studentNumber" title="<?= lang("MAIN_ROLE_STUDENT") ?>"><?= count($students) ?> <i class="ri-group-line"></i></a>
+
+				<button class="button addStudent" onclick="showPopup('addStudentPopup')"><i class="ri-add-line"></i></button>
+			</div>
+		</div>
+
+		<?php
+			if (count($students) > 0) {
+		?>
+
 		<table>
 			<thead>
 				<tr>
@@ -92,6 +156,7 @@
 					if (UserRepository::isActive($student["iduser"])) {
 						$studInfos = UserRepository::getInfo($student["iduser"]);
 			?>
+
 				<tr>
 					<td><?= htmlspecialchars(ucfirst(strtolower($studInfos["surname"]))) ?></td>
 					<td><?= htmlspecialchars(ucfirst(strtolower($studInfos["name"]))) ?></td>
@@ -105,31 +170,28 @@
 						</form>
 					</td>
 				</tr>
-			<?php
-					}
-				}
-			?>
-					</tbody>
-				</table>
-			<?php
 
-				// Free student list
-				$freeStudents = ClassroomRepository::getUsersNotInClassroom();
-				if ($freeStudents) {
-					echo "<form class='freeStudents' method='POST' onsubmit='loading()'>";
-					echo "<input type='hidden' name='classroomId' value=" . $_GET["id"] .">";
-					echo "<select class='selectStudent' name='studentId' id='studentId'>";
-					foreach ($freeStudents as $student)	{
-						echo "<option value='" . $student['id'] . "'>" . htmlspecialchars($student['surname']) . " " . htmlspecialchars($student['name']) . "</option>";
+			<?php
 					}
-					echo "</select><button type='submit' class='button' name='addStudent'><i class=\"ri-add-line\"></i> " . lang("CLASSROOM_ADD") . "</button></form>";
 				}
 			?>
+
+			</tbody>
+		</table>
+
+		<?php
+			} else {
+				echo "<a class='singleErrorTitle'>" . lang("CLASSROOM_EMPTY") . "</a>";
+			}
+		?>
+
 	</div>
 </div>
 
-<script src="/public/js/function/selectClassroom.js"></script>
 <script src="/public/js/function/loading.js"></script>
+<script src="/public/js/function/popup.js"></script>
+<script src="/public/js/function/popupConfirm.js"></script>
+<script src="/public/js/function/showPopup.js"></script>
 
 <?php
 	// Footer

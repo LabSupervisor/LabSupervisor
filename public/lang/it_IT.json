@@ -7,6 +7,9 @@
 	"MAIN_LOADING": "Caricamento...",
 	"MAIN_NAME": "Nome",
 	"MAIN_SURNAME": "Cognome",
+	"MAIN_CANCEL": "Annulla",
+	"MAIN_ADD": "Aggiungi",
+	"MAIN_SAVE": "Salva",
 
 	"NOTIFICATION_NEED_HELP": "ha bisogno di aiuto!",
 
@@ -130,10 +133,15 @@
 	"SESSION_CREATE_STATE_OPEN": "La sessione deve essere aperta immediatamente?",
 
 	"CLASSROOM_NAME": "Classi",
-	"CLASSROOM_STUDENT_EMAIL": "Email",
-	"CLASSROOM_STUDENT_REMOVE": "Rimuovere",
-	"CLASSROOM_ADD": "Aggiungi",
-	"CLASSROOM_ADD_PLACEHOLDER": "Nome",
+	"CLASSROOM_ADD_STUDENT_TITLE": "Aggiungi uno studente",
+	"CLASSROOM_ADD_STUDENT_INFO": "Tieni premuto il tasto ctrl per selezionare più studenti",
+	"CLASSROOM_ADD_STUDENT_EMPTY": "Non ci sono studenti da aggiungere.",
+	"CLASSROOM_ADD_CLASSROOM_TITLE": "Aggiungi una classe",
+	"CLASSROOM_ADD_CLASSROOM_PLACEHOLDER": "Nome",
+	"CLASSROOM_DELETE_CLASSROOM_CONFIRMATION": "Sei sicuro di voler eliminare questa classe?",
+	"CLASSROOM_STUDENT_REMOVE": "Rimuovi dalla classe",
+	"CLASSROOM_STUDENT_EMAIL": "Indirizzo email",
+	"CLASSROOM_EMPTY": "Questa classe è vuota.",
 
 	"USER_UPDATE_EMAIL": "Email",
 	"USER_UPDATE_ROLE": "Ruolo",

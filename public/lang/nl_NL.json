@@ -7,6 +7,9 @@
 	"MAIN_LOADING": "Laden...",
 	"MAIN_NAME": "Voornaam",
 	"MAIN_SURNAME": "Achternaam",
+	"MAIN_CANCEL": "Annuleren",
+	"MAIN_ADD": "Toevoegen",
+	"MAIN_SAVE": "Opslaan",
 
 	"NOTIFICATION_NEED_HELP": "heeft hulp nodig!",
 
@@ -130,10 +133,15 @@
 	"SESSION_CREATE_STATE_OPEN": "Moet de sessie direct worden geopend?",
 
 	"CLASSROOM_NAME": "Klassen",
+	"CLASSROOM_ADD_STUDENT_TITLE": "Voeg een student toe",
+	"CLASSROOM_ADD_STUDENT_INFO": "Houd de ctrl-toets ingedrukt om meerdere studenten te selecteren",
+	"CLASSROOM_ADD_STUDENT_EMPTY": "Er zijn geen studenten toe te voegen.",
+	"CLASSROOM_ADD_CLASSROOM_TITLE": "Voeg een klas toe",
+	"CLASSROOM_ADD_CLASSROOM_PLACEHOLDER": "Naam",
+	"CLASSROOM_DELETE_CLASSROOM_CONFIRMATION": "Weet u zeker dat u deze klas wilt verwijderen?",
+	"CLASSROOM_STUDENT_REMOVE": "Verwijderen uit de klas",
 	"CLASSROOM_STUDENT_EMAIL": "E-mailadres",
-	"CLASSROOM_STUDENT_REMOVE": "Verwijderen",
-	"CLASSROOM_ADD": "Toevoegen",
-	"CLASSROOM_ADD_PLACEHOLDER": "Naam",
+	"CLASSROOM_EMPTY": "Deze klas is leeg.",
 
 	"USER_UPDATE_EMAIL": "E-mail",
 	"USER_UPDATE_ROLE": "Rol",

@@ -18,11 +18,11 @@
 		// HTML content specific to admin role
 ?>
 		<div class="boxGroup">
-			<div class="mainbox">
+			<!-- <div class="mainbox">
 				<h2><?= lang("NAVBAR_CLASS") ?></h2>
 				<a><?= lang("INDEX_TEACHER_CLASSROOM") ?></a>
 				<a class="button" href="/classes"><i class="ri-folder-line"></i> <?= lang("NAVBAR_CLASS") ?></a>
-			</div>
+			</div> -->
 			<div class="mainbox">
 				<h2><?= lang("NAVBAR_SESSION") ?></h2>
 				<a><?= lang("INDEX_ADMIN_SESSION") ?></a>
