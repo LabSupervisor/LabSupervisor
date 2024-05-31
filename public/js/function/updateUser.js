@@ -76,6 +76,24 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 		selectRole.add(option);
 	}
 
+	// Create a span element for "Aucune classe"
+	var noClassSpan = document.createElement("span");
+	noClassSpan.textContent = lang("USER_UPDATE_CLASS_EMPTY");
+	noClassSpan.setAttribute("id", "noClass");
+
+    // Add event listener to change the classroom select element based on role
+    selectRole.addEventListener('change', function() {
+        if (selectRole.value == '3') { // Assuming 3 is the id for the professor role
+            selectClassroom.setAttribute("multiple", "multiple");
+            classRoomElement.replaceChildren(selectClassroom);
+        } else if (selectRole.value == '1') { // Assuming 1 is the id for the admin role
+            classRoomElement.replaceChildren(noClassSpan);
+        } else {
+            selectClassroom.removeAttribute("multiple");
+            classRoomElement.replaceChildren(selectClassroom);
+        }
+	});
+
 	surnameElement.replaceChildren(inputSurname);
 	nameElement.replaceChildren(inputName);
 	classRoomElement.replaceChildren(selectClassroom);
