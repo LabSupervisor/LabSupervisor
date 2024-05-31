@@ -35,9 +35,6 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 	selectClassroom.setAttribute("id", "classroom");
 	selectClassroom.setAttribute("name", "classroom_" + userId);
 	selectClassroom.setAttribute("class", "classroom");
-	if (roleIdUser == 3) {
-		selectClassroom.setAttribute("multiple", "multiple");
-	}
 	var optionNone = document.createElement("option");
 	optionNone.text = lang("USER_UPDATE_CLASS_EMPTY");
 	optionNone.value = "0";
@@ -83,10 +80,10 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 
     // Add event listener to change the classroom select element based on role
     selectRole.addEventListener('change', function() {
-        if (selectRole.value == '3') { // Assuming 3 is the id for the professor role
+        if (selectRole.value == '3') {
             selectClassroom.setAttribute("multiple", "multiple");
             classRoomElement.replaceChildren(selectClassroom);
-        } else if (selectRole.value == '1') { // Assuming 1 is the id for the admin role
+        } else if (selectRole.value == '1') {
             classRoomElement.replaceChildren(noClassSpan);
         } else {
             selectClassroom.removeAttribute("multiple");
