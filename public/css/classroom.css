@@ -48,6 +48,8 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+	background-color: #ffffff70;
+	border: solid 2px var(--case-field-border-color);
 
 	margin: 5px 0px 5px 0px;
 	padding: 5px;
