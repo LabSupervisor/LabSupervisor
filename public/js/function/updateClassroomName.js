@@ -21,4 +21,6 @@ function modifyName(name) {
 	save.appendChild(icon);
 
 	document.getElementById("modifyNameForm").appendChild(save);
+
+	input.select();
 }
