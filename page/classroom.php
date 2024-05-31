@@ -75,7 +75,9 @@
 
 		<?php
 			} else {
-				echo lang("CLASSROOM_ADD_STUDENT_EMPTY") . '<button class="link"><i class="ri-arrow-left-line"></i> ' . lang("MAIN_CANCEL") . '</button>';
+		?>
+			<?= lang("CLASSROOM_ADD_STUDENT_EMPTY") ?><button class="link" onclick="hidePopup('addStudentPopup')"><i class="ri-arrow-left-line"></i><?= lang("MAIN_CANCEL") ?></button>
+		<?php
 			}
 		?>
 	</div>
