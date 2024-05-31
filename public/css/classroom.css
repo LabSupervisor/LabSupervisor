@@ -181,3 +181,23 @@
 .singleErrorTitle {
 	font-size: 22px;
 }
+
+/* Modify classroom name */
+
+.modifyClassroomInput {
+	background: var(--case-field-background-color);
+	border: solid 2px var(--case-field-border-color);
+	border-radius: 7px;
+	font-size: 20px;
+	color: var(--text-color);
+
+	padding: 15px;
+	/* margin: 15px 0px 15px 0px; */
+
+	width: 130px;
+	height: 9px;
+}
+
+.modifyClassroomInput::placeholder {
+	color: var(--case-field-text-color);
+}
