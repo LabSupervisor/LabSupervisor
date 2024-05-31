@@ -142,6 +142,7 @@
 	"CLASSROOM_STUDENT_REMOVE": "Удалить из класса",
 	"CLASSROOM_STUDENT_EMAIL": "Электронная почта",
 	"CLASSROOM_EMPTY": "Этот класс пуст.",
+	"CLASSROOM_LIST_EMPTY": "В настоящее время нет доступных классов.",
 
 	"USER_UPDATE_EMAIL": "Адрес электронной почты",
 	"USER_UPDATE_ROLE": "Роль",

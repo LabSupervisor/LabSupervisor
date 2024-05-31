@@ -142,6 +142,7 @@
 	"CLASSROOM_STUDENT_REMOVE": "クラスから削除する",
 	"CLASSROOM_STUDENT_EMAIL": "メールアドレス",
 	"CLASSROOM_EMPTY": "このクラスは空です。",
+	"CLASSROOM_LIST_EMPTY": "現在利用できるクラスはありません。",
 
 	"USER_UPDATE_EMAIL": "Eメール",
 	"USER_UPDATE_ROLE": "役割",

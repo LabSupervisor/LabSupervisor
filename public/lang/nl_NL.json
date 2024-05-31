@@ -142,6 +142,7 @@
 	"CLASSROOM_STUDENT_REMOVE": "Verwijderen uit de klas",
 	"CLASSROOM_STUDENT_EMAIL": "E-mailadres",
 	"CLASSROOM_EMPTY": "Deze klas is leeg.",
+	"CLASSROOM_LIST_EMPTY": "Er zijn momenteel geen klassen beschikbaar.",
 
 	"USER_UPDATE_EMAIL": "E-mail",
 	"USER_UPDATE_ROLE": "Rol",

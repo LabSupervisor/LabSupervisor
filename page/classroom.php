@@ -19,10 +19,10 @@
 
 	if (!isset($_GET["id"])) {
 		$_GET["id"] = $classrooms[0]["id"];
-	}
-
-	if (!in_array($_GET["id"], $classroomList)) {
-		header("Location: /classroom");
+	} else {
+		if (!in_array($_GET["id"], $classroomList)) {
+			header("Location: /classroom");
+		}
 	}
 
 	// Import header
@@ -101,23 +101,30 @@
 		</div>
 
 		<?php
-			foreach ($classrooms as $value) {
-				$selected = "";
-				if ($_GET["id"] == $value["id"]) {
-					$selected = "selected";
-				}
+			if (count($classroomList) > 0) {
+				if (isset($_GET["id"])) {
+					foreach ($classrooms as $value) {
+						$selected = "";
+						if ($_GET["id"] == $value["id"]) {
+							$selected = "selected";
+						}
 
-				if ($value["active"] == "1") {
-					echo '
-					<form method="GET" onsubmit="loading()">
-						<button class="classname ' . $selected . '" type="submit" name="id" value="' . $value["id"] . '">' . htmlspecialchars($value["name"]) . '</button>
-					</form>';
+						if ($value["active"] == "1") {
+							echo '
+							<form method="GET" onsubmit="loading()">
+								<button class="classname ' . $selected . '" type="submit" name="id" value="' . $value["id"] . '">' . htmlspecialchars($value["name"]) . '</button>
+							</form>';
+						}
+					}
 				}
 			}
 		?>
 
 	</div>
 
+	<?php
+		if (count($classroomList) > 0) {
+	?>
 	<div class="mainbox maintable studentList">
 		<div class="classroomTitleBox">
 			<div class="classroomTitleItem">
@@ -186,6 +193,11 @@
 		?>
 
 	</div>
+	<?php
+		} else {
+			echo "<div class='singleErrorContainer'><a class='singleErrorTitle'>" . lang("CLASSROOM_LIST_EMPTY") . "</a></div>";
+		}
+	?>
 </div>
 
 <script src="/public/js/function/loading.js"></script>

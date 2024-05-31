@@ -142,6 +142,7 @@
 	"CLASSROOM_STUDENT_REMOVE": "Remove from classroom",
 	"CLASSROOM_STUDENT_EMAIL": "Email address",
 	"CLASSROOM_EMPTY": "This classroom is empty.",
+	"CLASSROOM_LIST_EMPTY": "No classroom are currently available.",
 
 	"USER_UPDATE_EMAIL": "Email address",
 	"USER_UPDATE_ROLE": "Role",

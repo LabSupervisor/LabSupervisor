@@ -142,6 +142,7 @@
 	"CLASSROOM_STUDENT_REMOVE": "Aus der Klasse entfernen",
 	"CLASSROOM_STUDENT_EMAIL": "E-Mail-Adresse",
 	"CLASSROOM_EMPTY": "Diese Klasse ist leer.",
+	"CLASSROOM_LIST_EMPTY": "Derzeit ist keine Klasse verfügbar.",
 
 	"USER_UPDATE_EMAIL": "E-Mail",
 	"USER_UPDATE_ROLE": "Rolle",

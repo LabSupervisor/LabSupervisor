@@ -142,6 +142,7 @@
 	"CLASSROOM_STUDENT_REMOVE": "从班级中移除",
 	"CLASSROOM_STUDENT_EMAIL": "电子邮件地址",
 	"CLASSROOM_EMPTY": "此班级为空。",
+	"CLASSROOM_LIST_EMPTY": "目前没有可用的班级。",
 
 	"USER_UPDATE_EMAIL": "电子邮件",
 	"USER_UPDATE_ROLE": "角色",
