@@ -11,7 +11,11 @@
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateClassroom.php");
 
-	$classrooms = ClassroomRepository::getTeacherClassroom($_SESSION["login"]);
+	if (in_array(ADMIN, UserRepository::getRole($_SESSION["login"]))) {
+		$classrooms = ClassroomRepository::getClassrooms();
+	} else {
+		$classrooms = ClassroomRepository::getTeacherClassroom($_SESSION["login"]);
+	}
 	$classroomList = array();
 	foreach ($classrooms as $value) {
 		array_push($classroomList, $value["id"]);
