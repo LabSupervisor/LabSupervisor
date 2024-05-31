@@ -35,7 +35,9 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 	selectClassroom.setAttribute("id", "classroom");
 	selectClassroom.setAttribute("name", "classroom_" + userId);
 	selectClassroom.setAttribute("class", "classroom");
-
+	if (roleIdUser == 3) {
+		selectClassroom.setAttribute("multiple", "multiple");
+	}
 	var optionNone = document.createElement("option");
 	optionNone.text = lang("USER_UPDATE_CLASS_EMPTY");
 	optionNone.value = "0";
