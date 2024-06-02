@@ -133,7 +133,7 @@
 	?>
 	<div class="mainbox maintable studentList">
 		<div class="classroomTitleBox">
-			<div class="classroomTitleItem">
+			<div class="classroomTitleItem left">
 				<form class="classroomTitleItem" id="modifyNameForm" method="POST" onsubmit="loading()">
 					<input type="hidden" name="classroomId" value="<?= $_GET["id"] ?>">
 					<h2 class="classroomName" id="modifyNameTitle" title="<?= ClassroomRepository::getName($_GET["id"]) ?>"><?= ClassroomRepository::getName($_GET["id"]) ?></h2>
@@ -143,7 +143,7 @@
 					<button class="button deleteClassroom" type="submit" name="deleteClassroom" value="<?= $_GET["id"] ?>" <?= $deletable ?>><i class="ri-delete-bin-line"></i></button>
 				</form>
 			</div>
-			<div class="classroomTitleItem">
+			<div class="classroomTitleItem right">
 				<a class="studentNumber" title="<?= lang("MAIN_ROLE_STUDENT") ?>"><?= count($students) ?> <i class="ri-group-line"></i></a>
 
 				<button class="button addStudent" onclick="showPopup('addStudentPopup')"><i class="ri-add-line"></i></button>
