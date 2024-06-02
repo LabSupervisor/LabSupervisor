@@ -254,7 +254,7 @@ class ClassroomRepository {
 	public static function getClassroomTeachers($classroomId) {
 		// Get classroom teacher query
 		$query = "SELECT iduser FROM teacherclassroom WHERE idclassroom = :idclassroom";
- 
+
 		// Get classroom teacher
 		try {
 			$queryPrep = DATABASE->prepare($query);

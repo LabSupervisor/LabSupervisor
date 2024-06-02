@@ -32,7 +32,14 @@
 	// Import header
 	mainHeader(lang("NAVBAR_CLASS"), true);
 
-	$students = ClassroomRepository::getUsers($_GET["id"]);
+	$studentsList = ClassroomRepository::getUsers($_GET["id"]);
+	$students = array();
+	foreach ($studentsList as $student) {
+		if (UserRepository::isActive($student["iduser"])) {
+			array_push($students, $student);
+		}
+	}
+	array_reverse($students);
 	$freeStudents = ClassroomRepository::getUsersNotInClassroom();
 
 	$deletable = "";
@@ -44,6 +51,10 @@
 
 	if (count(ClassroomRepository::getUsers($_GET["id"])) > 0) {
 		$deletable = "disabled";
+	}
+
+	if (!isset($_GET["page"])) {
+		$_GET["page"] = 1;
 	}
 ?>
 
@@ -166,9 +177,11 @@
 			<tbody>
 
 			<?php
+				$i = 0;
+				$max = 10;
 				// Display classroom's student
 				foreach ($students as $student) {
-					if (UserRepository::isActive($student["iduser"])) {
+					if ($i >= ($_GET["page"] -1) * $max && $i < $_GET["page"] * $max) {
 						$studInfos = UserRepository::getInfo($student["iduser"]);
 			?>
 
@@ -188,11 +201,35 @@
 
 			<?php
 					}
+					$i++;
 				}
 			?>
 
 			</tbody>
 		</table>
+		<form class="pageGroup" method="GET" onsubmit="loading()">
+			<input type="hidden" name="id" value="<?= $_GET["id"] ?>">
+			<?php
+				if ($_GET["page"] != 1) {
+			?>
+			<button class="button" type="submit" name="page" value="<?= $_GET["page"] -1 ?>"><i class="ri-arrow-left-s-line"></i></button>
+			<?php
+				} else {
+			?>
+			<button class="button" disabled><i class="ri-arrow-left-s-line"></i></button>
+			<?php
+				}
+				if (count($students) > $_GET["page"] * $max) {
+			?>
+			<button class="button" type="submit" name="page" value="<?= $_GET["page"] +1 ?>"><i class="ri-arrow-right-s-line"></i></button>
+			<?php
+				} else {
+			?>
+			<button class="button" disabled><i class="ri-arrow-right-s-line"></i></button>
+			<?php
+				}
+			?>
+		</form>
 
 		<?php
 			} else {
