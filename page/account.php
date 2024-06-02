@@ -50,7 +50,7 @@
 			<div class="column">
 				<input class="disabled" value="<?= htmlspecialchars(UserRepository::getEmail($_SESSION["login"])) ?>" disabled></input>
 				<div>
-					<select name="lang">
+					<select id="lang" name="lang">
 						<?php
 							$userLang = UserRepository::getSetting($_SESSION["login"])["lang"];
 
@@ -102,6 +102,7 @@
 </form>
 
 <script src="/public/js/accountPassword.js"></script>
+<script src="/public/js/accountLang.js"></script>
 <script src="/public/js/function/loading.js"></script>
 
 <?php

@@ -117,6 +117,20 @@ switch($_SERVER["REQUEST_METHOD"]) {
 				// Answer API
 				echo '{"Response": {"Message": "Theme updated."}}';
 			}
+
+			// Application asking to update user lang
+			if ($data->ask == "update_lang") {
+				// Update theme
+				$theme = UserRepository::getSetting($data->idUser)["theme"];
+				$userSetting = array(
+					"theme" => $theme,
+					"lang" => $data->lang
+				);
+				// Update user's settings
+				UserRepository::updateSetting($data->idUser, $userSetting);
+				// Answer API
+				echo '{"Response": {"Message": "Lang updated."}}';
+			}
 		} catch (Exception $e) {
 			LogRepository::fileSave($e);
 		}
