@@ -59,7 +59,6 @@
 	"ACCOUNT_DELETE_TITLE": "Löschbestätigung",
 	"ACCOUNT_DELETE_DESCRIPTION": "Sind Sie sicher, dass Sie dieses Konto dauerhaft löschen möchten?",
 	"ACCOUNT_DELETE_YES": "Ja, ich möchte dieses Konto dauerhaft löschen.",
-	"ACCOUNT_DELETE_CANCEL": "Abbrechen",
 
 	"SESSION_SUBJECT": "Thema",
 	"SESSION_DESCRIPTION": "Details",
@@ -121,7 +120,6 @@
 	"SESSION_CREATE_CHAPTER_ADD": "+ Kapitel",
 	"SESSION_CREATE_CHAPTER_REMOVE": "- Kapitel",
 	"SESSION_CREATE_DATE_DATE": "Datum",
-	"SESSION_CREATE_SUBMIT": "Speichern",
 	"SESSION_CREATE_UPDATE": "Aktualisieren",
 	"SESSION_CREATE_CHAPTER_REMOVE_ERROR": "Sie können nicht alle Kapitel löschen.",
 	"SESSION_CREATE_DELETE": "Sitzung löschen",
@@ -151,7 +149,6 @@
 	"USER_UPDATE_ACTION": "Aktion",
 	"USER_UPDATE_MODIFY": "Bearbeiten",
 	"USER_UPDATE_DELETE": "Löschen",
-	"USER_UPDATE_SAVE": "Speichern",
 	"USER_UPDATE_NOTIFICATION": "Änderungen gespeichert.",
 	"USER_UPDATE_DELETE_NOTIFICATION": "Benutzer gelöscht.",
 	"USER_UPDATE_DELETE_CONFIRMATION": "Sind Sie sicher, dass Sie diesen Benutzer löschen möchten?",

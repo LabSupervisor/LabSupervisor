@@ -166,7 +166,7 @@
 		?>
 
 		<div>
-			<button class="button" type="submit" name="saveSession"><i class="ri-save-2-line"></i> <?= lang("SESSION_CREATE_SUBMIT") ?></button>
+			<button class="button" type="submit" name="saveSession"><i class="ri-save-2-line"></i> <?= lang("MAIN_SAVE") ?></button>
 		</div>
 
 		<?php

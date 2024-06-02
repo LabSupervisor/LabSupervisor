@@ -59,7 +59,6 @@
 	"ACCOUNT_DELETE_TITLE": "Confirmación de eliminación",
 	"ACCOUNT_DELETE_DESCRIPTION": "¿Estás seguro de que deseas eliminar permanentemente esta cuenta?",
 	"ACCOUNT_DELETE_YES": "Sí, quiero eliminar permanentemente esta cuenta.",
-	"ACCOUNT_DELETE_CANCEL": "Cancelar",
 
 	"SESSION_SUBJECT": "Asunto",
 	"SESSION_DESCRIPTION": "Detalles",
@@ -121,7 +120,6 @@
 	"SESSION_CREATE_CHAPTER_ADD": "+ Capítulo",
 	"SESSION_CREATE_CHAPTER_REMOVE": "- Capítulo",
 	"SESSION_CREATE_DATE_DATE": "Fecha",
-	"SESSION_CREATE_SUBMIT": "Guardar",
 	"SESSION_CREATE_UPDATE": "Actualizar",
 	"SESSION_CREATE_CHAPTER_REMOVE_ERROR": "No puedes eliminar todos los capítulos.",
 	"SESSION_CREATE_DELETE": "Eliminar sesión",
@@ -151,7 +149,6 @@
 	"USER_UPDATE_ACTION": "Acción",
 	"USER_UPDATE_MODIFY": "Modificar",
 	"USER_UPDATE_DELETE": "Eliminar",
-	"USER_UPDATE_SAVE": "Guardar",
 	"USER_UPDATE_NOTIFICATION": "Cambios guardados.",
 	"USER_UPDATE_DELETE_NOTIFICATION": "Usuario eliminado.",
 	"USER_UPDATE_DELETE_CONFIRMATION": "¿Estás seguro de que quieres eliminar a este usuario?",
