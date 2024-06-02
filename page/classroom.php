@@ -219,6 +219,9 @@
 			<button class="button" disabled><i class="ri-arrow-left-s-line"></i></button>
 			<?php
 				}
+			?>
+			<input class="pageNumber" id="pageNumber" type="number" value="<?= $_GET["page"] ?>">
+			<?php
 				if (count($students) > $_GET["page"] * $max) {
 			?>
 			<button class="button" type="submit" name="page" value="<?= $_GET["page"] +1 ?>"><i class="ri-arrow-right-s-line"></i></button>
@@ -245,6 +248,7 @@
 	?>
 </div>
 
+<script src="/public/js/pageSelector.js"></script>
 <script src="/public/js/function/loading.js"></script>
 <script src="/public/js/function/popup.js"></script>
 <script src="/public/js/function/popupConfirm.js"></script>

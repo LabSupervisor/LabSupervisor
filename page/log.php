@@ -98,6 +98,9 @@
 		<button class="button" disabled><i class="ri-arrow-left-s-line"></i></button>
 		<?php
 			}
+		?>
+		<input class="pageNumber" id="pageNumber" type="number" value="<?= $_GET["page"] ?>">
+		<?php
 			if (count(LogRepository::getLogs($logDate)) >= $_GET["page"] * $max) {
 		?>
 		<button class="button" type="submit" name="page" value="<?= $_GET["page"] +1 ?>"><i class="ri-arrow-right-s-line"></i></button>
@@ -195,6 +198,9 @@
 		<button class="button" disabled><i class="ri-arrow-left-s-line"></i></button>
 		<?php
 			}
+		?>
+		<input class="pageNumber" id="pageNumber" type="number" value="<?= $_GET["page"] ?>">
+		<?php
 			if (count($log) > $_GET["page"] * $max) {
 		?>
 		<button class="button" type="submit" name="page" value="<?= $_GET["page"] +1 ?>"><i class="ri-arrow-right-s-line"></i></button>
@@ -216,6 +222,7 @@
 }
 ?>
 
+<script src="/public/js/pageSelector.js"></script>
 <script src="/public/js/function/loading.js"></script>
 
 <?php
