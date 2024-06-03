@@ -99,7 +99,7 @@
 		<?php
 			}
 		?>
-		<input class="pageNumber" id="pageNumber" type="number" value="<?= $_GET["page"] ?>">
+		<input class="pageNumber" id="pageNumber" type="number" value="<?= $_GET["page"] ?>" min="1" max="<?= ceil(count(LogRepository::getLogs($logDate)) / $max)?>">
 		<?php
 			if (count(LogRepository::getLogs($logDate)) >= $_GET["page"] * $max) {
 		?>
@@ -199,7 +199,7 @@
 		<?php
 			}
 		?>
-		<input class="pageNumber" id="pageNumber" type="number" value="<?= $_GET["page"] ?>">
+		<input class="pageNumber" id="pageNumber" type="number" value="<?= $_GET["page"] ?>" min="1" max="<?= ceil(count($log) / $max)?>">
 		<?php
 			if (count($log) > $_GET["page"] * $max) {
 		?>

@@ -113,7 +113,7 @@
 			<?php
 				}
 			?>
-			<input class="pageNumber" id="pageNumber" type="number" value="<?= $_GET["page"] ?>">
+			<input class="pageNumber" id="pageNumber" type="number" value="<?= $_GET["page"] ?>" min="1" max="<?= ceil(count(UserRepository::getUsers()) / $max)?>">
 			<?php
 				if (count(UserRepository::getUsers()) > $_GET["page"] * $max) {
 			?>

@@ -149,7 +149,7 @@
 		<?php
 			}
 		?>
-		<input class="pageNumber" id="pageNumber" type="number" value="<?= $_GET["page"] ?>">
+		<input class="pageNumber" id="pageNumber" type="number" value="<?= $_GET["page"] ?>" min="1" max="<?= ceil(count($sessionList) / $max)?>">
 		<?php
 			if (count($sessionList) > $_GET["page"] * $max) {
 		?>

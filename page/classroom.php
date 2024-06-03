@@ -220,7 +220,7 @@
 			<?php
 				}
 			?>
-			<input class="pageNumber" id="pageNumber" type="number" value="<?= $_GET["page"] ?>">
+			<input class="pageNumber" id="pageNumber" type="number" value="<?= $_GET["page"] ?>" min="1" max="<?= ceil(count($students) / $max)?>">
 			<?php
 				if (count($students) > $_GET["page"] * $max) {
 			?>
