@@ -1,6 +1,4 @@
 function updateUser(userId, classroomIdUser, roleIdUser) {
-	var currentClassId ;
-
 	var form = document.getElementById("form");
 	var surnameElement = document.getElementById("surname_" + userId);
 	var nameElement = document.getElementById("name_" + userId);
@@ -65,8 +63,6 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 		}
 		selectClassroom.add(option);
 	}
-
-	currentClassId = classroomIdUser;
 
 	// Add options to select menu
 	for (var i = 0; i < roles.length; i++) {
@@ -165,7 +161,7 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 			// Remove multiple and required attributes
 			selectClassroom.removeAttribute("multiple");
 
-			if (currentClassId != 0) {
+			if (classroomIdUser != 0) {
 				for (var i = 0; i < classrooms.length; i++) {
 					var option = document.createElement("option");
 					option.text = classrooms[i].name;
