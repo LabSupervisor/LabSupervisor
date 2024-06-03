@@ -59,7 +59,6 @@
 	"ACCOUNT_DELETE_TITLE": "Подтверждение удаления",
 	"ACCOUNT_DELETE_DESCRIPTION": "Вы уверены, что хотите удалить этот аккаунт навсегда?",
 	"ACCOUNT_DELETE_YES": "Да, я хочу удалить этот аккаунт навсегда.",
-	"ACCOUNT_DELETE_CANCEL": "Отмена",
 
 	"SESSION_SUBJECT": "Тема",
 	"SESSION_DESCRIPTION": "Подробности",
@@ -121,7 +120,6 @@
 	"SESSION_CREATE_CHAPTER_ADD": "+ Глава",
 	"SESSION_CREATE_CHAPTER_REMOVE": "- Глава",
 	"SESSION_CREATE_DATE_DATE": "Дата",
-	"SESSION_CREATE_SUBMIT": "Сохранить",
 	"SESSION_CREATE_UPDATE": "Обновить",
 	"SESSION_CREATE_CHAPTER_REMOVE_ERROR": "Вы не можете удалить все главы.",
 	"SESSION_CREATE_DELETE": "Удалить сеанс",
@@ -142,6 +140,7 @@
 	"CLASSROOM_STUDENT_REMOVE": "Удалить из класса",
 	"CLASSROOM_STUDENT_EMAIL": "Электронная почта",
 	"CLASSROOM_EMPTY": "Этот класс пуст.",
+	"CLASSROOM_LIST_EMPTY": "В настоящее время нет доступных классов.",
 
 	"USER_UPDATE_EMAIL": "Адрес электронной почты",
 	"USER_UPDATE_ROLE": "Роль",
@@ -150,7 +149,6 @@
 	"USER_UPDATE_ACTION": "Действие",
 	"USER_UPDATE_MODIFY": "Изменить",
 	"USER_UPDATE_DELETE": "Удалить",
-	"USER_UPDATE_SAVE": "Сохранить",
 	"USER_UPDATE_NOTIFICATION": "Изменения сохранены.",
 	"USER_UPDATE_DELETE_NOTIFICATION": "Пользователь удален.",
 	"USER_UPDATE_DELETE_CONFIRMATION": "Вы уверены, что хотите удалить этого пользователя?",

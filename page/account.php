@@ -50,7 +50,7 @@
 			<div class="column">
 				<input class="disabled" value="<?= htmlspecialchars(UserRepository::getEmail($_SESSION["login"])) ?>" disabled></input>
 				<div>
-					<select name="lang">
+					<select id="lang" name="lang">
 						<?php
 							$userLang = UserRepository::getSetting($_SESSION["login"])["lang"];
 
@@ -96,12 +96,13 @@
 	</label>
 
 	<div>
-		<a class="link" id="cancel"><i class="ri-arrow-left-line"></i> <?= lang("ACCOUNT_DELETE_CANCEL") ?></a>
+		<a class="link" id="cancel"><i class="ri-arrow-left-line"></i> <?= lang("MAIN_ADD") ?></a>
 		<button class="button deleteCaseButton" type="submit" name="confirm_delete"><i class="ri-delete-bin-line"></i> <?= lang("ACCOUNT_DELETE") ?></button>
 	</div>
 </form>
 
 <script src="/public/js/accountPassword.js"></script>
+<script src="/public/js/accountLang.js"></script>
 <script src="/public/js/function/loading.js"></script>
 
 <?php

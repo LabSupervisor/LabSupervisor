@@ -183,7 +183,7 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 	confirmButton.setAttribute("type", "submit");
 	confirmButton.setAttribute("name", "modify");
 	confirmButton.setAttribute("class", "button");
-	confirmButton.setAttribute("title", lang("USER_UPDATE_SAVE"));
+	confirmButton.setAttribute("title", lang("MAIN_SAVE"));
 
 	var icon = document.createElement("i");
 	icon.classList.add("ri-save-2-line");

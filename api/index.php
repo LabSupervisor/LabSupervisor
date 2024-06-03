@@ -119,7 +119,21 @@ switch($_SERVER["REQUEST_METHOD"]) {
 				echo '{"Response": {"Message": "Theme updated."}}';
 			}
 
-			// Application asking to update user theme
+			// Application asking to update user lang
+			if ($data->ask == "update_lang") {
+				// Update theme
+				$theme = UserRepository::getSetting($data->idUser)["theme"];
+				$userSetting = array(
+					"theme" => $theme,
+					"lang" => $data->lang
+				);
+				// Update user's settings
+				UserRepository::updateSetting($data->idUser, $userSetting);
+				// Answer API
+				echo '{"Response": {"Message": "Lang updated."}}';
+			}
+      
+      // Application asking to update user theme
 			if ($data->ask == "get_teacher_classroom") {
 
 				$result = ClassroomRepository::getTeacherClassroom($data->idUser);
@@ -127,7 +141,6 @@ switch($_SERVER["REQUEST_METHOD"]) {
 				// Answer API
 				echo json_encode($result);
 			}
-
 		} catch (Exception $e) {
 			LogRepository::fileSave($e);
 		}

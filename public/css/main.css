@@ -262,6 +262,19 @@ body a {
 	cursor: pointer;
 }
 
+.pageNumber {
+	background: var(--case-field-background-color);
+	border: solid 2px var(--case-field-border-color);
+	border-radius: 7px;
+	font-size: 20px;
+	color: var(--text-color);
+
+	padding-left: 10px;
+
+	height: 32px;
+	width: 70px;
+}
+
 /* Button style */
 .button {
 	background-color: var(--button-background-color);

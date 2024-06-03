@@ -9,7 +9,7 @@
 	"MAIN_SURNAME": "Nom",
 	"MAIN_CANCEL": "Annuler",
 	"MAIN_ADD": "Ajouter",
-	"MAIN_SAVE": "Enregister",
+	"MAIN_SAVE": "Enregistrer",
 
 	"NOTIFICATION_NEED_HELP": "a besoin d'aide !",
 
@@ -25,14 +25,14 @@
 	"NAVBAR_PROFIL_DISCONNECT": "Déconnecter",
 	"NAVBAR_THEME_PICKER": "Thèmes",
 
-	"INDEX_STUDENT_SESSION": "D'ici vous pouvez consulter toutes les sessions auxquels vous avez été inscrit !",
-	"INDEX_TEACHER_CLASSROOM": "Sur cette page vous sont disposé les différentes classes de votre établissement.",
+	"INDEX_STUDENT_SESSION": "D'ici, vous pouvez consulter toutes les sessions auxquels vous avez été inscrit !",
+	"INDEX_TEACHER_CLASSROOM": "Sur cette page vous sont disposés les différentes classes de votre établissement.",
 	"INDEX_TEACHER_CREATE_SESSION": "C'est avec cette page qu'il vous est possible de créer une session ainsi que de la consulter grâce aux boutons ci-dessous",
-	"INDEX_TEACHER_SESSION": "Ici vous sont accessible les sessions de votre création ou celle demandant votre présence.",
-	"INDEX_ADMIN_SESSION": "Cette page vous permet de consulter toutes les sessions existantes. En tant qu'administrateur, leurs simple visualisation vous est possible",
+	"INDEX_TEACHER_SESSION": "Ici vous sont accessibles les sessions de votre création ou celle demandant votre présence.",
+	"INDEX_ADMIN_SESSION": "Cette page vous permet de consulter toutes les sessions existantes. En tant qu'administrateur, leurs simples visualisation vous est possible",
 	"INDEX_ADMIN_USER": "Vous pouvez superviser tous les utilisateurs inscrits depuis cette page. Cela signifie avoir la possibilité d'en modifier certaines informations ou en désactiver.",
 	"INDEX_ADMIN_LOG": "Ici se situe l'historique global de l'application.",
-	"INDEX_ACCOUNT": "D'ici vous pouvez accéder à la page utilisateur qui vous permet de consulter et de modifier les paramètres de votre compte",
+	"INDEX_ACCOUNT": "D'ici, vous pouvez accéder à la page utilisateur qui vous permet de consulter et de modifier les paramètres de votre compte",
 
 	"REGISTER_TITLE": "Inscription",
 	"REGISTER_EMAIL": "Email",
@@ -58,8 +58,7 @@
 	"ACCOUNT_DELETE": "Supprimer le compte",
 	"ACCOUNT_DELETE_TITLE": "Confirmation de suppression",
 	"ACCOUNT_DELETE_DESCRIPTION": "Etes-vous sûr de vouloir supprimer définitivement ce compte ?",
-	"ACCOUNT_DELETE_YES": "Oui je souhaite supprimer définitivement ce compte.",
-	"ACCOUNT_DELETE_CANCEL": "Annuler",
+	"ACCOUNT_DELETE_YES": "Oui, je souhaite supprimer définitivement ce compte.",
 
 	"SESSION_SUBJECT": "Sujet",
 	"SESSION_DESCRIPTION": "Précisions",
@@ -121,7 +120,6 @@
 	"SESSION_CREATE_CHAPTER_ADD": "+ Chapitre",
 	"SESSION_CREATE_CHAPTER_REMOVE": "- Chapitre",
 	"SESSION_CREATE_DATE_DATE": "Date",
-	"SESSION_CREATE_SUBMIT": "Enregister",
 	"SESSION_CREATE_UPDATE": "Mettre à jour",
 	"SESSION_CREATE_CHAPTER_REMOVE_ERROR": "Vous ne pouvez pas supprimer tous les chapitres.",
 	"SESSION_CREATE_DELETE": "Supprimer la session",
@@ -134,7 +132,7 @@
 
 	"CLASSROOM_NAME": "Classes",
 	"CLASSROOM_ADD_STUDENT_TITLE": "Ajouter un étudiant",
-	"CLASSROOM_ADD_STUDENT_INFO": "Garder la touche ctrl enfoncer pour séléctionner plusieurs étudiants",
+	"CLASSROOM_ADD_STUDENT_INFO": "Garder la touche ctrl enfoncée pour sélectionner plusieurs étudiants",
 	"CLASSROOM_ADD_STUDENT_EMPTY": "Il n'y a aucun étudiant à ajouter.",
 	"CLASSROOM_ADD_CLASSROOM_TITLE": "Ajouter une classe",
 	"CLASSROOM_ADD_CLASSROOM_PLACEHOLDER": "Nom",
@@ -142,6 +140,7 @@
 	"CLASSROOM_STUDENT_REMOVE": "Retirer de la classe",
 	"CLASSROOM_STUDENT_EMAIL": "Adresse email",
 	"CLASSROOM_EMPTY": "Cette classe est vide.",
+	"CLASSROOM_LIST_EMPTY": "Aucune classe n'est actuellement disponible.",
 
 	"USER_UPDATE_EMAIL": "Adresse email",
 	"USER_UPDATE_ROLE": "Rôle",
@@ -150,8 +149,7 @@
 	"USER_UPDATE_ACTION": "Action",
 	"USER_UPDATE_MODIFY": "Modifier",
 	"USER_UPDATE_DELETE": "Supprimer",
-	"USER_UPDATE_SAVE": "Enregister",
-	"USER_UPDATE_NOTIFICATION": "Modifications enregistré.",
+	"USER_UPDATE_NOTIFICATION": "Modifications enregistrées.",
 	"USER_UPDATE_DELETE_NOTIFICATION": "Utilisateur supprimé.",
 	"USER_UPDATE_DELETE_CONFIRMATION": "Etes-vous certain de vouloir supprimer cet utilisateur ?",
 

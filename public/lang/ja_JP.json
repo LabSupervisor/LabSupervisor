@@ -59,7 +59,6 @@
 	"ACCOUNT_DELETE_TITLE": "削除の確認",
 	"ACCOUNT_DELETE_DESCRIPTION": "このアカウントを永久に削除してもよろしいですか？",
 	"ACCOUNT_DELETE_YES": "はい、このアカウントを永久に削除します。",
-	"ACCOUNT_DELETE_CANCEL": "キャンセル",
 
 	"SESSION_SUBJECT": "主題",
 	"SESSION_DESCRIPTION": "詳細",
@@ -121,7 +120,6 @@
 	"SESSION_CREATE_CHAPTER_ADD": "+ 章",
 	"SESSION_CREATE_CHAPTER_REMOVE": "- 章",
 	"SESSION_CREATE_DATE_DATE": "日付",
-	"SESSION_CREATE_SUBMIT": "保存",
 	"SESSION_CREATE_UPDATE": "更新する",
 	"SESSION_CREATE_CHAPTER_REMOVE_ERROR": "すべての章を削除することはできません。",
 	"SESSION_CREATE_DELETE": "セッションを削除",
@@ -142,6 +140,7 @@
 	"CLASSROOM_STUDENT_REMOVE": "クラスから削除する",
 	"CLASSROOM_STUDENT_EMAIL": "メールアドレス",
 	"CLASSROOM_EMPTY": "このクラスは空です。",
+	"CLASSROOM_LIST_EMPTY": "現在利用できるクラスはありません。",
 
 	"USER_UPDATE_EMAIL": "Eメール",
 	"USER_UPDATE_ROLE": "役割",
@@ -150,7 +149,6 @@
 	"USER_UPDATE_ACTION": "アクション",
 	"USER_UPDATE_MODIFY": "編集",
 	"USER_UPDATE_DELETE": "削除",
-	"USER_UPDATE_SAVE": "保存",
 	"USER_UPDATE_NOTIFICATION": "変更が保存されました。",
 	"USER_UPDATE_DELETE_NOTIFICATION": "ユーザーが削除されました。",
 	"USER_UPDATE_DELETE_CONFIRMATION": "このユーザーを削除してもよろしいですか？",

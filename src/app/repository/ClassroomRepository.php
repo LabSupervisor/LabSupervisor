@@ -251,6 +251,24 @@ class ClassroomRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
 	}
 
+	public static function getClassroomTeachers($classroomId) {
+		// Get classroom teacher query
+		$query = "SELECT iduser FROM teacherclassroom WHERE idclassroom = :idclassroom";
+
+		// Get classroom teacher
+		try {
+			$queryPrep = DATABASE->prepare($query);
+			$queryPrep->bindParam(':idclassroom', $classroomId);
+			if (!$queryPrep->execute())
+				throw new Exception("Get teacher classroom " . $classroomId . " error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
+	}
+
 	public static function addTeacherClassroom($userId, $classroomId) {
 		// Add teacher classroom query
 		$query = "INSERT INTO teacherclassroom (iduser, idclassroom) VALUES (:iduser, :idclassroom)";

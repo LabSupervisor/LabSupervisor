@@ -60,7 +60,9 @@ if (isset($_POST["addClassroom"])) {
 }
 
 if (isset($_POST["deleteClassroom"])) {
-	ClassroomRepository::deleteTeacherClassroom($_SESSION["login"], $_POST["deleteClassroom"]);
+	foreach (ClassroomRepository::getClassroomTeachers($_POST["deleteClassroom"]) as $userId) {
+		ClassroomRepository::deleteTeacherClassroom($userId["iduser"], $_POST["deleteClassroom"]);
+	}
 	ClassroomRepository::delete($_POST["deleteClassroom"]);
 
 	header("Location: /classroom");

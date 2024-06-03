@@ -158,7 +158,7 @@
 
 		<div>
 			<input type="hidden" name="idSession" value="<?= $_POST['sessionId'] ?>" />
-			<button type="submit" name="updateSession" class="button save"><i class="ri-loop-left-line"></i> <?= lang("SESSION_CREATE_UPDATE") ?></button>
+			<button type="submit" name="updateSession" class="button save"><i class="ri-loop-left-line"></i> <?= lang("MAIN_SAVE") ?></button>
 		</div>
 
 		<?php
@@ -166,7 +166,7 @@
 		?>
 
 		<div>
-			<button class="button" type="submit" name="saveSession"><i class="ri-save-2-line"></i> <?= lang("SESSION_CREATE_SUBMIT") ?></button>
+			<button class="button" type="submit" name="saveSession"><i class="ri-save-2-line"></i> <?= lang("MAIN_SAVE") ?></button>
 		</div>
 
 		<?php

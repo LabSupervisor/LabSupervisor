@@ -18,6 +18,10 @@
 	margin-left: 50px;
 }
 
+table {
+	width: 100%;
+}
+
 /* Side menu */
 .lateral {
 	vertical-align: top;
@@ -48,6 +52,8 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+	background-color: #ffffff70;
+	border: solid 2px var(--case-field-border-color);
 
 	margin: 5px 0px 5px 0px;
 	padding: 5px;
@@ -73,7 +79,6 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	gap: 20%;
 
 	margin-bottom: 13px;
 }
@@ -82,6 +87,14 @@
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+}
+
+.left {
+	margin-right: auto;
+}
+
+.right {
+	margin-left: auto;
 }
 
 .classroomName {
@@ -96,6 +109,8 @@
 
 .studentNumber {
 	font-size: 20px;
+
+	margin-left: 50px;
 
 	min-width: 60px;
 }
@@ -180,4 +195,24 @@
 /* No student in classroom */
 .singleErrorTitle {
 	font-size: 22px;
+}
+
+/* Modify classroom name */
+
+.modifyClassroomInput {
+	background: var(--case-field-background-color);
+	border: solid 2px var(--case-field-border-color);
+	border-radius: 7px;
+	font-size: 20px;
+	color: var(--text-color);
+
+	padding: 15px;
+	/* margin: 15px 0px 15px 0px; */
+
+	width: 130px;
+	height: 9px;
+}
+
+.modifyClassroomInput::placeholder {
+	color: var(--case-field-text-color);
 }
