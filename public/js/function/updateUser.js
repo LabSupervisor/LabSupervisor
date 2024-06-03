@@ -78,16 +78,7 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 	}
 
 	if (roleIdUser == 3) {
-		fetch("/connect", {
-			method: 'post',
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json'
-			},
-			body: '{"ask": "get_teacher_classroom", "idUser":' + userId + '}'
-		}).then((response) => {
-			return response.json()
-		}).then((classroomTeacher) => {
+		fetchData(userId, classroomIdUser, roleIdUser, classRoomElement).then((classroomTeacherRes) => {
 			// Set multiple and required attributes
 			selectClassroom.setAttribute("multiple", "multiple");
 			selectClassroom.setAttribute("required", "required");
@@ -98,16 +89,18 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 			}
 
 			// Select the classes for the teacher
-			classroomTeacher.forEach(function (classroom) {
+			classroomTeacherRes.forEach(function (classroom) {
 				for (var i = 0; i < selectClassroom.options.length; i++) {
 					if (selectClassroom.options[i].value == classroom.id) {
 						selectClassroom.options[i].selected = true;
 					}
 				}
 			});
+
+			classRoomElement.replaceChildren(selectClassroom);
 		}).catch((error) => {
-			console.log(error)
-		})
+			console.log(error);
+		});
 	}
 
 	// Add event listener to change the classroom select element based on role
@@ -119,21 +112,8 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 			for (var i = 0; i < selectClassroom.options.length; i++) {
 				selectClassroom.options[i].selected = false;
 			}
-			fetch("/connect", {
-				method: 'post',
-				headers: {
-					'Accept': 'application/json',
-					'Content-Type': 'application/json'
-				},
-				body: '{"ask": "get_teacher_classroom", "idUser":' + userId + '}'
-			}).then((response) => {
-				return response.json()
-			}).then((classroomTeacher) => {
-				// Set multiple and required attributes
-				selectClassroom.setAttribute("multiple", "multiple");
-				selectClassroom.setAttribute("required", "required");
-
-				if (classroomTeacher.length == 0) {
+			fetchData(userId, classroomIdUser, roleIdUser, classRoomElement).then((classroomTeacherRes) => {
+				if (classroomTeacherRes.length == 0) {
 					optionNone.selected = true; // Select "Aucune classe"
 				} else {
 					// Deselect all options first
@@ -142,7 +122,7 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 					}
 
 					// Select the classes for the teacher
-					classroomTeacher.forEach(function (classroom) {
+					classroomTeacherRes.forEach(function (classroom) {
 						for (var i = 0; i < selectClassroom.options.length; i++) {
 							if (selectClassroom.options[i].value == classroom.id) {
 								selectClassroom.options[i].selected = true;
@@ -210,4 +190,21 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 	confirmButton.appendChild(icon);
 
 	modifyButton.parentNode.replaceChild(confirmButton, modifyButton);
+}
+
+function fetchData(userId, classroomIdUser, roleIdUser, classRoomElement) {
+	return fetch("/connect", {
+		method: 'post',
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json'
+		},
+		body: '{"ask": "get_teacher_classroom", "idUser":' + userId + '}'
+	}).then((response) => response.json())
+	.then((classroomTeacher) => {
+		return classroomTeacher;
+	})
+	.catch((error) => {
+		console.log(error);
+	});
 }
