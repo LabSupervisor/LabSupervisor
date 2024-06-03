@@ -80,7 +80,7 @@
 							if ($_SESSION["login"] != $userId) {
 						?>
 
-						<button class="modifybutton button" type="button" id="modify_<?= $userId ?>" title="<?= lang("USER_UPDATE_MODIFY") ?>" onclick="updateUser(<?= $userId ?>, <?= $classroomIdUser ?>, <?= UserRepository::getRole($userId)[0] ?>)"><i class="ri-pencil-line"></i></button>
+						<button class="button" type="button" id="modify_<?= $userId ?>" title="<?= lang("USER_UPDATE_MODIFY") ?>" onclick="updateUser(<?= $userId ?>, <?= $classroomIdUser ?>, <?= UserRepository::getRole($userId)[0] ?>)"><i class="ri-pencil-line"></i></button>
 
 						<form method="POST" onsubmit="return confirmForm('<?= lang('USER_UPDATE_DELETE_CONFIRMATION') ?>');">
 							<input type="hidden" name="userId" value="<?= $userId ?>">
@@ -88,6 +88,8 @@
 						</form>
 
 						<?php
+							} else {
+								echo '<a class="button account" href="/compte"><i class="ri-account-circle-line"></i>' . lang("NAVBAR_PROFIL_ACCOUNT") . '</a>';
 							}
 						?>
 					</td>
