@@ -1,5 +1,6 @@
 <?php
 
+use LabSupervisor\app\repository\ClassroomRepository;
 use
 	LabSupervisor\app\repository\UserRepository,
 	LabSupervisor\app\repository\SessionRepository,
@@ -130,6 +131,15 @@ switch($_SERVER["REQUEST_METHOD"]) {
 				UserRepository::updateSetting($data->idUser, $userSetting);
 				// Answer API
 				echo '{"Response": {"Message": "Lang updated."}}';
+			}
+      
+      // Application asking to update user theme
+			if ($data->ask == "get_teacher_classroom") {
+
+				$result = ClassroomRepository::getTeacherClassroom($data->idUser);
+
+				// Answer API
+				echo json_encode($result);
 			}
 		} catch (Exception $e) {
 			LogRepository::fileSave($e);

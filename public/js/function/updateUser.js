@@ -31,17 +31,21 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 	inputName.setAttribute("placeholder", lang("MAIN_NAME"));
 	inputName.setAttribute("value", name);
 
+	// Create a span element for "Aucune classe"
+	var noClassSpan = document.createElement("span");
+	noClassSpan.textContent = lang("USER_UPDATE_CLASS_EMPTY");
+	noClassSpan.setAttribute("id", "noClass");
+
 	var selectClassroom = document.createElement("select");
 	selectClassroom.setAttribute("id", "classroom");
 	selectClassroom.setAttribute("name", "classroom_" + userId);
 	selectClassroom.setAttribute("class", "classroom");
-
 	var optionNone = document.createElement("option");
 	optionNone.text = lang("USER_UPDATE_CLASS_EMPTY");
 	optionNone.value = "0";
 
 	// Add the "no class" option to the top of the drop-down menu
-	selectClassroom.insertBefore(optionNone, selectClassroom.firstChild);
+	selectClassroom.appendChild(optionNone);
 
 	var selectRole = document.createElement("select");
 	selectRole.setAttribute("id", "role");
@@ -51,11 +55,10 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 	// Add options to select menu
 	for (var i = 0; i < classrooms.length; i++) {
 		var option = document.createElement("option");
-		// Use "name" property
 		option.text = classrooms[i].name;
 		option.value = classrooms[i].id;
-		if (classrooms[i].id == classroomIdUser) {
-			// Select option for actual classroom
+		if (roleIdUser != 3 && classrooms[i].id == classroomIdUser) {
+			// Select option for actual classroom, but not for professor
 			option.selected = true;
 		}
 		selectClassroom.add(option);
@@ -74,9 +77,97 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 		selectRole.add(option);
 	}
 
+	if (roleIdUser == 3) {
+		fetchData(userId, classroomIdUser, roleIdUser, classRoomElement).then((classroomTeacherRes) => {
+			// Set multiple and required attributes
+			selectClassroom.setAttribute("multiple", "multiple");
+			selectClassroom.setAttribute("required", "required");
+
+			// Deselect all options first
+			for (var i = 0; i < selectClassroom.options.length; i++) {
+				selectClassroom.options[i].selected = false;
+			}
+
+			// Select the classes for the teacher
+			classroomTeacherRes.forEach(function (classroom) {
+				for (var i = 0; i < selectClassroom.options.length; i++) {
+					if (selectClassroom.options[i].value == classroom.id) {
+						selectClassroom.options[i].selected = true;
+					}
+				}
+			});
+
+			classRoomElement.replaceChildren(selectClassroom);
+		}).catch((error) => {
+			console.log(error);
+		});
+	}
+
+	// Add event listener to change the classroom select element based on role
+	selectRole.addEventListener('change', function() {
+		if (selectRole.value == '3') {
+			selectClassroom.setAttribute("multiple", "multiple");
+			selectClassroom.setAttribute("required", "required");
+			// Deselect all other options
+			for (var i = 0; i < selectClassroom.options.length; i++) {
+				selectClassroom.options[i].selected = false;
+			}
+			fetchData(userId, classroomIdUser, roleIdUser, classRoomElement).then((classroomTeacherRes) => {
+				if (classroomTeacherRes.length == 0) {
+					optionNone.selected = true; // Select "Aucune classe"
+				} else {
+					// Deselect all options first
+					for (var i = 0; i < selectClassroom.options.length; i++) {
+						selectClassroom.options[i].selected = false;
+					}
+
+					// Select the classes for the teacher
+					classroomTeacherRes.forEach(function (classroom) {
+						for (var i = 0; i < selectClassroom.options.length; i++) {
+							if (selectClassroom.options[i].value == classroom.id) {
+								selectClassroom.options[i].selected = true;
+							}
+						}
+					});
+				}
+			}).catch((error) => {
+				console.log(error)
+			})
+
+			classRoomElement.replaceChildren(selectClassroom);
+		} else if (selectRole.value == '1') {
+			classRoomElement.replaceChildren(noClassSpan);
+		} else if (selectRole.value == '2') {
+			// Remove multiple and required attributes
+			selectClassroom.removeAttribute("multiple");
+
+			if (classroomIdUser != 0) {
+				for (var i = 0; i < classrooms.length; i++) {
+					var option = document.createElement("option");
+					option.text = classrooms[i].name;
+					option.value = classrooms[i].id;
+					if (roleIdUser != 3 && classrooms[i].id == classroomIdUser) {
+						// Select option for actual classroom, but not for professor
+						option.selected = true;
+					}
+					selectClassroom.add(option);
+				}
+			} else {
+				optionNone.selected = true; // Select "Aucune classe"
+			}
+
+			classRoomElement.replaceChildren(selectClassroom);
+		}
+	});
+
+	if (roleIdUser == 1) {
+		classRoomElement.replaceChildren(noClassSpan);
+	} else {
+		classRoomElement.replaceChildren(selectClassroom);
+	}
+
 	surnameElement.replaceChildren(inputSurname);
 	nameElement.replaceChildren(inputName);
-	classRoomElement.replaceChildren(selectClassroom);
 	roleElement.replaceChildren(selectRole);
 
 	var inputUserId = document.createElement("input");
@@ -101,3 +192,19 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 	modifyButton.parentNode.replaceChild(confirmButton, modifyButton);
 }
 
+function fetchData(userId, classroomIdUser, roleIdUser, classRoomElement) {
+	return fetch("/connect", {
+		method: 'post',
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json'
+		},
+		body: '{"ask": "get_teacher_classroom", "idUser":' + userId + '}'
+	}).then((response) => response.json())
+	.then((classroomTeacher) => {
+		return classroomTeacher;
+	})
+	.catch((error) => {
+		console.log(error);
+	});
+}
