@@ -36,7 +36,6 @@
 		?>
 		<input type="hidden" name="<?= $page ?>">
 		<input type="date" id="date" name="date" value="<?= $logDate ?>">
-		<button class="button" type="submit"><?= lang("LOG_ERROR_SUBMIT") ?></button>
 	</form>
 </div>
 
@@ -115,15 +114,15 @@
 </div>
 
 <?php
-// If errors are ask
-} else if (isset($_GET["error"])) {
+	// If errors are ask
+	} else if (isset($_GET["error"])) {
 ?>
 
 <?php
-	// Get errors file
-	$file = $_SERVER["DOCUMENT_ROOT"] . "/log/" . $logDate . ".log";
-	if (file_exists($file)) {
-		$logs = file_get_contents($file);
+		// Get errors file
+		$file = $_SERVER["DOCUMENT_ROOT"] . "/log/" . $logDate . ".log";
+		if (file_exists($file)) {
+			$logs = file_get_contents($file);
 ?>
 
 <div class="mainbox maintable">
@@ -214,14 +213,15 @@
 	</form>
 </div>
 	<?php
-	} else {
-		echo "<div class='nologmain'><div class='nologcontent'><a class='nologtitle'>" . lang("LOG_ERROR_FILENOTFOUND") . "</a></div></div>";
-	}
+		} else {
+			echo "<div class='nologmain'><div class='nologcontent'><a class='nologtitle'>" . lang("LOG_ERROR_FILENOTFOUND") . "</a></div></div>";
+		}
 	?>
 <?php
-}
+	}
 ?>
 
+<script src="/public/js/dateSelector.js"></script>
 <script src="/public/js/pageSelector.js"></script>
 <script src="/public/js/function/loading.js"></script>
 
