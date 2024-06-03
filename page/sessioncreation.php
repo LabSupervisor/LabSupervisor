@@ -41,7 +41,7 @@
 				<div>
 					<select id="classroomSelect" name="classes" onchange="updateClassroom(this.value)">
 					<?php
-						$classrooms = ClassroomRepository::getClassrooms();
+						$classrooms = ClassroomRepository::getTeacherClassroom($_SESSION["login"]);
 						foreach ($classrooms as $value) {
 							if ($value["active"] == 1) {
 								if (isset($_POST['sessionId'])) {
