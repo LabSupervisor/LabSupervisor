@@ -20,7 +20,7 @@
 		<div class="boxGroup">
 			<div class="mainbox">
 				<h2><?= lang("NAVBAR_CLASS") ?></h2>
-				<a><?= lang("INDEX_TEACHER_CLASSROOM") ?></a>
+				<a><?= lang("INDEX_ADMIN_CLASSROOM") ?></a>
 				<a class="button" href="/classes"><i class="ri-folder-line"></i> <?= lang("NAVBAR_CLASS") ?></a>
 			</div>
 			<div class="mainbox">
