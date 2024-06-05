@@ -333,7 +333,7 @@ class UserRepository {
 		$query = "";
 		// Create links query
 		if (UserRepository::getLink($userId, $sessionId)) {
-			$query = "UPDATE link SET idlink = :idlink, idSession = :idSession WHERE iduser = :iduser AND idsession = :idsession";
+			$query = "UPDATE link SET idlink = :idlink, idSession = :idSession WHERE iduser = :iduser";
 		} else {
 			$query = "INSERT INTO link (iduser, idSession, idlink) VALUES (:iduser, :idSession, :idlink)";
 		}
