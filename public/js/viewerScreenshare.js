@@ -1,5 +1,4 @@
 const grid = document.getElementById('screenshare');
-const socket = io('ws://' + videoServerHost +':' + videoServerPort);
 
 // Update video display
 function addVideoStream(mediaStream) {
@@ -9,6 +8,25 @@ function addVideoStream(mediaStream) {
 	grid.appendChild(video);
 	video.play();
 }
+
+fetch("/connect", {
+	method: 'post',
+	headers: {
+	'Accept': 'application/json',
+	'Content-Type': 'application/json'
+	},
+	body: JSON.stringify({
+		"ask": "get_screenshare",
+		"idUser": requestId,
+		"idSession": idSession
+	})
+}).then((response) => {
+	return response.json()
+}).then((res) => {
+	respondId = res.Response.Screenshare;
+}).catch((error) => {
+	console.log(error);
+})
 
 if (navigator.userAgent.includes("Firefox")) {
 	document.getElementById('firefoxButton').style.display = 'flex';
@@ -27,20 +45,18 @@ async function startScrenshare() {
 			audio: false
 		});
 
-		// Create peer connection
-		const peer = new Peer();
+		var peer = new Peer();
 
 		// Create peer connection
 		peer.on('open', function () {
-			socket.emit('get', requestId);
-		});
-
-		socket.on('response', id => {
-			console.log(id);
-			const call = peer.call(id, mediaStream);
+			const call = peer.call(respondId, mediaStream);
 			call.on('stream', stream => {
 				addVideoStream(stream);
 			});
+		});
+
+		peer.on("error", function(error) {
+			console.log(error);
 		});
 	} catch (e) {
 		window.open('','_self').close();

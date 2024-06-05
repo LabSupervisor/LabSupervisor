@@ -333,7 +333,7 @@ class UserRepository {
 		$query = "";
 		// Create links query
 		if (UserRepository::getLink($userId, $sessionId)) {
-			$query = "UPDATE link SET idlink = :idlink, idSession = :idSession WHERE iduser = :iduser";
+			$query = "UPDATE link SET idlink = :idlink, idSession = :idSession WHERE iduser = :iduser AND idsession = :idsession";
 		} else {
 			$query = "INSERT INTO link (iduser, idSession, idlink) VALUES (:iduser, :idSession, :idlink)";
 		}
@@ -349,6 +349,32 @@ class UserRepository {
 				LogRepository::dbSave("Link " . $moduleId . " create to " . $userId);
 			else
 				throw new Exception("Link " . $moduleId . " to " . $userId . " error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+	}
+
+	public static function screenshare($userId, $sessionId, $screenshareId) {
+		$query = "";
+		// Create links query
+		if (UserRepository::getScreenshare($userId, $sessionId)) {
+			$query = "UPDATE screenshare SET idscreenshare = :idscreenshare, idsession = :idsession WHERE iduser = :iduser AND idsession = :idsession";
+		} else {
+			$query = "INSERT INTO screenshare (iduser, idsession, idscreenshare) VALUES (:iduser, :idsession, :idscreenshare)";
+		}
+
+		// Create link
+		try {
+			$queryPrep = DATABASE->prepare($query);
+			$queryPrep->bindParam(':iduser', $userId);
+			$queryPrep->bindParam(':idsession', $sessionId);
+			$queryPrep->bindParam(':idscreenshare', $screenshareId);
+
+			if ($queryPrep->execute())
+				LogRepository::dbSave("Add screenshare " . $screenshareId . " to " . $userId . " on " . $sessionId);
+			else
+				throw new Exception("Add screenshare " . $screenshareId . " to " . $userId . " on " . $sessionId . " error");
 		} catch (Exception $e) {
 			// Log error
 			LogRepository::fileSave($e);
@@ -388,6 +414,25 @@ class UserRepository {
 			$queryPrep->bindParam(':idsession', $sessionId);
 			if (!$queryPrep->execute())
 				throw new Exception("Get link " . $userId . " error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
+	}
+
+	public static function getScreenshare($userId, $sessionId) {
+		// Get link query
+		$query = "SELECT idscreenshare FROM screenshare WHERE iduser = :iduser AND idsession = :idsession";
+
+		// Get link
+		try {
+			$queryPrep = DATABASE->prepare($query);
+			$queryPrep->bindParam(':iduser', $userId);
+			$queryPrep->bindParam(':idsession', $sessionId);
+			if (!$queryPrep->execute())
+				throw new Exception("Get screenshare " . $userId . " error");
 		} catch (Exception $e) {
 			// Log error
 			LogRepository::fileSave($e);

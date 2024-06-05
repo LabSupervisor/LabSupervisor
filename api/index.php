@@ -132,14 +132,37 @@ switch($_SERVER["REQUEST_METHOD"]) {
 				// Answer API
 				echo '{"Response": {"Message": "Lang updated."}}';
 			}
-      
-      // Application asking to update user theme
+
+			// Application asking for teacher classroom
 			if ($data->ask == "get_teacher_classroom") {
 
 				$result = ClassroomRepository::getTeacherClassroom($data->idUser);
 
 				// Answer API
 				echo json_encode($result);
+			}
+
+			// Application asking to stored user screenshare id
+			if ($data->ask == "add_screenshare") {
+
+				UserRepository::screenshare($data->idUser, $data->idSession, $data->idScreenshare);
+
+				// Answer API
+				echo '{"Response": {"Message": "Screenshare stored."}}';
+			}
+
+			// Application asking for user screenshare id
+			if ($data->ask == "get_screenshare") {
+
+				$response = UserRepository::getScreenshare($data->idUser, $data->idSession);
+
+				// Answer API
+				if (isset($response)) {
+					echo '{"Response": {"Screenshare": "' . $response . '"}}';
+				} else {
+					http_response_code(404);
+					echo '{"Response": {"Error": 404}}';
+				}
 			}
 		} catch (Exception $e) {
 			LogRepository::fileSave($e);
