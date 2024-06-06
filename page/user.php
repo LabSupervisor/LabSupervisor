@@ -65,7 +65,11 @@
 						if ($user["classroom"]) {
 							echo htmlspecialchars(ClassroomRepository::getName($user["classroom"]));
 						} else {
-							echo lang("USER_UPDATE_CLASS_EMPTY");
+							if (in_array(TEACHER, UserRepository::getRole($userId))) {
+								echo "";
+							} else {
+								echo lang("USER_UPDATE_CLASS_EMPTY");
+							}
 						}
 						?>
 						<input type="hidden" name="classroom" id="classroom_<?=$userId?>">

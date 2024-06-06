@@ -52,5 +52,16 @@ if (isset($_POST["modify"])) {
 		ClassroomRepository::addUser($_POST["userId"], $_POST["classroom_" . $_POST["userId"]]);
 	}
 
+	if ($_POST["role_" . $_POST["userId"]] == TEACHER) {
+		foreach (ClassroomRepository::getTeacherClassroom($_POST["userId"]) as $value) {
+			ClassroomRepository::deleteTeacherClassroom($_POST["userId"], $value["id"]);
+		}
+		foreach ($_POST["classroom_" . $_POST["userId"]] as $classroomId) {
+			if ($classroomId != 0) {
+				ClassroomRepository::addTeacherClassroom($_POST["userId"], $classroomId);
+			}
+		}
+	}
+
 	echo '<script> popupDisplay("' . lang("USER_UPDATE_NOTIFICATION") .'"); </script>';
 }
