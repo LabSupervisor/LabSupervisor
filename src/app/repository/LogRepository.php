@@ -49,13 +49,14 @@ class LogRepository extends Exception{
 		fclose($file);
 	}
 
-	public static function getLogs() {
+	public static function getLogs($date) {
 		// Get logs query
-		$query = "SELECT * FROM log ORDER BY id DESC";
+		$query = "SELECT * FROM log WHERE DATE(date) = :date ORDER BY id DESC";
 
 		// Get logs
 		try {
 			$queryPrep = DATABASE->prepare($query);
+			$queryPrep->bindParam(':date', $date);
 			if (!$queryPrep->execute())
 				throw new Exception("Get logs error");
 		} catch (Exception $e) {

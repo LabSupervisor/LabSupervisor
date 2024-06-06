@@ -1,6 +1,5 @@
 const shareButton = document.getElementById('shareButton');
 const grid = document.getElementById('videogrid');
-const socket = io('ws://' + videoServerHost +':' + videoServerPort);
 let data = [];
 
 // Start sharing
@@ -24,10 +23,22 @@ shareButton.addEventListener('click', async () => {
 	// Create peer connection
 	peer.on('open', function (id) {
 		console.log('Personal peer ID: ' + id);
-		socket.emit('share', [userId, id]);
-	});
-
-	socket.emit('screenshare', data => {
-		peer.call(data, mediaStream);
+		fetch("/connect", {
+			method: 'post',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				"ask": "add_screenshare",
+				"idUser": userId,
+				"idSession": sessionId,
+				"idScreenshare": id
+			})
+		}).then((response) => {
+			return response.json()
+		}).catch((error) => {
+			console.log(error)
+		})
 	});
 });

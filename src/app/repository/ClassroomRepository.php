@@ -109,9 +109,7 @@ class ClassroomRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
 	}
 
-	public static function getUsers($name) {
-		$classroomId = ClassroomRepository::getId($name);
-
+	public static function getUsers($classroomId) {
 		// Get classroom's user query
 		$query = "SELECT iduser FROM userclassroom, user WHERE idclassroom = :idclassroom AND user.id = iduser ORDER BY user.surname ASC";
 
@@ -131,7 +129,7 @@ class ClassroomRepository {
 
 	public static function getUsersNotInClassroom() {
 		// Get user not in classroom query
-		$query = "SELECT u.* FROM user u LEFT JOIN userclassroom uc ON u.id = uc.iduser	LEFT JOIN userrole ur ON u.id = ur.iduser WHERE uc.iduser IS NULL AND ur.idrole NOT IN (1, 3) ORDER BY u.surname ASC";
+		$query = "SELECT u.* FROM user u LEFT JOIN userclassroom uc ON u.id = uc.iduser LEFT JOIN userrole ur ON u.id = ur.iduser WHERE uc.iduser IS NULL AND ur.idrole NOT IN (1, 3) AND u.active = 1 ORDER BY u.surname ASC";
 
 		// Get user not in classroom
 		try {
@@ -162,6 +160,24 @@ class ClassroomRepository {
 		}
 
 		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
+	}
+
+	public static function getTeacherClassroom($userId) {
+		// Get teacher classroom query
+		$query = "SELECT c.* FROM classroom c, teacherclassroom tc WHERE c.id = tc.idclassroom AND tc.iduser = :iduser";
+
+		// Get teacher classroom
+		try {
+			$queryPrep = DATABASE->prepare($query);
+			$queryPrep->bindParam(':iduser', $userId);
+			if (!$queryPrep->execute())
+				throw new Exception("Get teacher classroom error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
 	}
 
 	public static function addUser($userId, $classroomId) {
@@ -198,16 +214,16 @@ class ClassroomRepository {
 		}
 	}
 
-	public static function isActive($name) {
+	public static function isActive($classroomId) {
 		// Get if classroom is active query
-		$query = "SELECT active FROM classroom WHERE name = :name";
+		$query = "SELECT active FROM classroom WHERE id = :id";
 
 		// Get if classroom is active
 		try {
 			$queryPrep = DATABASE->prepare($query);
-			$queryPrep->bindParam(':name', $name);
+			$queryPrep->bindParam(':id', $classroomId);
 			if (!$queryPrep->execute())
-				throw new Exception("Get active classroom " . $name . " error");
+				throw new Exception("Get active classroom " . $classroomId . " error");
 		} catch (Exception $e) {
 			// Log error
 			LogRepository::fileSave($e);
@@ -235,11 +251,63 @@ class ClassroomRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
 	}
 
-	public static function delete($name) {
-		$classroomId = ClassroomRepository::getId($name);
+	public static function getClassroomTeachers($classroomId) {
+		// Get classroom teacher query
+		$query = "SELECT iduser FROM teacherclassroom WHERE idclassroom = :idclassroom";
 
+		// Get classroom teacher
+		try {
+			$queryPrep = DATABASE->prepare($query);
+			$queryPrep->bindParam(':idclassroom', $classroomId);
+			if (!$queryPrep->execute())
+				throw new Exception("Get teacher classroom " . $classroomId . " error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
+	}
+
+	public static function addTeacherClassroom($userId, $classroomId) {
+		// Add teacher classroom query
+		$query = "INSERT INTO teacherclassroom (iduser, idclassroom) VALUES (:iduser, :idclassroom)";
+
+		// Add teacher classroom
+		try {
+			$queryPrep = DATABASE->prepare($query);
+			$queryPrep->bindParam(':idclassroom', $classroomId);
+			$queryPrep->bindParam(':iduser', $userId);
+			if (!$queryPrep->execute())
+				throw new Exception("Add teacher " . $userId. " classroom " . $classroomId . " error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+	}
+
+	public static function deleteTeacherClassroom($userId, $classroomId) {
+		// Delete teacher classroom query
+		$query = "DELETE FROM teacherclassroom WHERE iduser = :iduser AND idclassroom = :idclassroom";
+
+		// Delete teacher classroom
+		try {
+			$queryPrep = DATABASE->prepare($query);
+			$queryPrep->bindParam(':idclassroom', $classroomId);
+			$queryPrep->bindParam(':iduser', $userId);
+			if (!$queryPrep->execute())
+				throw new Exception("Delete teacher " . $userId . " classroom " . $classroomId . " error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
+	}
+
+	public static function delete($classroomId) {
 		// Delete classroom query
-		$query = "UPDATE classroom SET name = 'deleted#" . $classroomId . "', active = 0 WHERE id = :idclassroom";
+		$query = "DELETE FROM classroom WHERE id = :idclassroom";
 
 		// Delete classroom
 		try {

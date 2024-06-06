@@ -3,11 +3,8 @@
 	use LabSupervisor\app\repository\UserRepository;
 	use function
 		LabSupervisor\functions\mainHeader,
-		LabSupervisor\functions\permissionChecker,
 		LabSupervisor\functions\lang;
 
-	// Ask for permissions
-	permissionChecker(true, array(TEACHER));
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +38,10 @@
 
 		<!-- Import PeerJS server -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.2/peerjs.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js"></script>
+
+		<script>
+			var idSession = <?= $_SESSION["session"] ?>;
+		</script>
 
 		<!-- Import screenshare engine -->
 		<script src="/public/js/viewerScreenshare.js"></script>

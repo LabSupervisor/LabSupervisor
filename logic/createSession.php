@@ -31,26 +31,35 @@ if (isset($_POST['saveSession'])) {
 	$sessionRepo->createSession($session);
 	$sessionId = SessionRepository::getId($title);
 
-	$classUsers = ClassroomRepository::getUsers(ClassroomRepository::getName($classroomId));
+	$classUsers = ClassroomRepository::getUsers($classroomId);
 
 	// Add participants
-	foreach ($classUsers as $userId) {
-		SessionRepository::addParticipant($userId["iduser"], $title);
+	foreach ($classUsers as $user) {
+		SessionRepository::addParticipant($user["iduser"], $sessionId);
 	}
 
 	if (isset($_POST['addChapters'])) {
 		$addChapters = $_POST['addChapters'];
-		foreach ($addChapters as $addChapter){
+		foreach ($addChapters as $addChapter) {
 			SessionRepository::addChapter($addChapter['title'], $addChapter['desc'], $creatorId, $sessionId);
-			foreach ($classUsers as $userId) {
-				$chapterId = SessionRepository::getChapterId($addChapter['title']);
-				SessionRepository::addStatus($sessionId, $chapterId, $userId["iduser"]);
+		}
+
+		$idChaptersNoStatus = SessionRepository::getChapterNoStatus($sessionId);
+		foreach ($classUsers as $user) {
+			foreach ($idChaptersNoStatus as $value) {
+				SessionRepository::addStatus($sessionId, $value['chapterId'], $user['iduser']);
 			}
 		}
 	}
 
 	// Add teacher to his own session
-	SessionRepository::addParticipant($_SESSION["login"], $title);
+	SessionRepository::addParticipant($_SESSION["login"], $sessionId);
+
+	if (isset($_POST["state"])) {
+		SessionRepository::setState($sessionId, 1);
+	}
+
+	setcookie("notification", lang('SESSION_CREATE_NOTIFICATION'), 0);
 
 	header("Location: /sessions");
 }
@@ -79,22 +88,56 @@ else if (isset($_POST['updateSession'])) {
 	$session = new Session($sessionData);
 	$sessionRepo->update($session);
 
-	$classUsers = ClassroomRepository::getUsers(ClassroomRepository::getName($classroomId));
+	foreach (SessionRepository::getParticipants($sessionId) as $user) {
+		UserRepository::unlink($user["iduser"], $sessionId, UserRepository::getLink($user["iduser"], $sessionId));
+	}
+
+	// Add participants
+	$classUsers = ClassroomRepository::getUsers($classroomId);
+
+	if(isset($_POST['classroomChange'])) {
+		// Remove participants
+		foreach (SessionRepository::getParticipants($sessionId) as $user) {
+			foreach (SessionRepository::getChapter($sessionId) as $value) {
+				SessionRepository::deleteStatus($sessionId, $user["iduser"], $value["id"]);
+			}
+			UserRepository::unlink($user["iduser"], $sessionId, UserRepository::getLink($user["iduser"], $sessionId));
+			SessionRepository::deleteParticipant($sessionId, $user["iduser"]);
+		}
+
+		// Add participants
+		$classUsers = ClassroomRepository::getUsers($classroomId);
+		foreach ($classUsers as $userId) {
+			SessionRepository::addParticipant($userId["iduser"], $sessionId);
+		}
+		foreach (SessionRepository::getChapter($sessionId) as $chapterId) {
+			foreach ($classUsers as $userId) {
+				SessionRepository::addStatus($sessionId, $chapterId["id"], $userId["iduser"]);
+			}
+		}
+
+		// Add teacher to his own session
+		SessionRepository::addParticipant($creatorId, $sessionId);
+
+	}
 
 	if (isset($_POST['addChapters'])) {
 		$addChapters = $_POST['addChapters'];
-		foreach ($addChapters as $addChapter){
+		foreach ($addChapters as $addChapter) {
 			SessionRepository::addChapter($addChapter['title'], $addChapter['desc'], $creatorId, $sessionId);
-			foreach ($classUsers as $userId) {
-				$chapterId = SessionRepository::getChapterId($addChapter['title']);
-				SessionRepository::addStatus($sessionId, $chapterId, $userId["iduser"]);
+		}
+
+		$idChaptersNoStatus = SessionRepository::getChapterNoStatus($sessionId);
+		foreach ($classUsers as $user) {
+			foreach ($idChaptersNoStatus as $value) {
+				SessionRepository::addStatus($sessionId, $value['chapterId'], $user['iduser']);
 			}
 		}
 	}
 
 	if (isset($_POST['updatedChapters'])) {
-		$updatedChapters = $_POST['updatedChapters'] ;
-		foreach ($updatedChapters as $updatedChapter){
+		$updatedChapters = $_POST['updatedChapters'];
+		foreach ($updatedChapters as $updatedChapter) {
 			SessionRepository::updateChapter($updatedChapter['title'], $updatedChapter['desc'], $creatorId, $updatedChapter['id']);
 		}
 	}
@@ -113,8 +156,16 @@ else if (isset($_POST['updateSession'])) {
 			SessionRepository::deleteChapter($deletedChapter);
 		}
 	}
+
+	if (isset($_POST["state"])) {
+		if (SessionRepository::getState($sessionId) == 0) {
+			SessionRepository::setState($sessionId, 1);
+		}
+	} else {
+		SessionRepository::setState($sessionId, 0);
+	}
+
 	$_POST['sessionId'] = $sessionId;
-	echo '<script> popupDisplay("' . lang('SESSION_CREATE_UPDATE_NOTIFICATION') .'"); </script>';
 }
 
 // Case 3 : prefill the session form with session data
@@ -150,6 +201,8 @@ else if (isset($_POST['deleteSession'])) {
 	}
 
 	SessionRepository::delete($sessionId);
+
+	setcookie("notification", lang('SESSION_CREATE_DELETE_NOTIFICATION'), 0);
 
 	header("Location: /sessions");
 }

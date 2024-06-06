@@ -64,7 +64,7 @@ CREATE TABLE `session` (
   `description` text DEFAULT NULL,
   `idclassroom` int(11) NOT NULL,
   `idcreator` int(11) NOT NULL,
-  `state` tinyint(1) NOT NULL DEFAULT 1,
+  `state` tinyint(1) NOT NULL DEFAULT 0,
   `date` datetime NOT NULL,
   `creationdate` datetime NOT NULL DEFAULT current_timestamp(),
   `updatedate` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -76,7 +76,7 @@ DROP TABLE IF EXISTS `setting`;
 CREATE TABLE `setting` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `iduser` int(11) NOT NULL,
-  `theme` int(11) NOT NULL DEFAULT 0,
+  `theme` varchar(16) NOT NULL DEFAULT 'redLight',
   `lang` varchar(50) NOT NULL DEFAULT 'fr_FR',
   `updatedate` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
@@ -130,6 +130,17 @@ CREATE TABLE `userclassroom` (
   KEY `usergroup_group_FK` (`idclassroom`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+DROP TABLE IF EXISTS `teacherclassroom`;
+CREATE TABLE `teacherclassroom` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `iduser` int(11) NOT NULL,
+  `idclassroom` int(11) NOT NULL,
+  `updatedate` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `teacherclassroom_user_FK` (`iduser`),
+  KEY `teacherclassroom_classroom_FK` (`idclassroom`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
 DROP TABLE IF EXISTS `link`;
 CREATE TABLE `link` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -139,6 +150,17 @@ CREATE TABLE `link` (
   `connectdate` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `link_user_FK` (`iduser`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+DROP TABLE IF EXISTS `screenshare`;
+CREATE TABLE `screenshare` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `iduser` int NOT NULL,
+  `idsession` int NOT NULL,
+  `idscreenshare` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `screenshare_user_FK` (`iduser`),
+  KEY `screenshare_session_FK` (`idsession`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 ALTER TABLE `chapter`
@@ -172,6 +194,14 @@ ALTER TABLE `userclassroom`
   ADD CONSTRAINT `usergroup_group_FK` FOREIGN KEY (`idclassroom`) REFERENCES `classroom` (`id`),
   ADD CONSTRAINT `usergroup_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`);
 
+ALTER TABLE `teacherclassroom`
+  ADD CONSTRAINT `teacherclassroom_classroom_FK` FOREIGN KEY (`idclassroom`) REFERENCES `classroom` (`id`),
+  ADD CONSTRAINT `teacherclassroom_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`);
+
 ALTER TABLE `link`
   ADD CONSTRAINT `link_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`),
   ADD CONSTRAINT `link_session_FK` FOREIGN KEY (`idsession`) REFERENCES `session` (`id`);
+
+ALTER TABLE `screenshare`
+  ADD CONSTRAINT `screenshare_session_FK` FOREIGN KEY (`idsession`) REFERENCES `session` (`id`),
+  ADD CONSTRAINT `screenshare_user_FK` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`);

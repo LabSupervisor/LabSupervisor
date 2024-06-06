@@ -7,7 +7,7 @@ use function LabSupervisor\functions\lang;
 
 if (isset($_POST["register"])) {
 	$userData = array(
-		"email" => $_POST['email'],
+		"email" => strtolower($_POST['email']),
 		"name" => $_POST['name'],
 		"surname" => $_POST['surname'],
 		"password" => $_POST['password']
@@ -18,6 +18,8 @@ if (isset($_POST["register"])) {
 		echo '<script> popupDisplay("' . lang("REGISTER_ERROR_NOTSAME") .'"); </script>';
 	} elseif (UserRepository::getId($_POST['email'])) {
 		echo '<script> popupDisplay("' . lang("REGISTER_ERROR_EMAILTAKEN") .'"); </script>';
+	} elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+		echo '<script> popupDisplay("' . lang("REGISTER_ERROR_EMAILINVALID") .'"); </script>';
 	} else {
 		// Create user
 		$userRepo = new UserRepository();

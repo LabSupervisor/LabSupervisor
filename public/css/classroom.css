@@ -10,76 +10,209 @@
 	user-select: text;
 }
 
+.maintable td {
+	padding: 2px 15px 2px 15px;
+}
+
+.studentList {
+	margin-left: 50px;
+}
+
+table {
+	width: 100%;
+}
+
 /* Side menu */
-#lateralSelector {
+.lateral {
 	vertical-align: top;
 
 	padding: 20px;
 	margin-right: 0;
 
 	width: fit-content;
-	height: fit-content;
+}
+
+.classnameGroup {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
+	margin: 0px 10px 13px 10px;
+}
+
+.classroomListTitle {
+	margin-right: 20px;
 }
 
 .classname {
 	font-size: 20px;
 	border-radius: 9px;
+	border: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	background-color: #ffffff70;
+	border: solid 2px var(--case-field-border-color);
 
-	margin: 5px 3% 5px 3%;
+	margin: 5px 0px 5px 0px;
 	padding: 5px;
 
-	max-height: 80%;
+	width: 90%;
+	max-width: 200px;
 
 	cursor: pointer;
 }
 
-input {
-	background: var(--case-field-background-color);
+.classname:hover:not(.selected) {
+	background-color: var(--button-hover-color);
+}
+
+.selected {
+	background-color: var(--button-background-color);
+	color: var(--button-text-color);
+}
+
+/* Title */
+.classroomTitleBox {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+
+	margin-bottom: 13px;
+}
+
+.classroomTitleItem {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.left {
+	margin-right: auto;
+}
+
+.right {
+	margin-left: auto;
+}
+
+.classroomName {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+
+	margin: 0px 40px 0px 40px;
+
+	max-width: 150px;
+}
+
+.studentNumber {
+	font-size: 20px;
+
+	margin-left: 50px;
+
+	min-width: 60px;
+}
+
+.addStudent {
+	margin-right: 40px;
+}
+
+/* Popup */
+.addPopup {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: fixed;
+	visibility: hidden;
+
+	background-color: #00000050;
+	backdrop-filter: blur(3px);
+	opacity: 0;
+	transition: opacity 200ms ease, visibility 200ms ease;
+
+	padding-top: 10%;
+
+	z-index: 50;
+
+	height: 100%;
+	width: 100%;
+}
+
+.showPopup {
+	visibility: visible;
+	opacity: 1;
+}
+
+.popupbox {
+	display: flex;
+	flex-direction: column;
+
+	user-select: none;
+
+	padding: 20px 30px 20px 30px;
+}
+
+.selectStudentForm {
+	display: flex;
+	flex-direction: column;
+}
+
+.selectStudent {
 	border: 0;
+	border-radius: 9px;
+
+	padding: 5px;
+	margin: 15px 0px 15px 0px;
+
+	height: 100px;
+}
+
+.addClassroomInput {
+	background: var(--case-field-background-color);
+	border: solid 2px var(--case-field-border-color);
 	border-radius: 7px;
 	font-size: 20px;
 	color: var(--text-color);
 	transform: translateY(1px);
 
 	padding: 15px;
+	margin: 15px 0px 15px 0px;
 
-	width: 100px;
+	width: 250px;
 	height: 9px;
 }
 
-input::placeholder {
+.addClassroomInput::placeholder {
 	color: var(--case-field-text-color);
 }
 
-.classname:hover {
-	background-color: var(--button-hover-color);
-}
-
-.classname[selected] {
-	background-color: var(--button-background-color);
-	color: var(--button-text-color);
-}
-
-.contentClassroom {
-	display: none;
-}
-
-.contentClassroom[selected] {
-	display: block;
-}
-
-.contentClassroom h2 {
-	margin: 10px;
-}
-
-.selectStudent {
-	background: var(--case-field-background-color);
+.selectStudent::selection {
 	border: 0;
+}
+
+/* No student in classroom */
+.singleErrorTitle {
+	font-size: 22px;
+}
+
+/* Modify classroom name */
+
+.modifyClassroomInput {
+	background: var(--case-field-background-color);
+	border: solid 2px var(--case-field-border-color);
 	border-radius: 7px;
-	font-size: 15px;
+	font-size: 20px;
 	color: var(--text-color);
 
-	padding: 9px;
+	padding: 15px;
+	/* margin: 15px 0px 15px 0px; */
 
-	cursor: pointer;
+	width: 130px;
+	height: 9px;
+}
+
+.modifyClassroomInput::placeholder {
+	color: var(--case-field-text-color);
 }

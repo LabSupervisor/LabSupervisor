@@ -14,8 +14,15 @@
 }
 
 ::-webkit-scrollbar {
-	width: 0px;
-	background: none;
+	background-color: var(--background-case-color);
+
+	width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--button-background-color);
+
+	border-radius: 10px;
 }
 
 /* Input autocomplete style */
@@ -60,6 +67,10 @@ body a {
 	stroke: var(--text-color);
 }
 
+.pupil {
+	fill: var(--text-color);
+}
+
 @keyframes rotation {
 	from {
 		transform: rotate(0deg);
@@ -88,8 +99,41 @@ body a {
 }
 
 .iconYellow {
+	stroke: var(--icon-yellow-color);
 	animation: rotation_rev 40s linear infinite;
 	transform-origin: center center;
+}
+
+/* Loading */
+.loading {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: fixed;
+	visibility: hidden;
+
+	background-color: #00000050;
+	backdrop-filter: blur(3px);
+	opacity: 0;
+	transition: opacity 200ms ease, visibility 200ms ease;
+
+	padding-top: 10%;
+
+	z-index: 1000;
+
+	user-select: none;
+
+	height: 100%;
+	width: 100%;
+}
+
+.loading svg {
+	height: 200px;
+}
+
+.showLoading {
+	visibility: visible;
+	opacity: 1;
 }
 
 /* Error */
@@ -120,7 +164,7 @@ body a {
 	border-color: var(--case-border-color);
 	color: var(--text-color);
 	backdrop-filter: blur(12px);
-	box-shadow: 0px 0px 50px 0px #00000030;
+	box-shadow: 0 0 30px 5px #00000030;
 }
 
 /* Title box */
@@ -198,10 +242,37 @@ body a {
 	margin-left: 40px;
 }
 
+/* Error message */
+.singleErrorContainer {
+	display: block;
+	width: 80%;
+	margin: auto;
+	margin-top: 25vh;
+	text-align: center;
+	user-select: none;
+}
+
+.singleErrorTitle {
+	font-size: 30px;
+}
+
 /* Page system */
 .pageGroup button {
 	font-size: 20px;
 	cursor: pointer;
+}
+
+.pageNumber {
+	background: var(--case-field-background-color);
+	border: solid 2px var(--case-field-border-color);
+	border-radius: 7px;
+	font-size: 20px;
+	color: var(--text-color);
+
+	padding-left: 10px;
+
+	height: 32px;
+	width: 70px;
 }
 
 /* Button style */
@@ -231,7 +302,11 @@ body a {
 	color: var(--text-hover-color);
 	font-style: italic;
 
-	cursor: not-allowed !important;
+	cursor: not-allowed;
+}
+
+.button:disabled:hover {
+	color: var(--text-hover-color);
 }
 
 .button:hover {
@@ -257,6 +332,22 @@ body a {
 }
 
 .back:hover {
+	color: var(--text-hover-color);
+	transition: 200ms;
+}
+
+.link {
+	color: var(--text-color);
+	text-decoration: none;
+	font-size: 16px;
+	transition: 200ms;
+	border: 0;
+	background: 0;
+
+	cursor: pointer;
+}
+
+.link:hover {
 	color: var(--text-hover-color);
 	transition: 200ms;
 }

@@ -20,7 +20,6 @@ class UserRepository {
 
 				// Hash password using bcrypt
 				$password = password_hash($bindParam["password"], PASSWORD_BCRYPT);
-				LogRepository::fileSave(new Exception($bindParam["password"]));
 
 				// Create user
 				try {
@@ -193,7 +192,30 @@ class UserRepository {
 			LogRepository::fileSave($e);
 		}
 
-		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
+		$response = $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
+		$roleList = array();
+		foreach ($response as $value) {
+			array_push($roleList, $value["idrole"]);
+		}
+		return $roleList;
+	}
+
+	public static function getClassroom($userId) {
+		// Get user's classroom query
+		$query = "SELECT idclassroom FROM userclassroom WHERE iduser = :iduser";
+
+		// Get user's classroom
+		try {
+			$queryPrep = DATABASE->prepare($query);
+			$queryPrep->bindParam(':iduser', $userId);
+			if (!$queryPrep->execute())
+				throw new Exception("Get classroom of user " . $userId . " roles error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
 	}
 
 	public static function getSetting($userId) {
@@ -216,8 +238,7 @@ class UserRepository {
 
 	public static function getUsers() {
 		// Get users query
-		$query = "SELECT us.id, us.surname, us.name, us.email, cl.name AS 'classroom', us.active FROM user us	LEFT JOIN userclassroom ucl ON us.id = ucl.iduser
-		LEFT JOIN classroom cl ON cl.id = ucl.idclassroom WHERE us.active = 1 GROUP BY email ORDER BY us.id";
+		$query = "SELECT us.id, us.surname, us.name, us.email, cl.id AS 'classroom', us.active FROM user us LEFT JOIN userclassroom ucl ON us.id = ucl.iduser LEFT JOIN classroom cl ON cl.id = ucl.idclassroom WHERE us.active = 1 GROUP BY email ORDER BY us.surname ASC";
 
 		// Get users
 		try {
@@ -334,6 +355,32 @@ class UserRepository {
 		}
 	}
 
+	public static function screenshare($userId, $sessionId, $screenshareId) {
+		$query = "";
+		// Create links query
+		if (UserRepository::getScreenshare($userId, $sessionId)) {
+			$query = "UPDATE screenshare SET idscreenshare = :idscreenshare, idsession = :idsession WHERE iduser = :iduser AND idsession = :idsession";
+		} else {
+			$query = "INSERT INTO screenshare (iduser, idsession, idscreenshare) VALUES (:iduser, :idsession, :idscreenshare)";
+		}
+
+		// Create link
+		try {
+			$queryPrep = DATABASE->prepare($query);
+			$queryPrep->bindParam(':iduser', $userId);
+			$queryPrep->bindParam(':idsession', $sessionId);
+			$queryPrep->bindParam(':idscreenshare', $screenshareId);
+
+			if ($queryPrep->execute())
+				LogRepository::dbSave("Add screenshare " . $screenshareId . " to " . $userId . " on " . $sessionId);
+			else
+				throw new Exception("Add screenshare " . $screenshareId . " to " . $userId . " on " . $sessionId . " error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+	}
+
 	public static function unlink($userId, $sessionId, $moduleId) {
 		$query = "";
 		// Unlinks query
@@ -367,6 +414,25 @@ class UserRepository {
 			$queryPrep->bindParam(':idsession', $sessionId);
 			if (!$queryPrep->execute())
 				throw new Exception("Get link " . $userId . " error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_COLUMN)[0] ?? NULL;
+	}
+
+	public static function getScreenshare($userId, $sessionId) {
+		// Get link query
+		$query = "SELECT idscreenshare FROM screenshare WHERE iduser = :iduser AND idsession = :idsession";
+
+		// Get link
+		try {
+			$queryPrep = DATABASE->prepare($query);
+			$queryPrep->bindParam(':iduser', $userId);
+			$queryPrep->bindParam(':idsession', $sessionId);
+			if (!$queryPrep->execute())
+				throw new Exception("Get screenshare " . $userId . " error");
 		} catch (Exception $e) {
 			// Log error
 			LogRepository::fileSave($e);

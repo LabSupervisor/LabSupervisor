@@ -1,5 +1,6 @@
 <?php
 
+use LabSupervisor\app\repository\ClassroomRepository;
 use
 	LabSupervisor\app\repository\UserRepository,
 	LabSupervisor\app\repository\SessionRepository,
@@ -34,23 +35,21 @@ switch($_SERVER["REQUEST_METHOD"]) {
 				$participant = SessionRepository::getParticipants($data->idSession);
 				$chapter = SessionRepository::getChapter($data->idSession);
 
-				$state = '{"Response": {';
+				$response = array();
 
 				foreach ($participant as $value) {
-					if (UserRepository::isActive($value["iduser"]) == true AND UserRepository::getRole($value["iduser"])[0]["idrole"] == STUDENT) {
-						$state .= '"' . $value["iduser"] . '": {';
-						foreach ($chapter as $value2) {
-							$state .= '"' . $value2["id"] . '" : ' . SessionRepository::getStatus($value2["id"], $value["iduser"]) . ",";
+					if (UserRepository::isActive($value["iduser"]) == true && in_array(STUDENT, UserRepository::getRole($value["iduser"]))) {
+						$userId = $value["iduser"];
+						$response[$userId] = array();
+
+						foreach ($chapter as $chapterId) {
+							$response[$userId][$chapterId["id"]] = SessionRepository::getStatus($chapterId["id"], $userId);
 						}
-						$state = substr($state, 0, -1);
-						$state .= "},";
 					}
 				}
-				$state = substr($state, 0, -1);
-				$state .= "}}";
 
 				// Answer API
-				echo $state;
+				echo json_encode(["Response" => $response]);
 			}
 
 			// Application asking to update user status
@@ -69,7 +68,20 @@ switch($_SERVER["REQUEST_METHOD"]) {
 
 			// Application asking for user done state percent
 			if ($data->ask == "get_all_status_percent") {
-				$response = round(SessionRepository::getAllStatusDone($data->idSession) / (count(SessionRepository::getChapter($data->idSession)) * count(SessionRepository::getParticipants($data->idSession))) * 100, 2);
+				// Get participant count
+				$userCount = 0;
+				foreach (SessionRepository::getParticipants($data->idSession) as $value) {
+					if (UserRepository::isActive($value["iduser"]) == true AND in_array(STUDENT, UserRepository::getRole($value["iduser"]))) {
+						$userCount++;
+					}
+				}
+
+				$response = 0;
+				if ($userCount > 0) {
+					// Percent system
+					$response = round(SessionRepository::getAllStatusDone($data->idSession) / (count(SessionRepository::getChapter($data->idSession)) * $userCount) * 100, 2);
+				}
+
 				// Answer API
 				echo '{"Response": {"Percent": "' . $response . '"}}';
 			}
@@ -97,18 +109,60 @@ switch($_SERVER["REQUEST_METHOD"]) {
 			if ($data->ask == "update_theme") {
 				// Update theme
 				$lang = UserRepository::getSetting($data->idUser)["lang"];
-				if ($data->theme == "light")
-					$theme = 0;
-				else
-					$theme = 1;
 				$userSetting = array(
-					"theme" => $theme,
+					"theme" => $data->theme,
 					"lang" => $lang
 				);
 				// Update user's settings
 				UserRepository::updateSetting($data->idUser, $userSetting);
 				// Answer API
 				echo '{"Response": {"Message": "Theme updated."}}';
+			}
+
+			// Application asking to update user lang
+			if ($data->ask == "update_lang") {
+				// Update theme
+				$theme = UserRepository::getSetting($data->idUser)["theme"];
+				$userSetting = array(
+					"theme" => $theme,
+					"lang" => $data->lang
+				);
+				// Update user's settings
+				UserRepository::updateSetting($data->idUser, $userSetting);
+				// Answer API
+				echo '{"Response": {"Message": "Lang updated."}}';
+			}
+
+			// Application asking for teacher classroom
+			if ($data->ask == "get_teacher_classroom") {
+
+				$result = ClassroomRepository::getTeacherClassroom($data->idUser);
+
+				// Answer API
+				echo json_encode($result);
+			}
+
+			// Application asking to stored user screenshare id
+			if ($data->ask == "add_screenshare") {
+
+				UserRepository::screenshare($data->idUser, $data->idSession, $data->idScreenshare);
+
+				// Answer API
+				echo '{"Response": {"Message": "Screenshare stored."}}';
+			}
+
+			// Application asking for user screenshare id
+			if ($data->ask == "get_screenshare") {
+
+				$response = UserRepository::getScreenshare($data->idUser, $data->idSession);
+
+				// Answer API
+				if (isset($response)) {
+					echo '{"Response": {"Screenshare": "' . $response . '"}}';
+				} else {
+					http_response_code(404);
+					echo '{"Response": {"Error": 404}}';
+				}
 			}
 		} catch (Exception $e) {
 			LogRepository::fileSave($e);

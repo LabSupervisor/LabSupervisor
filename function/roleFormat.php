@@ -6,12 +6,7 @@ use LabSupervisor\app\repository\UserRepository;
 if (!function_exists(__NAMESPACE__ . "/roleFormat")) {
 	function roleFormat($userId) {
 		$result = "";
-		$userRole = UserRepository::getRole($userId);
-
-		$roleList = array();
-		foreach ($userRole as $value) {
-			array_push($roleList, $value["idrole"]);
-		}
+		$roleList = UserRepository::getRole($userId);
 
 		if (in_array(ADMIN, $roleList))
 			$result = $result . lang("MAIN_ROLE_ADMIN");

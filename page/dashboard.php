@@ -7,24 +7,17 @@
 	use function
 		LabSupervisor\functions\mainHeader,
 		LabSupervisor\functions\lang,
-		LabSupervisor\functions\permissionChecker,
 		LabSupervisor\functions\statusFormat,
 		LabSupervisor\functions\nameFormat;
 
 	// Import header
 	mainHeader(lang("DASHBOARD_TITLE"), true);
 
-	// Ask for permissions
-	permissionChecker(true, array(TEACHER));
-
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/adminSession.php");
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/openSession.php");
 
 	$sessionInfo = SessionRepository::getInfo($_SESSION["session"])[0];
-
-	// Percent system
-	$percentDone = round(SessionRepository::getAllStatusDone($_SESSION["session"]) / (count(SessionRepository::getChapter($_SESSION["session"])) * count(SessionRepository::getParticipants($_SESSION["session"]))) * 100, 2);
 
 	if (SessionRepository::getState($_SESSION["session"]) == 2) {
 		$state = "pause";
@@ -47,39 +40,53 @@
 			$currentView = "detail";
 		}
 	}
+
+	// Get participant count
+	$userCount = 0;
+	foreach (SessionRepository::getParticipants($_SESSION["session"]) as $value) {
+		if (UserRepository::isActive($value["iduser"]) == true AND in_array(STUDENT, UserRepository::getRole($value["iduser"]))) {
+			$userCount++;
+		}
+	}
+
+	$percentDone = 0;
+	if ($userCount > 0) {
+		// Percent system
+		$percentDone = round(SessionRepository::getAllStatusDone($_SESSION["session"]) / (count(SessionRepository::getChapter($_SESSION["session"])) * $userCount) * 100, 2);
+	}
 ?>
 
 <link rel="stylesheet" href="/public/css/dashboard.css">
 
 <div class="mainbox titlebox">
 	<a class="back" href="/sessions"><i class="ri-arrow-left-line"></i> <?= lang("MAIN_BUTTON_BACK") ?></a>
-	<h2><?= SessionRepository::getName($_SESSION["session"]) . $stateText?></h2>
-	<?php if ($sessionInfo["description"]) {?>
-		<a><?= $sessionInfo["description"]?></a><br><br>
+	<h2><?= htmlspecialchars(SessionRepository::getName($_SESSION["session"])) . $stateText ?></h2>
+	<?php if ($sessionInfo["description"]) { ?>
+		<a><?= htmlspecialchars($sessionInfo["description"]) ?></a><br><br>
 	<?php } ?>
 	<div class="buttonBox">
-		<form method="POST">
+		<form method="POST" onsubmit="loading()">
 			<input type="hidden" name="sessionId" value="<?= $_SESSION["session"] ?>">
 		<?php
 		if (SessionRepository::getState($_SESSION["session"]) != 0) {
 		?>
+			<button class="button" type="submit" name="close" title="<?= lang("DASHBOARD_SESSION_END") ?>"><i class="ri-stop-line"></i></i></button>
 			<button class="button" type="submit" name="pause" value="<?= $state ?>" title="<?= lang("DASHBOARD_BUTTON_PAUSE") ?>"><?= $stateButton ?></button>
-			<button class="button" type="submit" name="close"><i class="ri-close-circle-line"></i> <?= lang("DASHBOARD_SESSION_END") ?></button>
 		<?php
 		} else {
 		?>
-			<button class="button" type="submit" name="open" value="1"><i class="ri-door-open-line"></i><?= lang("SESSION_ACTION_OPEN") ?></button>
+			<button class="button" type="submit" name="open" value="1" title="<?= lang("SESSION_ACTION_OPEN") ?>"><i class="ri-door-open-line"></i></button>
 		<?php
 		}
 		?>
 		</form>
 		<form method="get">
 			<input type="hidden" name="view" value="<?= $view ?>">
-			<button class="button" type="submit"><i class="ri-arrow-left-right-line"></i> <?= lang("DASHBOARD_CHANGE_VIEW") ?></button>
+			<button class="button" type="submit" title="<?= lang("DASHBOARD_CHANGE_VIEW") ?>"><i class="ri-arrow-left-right-line"></i></button>
 		</form>
 	</div>
 	<div class="infoBox">
-		<?= date("d F Y H:i", strtotime($sessionInfo["date"])) ?> | <?= nameFormat($sessionInfo["idcreator"], false) ?> - <?= ClassroomRepository::getName($sessionInfo["idclassroom"]) ?>
+		<?= date("d F Y H:i", strtotime($sessionInfo["date"])) ?> | <?= htmlspecialchars(nameFormat($sessionInfo["idcreator"], false)) ?> - <?= htmlspecialchars(ClassroomRepository::getName($sessionInfo["idclassroom"])) ?>
 	</div>
 	<div class="progressBox">
 		<div class="progressPercent" id="percentValue"> <?= $percentDone ?>% </div>
@@ -87,16 +94,20 @@
 	</div>
 </div>
 
+<?php
+	if ($userCount > 0) {
+?>
+
 <div class="mainbox maintable">
 	<table>
 		<?php if ($currentView == "default") { ?>
 			<thead>
 				<tr class="thead">
-					<th><?= lang("DASHBOARD_STUDENT_NAME") ?></th>
-					<th></th>
+					<th class="col1"><?= lang("MAIN_SURNAME") ?></th>
+					<th class="col2"><?= lang("MAIN_NAME") ?></th>
 					<?php
 						foreach (SessionRepository::getChapter($_SESSION["session"]) as $value) {
-							echo "<th><i class=\"ri-information-line\" title='" . $value["title"] . "'></i></th>";
+							echo "<th><i class=\"ri-information-line\" title='" . htmlspecialchars($value["title"]) . "'></i></th>";
 						}
 					?>
 				</tr>
@@ -105,13 +116,14 @@
 			<?php
 				// Select paticipants
 				foreach (SessionRepository::getParticipants($_SESSION["session"]) as $value) {
-					if (UserRepository::isActive($value["iduser"]) == true AND UserRepository::getRole($value["iduser"])[0]["idrole"] == STUDENT) {
+					if (UserRepository::isActive($value["iduser"]) == true AND in_array(STUDENT, UserRepository::getRole($value["iduser"]))) {
+						$userCount++;
 						$userId = $value["iduser"];
 						$participantName = UserRepository::getInfo($userId);
 
 						echo "<tr>";
-						echo "<td class='col1'>" . $participantName["surname"] . "</td>";
-						echo "<td class='col1'>" . $participantName["name"] . "</td>";
+						echo "<td class='col1'>" . htmlspecialchars($participantName["surname"]) . "</td>";
+						echo "<td class='col1'>" . htmlspecialchars($participantName["name"]) . "</td>";
 
 						$status = "";
 						foreach (SessionRepository::getChapter($_SESSION["session"]) as $value) {
@@ -131,8 +143,8 @@
 		<?php } else { ?>
 			<thead>
 			<tr class="thead">
-				<th><?= lang("DASHBOARD_STUDENT_NAME") ?></th>
-				<th></th>
+				<th class="col1"><?= lang("MAIN_SURNAME") ?></th>
+				<th class="col2"><?= lang("MAIN_NAME") ?></th>
 				<th><?= lang("DASHBOARD_CHAPTER") ?></th>
 				<th><?= lang("DASHBOARD_STATUS") ?></th>
 			</tr>
@@ -141,7 +153,7 @@
 			<?php
 				// Select paticipants
 				foreach (SessionRepository::getParticipants($_SESSION["session"]) as $value) {
-					if (UserRepository::isActive($value["iduser"]) == true AND UserRepository::getRole($value["iduser"])[0]["idrole"] == STUDENT) {
+					if (UserRepository::isActive($value["iduser"]) == true AND in_array(STUDENT, UserRepository::getRole($value["iduser"]))) {
 						$userId = $value["iduser"];
 
 						// Get chapters and status
@@ -149,7 +161,7 @@
 						$statusList = "";
 						$index = 1;
 						foreach (SessionRepository::getChapter($_SESSION["session"]) as $value) {
-							$chapterList .= $index . " - " . $value["title"] . "<br>";
+							$chapterList .= $index . " - " . htmlspecialchars($value["title"]) . "<br>";
 							$statusList .= statusFormat($userId, SessionRepository::getChapterId($value["title"]), SessionRepository::getStatus(SessionRepository::getChapterId($value["title"]), $userId));
 
 							$index++;
@@ -159,8 +171,8 @@
 
 						// Fill table
 						echo "<tr>";
-						echo "<td class='col1'>" . $participantName["surname"] . "</td>";
-						echo "<td class='col1'>" . $participantName["name"] . "</td>";
+						echo "<td class='col1'>" . htmlspecialchars($participantName["surname"]) . "</td>";
+						echo "<td class='col1'>" . htmlspecialchars($participantName["name"]) . "</td>";
 						echo "<td class='col2'>" . $chapterList . "</td>";
 						echo "<td class='col3'><div class='statusBallGroup'>" . $statusList . "</div></td>";
 						if (SessionRepository::getState($_SESSION["session"]) != 0) {
@@ -175,8 +187,15 @@
 	</table>
 </div>
 
-<script src="/public/js/ft_statusUpdate.js"></script>
-<script src="/public/js/ft_notify.js"></script>
+<?php
+	} else {
+		echo "<div class='singleErrorContainer'><a class='singleErrorTitle'>" . lang("DASHBOARD_EMPTY_CLASSROOM") . "</a></div>";
+	}
+?>
+
+<script src="/public/js/function/statusUpdate.js"></script>
+<script src="/public/js/function/notify.js"></script>
+<script src="/public/js/function/loading.js"></script>
 <script src="/public/js/dashboardUpdate.js"></script>
 
 <script>

@@ -7,14 +7,10 @@
 	use function
 		LabSupervisor\functions\mainHeader,
 		LabSupervisor\functions\lang,
-		LabSupervisor\functions\permissionChecker,
 		LabSupervisor\functions\nameFormat;
 
 	// Import header
 	mainHeader("Session en cours", true);
-
-	// Ask for permissions
-	permissionChecker(true, array(STUDENT));
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateStatus.php");
@@ -48,13 +44,13 @@
 
 <div class="mainbox titlebox">
 	<a class="back" href="/sessions"><i class="ri-arrow-left-line"></i> <?= lang("MAIN_BUTTON_BACK") ?></a>
-	<h2><?= SessionRepository::getName($_SESSION["session"])?><div class='pausedTitle' id="pausedTitle" <?= $stylePaused ?>><?= lang("DASHBOARD_PAUSE") ?></div></h2>
-	<a><?= $sessionInfo["description"] ?></a>
+	<h2><?= htmlspecialchars(SessionRepository::getName($_SESSION["session"])) ?><div class='pausedTitle' id="pausedTitle" <?= $stylePaused ?>><?= lang("DASHBOARD_PAUSE") ?></div></h2>
+	<a><?= htmlspecialchars($sessionInfo["description"]) ?></a>
 	<div class="buttonBox" id="screenshare" <?= $styleClosed ?>>
 		<button class="button" id="shareButton"><i class="ri-share-line"></i> <?= lang("SESSION_PANEL_SCREENSHARE_START") ?></button>
 	</div>
 	<div class="infoBox">
-		<?= date("d F Y H:i", strtotime($sessionInfo["date"])) ?> | <?= nameFormat($sessionInfo["idcreator"], false) ?> - <?= ClassroomRepository::getName($sessionInfo["idclassroom"]) ?>
+		<?= date("d F Y H:i", strtotime($sessionInfo["date"])) ?> | <?= htmlspecialchars(nameFormat($sessionInfo["idcreator"], false)) ?> - <?= htmlspecialchars(ClassroomRepository::getName($sessionInfo["idclassroom"])) ?>
 	</div>
 	<div class="progressBox">
 		<div class="progressPercent" id="percentValue"> <?= $percentDone ?>% </div>
@@ -89,14 +85,15 @@
 		?>
 			<tr>
 				<td class="col1">
-					<?= $chapter["title"] ?>
+					<?= htmlspecialchars($chapter["title"]) ?>
 					<div class="description">
-						<?= $chapter["description"] ?>
+						<?= htmlspecialchars($chapter["description"]) ?>
 					</div>
 				</td>
 				<td class="col3"><div class="<?= $statusBall ?>" id="statusBall_<?= $chapter['id'] ?>"></div></td>
 				<td class="col2" id="action" <?= $styleAction ?>>
 					<input type="hidden" name="liste" value="<?php echo $chapter['id']; ?>">
+					<a class="erase" onclick="setStatus(<?= $chapter['id'] ?>, 0)" title="<?= lang("SESSION_PANEL_CANCEL") ?>"><i class="ri-eraser-line"></i></a>
 					<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 1)" title="<?= lang("SESSION_PANEL_HELP") ?>"><i class="ri-error-warning-line"></i></button>
 					<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 2)" title="<?= lang("SESSION_PANEL_WIP") ?>"><i class="ri-edit-line"></i></button>
 					<button class="button" onclick="setStatus(<?= $chapter['id'] ?>, 3)" title="<?= lang("SESSION_PANEL_DONE") ?>"><i class="ri-thumb-up-line"></i></button>
@@ -124,7 +121,7 @@
 		}
 		echo "<div class='lslinkButton'><form method='POST'>";
 		echo "<input type='hidden' name='sessionId' value='" . $_SESSION["session"] . "'>";
-		echo "<input class='lslinkid' type='number' name='number' value='" . $linkId. "'>";
+		echo "<input class='lslinkid' type='number' min='100' max='999' name='number' value='" . $linkId. "'>";
 		echo "<button class='button' type='submit' name='link'>" . $buttonText . "</button>";
 		echo "</form>";
 
@@ -141,11 +138,10 @@
 	var videoServerPort = <?= $_ENV["VIDEO_SERVER_PORT"] ?>;
 </script>
 
-<script src="/public/js/ft_updateStatus.js"></script>
+<script src="/public/js/function/updateStatus.js"></script>
 
 <!-- Import PeerJS server -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.2/peerjs.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js"></script>
 
 <!-- Import screenshare engine -->
 <script src="/public/js/clientScreenshare.js"></script>

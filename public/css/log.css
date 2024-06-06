@@ -12,12 +12,6 @@
 	max-width: 250px;
 }
 
-.pageGroup {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-}
-
 .buttonContainer {
 	display: flex;
 
@@ -28,16 +22,14 @@
 	width: fit-content;
 }
 
-form {
-	display: flex;
-}
-
 #date{
 	border-radius: 7px;
 	border: 0;
 	font-size: 16px;
 	outline: none;
 	background: var(--case-field-background-color);
+	color: var(--text-color);
+	border: solid 2px var(--case-field-border-color);
 
 	margin-top: 6px;
 	margin-left: 10px;
@@ -53,6 +45,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 	mask: url("/public/img/icon/calendar-2-line.svg");
 	background: var(--text-color);
 	outline: none;
+	border: solid 2px var(--case-field-border-color);
 
 	margin-right: 10px;
 }

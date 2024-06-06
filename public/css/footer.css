@@ -7,6 +7,7 @@ footer {
 	backdrop-filter: blur(12px);
 	border-top: 2px solid var(--case-border-color);
 	user-select: none;
+	box-shadow: 0 0 30px 5px #00000030;
 }
 
 footer a {
@@ -22,6 +23,7 @@ footer .item {
 
 footer .linkGroup {
 	margin-left: 20px;
+	margin-right: 20px;
 }
 
 footer .link {
@@ -33,4 +35,8 @@ footer .link {
 footer .link:hover {
 	color: var(--text-hover-color);
 	transition: 200ms;
+}
+
+footer .version {
+	font-style: italic;
 }

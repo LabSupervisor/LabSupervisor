@@ -12,7 +12,7 @@
 	background-color: var(--background-case-color);
 	backdrop-filter: blur(12px);
 	border-bottom: 2px solid var(--case-border-color);
-	box-shadow: 0px 0px 50px 0px #00000030;
+	box-shadow: 0 0 30px 5px #00000030;
 
 	user-select: none;
 
@@ -138,8 +138,9 @@
 	font-size: 22px;
 	transition: 200ms;
 	color: var(--text-color);
+	position: relative;
 
-	cursor: pointer;
+	z-index: 100;
 
 	width: 33px;
 }
@@ -147,4 +148,101 @@
 .navbarGroup .theme:hover {
 	color: var(--text-hover-color);
 	transition: 200ms;
+}
+
+.navbarGroup .theme:hover .themeContainer {
+	display: flex;
+}
+
+.navbarGroup .themeContainer {
+	display: none;
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: wrap;
+	position: absolute;
+	top: 100%;
+
+	color: var(--text-color);
+	border-radius: 9px;
+	background-color: var(--button-hover-color);
+	transform: translateY(-10px);
+
+	padding: 14px;
+	margin: 0;
+}
+
+.navbarGroup .themeContainer h2 {
+	font-size: 24px;
+}
+
+.navbarGroup .themePicker {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 10px;
+	box-sizing: border-box;
+
+	margin-top: 10px;
+
+	width: calc(5 * 44px + 4 * 10px);
+}
+
+.navbarGroup .themeColor {
+	border-radius: 22px;
+	background-color: gray;
+	box-sizing: border-box;
+	transition: 100ms;
+
+	padding: 22px;
+
+	cursor: pointer;
+
+	width: 44px;
+	height: 44px;
+}
+
+.navbarGroup .themeColor:hover {
+	box-shadow: inset 0px 0px 0px 2px var(--case-border-color);
+	transition: 100ms;
+}
+
+.navbarGroup .themeRedDark {
+	background: linear-gradient(45deg, #ad4f4f, #521717);
+}
+
+.navbarGroup .themeAquaDark {
+	background: linear-gradient(45deg, #439191, #113d3d);
+}
+
+.navbarGroup .themeYellowDark {
+	background: linear-gradient(45deg, #bb8b23, #3d3d11);
+}
+
+.navbarGroup .themeGreenDark {
+	background: linear-gradient(45deg, #59a059, #134413);
+}
+
+.navbarGroup .themeHighDark {
+	background: linear-gradient(45deg, #000, #000);
+}
+
+.navbarGroup .themeRedLight {
+	background: linear-gradient(45deg, #fff, #ad4f4f);
+}
+
+.navbarGroup .themeAquaLight {
+	background: linear-gradient(45deg, #fff, #439191);
+}
+
+.navbarGroup .themeYellowLight {
+	background: linear-gradient(45deg, #fff, #bb8b23);
+}
+
+.navbarGroup .themeGreenLight {
+	background: linear-gradient(45deg, #fff, #59a059);
+}
+
+.navbarGroup .themeHighLight {
+	background: linear-gradient(45deg, #fff, #fff);
 }

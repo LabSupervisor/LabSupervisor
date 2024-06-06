@@ -5,15 +5,38 @@
 .col6 {
 	display: flex;
 	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.maintable td {
+	padding: 2px 15px 2px 15px;
+	height: 59px;
 }
 
 .name, .surname, .role, .classroom {
 	background: var(--case-field-background-color);
-	border: 0;
 	border-radius: 7px;
 	padding: 15px;
 	color: var(--text-color);
-	width: -webkit-fill-available;
+	border: solid 2px var(--case-field-border-color);
+	font-size: 16px;
+
+	width: 160px;
+}
+
+.account {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.account i {
+	margin-right: 7px;
+}
+
+.link {
+	margin-left: 10px;
 }
 
 input::placeholder {

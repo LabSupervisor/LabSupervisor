@@ -1,20 +1,19 @@
 <?php
 
-	use LabSupervisor\app\repository\UserRepository;
+	use
+		LabSupervisor\app\repository\UserRepository,
+		LabSupervisor\app\repository\ClassroomRepository;
 	use function
 		LabSupervisor\functions\mainHeader,
 		LabSupervisor\functions\lang,
 		LabSupervisor\functions\langFormat,
-		LabSupervisor\functions\permissionChecker;
-
-	// Import header
-	mainHeader(lang("NAVBAR_PROFIL_ACCOUNT"), true);
-
-	// Ask for permissions
-	permissionChecker(true, array(ADMIN, STUDENT, TEACHER));
+		LabSupervisor\functions\roleFormat;
 
 	// Logic
 	require($_SERVER["DOCUMENT_ROOT"] . "/logic/updateUser.php");
+
+	// Import header
+	mainHeader(lang("NAVBAR_PROFIL_ACCOUNT"), true);
 
 	// Delete account if ask for
 	if (isset($_POST["confirm_delete"])) {
@@ -28,46 +27,58 @@
 <link rel="stylesheet" href="/public/css/form.css">
 <link rel="stylesheet" href="/public/css/account.css">
 
-<div class="mainbox mainform column" id="updateCase">
-	<form method="post">
-		<div>
-			<h2><i class="ri-user-line"></i> <?= lang("ACCOUNT_TITLE") ?></h2>
-		</div>
-		<div>
-			<input type="text" placeholder="<?= lang("ACCOUNT_NAME") ?>" name="new_name" value="<?php echo $user['name']; ?>" required>
-		</div>
-		<div>
-			<input type="text" placeholder="<?= lang("ACCOUNT_SURNAME") ?>" name="new_surname" value="<?php echo $user['surname']; ?>" required>
-		</div>
-		<div>
-			<select name="lang">
+<div class="mainbox mainform" id="updateCase">
+	<form method="post" onsubmit="loading()">
+		<h2><i class="ri-user-line"></i> <?= lang("ACCOUNT_TITLE") ?></h2>
+		<div class="row">
+			<div class="column">
+				<div>
+					<input type="text" placeholder="<?= lang("MAIN_NAME") ?>" name="new_name" value="<?php echo $user['name']; ?>" required>
+				</div>
+				<div>
+					<input type="text" placeholder="<?= lang("MAIN_SURNAME") ?>" name="new_surname" value="<?php echo $user['surname']; ?>" required>
+				</div>
+				<input class="disabled" value="<?= roleFormat($_SESSION["login"]) ?>" disabled></input>
 				<?php
-					$userLang = UserRepository::getSetting($_SESSION["login"])["lang"];
-
-					$langList = scandir($_SERVER["DOCUMENT_ROOT"] . "/public/lang/");
-					$langList = array_diff($langList, array(".", "..", "index.php"));
-
-					foreach($langList as $lang) {
-						$lang = str_replace(".json", "", $lang);
-						if ($lang == $userLang) {
-							echo "<option selected='selected' value='" . $lang . "'>" . langFormat($lang) . "</option>";
-						} else {
-							echo "<option value='" . $lang . "'>" . langFormat($lang) . "</option>";
-						}
+					if (in_array(STUDENT, UserRepository::getRole($_SESSION["login"])) && UserRepository::getClassroom($_SESSION["login"])) {
+						echo "<input class='disabled' value='" . htmlspecialchars(ClassroomRepository::getName(UserRepository::getClassroom($_SESSION["login"]))) . "' disabled></input>";
+					} else {
+						echo "<input class='disabled' value='" . htmlspecialchars(lang("USER_UPDATE_CLASS_EMPTY")) . "' disabled></input>";
 					}
 				?>
-			</select>
-		</div>
-		<div>
-			<input type="password" placeholder="<?= lang("ACCOUNT_PASSWORD") ?>" id="password" name="new_password">
-			<button class="showPasswordButton" tabindex="-1" type="button" onclick="togglePasswordVisibility('password', 'eyeIcon')"><i id="eyeIcon" class="ri-eye-off-line"></i></button>
-		</div>
+			</div>
+			<div class="column">
+				<input class="disabled" value="<?= htmlspecialchars(UserRepository::getEmail($_SESSION["login"])) ?>" disabled></input>
+				<div>
+					<select id="lang" name="lang">
+						<?php
+							$userLang = UserRepository::getSetting($_SESSION["login"])["lang"];
 
-		<div>
-			<input type="password" placeholder="<?= lang("ACCOUNT_PASSWORD_CONFIRM") ?>" id="passwordConf" name="conf_password">
-			<button class="showPasswordButton" tabindex="-1" type="button" onclick="togglePasswordVisibility('passwordConf', 'eyeIconConf')"><i id="eyeIconConf" class="ri-eye-off-line"></i></button>
-		</div>
+							$langList = scandir($_SERVER["DOCUMENT_ROOT"] . "/public/lang/");
+							$langList = array_diff($langList, array(".", "..", "index.php"));
 
+							foreach($langList as $lang) {
+								$lang = str_replace(".json", "", $lang);
+								if ($lang == $userLang) {
+									echo "<option selected='selected' value='" . $lang . "'>" . langFormat($lang) . "</option>";
+								} else {
+									echo "<option value='" . $lang . "'>" . langFormat($lang) . "</option>";
+								}
+							}
+						?>
+					</select>
+				</div>
+				<div>
+					<input type="password" placeholder="<?= lang('ACCOUNT_PASSWORD') ?>" id="password" name="new_password">
+					<button class="showPasswordButton" tabindex="-1" type="button" onclick="togglePasswordVisibility('password', 'eyeIcon')"><i id="eyeIcon" class="ri-eye-off-line"></i></button>
+				</div>
+
+				<div>
+					<input type="password" placeholder="<?= lang("ACCOUNT_PASSWORD_CONFIRM") ?>" id="passwordConf" name="conf_password">
+					<button class="showPasswordButton" tabindex="-1" type="button" onclick="togglePasswordVisibility('passwordConf', 'eyeIconConf')"><i id="eyeIconConf" class="ri-eye-off-line"></i></button>
+				</div>
+			</div>
+		</div>
 		<div>
 			<button class="button" type="submit"><i class="ri-save-2-line"></i> <?= lang("ACCOUNT_SUBMIT") ?></button>
 		</div>
@@ -75,7 +86,7 @@
 	<a class="link" id="showDeleteForm"><i class="ri-delete-bin-line"></i> <?= lang("ACCOUNT_DELETE") ?></a>
 </div>
 
-<form class="mainbox confirmDelete" id="confirmationForm" style="display: none;" method="post">
+<form class="mainbox confirmDelete" id="confirmationForm" style="display: none;" method="post" onsubmit="loading()">
 	<h2><i class="ri-error-warning-line"></i> <?= lang("ACCOUNT_DELETE_TITLE") ?></h2>
 	<a><?= lang("ACCOUNT_DELETE_DESCRIPTION") ?></a>
 
@@ -85,12 +96,14 @@
 	</label>
 
 	<div>
-		<a class="link" id="cancel"><i class="ri-arrow-left-line"></i> <?= lang("ACCOUNT_DELETE_CANCEL") ?></a>
+		<a class="link" id="cancel"><i class="ri-arrow-left-line"></i> <?= lang("MAIN_ADD") ?></a>
 		<button class="button deleteCaseButton" type="submit" name="confirm_delete"><i class="ri-delete-bin-line"></i> <?= lang("ACCOUNT_DELETE") ?></button>
 	</div>
 </form>
 
 <script src="/public/js/accountPassword.js"></script>
+<script src="/public/js/accountLang.js"></script>
+<script src="/public/js/function/loading.js"></script>
 
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');
