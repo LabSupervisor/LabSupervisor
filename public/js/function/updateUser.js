@@ -38,7 +38,7 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 
 	var selectClassroom = document.createElement("select");
 	selectClassroom.setAttribute("id", "classroom");
-	selectClassroom.setAttribute("name", "classroom_" + userId + "[]");
+	selectClassroom.setAttribute("name", "classroom_" + userId);
 	selectClassroom.setAttribute("class", "classroom");
 	var optionNone = document.createElement("option");
 	optionNone.text = lang("USER_UPDATE_CLASS_EMPTY");
@@ -80,6 +80,7 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 	if (roleIdUser == 3) {
 		fetchData(userId, classroomIdUser, roleIdUser, classRoomElement).then((classroomTeacherRes) => {
 			// Set multiple and required attributes
+			selectClassroom.setAttribute("name", "classroom_" + userId + "[]");
 			selectClassroom.setAttribute("multiple", "multiple");
 			selectClassroom.setAttribute("required", "required");
 
@@ -106,6 +107,7 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 	// Add event listener to change the classroom select element based on role
 	selectRole.addEventListener('change', function() {
 		if (selectRole.value == '3') {
+			selectClassroom.setAttribute("name", "classroom_" + userId + "[]");
 			selectClassroom.setAttribute("multiple", "multiple");
 			selectClassroom.setAttribute("required", "required");
 			// Deselect all other options
@@ -139,6 +141,7 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 			classRoomElement.replaceChildren(noClassSpan);
 		} else if (selectRole.value == '2') {
 			// Remove multiple and required attributes
+			selectClassroom.setAttribute("name", "classroom_" + userId);
 			selectClassroom.removeAttribute("multiple");
 
 			if (classroomIdUser != 0) {
