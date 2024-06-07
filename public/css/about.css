@@ -1,6 +1,9 @@
 .mainbox {
-    width: 650px;
 	padding-bottom: 10px;
+
+	user-select: none;
+	
+    width: 650px;
 }
 
 h2 {
@@ -17,6 +20,8 @@ h2 {
 
 p {
     margin: 10px;
+
+	user-select: text;
 }
 
 .mainbox a {
@@ -31,6 +36,8 @@ p {
 
 .role {
 	font-style: italic;
+
+	user-select: none;
 }
 
 .line {
