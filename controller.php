@@ -24,7 +24,7 @@ foreach ($item as $value) {
 					return;
 				}
 			} else {
-				header("Location: /login");
+				include "page/denied.php";
 				return;
 			}
 		} else {
