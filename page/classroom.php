@@ -147,7 +147,7 @@
 			<div class="classroomTitleItem left">
 				<form class="classroomTitleItem" id="modifyNameForm" method="POST" onsubmit="loading()">
 					<input type="hidden" name="classroomId" value="<?= $_GET["id"] ?>">
-					<h2 class="classroomName" id="modifyNameTitle" title="<?= ClassroomRepository::getName($_GET["id"]) ?>"><?= ClassroomRepository::getName($_GET["id"]) ?></h2>
+					<h2 class="classroomName" id="modifyNameTitle" title="<?= htmlspecialchars(ClassroomRepository::getName($_GET["id"])) ?>"><?= htmlspecialchars(ClassroomRepository::getName($_GET["id"])) ?></h2>
 				</form>
 				<button class="button" id="modifyNameButton" onclick="modifyName('<?= ClassroomRepository::getName($_GET['id']) ?>')"><i class="ri-pencil-line" id="modifyNameIcon"></i></button>
 				<form method="POST" onsubmit="return confirmForm('<?= lang('CLASSROOM_DELETE_CLASSROOM_CONFIRMATION') ?>');">
