@@ -41,8 +41,12 @@ table {
 	margin: 0px 10px 13px 10px;
 }
 
-.classroomListTitle {
-	margin-right: 20px;
+.classroomAddButton {
+	margin-left: 20px;
+}
+
+.classnameGroup .button {
+	margin-right: 0;
 }
 
 .classname {
@@ -58,7 +62,7 @@ table {
 	margin: 5px 0px 5px 0px;
 	padding: 5px;
 
-	width: 90%;
+	width: 180px;
 	max-width: 200px;
 
 	cursor: pointer;

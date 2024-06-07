@@ -113,8 +113,14 @@
 	<div class="mainbox lateral">
 
 		<div class="classnameGroup">
-			<h2 class="classroomListTitle"><?= lang("CLASSROOM_NAME") ?></h2>
-			<button class="button" onclick="showPopup('addClassroomPopup')"><i class="ri-add-line"></i></button>
+			<h2 class=""><?= lang("CLASSROOM_NAME") ?></h2>
+			<?php
+				if (in_array(ADMIN, UserRepository::getRole($_SESSION["login"]))) {
+			?>
+			<button class="button classroomAddButton" onclick="showPopup('addClassroomPopup')"><i class="ri-add-line"></i></button>
+			<?php
+				}
+			?>
 		</div>
 
 		<?php
