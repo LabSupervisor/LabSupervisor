@@ -25,6 +25,13 @@
 	"NAVBAR_PROFIL_DISCONNECT": "Desconectar",
 	"NAVBAR_THEME_PICKER": "Temas",
 
+	"FOOTER_ABOUT": "Acerca de",
+	
+	"ABOUT_STAFF": "Equipo",
+	"ABOUT_HELP": "Ayuda externa",
+	"ABOUT_LIBRARY": "Bibliotecas",
+	"ABOUT_LEGAL": "Avisos legales",
+
 	"INDEX_STUDENT_SESSION": "En esta página, puedes ver todas las sesiones en las que estás inscrito.",
 	"INDEX_TEACHER_CLASSROOM": "Esta página te permite ver y gestionar tus propias aulas.",
 	"INDEX_TEACHER_SESSION": "En esta página, puedes crear, ver y editar tus sesiones.",

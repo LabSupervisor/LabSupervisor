@@ -38,6 +38,13 @@
 		"role": [1, 2, 3]
 	},
 
+	"about": {
+		"route" : [
+			"/about"
+		],
+		"page": "page/about.php"
+	},
+
 	"classroom": {
 		"route": [
 			"/classroom",

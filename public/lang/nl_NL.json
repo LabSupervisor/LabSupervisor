@@ -25,6 +25,13 @@
 	"NAVBAR_PROFIL_DISCONNECT": "Afmelden",
 	"NAVBAR_THEME_PICKER": "Thema's",
 
+	"FOOTER_ABOUT": "Over",
+	
+	"ABOUT_STAFF": "Team",
+	"ABOUT_HELP": "Externe Hulp",
+	"ABOUT_LIBRARY": "Bibliotheken",
+	"ABOUT_LEGAL": "Juridische kennisgevingen",
+
 	"INDEX_STUDENT_SESSION": "Op deze pagina kunt u alle sessies bekijken waarvoor u bent ingeschreven.",
 	"INDEX_TEACHER_CLASSROOM": "Deze pagina stelt u in staat om uw eigen klaslokalen te bekijken en te beheren.",
 	"INDEX_TEACHER_SESSION": "Op deze pagina kunt u uw sessies maken, bekijken en bewerken.",

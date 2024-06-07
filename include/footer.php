@@ -1,10 +1,16 @@
+<?php
+
+	use function LabSupervisor\functions\lang;
+
+?>
+
 <!-- close main -->
 		</div>
 
 		<footer>
 			<div class="item">
-				<a>© <?= \LabSupervisor\functions\lang("MAIN_TITLE") ?> 2024 - </a>
-				<a class="version"> Beta V1.0.1</a>
+				<a>© <?= lang("MAIN_TITLE") ?> 2024 - </a><a class="version"> Beta V1.0.1</a>
+				<a class="about" href="/about"><i class="ri-external-link-line"></i> <?= lang("FOOTER_ABOUT") ?></a>
 				<div class="linkGroup">
 					<a class="link" href="https://github.com/LabSupervisor/LabSupervisor" target="_blank" title="GitHub"><i class="ri-github-line"></i></a>
 					<a class="link" href="https://twitter.com/LabSupervisor" target="_blank" title="X"><i class="ri-twitter-line"></i></i></a>

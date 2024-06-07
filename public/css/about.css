@@ -1,0 +1,42 @@
+.mainbox {
+    width: 650px;
+	padding-bottom: 10px;
+}
+
+h2 {
+	margin: 20px 0px 20px 0px;
+}
+
+.mainbox .group {
+    display: flex;
+}
+
+.mainbox .item {
+    width: 50%;
+}
+
+p {
+    margin: 10px;
+}
+
+.mainbox a {
+	text-decoration: none;
+	transition: 200ms;
+}
+
+.mainbox a:hover {
+	color: var(--text-hover-color);
+	transition: 200ms;
+}
+
+.role {
+	font-style: italic;
+}
+
+.line {
+	background-color: var(--case-border-color);
+
+	margin: 15px 25px 15px 25px;
+
+	height: 2px;
+}

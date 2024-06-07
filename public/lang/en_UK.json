@@ -25,6 +25,13 @@
 	"NAVBAR_PROFIL_DISCONNECT": "Logout",
 	"NAVBAR_THEME_PICKER": "Themes",
 
+	"FOOTER_ABOUT": "About",
+	
+	"ABOUT_STAFF": "Staff",
+	"ABOUT_HELP": "External Help",
+	"ABOUT_LIBRARY": "Libraries",
+	"ABOUT_LEGAL": "Legal Notices",
+
 	"INDEX_STUDENT_SESSION": "On this page, you can view all the sessions you have been enrolled in.",
 	"INDEX_TEACHER_CLASSROOM": "This page allows you to view and manage your own classrooms.",
 	"INDEX_TEACHER_SESSION": "On this page, you can create, view, and edit your sessions.",
