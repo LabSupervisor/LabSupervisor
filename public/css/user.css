@@ -2,6 +2,14 @@
 	user-select: text;
 }
 
+.col5 {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+
+	max-width: 150px;
+}
+
 .col6 {
 	display: flex;
 	flex-direction: row;
