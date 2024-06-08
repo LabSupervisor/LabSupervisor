@@ -26,7 +26,7 @@
 	"NAVBAR_THEME_PICKER": "Themes",
 
 	"FOOTER_ABOUT": "About",
-	
+
 	"ABOUT_STAFF": "Staff",
 	"ABOUT_HELP": "External Help",
 	"ABOUT_LIBRARY": "Libraries",
@@ -82,6 +82,8 @@
 	"SESSION_END_MESSAGE": "This session has now ended",
 	"SESSION_END_BACK": "Return to session list",
 	"SESSION_EMPTY": "Currently, no sessions are available.",
+	"SESSION_OPEN": "Open",
+	"SESSION_CLOSE": "Closed",
 
 	"DASHBOARD_TITLE": "Dashboard",
 	"DASHBOARD_STUDENT_NAME": "Student",

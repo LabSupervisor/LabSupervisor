@@ -35,8 +35,8 @@
 	<h3><?= lang("ABOUT_HELP") ?></h3>
 	<div class="group">
 		<div class="item">
-			<p><a href="https://github.com/killbinvlog" target="_blank"><i class="ri-external-link-line"></i> Aymeric M.</a><br><span class="role">Developer</span></p>
-			<p><a href="https://github.com/GeoffreyGx" target="_blank"><i class="ri-external-link-line"></i> Geoffrey G.</a><br><span class="role">Designer</span></p>
+			<p><a href="https://killbinvlog.me" target="_blank"><i class="ri-external-link-line"></i> Aymeric M.</a><br><span class="role">Developer</span></p>
+			<p><a href="https://geoffreygx.com" target="_blank"><i class="ri-external-link-line"></i> Geoffrey G.</a><br><span class="role">Designer</span></p>
 		</div>
 		<div class="item">
 			<p>Baptiste T.</a><br><span class="role">LS-Link Designer</span></p>

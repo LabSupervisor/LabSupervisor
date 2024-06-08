@@ -82,6 +82,8 @@
 	"SESSION_END_MESSAGE": "Cette session est désormais terminée",
 	"SESSION_END_BACK": "Retourner à la liste des sessions",
 	"SESSION_EMPTY": "Aucune session n'est actuellement disponible.",
+	"SESSION_OPEN": "Ouvert",
+	"SESSION_CLOSE": "Fermé",
 
 	"DASHBOARD_TITLE": "Tableau de bord",
 	"DASHBOARD_STUDENT_NAME": "Etudiant",

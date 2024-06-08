@@ -143,6 +143,10 @@ body a {
 	align-content: center;
 	flex-wrap: wrap;
 
+	position: sticky;
+	top: 62px;
+	z-index: 100;
+
 	background-color: #ff8989;
 
 	user-select: none;
@@ -354,6 +358,19 @@ h3 {
 .link:hover {
 	color: var(--text-hover-color);
 	transition: 200ms;
+}
+
+/* Particle */
+.particle {
+	display: block;
+	position: fixed;
+
+	background-color: gold;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px 0px gold;
+
+	height: 4px;
+	width: 4px;
 }
 
 /* Checkbox style */
