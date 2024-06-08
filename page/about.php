@@ -39,6 +39,7 @@
 			<p><a href="https://geoffreygx.com" target="_blank"><i class="ri-external-link-line"></i> Geoffrey G.</a><br><span class="role">Designer</span></p>
 		</div>
 		<div class="item">
+			<p>Nassim M.</a><br><span class="role">Logo Designer</span></p>
 			<p>Baptiste T.</a><br><span class="role">LS-Link Designer</span></p>
 		</div>
 	</div>
