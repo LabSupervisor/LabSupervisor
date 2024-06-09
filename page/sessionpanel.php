@@ -134,8 +134,6 @@
 <!-- Create "global" variables -->
 <script>
 	var sessionId = <?= $_SESSION["session"] ?>;
-	var videoServerHost = "<?= $_ENV["VIDEO_SERVER_HOST"] ?>";
-	var videoServerPort = <?= $_ENV["VIDEO_SERVER_PORT"] ?>;
 </script>
 
 <script src="/public/js/function/updateStatus.js"></script>
