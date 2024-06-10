@@ -216,6 +216,8 @@
 		<form class="pageGroup" method="GET" onsubmit="loading()">
 			<input type="hidden" name="id" value="<?= $_GET["id"] ?>">
 			<?php
+				$pages=ceil(count($students)/$max);
+
 				if ($_GET["page"] != 1) {
 			?>
 			<button class="button" type="submit" name="page" value="<?= $_GET["page"] -1 ?>"><i class="ri-arrow-left-s-line"></i></button>
@@ -226,7 +228,7 @@
 			<?php
 				}
 			?>
-			<input class="pageNumber" id="pageNumber" type="number" value="<?= $_GET["page"] ?>" min="1" max="<?= ceil(count($students) / $max)?>">
+			<input class="pageNumber" id="pageNumber" type="number" onKeyUp="validatePageNumber(this, <?= $pages ?>)" value="<?= $_GET["page"] ?>" min="1" max="<?= $pages ?>">
 			<?php
 				if (count($students) > $_GET["page"] * $max) {
 			?>
@@ -260,6 +262,7 @@
 <script src="/public/js/function/popupConfirm.js"></script>
 <script src="/public/js/function/showPopup.js"></script>
 <script src="/public/js/function/updateClassroomName.js"></script>
+<script src="/public/js/function/validatePage.js"></script>
 
 <?php
 	// Footer

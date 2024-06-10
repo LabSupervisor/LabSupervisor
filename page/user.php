@@ -112,9 +112,11 @@
 		</table>
 		<form class="pageGroup" method="GET" onsubmit="loading()">
 			<?php
+				$pages = ceil(count(UserRepository::getUsers())/$max);
+
 				if ($_GET["page"] != 1) {
 			?>
-			<button class="button" type="submit" name="page" value="<?= $_GET["page"] -1 ?>"><i class="ri-arrow-left-s-line"></i></button>
+			<button class="button" type="submit" name="page" value="<?= $_GET["page"] -1 ?>" min="1"><i class="ri-arrow-left-s-line"></i></button>
 			<?php
 				} else {
 			?>
@@ -122,7 +124,7 @@
 			<?php
 				}
 			?>
-			<input class="pageNumber" id="pageNumber" type="number" value="<?= $_GET["page"] ?>" min="1" max="<?= ceil(count(UserRepository::getUsers()) / $max)?>">
+			<input class="pageNumber" id="pageNumber" type="number" value="<?= $_GET["page"] ?>" onKeyUp="validatePageNumber(this, <?= $pages ?>)" min="1" max="<?= $pages ?>">
 			<?php
 				if (count(UserRepository::getUsers()) > $_GET["page"] * $max) {
 			?>
@@ -142,6 +144,7 @@
 <script src="/public/js/function/updateUser.js"></script>
 <script src="/public/js/function/loading.js"></script>
 <script src="/public/js/function/popupConfirm.js"></script>
+<script src="/public/js/function/validatePage.js"></script>
 
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');

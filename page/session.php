@@ -139,6 +139,8 @@
 	</table>
 	<form class="pageGroup" method="GET" onsubmit="loading()">
 		<?php
+			$pages = ceil(count($sessionList)/$max);
+
 			if ($_GET["page"] != 1) {
 		?>
 		<button class="button" type="submit" name="page" value="<?= $_GET["page"] -1 ?>"><i class="ri-arrow-left-s-line"></i></button>
@@ -149,7 +151,7 @@
 		<?php
 			}
 		?>
-		<input class="pageNumber" id="pageNumber" type="number" value="<?= $_GET["page"] ?>" min="1" max="<?= ceil(count($sessionList) / $max)?>">
+		<input class="pageNumber" id="pageNumber" type="number" onKeyUp="validatePageNumber(this, <?= $pages ?>)" value="<?= $_GET["page"] ?>" min="1" max="<?= $pages ?>">
 		<?php
 			if (count($sessionList) > $_GET["page"] * $max) {
 		?>
@@ -167,6 +169,7 @@
 <script src="/public/js/pageSelector.js"></script>
 <script src="/public/js/function/popup.js"></script>
 <script src="/public/js/function/loading.js"></script>
+<script src="/public/js/function/validatePage.js"></script>
 
 <?php
 	} else {
