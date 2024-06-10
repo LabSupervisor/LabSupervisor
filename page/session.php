@@ -139,6 +139,8 @@
 	</table>
 	<form class="pageGroup" method="GET" onsubmit="loading()">
 		<?php
+		$nbuser = count($sessionList);
+		$pages=ceil($nbuser/$max);
 			if ($_GET["page"] != 1) {
 		?>
 		<button class="button" type="submit" name="page" value="<?= $_GET["page"] -1 ?>"><i class="ri-arrow-left-s-line"></i></button>
@@ -149,7 +151,17 @@
 		<?php
 			}
 		?>
-		<input class="pageNumber" id="pageNumber" type="number" value="<?= $_GET["page"] ?>" min="1" max="<?= ceil(count($sessionList) / $max)?>">
+		<input class="pageNumber" id="pageNumber" type="number" onKeyUp="validatePageNumber(this, <?= $pages ?>)" value="<?= $_GET["page"] ?>" max="<?= $pages ?>" min="1"">
+		<script>
+				function validatePageNumber(input, maxPages) {
+					let value = parseInt(input.value, 10);
+					if (isNaN(value) || value < 0) {
+						input.value = 1;
+					} else if (value > maxPages) {
+						input.value = maxPages;
+					}
+				}
+		</script>
 		<?php
 			if (count($sessionList) > $_GET["page"] * $max) {
 		?>
