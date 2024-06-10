@@ -20,7 +20,7 @@
 	<div class="group">
 		<div class="item">
 			<p><a href="https://github.com/SkyWors" target="_blank"><i class="ri-external-link-line"></i> Erick Paoletti</a><br><span class="role">CEO Developer Designer</span></p>
-			<p><a href="https://github.com/MarineG404" target="_blank"><i class="ri-external-link-line"></i> Marine Gonnord</a><br><span class="role">Developer</span></p>
+			<p><a href="https://marine.gonnord.org" target="_blank"><i class="ri-external-link-line"></i> Marine Gonnord</a><br><span class="role">Developer</span></p>
 			<p><a href="https://github.com/GautierTrp" target="_blank"><i class="ri-external-link-line"></i> Gautier Trapeau</a><br><span class="role">Developer</span></p>
 		</div>
 		<div class="item">
