@@ -71,7 +71,11 @@
 									$classroomList .= ClassroomRepository::getName($value["id"]) . " - ";
 								}
 								$classroomList = substr($classroomList, 0, -2);
-								echo "<div class='col5' title='" . htmlspecialchars($classroomList) . "'>" . htmlspecialchars($classroomList) . "</div>";
+								if ($classroomList != "") {
+									echo "<div class='col5' title='" . htmlspecialchars($classroomList) . "'>" . htmlspecialchars($classroomList) . "</div>";
+								} else {
+									echo "<div class='col5'>" . lang("USER_UPDATE_CLASS_EMPTY") . "</div>";
+								}
 							} else {
 								echo lang("USER_UPDATE_CLASS_EMPTY");
 							}
