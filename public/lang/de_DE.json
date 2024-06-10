@@ -25,6 +25,13 @@
 	"NAVBAR_PROFIL_DISCONNECT": "Abmelden",
 	"NAVBAR_THEME_PICKER": "Themen",
 
+	"FOOTER_ABOUT": "Über",
+
+	"ABOUT_STAFF": "Team",
+	"ABOUT_HELP": "Externe Hilfe",
+	"ABOUT_LIBRARY": "Bibliotheken",
+	"ABOUT_LEGAL": "Rechtliche Hinweise",
+
 	"INDEX_STUDENT_SESSION": "Auf dieser Seite können Sie alle Sitzungen einsehen, an denen Sie angemeldet sind.",
 	"INDEX_TEACHER_CLASSROOM": "Diese Seite ermöglicht es Ihnen, Ihre eigenen Klassen anzuzeigen und zu verwalten.",
 	"INDEX_TEACHER_SESSION": "Auf dieser Seite können Sie Ihre Sitzungen erstellen, anzeigen und bearbeiten.",
@@ -75,6 +82,8 @@
 	"SESSION_END_MESSAGE": "Diese Sitzung ist jetzt beendet",
 	"SESSION_END_BACK": "Zurück zur Sitzungsliste",
 	"SESSION_EMPTY": "Aktuell sind keine Sitzungen verfügbar.",
+	"SESSION_OPEN": "Offen",
+	"SESSION_CLOSE": "Geschlossen",
 
 	"DASHBOARD_TITLE": "Dashboard",
 	"DASHBOARD_STUDENT_NAME": "Student",

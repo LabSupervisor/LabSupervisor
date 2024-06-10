@@ -113,8 +113,14 @@
 	<div class="mainbox lateral">
 
 		<div class="classnameGroup">
-			<h2 class="classroomListTitle"><?= lang("CLASSROOM_NAME") ?></h2>
-			<button class="button" onclick="showPopup('addClassroomPopup')"><i class="ri-add-line"></i></button>
+			<h2 class=""><?= lang("CLASSROOM_NAME") ?></h2>
+			<?php
+				if (in_array(ADMIN, UserRepository::getRole($_SESSION["login"]))) {
+			?>
+			<button class="button classroomAddButton" onclick="showPopup('addClassroomPopup')"><i class="ri-add-line"></i></button>
+			<?php
+				}
+			?>
 		</div>
 
 		<?php
@@ -147,7 +153,7 @@
 			<div class="classroomTitleItem left">
 				<form class="classroomTitleItem" id="modifyNameForm" method="POST" onsubmit="loading()">
 					<input type="hidden" name="classroomId" value="<?= $_GET["id"] ?>">
-					<h2 class="classroomName" id="modifyNameTitle" title="<?= ClassroomRepository::getName($_GET["id"]) ?>"><?= ClassroomRepository::getName($_GET["id"]) ?></h2>
+					<h2 class="classroomName" id="modifyNameTitle" title="<?= htmlspecialchars(ClassroomRepository::getName($_GET["id"])) ?>"><?= htmlspecialchars(ClassroomRepository::getName($_GET["id"])) ?></h2>
 				</form>
 				<button class="button" id="modifyNameButton" onclick="modifyName('<?= ClassroomRepository::getName($_GET['id']) ?>')"><i class="ri-pencil-line" id="modifyNameIcon"></i></button>
 				<form method="POST" onsubmit="return confirmForm('<?= lang('CLASSROOM_DELETE_CLASSROOM_CONFIRMATION') ?>');">

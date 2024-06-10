@@ -48,5 +48,26 @@ document.getElementById("themeRedLight").addEventListener("auxclick", function(e
 				},
 			},
 		});
+
+		for (let i = 0; i < 50; i++) {
+			var particle = document.createElement("span");
+			particle.setAttribute("class", "particle");
+			document.getElementById("main").appendChild(particle);
+		}
+
+		function rand(min, max) {
+			return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+
+		Array.from(document.getElementsByClassName('particle')).forEach(element => {
+			setInterval(() => {
+				element.style.left = rand(0, 100) + "%";
+				element.style.top = rand(0, 100) + "%";
+				let size = rand(3, 5);
+				element.style.height = size + "px";
+				element.style.width = size + "px";
+				element.style.transform = "rotate(" + rand(0, 90) + "deg)";
+			}, 150)
+		});
 	}
 });

@@ -1,7 +1,7 @@
 let select = document.getElementById("lang");
 
-select.addEventListener('change', function() {
-	fetch("/connect", {
+select.addEventListener('change', async function() {
+	await fetch("/connect", {
 		method: 'post',
 		headers: {
 		'Accept': 'application/json',

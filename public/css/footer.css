@@ -26,17 +26,23 @@ footer .linkGroup {
 	margin-right: 20px;
 }
 
-footer .link {
+footer .link, footer .about {
 	text-decoration: none;
 	font-size: 21px;
 	transition: 200ms;
 }
 
-footer .link:hover {
+footer .link:hover, footer .about:hover {
 	color: var(--text-hover-color);
 	transition: 200ms;
 }
 
 footer .version {
 	font-style: italic;
+	margin-left: 3px;
+}
+
+footer .about {
+	margin-left: 80px;
+	font-size: 16px;
 }

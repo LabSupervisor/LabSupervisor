@@ -66,7 +66,12 @@
 							echo htmlspecialchars(ClassroomRepository::getName($user["classroom"]));
 						} else {
 							if (in_array(TEACHER, UserRepository::getRole($userId))) {
-								echo "";
+								$classroomList = "";
+								foreach (ClassroomRepository::getTeacherClassroom($userId) as $value) {
+									$classroomList .= ClassroomRepository::getName($value["id"]) . " - ";
+								}
+								$classroomList = substr($classroomList, 0, -2);
+								echo "<div class='col5' title='" . htmlspecialchars($classroomList) . "'>" . htmlspecialchars($classroomList) . "</div>";
 							} else {
 								echo lang("USER_UPDATE_CLASS_EMPTY");
 							}

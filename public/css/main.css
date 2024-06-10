@@ -143,6 +143,10 @@ body a {
 	align-content: center;
 	flex-wrap: wrap;
 
+	position: sticky;
+	top: 62px;
+	z-index: 100;
+
 	background-color: #ff8989;
 
 	user-select: none;
@@ -165,6 +169,10 @@ body a {
 	color: var(--text-color);
 	backdrop-filter: blur(12px);
 	box-shadow: 0 0 30px 5px #00000030;
+}
+
+h3 {
+	font-size: 20px;
 }
 
 /* Title box */
@@ -350,6 +358,18 @@ body a {
 .link:hover {
 	color: var(--text-hover-color);
 	transition: 200ms;
+}
+
+/* Particle */
+.particle {
+	display: block;
+	position: fixed;
+
+	background-color: silver;
+	box-shadow: 0px 0px 10px 0px gold;
+
+	height: 4px;
+	width: 4px;
 }
 
 /* Checkbox style */

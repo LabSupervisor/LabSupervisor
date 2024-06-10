@@ -1,5 +1,9 @@
 <?php
 
+	if (!isset($_SESSION["login"])) {
+		header("Location: /login");
+	}
+
 	use LabSupervisor\app\repository\UserRepository;
 	use function
 		LabSupervisor\functions\mainHeader,

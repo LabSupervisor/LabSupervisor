@@ -25,6 +25,13 @@
 	"NAVBAR_PROFIL_DISCONNECT": "ログアウト",
 	"NAVBAR_THEME_PICKER": "テーマ",
 
+	"FOOTER_ABOUT": "について",
+
+	"ABOUT_STAFF": "スタッフ",
+	"ABOUT_HELP": "外部の助け",
+	"ABOUT_LIBRARY": "ライブラリ",
+	"ABOUT_LEGAL": "法的通知",
+
 	"INDEX_STUDENT_SESSION": "このページでは、登録されているすべてのセッションを表示できます。",
 	"INDEX_TEACHER_CLASSROOM": "このページでは、自分のクラスを表示および管理できます。",
 	"INDEX_TEACHER_SESSION": "このページでは、セッションを作成、表示、編集できます。",
@@ -75,6 +82,8 @@
 	"SESSION_END_MESSAGE": "このセッションは終了しました",
 	"SESSION_END_BACK": "セッションリストに戻る",
 	"SESSION_EMPTY": "現在、利用可能なセッションはありません。",
+	"SESSION_OPEN": "オープン",
+	"SESSION_CLOSE": "クローズ",
 
 	"DASHBOARD_TITLE": "ダッシュボード",
 	"DASHBOARD_STUDENT_NAME": "学生",

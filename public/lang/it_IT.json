@@ -25,6 +25,13 @@
 	"NAVBAR_PROFIL_DISCONNECT": "Disconnetti",
 	"NAVBAR_THEME_PICKER": "Temi",
 
+	"FOOTER_ABOUT": "Informazioni su",
+
+	"ABOUT_STAFF": "Team",
+	"ABOUT_HELP": "Aiuti esterni",
+	"ABOUT_LIBRARY": "Librerie",
+	"ABOUT_LEGAL": "Note legali",
+
 	"INDEX_STUDENT_SESSION": "In questa pagina puoi visualizzare tutte le sessioni a cui sei stato iscritto.",
 	"INDEX_TEACHER_CLASSROOM": "Questa pagina ti consente di visualizzare e gestire le tue classi.",
 	"INDEX_TEACHER_SESSION": "In questa pagina puoi creare, visualizzare e modificare le tue sessioni.",
@@ -75,6 +82,8 @@
 	"SESSION_END_MESSAGE": "Questa sessione è ora terminata",
 	"SESSION_END_BACK": "Torna alla lista delle sessioni",
 	"SESSION_EMPTY": "Attualmente non ci sono sessioni disponibili.",
+	"SESSION_OPEN": "Aperto",
+	"SESSION_CLOSE": "Chiuso",
 
 	"DASHBOARD_TITLE": "Dashboard",
 	"DASHBOARD_STUDENT_NAME": "Studente",

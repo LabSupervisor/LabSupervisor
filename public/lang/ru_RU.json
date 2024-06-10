@@ -25,6 +25,13 @@
 	"NAVBAR_PROFIL_DISCONNECT": "Выйти",
 	"NAVBAR_THEME_PICKER": "Темы",
 
+	"FOOTER_ABOUT": "О",
+
+	"ABOUT_STAFF": "Команда",
+	"ABOUT_HELP": "Внешняя помощь",
+	"ABOUT_LIBRARY": "Библиотеки",
+	"ABOUT_LEGAL": "Юридические уведомления",
+
 	"INDEX_STUDENT_SESSION": "На этой странице вы можете просмотреть все сеансы, в которых вы зарегистрированы.",
 	"INDEX_TEACHER_CLASSROOM": "На этой странице вы можете просматривать и управлять своими собственными классами.",
 	"INDEX_TEACHER_SESSION": "На этой странице вы можете создавать, просматривать и редактировать свои сеансы.",
@@ -75,6 +82,8 @@
 	"SESSION_END_MESSAGE": "Эта сессия теперь завершена",
 	"SESSION_END_BACK": "Вернуться к списку сессий",
 	"SESSION_EMPTY": "В настоящее время нет доступных сеансов.",
+	"SESSION_OPEN": "Открыто",
+	"SESSION_CLOSE": "Закрыто",
 
 	"DASHBOARD_TITLE": "Панель управления",
 	"DASHBOARD_STUDENT_NAME": "Студент",

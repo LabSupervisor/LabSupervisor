@@ -25,6 +25,13 @@
 	"NAVBAR_PROFIL_DISCONNECT": "登出",
 	"NAVBAR_THEME_PICKER": "主题",
 
+	"FOOTER_ABOUT": "关于",
+
+	"ABOUT_STAFF": "团队",
+	"ABOUT_HELP": "外部帮助",
+	"ABOUT_LIBRARY": "库",
+	"ABOUT_LEGAL": "法律声明",
+
 	"INDEX_STUDENT_SESSION": "在此页面，您可以查看您已注册的所有会话。",
 	"INDEX_TEACHER_CLASSROOM": "此页面允许您查看和管理您自己的课堂。",
 	"INDEX_TEACHER_SESSION": "在此页面，您可以创建、查看和编辑您的会话。",
@@ -75,6 +82,8 @@
 	"SESSION_END_MESSAGE": "此会话现已结束",
 	"SESSION_END_BACK": "返回会话列表",
 	"SESSION_EMPTY": "目前没有可用的会话。",
+	"SESSION_OPEN": "开放",
+	"SESSION_CLOSE": "关闭",
 
 	"DASHBOARD_TITLE": "仪表板",
 	"DASHBOARD_STUDENT_NAME": "学生",
