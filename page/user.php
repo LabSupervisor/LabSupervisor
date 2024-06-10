@@ -65,7 +65,16 @@
 						if ($user["classroom"]) {
 							echo htmlspecialchars(ClassroomRepository::getName($user["classroom"]));
 						} else {
-							echo lang("USER_UPDATE_CLASS_EMPTY");
+							if (in_array(TEACHER, UserRepository::getRole($userId))) {
+								$classroomList = "";
+								foreach (ClassroomRepository::getTeacherClassroom($userId) as $value) {
+									$classroomList .= ClassroomRepository::getName($value["id"]) . " - ";
+								}
+								$classroomList = substr($classroomList, 0, -2);
+								echo "<div class='col5' title='" . htmlspecialchars($classroomList) . "'>" . htmlspecialchars($classroomList) . "</div>";
+							} else {
+								echo lang("USER_UPDATE_CLASS_EMPTY");
+							}
 						}
 						?>
 						<input type="hidden" name="classroom" id="classroom_<?=$userId?>">
@@ -80,7 +89,7 @@
 							if ($_SESSION["login"] != $userId) {
 						?>
 
-						<button class="modifybutton button" type="button" id="modify_<?= $userId ?>" title="<?= lang("USER_UPDATE_MODIFY") ?>" onclick="updateUser(<?= $userId ?>, <?= $classroomIdUser ?>, <?= UserRepository::getRole($userId)[0] ?>)"><i class="ri-pencil-line"></i></button>
+						<button class="button" type="button" id="modify_<?= $userId ?>" title="<?= lang("USER_UPDATE_MODIFY") ?>" onclick="updateUser(<?= $userId ?>, <?= $classroomIdUser ?>, <?= UserRepository::getRole($userId)[0] ?>)"><i class="ri-pencil-line"></i></button>
 
 						<form method="POST" onsubmit="return confirmForm('<?= lang('USER_UPDATE_DELETE_CONFIRMATION') ?>');">
 							<input type="hidden" name="userId" value="<?= $userId ?>">
@@ -88,6 +97,8 @@
 						</form>
 
 						<?php
+							} else {
+								echo '<a class="button account" href="/compte"><i class="ri-account-circle-line"></i>' . lang("NAVBAR_PROFIL_ACCOUNT") . '</a>';
 							}
 						?>
 					</td>
@@ -101,11 +112,11 @@
 		</table>
 		<form class="pageGroup" method="GET" onsubmit="loading()">
 			<?php
-			$nbuser = count(UserRepository::getUsers());
-			$pages=ceil($nbuser/$max);
+				$pages = ceil(count(UserRepository::getUsers())/$max);
+
 				if ($_GET["page"] != 1) {
 			?>
-			<button class="button" type="submit" name="page" value="<?= $_GET["page"] -1 ?>" min="1" ><i class="ri-arrow-left-s-line"></i> </button>
+			<button class="button" type="submit" name="page" value="<?= $_GET["page"] -1 ?>" min="1"><i class="ri-arrow-left-s-line"></i></button>
 			<?php
 				} else {
 			?>
@@ -113,26 +124,13 @@
 			<?php
 				}
 			?>
-
-			<input class="pageNumber" id="pageNumber" type="number" value="<?= $_GET["page"]?>"
-			onKeyUp="validatePageNumber(this, <?= $pages ?>)" max="<?= $pages ?>" min="1">
-			<script>
-				function validatePageNumber(input, maxPages) {
-					let value = parseInt(input.value, 10);
-					if (isNaN(value) || value < 0) {
-						input.value = 1;
-					} else if (value > maxPages) {
-						input.value = maxPages;
-					}
-				}
-			</script>
+			<input class="pageNumber" id="pageNumber" type="number" value="<?= $_GET["page"] ?>" onKeyUp="validatePageNumber(this, <?= $pages ?>)" min="1" max="<?= $pages ?>">
 			<?php
 				if (count(UserRepository::getUsers()) > $_GET["page"] * $max) {
 			?>
-			<button class="button" type="submit" name="page"value="<?= $_GET["page"] +1 ?>"><i class="ri-arrow-right-s-line"></i> </button>
+			<button class="button" type="submit" name="page" value="<?= $_GET["page"] +1 ?>"><i class="ri-arrow-right-s-line"></i></button>
 			<?php
-				}
-				else {
+				} else {
 			?>
 			<button class="button" disabled><i class="ri-arrow-right-s-line"></i></button>
 			<?php
@@ -146,6 +144,7 @@
 <script src="/public/js/function/updateUser.js"></script>
 <script src="/public/js/function/loading.js"></script>
 <script src="/public/js/function/popupConfirm.js"></script>
+<script src="/public/js/function/validatePage.js"></script>
 
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');
