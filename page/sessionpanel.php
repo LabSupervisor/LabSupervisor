@@ -50,7 +50,13 @@
 		<button class="button" id="shareButton"><i class="ri-share-line"></i> <?= lang("SESSION_PANEL_SCREENSHARE_START") ?></button>
 	</div>
 	<div class="infoBox">
-		<?= date("d F Y H:i", strtotime($sessionInfo["date"])) ?> | <?= htmlspecialchars(nameFormat($sessionInfo["idcreator"], false)) ?> - <?= htmlspecialchars(ClassroomRepository::getName($sessionInfo["idclassroom"])) ?>
+		<?php
+			$teacher = "";
+			if (UserRepository::isActive($sessionInfo["idcreator"])) {
+				$teacher = htmlspecialchars(nameFormat($sessionInfo["idcreator"], false)) . " - ";
+			}
+		?>
+		<?= date("d F Y H:i", strtotime($sessionInfo["date"])) ?> | <?= $teacher ?><?= htmlspecialchars(ClassroomRepository::getName($sessionInfo["idclassroom"])) ?>
 	</div>
 	<div class="progressBox">
 		<div class="progressPercent" id="percentValue"> <?= $percentDone ?>% </div>
@@ -134,8 +140,6 @@
 <!-- Create "global" variables -->
 <script>
 	var sessionId = <?= $_SESSION["session"] ?>;
-	var videoServerHost = "<?= $_ENV["VIDEO_SERVER_HOST"] ?>";
-	var videoServerPort = <?= $_ENV["VIDEO_SERVER_PORT"] ?>;
 </script>
 
 <script src="/public/js/function/updateStatus.js"></script>

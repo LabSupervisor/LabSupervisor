@@ -25,8 +25,6 @@
 
 		<script>
 			var requestId = <?= $_GET["userId"] ?>;
-			var videoServerHost = "<?= $_ENV["VIDEO_SERVER_HOST"] ?>";
-			var videoServerPort = <?= $_ENV["VIDEO_SERVER_PORT"] ?>;
 		</script>
 
 		<div id="firefoxButton" class="firefoxButton" style="display: none;">

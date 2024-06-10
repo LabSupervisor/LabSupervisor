@@ -15,7 +15,6 @@
 	- Database
 	- Modules
 	- Parameters
-	- Screenshare server
 - [Environment development datas](#-environment-development-datas)
 - [Administration](#-administration)
 	- Error logs
@@ -57,8 +56,6 @@ Available langage:
 
 - [Apache2](https://httpd.apache.org/) Latest
 - [PHP](https://www.php.net/) >=8.1
-- [NodeJS](https://nodejs.org/) Latest
-- [NPM](https://www.npmjs.com/) Latest
 - [MariaDB](https://mariadb.org/) Latest
 - [Composer](https://getcomposer.org/) Latest
 
@@ -84,14 +81,6 @@ Use `composer install` on a terminal open in project's root folder.
 3. <u>Parameters</u>
 
 Rename `.env.example` to `.env` <u>and fill credentials</u>.
-
-4. <u>Install video server</u>
-
-Go to `server/` and open a terminal, execute `npm i`.
-
-5. <u>Start servers</u>
-
-Execute `composer start` on a terminal open in project's root folder.
 
 ## 📌 Environment development datas
 

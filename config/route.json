@@ -4,7 +4,6 @@
 			"/"
 		],
 		"page": "page/index.php",
-		"connect": true,
 		"navbar": {
 			"icon": "ri-home-line",
 			"title": "NAVBAR_HOME"
@@ -14,7 +13,6 @@
 
 	"login": {
 		"route": [
-			"/",
 			"/login"
 		],
 		"page": "page/login.php",
@@ -38,6 +36,13 @@
 		"page": "logic/disconnect.php",
 		"connect": true,
 		"role": [1, 2, 3]
+	},
+
+	"about": {
+		"route" : [
+			"/about"
+		],
+		"page": "page/about.php"
 	},
 
 	"classroom": {

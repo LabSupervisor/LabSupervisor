@@ -25,6 +25,13 @@
 	"NAVBAR_PROFIL_DISCONNECT": "Desconectar",
 	"NAVBAR_THEME_PICKER": "Temas",
 
+	"FOOTER_ABOUT": "Acerca de",
+
+	"ABOUT_STAFF": "Equipo",
+	"ABOUT_HELP": "Ayuda externa",
+	"ABOUT_LIBRARY": "Bibliotecas",
+	"ABOUT_LEGAL": "Avisos legales",
+
 	"INDEX_STUDENT_SESSION": "En esta página, puedes ver todas las sesiones en las que estás inscrito.",
 	"INDEX_TEACHER_CLASSROOM": "Esta página te permite ver y gestionar tus propias aulas.",
 	"INDEX_TEACHER_SESSION": "En esta página, puedes crear, ver y editar tus sesiones.",
@@ -75,6 +82,8 @@
 	"SESSION_END_MESSAGE": "Esta sesión ha finalizado",
 	"SESSION_END_BACK": "Volver a la lista de sesiones",
 	"SESSION_EMPTY": "Actualmente no hay sesiones disponibles.",
+	"SESSION_OPEN": "Abierto",
+	"SESSION_CLOSE": "Cerrado",
 
 	"DASHBOARD_TITLE": "Tablero",
 	"DASHBOARD_STUDENT_NAME": "Estudiante",

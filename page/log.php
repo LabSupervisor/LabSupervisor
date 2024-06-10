@@ -88,6 +88,8 @@
 		<input type="hidden" name="trace">
 		<input type="hidden" name="date" value="<?= $logDate ?>">
 		<?php
+			$pages=ceil(count(LogRepository::getLogs($logDate))/$max);
+
 			if ($_GET["page"] != 1) {
 		?>
 		<button class="button" type="submit" name="page" value="<?= $_GET["page"] -1 ?>"><i class="ri-arrow-left-s-line"></i></button>
@@ -98,7 +100,7 @@
 		<?php
 			}
 		?>
-		<input class="pageNumber" id="pageNumber" type="number" value="<?= $_GET["page"] ?>" min="1" max="<?= ceil(count(LogRepository::getLogs($logDate)) / $max)?>">
+		<input class="pageNumber" id="pageNumber" type="number" onKeyUp="validatePageNumber(this, <?= $pages ?>)" value="<?= $_GET["page"] ?>" min="1" max="<?= $pages ?>">
 		<?php
 			if (count(LogRepository::getLogs($logDate)) >= $_GET["page"] * $max) {
 		?>
@@ -188,6 +190,8 @@
 		<input type="hidden" name="error">
 		<input type="hidden" name="date" value="<?= $logDate ?>">
 		<?php
+			$pages=ceil(count($log)/$max);
+
 			if ($_GET["page"] != 1) {
 		?>
 		<button class="button" type="submit" name="page" value="<?= $_GET["page"] -1 ?>"><i class="ri-arrow-left-s-line"></i></button>
@@ -198,7 +202,7 @@
 		<?php
 			}
 		?>
-		<input class="pageNumber" id="pageNumber" type="number" value="<?= $_GET["page"] ?>" min="1" max="<?= ceil(count($log) / $max)?>">
+		<input class="pageNumber" id="pageNumber" type="number" onKeyUp="validatePageNumber(this, <?= $pages ?>)" value="<?= $_GET["page"] ?>" min="1" max="<?= $pages ?>">
 		<?php
 			if (count($log) > $_GET["page"] * $max) {
 		?>
@@ -224,6 +228,7 @@
 <script src="/public/js/dateSelector.js"></script>
 <script src="/public/js/pageSelector.js"></script>
 <script src="/public/js/function/loading.js"></script>
+<script src="/public/js/function/validatePage.js"></script>
 
 <?php
 	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');

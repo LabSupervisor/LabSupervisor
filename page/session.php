@@ -85,9 +85,9 @@
 						echo "<tr>";
 						foreach($sessionList[$i] as $line) {
 							if ($line["state"] == 0) {
-								$buttonStyle = "statusRed";
+								$stateText = "<i class='ri-door-closed-line'></i> " . lang("SESSION_CLOSE");
 							} else {
-								$buttonStyle = "statusGreen";
+								$stateText = "<i class='ri-door-open-line'></i> " . lang("SESSION_OPEN");
 							}
 
 							$creatorName = nameFormat($line["idcreator"], false);
@@ -111,7 +111,7 @@
 							}
 
 							echo '<td>' . $nbParticipantActive-1 . "</td>";
-							echo '<td class="colState"><div class="statusBall ' . $buttonStyle . '"</div></td>';
+							echo '<td class="colState">' . $stateText . '</td>';
 							if (!in_array(ADMIN, $roleList)) {
 								echo "<td class='col5'>";
 
@@ -121,10 +121,10 @@
 								}
 
 								// Only select active session
-								if ($line["state"] != 0 || in_array(TEACHER, $roleList)) {
+								if ($line["state"] != 0 ) {
 									echo "<form method='POST'><button type='submit' name='connect[" . $line["id"] . "]' value='" . lang("SESSION_STATE_OPEN") . "' class='button'><i class=\"ri-login-box-line\"></i> " . lang("SESSION_STATE_OPEN") . "</button></form>";
 								} else {
-									echo "<form method='POST'><button type='submit' name='connect[" . $line["id"] . "]' value='" . lang("SESSION_STATE_OPEN") . "' class='button'><i class=\"ri-login-box-line\"></i> " . lang("SESSION_STATE_CONSULT") . "</button></form>";;
+									echo "<form method='POST'><button type='submit' name='connect[" . $line["id"] . "]' value='" . lang("SESSION_STATE_OPEN") . "' class='button'><i class=\"ri-login-box-line\"></i> " . lang("SESSION_STATE_CONSULT") . "</button></form>";
 								}
 
 								echo "</td>";
@@ -139,6 +139,8 @@
 	</table>
 	<form class="pageGroup" method="GET" onsubmit="loading()">
 		<?php
+			$pages = ceil(count($sessionList)/$max);
+
 			if ($_GET["page"] != 1) {
 		?>
 		<button class="button" type="submit" name="page" value="<?= $_GET["page"] -1 ?>"><i class="ri-arrow-left-s-line"></i></button>
@@ -149,7 +151,7 @@
 		<?php
 			}
 		?>
-		<input class="pageNumber" id="pageNumber" type="number" value="<?= $_GET["page"] ?>" min="1" max="<?= ceil(count($sessionList) / $max)?>">
+		<input class="pageNumber" id="pageNumber" type="number" onKeyUp="validatePageNumber(this, <?= $pages ?>)" value="<?= $_GET["page"] ?>" min="1" max="<?= $pages ?>">
 		<?php
 			if (count($sessionList) > $_GET["page"] * $max) {
 		?>
@@ -167,6 +169,7 @@
 <script src="/public/js/pageSelector.js"></script>
 <script src="/public/js/function/popup.js"></script>
 <script src="/public/js/function/loading.js"></script>
+<script src="/public/js/function/validatePage.js"></script>
 
 <?php
 	} else {

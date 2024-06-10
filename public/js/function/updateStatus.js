@@ -1,5 +1,5 @@
-function setStatus(idchapter, status) {
-	fetch("/connect", {
+async function setStatus(idchapter, status) {
+	await fetch("/connect", {
 		method: 'post',
 		headers: {
 			'Accept': 'application/json',
