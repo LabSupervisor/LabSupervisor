@@ -96,7 +96,7 @@
 	</label>
 
 	<div>
-		<a class="link" id="cancel"><i class="ri-arrow-left-line"></i> <?= lang("MAIN_ADD") ?></a>
+		<a class="link" id="cancel"><i class="ri-arrow-left-line"></i> <?= lang("MAIN_CANCEL") ?></a>
 		<button class="button deleteCaseButton" type="submit" name="confirm_delete"><i class="ri-delete-bin-line"></i> <?= lang("ACCOUNT_DELETE") ?></button>
 	</div>
 </form>
