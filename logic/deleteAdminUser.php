@@ -13,6 +13,7 @@ if (isset($_POST['send'])) {
 		if ($session["idclassroom"] == $classroomId) {
 			$lslink = UserRepository::getLink($studentId, $session["id"]);
 			if (isset($lslink)) {
+				UserRepository::removeScreenshare(UserRepository::getScreenshare($studentId, $session["id"]), $session["id"]);
 				UserRepository::unlink($studentId, $session["id"], $lslink);
 			}
 		}
