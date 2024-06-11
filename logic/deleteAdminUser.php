@@ -10,12 +10,10 @@ if (isset($_POST['send'])) {
 	UserRepository::delete($_POST['send']);
 
 	foreach (SessionRepository::getSessions() as $session) {
-		if ($session["idclassroom"] == $classroomId) {
-			$lslink = UserRepository::getLink($studentId, $session["id"]);
-			if (isset($lslink)) {
-				UserRepository::removeScreenshare(UserRepository::getScreenshare($studentId, $session["id"]), $session["id"]);
-				UserRepository::unlink($studentId, $session["id"], $lslink);
-			}
+		$lslink = UserRepository::getLink($_POST['send'], $session["id"]);
+		if (isset($lslink)) {
+			UserRepository::removeScreenshare(UserRepository::getScreenshare($_POST['send'], $session["id"]), $session["id"]);
+			UserRepository::unlink($_POST['send'], $session["id"], $lslink);
 		}
 	}
 
