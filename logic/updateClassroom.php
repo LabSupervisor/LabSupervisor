@@ -4,6 +4,7 @@ use
 	LabSupervisor\app\entity\Classroom,
 	LabSupervisor\app\repository\ClassroomRepository,
 	LabSupervisor\app\repository\SessionRepository;
+use LabSupervisor\app\repository\UserRepository;
 
 // Add student
 if (isset($_POST['addStudent'])) {
@@ -36,6 +37,10 @@ if (isset($_POST['removeStudent'])) {
 			SessionRepository::deleteParticipant($session["id"], $studentId);
 			foreach (SessionRepository::getChapter($session["id"]) as $chapter) {
 				SessionRepository::deleteStatus($session["id"], $studentId, $chapter["id"]);
+			}
+			$lslink = UserRepository::getLink($studentId, $session["id"]);
+			if (isset($lslink)) {
+				UserRepository::unlink($studentId, $session["id"], $lslink);
 			}
 		}
 	}
