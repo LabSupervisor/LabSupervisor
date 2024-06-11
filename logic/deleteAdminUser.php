@@ -5,7 +5,7 @@ use function LabSupervisor\functions\lang;
 
 if (isset($_POST['send'])) {
 	// Delete user
-	UserRepository::delete($_POST['userId']);
+	UserRepository::delete($_POST['send']);
 
 	echo '<script> popupDisplay("' . lang("USER_UPDATE_DELETE_NOTIFICATION") .'"); </script>';
 }

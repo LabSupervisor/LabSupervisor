@@ -91,10 +91,7 @@
 
 						<button class="button" type="button" id="modify_<?= $userId ?>" title="<?= lang("USER_UPDATE_MODIFY") ?>" onclick="updateUser(<?= $userId ?>, <?= $classroomIdUser ?>, <?= UserRepository::getRole($userId)[0] ?>)"><i class="ri-pencil-line"></i></button>
 
-						<form method="POST" onsubmit="return confirmForm('<?= lang('USER_UPDATE_DELETE_CONFIRMATION') ?>');">
-							<input type="hidden" name="userId" value="<?= $userId ?>">
-							<button class="link" type="submit" name="send" id="delete_<?= $userId ?>"><i class="ri-delete-bin-line"></i> <?= lang("USER_UPDATE_DELETE") ?></button>
-						</form>
+						<button class="link" type="submit" name="send" id="delete_<?= $userId ?>" value="<?= $userId ?>" onclick="return confirmForm('<?= lang('USER_UPDATE_DELETE_CONFIRMATION') ?>') "><i class="ri-delete-bin-line"></i> <?= lang("USER_UPDATE_DELETE") ?></button>
 
 						<?php
 							} else {
