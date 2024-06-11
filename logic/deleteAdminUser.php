@@ -7,7 +7,7 @@ use function LabSupervisor\functions\lang;
 
 if (isset($_POST['send'])) {
 	// Delete user
-	UserRepository::delete($_POST['userId']);
+	UserRepository::delete($_POST['send']);
 
 	foreach (SessionRepository::getSessions() as $session) {
 		if ($session["idclassroom"] == $classroomId) {
