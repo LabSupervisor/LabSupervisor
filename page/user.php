@@ -125,7 +125,7 @@
 			<?php
 				}
 			?>
-			<input class="pageNumber" id="pageNumber" type="number" value="<?= $_GET["page"] ?>" onKeyUp="validatePageNumber(this, <?= $pages ?>)" min="1" max="<?= $pages ?>">
+			<input class="pageNumber" id="pageNumber" type="number" value="<?= $_GET["page"] ?>" onKeyUp="validatePageNumber(this, <?= $pages ?>)" onkeydown="if (event.keyCode === 13) { event.preventDefault(); }" min="1" max="<?= $pages ?>">
 			<?php
 				if (count(UserRepository::getUsers()) > $_GET["page"] * $max) {
 			?>
