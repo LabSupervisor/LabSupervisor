@@ -17,7 +17,7 @@
 		UserRepository::delete($_SESSION["login"]);
 		header("Location: /");
 	}
-	
+
 	// Import header
 	mainHeader(lang("NAVBAR_PROFIL_ACCOUNT"), true);
 
@@ -50,7 +50,7 @@
 			<div class="column">
 				<input class="disabled" value="<?= htmlspecialchars(UserRepository::getEmail($_SESSION["login"])) ?>" disabled></input>
 				<div>
-					<select id="lang" name="lang">
+					<select id="lang">
 						<?php
 							$userLang = UserRepository::getSetting($_SESSION["login"])["lang"];
 

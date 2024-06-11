@@ -30,7 +30,7 @@ if (isset($_POST['new_name'])) {
 	$theme = UserRepository::getSetting($_SESSION["login"])["theme"];
 	$userSetting = array(
 		"theme" => $theme,
-		"lang" => $_POST["lang"]
+		"lang" => UserRepository::getSetting($_SESSION["login"])["lang"]
 	);
 
 	// Update user's settings
