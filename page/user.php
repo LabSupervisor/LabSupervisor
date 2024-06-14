@@ -111,6 +111,7 @@
 			?>
 			</tbody>
 		</table>
+		</form>
 		<form class="pageGroup" method="GET" onsubmit="loading()">
 			<?php
 				$pages = ceil(count(UserRepository::getUsers())/$max);
@@ -139,7 +140,6 @@
 			?>
 		</form>
 	</div>
-</form>
 
 <script src="/public/js/pageSelector.js"></script>
 <script src="/public/js/function/updateUser.js"></script>
