@@ -403,6 +403,27 @@ class UserRepository {
 		}
 	}
 
+	public static function removeScreenshare($userId, $sessionId) {
+		$query = "";
+		// Remove screenshare query
+		$query = "DELETE FROM screenshare WHERE iduser = :iduser AND idsession = :idsession";
+
+		// Remove screenshare
+		try {
+			$queryPrep = DATABASE->prepare($query);
+			$queryPrep->bindParam(':iduser', $userId);
+			$queryPrep->bindParam(':idsession', $sessionId);
+
+			if ($queryPrep->execute())
+				LogRepository::dbSave("Remove screenshare " . $userId . " from " . $sessionId);
+			else
+				throw new Exception("Remove screenshare " . $userId . " from " . $sessionId . " error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+	}
+
 	public static function getLink($userId, $sessionId) {
 		// Get link query
 		$query = "SELECT idlink FROM link WHERE iduser = :iduser AND idsession = :idsession";

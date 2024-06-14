@@ -61,8 +61,31 @@
 
 	<div class="line"></div>
 
+	<h3><?= lang("ABOUT_TESTING") ?></h3>
+	<div class="group">
+		<div class="item">
+			<p>Nicolas M.</p>
+			<p>Luc G.</p>
+			<p>Marc P.</p>
+			<p>Eylann J.</p>
+		</div>
+		<div class="item">
+			<p>Romain P.</p>
+			<p>Lucas B.</p>
+			<p>Enora P.</p>
+			<p>Nassim M.</p>
+		</div>
+		<div class="item">
+			<p>Benjamin S.</p>
+			<p>Léo M.</p>
+			<p>Thomas A.</p>
+		</div>
+	</div>
+
+	<div class="line"></div>
+
 	<h3><?= lang("ABOUT_LEGAL") ?></h3>
-	<p>LabSupervisor Corp<br>contact@labsupervisor.com</p>
+	<p>LabSupervisor Corp<br>contact@labsupervisor.fr</p>
 </div>
 
 <?php

@@ -71,7 +71,11 @@
 									$classroomList .= ClassroomRepository::getName($value["id"]) . " - ";
 								}
 								$classroomList = substr($classroomList, 0, -2);
-								echo "<div class='col5' title='" . htmlspecialchars($classroomList) . "'>" . htmlspecialchars($classroomList) . "</div>";
+								if ($classroomList != "") {
+									echo "<div class='col5' title='" . htmlspecialchars($classroomList) . "'>" . htmlspecialchars($classroomList) . "</div>";
+								} else {
+									echo "<div class='col5'>" . lang("USER_UPDATE_CLASS_EMPTY") . "</div>";
+								}
 							} else {
 								echo lang("USER_UPDATE_CLASS_EMPTY");
 							}
@@ -89,12 +93,9 @@
 							if ($_SESSION["login"] != $userId) {
 						?>
 
-						<button class="button" type="button" id="modify_<?= $userId ?>" title="<?= lang("USER_UPDATE_MODIFY") ?>" onclick="updateUser(<?= $userId ?>, <?= $classroomIdUser ?>, <?= UserRepository::getRole($userId)[0] ?>)"><i class="ri-pencil-line"></i></button>
+						<button class="button modifybutton" type="button" id="modify_<?= $userId ?>" title="<?= lang("USER_UPDATE_MODIFY") ?>" onclick="updateUser(<?= $userId ?>, <?= $classroomIdUser ?>, <?= UserRepository::getRole($userId)[0] ?>)"><i class="ri-pencil-line"></i></button>
 
-						<form method="POST" onsubmit="return confirmForm('<?= lang('USER_UPDATE_DELETE_CONFIRMATION') ?>');">
-							<input type="hidden" name="userId" value="<?= $userId ?>">
-							<button class="link" type="submit" name="send" id="delete_<?= $userId ?>"><i class="ri-delete-bin-line"></i> <?= lang("USER_UPDATE_DELETE") ?></button>
-						</form>
+						<button class="link" type="submit" name="send" id="delete_<?= $userId ?>" value="<?= $userId ?>" onclick="return confirmForm('<?= lang('USER_UPDATE_DELETE_CONFIRMATION') ?>') "><i class="ri-delete-bin-line"></i> <?= lang("USER_UPDATE_DELETE") ?></button>
 
 						<?php
 							} else {
@@ -124,7 +125,7 @@
 			<?php
 				}
 			?>
-			<input class="pageNumber" id="pageNumber" type="number" value="<?= $_GET["page"] ?>" onKeyUp="validatePageNumber(this, <?= $pages ?>)" min="1" max="<?= $pages ?>">
+			<input class="pageNumber" id="pageNumber" type="number" value="<?= $_GET["page"] ?>" onKeyUp="validatePageNumber(this, <?= $pages ?>)" onkeydown="if (event.keyCode === 13) { event.preventDefault(); }" min="1" max="<?= $pages ?>">
 			<?php
 				if (count(UserRepository::getUsers()) > $_GET["page"] * $max) {
 			?>

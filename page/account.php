@@ -2,7 +2,8 @@
 
 	use
 		LabSupervisor\app\repository\UserRepository,
-		LabSupervisor\app\repository\ClassroomRepository;
+		LabSupervisor\app\repository\ClassroomRepository,
+		LabSupervisor\app\repository\SessionRepository;
 	use function
 		LabSupervisor\functions\mainHeader,
 		LabSupervisor\functions\lang,
@@ -14,10 +15,19 @@
 
 	// Delete account if ask for
 	if (isset($_POST["confirm_delete"])) {
+		foreach (SessionRepository::getSessions() as $session) {
+			if ($session["idclassroom"] == $classroomId) {
+				$lslink = UserRepository::getLink($studentId, $session["id"]);
+				if (isset($lslink)) {
+					UserRepository::removeScreenshare(UserRepository::getScreenshare($studentId, $session["id"]), $session["id"]);
+					UserRepository::unlink($studentId, $session["id"], $lslink);
+				}
+			}
+		}
 		UserRepository::delete($_SESSION["login"]);
 		header("Location: /");
 	}
-	
+
 	// Import header
 	mainHeader(lang("NAVBAR_PROFIL_ACCOUNT"), true);
 
@@ -50,7 +60,7 @@
 			<div class="column">
 				<input class="disabled" value="<?= htmlspecialchars(UserRepository::getEmail($_SESSION["login"])) ?>" disabled></input>
 				<div>
-					<select id="lang" name="lang">
+					<select id="lang">
 						<?php
 							$userLang = UserRepository::getSetting($_SESSION["login"])["lang"];
 

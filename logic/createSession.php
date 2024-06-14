@@ -192,6 +192,7 @@ else if (isset($_POST['deleteSession'])) {
 		foreach ($chapter as $value) {
 			SessionRepository::deleteStatus($sessionId, $user["iduser"], $value["id"]);
 		}
+		UserRepository::removeScreenshare(UserRepository::getScreenshare($user["iduser"], $sessionId), $sessionId);
 		UserRepository::unlink($user["iduser"], $sessionId, UserRepository::getLink($user["iduser"], $sessionId));
 		SessionRepository::deleteParticipant($sessionId, $user["iduser"]);
 	}
@@ -199,6 +200,7 @@ else if (isset($_POST['deleteSession'])) {
 	foreach ($chapter as $value) {
 		SessionRepository::deleteChapter($value["id"]);
 	}
+
 
 	SessionRepository::delete($sessionId);
 
