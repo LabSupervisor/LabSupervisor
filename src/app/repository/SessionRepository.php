@@ -5,6 +5,7 @@ use
 	PDO,
 	Exception,
 	LabSupervisor\app\entity\Session;
+use PhpParser\Node\Stmt\Catch_;
 
 class SessionRepository {
 
@@ -337,6 +338,24 @@ class SessionRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
 	}
 
+	public static function getTeacherParticipants($sessionId, $full = false) {
+		// Get session's participants query
+		$query = "SELECT p.iduser FROM participant p JOIN user us ON us.id = p.iduser JOIN userrole ur ON ur.iduser = us.id WHERE p.idsession = :idsession  AND ur.idrole = 3 ORDER BY us.surname ASC";
+
+		// Get session's participant
+		try {
+			$queryPrep = DATABASE->prepare($query);
+			$queryPrep->bindParam(':idsession', $sessionId);
+			if (!$queryPrep->execute())
+				throw new Exception("Get Teacher participant from session " . $sessionId . " error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
+	}
+
 	public static function getUserSessions($userId) {
 
 		// Get user's sessions query
@@ -469,6 +488,25 @@ class SessionRepository {
 			// Log error
 			LogRepository::fileSave($e);
 		}
+	}
+
+	public static function getTeacherNotInSession($sessionId){
+
+		$query = "SELECT tc.iduser, u.name, u.surname FROM teacherclassroom tc JOIN session s ON s.idclassroom = tc.idclassroom JOIN user u ON u.id = tc.iduser LEFT JOIN participant p ON p.iduser = tc.iduser AND p.idsession = s.id WHERE s.id = :idsession AND p.iduser IS NULL";
+
+		try {
+			$queryPrep = DATABASE->prepare($query);
+			$queryPrep->bindParam(':idsession', $sessionId);
+			if ($queryPrep->execute())
+				LogRepository::dbSave("add teacher session " . $sessionId);
+			else
+				throw new Exception("add teacher session " . $sessionId . " error");
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
+
+		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
 	}
 
 	public static function addChapter($name, $description, $creatorId, $sessionId) {

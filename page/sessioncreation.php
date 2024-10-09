@@ -3,6 +3,8 @@
 	use
 		LabSupervisor\app\repository\ClassroomRepository,
 		LabSupervisor\app\repository\SessionRepository;
+	use LabSupervisor\app\repository\UserRepository;
+
 	use function
 		LabSupervisor\functions\mainHeader,
 		LabSupervisor\functions\lang;
@@ -58,6 +60,50 @@
 					?>
 					</select>
 				</div>
+				<div>
+					<h2><i class="ri-group-line"></i> Proffesseurs </h2>
+				</div>
+				<div>
+					<?php
+						if (isset($_POST['sessionId'])) {
+					?>
+						<div id="teachersession">
+							<?php
+							$teachers = SessionRepository::getTeacherParticipants($_POST['sessionId']);
+							if ($teachers) {
+								foreach ($teachers as $teacher) {
+									$infoUser = UserRepository::getInfo($teacher['iduser']);
+									echo "Nom prof: " . $infoUser['name'] . "</br>";
+								}
+							} else {
+								echo "Aucun autre professeur trouvé pour cette session.";
+							}
+							echo '<button type="button" class="button" onclick="updateTeacher()">+</button>' ;
+
+						} else {
+
+						}
+					?>
+						</div>
+
+				</div>
+					<?php
+						if (isset($_POST['sessionId'])) {
+							$idSession = $_POST['sessionId'];
+							$teachers = SessionRepository::getTeacherNotInSession($_POST['sessionId']);
+					?>
+							<select name="teacher[]" multiple required>
+								<?php foreach ($teachers as $teacher){ ?>
+									<option value="<?= $teacher['iduser']; ?>">
+										<?= $teacher['name'] . ' ' . $teacher['surname']; ?>
+									</option>
+								<?php } ?>
+							</select>
+						<?php
+						} else {
+							echo "aled";
+						}
+						?>
 			</div>
 
 			<!-- Chapters -->
@@ -189,6 +235,7 @@
 	var nbChapter = 1;
 </script>
 
+<script src="/public/js/function/updateTeacher.js"></script>
 <script src="/public/js/function/popup.js"></script>
 <script src="/public/js/function/addChapter.js"></script>
 <script src="/public/js/function/updateClassroom.js"></script>

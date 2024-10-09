@@ -55,6 +55,9 @@ if (isset($_POST['saveSession'])) {
 	// Add teacher to his own session
 	SessionRepository::addParticipant($_SESSION["login"], $sessionId);
 
+	// Add other teacher
+	// SessionRepository::addParticipant();
+
 	if (isset($_POST["state"])) {
 		SessionRepository::setState($sessionId, 1);
 	}
@@ -74,6 +77,7 @@ else if (isset($_POST['updateSession'])) {
 	$creatorId = $_SESSION["login"];
 	$date = $_POST['date'];
 	$sessionId = $_POST['idSession'];
+	$selectedTeachers = $_POST['teacher']; // C'est un tableau contenant les iduser des profs sélectionnés
 
 	$sessionData = array(
 		"title" => $title,
@@ -84,7 +88,7 @@ else if (isset($_POST['updateSession'])) {
 		"id" => $sessionId
 	);
 
-	// Create session
+	// update session
 	$session = new Session($sessionData);
 	$sessionRepo->update($session);
 
@@ -94,6 +98,11 @@ else if (isset($_POST['updateSession'])) {
 
 	// Add participants
 	$classUsers = ClassroomRepository::getUsers($classroomId);
+
+	// Add other teacher
+	foreach ($selectedTeachers as $teacherId) {
+		SessionRepository::addParticipant($teacherId, $sessionId);
+	}
 
 	if(isset($_POST['classroomChange'])) {
 		// Remove participants
