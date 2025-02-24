@@ -1,16 +1,14 @@
 <?php
 
-	use
-		LabSupervisor\app\repository\ClassroomRepository,
-		LabSupervisor\app\repository\SessionRepository;
+use LabSupervisor\app\repository\ClassroomRepository;
+use LabSupervisor\app\repository\SessionRepository;
 	use LabSupervisor\app\repository\UserRepository;
 
-	use function
-		LabSupervisor\functions\mainHeader,
-		LabSupervisor\functions\lang;
+use function LabSupervisor\functions\mainHeader;
+use function LabSupervisor\functions\lang;
 
 	// Logic
-	require($_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php');
+require $_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php';
 
 	// Import header
 	mainHeader(lang("NAVBAR_CREATE_SESSION"), true);
@@ -105,7 +103,7 @@
 						}
 						?>
 			</div>
-
+            </div>
 			<!-- Chapters -->
 			<div class="column">
 				<div>
@@ -150,8 +148,9 @@
 						<!-- Delete chapter button -->
 						<button type="button" class="button chapterButton" onclick="deleteChapter(this)"><?= lang("SESSION_CREATE_CHAPTER_REMOVE") ?></button>
 					</div>
-
-				<?php } ?>
+                        <?php
+                    }
+                    ?>
 
 					<!-- Field allowing you to keep the number of chapters, updated by the js, sent to the form for chapter management -->
 					<div>
@@ -228,7 +227,9 @@
 		<button class="link" type="submit" name="deleteSession" value="<?= $_POST['sessionId'] ?>"><i class="ri-delete-bin-line"></i> <?= lang("SESSION_CREATE_DELETE") ?></button>
 	</form>
 
-	<?php } ?>
+        <?php
+    }
+    ?>
 </div>
 
 <script>
@@ -245,9 +246,8 @@
 <script src="/public/js/function/popupConfirm.js"></script>
 
 <?php
-	if (isset($_POST["titleSession"])) {
-		echo '<script> popupDisplay("' . lang('SESSION_CREATE_UPDATE_NOTIFICATION') .'"); </script>';
+if (isset($_POST["titleSession"]) === true) {
+    echo '<script> popupDisplay("' . lang('SESSION_CREATE_UPDATE_NOTIFICATION') . '"); </script>';
 	}
 
-	require($_SERVER["DOCUMENT_ROOT"] . '/include/footer.php');
-?>
+require $_SERVER["DOCUMENT_ROOT"] . '/include/footer.php';
