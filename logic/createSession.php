@@ -74,7 +74,10 @@ if (isset($_POST['saveSession'])) {
     $creatorId = $_SESSION['login'];
     $date = $_POST['date'];
     $sessionId = $_POST['idSession'];
-    $selectedTeachers = $_POST['teacher']; // C'est un tableau contenant les iduser des profs sélectionnés
+    // This is an array containing the iduser of the selected teachers
+    $selectedTeachers = isset($_POST['teacher']) === true ? $_POST['teacher'] : [];
+    // Array containing the if of the teachers to be removed
+    $removedTeachers = isset($_POST['removedTeachers']) === true ? $_POST['removedTeachers'] : [];
 
     $sessionData = [
         'title'       => $title,
@@ -99,6 +102,11 @@ if (isset($_POST['saveSession'])) {
     // Add other teacher
     foreach ($selectedTeachers as $teacherId) {
         SessionRepository::addParticipant($teacherId, $sessionId);
+    }
+
+    // Remove teacher
+    foreach ($removedTeachers as $teacherId) {
+        SessionRepository::deleteParticipant($sessionId, $teacherId);
     }
 
     if (isset($_POST['classroomChange'])) {

@@ -65,38 +65,51 @@ $idProv = 1;
                     <?php
                     if (isset($_POST['sessionId']) === true) {
                         ?>
-                        <div id="teachersession">
+                        <div id="teachersession" class="teacher-container">
                         <?php
                         $teachers = SessionRepository::getTeacherParticipants($_POST['sessionId']);
                         if (isset($teachers) === true) {
-                            echo '<p>';
                             foreach ($teachers as $teacher) {
                                 $infoUser = UserRepository::getInfo($teacher['iduser']);
-                                echo 'Nom prof: ' . $infoUser['name'] . '</br>';
+                                $teacherRow = "<div id=\"teacher-{$infoUser['id']}\" class='teacher-row'>"
+                                            .   "<span>{$infoUser['name']} {$infoUser['surname']}</span>"
+                                            .   "<i class='ri-delete-bin-5-line' onclick='dropTeacher({$infoUser['id']})'></i>"
+                                            . "</div>";
+                                echo $teacherRow;
                             }
+                            echo '<br>';
                         } else {
-                            echo 'Aucun autre professeur trouvé pour cette session.';
+                            echo "<p>Aucun autre professeur trouvé pour cette session.</p>";
                         }
-                        echo '<button type="button" class="button" onclick="updateTeacher()">+</button>';
+                        ?>
+                        </div>
+                        <?php
                     }
                     ?>
-                        </div>
-                    <?php
-                    if (isset($_POST['sessionId']) === true) {
-                        $idSession = $_POST['sessionId'];
-                        $teachers = SessionRepository::getTeacherNotInSession($_POST['sessionId']);
+                </div>
+                <?php
+                if (isset($_POST['sessionId']) === true) {
+                    $idSession = $_POST['sessionId'];
+                    $teachers = SessionRepository::getTeacherNotInSession($_POST['sessionId']);
+                    
+                    if ($teachers !== null && count($teachers) > 0) {
                         ?>
-                            <select name="teacher[]" multiple required>
+                        <div class="subform">
+                            <p>Vous pouvez ci-dessous ajouter d'autres enseignants à cette session :</p>
+                            <p><br>(Ctrl+clic pour sélectionner / désélectionner)
+                            <br>
+                            <select name="teacher[]" multiple>
                                 <?php foreach ($teachers as $teacher) { ?>
                                     <option value="<?= $teacher['iduser']; ?>">
                                         <?= $teacher['name'] . ' ' . $teacher['surname']; ?>
                                     </option>
                                 <?php } ?>
                             </select>
-                            </div>
+                        </div>
                         <?php
                     }
-                    ?>
+                }
+                ?>
             </div>
             <!-- Chapters -->
             <div class="column">
@@ -116,14 +129,10 @@ $idProv = 1;
                         foreach ($tabChapter as $i => $chapter) {
                             ?>
                             <div class="subform" id="<?= $chapter['id']; ?>">
-
                                 <!-- id chapter -->
-                                        <input type="hidden" class="chapterId" id="idChapter<?= $chapter['id']; ?>" value="<?= $chapter['id']; ?>">
-
+                                <input type="hidden" class="chapterId" id="idChapter<?= $chapter['id']; ?>" value="<?= $chapter['id']; ?>">
                                 <input placeholder="<?= lang('SESSION_CREATE_CHAPTER_TITLE'); ?>" type="text" id="titleChapter<?= $chapter['id']; ?>" value="<?= $chapter['title']; ?>" onchange="updateChapter(this.parentNode.id)" required>
-
-                                        <textarea placeholder="<?= lang('SESSION_CREATE_CHAPITRE_CONTENT'); ?>" id="chapterDescription<?= $chapter['id']; ?>" onchange="updateChapter(this.parentNode.id)" ><?= $chapter['description']; ?></textarea>
-
+                                <textarea placeholder="<?= lang('SESSION_CREATE_CHAPITRE_CONTENT'); ?>" id="chapterDescription<?= $chapter['id']; ?>" onchange="updateChapter(this.parentNode.id)" ><?= $chapter['description']; ?></textarea>
                                 <!-- Delete chapter button -->
                                 <button type="button" class="button chapterButton" onclick="deleteChapter(this)"><?= lang('SESSION_CREATE_CHAPTER_REMOVE'); ?></button>
                             </div>
@@ -167,14 +176,14 @@ $idProv = 1;
                 </div>
 
                 <!-- State -->
-            <?php
-            $checked = '';
-            if (isset($_POST['sessionId']) === true) {
-                if (SessionRepository::getState($_POST['sessionId']) !== 0) {
-                    $checked = 'checked';
+                <?php
+                $checked = '';
+                if (isset($_POST['sessionId']) === true) {
+                    if (SessionRepository::getState($_POST['sessionId']) !== 0) {
+                        $checked = 'checked';
+                    }
                 }
-            }
-            ?>
+                ?>
                 <div>
                     <h2><i class="ri-door-open-line"></i> <?= lang('SESSION_CREATE_STATE'); ?></h2>
                 </div>
@@ -191,16 +200,16 @@ $idProv = 1;
         <?php
         if (isset($_POST['sessionId']) === true) {
             ?>
-        <div>
+            <div>
                 <input type="hidden" name="idSession" value="<?= $_POST['sessionId']; ?>" >
-            <button type="submit" name="updateSession" class="button save"><i class="ri-loop-left-line"></i> <?= lang('MAIN_SAVE'); ?></button>
-        </div>
+                <button type="submit" name="updateSession" class="button save"><i class="ri-loop-left-line"></i> <?= lang('MAIN_SAVE'); ?></button>
+            </div>
             <?php
         } else {
             ?>
-        <div>
-            <button class="button" type="submit" name="saveSession"><i class="ri-save-2-line"></i> <?= lang('MAIN_SAVE'); ?></button>
-        </div>
+            <div>
+                <button class="button" type="submit" name="saveSession"><i class="ri-save-2-line"></i> <?= lang('MAIN_SAVE'); ?></button>
+            </div>
             <?php
         }
         ?>
@@ -209,20 +218,19 @@ $idProv = 1;
     <?php
     if (isset($_POST['sessionId']) === true) {
         ?>
-    <form method="POST" onsubmit="return confirmForm('<?= lang('SESSION_CREATE_DELETE_CONFIRMATION'); ?>');">
-        <button class="link" type="submit" name="deleteSession" value="<?= $_POST['sessionId']; ?>"><i class="ri-delete-bin-line"></i> <?= lang('SESSION_CREATE_DELETE'); ?></button>
-    </form>
-
+        <form method="POST" onsubmit="return confirmForm('<?= lang('SESSION_CREATE_DELETE_CONFIRMATION'); ?>');">
+            <button class="link" type="submit" name="deleteSession" value="<?= $_POST['sessionId']; ?>"><i class="ri-delete-bin-line"></i> <?= lang('SESSION_CREATE_DELETE'); ?></button>
+        </form>
         <?php
     }
     ?>
 </div>
-
 <script>
     var nbChapter = 1;
 </script>
 
 <script src="/public/js/function/updateTeacher.js"></script>
+<script src="/public/js/function/dropTeacher.js"></script>
 <script src="/public/js/function/popup.js"></script>
 <script src="/public/js/function/addChapter.js"></script>
 <script src="/public/js/function/updateClassroom.js"></script>
