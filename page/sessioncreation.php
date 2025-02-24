@@ -43,9 +43,9 @@ require $_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php';
 					<?php
 						$classrooms = ClassroomRepository::getTeacherClassroom($_SESSION["login"]);
 						foreach ($classrooms as $value) {
-							if ($value["active"] == 1) {
-								if (isset($_POST['sessionId'])) {
-									if ($value["id"] == SessionRepository::getClassroom($_POST['sessionId'])) {
+                        if ($value["active"] === 1) {
+                            if (isset($_POST['sessionId']) === true) {
+                                if ($value["id"] === SessionRepository::getClassroom($_POST['sessionId'])) {
 										echo "<option selected='selected' value=" . $value["id"] . ">" . htmlspecialchars($value["name"]) . "</option>";
 									} else {
 										echo "<option value=" . $value["id"] . ">" . htmlspecialchars($value["name"]) . "</option>";
@@ -63,12 +63,13 @@ require $_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php';
 				</div>
 				<div>
 					<?php
-						if (isset($_POST['sessionId'])) {
+                    if (isset($_POST['sessionId']) === true) {
 					?>
 						<div id="teachersession">
 							<?php
 							$teachers = SessionRepository::getTeacherParticipants($_POST['sessionId']);
-							if ($teachers) {
+                        if (isset($teachers) === true) {
+                            echo '<p>';
 								foreach ($teachers as $teacher) {
 									$infoUser = UserRepository::getInfo($teacher['iduser']);
 									echo "Nom prof: " . $infoUser['name'] . "</br>";
@@ -86,7 +87,7 @@ require $_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php';
 
 				</div>
 					<?php
-						if (isset($_POST['sessionId'])) {
+                    if (isset($_POST['sessionId']) === true) {
 							$idSession = $_POST['sessionId'];
 							$teachers = SessionRepository::getTeacherNotInSession($_POST['sessionId']);
 					?>
@@ -115,7 +116,7 @@ require $_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php';
 					$nbChapter = 1;
 
 					// Check session exist
-					if (isset($_POST['sessionId'])) {
+                    if (isset($_POST['sessionId']) === true) {
 						$tabChapter = SessionRepository::getActiveChapter($_POST['sessionId']);
 
 						// Print field exist chapter
@@ -177,7 +178,7 @@ require $_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php';
 				<!-- State -->
 			<?php
 				$checked = "";
-				if (isset($_POST['sessionId'])) {
+                if (isset($_POST['sessionId']) === true) {
 					if (SessionRepository::getState($_POST['sessionId']) != 0) {
 						$checked = "checked";
 					}
@@ -198,7 +199,7 @@ require $_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php';
 
 		<!-- Send -->
 		<?php
-			if (isset($_POST['sessionId'])) {
+        if (isset($_POST['sessionId']) === true) {
 		?>
 
 		<div>
@@ -220,7 +221,7 @@ require $_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php';
 	</form>
 
 	<?php
-		if (isset($_POST['sessionId'])) {
+    if (isset($_POST['sessionId']) === true) {
 	?>
 
 	<form method="POST" onsubmit="return confirmForm('<?= lang('SESSION_CREATE_DELETE_CONFIRMATION') ?>');">
