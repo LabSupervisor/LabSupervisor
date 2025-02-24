@@ -123,11 +123,11 @@ require $_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php';
 					<div class="subform" id="<?= $chapter["id"] ?>">
 
 						<!-- id chapter -->
-						<input type="hidden" class="chapterId" id="idChapter<?= $chapter["id"] ?>" value="<?= $chapter["id"] ?>"/>
+                                <input type="hidden" class="chapterId" id="idChapter<?= $chapter["id"] ?>" value="<?= $chapter["id"] ?>">
 
 						<input placeholder="<?= lang("SESSION_CREATE_CHAPTER_TITLE") ?>" type="text" id="titleChapter<?= $chapter["id"] ?>" value="<?= $chapter["title"] ?>" onchange="updateChapter(this.parentNode.id)" required>
 
-						<textarea placeholder="<?= lang("SESSION_CREATE_CHAPITRE_CONTENT") ?>"id="chapterDescription<?= $chapter["id"] ?>" onchange="updateChapter(this.parentNode.id)" ><?= $chapter["description"] ?></textarea>
+                                <textarea placeholder="<?= lang("SESSION_CREATE_CHAPITRE_CONTENT") ?>" id="chapterDescription<?= $chapter["id"] ?>" onchange="updateChapter(this.parentNode.id)" ><?= $chapter["description"] ?></textarea>
 
 						<!-- Delete chapter button -->
 						<button type="button" class="button chapterButton" onclick="deleteChapter(this)"><?= lang("SESSION_CREATE_CHAPTER_REMOVE") ?></button>
@@ -156,7 +156,7 @@ require $_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php';
 
 					<!-- Add chapter button -->
 					<div>
-						<button class="button" type="button" id="btn-chapter" dataid="1" onclick="addHTMLChapter('<?= lang("SESSION_CREATE_CHAPTER_TITLE") ?>', '<?= lang("SESSION_CREATE_CHAPITRE_CONTENT") ?>', this)"><?= lang("SESSION_CREATE_CHAPTER_ADD") ?></button>
+                        <button class="button" type="button" id="btn-chapter" data-id="1" onclick="addHTMLChapter('<?= lang("SESSION_CREATE_CHAPTER_TITLE") ?>', '<?= lang("SESSION_CREATE_CHAPITRE_CONTENT") ?>', this)"><?= lang("SESSION_CREATE_CHAPTER_ADD") ?></button>
 					</div>
 
 				</div>
@@ -197,7 +197,7 @@ require $_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php';
         if (isset($_POST['sessionId']) === true) {
 		?>
 		<div>
-			<input type="hidden" name="idSession" value="<?= $_POST['sessionId'] ?>" />
+                <input type="hidden" name="idSession" value="<?= $_POST['sessionId'] ?>" >
 			<button type="submit" name="updateSession" class="button save"><i class="ri-loop-left-line"></i> <?= lang("MAIN_SAVE") ?></button>
 		</div>
 		<?php
