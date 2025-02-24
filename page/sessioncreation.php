@@ -28,10 +28,10 @@ require $_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php';
 					<h2><i class="ri-information-line"></i> <?= lang("SESSION_CREATE_TITLE_CHARACTERISTICS") ?></h2>
 				</div>
 				<div>
-					<input type="text" placeholder="<?= lang("SESSION_CREATE_CHARACTERISTICS_TITLE") ?>" id="titleSession" name="titleSession" value="<?= isset($sessionData) ? $sessionData['title'] : "" ?>" required>
+                    <input type="text" placeholder="<?= lang("SESSION_CREATE_CHARACTERISTICS_TITLE") ?>" id="titleSession" name="titleSession" value="<?= isset($sessionData) === true ? $sessionData['title'] : "" ?>" required>
 				</div>
 				<div>
-					<textarea placeholder="<?= lang("SESSION_CREATE_CHARACTERISTICS_CONTENT") ?>" id="descriptionSession" name="descriptionSession"><?= isset($sessionData) ? $sessionData['description'] : "" ?></textarea>
+                    <textarea placeholder="<?= lang("SESSION_CREATE_CHARACTERISTICS_CONTENT") ?>" id="descriptionSession" name="descriptionSession"><?= isset($sessionData) === true ? $sessionData['description'] : "" ?></textarea>
 				</div>
 
 				<!-- Participants -->
@@ -59,7 +59,7 @@ require $_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php';
 					</select>
 				</div>
 				<div>
-					<h2><i class="ri-group-line"></i> Proffesseurs </h2>
+                    <h2><i class="ri-group-line"></i> Professeurs </h2>
 				</div>
 				<div>
 					<?php
@@ -84,8 +84,7 @@ require $_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php';
 						}
 					?>
 						</div>
-
-				</div>
+                <div>
 					<?php
                     if (isset($_POST['sessionId']) === true) {
 							$idSession = $_POST['sessionId'];
@@ -98,9 +97,8 @@ require $_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php';
 									</option>
 								<?php } ?>
 							</select>
+                            </div>
 						<?php
-						} else {
-							echo "aled";
 						}
 						?>
 			</div>
@@ -122,7 +120,6 @@ require $_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php';
 						// Print field exist chapter
 						foreach ($tabChapter as $i => $chapter) {
 					?>
-
 					<div class="subform" id="<?= $chapter["id"] ?>">
 
 						<!-- id chapter -->
@@ -139,7 +136,6 @@ require $_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php';
 						}
 						//create session
 					} else {
-
 					?>
 					<!-- <div id="fieldsContainer"> -->
 					<div class="subform">
@@ -172,14 +168,14 @@ require $_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php';
 					<h2><i class="ri-calendar-2-line"></i> <?= lang("SESSION_CREATE_TITLE_DATE") ?></h2>
 				</div>
 				<div>
-					<input type="datetime-local" id="date" name="date" value="<?= isset($sessionData) ? $sessionData['date'] : "" ?>" required>
+                    <input type="datetime-local" id="date" name="date" value="<?= isset($sessionData) === true ? $sessionData['date'] : "" ?>" required>
 				</div>
 
 				<!-- State -->
 			<?php
 				$checked = "";
                 if (isset($_POST['sessionId']) === true) {
-					if (SessionRepository::getState($_POST['sessionId']) != 0) {
+                    if (SessionRepository::getState($_POST['sessionId']) !== 0) {
 						$checked = "checked";
 					}
 				}
@@ -193,7 +189,6 @@ require $_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php';
 						<span class="checkmark"></span>
 					</label>
 				</div>
-
 			</div>
 		</div>
 
@@ -201,20 +196,16 @@ require $_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php';
 		<?php
         if (isset($_POST['sessionId']) === true) {
 		?>
-
 		<div>
 			<input type="hidden" name="idSession" value="<?= $_POST['sessionId'] ?>" />
 			<button type="submit" name="updateSession" class="button save"><i class="ri-loop-left-line"></i> <?= lang("MAIN_SAVE") ?></button>
 		</div>
-
 		<?php
 			} else {
 		?>
-
 		<div>
 			<button class="button" type="submit" name="saveSession"><i class="ri-save-2-line"></i> <?= lang("MAIN_SAVE") ?></button>
 		</div>
-
 		<?php
 			}
 		?>
@@ -223,7 +214,6 @@ require $_SERVER["DOCUMENT_ROOT"] . '/logic/createSession.php';
 	<?php
     if (isset($_POST['sessionId']) === true) {
 	?>
-
 	<form method="POST" onsubmit="return confirmForm('<?= lang('SESSION_CREATE_DELETE_CONFIRMATION') ?>');">
 		<button class="link" type="submit" name="deleteSession" value="<?= $_POST['sessionId'] ?>"><i class="ri-delete-bin-line"></i> <?= lang("SESSION_CREATE_DELETE") ?></button>
 	</form>
