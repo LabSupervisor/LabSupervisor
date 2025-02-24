@@ -81,7 +81,6 @@ $idProv = 1;
                     }
                     ?>
                         </div>
-                <div>
                     <?php
                     if (isset($_POST['sessionId']) === true) {
                         $idSession = $_POST['sessionId'];
@@ -98,7 +97,6 @@ $idProv = 1;
                         <?php
                     }
                     ?>
-            </div>
             </div>
             <!-- Chapters -->
             <div class="column">
