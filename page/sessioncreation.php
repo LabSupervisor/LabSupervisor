@@ -91,7 +91,6 @@ $idProv = 1;
                 if (isset($_POST['sessionId']) === true) {
                     $idSession = $_POST['sessionId'];
                     $teachers = SessionRepository::getTeacherNotInSession($_POST['sessionId']);
-                    
                     if ($teachers !== null && count($teachers) > 0) {
                         ?>
                         <div class="subform">
