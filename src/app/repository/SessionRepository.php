@@ -490,9 +490,9 @@ class SessionRepository {
 		}
 	}
 
-	public static function getTeacherNotInSession($sessionId){
+	public static function getTeacherNotInSession($sessionId) {
 
-		$query = "SELECT tc.iduser, u.name, u.surname FROM teacherclassroom tc JOIN session s ON s.idclassroom = tc.idclassroom JOIN user u ON u.id = tc.iduser LEFT JOIN participant p ON p.iduser = tc.iduser AND p.idsession = s.id WHERE s.id = :idsession AND p.iduser IS NULL";
+		$query = "SELECT u.id as iduser, u.name, u.surname FROM user u JOIN userrole ur ON u.id = ur.iduser WHERE ur.idrole = " . TEACHER . " AND u.id NOT IN (SELECT p.iduser FROM participant p WHERE p.idsession = :idsession)";
 
 		try {
 			$queryPrep = DATABASE->prepare($query);
