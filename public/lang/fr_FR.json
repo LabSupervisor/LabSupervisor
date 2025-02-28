@@ -139,6 +139,7 @@
 	"SESSION_CREATE_UPDATE_NOTIFICATION": "Session modifiée.",
 	"SESSION_CREATE_STATE": "Statut",
 	"SESSION_CREATE_STATE_OPEN": "La session doit-elle être directement ouverte ?",
+    "SESSION_CREATE_TEACHER_ADD": "Vous pouvez ci-dessous ajouter d'autres enseignants à cette session :",
 
 	"CLASSROOM_NAME": "Classes",
 	"CLASSROOM_ADD_STUDENT_TITLE": "Ajouter un étudiant",

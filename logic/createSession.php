@@ -1,4 +1,10 @@
 <?php
+/**
+ * This file handles the creation, updating, deletion, and pre-filling of sessions.
+ * It uses repositories to interact with the database and entities to represent data.
+ * Different actions are triggered based on the received POST data.
+ * 
+ */
 
 use LabSupervisor\app\repository\SessionRepository;
 use LabSupervisor\app\entity\Session;
@@ -7,8 +13,13 @@ use LabSupervisor\app\repository\UserRepository;
 
 use function LabSupervisor\functions\lang;
 
-// Case 1 : save all infos in order to create a new session
+
 if (isset($_POST['saveSession'])) {
+    /*
+     * ********************************************************
+     * Case 1 : Save all infos in order to create a new session
+     * ********************************************************
+     * */
     $sessionRepo = new SessionRepository();
 
     $title = $_POST['titleSession'];
@@ -65,7 +76,11 @@ if (isset($_POST['saveSession'])) {
 
     header('Location: /sessions');
 } elseif (isset($_POST['updateSession'])) {
-    // Case 2 : update an existing session after the user pressed the 'Update' button
+    /*
+     * ********************************************************
+     * Case 2 : Update an existing session after the user pressed the 'Update' button
+     * ********************************************************
+     * */
     $sessionRepo = new SessionRepository();
 
     $title = $_POST['titleSession'];
@@ -74,10 +89,12 @@ if (isset($_POST['saveSession'])) {
     $creatorId = $_SESSION['login'];
     $date = $_POST['date'];
     $sessionId = $_POST['idSession'];
-    // This is an array containing the iduser of the selected teachers
-    $selectedTeachers = isset($_POST['teacher']) === true ? $_POST['teacher'] : [];
+    // Array containing teachers already linked to the session
+    $currentTeachers = SessionRepository::getTeacherParticipants($sessionId);
+    // This is an array containing the iduser of the teachers to be added
+    $toBeAddedTeachers = isset($_POST['addedTeachers']) === true ? $_POST['addedTeachers'] : [];
     // Array containing the if of the teachers to be removed
-    $removedTeachers = isset($_POST['removedTeachers']) === true ? $_POST['removedTeachers'] : [];
+    $toBeRemovedTeachers = isset($_POST['removedTeachers']) === true ? $_POST['removedTeachers'] : [];
 
     $sessionData = [
         'title'       => $title,
@@ -99,13 +116,14 @@ if (isset($_POST['saveSession'])) {
     // Add participants
     $classUsers = ClassroomRepository::getUsers($classroomId);
 
-    // Add other teacher
-    foreach ($selectedTeachers as $teacherId) {
+    // Add new teachers
+    foreach ($toBeAddedTeachers as $teacherId) {
         SessionRepository::addParticipant($teacherId, $sessionId);
     }
 
-    // Remove teacher
-    foreach ($removedTeachers as $teacherId) {
+    // Remove teachers
+    // TODO : consistency with addParticipant
+    foreach ($toBeRemovedTeachers as $teacherId) {
         SessionRepository::deleteParticipant($sessionId, $teacherId);
     }
 
@@ -131,9 +149,11 @@ if (isset($_POST['saveSession'])) {
         }
 
         // Add teacher to his own session
+        // TODO : do we have to add previous teachers ? 
         SessionRepository::addParticipant($creatorId, $sessionId);
     }
 
+    // Add new chapters
     if (isset($_POST['addChapters'])) {
         $addChapters = $_POST['addChapters'];
         foreach ($addChapters as $addChapter) {
@@ -148,6 +168,7 @@ if (isset($_POST['saveSession'])) {
         }
     }
 
+    // Update existing schapters
     if (isset($_POST['updatedChapters'])) {
         $updatedChapters = $_POST['updatedChapters'];
         foreach ($updatedChapters as $updatedChapter) {
@@ -155,6 +176,7 @@ if (isset($_POST['saveSession'])) {
         }
     }
 
+    // Remove chapters
     if (isset($_POST['deletedChapters'])) {
         $deletededChapters = $_POST['deletedChapters'];
         $participant = SessionRepository::getParticipants($sessionId);
@@ -170,6 +192,7 @@ if (isset($_POST['saveSession'])) {
         }
     }
 
+    // Update session state
     if (isset($_POST['state'])) {
         if (SessionRepository::getState($sessionId) == 0) {
             SessionRepository::setState($sessionId, 1);
@@ -180,7 +203,12 @@ if (isset($_POST['saveSession'])) {
 
     $_POST['sessionId'] = $sessionId;
 } elseif (isset($_POST['sessionId'])) {
-    // Case 3 : prefill the session form with session data
+    /*
+     * ********************************************************
+     * Case 3 : prefill the session form with session data
+     * ********************************************************
+     * */
+    // ASK : in what cases is this used ?
     $sessionRepo = new SessionRepository();
     $sessionInfo = SessionRepository::getInfo($_POST['sessionId']);
     $sessionData = [
@@ -192,28 +220,39 @@ if (isset($_POST['saveSession'])) {
     ];
     $session = new Session($sessionData);
 } elseif (isset($_POST['deleteSession'])) {
-    // Case 4 : delete an existing session after the user pressed the 'Delete' button
+    /*
+     * ********************************************************
+     * Case 4 : delete an existing session after the user pressed the 'Delete' button
+     * ********************************************************
+     * */
     $sessionId = $_POST['deleteSession'];
     $participant = SessionRepository::getParticipants($sessionId);
     $chapter = SessionRepository::getChapter($sessionId);
 
+    // for each participant
     foreach ($participant as $user) {
         foreach ($chapter as $value) {
+            // delete the status of each chapter
             SessionRepository::deleteStatus($sessionId, $user['iduser'], $value['id']);
         }
+        // remove the screenshare
         UserRepository::removeScreenshare(UserRepository::getScreenshare($user['iduser'], $sessionId), $sessionId);
+        // ASK : what is this ?
         UserRepository::unlink($user['iduser'], $sessionId, UserRepository::getLink($user['iduser'], $sessionId));
+        // delete the participant from the session
         SessionRepository::deleteParticipant($sessionId, $user['iduser']);
     }
 
+    // delete the chapters
     foreach ($chapter as $value) {
         SessionRepository::deleteChapter($value['id']);
     }
 
-
+    // delete the session
     SessionRepository::delete($sessionId);
 
     setcookie('notification', lang('SESSION_CREATE_DELETE_NOTIFICATION'), 0);
 
+    // redirect to the sessions page
     header('Location: /sessions');
 }

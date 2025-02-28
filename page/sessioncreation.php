@@ -70,16 +70,13 @@ $idProv = 1;
                         $teachers = SessionRepository::getTeacherParticipants($_POST['sessionId']);
                         if (isset($teachers) === true) {
                             foreach ($teachers as $teacher) {
-                                $infoUser = UserRepository::getInfo($teacher['iduser']);
-                                $teacherRow = "<div id=\"teacher-{$infoUser['id']}\" class='teacher-row'>"
-                                            .   "<span>{$infoUser['name']} {$infoUser['surname']}</span>"
-                                            .   "<i class='ri-delete-bin-5-line' onclick='dropTeacher({$infoUser['id']})'></i>"
+                                $infoTeacher = UserRepository::getInfo($teacher['iduser']);
+                                $teacherRow = "<div id=\"teacher-{$infoTeacher['id']}\" class='teacher-row'>"
+                                            .   "<span>{$infoTeacher['name']} {$infoTeacher['surname']}</span>"
+                                            .   "<i class='ri-delete-bin-5-line' onclick='dropTeacher({$infoTeacher['id']}, \"{$infoTeacher['name']}\", \"{$infoTeacher['surname']}\")'></i>"
                                             . "</div>";
                                 echo $teacherRow;
                             }
-                            echo '<br>';
-                        } else {
-                            echo "<p>Aucun autre professeur trouvé pour cette session.</p>";
                         }
                         ?>
                         </div>
@@ -93,17 +90,16 @@ $idProv = 1;
                     $teachers = SessionRepository::getTeacherNotInSession($_POST['sessionId']);
                     if ($teachers !== null && count($teachers) > 0) {
                         ?>
-                        <div class="subform">
-                            <p>Vous pouvez ci-dessous ajouter d'autres enseignants à cette session :</p>
-                            <p><br>(Ctrl+clic pour sélectionner / désélectionner)
-                            <br>
-                            <select name="teacher[]" multiple>
-                                <?php foreach ($teachers as $teacher) { ?>
-                                    <option value="<?= $teacher['iduser']; ?>">
-                                        <?= $teacher['name'] . ' ' . $teacher['surname']; ?>
-                                    </option>
-                                <?php } ?>
-                            </select>
+                        <br>
+                        <p><i class="ri-group-line"></i> <?= lang('SESSION_CREATE_TEACHER_ADD'); ?></p>
+                        <br>
+                        <div id="possible-teachers-container" class="teacher-container">
+                            <?php foreach ($teachers as $teacher) { ?>
+                                <div id="teacher-<?= $teacher['iduser'] ?>" class='teacher-row'>
+                                    <span><?= $teacher['name'] . ' ' . $teacher['surname']; ?></span>
+                                    <i class='ri-add-circle-fill' onclick="addTeacher(<?= $teacher['iduser'] ?>, '<?= $teacher['name'] ?>', '<?= $teacher['surname'] ?>')"></i>
+                                </div>
+                            <?php } ?>
                         </div>
                         <?php
                     }
@@ -230,6 +226,7 @@ $idProv = 1;
 
 <script src="/public/js/function/updateTeacher.js"></script>
 <script src="/public/js/function/dropTeacher.js"></script>
+<script src="/public/js/function/addTeacher.js"></script>
 <script src="/public/js/function/popup.js"></script>
 <script src="/public/js/function/addChapter.js"></script>
 <script src="/public/js/function/updateClassroom.js"></script>
