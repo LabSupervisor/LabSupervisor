@@ -27,6 +27,8 @@ if (isset($_POST['saveSession'])) {
     $classroomId = $_POST['classes'];
     $creatorId = $_SESSION['login'];
     $date = $_POST['date'];
+    // This is an array containing the iduser of the teachers to be added
+    $toBeAddedTeachers = isset($_POST['addedTeachers']) === true ? $_POST['addedTeachers'] : [];
 
     $sessionData = [
         'title'       => $title,
@@ -65,8 +67,10 @@ if (isset($_POST['saveSession'])) {
     // Add teacher to his own session
     SessionRepository::addParticipant($_SESSION['login'], $sessionId);
 
-    // Add other teacher
-    // SessionRepository::addParticipant();
+    // Add other teachers
+    foreach ($toBeAddedTeachers as $teacherId) {
+        SessionRepository::addParticipant($teacherId, $sessionId);
+    }
 
     if (isset($_POST['state'])) {
         SessionRepository::setState($sessionId, 1);
@@ -118,7 +122,10 @@ if (isset($_POST['saveSession'])) {
 
     // Add new teachers
     foreach ($toBeAddedTeachers as $teacherId) {
-        SessionRepository::addParticipant($teacherId, $sessionId);
+        // if the teacher is not already in the session
+        if (in_array($teacherId, array_column($currentTeachers, 'iduser')) === false) {
+            SessionRepository::addParticipant($teacherId, $sessionId);
+        }
     }
 
     // Remove teachers

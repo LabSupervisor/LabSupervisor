@@ -14,6 +14,25 @@ require $_SERVER['DOCUMENT_ROOT'] . '/logic/createSession.php';
 mainHeader(lang('NAVBAR_CREATE_SESSION'), true);
 
 $idProv = 1;
+
+if (isset($_POST['sessionId']) === true) {
+    $teachers = SessionRepository::getTeacherParticipants($_POST['sessionId']);
+    $teachersNotInSession = SessionRepository::getTeacherNotInSession($_POST['sessionId']);
+} else {
+    $teachers = [
+        [
+            'iduser' => $_SESSION['login'],
+        ],
+    ];
+    $teachersNotInSession = UserRepository::getTeachers();
+    // we have to exclude the teacher who created the session
+    foreach ($teachersNotInSession as $key => $teacher) {
+        if ($teacher['iduser'] === $_SESSION['login']) {
+            array_splice($teachersNotInSession, $key, 1);
+        }
+    }
+}
+
 ?>
 
 <link rel="stylesheet" href="/public/css/form.css">
@@ -62,13 +81,19 @@ $idProv = 1;
                     <h2><i class="ri-group-line"></i> Professeurs </h2>
                 </div>
                 <div>
+                    <div id="teachersession" class="teacher-container">
                     <?php
-                    if (isset($_POST['sessionId']) === true) {
+                    if (isset($teachers) === true) {
                         ?>
-                        <div id="teachersession" class="teacher-container">
                         <?php
-                        $teachers = SessionRepository::getTeacherParticipants($_POST['sessionId']);
-                        if (isset($teachers) === true) {
+                        // si plus qu'un seul enseignant inscrit à la session
+                        if (count($teachers) === 1) {
+                            $infoTeacher = UserRepository::getInfo($teachers[0]['iduser']);
+                            $teacherRow = "<div id=\"teacher-{$infoTeacher['id']}\" class='teacher-row'>"
+                                        .   "<span>{$infoTeacher['name']} {$infoTeacher['surname']}</span>"
+                                        . "</div>";
+                            echo $teacherRow;
+                        } else {
                             foreach ($teachers as $teacher) {
                                 $infoTeacher = UserRepository::getInfo($teacher['iduser']);
                                 $teacherRow = "<div id=\"teacher-{$infoTeacher['id']}\" class='teacher-row'>"
@@ -79,32 +104,30 @@ $idProv = 1;
                             }
                         }
                         ?>
-                        </div>
                         <?php
                     }
                     ?>
+                    </div>
                 </div>
-                <?php
-                if (isset($_POST['sessionId']) === true) {
-                    $idSession = $_POST['sessionId'];
-                    $teachers = SessionRepository::getTeacherNotInSession($_POST['sessionId']);
-                    if ($teachers !== null && count($teachers) > 0) {
-                        ?>
-                        <br>
-                        <p><i class="ri-group-line"></i> <?= lang('SESSION_CREATE_TEACHER_ADD'); ?></p>
-                        <br>
-                        <div id="possible-teachers-container" class="teacher-container">
-                            <?php foreach ($teachers as $teacher) { ?>
-                                <div id="teacher-<?= $teacher['iduser'] ?>" class='teacher-row'>
-                                    <span><?= $teacher['name'] . ' ' . $teacher['surname']; ?></span>
-                                    <i class='ri-add-circle-fill' onclick="addTeacher(<?= $teacher['iduser'] ?>, '<?= $teacher['name'] ?>', '<?= $teacher['surname'] ?>')"></i>
-                                </div>
-                            <?php } ?>
-                        </div>
-                        <?php
+                <div>
+                    <br>
+                    <p><i class="ri-group-line"></i> <?= lang('SESSION_CREATE_TEACHER_ADD'); ?></p>
+                    <br>
+                </div>
+                <div id="possible-teachers-container" class="teacher-container">
+                    <?php
+                    if ($teachers !== null && count($teachersNotInSession) > 0) {
+                        foreach ($teachersNotInSession as $teacher) {
+                            ?>
+                            <div id="teacher-<?= $teacher['iduser'] ?>" class='teacher-row'>
+                                <span><?= $teacher['name'] . ' ' . $teacher['surname']; ?></span>
+                                <i class='ri-add-circle-fill' onclick="addTeacher(<?= $teacher['iduser'] ?>, '<?= $teacher['name'] ?>', '<?= $teacher['surname'] ?>')"></i>
+                            </div>
+                            <?php
+                        }
                     }
-                }
-                ?>
+                    ?>
+                </div>
             </div>
             <!-- Chapters -->
             <div class="column">
@@ -136,14 +159,13 @@ $idProv = 1;
                         // create session
                     } else {
                         ?>
-                    <!-- <div id="fieldsContainer"> -->
-                    <div class="subform">
-                        <input type="text" placeholder="<?= lang('SESSION_CREATE_CHAPTER_TITLE'); ?>" name="addChapters[0][title]" class="field">
-                        <textarea name="addChapters[0][desc]" placeholder="<?= lang('SESSION_CREATE_CHAPITRE_CONTENT'); ?>" class="field"></textarea>
+                        <div class="subform">
+                            <input type="text" placeholder="<?= lang('SESSION_CREATE_CHAPTER_TITLE'); ?>" name="addChapters[0][title]" class="field">
+                            <textarea name="addChapters[0][desc]" placeholder="<?= lang('SESSION_CREATE_CHAPITRE_CONTENT'); ?>" class="field"></textarea>
 
-                        <!-- Delete chapter button -->
-                        <button type="button" class="button chapterButton" onclick="deleteChapter(this)"><?= lang('SESSION_CREATE_CHAPTER_REMOVE'); ?></button>
-                    </div>
+                            <!-- Delete chapter button -->
+                            <button type="button" class="button chapterButton" onclick="deleteChapter(this)"><?= lang('SESSION_CREATE_CHAPTER_REMOVE'); ?></button>
+                        </div>
                         <?php
                     }
                     ?>
@@ -207,7 +229,16 @@ $idProv = 1;
             </div>
             <?php
         }
+
+        if (isset($teachers) === true) {
+            // Actual teachers
+            foreach ($teachers as $teacher) {
+                // créer un input hidden pour l'enseignant
+                echo "<input type='hidden' name='actualTeachers[]' value='{$teacher['iduser']}'>";
+            }
+        }
         ?>
+    
     </form>
 
     <?php

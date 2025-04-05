@@ -140,6 +140,7 @@
 	"SESSION_CREATE_STATE": "Statut",
 	"SESSION_CREATE_STATE_OPEN": "La session doit-elle être directement ouverte ?",
     "SESSION_CREATE_TEACHER_ADD": "Vous pouvez ci-dessous ajouter d'autres enseignants à cette session :",
+    "SESSION_REMOVE_LAST_TEACHER": "Une session nécessite au moins un enseignant.",
 
 	"CLASSROOM_NAME": "Classes",
 	"CLASSROOM_ADD_STUDENT_TITLE": "Ajouter un étudiant",
