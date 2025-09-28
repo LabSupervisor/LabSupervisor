@@ -1,5 +1,4 @@
 <?php
-
 	use
 		LabSupervisor\app\repository\ClassroomRepository,
 		LabSupervisor\app\repository\UserRepository,

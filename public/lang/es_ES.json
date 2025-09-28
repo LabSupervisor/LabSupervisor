@@ -139,6 +139,8 @@
 	"SESSION_CREATE_UPDATE_NOTIFICATION": "Sesión actualizada.",
 	"SESSION_CREATE_STATE": "Estado",
 	"SESSION_CREATE_STATE_OPEN": "¿Debe abrirse la sesión inmediatamente?",
+	"SESSION_CREATE_TEACHER_ADD": "Agregar un profesor",
+	"SESSION_REMOVE_LAST_TEACHER": "Debes agregar al menos un profesor.",
 
 	"CLASSROOM_NAME": "Clases",
 	"CLASSROOM_ADD_STUDENT_TITLE": "Agregar un estudiante",

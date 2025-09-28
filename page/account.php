@@ -1,5 +1,4 @@
 <?php
-
 	use
 		LabSupervisor\app\repository\UserRepository,
 		LabSupervisor\app\repository\ClassroomRepository,
@@ -67,7 +66,7 @@
 							$langList = scandir($_SERVER["DOCUMENT_ROOT"] . "/public/lang/");
 							$langList = array_diff($langList, array(".", "..", "index.php"));
 
-							foreach($langList as $lang) {
+							foreach ($langList as $lang) {
 								$lang = str_replace(".json", "", $lang);
 								if ($lang == $userLang) {
 									echo "<option selected='selected' value='" . $lang . "'>" . langFormat($lang) . "</option>";

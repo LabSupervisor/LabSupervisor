@@ -121,22 +121,22 @@
 
 /* Teachers */
 .teacher-container {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .teacher-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 5px 0;
 }
 
 .teacher-row span {
-    flex: 1;
+	flex: 1;
 }
 
 .teacher-row i {
-    margin-left: 10px;
-    cursor: pointer;
+	margin-left: 10px;
+	cursor: pointer;
 }

@@ -6,14 +6,14 @@ DEPLOY_DIR="/var/www/LabSupervisor"
 SSH_KEY="$HOME/.ssh/id_rsa"
 
 function update_repo {
-    echo "Mise à jour du dépôt..."
-    git checkout main && git pull /var/www/LabSupervisor
+	echo "Mise à jour du dépôt..."
+	git checkout main && git pull /var/www/LabSupervisor
 }
 
 # Supprimer les fichiers non suivis localement
 function clean_untracked_files {
-    echo "Nettoyage des fichiers non suivis localement..."
-    git clean -df
+	echo "Nettoyage des fichiers non suivis localement..."
+	git clean -df
 }
 
 clean_untracked_files
@@ -35,9 +35,9 @@ echo "Application module updated..."
 echo "Start database update..."
 ERROR_OUTPUT=$(mysql -h $DATABASE_HOST -P "$DATABASE_PORT" -u $DATABASE_USER -p"$DATABASE_PASSWORD" $DATABASE_NAME < $LATEST_SQL_FILE)
 if [[ $ERROR_OUTPUT == *"ERROR 1050"* ]]; then
-    echo "Table already exists, skipping..."
+	echo "Table already exists, skipping..."
 elif [[ $ERROR_OUTPUT == "" ]]; then
-    echo "Database updated."
+	echo "Database updated."
 else
-    echo "Failed to update database: $ERROR_OUTPUT"
+	echo "Failed to update database: $ERROR_OUTPUT"
 fi

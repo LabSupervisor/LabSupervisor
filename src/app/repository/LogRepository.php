@@ -43,7 +43,7 @@ class LogRepository extends Exception{
 
 		// Log in file
 		fwrite($file, "[" . date("Y-m-d H:i:s") . "]\n");
-		foreach(explode("#", $stacktrace) as $value)
+		foreach (explode("#", $stacktrace) as $value)
 			fwrite($file, "#" . $value);
 		fwrite($file, "\n" . $message . "\n");
 		fclose($file);

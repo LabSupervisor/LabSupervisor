@@ -253,24 +253,23 @@ class UserRepository {
 		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? NULL;
 	}
 
-    public static function getTeachers()
-    {
-        // Get teachers query
-        $query = "SELECT us.id as iduser, us.surname, us.name, us.email FROM user us INNER JOIN userrole ur ON us.id = ur.iduser WHERE ur.idrole = 3 AND us.active = 1 ORDER BY us.surname ASC";
+	public static function getTeachers() {
+		// Get teachers query
+		$query = "SELECT us.id as iduser, us.surname, us.name, us.email FROM user us INNER JOIN userrole ur ON us.id = ur.iduser WHERE ur.idrole = 3 AND us.active = 1 ORDER BY us.surname ASC";
 
-        // Get users
-        try {
-            $queryPrep = DATABASE->prepare($query);
-            if ($queryPrep->execute() === false) {
-                throw new Exception("Get users error");
-            }
-        } catch (Exception $e) {
-            // Log error
-            LogRepository::fileSave($e);
-        }
+		// Get users
+		try {
+			$queryPrep = DATABASE->prepare($query);
+			if ($queryPrep->execute() === false) {
+				throw new Exception("Get users error");
+			}
+		} catch (Exception $e) {
+			// Log error
+			LogRepository::fileSave($e);
+		}
 
-        return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? null;
-    }
+		return $queryPrep->fetchAll(PDO::FETCH_ASSOC) ?? null;
+	}
 
 	public static function getRoles() {
 		// Get roles query

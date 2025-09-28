@@ -26,7 +26,7 @@ document.querySelectorAll('.themeColor').forEach(div => {
 		}).then((response) => {
 			return response.json()
 		}).catch((error) => {
-			console.log(error)
+			console.error(error)
 		})
 	})
 });

@@ -1,7 +1,5 @@
 <?php
-
 	use function LabSupervisor\functions\lang;
-
 ?>
 
 <!-- close main -->
@@ -9,7 +7,7 @@
 
 		<footer>
 			<div class="item">
-				<a>© <?= lang("MAIN_TITLE") ?> 2024 - </a><a class="version"> Beta V1.0.2</a>
+				<a>© <?= lang("MAIN_TITLE") ?> 2024 - </a><a class="version"> Beta v1.1.0</a>
 				<a class="about" href="/about"><i class="ri-external-link-line"></i> <?= lang("FOOTER_ABOUT") ?></a>
 				<div class="linkGroup">
 					<a class="link" href="https://github.com/LabSupervisor/LabSupervisor" target="_blank" title="GitHub"><i class="ri-github-line"></i></a>

@@ -27,7 +27,7 @@ function statusUpdate(status) {
 					}).then((res) => {
 						notify(res.Response.Names + " " + lang("NOTIFICATION_NEED_HELP"))
 					}).catch((error) => {
-						console.log(error);
+						console.error(error);
 					})
 				}
 				statusDisplay = "statusRed";

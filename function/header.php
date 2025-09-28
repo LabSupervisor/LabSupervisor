@@ -29,8 +29,6 @@ if (!function_exists(__NAMESPACE__ . "/mainHeader")) {
 		$header .= '<link rel="stylesheet" href="/public/css/import/remixicon.css">';
 		$header .= '<link rel="stylesheet" href="/public/css/footer.css">';
 
-		
-
 		if (isset($_SESSION["login"])) {
 			$header .= "<script>" .
 					"var userId = " . $_SESSION["login"] . ";" .
@@ -44,7 +42,7 @@ if (!function_exists(__NAMESPACE__ . "/mainHeader")) {
 				"</script>";
 		}
 
-        $header .= '</head>';
+		$header .= '</head>';
 
 		echo $header;
 

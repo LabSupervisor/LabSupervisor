@@ -1,12 +1,10 @@
 <?php
-
 	use function
 		LabSupervisor\functions\mainHeader,
 		LabSupervisor\functions\lang;
 
 	// Import header
 	mainHeader(lang("FOOTER_ABOUT"), true);
-
 ?>
 
 <link rel="stylesheet" href="/public/css/about.css">
