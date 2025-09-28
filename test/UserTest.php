@@ -6,10 +6,8 @@ use
 
 require_once dirname(__FILE__) . "/../test/import.php";
 
-final class UserTest extends TestCase
-{
-	public function testGetId(): void
-	{
+final class UserTest extends TestCase {
+	public function testGetId(): void {
 		$email = 'admin@gmail.com';
 		$id = 101;
 

@@ -3,7 +3,7 @@
 
 	user-select: none;
 
-    width: 650px;
+	width: 650px;
 }
 
 .mainbox h2 {
@@ -11,15 +11,15 @@
 }
 
 .mainbox .group {
-    display: flex;
+	display: flex;
 }
 
 .mainbox .item {
-    width: 50%;
+	width: 50%;
 }
 
 p {
-    margin: 10px;
+	margin: 10px;
 
 	user-select: text;
 }

@@ -33,7 +33,7 @@ async function setStatus(idchapter, status) {
 
 		DOMElement.className = "statusBall " + statusDisplay;
 	}).catch((error) => {
-		console.log(error)
+		console.error(error)
 	})
 
 	fetch("/connect", {
@@ -52,6 +52,6 @@ async function setStatus(idchapter, status) {
 		percentValue.textContent = res.Response.Percent + "%"
 		percentBar.style.width = res.Response.Percent + "%"
 	}).catch((error) => {
-		console.log(error)
+		console.error(error)
 	})
 }

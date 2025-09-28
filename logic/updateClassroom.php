@@ -11,7 +11,7 @@ if (isset($_POST['addStudent'])) {
 	$classroomId = $_POST['classroomId'];
 	$students = $_POST['studentId'];
 
-	foreach($students as $studentId) {
+	foreach ($students as $studentId) {
 		if (!ClassroomRepository::isUserInClassroom($studentId, $classroomId)) {
 			ClassroomRepository::addUser($studentId, $classroomId);
 		}

@@ -6,11 +6,9 @@ function deleteChapter(button) {
 
 		// Récupérer l'ID du chapitre à supprimer en utilisant la classe 'chapterId'
 		let deletedChapterIdInput = subform.querySelector('.chapterId');
-		console.log('deletedChapterIdInput : ' + deletedChapterIdInput);
 
 		if (deletedChapterIdInput !=null) {
 			deletedChapterId = deletedChapterIdInput.value;
-			console.log('deletedChapterId : ' + deletedChapterId);
 
 			// Créer un champ caché dans un autre formulaire pour stocker l'ID du chapitre supprimé
 			let deletedChaptersInput = document.createElement('input');

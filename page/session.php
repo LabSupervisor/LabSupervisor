@@ -1,5 +1,4 @@
 <?php
-
 	use
 		LabSupervisor\app\repository\SessionRepository,
 		LabSupervisor\app\repository\UserRepository;
@@ -31,14 +30,14 @@
 	if (in_array(ADMIN, $roleList)) {
 		$session = SessionRepository::getSessions();
 
-		foreach($session as $value => $key) {
+		foreach ($session as $value => $key) {
 			array_push($sessionList, SessionRepository::getInfo($key["id"]));
 		}
 	// Get user's session
 	} else {
 		$session = SessionRepository::getUserSessions($_SESSION["login"]);
 
-		foreach($session as $value => $key) {
+		foreach ($session as $value => $key) {
 			array_push($sessionList, SessionRepository::getInfo($key["idsession"]));
 		}
 	}
@@ -50,7 +49,7 @@
 
 <div class="mainbox buttonContainer">
 	<a href="/sessioncreation">
-		<button class="button" ><i class="ri-computer-line"></i> <?= lang("NAVBAR_CREATE_SESSION") ?></button>
+		<button class="button"><i class="ri-computer-line"></i> <?= lang("NAVBAR_CREATE_SESSION") ?></button>
 	</a>
 </div>
 
@@ -80,10 +79,10 @@
 			<?php
 				$j = 0;
 				$max = 5;
-				for($i = 0; $i < count($sessionList); $i++) {
+				for ($i = 0; $i < count($sessionList); $i++) {
 					if ($j >= ($_GET["page"] -1) * $max && $j < $_GET["page"] * $max) {
 						echo "<tr>";
-						foreach($sessionList[$i] as $line) {
+						foreach ($sessionList[$i] as $line) {
 							if ($line["state"] == 0) {
 								$stateText = "<i class='ri-door-closed-line'></i> " . lang("SESSION_CLOSE");
 							} else {

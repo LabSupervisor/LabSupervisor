@@ -14,7 +14,7 @@ setInterval(() => {
 	}).then((res) => {
 		statusUpdate(res)
 	}).catch((error) => {
-		console.log(error);
+		console.error(error);
 	})
 
 	fetch("/connect", {
@@ -33,6 +33,6 @@ setInterval(() => {
 		percentValue.textContent = res.Response.Percent + "%"
 		percentBar.style.width = res.Response.Percent + "%"
 	}).catch((error) => {
-		console.log(error)
+		console.error(error)
 	})
 }, 3000);

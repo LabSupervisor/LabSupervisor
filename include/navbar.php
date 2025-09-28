@@ -1,10 +1,8 @@
 <?php
-
 	use LabSupervisor\app\repository\UserRepository;
 	use function
 		LabSupervisor\functions\lang,
 		LabSupervisor\functions\nameFormat;
-
 ?>
 
 <body>

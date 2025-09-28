@@ -1,5 +1,4 @@
 <?php
-
 	use function
 		LabSupervisor\functions\mainHeader,
 		LabSupervisor\functions\lang;

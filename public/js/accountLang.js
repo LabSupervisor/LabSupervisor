@@ -15,7 +15,7 @@ select.addEventListener('change', async function() {
 	}).then((response) => {
 		return response.json()
 	}).catch((error) => {
-		console.log(error)
+		console.error(error)
 	})
 
 	window.location.reload();

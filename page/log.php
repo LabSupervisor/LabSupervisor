@@ -1,5 +1,4 @@
 <?php
-
 	use
 		LabSupervisor\app\repository\UserRepository,
 		LabSupervisor\app\repository\LogRepository;
@@ -141,7 +140,7 @@
 			// Get dates
 			$listDate = array();
 			$temp = explode("\n", $logs);
-			foreach($temp as $value) {
+			foreach ($temp as $value) {
 				if (preg_match("/\[" . $logDate . " (.*?)\]/", $value, $matches)) {
 					array_push($listDate, $matches[1]);
 				}
@@ -155,14 +154,14 @@
 
 			$max = 20;
 			$i = -1;
-			foreach($log as $temp) {
+			foreach ($log as $temp) {
 				if ($i >= ($_GET["page"] -1) * $max && $i < $_GET["page"] * $max) {
 					// Get error's values
 					$message = "";
 					$error = "";
 
 					$data = explode("\n", $temp);
-					foreach($data as $value) {
+					foreach ($data as $value) {
 						if (!str_starts_with($value, "#")) {
 							if (strlen($value) > 1) {
 								$error = $value;

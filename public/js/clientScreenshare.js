@@ -22,7 +22,6 @@ shareButton.addEventListener('click', async () => {
 
 	// Create peer connection
 	peer.on('open', function (id) {
-		console.log('Personal peer ID: ' + id);
 		fetch("/connect", {
 			method: 'post',
 			headers: {
@@ -38,7 +37,7 @@ shareButton.addEventListener('click', async () => {
 		}).then((response) => {
 			return response.json()
 		}).catch((error) => {
-			console.log(error)
+			console.error(error)
 		})
 	});
 });

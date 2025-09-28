@@ -29,24 +29,22 @@ if (!function_exists(__NAMESPACE__ . "/mainHeader")) {
 		$header .= '<link rel="stylesheet" href="/public/css/import/remixicon.css">';
 		$header .= '<link rel="stylesheet" href="/public/css/footer.css">';
 
-		$header .= '</head>';
-
-		echo $header;
-
 		if (isset($_SESSION["login"])) {
-			echo
-				"<script>" .
+			$header .= "<script>" .
 					"var userId = " . $_SESSION["login"] . ";" .
 					"var userLang = '" . UserRepository::getSetting($_SESSION["login"])["lang"] . "';" .
 					"var defaultLang = '" . DEFAULT_LANGUAGE . "';" .
 				"</script>";
 		} else {
-			echo
-				"<script>" .
+			$header .= "<script>" .
 					"var userLang = '" . DEFAULT_LANGUAGE . "';" .
 					"var defaultLang = '" . DEFAULT_LANGUAGE . "';" .
 				"</script>";
 		}
+
+		$header .= '</head>';
+
+		echo $header;
 
 		if ($navbar) {
 			// Import navbar

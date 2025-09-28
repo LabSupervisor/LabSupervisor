@@ -25,7 +25,7 @@ fetch("/connect", {
 }).then((res) => {
 	respondId = res.Response.Screenshare;
 }).catch((error) => {
-	console.log(error);
+	console.error(error);
 })
 
 if (navigator.userAgent.includes("Firefox")) {
@@ -56,7 +56,7 @@ async function startScrenshare() {
 		});
 
 		peer.on("error", function(error) {
-			console.log(error);
+			console.error(error);
 		});
 	} catch (e) {
 		window.open('','_self').close();

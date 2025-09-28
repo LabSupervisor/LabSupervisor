@@ -100,7 +100,7 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 
 			classRoomElement.replaceChildren(selectClassroom);
 		}).catch((error) => {
-			console.log(error);
+			console.error(error);
 		});
 	}
 
@@ -133,7 +133,7 @@ function updateUser(userId, classroomIdUser, roleIdUser) {
 					});
 				}
 			}).catch((error) => {
-				console.log(error)
+				console.error(error)
 			})
 
 			classRoomElement.replaceChildren(selectClassroom);
@@ -208,6 +208,6 @@ function fetchData(userId, classroomIdUser, roleIdUser, classRoomElement) {
 		return classroomTeacher;
 	})
 	.catch((error) => {
-		console.log(error);
+		console.error(error);
 	});
 }

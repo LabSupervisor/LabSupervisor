@@ -40,6 +40,6 @@ setInterval(() => {
 				break;
 		}
 	}).catch((error) => {
-		console.log(error)
+		console.error(error)
 	})
 }, 3000);
