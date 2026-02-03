@@ -1,7 +1,7 @@
 function addHTMLChapter(title, description, button) {
-	let newIdChapter = parseInt(button.getAttribute("dataid"));
+	let newIdChapter = parseInt(button.getAttribute("data-id"));
 	// update the button to increment the id if it is clicked again
-	button.setAttribute("dataid", newIdChapter +1);
+	button.setAttribute("data-id", newIdChapter + 1);
 	let nbChapter = document.getElementById('nbChapter').value;
 	nbChapter++;
 

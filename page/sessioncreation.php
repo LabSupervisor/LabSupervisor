@@ -137,7 +137,8 @@
 
 				<div id="fieldsContainer">
 					<?php
-					$nbChapter = 1;
+					$nbChapter = 0;
+					$idLastChapter = 0;
 
 					// Check session exist
 					if (isset($_POST['sessionId']) === true) {
@@ -145,6 +146,8 @@
 
 						// Print field exist chapter
 						foreach ($tabChapter as $i => $chapter) {
+							$idLastChapter = $chapter['id'];
+							$nbChapter++;
 							?>
 							<div class="subform" id="<?= $chapter['id']; ?>">
 								<!-- id chapter -->
@@ -177,7 +180,7 @@
 
 					<!-- Add chapter button -->
 					<div>
-						<button class="button" type="button" id="btn-chapter" data-id="1" onclick="addHTMLChapter('<?= lang('SESSION_CREATE_CHAPTER_TITLE'); ?>', '<?= lang('SESSION_CREATE_CHAPITRE_CONTENT'); ?>', this)"><?= lang('SESSION_CREATE_CHAPTER_ADD'); ?></button>
+						<button class="button" type="button" id="btn-chapter" data-id="<?= $idLastChapter + 1; ?>" onclick="addHTMLChapter('<?= lang('SESSION_CREATE_CHAPTER_TITLE'); ?>', '<?= lang('SESSION_CREATE_CHAPITRE_CONTENT'); ?>', this)"><?= lang('SESSION_CREATE_CHAPTER_ADD'); ?></button>
 					</div>
 
 				</div>
